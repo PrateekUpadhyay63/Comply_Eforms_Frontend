@@ -61,7 +61,6 @@ export default function Fedral_tax(props: any) {
                 }) => (
                   <Form onSubmit={handleSubmit}>
                     <>
-                    {console.log(errors,values,"formssssss")}
                     </>
                     <div>
 
@@ -132,13 +131,13 @@ export default function Fedral_tax(props: any) {
                                 <option value={258}>
                                   Individual/sole Propritor
                                 </option>
-                                <option value={258}>
+                                <option value={259}>
                                   Limited Liability Company
                                 </option>
                               </select>
                             </FormControl>
                           </div>
-                          {selectedTaxClassification === "257" ? (
+                          {selectedTaxClassification !== "" ? (
                             <div style={{ marginTop: "20px", display: "flex" }}>
                               <div>
                                 <Typography
@@ -157,11 +156,10 @@ export default function Fedral_tax(props: any) {
                                 </Typography>
 
                                 <FormControl className="w-100">
-                                  <TextField
-                                    
+                                  <TextField                                    
                                     autoComplete="firstName"
                                     type="text"
-                                    placeholder="Title"
+                                    placeholder="First Name"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     helperText={touched.firstName && errors.firstName}
@@ -170,7 +168,7 @@ export default function Fedral_tax(props: any) {
                                     value={values.firstName}
                                     style={{
                                       width: "150%",
-                                      border: " 1px solid #d9d9d9 ",
+                                    //   border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
                                       lineHeight: "36px ",
                                       background: "#fff ",
@@ -196,7 +194,7 @@ export default function Fedral_tax(props: any) {
                                   <TextField
                                 autoComplete="lastName"
                                 type="text"
-                                placeholder="Title"
+                                placeholder="Last Name"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 helperText={touched.lastName && errors.lastName}
@@ -205,7 +203,7 @@ export default function Fedral_tax(props: any) {
                                 value={values.lastName}
                                     style={{
                                       width: "150%",
-                                      border: " 1px solid #d9d9d9 ",
+                                    //   border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
                                       lineHeight: "36px ",
                                       background: "#fff ",
@@ -221,80 +219,8 @@ export default function Fedral_tax(props: any) {
                             </div>
                           ) : null}
 
-                          {selectedTaxClassification === "258" ? (
+                          {selectedTaxClassification === "258" || selectedTaxClassification === "259" ? (
                             <>
-                              <div
-                                style={{ marginTop: "20px", display: "flex" }}
-                              >
-                                <div>
-                                  <Typography
-                                    align="left"
-                                    className="d-flex w-100 "
-                                    style={{ fontSize: "13px" }}
-                                  >
-                                    First Name
-                                    <span style={{ color: "red" }}>*</span>
-                                    <Info
-                                      style={{
-                                        color: "#ffc107",
-                                        fontSize: "13px",
-                                      }}
-                                    />
-                                  </Typography>
-
-                                  <FormControl className="w-100">
-                                    <TextField
-                                
-                                      name="firstName"
-                                      value={data.firstName}
-                                      onChange={handleChange}
-                                      style={{
-                                        width: "150%",
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
-                                      }}
-                                    />
-                                  </FormControl>
-                                </div>
-                                <div style={{ marginLeft: "120px" }}>
-                                  <Typography
-                                    align="left"
-                                    className="d-flex w-100 "
-                                    style={{ fontSize: "13px" }}
-                                  >
-                                    Last Name
-                                  </Typography>
-
-                                  <FormControl className="w-100">
-                                    <TextField
-                                
-                                      name="lastName"
-                                      value={data.lastName}
-                                      onChange={handleChange}
-                                      style={{
-                                        width: "150%",
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
-                                      }}
-                                    />
-                                  </FormControl>
-                                </div>
-                              </div>
-
                               <div>
                                 <Typography
                                   align="left"
@@ -310,13 +236,18 @@ export default function Fedral_tax(props: any) {
 
                                 <FormControl className="w-100">
                                   <TextField
-                              
                                     name="businessName"
-                                    value={data.businessName}
+                                    value={values.businessName}
                                     onChange={handleChange}
+                                    autoComplete="businessName"
+                                    type="text"
+                                    placeholder="Business Name"
+                                    onBlur={handleBlur}
+                                    helperText={touched.businessName && errors.businessName}
+                                    error={Boolean(touched.businessName && errors.businessName)}
                                     style={{
                                       width: "200%",
-                                      border: " 1px solid #d9d9d9 ",
+                                    //   border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
                                       lineHeight: "36px ",
                                       background: "#fff ",
