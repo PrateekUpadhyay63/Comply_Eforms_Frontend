@@ -1,0 +1,55 @@
+import axios from 'axios';
+import { getToken } from '.';
+
+const API_URL = 'https://sliceqaapi.appskeeper.in/main/slice/api/v1/admin';
+
+export const apiErrorCode = {
+  unauthorized: 401,
+  accessDenied: 430,
+  sessionExpired: 423,
+  validationError: 400,
+  emailNotVerified: 403,
+  internalError: 500,
+};
+const apiSuccessCode = {
+  success: 200,
+  postSuccess: 201,
+  putSuccess: 202,
+};
+
+export const $axios = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  timeout: 30000,
+  headers: {
+    'Content-Type': 'application/json',
+    accept: 'application/json',
+    platform: 3,
+    timezone: 0,
+    language: 'en',
+    offset: 0,
+    api_key: 1234,
+  },
+});
+
+$axios.interceptors.request.use(
+  (config: any) => {
+    const token = getToken('accessToken');
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      config.headers.Authorization = 'Basic c2xpY2U6c2xpY2VAMTIz';
+    }
+    return config;
+  },
+  (error: any) => {
+    return Promise.reject(error);
+  }
+);
+const constants = {
+  apiErrorCode,
+  API_URL: process.env.REACT_APP_API_URL,
+  apiSuccessCode,
+  axios: $axios,
+};
+export default constants;
