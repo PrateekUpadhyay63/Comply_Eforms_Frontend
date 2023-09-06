@@ -922,10 +922,10 @@ export default function IndividualUs() {
                             permanentResidentialAptSuite: e.target.value,
                           })
                         }
-                        onBlur={handleBlur}
-                      error={Boolean(touched.permanentResidentialAptSuite && errors.permanentResidentialAptSuite)}
                         value={payload.permanentResidentialAptSuite}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialAptSuite}</p>
+
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -955,15 +955,18 @@ export default function IndividualUs() {
                             permanentResidentialCityorTown: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                      error={Boolean(touched.permanentResidentialCityorTown && errors.permanentResidentialCityorTown)}
                         value={payload.permanentResidentialCityorTown}
                       />
+                       <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown}</p>
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                     <FormControl className="w-100">
                       <Typography align="left">
                         State or Province:
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
                         required
@@ -1020,8 +1023,12 @@ export default function IndividualUs() {
                             permanentResidentialZipPostalCode: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                      error={Boolean(touched.permanentResidentialZipPostalCode && errors.permanentResidentialZipPostalCode)}
                         value={payload.permanentResidentialZipPostalCode}
                       />
+                     <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode}</p>
+
                     </FormControl>
                   </div>
                 </div>
@@ -1100,6 +1107,8 @@ export default function IndividualUs() {
                               permanentResidentialCountryId1: e.target.value,
                             })
                           }
+                          onBlur={handleBlur}
+                      // error={Boolean(touched.permanentResidentialCountryId1 && errors.permanentResidentialCountryId1)}
                           value={payload.permanentResidentialCountryId1}
                         >
                         
@@ -1111,6 +1120,8 @@ export default function IndividualUs() {
                             <option value={id}> {name} </option>
                           ))}
                         </select>
+                        <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName}</p>
+
                       </FormControl>
                     </div>
                     <div className="row">
@@ -1143,10 +1154,14 @@ export default function IndividualUs() {
                                   e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialStreetNumberandName1 && errors.permanentResidentialStreetNumberandName1)}
                             value={
                               payload.permanentResidentialStreetNumberandName1
                             }
                           />
+                           <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName1}</p>
+
                         </FormControl>
                       </div>
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1205,15 +1220,19 @@ export default function IndividualUs() {
                                 permanentResidentialCityorTown1: e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                            error={Boolean(touched.permanentResidentialCityorTown1 && errors.permanentResidentialCityorTown1)}
                             value={payload.permanentResidentialCityorTown1}
                           />
+                           <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown1}</p>
+
                         </FormControl>
                       </div>
                       {payload.permanentResidentialCountryId === 258 ? (
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <Typography align="left" className="d-flex w-100 ">
                             State or Province:
-                            <span style={{ color: 'red' }}>*</span>
+                            {/* <span style={{ color: 'red' }}>*</span> */}
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1312,8 +1331,12 @@ export default function IndividualUs() {
                                   e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                            error={Boolean(touched.permanentResidentialZipPostalCode1 && errors.permanentResidentialZipPostalCode1)}
                             value={payload.permanentResidentialZipPostalCode1}
                           />
+                          <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode1}</p>
+
                         </FormControl>
                       </div>
                     </div>
@@ -1399,8 +1422,12 @@ export default function IndividualUs() {
                             contactFirstName: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                        error={Boolean(touched.contactFirstName && errors.contactFirstName)}
                         value={payload.contactFirstName}
                       />
+                     <p style={{color: "red",textAlign:"left"}}>{errors.contactFirstName}</p>
+
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1430,8 +1457,11 @@ export default function IndividualUs() {
                             contactLastName: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                        error={Boolean(touched.contactLastName && errors.contactLastName)}
                         value={payload.contactLastName}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.contactLastName}</p>
                     </FormControl>
                   </div>
                   <FormControl className="w-100">
@@ -1464,8 +1494,12 @@ export default function IndividualUs() {
                                 contactEmail: e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                            error={Boolean(touched.contactEmail && errors.contactEmail)}
                             value={payload.contactEmail}
                           />
+                          <p style={{color: "red",textAlign:"left"}}>{errors.contactEmail}</p>
+
                         </FormControl>
                       </div>
                     </div>
@@ -1971,13 +2005,20 @@ export default function IndividualUs() {
                                     accountHolderName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                  error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
+                                <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
+
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
-                              <Typography align="left"> Bank name</Typography>
+                              <Typography align="left">
+                                 Bank name
+                              <span style={{ color: 'red' }}>*</span>
+                              </Typography>
                               <Input
                                 required
                                 style={{
@@ -2000,8 +2041,12 @@ export default function IndividualUs() {
                                     accountBankName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                  error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
+                                <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
+
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2012,7 +2057,7 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <select
                                 style={{
-                                  padding: ' 0 10px',
+                                  padding: '0 10px',
                                   color: '#7e7e7e',
                                   fontStyle: 'italic',
                                   height: '36px',
@@ -2025,9 +2070,12 @@ export default function IndividualUs() {
                                     accountBankBranchLocationId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                                
+                               {/* <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p> */}
+
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
@@ -2067,8 +2115,12 @@ export default function IndividualUs() {
                                     accountNumber: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
+
                             </FormControl>
                           </div>
 
@@ -2100,8 +2152,12 @@ export default function IndividualUs() {
                                     bankCode: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.bankCode && errors.bankCode)}
                                 value={payload.bankCode}
                               />
+                             <p style={{color: "red",textAlign:"left"}}>{errors.bankCode}</p>
+
                             </FormControl>
                           </div>
                         </div>
@@ -2394,7 +2450,10 @@ export default function IndividualUs() {
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
-                              <Typography align="left"> Bank name</Typography>
+                              <Typography align="left"> 
+                              Bank name
+                              <span style={{ color: 'red' }}>*</span>
+                              </Typography>
                               <Input
                                 required
                                 style={{
