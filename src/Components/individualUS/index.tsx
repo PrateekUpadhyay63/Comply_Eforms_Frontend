@@ -11,11 +11,13 @@ import {
   Radio,
   Button,
   Checkbox,
-  Paper
+  Paper,
+  TextField
 } from '@mui/material';
 // import { useDispatch} from "react-redux";
 import {RemoveCircleOutlineOutlined,ControlPointOutlined,Info,Delete} from '@mui/icons-material';
-
+import { Formik, Form } from "formik";
+import { individualSchema } from "../../schemas/individualindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
 
@@ -26,27 +28,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 export default function IndividualUs() {
   //States
   const [open, setOpen] = useState('');
-
-  // const [is_US, setUS] = useState(false);
-  // const [is_USACH, setUSACH] = useState('');
-  // const [selectedValue, setSelectedValue] = useState('b');
-  // const [selectedValue1, setSelectedValue1] = useState('b');
-  // const [radioButton, setRadioButton] = useState(false);
   const [incomeArr, setIncomeArr] = useState(['intrest']);
-  // const [accInfoSection, setAccInfoSection] = useState(false);
-  // const [accInfoType, setAccInfoType] = useState('');
   const [bankLocation, setBankLocation] = useState('');
   const [alternateNo, setAlternateNo] = useState(false);
 
-  // const paymentSelection = val => {
-  //   console.log(val);
-  //   if (val === '') {
-  //     setAccInfoSection(false);
-  //   } else {
-  //     setAccInfoSection(true);
-  //     setAccInfoType(val);
-  //   }
-  // };
   const [countries, setCountries] = useState([]);
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
@@ -163,6 +148,10 @@ export default function IndividualUs() {
     } else setOpen(val);
   };
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setPlaceholder({ ...placeholder, [name]: value });
+  // };
   // const handleRadio = event => {
   //   setSelectedValue(event.target.value);
   // };
@@ -216,8 +205,25 @@ export default function IndividualUs() {
 
         <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
-            <form>
-              {/* Basic Details Section */}
+            <Formik
+            initialValues={payload}
+            enableReinitialize
+            onSubmit = {() => { 
+              console.log("submit!"); }}
+            validationSchema={individualSchema}
+            >
+              {({
+                  errors,
+                  touched,
+                  handleBlur,
+                  values,
+                  handleSubmit,
+                  handleChange,
+                  isSubmitting,
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <>
+                    </>
               <CardHeader
                 style={{ textAlign: 'left', marginLeft: '13px' }}
                 className="flex-row-reverse"
@@ -265,32 +271,6 @@ export default function IndividualUs() {
               >
                 <FormControl className="w-100">
                   <div className="row">
-                    {/* <div className="col-12 mb-4">
-                 
-                    <label className="mr-2">
-                      <Typography align="left">
-                        Are you a U.S Individual?
-                        <span style={{color:"#ffc107"}}>*</span>
-                      </Typography >
-                    </label>
-                    <input
-                      className="mx-2"
-                      type="radio"
-                      name="ctl00$ContentPlaceHolder1$usindividual"
-                      value="chkusindividual"
-                    //   onclick="fillcapacity(this);"
-                    ></input>
-                    <label>Yes</label>
-                    <input
-                    required
-                      className="mx-2"
-                      type="radio"
-                      name="ctl00$ContentPlaceHolder1$usindividual"
-                      value="chknonusindividual"
-                    //   onclick="fillcapacity(this);"
-                    ></input>
-                    <label>No</label>
-                  </div> */}
                     <div>
                       <Typography align="left" style={{ marginTop: '20px' }}>
                         Are you a U.S Individual?
@@ -324,7 +304,7 @@ export default function IndividualUs() {
                           onChange={() =>
                             setPayload({ ...payload, isUSEntity: false })
                           }
-                          // value={!payload.isUSEntity}
+
                           value="no"
                           name="radio-buttons"
                           inputProps={{ 'aria-label': 'No' }}
@@ -363,8 +343,12 @@ export default function IndividualUs() {
                             uniqueIdentifier: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                        // helperText={touched.uniqueIdentifier && errors.uniqueIdentifier}
+                        error={Boolean(touched.uniqueIdentifier && errors.uniqueIdentifier)}
                         value={payload.uniqueIdentifier}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.uniqueIdentifier}</p>
                     </div>
                   </div>
                 </FormControl>
@@ -392,14 +376,18 @@ export default function IndividualUs() {
                           id="outlined"
                           name="firstName"
                           placeholder="Enter First Name"
+                          onBlur={handleBlur}
+                          error={Boolean(touched.firstName && errors.firstName)}
                           onChange={e =>
                             setPayload({
                               ...payload,
                               firstName: e.target.value,
                             })
                           }
+                          
                           value={payload.firstName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.firstName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -426,8 +414,11 @@ export default function IndividualUs() {
                           onChange={e =>
                             setPayload({ ...payload, lastName: e.target.value })
                           }
-                          value={payload.lastName}
+                          onBlur={handleBlur}
+                        error={Boolean(touched.lastName && errors.lastName)}
+                        value={payload.lastName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.lastName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -451,13 +442,16 @@ export default function IndividualUs() {
                               countryOfCitizenshipId: e.target.value,
                             })
                           }
+                          onBlur={handleBlur}
+                          // error={Boolean(touched.countryOfCitizenshipId && errors.countryOfCitizenshipId)}
+                          value={payload.countryOfCitizenshipId}
                         >
                           <option value="">-Select-</option>
                           {countries.map(({ id, name }) => (
                             <option value={id}>{name}</option>
                           ))}
-                          {/* ))} */}
                         </select>
+                        <p style={{color: "red",textAlign:"left"}}>{errors.countryOfCitizenshipId}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -484,8 +478,11 @@ export default function IndividualUs() {
                           onChange={e =>
                             setPayload({ ...payload, dob: e.target.value })
                           }
+                          onBlur={handleBlur}
+                          error={Boolean(touched.dob && errors.dob)}
                           value={payload.dob}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.dob}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -516,8 +513,11 @@ export default function IndividualUs() {
                               nameOfDisregarded: e.target.value,
                             })
                           }
+                          // onBlur={handleBlur}
+                          // error={Boolean(touched.nameOfDisregarded && errors.nameOfDisregarded)}
                           value={payload.nameOfDisregarded}
                         />
+                        {/* <p style={{color: "red",textAlign:"left"}}>{errors.nameOfDisregarded}</p> */}
                       </FormControl>
                     </div>
                   </div>
@@ -542,9 +542,21 @@ export default function IndividualUs() {
                           }}
                           required
                           id="outlined"
-                          name="first_name"
+                          name="firstName"
                           placeholder="Enter First Name"
+                          onBlur={handleBlur}
+        
+                          error={Boolean(touched.firstName && errors.firstName)}
+                          onChange={e =>
+                            setPayload({
+                              ...payload,
+                              firstName: e.target.value,
+                            })
+                          }
+                          
+                          value={payload.firstName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.firstName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -566,9 +578,16 @@ export default function IndividualUs() {
                             padding: ' 0 10px ',
                           }}
                           id="outlined"
-                          name="last_name"
+                          name="lastName"
                           placeholder="Enter Last Name"
+                          onChange={e =>
+                            setPayload({ ...payload, lastName: e.target.value })
+                          }
+                          onBlur={handleBlur}
+                        error={Boolean(touched.lastName && errors.lastName)}
+                        value={payload.lastName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.lastName}</p>
                       </FormControl>
                     </div>
                   </div>
@@ -576,6 +595,7 @@ export default function IndividualUs() {
               </Collapse>
               <hr className="w-100"></hr>
               {/* Tax Identifier Section */}
+              <div>
               <CardHeader
                 style={{ textAlign: 'left', marginLeft: '13px' }}
                 className="flex-row-reverse"
@@ -623,7 +643,8 @@ export default function IndividualUs() {
                 <div className="col-12 d-flex">
                   <div className="col-lg-3 col-6 col-md-3 ">
                     <Typography align="left" className="d-flex w-100">
-                      U.S. TIN Type<span style={{ color: 'red' }}>*</span>
+                      U.S. TIN Type
+                      {/* <span style={{ color: 'red' }}>*</span> */}
                     </Typography>
 
                     <FormControl className="w-100">
@@ -657,7 +678,7 @@ export default function IndividualUs() {
                     <FormControl className="w-100">
                       <Typography align="left">
                         U.S. TIN
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
                         required
@@ -678,6 +699,8 @@ export default function IndividualUs() {
                         onChange={(e: any) =>
                           setPayload({ ...payload, usTin: e.target.value })
                         }
+                        // onBlur={handleBlur}
+                        //   error={Boolean(touched.usTin && errors.usTin)}
                         value={payload.usTin}
                       />
                     </FormControl>
@@ -688,7 +711,7 @@ export default function IndividualUs() {
                     <div className="col-lg-3 col-6 col-md-3 ">
                       <Typography align="left" className="d-flex w-100">
                         Foreign TIN Country
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
 
                       <FormControl className="w-100">
@@ -722,7 +745,7 @@ export default function IndividualUs() {
                       <FormControl className="w-100">
                         <Typography align="left">
                           Foreign TIN
-                          <span style={{ color: 'red' }}>*</span>
+                          {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
                           required
@@ -757,7 +780,7 @@ export default function IndividualUs() {
               </Collapse>
               <hr className="w-100"></hr>
 
-              {/* Permanent Residence Section */}
+              
               <CardHeader
                 style={{ textAlign: 'left', marginLeft: '13px' }}
                 className="flex-row-reverse"
@@ -824,6 +847,8 @@ export default function IndividualUs() {
                           permanentResidentialCountryId: e.target.value,
                         })
                       }
+                      onBlur={handleBlur}
+                      // error={Boolean(touched.permanentResidentialCountryId && errors.permanentResidentialCountryId)}
                       value={payload.permanentResidentialCountryId}
                     >
                       <option value="">-Select-</option>
@@ -831,7 +856,6 @@ export default function IndividualUs() {
                       {countries.map(({ id, name }) => (
                         <option value={id}>{name}</option>
                       ))}
-                      {/* ))} */}
                     </select>
                   </FormControl>
                 </div>
@@ -865,8 +889,12 @@ export default function IndividualUs() {
                               e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                      error={Boolean(touched.permanentResidentialStreetNumberandName && errors.permanentResidentialStreetNumberandName)}
                         value={payload.permanentResidentialStreetNumberandName}
                       />
+                       <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName}</p>
+
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -894,6 +922,8 @@ export default function IndividualUs() {
                             permanentResidentialAptSuite: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                      error={Boolean(touched.permanentResidentialAptSuite && errors.permanentResidentialAptSuite)}
                         value={payload.permanentResidentialAptSuite}
                       />
                     </FormControl>
@@ -929,29 +959,6 @@ export default function IndividualUs() {
                       />
                     </FormControl>
                   </div>
-                  {/* {is_US ? (
-                    <div className="col-lg-3 col-6 col-md-3 mt-2">
-                      <FormControl className="w-100">
-                        <Select
-                          style={{
-                            padding: ' 0 10px',
-                            color: '#7e7e7e',
-                            fontStyle: 'italic',
-                            height: '36px',
-                            marginTop: '23px',
-                          }}
-                          defaultValue={0}
-                          labelId="demo-simple-select-standard-label"
-                          id="demo-simple-select-standard"
-                        >
-                          <MenuItem value="0">--Select--</MenuItem>
-                          <MenuItem value={1}>Alabama</MenuItem>
-                          <MenuItem value={2}>Alaska</MenuItem>
-                          <MenuItem value={3}>etc</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </div>
-                  ) : ( */}
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                     <FormControl className="w-100">
                       <Typography align="left">
@@ -984,7 +991,7 @@ export default function IndividualUs() {
                       />
                     </FormControl>
                   </div>
-                  {/* )} */}
+                  
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                     <FormControl className="w-100">
                       <Typography align="left">
@@ -1066,7 +1073,7 @@ export default function IndividualUs() {
                   </div>
                 </div>
 
-                {/* IF Alternate mailing address */}
+                
 
                 {payload.isalternativebusinessaddress ? (
                   <>
@@ -1095,18 +1102,7 @@ export default function IndividualUs() {
                           }
                           value={payload.permanentResidentialCountryId1}
                         >
-                          {/* <MenuItem value="0" onClick={() => setUS(false)}>
-                            <em>--Select--</em>
-                          </MenuItem>
-                          <MenuItem value={1} onClick={() => setUS(false)}>
-                            UK
-                          </MenuItem>
-                          <MenuItem value={2} onClick={() => setUS(true)}>
-                            US
-                          </MenuItem>
-                          <MenuItem value={3} onClick={() => setUS(false)}>
-                            Others
-                          </MenuItem> */}
+                        
                           <option value="">-Select-</option>
                           <option value={257}>United Kingdom</option>
                           <option value={258}>United States</option>
@@ -1327,7 +1323,7 @@ export default function IndividualUs() {
                 )}
               </Collapse>
 
-              {/* Contact Details */}
+             
               <hr className="w-100"></hr>
 
               <CardHeader
@@ -1786,7 +1782,7 @@ export default function IndividualUs() {
               </Collapse>
               <hr className="w-100"></hr>
 
-              {/* Payment Type   */}
+             
               <CardHeader
                 style={{ textAlign: 'left', marginLeft: '13px' }}
                 className="flex-row-reverse"
@@ -1882,27 +1878,7 @@ export default function IndividualUs() {
                     </span>
                   </FormControl>
                 </div>
-                {/* <FormControl>
-                  <Typography>Payment Type</Typography>
-                  <select
-                    style={{
-                      padding: ' 0 10px',
-                      color: '#7e7e7e',
-                      fontStyle: 'italic',
-                      height: '36px',
-                    }}
-                    name="Payment"
-                    id="Payment"
-                    onChange={e => {
-                      paymentSelection(e.target.value);
-                    }}
-                  >
-                    <option value="">Select</option>
-                    <option value="ACH">ACH</option>
-                    <option value="Check">Check</option>
-                    <option value="Wire">Wire</option>
-                  </select>
-                </FormControl> */}
+               
               </Collapse>
               <hr className="w-100"></hr>
 
@@ -1962,134 +1938,10 @@ export default function IndividualUs() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    {/* ACH */}
+                   
                     {payload.paymentTypeId === 1 ? (
                       <>
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account holder name
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="Account_holder_name"
-                            id="outlined"
-                            placeholder="Enter Account holder name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Bank name<span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="bank_name"
-                            id="outlined"
-                            placeholder="Enter Bank name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Residential Country:
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Select
-                            style={{
-                              padding: ' 0 10px',
-                              color: '#7e7e7e',
-                              fontStyle: 'italic',
-                              height: '36px',
-                            }}
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="" onClick={() => setUSACH('')}>
-                              <em>--Select--</em>
-                            </MenuItem>
-                            <MenuItem value={1} onClick={() => setUSACH('UK')}>
-                              UK
-                            </MenuItem>
-                            <MenuItem value={2} onClick={() => setUSACH('US')}>
-                              US
-                            </MenuItem>
-                            <MenuItem value={3} onClick={() => setUSACH('')}>
-                              Others
-                            </MenuItem>
-                          </Select>
                         
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account Number
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="account_number"
-                            id="outlined"
-                            placeholder="Enter Account Number"
-                          />
-                        </FormControl> */}
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            {returnFieldName()}
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="bankCode"
-                            id="outlined"
-                            placeholder={returnFieldName()}
-                          />
-                        </FormControl> */}
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
@@ -2165,7 +2017,6 @@ export default function IndividualUs() {
                                   fontStyle: 'italic',
                                   height: '36px',
                                 }}
-                                // labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 name="accountBankBranchLocationId"
                                 onChange={(e: any) =>
@@ -2176,27 +2027,7 @@ export default function IndividualUs() {
                                 }
                                 value={payload.accountBankBranchLocationId}
                               >
-                                {/* <MenuItem value="" onClick={() => setUSACH('')}>
-                                  <em>--Select--</em>
-                                </MenuItem>
-                                <MenuItem
-                                  value={1}
-                                  onClick={() => setUSACH('UK')}
-                                >
-                                  UK
-                                </MenuItem>
-                                <MenuItem
-                                  value={2}
-                                  onClick={() => setUSACH('US')}
-                                >
-                                  US
-                                </MenuItem>
-                                <MenuItem
-                                  value={3}
-                                  onClick={() => setUSACH('')}
-                                >
-                                  Others
-                                </MenuItem> */}
+                                
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
@@ -2278,7 +2109,6 @@ export default function IndividualUs() {
                     ) : (
                       ''
                     )}
-                    {/* Check */}
                     {payload.paymentTypeId === 2 ? (
                       <>
                         <div className="row">
@@ -2346,31 +2176,7 @@ export default function IndividualUs() {
                               />
                             </FormControl>
                           </div>
-                          {/* <div className="col-lg-3 col-6 col-md-3 mt-2">
-                            <Typography align="left">
-                              Doing Business As Name
-                              <span style={{ color: 'red' }}>*</span>
-                            </Typography>
-                            <FormControl className="w-100">
-                              <Select
-                                required
-                                style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
-                                }}
-                                id="outlined"
-                                name="city"
-                                placeholder="Enter Doing Business As Name"
-                              />
-                            </FormControl>
-                          </div> */}
+                        
 
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
@@ -2628,7 +2434,6 @@ export default function IndividualUs() {
                                   fontStyle: 'italic',
                                   height: '36px',
                                 }}
-                                // labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 name="accountBankBranchLocationId"
                                 onChange={(e: any) =>
@@ -2639,30 +2444,7 @@ export default function IndividualUs() {
                                 }
                                 value={payload.accountBankBranchLocationId}
                               >
-                                {/* <MenuItem
-                                  value=""
-                                  onClick={() => setBankLocation('')}
-                                >
-                                  <em>--Select--</em>
-                                </MenuItem>
-                                <MenuItem
-                                  value={1}
-                                  onClick={() => setBankLocation('UK')}
-                                >
-                                  UK
-                                </MenuItem>
-                                <MenuItem
-                                  value={2}
-                                  onClick={() => setBankLocation('US')}
-                                >
-                                  US
-                                </MenuItem>
-                                <MenuItem
-                                  value={3}
-                                  onClick={() => setBankLocation('xyz')}
-                                >
-                                  Others
-                                </MenuItem> */}
+                                
                                 <option
                                   value=""
                                   onClick={() => setBankLocation('')}
@@ -2838,197 +2620,14 @@ export default function IndividualUs() {
                             </FormControl>
                           </div>
                         </div>
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account holder name
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="account_holder_name"
-                            id="outlined"
-                            placeholder="Enter Account holder name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Bank name<span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="bank_name"
-                            id="outlined"
-                            placeholder="Enter Bank name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Bank Branch Location:
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Select
-                            style={{
-                              padding: ' 0 10px',
-                              color: '#7e7e7e',
-                              fontStyle: 'italic',
-                              height: '36px',
-                            }}
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard"
-                          >
-                            <MenuItem
-                              value=""
-                              onClick={() => setBankLocation('')}
-                            >
-                              <em>--Select--</em>
-                            </MenuItem>
-                            <MenuItem
-                              value={1}
-                              onClick={() => setBankLocation('UK')}
-                            >
-                              UK
-                            </MenuItem>
-                            <MenuItem
-                              value={2}
-                              onClick={() => setBankLocation('US')}
-                            >
-                              US
-                            </MenuItem>
-                            <MenuItem
-                              value={3}
-                              onClick={() => setBankLocation('xyz')}
-                            >
-                              Others
-                            </MenuItem>
-                          </Select>
-                       
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account number
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="account_number"
-                            id="outlined"
-                            placeholder="Enter Account number"
-                          />
-                        </FormControl> */}
-                        {/* {bankLocation === 'US' ? (
-                          // <FormControl className="mx-1">
-                          //   <Typography>
-                          //     ABA / Rounting
-                          //     <span style={{ color: 'red' }}>*</span>
-                          //   </Typography>
-                          //   <Input
-                          //     required
-                          //     style={{
-                          //       border: ' 1px solid #d9d9d9 ',
-                          //       height: ' 36px',
-                          //       lineHeight: '36px ',
-                          //       background: '#fff ',
-                          //       fontSize: '13px',
-                          //       color: ' #000 ',
-                          //       fontStyle: 'normal',
-                          //       borderRadius: '1px',
-                          //       padding: ' 0 10px ',
-                          //     }}
-                          //     name="aba"
-                          //     id="outlined"
-                          //     placeholder="Enter ABA / Rounting"
-                          //   />
-                          // </FormControl>
-                        ) : (
-                          ''
-                        )} */}
-
-                        {/* {bankLocation !== '' ? (
-                          <>
-                            <FormControl>
-                              <Typography>IBAN</Typography>
-                              <Input
-                                style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
-                                }}
-                                name="iban"
-                                id="outlined"
-                                placeholder="Enter IBAN"
-                              />
-                            </FormControl>
-                            <FormControl className="mx-1">
-                              <Typography>Swift code</Typography>
-                              <Input
-                                style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
-                                }}
-                                name="swift_code"
-                                id="outlined"
-                                placeholder="Enter Swift code"
-                              />
-                            </FormControl>
-                          </>
-                        ) : (
-                          ''
-                        )} */}
+                        
                       </>
                     ) : (
                       ''
                     )}
                   </Collapse>
                 </>
+                
               ) : (
                 ''
               )}
@@ -3054,7 +2653,6 @@ export default function IndividualUs() {
                   </div>
                 </div>
 
-                {/* {payload.isConfirmed ? ( */}
                 <div className="text-center">
                   <Button
                     type="submit"
@@ -3078,38 +2676,16 @@ export default function IndividualUs() {
                     Continue
                   </Button>
                 </div>
-                {/* ) : (
-                  <div className="text-center">
-                    <Button
-                      type="submit"
-                      disabled
-                      onClick={handleSubmit}
-                      style={{
-                        border: '1px solid #0095dd',
-                        backgroundColor: '#D2D2D4',
-                        borderColor: '#d2d2d2',
-                        color: '#4a4a4a',
-                        height: '45px',
-                        lineHeight: 'normal',
-                        textAlign: 'center',
-                        fontSize: '16px',
-                        textTransform: 'uppercase',
-                        borderRadius: '0px',
-
-                        padding: '0 35px',
-                        letterSpacing: '1px',
-                      }}
-                      className="btn btn_submit  btn-primary-agent"
-                    >
-                      Continue
-                    </Button>
-                  </div>
-                )} */}
+                
               </div>
-            </form>
+              </div>
+            </Form>
+            )}
+            </Formik>
           </Paper>
         </div>
       </div>
+      
       <div className="container-fluid">
         <footer>
           <div className="row  ">
