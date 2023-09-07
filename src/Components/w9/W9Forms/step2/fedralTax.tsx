@@ -15,7 +15,7 @@ import {
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { firstStepSchema ,firstStepBusinessSchema} from "../../../../schemas";
-
+import "./index.scss";
 export default function Fedral_tax(props: any) {
   const {
     handleTaxClassificationChange,
@@ -123,10 +123,10 @@ export default function Fedral_tax(props: any) {
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
                                   height: "30px",
-                                  width: "200%",
+                                  width: "38rem",
                                 }}
                               >
-                                <MenuItem  value={1}>-Select-</MenuItem >
+                                <MenuItem  value={""}>-Select-</MenuItem >
                                 <MenuItem  value={257}>Individual</MenuItem >
                                 <MenuItem  value={258}>
                                   Individual/sole Propritor
@@ -165,19 +165,20 @@ export default function Fedral_tax(props: any) {
                                     helperText={touched.firstName && errors.firstName}
                                     error={Boolean(touched.firstName && errors.firstName)}
                                     name="firstName"
+                                className="inputClass"
                                     value={values.firstName}
-                                    style={{
-                                      width: "150%",
-                                    //   border: " 1px solid #d9d9d9 ",
-                                      height: " 36px",
-                                      lineHeight: "36px ",
-                                      background: "#fff ",
-                                      fontSize: "13px",
-                                      color: " #000 ",
-                                      fontStyle: "normal",
-                                      borderRadius: "1px",
-                                      padding: " 0 10px ",
-                                    }}
+                                    // style={{
+                                    //   width: "150%",
+                                    // //   border: " 1px solid #d9d9d9 ",
+                                    //   height: " 36px",
+                                    //   lineHeight: "36px ",
+                                    //   background: "#fff ",
+                                    //   fontSize: "13px",
+                                    //   color: " #000 ",
+                                    //   fontStyle: "normal",
+                                    //   borderRadius: "1px",
+                                    //   padding: " 0 10px ",
+                                    // }}
                                   />
                                 </FormControl>
                               </div>
@@ -201,18 +202,19 @@ export default function Fedral_tax(props: any) {
                                 error={Boolean(touched.lastName && errors.lastName)}
                                 name="lastName"
                                 value={values.lastName}
-                                    style={{
-                                      width: "150%",
-                                    //   border: " 1px solid #d9d9d9 ",
-                                      height: " 36px",
-                                      lineHeight: "36px ",
-                                      background: "#fff ",
-                                      fontSize: "13px",
-                                      color: " #000 ",
-                                      fontStyle: "normal",
-                                      borderRadius: "1px",
-                                      padding: " 0 10px ",
-                                    }}
+                                    // style={{
+                                    //   width: "150%",
+                                    // //   border: " 1px solid #d9d9d9 ",
+                                    //   height: " 36px",
+                                    //   lineHeight: "36px ",
+                                    //   background: "#fff ",
+                                    //   fontSize: "13px",
+                                    //   color: " #000 ",
+                                    //   fontStyle: "normal",
+                                    //   borderRadius: "1px",
+                                    //   padding: " 0 10px ",
+                                    // }}
+                                    className="inputClass"
                                   />
                                 </FormControl>
                               </div>
@@ -237,6 +239,7 @@ export default function Fedral_tax(props: any) {
                                 <FormControl className="w-100">
                                   <TextField
                                     name="businessName"
+                                    fullWidth
                                     value={values.businessName}
                                     onChange={handleChange}
                                     autoComplete="businessName"
@@ -245,18 +248,19 @@ export default function Fedral_tax(props: any) {
                                     onBlur={handleBlur}
                                     helperText={touched.businessName && errors.businessName}
                                     error={Boolean(touched.businessName && errors.businessName)}
-                                    style={{
-                                      width: "200%",
-                                    //   border: " 1px solid #d9d9d9 ",
-                                      height: " 36px",
-                                      lineHeight: "36px ",
-                                      background: "#fff ",
-                                      fontSize: "13px",
-                                      color: " #000 ",
-                                      fontStyle: "normal",
-                                      borderRadius: "1px",
-                                      padding: " 0 10px ",
-                                    }}
+                                    // style={{
+                                    //   width: "200%",
+                                    // //   border: " 1px solid #d9d9d9 ",
+                                    //   height: " 36px",
+                                    //   lineHeight: "36px ",
+                                    //   background: "#fff ",
+                                    //   fontSize: "13px",
+                                    //   color: " #000 ",
+                                    //   fontStyle: "normal",
+                                    //   borderRadius: "1px",
+                                    //   padding: " 0 10px ",
+                                    // }}
+                                    className="inputClassFull"
                                   />
                                 </FormControl>
                               </div>
