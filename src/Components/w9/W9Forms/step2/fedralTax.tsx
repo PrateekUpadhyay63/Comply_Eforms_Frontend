@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema } from "../../../schemas";
+import { firstStepSchema } from "../../../../schemas";
 
 export default function Fedral_tax(props: any) {
   const {
@@ -34,7 +34,7 @@ export default function Fedral_tax(props: any) {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={firstStepSchema}
+                // validationSchema={firstStepSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");

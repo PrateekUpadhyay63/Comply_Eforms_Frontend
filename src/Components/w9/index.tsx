@@ -10,8 +10,10 @@ import Divider from "@mui/material/Divider";
 import { ExpandMore, Info } from "@mui/icons-material";
 import Formw9 from "../reusables/W9";
 import Backup from "../reusables/Backup";
-import Sidebar from "../w9/W9Forms/sideMenu";
-import Fedral_tax from "./W9Forms/fedralTax";
+import Sidebar from "./W9Forms/sideMenu";
+
+import VerifyDocs from "./step3";
+import Step2 from "./W9Forms/step2";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -74,7 +76,63 @@ export default function App() {
   });
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const initialValue = {
+    id: 0,
+    agentId: 0,
+    formTypeSelectionId: 0,
+    federalTaxClassificationId: 0,
+    firstName: "",
+    lastName: "",
+    businessName: "",
+    isExemptionfromBackup: false,
+    interestDividendPaymentId: 0,
+    brokerTransactionsId: 0,
+    barterExchangeTransactionId: 0,
+    paymentOver600RequiredId: 0,
+    paymentThirdPartyNetworkId: 0,
+    isExemptionFATCAReportings: false,
+    fatcaReportingId: 0,
+    tiN_USTINId: 0,
+    tiN_USTIN: "",
+    birthCertificate: "",
+    certificateOfIncorporation: "",
+    drivingLicense: "",
+    passport: "",
+    powerOfAttorneyStatement: "",
+    proofOfResidency: "",
+    additionalDocumentId1: 0,
+    additionalDocument1: "",
+    additionalDocumentId2: 0,
+    additionalDocument2: "",
+    additionalDocumentId3: 0,
+    additionalDocument3: "",
+    additionalDocumentId4: 0,
+    additionalDocument4: "",
+    additionalDocumentId5: 0,
+    additionalDocument5: "",
+    additionalDocumentId6: 0,
+    additionalDocument6: "",
+    additionalDocumentId7: 0,
+    additionalDocument7: "",
+    additionalDocumentId8: 0,
+    additionalDocument8: "",
+    additionalDocumentId9: 0,
+    additionalDocument9: "",
+    additionalDocumentId10: 0,
+    additionalDocument10: "",
+    certification_CorrectTaxpayerIdentification: false,
+    certification_IRS: false,
+    certification_USCitizenPerson: false,
+    certification_FATCACode: false,
+    certification_IRSBackupWithHolding: false,
+    certification_ElectronicForm: false,
+    signedBy: "",
+    confirmationCode: "",
+    date: "",
+    isConfirm: false,
+    countryOfIncorporationOrganizationId: 0,
+    usFederalTaxClassificationId: 0,
+  };
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -125,599 +183,27 @@ export default function App() {
       <div style={{ display: "flex" }}>
         <Sidebar />
         {/* step1 */}
-        {selectedContinue.step1 ? (
-          <Fedral_tax
-            handleTaxClassificationChange={handleTaxClassificationChange}
-            selectedTaxClassification={selectedTaxClassification}
-            data={data}
-            handleChange={handleChange}
-            setselectedContinue={setselectedContinue}
-          />
-        ) : (
-          ""
-        )}
-
-        {selectedContinue.step2 ? (
-          <Paper style={{ marginLeft: "5px", width: "80%" }}>
-            <div style={{ margin: "10px" }}>
-              <Typography
-                align="left"
-                style={{ color: "black", fontSize: "20px", fontWeight: "550" }}
-              >
-                Exemption from Backup Withholding for U.S. Business &
-                Organizations <span style={{ color: "red" }}>*</span>
-                <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
-              </Typography>
-              <Typography
-                align="left"
-                style={{ fontSize: "13px", marginTop: "10px" }}
-              >
-                Generally, individuals (including sole proprietors) are not
-                exempt from backup withholding.
-              </Typography>
-              <Typography
-                align="left"
-                style={{
-                  fontSize: "13px",
-                  fontWeight: "550",
-                  marginTop: "10px",
-                }}
-              >
-                Is the business or organization you are making this submission
-                for exempt from backup withholding?{" "}
-                <span style={{ color: "red" }}>*</span>
-                <Info style={{ color: "#ffc107", fontSize: "13px" }} />
-              </Typography>
-              <div style={{ marginTop: "20px", justifyContent: "center" }}>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="isExemptionfromBackup"
-                  value={data.isExemptionfromBackup}
-                  onChange={handleChange}
-                >
-                  <FormControlLabel
-                    value="true"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="false"
-                    control={<Radio />}
-                    label="No"
-                  />
-                  <FormControlLabel
-                    value="other"
-                    control={<Radio />}
-                    label="Don't know"
-                  />
-                </RadioGroup>
-              </div>
-              <Paper style={{ backgroundColor: "#adadac" }}>
-                <Typography
-                  style={{
-                    margin: "10px",
-                    justifyContent: "center",
-                    fontSize: "13px",
-                  }}
-                >
-                  If you are an individual completing the submission, please
-                  select either 'Yes' or 'No'. If you are submitting this form
-                  as an entity, and are not sure which to select, please refer
-                  to the help available or select "Don't Know", where you will
-                  be guided through a series of questions to help you determine
-                  based on your expected income type.
-                </Typography>
-              </Paper>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "80px",
-              }}
-            >
-              <Button variant="contained" style={{ color: "white" }}>
-                SAVE & EXIT
-              </Button>
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: false,
-                    step3: true,
-                    step4: false,
-                    step5: false,
-                    step6: false,
-                  });
-                  // setOpen(true);
-                }}
-                variant="contained"
-                style={{ color: "white", marginLeft: "15px" }}
-              >
-                Continue
-              </Button>
-            </div>
-            <Typography
-              align="center"
-              style={{
-                color: "#adadac",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "20px",
-              }}
-            >
-              Do you want to go back?
-            </Typography>
-            <Typography align="center">
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: true,
-                    step3: false,
-                    step4: false,
-                    step5: false,
-                    step6: false,
-                  });
-                  // setOpen(true);
-                }}
-                variant="contained"
-                style={{
-                  color: "white",
-                  backgroundColor: "black",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                }}
-              >
-                Back
-              </Button>
-            </Typography>
-          </Paper>
-        ) : (
-          ""
-        )}
-
-        {/* step3 */}
-        {selectedContinue.step3 ? (
-          <Paper style={{ marginLeft: "5px", width: "80%" }}>
-            <div style={{ margin: "10px" }}>
-              <Typography
-                align="left"
-                style={{ margin: "10px", fontSize: "20px" }}
-              >
-                Exemption from FATCA reporting
-                <span style={{ color: "red" }}>*</span>
-                <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
-              </Typography>
-              <Typography
-                align="left"
-                style={{ fontSize: "12px", marginTop: "10px" }}
-              >
-                Will payments be made into an account held outside of the United
-                States by a foreign institution?
-              </Typography>
-
-              <div style={{ marginTop: "20px", justifyContent: "center" }}>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
-                  value={report}
-                  onChange={handleReportChange}
-                >
-                  <FormControlLabel
-                    value={257}
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value={258}
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
-              </div>
-              {report === "257" ? (
-                <>
-                  <Typography
-                    align="left"
-                    style={{ fontSize: "12px", marginTop: "10px" }}
-                  >
-                    Please select from the list provided to apply for exemption
-                    from FATCA Reporting or select confirm if no exemption
-                    applies<span style={{ color: "red" }}>*</span>
-                    <Info style={{ color: "#ffc107", fontSize: "13px" }} />
-                  </Typography>
-                  <FormControl className="w-100">
-                    <select
-                      style={{
-                        padding: " 0 10px",
-                        color: "#7e7e7e",
-                        fontStyle: "italic",
-                        height: "30px",
-                        width: "35%",
-                      }}
-                      name="interestDividendPaymentId"
-                      id="Income"
-                      defaultValue={data.interestDividendPaymentId}
-                      // onChange={handleChange}
-                    >
-                      <option value={0}>-Select-</option>
-                      <option value={1}>Individual</option>
-                      <option value={2}>Individual/sole Propritor</option>
-                      <option value={3}>Limited Liability Company</option>
-                    </select>
-                  </FormControl>
-                </>
-              ) : null}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "80px",
-              }}
-            >
-              <Button variant="contained" style={{ color: "white" }}>
-                SAVE & EXIT
-              </Button>
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: false,
-                    step3: false,
-                    step4: true,
-                    step5: false,
-                    step6: false,
-                  });
-                }}
-                variant="contained"
-                style={{ color: "white", marginLeft: "15px" }}
-              >
-                Continue
-              </Button>
-            </div>
-            <Typography
-              align="center"
-              style={{
-                color: "#adadac",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "20px",
-              }}
-            >
-              Do you want to go back?
-            </Typography>
-            <Typography align="center">
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: true,
-                    step3: false,
-                    step4: false,
-                    step5: false,
-                    step6: false,
-                  });
-                }}
-                variant="contained"
-                style={{
-                  color: "white",
-                  backgroundColor: "black",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                }}
-              >
-                Back
-              </Button>
-            </Typography>
-          </Paper>
-        ) : (
-          ""
-        )}
-
-        {selectedContinue.step4 ? (
-          <Paper style={{ marginLeft: "5px", width: "80%" }}>
-            <Typography
-              align="left"
-              style={{ margin: "10px", fontSize: "20px" }}
-            >
-              Taxpayer Identification Number{" "}
-              <span style={{ color: "red" }}>*</span>
-              <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
-            </Typography>
-
-            <div style={{ margin: "10px", display: "flex", marginTop: "20px" }}>
-              <div>
-                <Typography>
-                  U.S. TIN Type<span style={{ color: "red" }}>*</span>
-                  <Info style={{ color: "#ffc107", fontSize: "13px" }} />
-                </Typography>
-                <select
-                  style={{
-                    padding: " 0 10px",
-                    color: "#7e7e7e",
-                    fontStyle: "italic",
-                    height: "36px",
-                    width: "145%",
-                  }}
-                  name="permanentResidentialCountryId1"
-                  id="Income"
-                  defaultValue={1}
-                ></select>
-              </div>
-
-              <div style={{ justifyContent: "flex-end" }}>
-                <Typography>U.S. TIN</Typography>
-                <Input
-                  required
-                  style={{
-                    width: "100%",
-                    border: " 1px solid #d9d9d9 ",
-                    height: " 36px",
-                    lineHeight: "36px ",
-                    background: "#fff ",
-                    fontSize: "13px",
-                    color: " #000 ",
-                    fontStyle: "normal",
-                    borderRadius: "1px",
-                    padding: " 0 10px ",
-                  }}
-                />
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "80px",
-              }}
-            >
-              <Button variant="contained" style={{ color: "white" }}>
-                SAVE & EXIT
-              </Button>
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: false,
-                    step3: false,
-                    step4: false,
-                    step5: true,
-                    step6: false,
-                  });
-                  // setOpen(true);
-                }}
-                variant="contained"
-                style={{ color: "white", marginLeft: "15px" }}
-              >
-                Continue
-              </Button>
-            </div>
-            <Typography
-              align="center"
-              style={{
-                color: "#adadac",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "20px",
-              }}
-            >
-              Do you want to go back?
-            </Typography>
-            <Typography align="center">
-              <Button
-                variant="contained"
-                style={{
-                  color: "white",
-                  backgroundColor: "black",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                }}
-              >
-                Back
-              </Button>
-            </Typography>
-          </Paper>
-        ) : (
-          ""
-        )}
+      <Step2
+      selectedContinue={selectedContinue}
+      handleTaxClassificationChange={handleTaxClassificationChange}
+      selectedTaxClassification={selectedTaxClassification}
+      data={data}
+      handleChange={handleChange}
+      setselectedContinue={setselectedContinue}
+      report={report}
+      handleReportChange={handleReportChange}
+      initialValue={initialValue}/>
 
         {selectedContinue.step5 ? (
-          <Paper style={{ marginLeft: "5px", width: "80%" }}>
-            <Typography
-              align="left"
-              style={{ margin: "10px", fontSize: "20px", fontWeight: "550" }}
-            >
-              Attach Supporting Documentation{" "}
-              <span style={{ color: "red" }}>*</span>
-              <Info
-                style={{
-                  color: "#ffc107",
-                  fontSize: "13px",
-                  verticalAlign: "super",
-                }}
-              />{" "}
-            </Typography>
-            <div style={{ margin: "20px" }}>
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Birth Certificate (Copy)</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    A government issued document that registers the birth of the
-                    holder
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Certificate of Incorporation</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    Certificate of Incorporation
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Driving License</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    Driving License
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Passport</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    Passport
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Power of Attorney statement</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    Power of Attorney statement
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-              <div
-                style={{
-                  margin: "10px",
-                  display: "flex",
-                  marginTop: "20px",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography>Proof of Residency</Typography>
-                  <Typography style={{ fontSize: "13px", color: "grey" }}>
-                    Proof of Residency
-                  </Typography>
-                </div>
-
-                <div style={{ justifyContent: "flex-end" }}>
-                  <Input type="file" />
-                </div>
-              </div>
-              <Divider />
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "80px",
-              }}
-            >
-              <Button variant="contained" style={{ color: "white" }}>
-                SAVE & EXIT
-              </Button>
-              <Button
-                onClick={() => {
-                  setselectedContinue({
-                    step1: false,
-                    step2: false,
-                    step3: false,
-                    step4: false,
-                    step5: false,
-                    step6: true,
-                  });
-                  // setOpen(true);
-                }}
-                variant="contained"
-                style={{ color: "white", marginLeft: "15px" }}
-              >
-                Continue
-              </Button>
-            </div>
-            <Typography
-              align="center"
-              style={{
-                color: "#adadac",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "20px",
-              }}
-            >
-              Do you want to go back?
-            </Typography>
-            <Typography align="center">
-              <Button
-                variant="contained"
-                style={{
-                  color: "white",
-                  backgroundColor: "black",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                }}
-              >
-                Back
-              </Button>
-            </Typography>
-          </Paper>
+          <VerifyDocs
+          handleTaxClassificationChange={handleTaxClassificationChange}
+          selectedTaxClassification={selectedTaxClassification}
+          data={data}
+          handleChange={handleChange}
+          setselectedContinue={setselectedContinue}
+          report={report}
+          handleReportChange={handleReportChange}
+          initialValue={initialValue}/>
         ) : (
           ""
         )}
