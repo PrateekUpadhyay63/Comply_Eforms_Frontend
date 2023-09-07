@@ -14,6 +14,7 @@ import Sidebar from "./W9Forms/sideMenu";
 
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
+import Step3 from "./step3"
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -207,6 +208,7 @@ export default function App() {
         ) : (
           ""
         )}
+        
       </div>
 
       <Formw9
