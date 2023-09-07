@@ -204,7 +204,32 @@ export default function IndividualUs() {
       <div className="container-fluid">
         <div className="row"></div>
 
-        <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
+        <div className='row'>
+          <div className='col-12'>
+            <div className='tabview'>
+              <ul>
+                <li>
+                  <button className='active'>
+                    <div>
+                      <div></div>
+                      <span>Individual</span>
+                    </div>
+                  </button>
+                </li>
+                <li>OR</li>
+                <li>
+                  <button>
+                    <div>
+                      <div></div>
+                      <span>Entity</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-12 mt-3" style={{ padding: '1.5rem 8px 8px 8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
             <Formik
             initialValues={payload}
@@ -313,7 +338,7 @@ export default function IndividualUs() {
                       </div>
                     </div>
 
-                    <div className="col-lg-3 col-6 col-md-3">
+                    <div className="col-lg-3 col-12 col-md-6">
                       <Typography className="d-flex w-100">
                         Unique Identifier<span style={{ color: 'red' }}>*</span>
                         <Info
