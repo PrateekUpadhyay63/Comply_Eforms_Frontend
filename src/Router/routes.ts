@@ -9,6 +9,7 @@ import Utils from '../Utils';
 // const DashboardWrapper = React.lazy(() => import('../Pages/dashboard'));
 const W9 = React.lazy(() => import('../Components/w9'));
 const IndividualUs = React.lazy(() => import('../Components/individualUS'));
+const EntityUs = React.lazy(() => import('../Components/entity'));
 // const RolesDetailWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail'));
 // const SubAdminWrapper = React.lazy(() => import('../Modules/RolesManagement/SubAdmin/index'));
 // const RolesAddSubAdminWrapper = React.lazy(
@@ -196,6 +197,12 @@ const ROUTES: Array<RouteType> = [
     Component: IndividualUs,
     isPrivate: true,
   },
+  {
+    name: 'EntityUs',
+    path:"EntityUs",
+    id: 2,
+    Component: IndividualUs,
+    isPrivate: true,}
 
 //   {
 //     name: 'Login',
