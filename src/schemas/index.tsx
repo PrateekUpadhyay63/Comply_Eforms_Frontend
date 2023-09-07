@@ -41,3 +41,11 @@ export const firstStepSchema = () => {
       .max(50, 'business Name should be maximum of 250 characters'),
     });
   };
+
+  export const secondStepSchema = ()=>{
+    return  Yup.object().shape({
+      isExemptionfromBackup: Yup.string()
+      .required("Please select one of the options")
+    });
+  }
+ 

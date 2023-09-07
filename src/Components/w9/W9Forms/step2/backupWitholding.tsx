@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema } from "../../../../schemas";
+import { secondStepSchema } from "../../../../schemas";
 
 export default function Backup_witholding(props: any) {
   const {
@@ -25,8 +25,43 @@ export default function Backup_witholding(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const initialValue={
+    isExemptionfromBackup:""
+  }
   return (
+    <>
     <Paper style={{ marginLeft: "5px", width: "80%" }}>
+
+    <Formik
+                initialValues={initialValue}
+                enableReinitialize
+                validationSchema={secondStepSchema}       // Uncomment after testing ,this is validation Schema
+                onSubmit={(values, { setSubmitting }) => {
+                  setSubmitting(true);
+                  console.log(values, ":STEP2 VALUES");
+                  setselectedContinue({
+                    step1: false,
+                    step2: false,
+                    step3: true,
+                    step4: false,
+                    step5: false,
+                    step6: false,
+                  });
+                  // uploadNews(dispatch, values, navigate);
+                }}
+              >
+                {({
+                  errors,
+                  touched,
+                  handleBlur,
+                  values,
+                  handleSubmit,
+                  handleChange,
+                  isSubmitting,
+                  
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+      
       <div style={{ margin: "10px" }}>
         <Typography
           align="left"
@@ -48,7 +83,7 @@ export default function Backup_witholding(props: any) {
           style={{
             fontSize: "13px",
             fontWeight: "550",
-            marginTop: "10px",
+            marginTop: "20px",
           }}
         >
           Is the business or organization you are making this submission for
@@ -57,28 +92,33 @@ export default function Backup_witholding(props: any) {
           <Info style={{ color: "#ffc107", fontSize: "13px" }} />
         </Typography>
         <div style={{ marginTop: "20px", justifyContent: "center" }}>
+          <FormControl  error={Boolean(touched.isExemptionfromBackup && errors.isExemptionfromBackup)}>
           <RadioGroup
+          id="isExemptionfromBackup"
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
-            name="isExemptionfromBackup"
-            value={data.isExemptionfromBackup}
+            value={values.isExemptionfromBackup}
             onChange={handleChange}
+           
           >
-            <FormControlLabel value="true" control={<Radio />} label="Yes" />
-            <FormControlLabel value="false" control={<Radio />} label="No" />
+            <FormControlLabel  control={<Radio />} value="Yes" name="isExemptionfromBackup" label="Yes" />
+            <FormControlLabel control={<Radio />} value="No" name="isExemptionfromBackup" label="No" />
             <FormControlLabel
-              value="other"
+              
               control={<Radio />}
               label="Don't know"
+              value="Don't" name="isExemptionfromBackup"
             />
           </RadioGroup>
+          </FormControl>
         </div>
-        <Paper style={{ backgroundColor: "#adadac" }}>
+        <Paper style={{ backgroundColor: "#adadac",height:"60px" }}>
           <Typography
             style={{
               margin: "10px",
               justifyContent: "center",
               fontSize: "13px",
+              verticalAlign:"middle"
             }}
           >
             If you are an individual completing the submission, please select
@@ -100,6 +140,7 @@ export default function Backup_witholding(props: any) {
           SAVE & EXIT
         </Button>
         <Button
+        type="submit"
           onClick={() => {
             setselectedContinue({
               step1: false,
@@ -152,6 +193,10 @@ export default function Backup_witholding(props: any) {
           Back
         </Button>
       </Typography>
+      </Form>
+                )}
+              </Formik>
     </Paper>
+    </>
   );
 }
