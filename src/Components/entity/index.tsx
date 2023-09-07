@@ -18,8 +18,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import "./style.css"
+// import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+// import "./style.css"
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Checkbox from '@mui/material/Checkbox';
@@ -49,8 +49,8 @@ export default function Entity() {
     businessTypeId: 1,
     isUSEntity: true,
     uniqueIdentifier: '',
-    // firstName: '',
-    // lastName: '',
+    firstName: '',
+    lastName: '',
     countryOfCitizenshipId: 1,
     dob: '',
     nameOfDisregarded: '',

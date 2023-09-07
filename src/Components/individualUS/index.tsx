@@ -8,7 +8,6 @@ import {
   Select,
   MenuItem,
   Input,
-  Radio,
   Button,
   Checkbox,
   Paper,
@@ -20,7 +19,9 @@ import { Formik, Form } from "formik";
 import { individualSchema } from "../../schemas/individualindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import 'bootstrap/dist/css/bootstrap.css';
 // import { apiGetUrl, apiPostUrl } from '../api/apiUtils';
 // import { CheckBox } from '@mui/icons-material';
@@ -1031,7 +1032,89 @@ export default function IndividualUs() {
                     </FormControl>
                   </div>
                 </div>
+                <div className="d-flex">
+                <div>
+                    <Typography align="left" style={{ marginTop: '20px' }}>
+                      Is this address a Post Office Box?
+                      <span style={{ color: 'red' }}>*</span>
+                      <Info
+                        style={{
+                          color: '#ffc107',
+                          fontSize: '15px',
+                          marginBottom: '12px',
+                        }}
+                        onClick={clickInfo} 
+                      />
+                    </Typography>
 
+                    <div className="d-flex ">
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="female"
+                          control={<Radio />}
+                          label="No"
+                          checked={!payload.isAddressPostOfficeBox }
+                          onChange={() =>
+                            setPayload({ ...payload, isAddressPostOfficeBox: false })
+                          }
+                        />
+                        <FormControlLabel
+                          value="male"
+                          control={<Radio />}
+                          label="Yes"
+                          checked={payload.isAddressPostOfficeBox }
+                          onChange={() =>
+                            setPayload({ ...payload, isAddressPostOfficeBox: true })
+                          }
+                        />
+                      </RadioGroup>
+                    </div>
+                  </div>
+                  <div className="mx-5">
+                    <Typography style={{ marginTop: '20px' }}>
+                      Is this an In Care Of address?
+                      <span style={{ color: 'red' }}>*</span>
+                      <Info
+                        style={{
+                          color: '#ffc107',
+                          fontSize: '15px',
+                          marginBottom: '12px',
+                        }}
+                        onClick={clickInfo}
+                      />
+                    </Typography>
+
+                    <div className="d-flex">
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                      >
+                        <FormControlLabel
+                          value="female"
+                          control={<Radio />}
+                          label="No"
+                          checked={!payload.isCareOfAddress }
+                          onChange={() =>
+                            setPayload({ ...payload, isCareOfAddress: false })
+                          }
+                        />
+                        <FormControlLabel
+                          value="male"
+                          control={<Radio />}
+                          label="Yes"
+                          checked={payload.isCareOfAddress }
+                          onChange={() =>
+                            setPayload({ ...payload, isCareOfAddress: true })
+                          }
+                        />
+                      </RadioGroup>
+                    </div>
+                  </div>
                 <div>
                   <Typography align="left" style={{ marginTop: '20px' }}>
                     Is there an alternative mailing or business address in the
@@ -1078,9 +1161,7 @@ export default function IndividualUs() {
                     />
                   </div>
                 </div>
-
-                
-
+                </div>
                 {payload.isalternativebusinessaddress ? (
                   <>
                     <div className="col-lg-3 col-6 col-md-3">
