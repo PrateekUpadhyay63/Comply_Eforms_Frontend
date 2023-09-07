@@ -22,6 +22,7 @@ export default function VerifyDocs(props: any) {
     data,
     handleChange,
     setselectedContinue,
+    initialValue
   } = props;
   return(   <Paper style={{ marginLeft: "5px", width: "80%" }}>
   <Typography

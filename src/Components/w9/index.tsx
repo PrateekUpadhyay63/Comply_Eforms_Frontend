@@ -11,11 +11,9 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import Formw9 from "../reusables/W9";
 import Backup from "../reusables/Backup";
 import Sidebar from "./W9Forms/sideMenu";
-import Fedral_tax from "./W9Forms/step2/fedralTax";
-import Backup_witholding from "./W9Forms/step2/backupWitholding";
-import FCTA_Reporting from "./W9Forms/step2/fctaReporting";
+
 import VerifyDocs from "./step3";
-import Tin from "./W9Forms/step2/tin";
+import Step2 from "./W9Forms/step2";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -78,7 +76,63 @@ export default function App() {
   });
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const initialValue = {
+    id: 0,
+    agentId: 0,
+    formTypeSelectionId: 0,
+    federalTaxClassificationId: 0,
+    firstName: "",
+    lastName: "",
+    businessName: "",
+    isExemptionfromBackup: false,
+    interestDividendPaymentId: 0,
+    brokerTransactionsId: 0,
+    barterExchangeTransactionId: 0,
+    paymentOver600RequiredId: 0,
+    paymentThirdPartyNetworkId: 0,
+    isExemptionFATCAReportings: false,
+    fatcaReportingId: 0,
+    tiN_USTINId: 0,
+    tiN_USTIN: "",
+    birthCertificate: "",
+    certificateOfIncorporation: "",
+    drivingLicense: "",
+    passport: "",
+    powerOfAttorneyStatement: "",
+    proofOfResidency: "",
+    additionalDocumentId1: 0,
+    additionalDocument1: "",
+    additionalDocumentId2: 0,
+    additionalDocument2: "",
+    additionalDocumentId3: 0,
+    additionalDocument3: "",
+    additionalDocumentId4: 0,
+    additionalDocument4: "",
+    additionalDocumentId5: 0,
+    additionalDocument5: "",
+    additionalDocumentId6: 0,
+    additionalDocument6: "",
+    additionalDocumentId7: 0,
+    additionalDocument7: "",
+    additionalDocumentId8: 0,
+    additionalDocument8: "",
+    additionalDocumentId9: 0,
+    additionalDocument9: "",
+    additionalDocumentId10: 0,
+    additionalDocument10: "",
+    certification_CorrectTaxpayerIdentification: false,
+    certification_IRS: false,
+    certification_USCitizenPerson: false,
+    certification_FATCACode: false,
+    certification_IRSBackupWithHolding: false,
+    certification_ElectronicForm: false,
+    signedBy: "",
+    confirmationCode: "",
+    date: "",
+    isConfirm: false,
+    countryOfIncorporationOrganizationId: 0,
+    usFederalTaxClassificationId: 0,
+  };
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -129,57 +183,16 @@ export default function App() {
       <div style={{ display: "flex" }}>
         <Sidebar />
         {/* step1 */}
-        {selectedContinue.step1 ? (
-          <Fedral_tax
-            handleTaxClassificationChange={handleTaxClassificationChange}
-            selectedTaxClassification={selectedTaxClassification}
-            data={data}
-            handleChange={handleChange}
-            setselectedContinue={setselectedContinue}
-          />
-        ) : (
-          ""
-        )}
-
-        {selectedContinue.step2 ? (
-          <Backup_witholding
-            handleTaxClassificationChange={handleTaxClassificationChange}
-            selectedTaxClassification={selectedTaxClassification}
-            data={data}
-            handleChange={handleChange}
-            setselectedContinue={setselectedContinue}
-          />
-        ) : (
-          ""
-        )}
-
-        {/* step3 */}
-        {selectedContinue.step3 ? (
-          <FCTA_Reporting
-            handleTaxClassificationChange={handleTaxClassificationChange}
-            selectedTaxClassification={selectedTaxClassification}
-            data={data}
-            handleChange={handleChange}
-            setselectedContinue={setselectedContinue}
-            report={report}
-            handleReportChange={handleReportChange}
-          />
-        ) : (
-          ""
-        )}
-
-        {selectedContinue.step4 ? (
-          <Tin
-          handleTaxClassificationChange={handleTaxClassificationChange}
-          selectedTaxClassification={selectedTaxClassification}
-          data={data}
-          handleChange={handleChange}
-          setselectedContinue={setselectedContinue}
-          report={report}
-          handleReportChange={handleReportChange}/>
-        ) : (
-          ""
-        )}
+      <Step2
+      selectedContinue={selectedContinue}
+      handleTaxClassificationChange={handleTaxClassificationChange}
+      selectedTaxClassification={selectedTaxClassification}
+      data={data}
+      handleChange={handleChange}
+      setselectedContinue={setselectedContinue}
+      report={report}
+      handleReportChange={handleReportChange}
+      initialValue={initialValue}/>
 
         {selectedContinue.step5 ? (
           <VerifyDocs
@@ -189,8 +202,8 @@ export default function App() {
           handleChange={handleChange}
           setselectedContinue={setselectedContinue}
           report={report}
-          handleReportChange={handleReportChange}/>
-       
+          handleReportChange={handleReportChange}
+          initialValue={initialValue}/>
         ) : (
           ""
         )}
