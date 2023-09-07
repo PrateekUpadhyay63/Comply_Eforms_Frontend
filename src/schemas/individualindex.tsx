@@ -5,83 +5,75 @@ export const individualSchema = () => {
       firstName: Yup.string()
         .required('Please Enter First Name')
         .min(3, 'First Name should be minimum of 3 characters')
-        .max(50, 'First Nameould be maximum of 250 characters'),
+        .max(50, 'First Name should be maximum of 50 characters'),
       lastName: Yup.string()
       .required('Please Enter Last Name')
       .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Nameould be maximum of 250 characters'),
+      .max(50, 'Last Name should be maximum of 50 characters'),
       uniqueIdentifier: Yup.string()
       .required('Please Enter unique Identifier')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Nameould be maximum of 250 characters'),
+      .min(3, 'Too short')
+      .max(50, 'Too long'),
       countryOfCitizenshipId: Yup.string()
       .required('Please select a country'),
-      dob: Yup.string()
-      .required('Please Enter dob'),
+      dob: Yup.date()
+      .required('Please Enter DOB'),
       nameOfDisregarded: Yup.string()
       .required('Please Enter Entity name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Nameould be maximum of 250 characters'),
+      .min(3, 'Entity name should be minimum of 3 characters')
+      .max(50, 'Entity name should be maximum of 50 characters'),
       permanentResidentialStreetNumberandName: Yup.string()
-      .required('Please enter street number and name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Please enter Street number and name'),
       permanentResidentialCityorTown: Yup.string()
-      .required('Please enter city or Town')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Please enter City or Town'),
       permanentResidentialZipPostalCode: Yup.string()
-      .required('Please enter Zip/Postal code')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Zip/Postal code is required'),
       permanentResidentialStreetNumberandName1: Yup.string()
-      .required('Please enter street Number and Name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Please enter street Number and Name'),
       permanentResidentialCityorTown1: Yup.string()
-      .required('Please enter city or town')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Please enter city or town'),
       permanentResidentialZipPostalCode1: Yup.string()
-      .required('Please enter Zip/Postal code')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Zip/Postal code is required'),
       contactFirstName: Yup.string()
       .required('Please enter First name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .min(3, 'First Name should be minimum of 3 characters')
+      .max(50, 'First Name should be maximum of 50 characters'),
       contactLastName: Yup.string()
-      .required('Please enter last name')
+      .required('Please enter Last name')
       .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .max(50, 'Last Name should be maximum of 50 characters'),
       contactEmail: Yup.string()
-      .required('Please enter Email')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .email('Invalid Email address')
+      .required('Please enter Email'),
       accountHolderName: Yup.string()
       .required('Please enter Account Holder Name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .min(3, 'Name should be minimum of 3 characters')
+      .max(50, 'Name should be maximum of 50 characters'),
       accountBankName: Yup.string()
       .required('Please enter Bank Name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .max(50, 'Bank Name should be maximum of 50 characters'),
       accountBankBranchLocationId: Yup.string()
-      .required('Please select branch location')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .required('Please select branch location'),
       accountNumber: Yup.string()
-      .required('Please enter account Number')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
+      .matches(/^\d{10}$/, 'Account number must be exactly 10 digits')
+      .required('Account Number is required'),
       bankCode: Yup.string()
       .required('Please enter Bank code')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 250 characters'),
-      // permanentResidentialStreetNumberandName: Yup.string()
-      // .required('Please enter state number and name')
-      // .min(3, 'Last Name should be minimum of 3 characters')
-      // .max(50, 'Last Name should be maximum of 250 characters'),
+      .min(5, 'Bank code should be minimum of 5 characters'),
+      payResidentalCountryId: Yup.string()
+      .required('Please select country'),
+      makePayable: Yup.string()
+      .required('Please enter payable name')
+      .min(3, 'Name should be minimum of 3 characters')
+      .max(50, 'Name should be maximum of 50 characters'),
+      payStreetNumberAndName: Yup.string()
+      .required('Please enter street no. and name'),
+      payCityorTown: Yup.string()
+      .required('Please enter city or town'),
+      payStateOrProvince: Yup.string()
+      .required('Please enter state or province'),
+      payZipPostalCode: Yup.string()
+      .required('Please enter zip or postal code'),
     //   businessName: Yup.string()
     //   .required('Please Enter business Name')
     //   .min(3, 'business Name should be minimum of 3 characters')

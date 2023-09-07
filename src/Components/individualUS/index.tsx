@@ -852,7 +852,6 @@ export default function IndividualUs() {
                       value={payload.permanentResidentialCountryId}
                     >
                       <option value="">-Select-</option>
-
                       {countries.map(({ id, name }) => (
                         <option value={id}>{name}</option>
                       ))}
@@ -1270,7 +1269,7 @@ export default function IndividualUs() {
                           <FormControl className="w-100">
                             <Typography align="left">
                               State or Province:
-                              <span style={{ color: 'red' }}>*</span>
+                              {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
                               required
@@ -2196,8 +2195,11 @@ export default function IndividualUs() {
                                     makePayable: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.makePayable && errors.makePayable)}
                                 value={payload.makePayable}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.makePayable}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2205,22 +2207,19 @@ export default function IndividualUs() {
                               <Typography align="left">
                                 {' '}
                                 Residential Country
+                                <span style={{ color: 'red' }}>*</span>
                               </Typography>
-                              <Input
-                                required
+                              <select
+                                // required
                                 style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
+                                  padding: ' 0 10px',
+                                  color: '#7e7e7e',
+                                  fontStyle: 'italic',
+                                  height: '36px',
                                 }}
                                 id="outlined"
                                 name="payResidentalCountryId"
+                                defaultValue={1}
                                 placeholder="Enter Residential Country"
                                 onChange={(e: any) =>
                                   setPayload({
@@ -2228,8 +2227,16 @@ export default function IndividualUs() {
                                     payResidentalCountryId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.payResidentalCountryId && errors.payResidentalCountryId)}
                                 value={payload.payResidentalCountryId}
-                              />
+                              >
+                               <p style={{color: "red",textAlign:"left"}}>{errors.payResidentalCountryId}</p>
+                              <option value="">-Select-</option>
+                                  {countries.map(({ id, name }) => (
+                              <option value={id}>{name}</option>
+                                  ))}
+                              </select>
                             </FormControl>
                           </div>
                         
@@ -2262,8 +2269,11 @@ export default function IndividualUs() {
                                     payStreetNumberAndName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                              error={Boolean(touched.payStreetNumberAndName && errors.payStreetNumberAndName)}
                                 value={payload.payStreetNumberAndName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payStreetNumberAndName}</p>
                             </FormControl>
                           </div>
 
@@ -2271,7 +2281,7 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Apt/Suite
-                                <span style={{ color: 'red' }}>*</span>
+                                {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
                                 required
@@ -2327,8 +2337,11 @@ export default function IndividualUs() {
                                     payCityorTown: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payCityorTown && errors.payCityorTown)}
                                 value={payload.payCityorTown}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payCityorTown}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2359,8 +2372,12 @@ export default function IndividualUs() {
                                     payStateOrProvince: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payStateOrProvince && errors.payStateOrProvince)}
                                 value={payload.payStateOrProvince}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.payStateOrProvince}</p>
+
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2391,8 +2408,11 @@ export default function IndividualUs() {
                                     payZipPostalCode: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payZipPostalCode && errors.payZipPostalCode)}
                                 value={payload.payZipPostalCode}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.payZipPostalCode}</p>
                             </FormControl>
                           </div>
                         </div>
@@ -2444,8 +2464,11 @@ export default function IndividualUs() {
                                     accountHolderName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                               error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2476,8 +2499,11 @@ export default function IndividualUs() {
                                     accountBankName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2501,9 +2527,10 @@ export default function IndividualUs() {
                                     accountBankBranchLocationId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                                
                                 <option
                                   value=""
                                   onClick={() => setBankLocation('')}
@@ -2538,6 +2565,7 @@ export default function IndividualUs() {
                                   </option>
                                 ))}
                               </select>
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
                             </FormControl>
                           </div>
 
@@ -2569,8 +2597,11 @@ export default function IndividualUs() {
                                     accountNumber: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
                             </FormControl>
                           </div>
 
@@ -2595,16 +2626,19 @@ export default function IndividualUs() {
                                     padding: ' 0 10px ',
                                   }}
                                   id="outlined"
-                                  name="state"
-                                  placeholder="Enter ABA / Rounting"
+                                  name="abaRouting"
+                                  placeholder="Enter ABA / Routing"
                                 onChange={(e: any) =>
                                   setPayload({
                                     ...payload,
-                                    swiftCode: e.target.value,
+                                    abaRouting: e.target.value,
                                   })
                                 }
-                                value={payload.swiftCode}
+                                onBlur={handleBlur}
+                                  error={Boolean(touched.abaRouting && errors.abaRouting)}
+                                value={payload.abaRouting}
                                 />
+                                <p style={{color: "red",textAlign:"left"}}>{errors.abaRouting}</p>
                               </FormControl>
                             </div>
                           ) : (
@@ -2615,7 +2649,7 @@ export default function IndividualUs() {
                               <FormControl className="w-100">
                                 <Typography align="left">
                                   IBAN
-                                  <span style={{ color: 'red' }}>*</span>
+                                  {/* <span style={{ color: 'red' }}>*</span> */}
                                 </Typography>
                                 <Input
                                   required
@@ -2639,8 +2673,11 @@ export default function IndividualUs() {
                                       iban: e.target.value,
                                     })
                                   }
+                                  // onBlur={handleBlur}
+                                  // error={Boolean(touched.iban && errors.iban)}
                                   value={payload.iban}
                                 />
+                                {/* <p style={{color: "red",textAlign:"left"}}>{errors.iban}</p> */}
                               </FormControl>
                             </div>
                           ) : (
@@ -2650,7 +2687,7 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Swift code
-                                <span style={{ color: 'red' }}>*</span>
+                                {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
                                 required
@@ -2674,8 +2711,11 @@ export default function IndividualUs() {
                                     swiftCode: e.target.value,
                                   })
                                 }
+                                // onBlur={handleBlur}
+                                // error={Boolean(touched.swiftCode && errors.swiftCode)}
                                 value={payload.swiftCode}
                               />
+                              {/* <p style={{color: "red",textAlign:"left"}}>{errors.swiftCode}</p> */}
                             </FormControl>
                           </div>
                         </div>
@@ -2703,6 +2743,9 @@ export default function IndividualUs() {
                           isConfirmed: !payload.isConfirmed,
                         })
                       }
+                      onBlur={handleBlur}
+                      // error={Boolean(touched.isConfirmed && errors.isConfirmed)}
+                      value={payload.isConfirmed}
                     />
                   </div>
                   <div className="w-auto d-flex p-0">
