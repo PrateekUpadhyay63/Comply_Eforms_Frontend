@@ -32,11 +32,11 @@ export default function Tin(props: any) {
     <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
   </Typography>
 
-  <div style={{ margin: "10px", display: "flex", marginTop: "20px" }}>
+  <div style={{ margin: "10px", display: "flex", marginTop: "25px",width:"40%",justifyContent:"space-between"}}>
     <div>
       <Typography>
         U.S. TIN Type<span style={{ color: "red" }}>*</span>
-        <Info style={{ color: "#ffc107", fontSize: "13px" }} />
+        <Info style={{ color: "#ffc107", fontSize: "13px",verticalAlign:"super" }}/>
       </Typography>
       <select
         style={{
@@ -44,7 +44,7 @@ export default function Tin(props: any) {
           color: "#7e7e7e",
           fontStyle: "italic",
           height: "36px",
-          width: "145%",
+          width: "185%",
         }}
         name="permanentResidentialCountryId1"
         id="Income"
@@ -52,12 +52,13 @@ export default function Tin(props: any) {
       ></select>
     </div>
 
-    <div style={{ justifyContent: "flex-end" }}>
+    <div>
       <Typography>U.S. TIN</Typography>
       <Input
+      fullWidth
         required
         style={{
-          width: "100%",
+          width: "120%",
           border: " 1px solid #d9d9d9 ",
           height: " 36px",
           lineHeight: "36px ",
