@@ -46,7 +46,7 @@
     z-index: 1;
     width: fit-content;
     display: flex;
-
+    padding: 0px;
 }
 
 .tabview ul li{
@@ -82,4 +82,51 @@ height: 7rem;
   .tabview button.active{
     border: 5px solid rgba(0, 149, 221, 0.6) !important;
     border-radius: 5px;
+  }
+
+  .underline-none .MuiInput-underline::after{
+    border-bottom: none !important;
+  }
+  .underline-none .MuiInput-underline::before{
+    border-bottom: none !important;
+  }
+  
+  .error{
+    font-size: 12px;
+    color: red;
+    text-align: left;
+  }
+.tabview img{
+  height: 3rem;
+  width: auto !important;
+}
+
+  @media (min-width:768px) and (max-width:998px){
+    .tabview li:nth-child(1){ 
+      width: 6rem ;
+      height: 4rem ;
+  }
+  .tabview li:nth-child(3){  
+    width: 6rem ;
+    height: 4rem ;
+  }
+  .tabview img{
+    height: 2rem;
+    width: auto !important;
+  }
+  }
+
+  @media (min-width:0px) and (max-width:768px){
+    .tabview li:nth-child(1){ 
+      width: 6rem ;
+      height: 4rem ;
+  }
+  .tabview li:nth-child(3){  
+    width: 6rem ;
+    height: 4rem ;
+  }
+  .tabview img{
+    height: 1.5rem;
+    width: auto !important;
+  }
   }
