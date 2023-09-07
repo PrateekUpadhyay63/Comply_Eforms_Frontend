@@ -94,6 +94,7 @@ export default function IndividualUs() {
     payResidentalCountryId: 1,
     payStreetNumberAndName: '',
     payAptSuite: '',
+    doingBusinessAsName: '',
     payCityorTown: '',
     payStateOrProvince: '',
     payZipPostalCode: '',
@@ -345,7 +346,6 @@ export default function IndividualUs() {
                           })
                         }
                         onBlur={handleBlur}
-                        // helperText={touched.uniqueIdentifier && errors.uniqueIdentifier}
                         error={Boolean(touched.uniqueIdentifier && errors.uniqueIdentifier)}
                         value={payload.uniqueIdentifier}
                       />

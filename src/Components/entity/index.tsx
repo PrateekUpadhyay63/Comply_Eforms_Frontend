@@ -17,7 +17,8 @@ import Paper from '@mui/material/Paper';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-
+import { Formik, Form } from "formik";
+import { EntitySchema } from "../../schemas/entityindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
 
@@ -97,6 +98,7 @@ export default function Entity() {
     iban: '',
     swiftCode: '',
     bankCode: '',
+    doingBusinessAsName: '',
     makePayable: '',
     payResidentalCountryId: 1,
     payStreetNumberAndName: '',
@@ -229,7 +231,25 @@ export default function Entity() {
 
         <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
-            <form>
+          <Formik
+            initialValues={payload}
+            enableReinitialize
+            onSubmit = {() => { 
+              console.log("submit!"); }}
+            validationSchema={EntitySchema}
+            >
+              {({
+                  errors,
+                  touched,
+                  handleBlur,
+                  values,
+                  handleSubmit,
+                  handleChange,
+                  isSubmitting,
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <>
+                    </>
               <CardHeader
                 style={{ textAlign: 'left' }}
                 className="flex-row-reverse"
@@ -349,8 +369,11 @@ export default function Entity() {
                             uniqueIdentifier: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                        error={Boolean(touched.uniqueIdentifier && errors.uniqueIdentifier)}
                         value={payload.uniqueIdentifier}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.uniqueIdentifier}</p>
                     </div>
                   </div>
                 </FormControl>
@@ -384,8 +407,11 @@ export default function Entity() {
                               entityName: e.target.value,
                             })
                           }
+                          onBlur={handleBlur}
+                        error={Boolean(touched.entityName && errors.entityName)}
                           value={payload.entityName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.entityName}</p>
                       </FormControl>
                     </div>
                   </div>
@@ -418,34 +444,13 @@ export default function Entity() {
                               entityName: e.target.value,
                             })
                           }
+                          onBlur={handleBlur}
+                        error={Boolean(touched.entityName && errors.entityName)}
                           value={payload.entityName}
                         />
+                        <p style={{color: "red",textAlign:"left"}}>{errors.entityName}</p>
                       </FormControl>
                     </div>
-                    {/* <div className="col-lg-3 col-6 col-md-3 mt-2">
-                      <FormControl className="w-100">
-                        <Typography>
-                          Last Name<span style={{ color: 'red' }}>*</span>
-                        </Typography>
-                        <Input
-                          required
-                          style={{
-                            border: ' 1px solid #d9d9d9 ',
-                            height: ' 36px',
-                            lineHeight: '36px ',
-                            background: '#fff ',
-                            fontSize: '13px',
-                            color: ' #000 ',
-                            fontStyle: 'normal',
-                            borderRadius: '1px',
-                            padding: ' 0 10px ',
-                          }}
-                          id="outlined"
-                          name="last_name"
-                          placeholder="Enter Last Name"
-                        />
-                      </FormControl>
-                    </div> */}
                   </div>
                 )}
               </Collapse>
@@ -498,7 +503,8 @@ export default function Entity() {
                 <div className="col-12 d-flex">
                   <div className="col-lg-3 col-6 col-md-3 ">
                     <Typography align="left" className="d-flex w-100 ">
-                      U.S. TIN Type<span style={{ color: 'red' }}>*</span>
+                      U.S. TIN Type
+                      {/* <span style={{ color: 'red' }}>*</span> */}
                     </Typography>
 
                     <FormControl className="w-100">
@@ -535,7 +541,7 @@ export default function Entity() {
                     <FormControl className="w-100">
                       <Typography align="left">
                         U.S. TIN
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
                         required
@@ -566,7 +572,7 @@ export default function Entity() {
                     <div className="col-lg-3 col-6 col-md-3 ">
                       <Typography align="left" className="d-flex w-100 ">
                         Foreign TIN Country
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
 
                       <FormControl className="w-100">
@@ -600,7 +606,7 @@ export default function Entity() {
                       <FormControl className="w-100">
                         <Typography align="left">
                           Foreign TIN
-                          <span style={{ color: 'red' }}>*</span>
+                          {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
                           required
@@ -667,12 +673,12 @@ export default function Entity() {
                 ) : (
                   ''
                 )}
-                {payload.isUSEntity ?(
+                {!payload.isUSEntity ?(
                   <div className="col-lg-3 col-6 col-md-3 ">
                     <FormControl className="w-100">
                       <Typography align="left">
                         GIIN
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                         <Info
                           style={{
                             color: '#ffc107',
@@ -782,6 +788,8 @@ export default function Entity() {
                           permanentResidentialCountryId: e.target.value,
                         })
                       }
+                      onBlur={handleBlur}
+                          // error={Boolean(touched.permanentResidentialCountryId && errors.permanentResidentialCountryId)}
                       value={payload.permanentResidentialCountryId}
                     >
                       <option value="1">-Select-</option>
@@ -790,6 +798,7 @@ export default function Entity() {
                         <option value={id}>{name}</option>
                       ))}
                     </select>
+                    <p style={{color: "red",textAlign:"left"}}>{errors.dob}</p>
                   </FormControl>
                 </div>
                 <div className="row">
@@ -822,8 +831,11 @@ export default function Entity() {
                               e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialStreetNumberandName && errors.permanentResidentialStreetNumberandName)}
                         value={payload.permanentResidentialStreetNumberandName}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName}</p>
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -882,8 +894,11 @@ export default function Entity() {
                             permanentResidentialCityorTown: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialCityorTown && errors.permanentResidentialCityorTown)}
                         value={payload.permanentResidentialCityorTown}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown}</p>
                     </FormControl>
                   </div>
                   {/* {is_US ? (
@@ -913,7 +928,7 @@ export default function Entity() {
                     <FormControl className="w-100">
                       <Typography align="left">
                         State or Province:
-                        <span style={{ color: 'red' }}>*</span>
+                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
                         required
@@ -970,8 +985,11 @@ export default function Entity() {
                             permanentResidentialZipPostalCode: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialZipPostalCode && errors.permanentResidentialZipPostalCode)}
                         value={payload.permanentResidentialZipPostalCode}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode}</p>
                     </FormControl>
                   </div>
                 </div>
@@ -1169,20 +1187,10 @@ export default function Entity() {
                               permanentResidentialCountryId1: e.target.value,
                             })
                           }
+                          onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialCountryId1 && errors.permanentResidentialCountryId1)}
                           value={payload.permanentResidentialCountryId1}
                         >
-                          {/* <MenuItem value="0" onClick={() => setUS(false)}>
-                            <em>--Select--</em>
-                          </MenuItem>
-                          <MenuItem value={1} onClick={() => setUS(false)}>
-                            UK
-                          </MenuItem>
-                          <MenuItem value={2} onClick={() => setUS(true)}>
-                            US
-                          </MenuItem>
-                          <MenuItem value={3} onClick={() => setUS(false)}>
-                            Others
-                          </MenuItem> */}
                            <option value="">-Select-</option>
                           <option value={257}>United Kingdom</option>
                           <option value={258}>United States</option>
@@ -1191,6 +1199,7 @@ export default function Entity() {
                             <option value={id}> {name} </option>
                           ))}
                         </Select>
+                        <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCountryId1}</p>
                       </FormControl>
                     </div>
                     <div className="row">
@@ -1223,10 +1232,13 @@ export default function Entity() {
                                   e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialStreetNumberandName1 && errors.permanentResidentialStreetNumberandName1)}
                             value={
                               payload.permanentResidentialStreetNumberandName1
                             }
                           />
+                          <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName1}</p>
                         </FormControl>
                       </div>
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1285,15 +1297,18 @@ export default function Entity() {
                                 permanentResidentialCityorTown1: e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                          error={Boolean(touched.permanentResidentialCityorTown1 && errors.permanentResidentialCityorTown1)}
                             value={payload.permanentResidentialCityorTown1}
                           />
+                           <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown1}</p>
                         </FormControl>
                       </div>
                       {payload.permanentResidentialCountryId === 258 ? (
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <Typography align="left" className="d-flex w-100 ">
                             State or Province:
-                            <span style={{ color: 'red' }}>*</span>
+                            {/* <span style={{ color: 'red' }}>*</span> */}
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1331,7 +1346,7 @@ export default function Entity() {
                           <FormControl className="w-100">
                             <Typography align="left">
                               State or Province:
-                              <span style={{ color: 'red' }}>*</span>
+                              {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
                               required
@@ -1392,8 +1407,11 @@ export default function Entity() {
                                   e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                            error={Boolean(touched.permanentResidentialZipPostalCode1 && errors.permanentResidentialZipPostalCode1)}
                             value={payload.permanentResidentialZipPostalCode1}
                           />
+                          <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode1}</p>
                         </FormControl>
                       </div>
                     </div>
@@ -1479,8 +1497,11 @@ export default function Entity() {
                             contactFirstName: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                          error={Boolean(touched.contactFirstName && errors.contactFirstName)}
                         value={payload.contactFirstName}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.contactFirstName}</p>
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1510,8 +1531,11 @@ export default function Entity() {
                             contactLastName: e.target.value,
                           })
                         }
+                        onBlur={handleBlur}
+                          error={Boolean(touched.contactLastName && errors.contactLastName)}
                         value={payload.contactLastName}
                       />
+                      <p style={{color: "red",textAlign:"left"}}>{errors.contactLastName}</p>
                     </FormControl>
                   </div>
                   <FormControl className="w-100">
@@ -1544,8 +1568,11 @@ export default function Entity() {
                                 contactEmail: e.target.value,
                               })
                             }
+                            onBlur={handleBlur}
+                          error={Boolean(touched.contactEmail && errors.contactEmail)}
                             value={payload.contactEmail}
                           />
+                          <p style={{color: "red",textAlign:"left"}}>{errors.contactEmail}</p>
                         </FormControl>
                       </div>
                     </div>
@@ -1806,7 +1833,8 @@ export default function Entity() {
                     return (
                       <div className="col-lg-3 col-6 col-md-3 ">
                         <Typography className="d-flex w-100 pb-2">
-                          Income Type<span style={{ color: 'red' }}>*</span>
+                          Income Type
+                          {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
 
                         <FormControl className="w-100 d-flex" key={ind}>
@@ -1921,7 +1949,8 @@ export default function Entity() {
               >
                 <div className="col-lg-3 col-6 col-md-3 ">
                   <Typography className="d-flex w-100 pb-2">
-                    Payment Type<span style={{ color: 'red' }}>*</span>
+                    Payment Type
+                    {/* <span style={{ color: 'red' }}>*</span> */}
                   </Typography>
 
                   <FormControl className="w-100 d-flex">
@@ -2197,13 +2226,19 @@ export default function Entity() {
                                     accountHolderName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
-                              <Typography align="left"> Bank name</Typography>
+                              <Typography align="left">
+                                Bank name
+                              <span style={{ color: 'red' }}>*</span>
+                              </Typography>
                               <Input
                                 required
                                 style={{
@@ -2226,8 +2261,11 @@ export default function Entity() {
                                     accountBankName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2236,7 +2274,7 @@ export default function Entity() {
                               <span style={{ color: 'red' }}>*</span>
                             </Typography>
                             <FormControl className="w-100">
-                              <Select
+                              <select
                                 style={{
                                   padding: ' 0 10px',
                                   color: '#7e7e7e',
@@ -2252,20 +2290,11 @@ export default function Entity() {
                                     accountBankBranchLocationId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                                {/* <MenuItem value="" onClick={() => setUSACH('')}>
-                        <em>--Select--</em>
-                      </MenuItem>
-                      <MenuItem value={1} onClick={() => setUSACH('UK')}>
-                        UK
-                      </MenuItem>
-                      <MenuItem value={2} onClick={() => setUSACH('US')}>
-                        US
-                      </MenuItem>
-                      <MenuItem value={3} onClick={() => setUSACH('')}>
-                        Others
-                      </MenuItem> */}
+                                <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
@@ -2273,7 +2302,7 @@ export default function Entity() {
                                 {countries.map(({ id, name }) => (
                                   <option value={id}> {name} </option>
                                 ))}
-                              </Select>
+                              </select>
                             </FormControl>
                           </div>
 
@@ -2305,8 +2334,11 @@ export default function Entity() {
                                     accountNumber: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
                             </FormControl>
                           </div>
 
@@ -2338,8 +2370,11 @@ export default function Entity() {
                                     bankCode: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.bankCode && errors.bankCode)}
                                 value={payload.bankCode}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.bankCode}</p>
                             </FormControl>
                           </div>
                         </div>
@@ -2379,8 +2414,11 @@ export default function Entity() {
                                     makePayable: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.makePayable && errors.makePayable)}
                                 value={payload.makePayable}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.makePayable}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2388,19 +2426,15 @@ export default function Entity() {
                               <Typography align="left">
                                 {' '}
                                 Residential Country
+                                <span style={{ color: 'red' }}>*</span>
                               </Typography>
-                              <Input
+                              <select
                                 required
                                 style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
+                                  padding: ' 0 10px',
+                                  color: '#7e7e7e',
+                                  fontStyle: 'italic',
+                                  height: '36px',
                                 }}
                                 id="outlined"
                                 name="payResidentalCountryId"
@@ -2411,17 +2445,25 @@ export default function Entity() {
                                     payResidentalCountryId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.payResidentalCountryId && errors.payResidentalCountryId)}
                                 value={payload.payResidentalCountryId}
-                              />
+                              >
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payResidentalCountryId}</p>
+                              <option value="">-Select-</option>
+                                  {countries.map(({ id, name }) => (
+                              <option value={id}>{name}</option>
+                                  ))}
+                              </select>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left">
                               Doing Business As Name
-                              <span style={{ color: 'red' }}>*</span>
+                              {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <FormControl className="w-100">
-                              <Select
+                              <Input
                                 required
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
@@ -2436,9 +2478,19 @@ export default function Entity() {
                                 }}
                                 //REMAINING
                                 id="outlined"
-                                name="city"
                                 placeholder="Enter Doing Business As Name"
+                                name="doingBusinessAsName"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    doingBusinessAsName: e.target.value,
+                                  })
+                                }
+                                // onBlur={handleBlur}
+                                // error={Boolean(touched.doingBusinessAsName && errors.doingBusinessAsName)}
+                                value={payload.doingBusinessAsName}
                               />
+                              {/* <p style={{color: "red",textAlign:"left"}}>{errors.doingBusinessAsName}</p> */}
                             </FormControl>
                           </div>
 
@@ -2470,8 +2522,11 @@ export default function Entity() {
                                     payStreetNumberAndName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payStreetNumberAndName && errors.payStreetNumberAndName)}
                                 value={payload.payStreetNumberAndName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payStreetNumberAndName}</p>
                             </FormControl>
                           </div>
 
@@ -2479,7 +2534,7 @@ export default function Entity() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Apt/Suite
-                                <span style={{ color: 'red' }}>*</span>
+                                {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
                                 required
@@ -2535,8 +2590,11 @@ export default function Entity() {
                                     payCityorTown: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payCityorTown && errors.payCityorTown)}
                                 value={payload.payCityorTown}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payCityorTown}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2567,8 +2625,11 @@ export default function Entity() {
                                     payStateOrProvince: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payStateOrProvince && errors.payStateOrProvince)}
                                 value={payload.payStateOrProvince}
                               />
+                               <p style={{color: "red",textAlign:"left"}}>{errors.payStateOrProvince}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2599,8 +2660,11 @@ export default function Entity() {
                                     payZipPostalCode: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.payZipPostalCode && errors.payZipPostalCode)}
                                 value={payload.payZipPostalCode}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payZipPostalCode}</p>
                             </FormControl>
                           </div>
                         </div>
@@ -2614,7 +2678,12 @@ export default function Entity() {
                                ...payload,
                                isConfirmed: !payload.isCorrectPaymentPurposes,
                              })
-                           }/>
+                           }
+                           onBlur={handleBlur}
+                          // error={Boolean(touched.isCorrectPaymentPurposes && errors.isCorrectPaymentPurposes)}
+                          value={payload.isCorrectPaymentPurposes}
+                           />
+                           <p style={{color: "red",textAlign:"left"}}>{errors.isCorrectPaymentPurposes}</p>
                           <Typography
                             align="left"
                             style={{ marginTop: '10px' }}
@@ -2660,8 +2729,11 @@ export default function Entity() {
                                     accountHolderName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2689,8 +2761,11 @@ export default function Entity() {
                                     accountBankName: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                 error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2699,7 +2774,7 @@ export default function Entity() {
                               <span style={{ color: 'red' }}>*</span>
                             </Typography>
                             <FormControl className="w-100">
-                              <Select
+                              <select
                                 style={{
                                   padding: ' 0 10px',
                                   color: '#7e7e7e',
@@ -2715,33 +2790,10 @@ export default function Entity() {
                                     accountBankBranchLocationId: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                                {/* <MenuItem
-                              value=""
-                              onClick={() => setBankLocation('')}
-                            >
-                              <em>--Select--</em>
-                            </MenuItem>
-                            <MenuItem
-                              value={1}
-                              onClick={() => setBankLocation('UK')}
-                            >
-                              UK
-                            </MenuItem>
-                            <MenuItem
-                              value={2}
-                              onClick={() => setBankLocation('US')}
-                            >
-                              US
-                            </MenuItem>
-                            <MenuItem
-                              value={3}
-                              onClick={() => setBankLocation('xyz')}
-                            >
-                              Others
-                            </MenuItem> */}
-
                                 <option
                                   value=""
                                   onClick={() => setBankLocation('')}
@@ -2775,7 +2827,8 @@ export default function Entity() {
                                     {name}{' '}
                                   </option>
                                 ))}
-                              </Select>
+                              </select>
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
                             </FormControl>
                           </div>
 
@@ -2807,8 +2860,11 @@ export default function Entity() {
                                     accountNumber: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
                             </FormControl>
                           </div>
 
@@ -2816,7 +2872,7 @@ export default function Entity() {
                             <div className="col-lg-3 col-6 col-md-3 mt-2">
                               <FormControl className="w-100">
                                 <Typography>
-                                  ABA / Rounting
+                                  ABA / Routing
                                   <span style={{ color: 'red' }}>*</span>
                                 </Typography>
                                 <Input
@@ -2834,15 +2890,18 @@ export default function Entity() {
                                   }}
                                   id="outlined"
                                   name="abaRouting"
-                                  placeholder="Enter ABA / Rounting"
+                                  placeholder="Enter ABA / Routing"
                                 onChange={(e: any) =>
                                   setPayload({
                                     ...payload,
                                     abaRouting: e.target.value,
                                   })
                                 }
+                                onBlur={handleBlur}
+                                error={Boolean(touched.abaRouting && errors.abaRouting)}
                                 value={payload.abaRouting}
                                 />
+                                <p style={{color: "red",textAlign:"left"}}>{errors.abaRouting}</p>
                               </FormControl>
                             </div>
                           ) : (
@@ -2853,7 +2912,7 @@ export default function Entity() {
                               <FormControl className="w-100">
                                 <Typography>
                                   IBAN
-                                  <span style={{ color: 'red' }}>*</span>
+                                  {/* <span style={{ color: 'red' }}>*</span> */}
                                 </Typography>
                                 <Input
                                   required
@@ -2877,8 +2936,11 @@ export default function Entity() {
                                       iban: e.target.value,
                                     })
                                   }
+                                  // onBlur={handleBlur}
+                                  // error={Boolean(touched.iban && errors.iban)}
                                   value={payload.iban}
                                 />
+                                {/* <p style={{color: "red",textAlign:"left"}}>{errors.iban}</p> */}
                               </FormControl>
                             </div>
                           ) : (
@@ -2888,7 +2950,7 @@ export default function Entity() {
                             <FormControl className="w-100">
                               <Typography>
                                 Swift code
-                                <span style={{ color: 'red' }}>*</span>
+                                {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
                                 required
@@ -3124,15 +3186,18 @@ export default function Entity() {
                           isConfirmed: !payload.isConfirmed,
                         })
                       }
+                      // onBlur={handleBlur}
+                      // error={Boolean(touched.isConfirmed && errors.isConfirmed)}
+                      // value={payload.isConfirmed}
                     />
                   </div>
+                  {/* <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p> */}
                   <div className="w-auto d-flex p-0">
                     <Typography className="my-auto">
                       I confirm the information above is correct
                     </Typography>
                   </div>
                 </div>
-
                 {/* {payload.isConfirmed ? ( */}
                 <div className="text-center">
                   <Button
@@ -3184,7 +3249,9 @@ export default function Entity() {
                   </div>
                 )} */}
               </div>
-            </form>
+              </Form>
+            )}
+            </Formik>
           </Paper>
         </div>
       </div>
