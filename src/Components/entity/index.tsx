@@ -24,7 +24,7 @@ import { EntitySchema } from "../../schemas/entityindex";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Checkbox from '@mui/material/Checkbox';
-// import { apiGetUrl, apiPostUrl } from '../api/apiUtils';
+import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 
 export default function Entity() {
 //   //States
@@ -110,34 +110,34 @@ export default function Entity() {
     isConfirmed: true,
   });
 
-//   useEffect(() => {
-//     apiGetUrl('GetCountries', '', {})
-//       .then(res => {
-//         setCountries(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
+  useEffect(() => {
+    apiGetUrl('GetCountries', '', {})
+      .then(res => {
+        setCountries(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-//     apiGetUrl('GetCountriesCode', '', {})
-//       .then(res => {
-//         setCountriesCode(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
+    apiGetUrl('GetCountriesCode', '', {})
+      .then(res => {
+        setCountriesCode(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-//     apiGetUrl('GetAllIncomeCodes', '', {})
-//       .then(res => {
-//         setIncomeCodes(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }, []);
+    apiGetUrl('GetAllIncomeCodes', '', {})
+      .then(res => {
+        setIncomeCodes(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   // const paymentSelection = val => {
   //   console.log(val);
@@ -149,18 +149,18 @@ export default function Entity() {
   //   }
   // };
 
-//   useEffect(() => {
-//     if (payload.permanentResidentialCountryId == 258) {
-//       apiGetUrl('GetStateByCountryId', '', {})
-//         .then(res => {
-//           setUsStates(res.data);
-//           console.log(res.data, 'res.data');
-//         })
-//         .catch(err => {
-//           console.log(err);
-//         });
-//     }
-//   }, [payload.permanentResidentialCountryId]);
+  useEffect(() => {
+    if (payload.permanentResidentialCountryId == 258) {
+      apiGetUrl('GetStateByCountryId', '', {})
+        .then(res => {
+          setUsStates(res.data);
+          console.log(res.data, 'res.data');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [payload.permanentResidentialCountryId]);
 
   const handleOpen = (val:any) => {
     if (open === val) {
@@ -182,14 +182,14 @@ export default function Entity() {
 
   const handleSub = (e: any) => {
     e.preventDefault();
-    // apiPostUrl('InsertAccountHolderDetail', '', payload)
-    //   .then(res:any => {
-    //     console.log(res.data, 'res.data');
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    // console.log(payload, 'payload2');
+    apiPostUrl('InsertAccountHolderDetail', '', payload)
+      .then(res => {
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(payload, 'payload2');
   };
 
   // const returnFieldName = () => {
