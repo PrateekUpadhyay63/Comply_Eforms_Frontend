@@ -9,10 +9,12 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
+  Select,
+  MenuItem
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema } from "../../../../schemas";
+import { firstStepSchema ,firstStepBusinessSchema} from "../../../../schemas";
 
 export default function Fedral_tax(props: any) {
   const {
@@ -26,6 +28,7 @@ export default function Fedral_tax(props: any) {
     firstName: "",
     lastName: "",
     businessName: "",
+    federalTaxClassificationId:"1",
   };
  
   return (
@@ -34,7 +37,7 @@ export default function Fedral_tax(props: any) {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={firstStepSchema}       // Uncomment after testing ,this is validation Schema
+                validationSchema={selectedTaxClassification==257 ? firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");
@@ -109,7 +112,12 @@ export default function Fedral_tax(props: any) {
                             </Typography>
 
                             <FormControl className="w-100">
-                              <select
+                              <Select
+                                onChange={(e)=>{handleChange(e);handleTaxClassificationChange(e)}}
+                                onBlur={handleBlur}
+                                error={Boolean(touched.federalTaxClassificationId && errors.federalTaxClassificationId)}
+                                name="federalTaxClassificationId"
+                                value={values.federalTaxClassificationId}
                                 style={{
                                   padding: " 0 10px",
                                   color: "#7e7e7e",
@@ -117,24 +125,19 @@ export default function Fedral_tax(props: any) {
                                   height: "30px",
                                   width: "200%",
                                 }}
-                                name="permanentResidentialCountryId1"
-                                id="Income"
-                                defaultValue={1}
-                                value={selectedTaxClassification}
-                                onChange={handleTaxClassificationChange}
                               >
-                                <option value="">-Select-</option>
-                                <option value={257}>Individual</option>
-                                <option value={258}>
+                                <MenuItem  value={1}>-Select-</MenuItem >
+                                <MenuItem  value={257}>Individual</MenuItem >
+                                <MenuItem  value={258}>
                                   Individual/sole Propritor
-                                </option>
-                                <option value={259}>
+                                </MenuItem >
+                                <MenuItem  value={259}>
                                   Limited Liability Company
-                                </option>
-                              </select>
+                                </MenuItem >
+                              </Select>
                             </FormControl>
                           </div>
-                          {selectedTaxClassification !== "" ? (
+                          {selectedTaxClassification != "" ? (
                             <div style={{ marginTop: "20px", display: "flex" }}>
                               <div>
                                 <Typography
@@ -216,7 +219,7 @@ export default function Fedral_tax(props: any) {
                             </div>
                           ) : null}
 
-                          {selectedTaxClassification === "258" || selectedTaxClassification === "259" ? (
+                          {selectedTaxClassification == "258" || selectedTaxClassification == "259" ? (
                             <>
                               <div>
                                 <Typography
