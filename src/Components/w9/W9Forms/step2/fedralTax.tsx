@@ -34,7 +34,7 @@ export default function Fedral_tax(props: any) {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                // validationSchema={firstStepSchema}       // Uncomment after testing ,this is validation Schema
+                validationSchema={firstStepSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");

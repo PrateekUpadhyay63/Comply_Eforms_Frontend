@@ -201,7 +201,7 @@ const ROUTES: Array<RouteType> = [
     name: 'EntityUs',
     path:"EntityUs",
     id: 2,
-    Component: IndividualUs,
+    Component: EntityUs,
     isPrivate: true,}
 
 //   {
