@@ -26,7 +26,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 
-// import { apiGetUrl, apiPostUrl } from '../api/apiUtils';
+import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 // import { CheckBox } from '@mui/icons-material';
 
 export default function IndividualUs() {
@@ -35,7 +35,6 @@ export default function IndividualUs() {
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   const [bankLocation, setBankLocation] = useState('');
   const [alternateNo, setAlternateNo] = useState(false);
-
   const [countries, setCountries] = useState([]);
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
@@ -105,47 +104,47 @@ export default function IndividualUs() {
     isConfirmed: true,
   });
     
-  // useEffect(() => {
-  //   apiGetUrl('GetCountries', '', {})
-  //     .then(res => {
-  //       setCountries(res.data);
-  //       console.log(res.data, 'res.data');
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
+  useEffect(() => {
+    apiGetUrl('GetCountries', '', {})
+      .then(res => {
+        setCountries(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-  //   apiGetUrl('GetCountriesCode', '', {})
-  //     .then(res => {
-  //       setCountriesCode(res.data);
-  //       console.log(res.data, 'res.data');
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
+    apiGetUrl('GetCountriesCode', '', {})
+      .then(res => {
+        setCountriesCode(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-  //   apiGetUrl('GetAllIncomeCodes', '', {})
-  //     .then(res => {
-  //       setIncomeCodes(res.data);
-  //       console.log(res.data, 'res.data');
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, []);
+    apiGetUrl('GetAllIncomeCodes', '', {})
+      .then(res => {
+        setIncomeCodes(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
-  // useEffect(() => {
-  //   if (payload.permanentResidentialCountryId == 258) {
-  //     apiGetUrl('GetStateByCountryId', '', {})
-  //       .then(res => {
-  //         setUsStates(res.data);
-  //         console.log(res.data, 'res.data');
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }, [payload.permanentResidentialCountryId]);
+  useEffect(() => {
+    if (payload.permanentResidentialCountryId == 258) {
+      apiGetUrl('GetStateByCountryId', '', {})
+        .then(res => {
+          setUsStates(res.data);
+          console.log(res.data, 'res.data');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [payload.permanentResidentialCountryId]);
 
   const handleOpen = (val:any) => {
     if (open === val) {
@@ -171,14 +170,14 @@ export default function IndividualUs() {
 
   const handleSub = (e: any) => {
     e.preventDefault();
-    // apiPostUrl('InsertAccountHolderDetail', '', payload)
-    //   .then((res:any) => {
-    //     console.log(res.data, 'res.data');
-    //   })
-    //   .catch((err:any) => {
-    //     console.log(err);
-    //   });
-    // console.log(payload, 'payload2');
+    apiPostUrl('InsertAccountHolderDetail', '', payload)
+      .then((res:any) => {
+        console.log(res.data, 'res.data');
+      })
+      .catch((err:any) => {
+        console.log(err);
+      });
+    console.log(payload, 'payload2');
   };
 
   const returnFieldName = () => {
@@ -877,7 +876,6 @@ export default function IndividualUs() {
                         })
                       }
                       onBlur={handleBlur}
-                      // error={Boolean(touched.permanentResidentialCountryId && errors.permanentResidentialCountryId)}
                       value={payload.permanentResidentialCountryId}
                     >
                       <option value="">-Select-</option>
@@ -885,6 +883,7 @@ export default function IndividualUs() {
                         <option value={id}>{name}</option>
                       ))}
                     </select>
+                    <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCountryId}</p>
                   </FormControl>
                 </div>
                 <div className="row">
@@ -1216,10 +1215,8 @@ export default function IndividualUs() {
                             })
                           }
                           onBlur={handleBlur}
-                      // error={Boolean(touched.permanentResidentialCountryId1 && errors.permanentResidentialCountryId1)}
                           value={payload.permanentResidentialCountryId1}
                         >
-                        
                           <option value="">-Select-</option>
                           <option value={257}>United Kingdom</option>
                           <option value={258}>United States</option>
@@ -1228,8 +1225,7 @@ export default function IndividualUs() {
                             <option value={id}> {name} </option>
                           ))}
                         </select>
-                        <p className='error'>{errors.permanentResidentialStreetNumberandName}</p>
-
+                        <p className='error'>{errors.permanentResidentialCountryId1}</p>
                       </FormControl>
                     </div>
                     <div className="row">
@@ -2180,11 +2176,8 @@ export default function IndividualUs() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                               {/* <p className='error'>{errors.accountBankBranchLocationId}</p> */}
-
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
@@ -2193,6 +2186,7 @@ export default function IndividualUs() {
                                   <option value={id}> {name} </option>
                                 ))}
                               </select>
+                              <p className='error'>{errors.accountBankBranchLocationId}</p>
                             </FormControl>
                           </div>
 
@@ -2338,7 +2332,6 @@ export default function IndividualUs() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.payResidentalCountryId && errors.payResidentalCountryId)}
                                 value={payload.payResidentalCountryId}
                               >
                                <p className='error'>{errors.payResidentalCountryId}</p>
@@ -2347,10 +2340,9 @@ export default function IndividualUs() {
                               <option value={id}>{name}</option>
                                   ))}
                               </select>
+                              <p className='error'>{errors.payResidentalCountryId}</p>
                             </FormControl>
                           </div>
-                        
-
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
                               <Typography align="left">
@@ -2638,7 +2630,6 @@ export default function IndividualUs() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
                                 <option
@@ -2745,7 +2736,7 @@ export default function IndividualUs() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                  error={Boolean(touched.abaRouting && errors.abaRouting)}
+                                error={Boolean(touched.abaRouting && errors.abaRouting)}
                                 value={payload.abaRouting}
                                 />
                                 <p className='error'>{errors.abaRouting}</p>

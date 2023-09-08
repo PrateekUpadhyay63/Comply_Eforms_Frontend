@@ -69,7 +69,7 @@ export const EntitySchema = () => {
       payResidentalCountryId: Yup.number()
       .required('Please select country')
       .notOneOf([1], 'Please select a country'),
-      makePayable: Yup.string()
+      makePayable: Yup.string()  
       .required('Please enter payable name')
       .min(3, 'Name should be minimum of 3 characters')
       .max(50, 'Name should be maximum of 50 characters'),
