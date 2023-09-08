@@ -25,11 +25,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import 'bootstrap/dist/css/bootstrap.css';
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
+import { useNavigate } from 'react-router-dom';
+
 
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 // import { CheckBox } from '@mui/icons-material';
 
 export default function IndividualUs() {
+  const history = useNavigate();
   //States
   const [open, setOpen] = useState('');
   const [incomeArr, setIncomeArr] = useState(['intrest']);
@@ -221,7 +224,7 @@ export default function IndividualUs() {
                 </li>
                 <li>OR</li>
                 <li>
-                  <button>
+                  <button onClick={()=>history("/EntityUs")}>
                     <div>
                       <div> <img src={entity} /></div>
                       <span>Entity</span>

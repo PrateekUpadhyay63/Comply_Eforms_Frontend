@@ -23,10 +23,15 @@ import { EntitySchema } from "../../schemas/entityindex";
 // import "./style.css"
 
 import 'bootstrap/dist/css/bootstrap.css';
+import entity from "../../../src/assets/img/entity.png";
+import individual from "../../../src/assets/img/individual.png";
 import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Entity() {
+  const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
 
@@ -229,6 +234,32 @@ export default function Entity() {
 
       <div className="container-fluid">
         <div className="row"></div>
+
+          <div className='row'>
+          <div className='col-12'>
+            <div className='tabview'>
+              <ul>
+                <li>
+                  <button onClick={()=>history("/IndividualUs")}>
+                    <div>
+                      <div> <img src={individual} /></div>
+                      <span>Individual</span>
+                    </div>
+                  </button>
+                </li>
+                <li>OR</li>
+                <li>
+                  <button className='active'>
+                    <div>
+                      <div> <img src={entity} /></div>
+                      <span>Entity</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
