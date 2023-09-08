@@ -63,22 +63,24 @@ const clickInfo = () => {
     <Card key={card.id}
     className="mx-3 mt-3"
     sx={{
-      width: '330px',
+      width: '310px',
       border: selectedCard === card.id ? '7px solid #ffc107' : '2px solid transparent',
     }}
     onClick={() => handleCardSelect(card.id)}>
       <CardContent>
        
-        <Typography variant="h5" component="div">
+        <Typography align='center' variant="h5" component="div">
         {card.title}
         </Typography>
        
-        <Typography  style={{fontSize:"12px",marginTop:"14px"}}>
+        <Typography align='center'  style={{fontSize:"12px",marginTop:"14px"}}>
         {card.description}
           <br />
          
         </Typography>
-        <Button className="mt-4"size="small">Read More</Button>
+       <Typography align='center' >
+       <Button  className="mt-4"size="small" style={{fontWeight:"bold"}} >Read More</Button>
+       </Typography>
       </CardContent>
       
     </Card>
@@ -182,9 +184,9 @@ const clickInfo = () => {
     </Card> */}
 
     {selectedCard ? (
-                  <div className="text-center">
+                  <div className="text-center" >
                   <Button
-                  style={{ fontSize: '16px' }}
+                  style={{ fontSize: '16px',marginTop:"20px" }}
                   size="small"
                   type="submit"
                   variant="contained"

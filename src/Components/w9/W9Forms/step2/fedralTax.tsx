@@ -63,6 +63,8 @@ export default function Fedral_tax(props: any) {
                     step4: false,
                     step5: false,
                     step6: false,
+                    step7: false,
+                    step8: false,
                   });
                   // uploadNews(dispatch, values, navigate);
                 }}
@@ -329,6 +331,8 @@ export default function Fedral_tax(props: any) {
                               step4: false,
                               step5: false,
                               step6: false,
+                              step7: false,
+                              step8: false,
                             });
                             // setOpen(true);
                           }}

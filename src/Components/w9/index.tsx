@@ -14,7 +14,8 @@ import Sidebar from "./W9Forms/sideMenu";
 
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
-import Step3 from "./step3"
+import Step3 from "./step3";
+
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -148,21 +149,23 @@ export default function App() {
     step4: false,
     step5: false,
     step6: false,
+    step7: false,
+    step8: false,
   });
-  // const [open, setOpen] = useState(false);
-  // const handleClickOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+  
   const handleTaxClassificationChange = (
     event: ChangeEvent<HTMLSelectElement>
   ) => {
-    // Specify the event type
+
     setSelectedTaxClassification(event.target.value);
   };
 
   useEffect(() => {
     console.log(data);
   }, [data]);
-
+  useEffect(()=>{
+    console.log(setselectedContinue,"gh")  
+    },[setselectedContinue])
   //step2
   const [open1, setOpen1] = useState(false);
   const handleClickOpen1 = () => setOpen1(true);
@@ -185,7 +188,7 @@ export default function App() {
       >
         <div style={{ display: "flex" }} className="row">
           <Sidebar />
-          {/* step1 */}
+        
         <Step2
         selectedContinue={selectedContinue}
         handleTaxClassificationChange={handleTaxClassificationChange}
@@ -210,6 +213,19 @@ export default function App() {
           ) : (
             ""
           )}
+         {selectedContinue.step6 || selectedContinue.step7 ?( <Step3
+           selectedContinue={selectedContinue}
+           handleTaxClassificationChange={handleTaxClassificationChange}
+           selectedTaxClassification={selectedTaxClassification}
+           data={data}
+          
+           handleChange={handleChange}
+           setselectedContinue={setselectedContinue}
+           report={report}
+           handleReportChange={handleReportChange}
+           initialValue={initialValue}
+
+          />):""}
           
         </div>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FormControl,
   Typography,
@@ -16,9 +16,14 @@ import { Formik, Form } from "formik";
 import { firstStepSchema } from "../../../schemas";
 
 export default function VerifyDocs(props: any) {
+
+ 
+  
+
   const {
     handleTaxClassificationChange,
     selectedTaxClassification,
+    selectedContinue,
     data,
     handleChange,
     setselectedContinue,
@@ -180,6 +185,7 @@ export default function VerifyDocs(props: any) {
       SAVE & EXIT
     </Button>
     <Button
+    type="submit"
       onClick={() => {
         setselectedContinue({
           step1: false,
@@ -188,7 +194,10 @@ export default function VerifyDocs(props: any) {
           step4: false,
           step5: false,
           step6: true,
+          step7: false,
+          step8: false,
         });
+        console.log("click",selectedContinue)
         // setOpen(true);
       }}
       variant="contained"

@@ -16,19 +16,25 @@ export default function Step4(props: any) {
 
     return (
         <>
-            {selectedContinue.step5 ? (
+            {selectedContinue.step6 ? (
                 <Penalties
-                    handleChange={handleChange}
-                    setselectedContinue={setselectedContinue}
+                handleTaxClassificationChange={handleTaxClassificationChange}
+                selectedTaxClassification={selectedTaxClassification}
+                data={data}
+                handleChange={handleChange}
+                setselectedContinue={setselectedContinue}
 
 
                 />
             ) : ("")}
 
-            {selectedContinue.step6 ? (
+            {selectedContinue.step7 ? (
                 <Certification
-                    handleChange={handleChange}
-                    setselectedContinue={setselectedContinue}
+                handleTaxClassificationChange={handleTaxClassificationChange}
+                selectedTaxClassification={selectedTaxClassification}
+                data={data}
+                handleChange={handleChange}
+                setselectedContinue={setselectedContinue}
 
 
                 />
