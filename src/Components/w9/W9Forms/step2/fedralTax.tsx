@@ -123,7 +123,7 @@ export default function Fedral_tax(props: any) {
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
                                   height: "30px",
-                                  width: "38rem",
+                                  // width: "38rem",
                                 }}
                               >
                                 <MenuItem  value={""}>-Select-</MenuItem >
