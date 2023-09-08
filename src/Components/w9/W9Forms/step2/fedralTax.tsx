@@ -28,16 +28,31 @@ export default function Fedral_tax(props: any) {
     firstName: "",
     lastName: "",
     businessName: "",
-    federalTaxClassificationId:"1",
+    federalTaxClassificationId:0,
   };
+
+  const arr=[
+    {
+      id: 1,
+      name: "Individual"
+    },
+    {
+      id: 3,
+      name:"Individual/Sole Proprietor"
+    },
+    {
+      id: 4,
+      name: "Limited Liability Company (Single-member)"
+    }
+  ]
  
   return (
     <>
-            <Paper style={{ marginLeft: "5px", width: "80%" }}>
+            <Paper className="col-md-9 col-8">
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={selectedTaxClassification==257 ? firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
+                validationSchema={selectedTaxClassification==1 ? firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");
@@ -95,8 +110,9 @@ export default function Fedral_tax(props: any) {
                               </Button>
                             </Typography>
                           </div>
+                          <div className="row">
                           <div
-                            className="col-lg-3 col-6 col-md-3 mt-3"
+                            className="col-12 col-md-6 mt-3"
                             style={{ marginTop: "20px" }}
                           >
                             <Typography
@@ -112,6 +128,7 @@ export default function Fedral_tax(props: any) {
                             </Typography>
 
                             <FormControl className="w-100">
+
                               <Select
                                 onChange={(e)=>{handleChange(e);handleTaxClassificationChange(e)}}
                                 onBlur={handleBlur}
@@ -123,23 +140,22 @@ export default function Fedral_tax(props: any) {
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
                                   height: "30px",
-                                  width: "38rem",
+                                  width: "100%",
                                 }}
                               >
-                                <MenuItem  value={""}>-Select-</MenuItem >
-                                <MenuItem  value={257}>Individual</MenuItem >
-                                <MenuItem  value={258}>
-                                  Individual/sole Propritor
-                                </MenuItem >
-                                <MenuItem  value={259}>
-                                  Limited Liability Company
-                                </MenuItem >
+                                <MenuItem value={0}>--Select--</MenuItem >
+                                {
+                                arr.map((i,ind)=>{return(
+                                  <MenuItem value={i.id}>{i.name}</MenuItem >
+                                )})
+                              }
                               </Select>
                             </FormControl>
                           </div>
-                          {selectedTaxClassification != "" ? (
-                            <div style={{ marginTop: "20px", display: "flex" }}>
-                              <div>
+                          </div>
+                          {selectedTaxClassification != 0 ? (
+                            <div style={{ marginTop: "20px", display: "flex" }} className="row">
+                              <div className="col-md-6 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -182,7 +198,7 @@ export default function Fedral_tax(props: any) {
                                   />
                                 </FormControl>
                               </div>
-                              <div style={{ marginLeft: "120px" }}>
+                              <div className="col-md-6 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -221,9 +237,11 @@ export default function Fedral_tax(props: any) {
                             </div>
                           ) : null}
 
-                          {selectedTaxClassification == "258" || selectedTaxClassification == "259" ? (
+                          {selectedTaxClassification == 3 || selectedTaxClassification == 4 ? (
                             <>
-                              <div>
+                            <div className="row">
+
+                              <div className="col-md-12 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -264,6 +282,7 @@ export default function Fedral_tax(props: any) {
                                   />
                                 </FormControl>
                               </div>
+                            </div>
                             </>
                           ) : null}
                         </Typography>

@@ -12,7 +12,8 @@ export default function Step2(props: any) {
     setselectedContinue,
     selectedContinue,
     report,
-    handleReportChange
+    handleReportChange,
+    initialValue
   } = props;
   return (
     <>
