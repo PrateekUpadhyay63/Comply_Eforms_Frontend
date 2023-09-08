@@ -91,6 +91,8 @@ export default function Tin(props: any) {
           step4: false,
           step5: true,
           step6: false,
+          step7: false,
+          step8: false,
         });
         // setOpen(true);
       }}

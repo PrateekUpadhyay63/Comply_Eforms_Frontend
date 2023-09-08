@@ -3,12 +3,18 @@ import {FormControl,Typography,Button, Input,Paper,Checkbox} from '@mui/material
 import InfoIcon from '@mui/icons-material/Info';
 
 export default function Penalties(props:any){
-
+  const {
+    handleTaxClassificationChange,
+    selectedTaxClassification,
+    data,
+    handleChange,
+    setselectedContinue,
+  } = props;
     const [open2, setOpen2] = useState(false);
     const handleClickOpen2 = () => setOpen2(true);
     const handleClose2 = () => setOpen2(false);
 
-    const [selectedContinue, setselectedContinue] = useState({step1:true,step2:false,step3:false,step4:false,step5:false,step6:false,step7:false,step8:false}); 
+    
     return(
         <Paper  style={{ marginLeft: '5px', width: '80%' }}>
 <Typography align='left' style={{ margin: '10px',fontSize:"20px" ,fontWeight:'550',marginLeft:"20px"}}>Certification  <span style={{ color: 'red' }}>*</span>
