@@ -27,14 +27,12 @@ import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function Entity() {
   const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
-  const history = useNavigate()
  
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   // const [accInfoSection, setAccInfoSection] = useState(false);

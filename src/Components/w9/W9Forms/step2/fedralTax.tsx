@@ -241,7 +241,7 @@ export default function Fedral_tax(props: any) {
                             </div>
                           ) : null}
 
-                          {selectedTaxClassification == 3 || selectedTaxClassification == 4 ? (
+                          {selectedTaxClassification >= 1 ? (
                             <>
                             <div className="row">
 
