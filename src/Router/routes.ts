@@ -10,6 +10,9 @@ import Utils from '../Utils';
 const W9 = React.lazy(() => import('../Components/w9'));
 const IndividualUs = React.lazy(() => import('../Components/individualUS'));
 const EntityUs = React.lazy(() => import('../Components/entity'));
+const Term =  React.lazy(() => import('../Components/term'));
+const Certificates = React.lazy(() => import('../Components/certificates'));
+
 // const RolesDetailWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail'));
 // const SubAdminWrapper = React.lazy(() => import('../Modules/RolesManagement/SubAdmin/index'));
 // const RolesAddSubAdminWrapper = React.lazy(
@@ -208,7 +211,22 @@ const ROUTES: Array<RouteType> = [
     path:"EntityUs",
     id: 2,
     Component: EntityUs,
-    isPrivate: true,}
+    isPrivate: true},
+    {
+      name: 'Term',
+      path:"Term",
+      id: 3,
+      Component: Term,
+      isPrivate: true},
+      {
+        name: 'Certificates',
+        path:"Certificates",
+        id: 4,
+        Component: Certificates,
+        isPrivate: true},
+
+
+  
 
 //   {
 //     name: 'Login',
