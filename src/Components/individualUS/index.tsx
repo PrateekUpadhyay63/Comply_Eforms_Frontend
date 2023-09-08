@@ -23,6 +23,9 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import 'bootstrap/dist/css/bootstrap.css';
+import entity from "../../../src/assets/img/entity.png";
+import individual from "../../../src/assets/img/individual.png";
+
 // import { apiGetUrl, apiPostUrl } from '../api/apiUtils';
 // import { CheckBox } from '@mui/icons-material';
 
@@ -205,8 +208,33 @@ export default function IndividualUs() {
       <div className="container-fluid">
         <div className="row"></div>
 
-        <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
-          <Paper elevation={6} style={{ padding: '17px' }}>
+        <div className='row'>
+          <div className='col-12'>
+            <div className='tabview'>
+              <ul>
+                <li>
+                  <button className='active'>
+                    <div>
+                      <div> <img src={individual} /></div>
+                      <span>Individual</span>
+                    </div>
+                  </button>
+                </li>
+                <li>OR</li>
+                <li>
+                  <button>
+                    <div>
+                      <div> <img src={entity} /></div>
+                      <span>Entity</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-12 mt-3 " style={{ padding: '1.5rem 8px 8px 8px' }}>
+          <Paper elevation={6} style={{ padding: '17px' }} className='underline-none'>
             <Formik
             initialValues={payload}
             enableReinitialize
@@ -314,7 +342,7 @@ export default function IndividualUs() {
                       </div>
                     </div>
 
-                    <div className="col-lg-3 col-6 col-md-3">
+                    <div className="col-lg-3 col-12 col-md-6">
                       <Typography className="d-flex w-100">
                         Unique Identifier<span style={{ color: 'red' }}>*</span>
                         <Info
@@ -349,7 +377,7 @@ export default function IndividualUs() {
                         error={Boolean(touched.uniqueIdentifier && errors.uniqueIdentifier)}
                         value={payload.uniqueIdentifier}
                       />
-                      <p style={{color: "red",textAlign:"left"}}>{errors.uniqueIdentifier}</p>
+                      <p className='error'>{errors.uniqueIdentifier}</p>
                     </div>
                   </div>
                 </FormControl>
@@ -388,7 +416,7 @@ export default function IndividualUs() {
                           
                           value={payload.firstName}
                         />
-                        <p style={{color: "red",textAlign:"left"}}>{errors.firstName}</p>
+                        <p className='error'>{errors.firstName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -419,7 +447,7 @@ export default function IndividualUs() {
                         error={Boolean(touched.lastName && errors.lastName)}
                         value={payload.lastName}
                         />
-                        <p style={{color: "red",textAlign:"left"}}>{errors.lastName}</p>
+                        <p className='error'>{errors.lastName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -452,7 +480,7 @@ export default function IndividualUs() {
                             <option value={id}>{name}</option>
                           ))}
                         </select>
-                        <p style={{color: "red",textAlign:"left"}}>{errors.countryOfCitizenshipId}</p>
+                        <p className='error'>{errors.countryOfCitizenshipId}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -483,7 +511,7 @@ export default function IndividualUs() {
                           error={Boolean(touched.dob && errors.dob)}
                           value={payload.dob}
                         />
-                        <p style={{color: "red",textAlign:"left"}}>{errors.dob}</p>
+                        <p className='error'>{errors.dob}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -518,7 +546,7 @@ export default function IndividualUs() {
                           // error={Boolean(touched.nameOfDisregarded && errors.nameOfDisregarded)}
                           value={payload.nameOfDisregarded}
                         />
-                        {/* <p style={{color: "red",textAlign:"left"}}>{errors.nameOfDisregarded}</p> */}
+                        {/* <p className='error'>{errors.nameOfDisregarded}</p> */}
                       </FormControl>
                     </div>
                   </div>
@@ -557,7 +585,7 @@ export default function IndividualUs() {
                           
                           value={payload.firstName}
                         />
-                        <p style={{color: "red",textAlign:"left"}}>{errors.firstName}</p>
+                        <p className='error'>{errors.firstName}</p>
                       </FormControl>
                     </div>
                     <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -588,7 +616,7 @@ export default function IndividualUs() {
                         error={Boolean(touched.lastName && errors.lastName)}
                         value={payload.lastName}
                         />
-                        <p style={{color: "red",textAlign:"left"}}>{errors.lastName}</p>
+                        <p className='error'>{errors.lastName}</p>
                       </FormControl>
                     </div>
                   </div>
@@ -893,7 +921,7 @@ export default function IndividualUs() {
                       error={Boolean(touched.permanentResidentialStreetNumberandName && errors.permanentResidentialStreetNumberandName)}
                         value={payload.permanentResidentialStreetNumberandName}
                       />
-                       <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName}</p>
+                       <p className='error'>{errors.permanentResidentialStreetNumberandName}</p>
 
                     </FormControl>
                   </div>
@@ -924,7 +952,7 @@ export default function IndividualUs() {
                         }
                         value={payload.permanentResidentialAptSuite}
                       />
-                      <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialAptSuite}</p>
+                      <p className='error'>{errors.permanentResidentialAptSuite}</p>
 
                     </FormControl>
                   </div>
@@ -959,7 +987,7 @@ export default function IndividualUs() {
                       error={Boolean(touched.permanentResidentialCityorTown && errors.permanentResidentialCityorTown)}
                         value={payload.permanentResidentialCityorTown}
                       />
-                       <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown}</p>
+                       <p className='error'>{errors.permanentResidentialCityorTown}</p>
                     </FormControl>
                   </div>
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1027,7 +1055,7 @@ export default function IndividualUs() {
                       error={Boolean(touched.permanentResidentialZipPostalCode && errors.permanentResidentialZipPostalCode)}
                         value={payload.permanentResidentialZipPostalCode}
                       />
-                     <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode}</p>
+                     <p className='error'>{errors.permanentResidentialZipPostalCode}</p>
 
                     </FormControl>
                   </div>
@@ -1200,7 +1228,7 @@ export default function IndividualUs() {
                             <option value={id}> {name} </option>
                           ))}
                         </select>
-                        <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName}</p>
+                        <p className='error'>{errors.permanentResidentialStreetNumberandName}</p>
 
                       </FormControl>
                     </div>
@@ -1240,7 +1268,7 @@ export default function IndividualUs() {
                               payload.permanentResidentialStreetNumberandName1
                             }
                           />
-                           <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialStreetNumberandName1}</p>
+                           <p className='error'>{errors.permanentResidentialStreetNumberandName1}</p>
 
                         </FormControl>
                       </div>
@@ -1304,7 +1332,7 @@ export default function IndividualUs() {
                             error={Boolean(touched.permanentResidentialCityorTown1 && errors.permanentResidentialCityorTown1)}
                             value={payload.permanentResidentialCityorTown1}
                           />
-                           <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCityorTown1}</p>
+                           <p className='error'>{errors.permanentResidentialCityorTown1}</p>
 
                         </FormControl>
                       </div>
@@ -1415,7 +1443,7 @@ export default function IndividualUs() {
                             error={Boolean(touched.permanentResidentialZipPostalCode1 && errors.permanentResidentialZipPostalCode1)}
                             value={payload.permanentResidentialZipPostalCode1}
                           />
-                          <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialZipPostalCode1}</p>
+                          <p className='error'>{errors.permanentResidentialZipPostalCode1}</p>
 
                         </FormControl>
                       </div>
@@ -1506,7 +1534,7 @@ export default function IndividualUs() {
                         error={Boolean(touched.contactFirstName && errors.contactFirstName)}
                         value={payload.contactFirstName}
                       />
-                     <p style={{color: "red",textAlign:"left"}}>{errors.contactFirstName}</p>
+                     <p className='error'>{errors.contactFirstName}</p>
 
                     </FormControl>
                   </div>
@@ -1541,7 +1569,7 @@ export default function IndividualUs() {
                         error={Boolean(touched.contactLastName && errors.contactLastName)}
                         value={payload.contactLastName}
                       />
-                      <p style={{color: "red",textAlign:"left"}}>{errors.contactLastName}</p>
+                      <p className='error'>{errors.contactLastName}</p>
                     </FormControl>
                   </div>
                   <FormControl className="w-100">
@@ -1578,7 +1606,7 @@ export default function IndividualUs() {
                             error={Boolean(touched.contactEmail && errors.contactEmail)}
                             value={payload.contactEmail}
                           />
-                          <p style={{color: "red",textAlign:"left"}}>{errors.contactEmail}</p>
+                          <p className='error'>{errors.contactEmail}</p>
 
                         </FormControl>
                       </div>
@@ -2089,7 +2117,7 @@ export default function IndividualUs() {
                                   error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
-                                <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
+                                <p className='error'>{errors.accountHolderName}</p>
 
                             </FormControl>
                           </div>
@@ -2125,7 +2153,7 @@ export default function IndividualUs() {
                                   error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
-                                <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
+                                <p className='error'>{errors.accountBankName}</p>
 
                             </FormControl>
                           </div>
@@ -2154,7 +2182,7 @@ export default function IndividualUs() {
                                 // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
-                               {/* <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p> */}
+                               {/* <p className='error'>{errors.accountBankBranchLocationId}</p> */}
 
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
@@ -2199,7 +2227,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
-                               <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
+                               <p className='error'>{errors.accountNumber}</p>
 
                             </FormControl>
                           </div>
@@ -2236,7 +2264,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.bankCode && errors.bankCode)}
                                 value={payload.bankCode}
                               />
-                             <p style={{color: "red",textAlign:"left"}}>{errors.bankCode}</p>
+                             <p className='error'>{errors.bankCode}</p>
 
                             </FormControl>
                           </div>
@@ -2280,7 +2308,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.makePayable && errors.makePayable)}
                                 value={payload.makePayable}
                               />
-                               <p style={{color: "red",textAlign:"left"}}>{errors.makePayable}</p>
+                               <p className='error'>{errors.makePayable}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2312,7 +2340,7 @@ export default function IndividualUs() {
                                 // error={Boolean(touched.payResidentalCountryId && errors.payResidentalCountryId)}
                                 value={payload.payResidentalCountryId}
                               >
-                               <p style={{color: "red",textAlign:"left"}}>{errors.payResidentalCountryId}</p>
+                               <p className='error'>{errors.payResidentalCountryId}</p>
                               <option value="">-Select-</option>
                                   {countries.map(({ id, name }) => (
                               <option value={id}>{name}</option>
@@ -2354,7 +2382,7 @@ export default function IndividualUs() {
                               error={Boolean(touched.payStreetNumberAndName && errors.payStreetNumberAndName)}
                                 value={payload.payStreetNumberAndName}
                               />
-                              <p style={{color: "red",textAlign:"left"}}>{errors.payStreetNumberAndName}</p>
+                              <p className='error'>{errors.payStreetNumberAndName}</p>
                             </FormControl>
                           </div>
 
@@ -2422,7 +2450,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.payCityorTown && errors.payCityorTown)}
                                 value={payload.payCityorTown}
                               />
-                              <p style={{color: "red",textAlign:"left"}}>{errors.payCityorTown}</p>
+                              <p className='error'>{errors.payCityorTown}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2457,7 +2485,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.payStateOrProvince && errors.payStateOrProvince)}
                                 value={payload.payStateOrProvince}
                               />
-                               <p style={{color: "red",textAlign:"left"}}>{errors.payStateOrProvince}</p>
+                               <p className='error'>{errors.payStateOrProvince}</p>
 
                             </FormControl>
                           </div>
@@ -2493,7 +2521,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.payZipPostalCode && errors.payZipPostalCode)}
                                 value={payload.payZipPostalCode}
                               />
-                               <p style={{color: "red",textAlign:"left"}}>{errors.payZipPostalCode}</p>
+                               <p className='error'>{errors.payZipPostalCode}</p>
                             </FormControl>
                           </div>
                         </div>
@@ -2549,7 +2577,7 @@ export default function IndividualUs() {
                                error={Boolean(touched.accountHolderName && errors.accountHolderName)}
                                 value={payload.accountHolderName}
                               />
-                              <p style={{color: "red",textAlign:"left"}}>{errors.accountHolderName}</p>
+                              <p className='error'>{errors.accountHolderName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2584,7 +2612,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.accountBankName && errors.accountBankName)}
                                 value={payload.accountBankName}
                               />
-                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankName}</p>
+                              <p className='error'>{errors.accountBankName}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2646,7 +2674,7 @@ export default function IndividualUs() {
                                   </option>
                                 ))}
                               </select>
-                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
+                              <p className='error'>{errors.accountBankBranchLocationId}</p>
                             </FormControl>
                           </div>
 
@@ -2682,7 +2710,7 @@ export default function IndividualUs() {
                                 error={Boolean(touched.accountNumber && errors.accountNumber)}
                                 value={payload.accountNumber}
                               />
-                               <p style={{color: "red",textAlign:"left"}}>{errors.accountNumber}</p>
+                               <p className='error'>{errors.accountNumber}</p>
                             </FormControl>
                           </div>
 
@@ -2719,7 +2747,7 @@ export default function IndividualUs() {
                                   error={Boolean(touched.abaRouting && errors.abaRouting)}
                                 value={payload.abaRouting}
                                 />
-                                <p style={{color: "red",textAlign:"left"}}>{errors.abaRouting}</p>
+                                <p className='error'>{errors.abaRouting}</p>
                               </FormControl>
                             </div>
                           ) : (
@@ -2758,7 +2786,7 @@ export default function IndividualUs() {
                                   // error={Boolean(touched.iban && errors.iban)}
                                   value={payload.iban}
                                 />
-                                {/* <p style={{color: "red",textAlign:"left"}}>{errors.iban}</p> */}
+                                {/* <p className='error'>{errors.iban}</p> */}
                               </FormControl>
                             </div>
                           ) : (
@@ -2796,7 +2824,7 @@ export default function IndividualUs() {
                                 // error={Boolean(touched.swiftCode && errors.swiftCode)}
                                 value={payload.swiftCode}
                               />
-                              {/* <p style={{color: "red",textAlign:"left"}}>{errors.swiftCode}</p> */}
+                              {/* <p className='error'>{errors.swiftCode}</p> */}
                             </FormControl>
                           </div>
                         </div>

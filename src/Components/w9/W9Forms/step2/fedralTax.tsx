@@ -33,7 +33,7 @@ export default function Fedral_tax(props: any) {
  
   return (
     <>
-            <Paper style={{ marginLeft: "5px", width: "80%" }}>
+            <Paper className="col-md-9 col-8">
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
@@ -95,8 +95,9 @@ export default function Fedral_tax(props: any) {
                               </Button>
                             </Typography>
                           </div>
+                          <div className="row">
                           <div
-                            className="col-lg-3 col-6 col-md-3 mt-3"
+                            className="col-12 col-md-6 mt-3"
                             style={{ marginTop: "20px" }}
                           >
                             <Typography
@@ -123,7 +124,7 @@ export default function Fedral_tax(props: any) {
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
                                   height: "30px",
-                                  width: "38rem",
+                                  width: "100%",
                                 }}
                               >
                                 <MenuItem  value={""}>-Select-</MenuItem >
@@ -137,9 +138,10 @@ export default function Fedral_tax(props: any) {
                               </Select>
                             </FormControl>
                           </div>
+                          </div>
                           {selectedTaxClassification != "" ? (
-                            <div style={{ marginTop: "20px", display: "flex" }}>
-                              <div>
+                            <div style={{ marginTop: "20px", display: "flex" }} className="row">
+                              <div className="col-md-6 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -182,7 +184,7 @@ export default function Fedral_tax(props: any) {
                                   />
                                 </FormControl>
                               </div>
-                              <div style={{ marginLeft: "120px" }}>
+                              <div className="col-md-6 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -223,7 +225,9 @@ export default function Fedral_tax(props: any) {
 
                           {selectedTaxClassification == "258" || selectedTaxClassification == "259" ? (
                             <>
-                              <div>
+                            <div className="row">
+
+                              <div className="col-md-12 col-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-100 "
@@ -264,6 +268,7 @@ export default function Fedral_tax(props: any) {
                                   />
                                 </FormControl>
                               </div>
+                            </div>
                             </>
                           ) : null}
                         </Typography>
