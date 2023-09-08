@@ -12,6 +12,7 @@ const IndividualUs = React.lazy(() => import('../Components/individualUS'));
 const EntityUs = React.lazy(() => import('../Components/entity'));
 const Term =  React.lazy(() => import('../Components/term'));
 const Certificates = React.lazy(() => import('../Components/certificates'));
+const Complete = React.lazy(() => import('../Components/complete'));
 
 // const RolesDetailWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail'));
 // const SubAdminWrapper = React.lazy(() => import('../Modules/RolesManagement/SubAdmin/index'));
@@ -224,11 +225,17 @@ const ROUTES: Array<RouteType> = [
         id: 4,
         Component: Certificates,
         isPrivate: true},
+        {
+          name: 'Complete',
+          path:"Complete",
+          id: 4,
+          Component: Complete,
+          isPrivate: true},
 
 
   
 
-//   {
+//   {Complete
 //     name: 'Login',
 //     path: Utils.PathName.Login,
 //     id: 4,

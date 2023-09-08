@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
 
     Typography,
@@ -7,13 +7,17 @@ import {
 } from '@mui/material';
 
 import Paper from '@mui/material/Paper';
-
+import DialogEdit from "../reusables/ElectronicSign";
 
 
 import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default function Term() {
+
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     //States
 
     return (
@@ -82,7 +86,10 @@ export default function Term() {
 
                             <Button
                                 type="submit"
-                                disabled
+                                onClick={()=>(
+                                    setOpen(true)
+                                )}
+                                
                                 style={{
                                     border: '1px solid #0095dd',
                                     background: '#0095dd',
@@ -124,7 +131,15 @@ export default function Term() {
                     </div>
                 </footer>
             </div>
+            <DialogEdit
+              open={open}
+              setOpen={setOpen}
+              handleClickOpen={handleClickOpen}
+              handleClose={handleClose}
+        />
 
         </section>
+
+        
     );
 }

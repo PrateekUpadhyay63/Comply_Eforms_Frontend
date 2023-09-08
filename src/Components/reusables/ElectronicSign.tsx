@@ -6,11 +6,12 @@ import {ContentCopy} from '@mui/icons-material';
 
 import DialogContentText from '@mui/material/DialogContentText';
 import React from 'react';
-
+import { useNavigate } from "react-router-dom"
 import { TextField, Select, Button, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 
 const DialogEdit = (props:any) => {
+  const history = useNavigate()
   const { open, setOpen } = props;
   const handleClose = () => {
     setOpen(false);
@@ -118,7 +119,9 @@ const DialogEdit = (props:any) => {
                   style={{ fontSize: '12px' }}
                   size="small"
                   type="submit"
-                  onClick={handleClose}
+                  onClick={()=>(
+                    history("/Certificates")
+                  )}
                   variant="contained"
                 >
                   OK

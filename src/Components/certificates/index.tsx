@@ -6,9 +6,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import InfoIcon from '@mui/icons-material/Info';
 import Form from "../reusables/Formguide"
-
+import { useNavigate } from "react-router-dom"
 export default function Certificates(props:any) {
-
+  const history = useNavigate()
 const clickInfo = () => {
     alert(
       'Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this'
@@ -60,7 +60,8 @@ const clickInfo = () => {
         
     <div className='d-flex row'>
     {cards.map((card) => (
-    <Card key={card.id}
+    <Card 
+     key={card.id}
     className="mx-3 mt-3"
     sx={{
       width: '310px',
@@ -186,10 +187,13 @@ const clickInfo = () => {
     {selectedCard ? (
                   <div className="text-center" >
                   <Button
-                  style={{ fontSize: '16px',marginTop:"20px" }}
+                  style={{ fontSize: '16px',marginTop:"25px" }}
                   size="small"
                   type="submit"
                   variant="contained"
+                  onClick={()=>(
+                    history("/W9")
+                  )}
                 >
                   Continue
                 </Button>
@@ -199,8 +203,9 @@ const clickInfo = () => {
                   <div className="text-center">
                     <Button
                       type="submit"
-                      disabled
+                     
                       style={{
+                        marginTop:"25px",
                         border: '1px solid #0095dd',
                         backgroundColor: '#D2D2D4',
                         borderColor: '#d2d2d2',
@@ -215,7 +220,7 @@ const clickInfo = () => {
                         padding: '0 35px',
                         letterSpacing: '1px',
                       }}
-                      className="btn btn_submit  btn-primary-agent"
+                     
                     >
                       Continue
                     </Button>

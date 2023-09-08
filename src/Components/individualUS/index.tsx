@@ -16,6 +16,7 @@ import {
 // import { useDispatch} from "react-redux";
 import {RemoveCircleOutlineOutlined,ControlPointOutlined,Info,Delete} from '@mui/icons-material';
 import { Formik, Form } from "formik";
+import { useNavigate } from "react-router-dom"
 import { individualSchema } from "../../schemas/individualindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
@@ -31,6 +32,7 @@ import individual from "../../../src/assets/img/individual.png";
 
 export default function IndividualUs() {
   //States
+  const history = useNavigate()
   const [open, setOpen] = useState('');
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   const [bankLocation, setBankLocation] = useState('');
@@ -2869,7 +2871,9 @@ export default function IndividualUs() {
                   <Button
                     type="submit"
                     disabled={!payload.isConfirmed}
-                    onClick={handleSub}
+                    onClick={()=>(
+                      history("/Term")
+                    )}
                     style={{
                       border: '1px solid #0095dd',
                       background: '#0095dd',

@@ -24,14 +24,14 @@ export default function Term() {
             <div className="container-fluid">
 
 
-                <div className="col-lg-12" style={{ padding: "18px",backgroundColor:"white" }}>
+                <div className="col-lg-12 mt-20" style={{ padding: "18px"}}>
                    
-                    <Paper elevation={6} style={{ padding: '17px' }}>
+                    <Paper elevation={6} style={{ padding: '17px' ,marginTop:"20px"}}>
                         <Typography align='center' >
                         <DoneIcon style={{color:"green",fontSize:"30px",fontWeight:"bold",justifyContent:"center"}}/>
                         
                         </Typography>
-                        <Typography style={{  fontSize: "17px",color:"grey" }} align='center'>Thank you for completing
+                        <Typography style={{  fontSize: "20px",color:"grey" }} align='center'>Thank you for completing
                            
                         </Typography>
                         <Typography style={{ fontWeight: "550", fontSize: "17px" }} align='center' className='mt-3'>
@@ -53,11 +53,12 @@ export default function Term() {
                        
                        
                     </Paper>
-                    <div className="mx-5 mt-5" style={{ justifyContent: "center",backgroundColor:"#fff" }}>
+                    <Typography align='center'>
+                    <div className="mt-5" style={{ justifyContent: "center" }}>
 
 <Button
     type="submit"
-    disabled
+    
     style={{
         border: '1px solid #0095dd',
         background: '#0095dd',
@@ -77,9 +78,10 @@ export default function Term() {
 </Button>
 
 
+<div style={{marginTop:"25px"}}>
 <Button
     type="submit"
-    disabled
+    
     style={{
         border: '1px solid #0095dd',
         background: "black",
@@ -98,8 +100,11 @@ export default function Term() {
 >
     Exit
 </Button>
+</div>
 
 </div>
+                    </Typography>
+ 
                 </div>
 
 

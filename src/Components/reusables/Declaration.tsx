@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Dialog from '@mui/material/Dialog';
-
+import { useNavigate } from "react-router-dom"
 import DialogContent from '@mui/material/DialogContent';
 import { ContentCopy} from '@mui/icons-material';
 
@@ -20,8 +20,8 @@ const Declaration = (props:any) => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const history = useNavigate()
+  const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const handleChange =(panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -50,7 +50,7 @@ const Declaration = (props:any) => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+          <Typography sx={{ width: "100%", flexShrink: 0 }}>
             Electronic Submission Declaration
           </Typography>
          
@@ -58,8 +58,8 @@ const Declaration = (props:any) => {
        
 
         <AccordionDetails>
-        <Paper elevation={3} style={{ padding: '17px',backgroundColor:'#d4d9d4' }}>
-          <Typography align='left' style={{color:"black",fontWeight:"bold",fontSize:"18px"}}>
+        <Paper elevation={3} style={{ padding: '17px',backgroundColor:'#d4d9d4',height:"230px" ,overflow:"auto"}}>
+          <Typography align='left' style={{color:"black",fontWeight:"bold",fontSize:"18px",width:"100%"}}>
           Electronic Submission Declaration
           </Typography>
 
@@ -103,7 +103,7 @@ To Confirm:
           </Paper>
           <div style={{display:"flex",marginTop:"10px"}}>
             <Checkbox/>
-            I agree with the above Declarations
+            <Typography style={{marginTop:"9px"}}>I agree with the above Declarations</Typography>
           </div>
         </AccordionDetails>
       
@@ -120,8 +120,8 @@ To Confirm:
         </AccordionSummary>
         <AccordionDetails>
          <Paper elevation={3} style={{ padding: '17px',backgroundColor:'#d4d9d4' }}>
-            <Divider style={{marginTop:"10px"}}/>
-         <Typography style={{color:"black",fontWeight:"bold",fontSize:"12px",marginTop:"10px"}}>
+            <Divider style={{marginTop:"10px",color:"black"}}/>
+         <Typography style={{color:"black",fontWeight:"bold",fontSize:"13px",marginTop:"10px"}}>
          We may be required to provide you with a Form 1042-S or 1099 depending on your U.S. status. In order to receive this statement electronically, by email or accessible through our onboarding portal you must provide your consent by checking the box below. If you do not provide consent a paper copy will be provided. Furthermore:
 The statement will be provided in PDF format.
 This consent will remain in place until you withdraw your consent.
@@ -133,11 +133,11 @@ We reserve the right to change our delivery processes and should circumstances c
          </Paper>
          <div style={{display:"flex",marginTop:"10px"}}>
             <Checkbox/>
-            I give consent to receiving a recipent statement electronically
+            <Typography style={{marginTop:"9px"}}>I give consent to receiving a recipent statement electronically</Typography>
           </div>
           <div style={{display:"flex",marginTop:"10px"}}>
             <Checkbox/>
-            I do not give consent to receiving a recipent statement electronically
+            <Typography style={{marginTop:"9px"}}> I do not give consent to receiving a recipent statement electronically</Typography>
           </div>
         </AccordionDetails>
       </Accordion>
@@ -150,7 +150,9 @@ We reserve the right to change our delivery processes and should circumstances c
                   style={{ fontSize: '12px' }}
                   size="small"
                   type="submit"
-                  onClick={handleClose}
+                  onClick={()=>(
+                    history("/Complete")
+                  )}
                   variant="contained"
                 >
                   Submit

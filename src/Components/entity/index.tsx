@@ -21,7 +21,7 @@ import { Formik, Form } from "formik";
 import { EntitySchema } from "../../schemas/entityindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
-
+import { useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.css';
 import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
@@ -29,12 +29,8 @@ import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 export default function Entity() {
 //   //States
   const [open, setOpen] = useState('');
-
-  // const [is_US, setUS] = useState(false);
-  // const [is_USACH, setUSACH] = useState('');
-  // const [selectedValue, setSelectedValue] = useState('b');
-  // const [selectedValue1, setSelectedValue1] = useState('b');
-  // const [radioButton, setRadioButton] = useState(false);
+  const history = useNavigate()
+ 
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   // const [accInfoSection, setAccInfoSection] = useState(false);
   // const [accInfoType, setAccInfoType] = useState('');
@@ -3198,7 +3194,9 @@ export default function Entity() {
                   <Button
                     type="submit"
                     disabled={!payload.isConfirmed}
-                    onClick={handleSub}
+                    onClick={()=>(
+                      history("/Term")
+                    )}
                     style={{
                       border: '1px solid #0095dd',
                       background: '#0095dd',
