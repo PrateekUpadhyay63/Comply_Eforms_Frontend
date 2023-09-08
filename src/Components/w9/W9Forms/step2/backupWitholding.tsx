@@ -112,7 +112,7 @@ export default function Backup_witholding(props: any) {
           </RadioGroup>
           </FormControl>
         </div>
-        <Paper style={{ backgroundColor: "#adadac",height:"60px" }}>
+        <Paper style={{ backgroundColor: "#adadac", }}>
           <Typography
             style={{
               margin: "10px",
