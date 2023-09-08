@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema ,firstStepBusinessSchema} from "../../../../schemas";
+import { firstStepSchema ,firstStepBusinessSchema,firstSchema} from "../../../../schemas";
 import "./index.scss";
 export default function Fedral_tax(props: any) {
   const {
@@ -52,7 +52,7 @@ export default function Fedral_tax(props: any) {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={selectedTaxClassification==1 ? firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
+                validationSchema={selectedTaxClassification<1 ? firstSchema :selectedTaxClassification==1 ?firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");
@@ -82,12 +82,14 @@ export default function Fedral_tax(props: any) {
                       <div>
                         <Typography align="left" style={{ margin: "10px" }}>
                           <div
+                          className="row"
                             style={{
                               display: "flex",
                               justifyContent: "space-between",
                             }}
                           >
                             <Typography
+                            className="col-md-6 col-12"
                               align="left"
                               style={{
                                 color: "black",
@@ -97,7 +99,7 @@ export default function Fedral_tax(props: any) {
                             >
                               Select your status for U.S. tax purposes
                             </Typography>
-                            <Typography align="right">
+                            <Typography align="right"     className="col-md-6 col-12">
                               <Button
                                 style={{
                                   color: "black",

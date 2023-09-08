@@ -5,8 +5,9 @@ import PrivateRoute from './privateRoute';
 import ROUTES from './routes';
 import { CircularProgress } from '@mui/material';
 // import AccessControlWrapper from './accessControlWrapper';
-
+import "../App.css"
 function RoutesWrapper() {
+  
   return (
     <Suspense
       fallback={
