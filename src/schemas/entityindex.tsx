@@ -12,7 +12,7 @@ export const EntitySchema = () => {
       .required('Please Enter unique Identifier')
       .min(3, 'Too short')
       .max(50, 'Too long'),
-      countryOfCitizenshipId: Yup.string()
+      countryOfCitizenshipId: Yup.number()
       .required('Please select a country'),
       dob: Yup.date()
       .required('Please Enter DOB'),
@@ -26,8 +26,13 @@ export const EntitySchema = () => {
       .required('Please enter City or Town'),
       permanentResidentialZipPostalCode: Yup.string()
       .required('Zip/Postal code is required'),
-      permanentResidentialCountryId1:Yup.string()
-      .required("Please select a country"),
+      permanentResidentialCountryId:Yup
+      .number()
+      .required("Please select a country")
+      .notOneOf([1], 'Please select a valid country'),
+      permanentResidentialCountryId1:Yup.number()
+      .required("Please select a country")
+      .notOneOf([1], 'Please select a valid country'),
       permanentResidentialStreetNumberandName1: Yup.string()
       .required('Please enter street Number and Name'),
       permanentResidentialCityorTown1: Yup.string()
@@ -52,16 +57,18 @@ export const EntitySchema = () => {
       accountBankName: Yup.string()
       .required('Please enter Bank Name')
       .max(50, 'Bank Name should be maximum of 50 characters'),
-      accountBankBranchLocationId: Yup.string()
-      .required('Please select branch location'),
+      accountBankBranchLocationId: Yup.number()
+      .required('Please select branch location')
+      .notOneOf([1], 'Please select Branch location'),
       accountNumber: Yup.string()
       .matches(/^\d{10}$/, 'Account number must be exactly 10 digits')
       .required('Account Number is required'),
       bankCode: Yup.string()
       .required('Please enter Bank code')
       .min(5, 'Bank code should be minimum of 5 characters'),
-      payResidentalCountryId: Yup.string()
-      .required('Please select country'),
+      payResidentalCountryId: Yup.number()
+      .required('Please select country')
+      .notOneOf([1], 'Please select a country'),
       makePayable: Yup.string()
       .required('Please enter payable name')
       .min(3, 'Name should be minimum of 3 characters')
