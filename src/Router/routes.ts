@@ -183,12 +183,18 @@ const EntityUs = React.lazy(() => import('../Components/entity'));
 // const PageNotFoundWrapper = React.lazy(() => import('../Components/PageNotFound'));
 const ROUTES: Array<RouteType> = [
   {
+    name: 'IndividualUs',
+    path: "/",
+    id: 0,
+    Component: IndividualUs,
+    isPrivate: true,
+  },
+  {
     name: 'W9',
     path: "W9",
     id: 1,
     Component: W9,
     isPrivate: true,
-    roleName: 'DASHBOARD',
   },
   {
     name: 'IndividualUs',
