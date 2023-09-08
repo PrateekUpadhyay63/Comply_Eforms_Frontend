@@ -39,7 +39,7 @@ export default function VerifyDocs(props: any) {
       }}
     />{" "}
   </Typography>
-  <div style={{ margin: "20px" }}>
+  <div className="mx-md-3 my-md-3 m-1">
     <div
     className="row"
       style={{
