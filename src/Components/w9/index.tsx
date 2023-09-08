@@ -14,7 +14,7 @@ import Sidebar from "./W9Forms/sideMenu";
 
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
-import Step3 from "./step3";
+import Step3 from "./step4";
 
 
 export default function App() {
@@ -213,7 +213,7 @@ export default function App() {
           ) : (
             ""
           )}
-         {selectedContinue.step6 || selectedContinue.step7 ?( <Step3
+        <Step3
            selectedContinue={selectedContinue}
            handleTaxClassificationChange={handleTaxClassificationChange}
            selectedTaxClassification={selectedTaxClassification}
@@ -225,7 +225,7 @@ export default function App() {
            handleReportChange={handleReportChange}
            initialValue={initialValue}
 
-          />):""}
+          />
           
         </div>
 

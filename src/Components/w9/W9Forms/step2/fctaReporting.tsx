@@ -118,6 +118,8 @@ export default function FCTA_Reporting(props: any) {
           step4: true,
           step5: false,
           step6: false,
+          step7: false,
+          step8: false,
         });
       }}
       variant="contained"
@@ -147,6 +149,8 @@ export default function FCTA_Reporting(props: any) {
           step4: false,
           step5: false,
           step6: false,
+          step7: false,
+          step8: false,
         });
       }}
       variant="contained"
