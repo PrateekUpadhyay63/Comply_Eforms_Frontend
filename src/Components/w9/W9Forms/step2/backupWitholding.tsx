@@ -30,7 +30,7 @@ export default function Backup_witholding(props: any) {
   }
   return (
     <>
-    <Paper style={{ marginLeft: "5px", width: "80%" }}>
+   <Paper className="col-md-9 col-8">
 
     <Formik
                 initialValues={initialValue}

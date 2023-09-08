@@ -22,7 +22,7 @@ export default function Tin(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
-  return( <Paper style={{ marginLeft: "5px", width: "80%" }}>
+  return( <Paper className="col-md-9 col-8">
   <Typography
     align="left"
     style={{ margin: "10px", fontSize: "20px" }}
@@ -32,8 +32,8 @@ export default function Tin(props: any) {
     <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
   </Typography>
 
-  <div style={{ margin: "10px", display: "flex", marginTop: "25px",width:"40%",justifyContent:"space-between"}}>
-    <div>
+  <div style={{ margin: "10px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
+    <div className="col-md-6 col-12">
       <Typography>
         U.S. TIN Type<span style={{ color: "red" }}>*</span>
         <Info style={{ color: "#ffc107", fontSize: "13px",verticalAlign:"super" }}/>
@@ -44,7 +44,7 @@ export default function Tin(props: any) {
           color: "#7e7e7e",
           fontStyle: "italic",
           height: "36px",
-          width: "185%",
+          width: "100%",
         }}
         name="permanentResidentialCountryId1"
         id="Income"
@@ -52,13 +52,13 @@ export default function Tin(props: any) {
       ></select>
     </div>
 
-    <div>
+    <div className="col-md-6  col-12">
       <Typography>U.S. TIN</Typography>
       <Input
       fullWidth
         required
         style={{
-          width: "120%",
+          width: "100%",
           border: " 1px solid #d9d9d9 ",
           height: " 36px",
           lineHeight: "36px ",

@@ -173,57 +173,60 @@ export default function App() {
   };
 
   return (
-    <div
-      className="col-12"
-      style={{
-        backgroundColor: "#0c3d69",
-        marginBottom: "10px",
-        padding: "20px",
-      }}
-    >
-      <div style={{ display: "flex" }}>
-        <Sidebar />
-        {/* step1 */}
-      <Step2
-      selectedContinue={selectedContinue}
-      handleTaxClassificationChange={handleTaxClassificationChange}
-      selectedTaxClassification={selectedTaxClassification}
-      data={data}
-      handleChange={handleChange}
-      setselectedContinue={setselectedContinue}
-      report={report}
-      handleReportChange={handleReportChange}
-      initialValue={initialValue}/>
+    <div className="row m-0">
 
-        {selectedContinue.step5 ? (
-          <VerifyDocs
-          handleTaxClassificationChange={handleTaxClassificationChange}
-          selectedTaxClassification={selectedTaxClassification}
-          data={data}
-          handleChange={handleChange}
-          setselectedContinue={setselectedContinue}
-          report={report}
-          handleReportChange={handleReportChange}
-          initialValue={initialValue}/>
-        ) : (
-          ""
-        )}
-        
+      <div
+        className="col-12"
+        style={{
+          backgroundColor: "#0c3d69",
+          marginBottom: "10px",
+          padding: "20px",
+        }}
+      >
+        <div style={{ display: "flex" }} className="row">
+          <Sidebar />
+          {/* step1 */}
+        <Step2
+        selectedContinue={selectedContinue}
+        handleTaxClassificationChange={handleTaxClassificationChange}
+        selectedTaxClassification={selectedTaxClassification}
+        data={data}
+        handleChange={handleChange}
+        setselectedContinue={setselectedContinue}
+        report={report}
+        handleReportChange={handleReportChange}
+        initialValue={initialValue}/>
+
+          {selectedContinue.step5 ? (
+            <VerifyDocs
+            handleTaxClassificationChange={handleTaxClassificationChange}
+            selectedTaxClassification={selectedTaxClassification}
+            data={data}
+            handleChange={handleChange}
+            setselectedContinue={setselectedContinue}
+            report={report}
+            handleReportChange={handleReportChange}
+            initialValue={initialValue}/>
+          ) : (
+            ""
+          )}
+          
+        </div>
+
+        <Formw9
+          open={open}
+          setOpen={setOpen}
+          handleClickOpen={handleClickOpen}
+          handleClose={handleClose}
+        />
+
+        <Backup
+          open={open1}
+          setOpen={setOpen1}
+          handleClickOpen={handleClickOpen1}
+          handleClose={handleClose1}
+        />
       </div>
-
-      <Formw9
-        open={open}
-        setOpen={setOpen}
-        handleClickOpen={handleClickOpen}
-        handleClose={handleClose}
-      />
-
-      <Backup
-        open={open1}
-        setOpen={setOpen1}
-        handleClickOpen={handleClickOpen1}
-        handleClose={handleClose1}
-      />
     </div>
   );
 }

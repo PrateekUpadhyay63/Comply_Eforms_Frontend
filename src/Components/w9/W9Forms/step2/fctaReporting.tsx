@@ -27,7 +27,7 @@ export default function FCTA_Reporting(props: any) {
     report,
     handleReportChange
   } = props;
-  return (   <Paper style={{ marginLeft: "5px", width: "80%" }}>
+  return (   <Paper className="col-md-9 col-8">
   <div style={{ margin: "10px" }}>
     <Typography
       align="left"
@@ -78,12 +78,12 @@ export default function FCTA_Reporting(props: any) {
         </Typography>
         <FormControl className="w-100">
           <select
+          className="col-md-6 col-12"
             style={{
               padding: " 0 10px",
               color: "#7e7e7e",
               fontStyle: "italic",
               height: "30px",
-              width: "35%",
             }}
             name="interestDividendPaymentId"
             id="Income"
