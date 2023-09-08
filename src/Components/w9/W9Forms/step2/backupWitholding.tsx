@@ -26,7 +26,7 @@ export default function Backup_witholding(props: any) {
     setselectedContinue,
   } = props;
   return (
-    <Paper style={{ marginLeft: "5px", width: "80%" }}>
+    <Paper className="col-md-9 col-8">
       <div style={{ margin: "10px" }}>
         <Typography
           align="left"

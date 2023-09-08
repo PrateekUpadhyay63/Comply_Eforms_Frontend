@@ -4,7 +4,7 @@ import {ExpandMore,Info} from '@mui/icons-material';
 
 export default function Sidebar(props:any){
 return(
-    <div className="col-4">
+    <div className="col-4 col-md-3">
     <Paper>
       <Accordion>
         <AccordionSummary
