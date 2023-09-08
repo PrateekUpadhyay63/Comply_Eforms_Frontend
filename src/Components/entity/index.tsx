@@ -23,10 +23,15 @@ import { EntitySchema } from "../../schemas/entityindex";
 // import "./style.css"
 import { useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.css';
+import entity from "../../../src/assets/img/entity.png";
+import individual from "../../../src/assets/img/individual.png";
 import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Entity() {
+  const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
   const history = useNavigate()
@@ -225,6 +230,32 @@ export default function Entity() {
 
       <div className="container-fluid">
         <div className="row"></div>
+
+          <div className='row'>
+          <div className='col-12'>
+            <div className='tabview'>
+              <ul>
+                <li>
+                  <button onClick={()=>history("/IndividualUs")}>
+                    <div>
+                      <div> <img src={individual} /></div>
+                      <span>Individual</span>
+                    </div>
+                  </button>
+                </li>
+                <li>OR</li>
+                <li>
+                  <button className='active'>
+                    <div>
+                      <div> <img src={entity} /></div>
+                      <span>Entity</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
@@ -541,7 +572,7 @@ export default function Entity() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -606,7 +637,7 @@ export default function Entity() {
                           {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
-                          required
+                         
                           style={{
                             border: ' 1px solid #d9d9d9 ',
                             height: ' 36px',
@@ -653,7 +684,7 @@ export default function Entity() {
                           Alternative TIN Format
                         </Typography>
                         <Radio
-                          //   required
+                          
                           disabled
                           value="yes"
                           // alternativeTINFormat
@@ -837,7 +868,7 @@ export default function Entity() {
                     <FormControl className="w-100">
                       <Typography align="left">Apt/Suite:</Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -926,7 +957,7 @@ export default function Entity() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1239,7 +1270,7 @@ export default function Entity() {
                         <FormControl className="w-100">
                           <Typography align="left">Apt/Suite:</Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -1343,7 +1374,7 @@ export default function Entity() {
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
-                              required
+                            
                               style={{
                                 border: ' 1px solid #d9d9d9 ',
                                 height: ' 36px',
@@ -1601,7 +1632,7 @@ export default function Entity() {
                         <option></option>
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1655,7 +1686,7 @@ export default function Entity() {
                         <option></option>
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1724,7 +1755,7 @@ export default function Entity() {
                             />
                           </span>
                           <Input
-                            required
+                            
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -2456,7 +2487,7 @@ export default function Entity() {
                             </Typography>
                             <FormControl className="w-100">
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2529,7 +2560,7 @@ export default function Entity() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2732,7 +2763,7 @@ export default function Entity() {
                             <FormControl className="w-100">
                               <Typography> Bank name</Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2906,7 +2937,7 @@ export default function Entity() {
                                   {/* <span style={{ color: 'red' }}>*</span> */}
                                 </Typography>
                                 <Input
-                                  required
+                                  
                                   style={{
                                     border: ' 1px solid #d9d9d9 ',
                                     height: ' 36px',
@@ -2944,7 +2975,7 @@ export default function Entity() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
