@@ -67,12 +67,14 @@ export default function Fedral_tax(props: any) {
                       <div>
                         <Typography align="left" style={{ margin: "10px" }}>
                           <div
+                          className="row"
                             style={{
                               display: "flex",
                               justifyContent: "space-between",
                             }}
                           >
                             <Typography
+                            className="col-md-6 col-12"
                               align="left"
                               style={{
                                 color: "black",
@@ -82,7 +84,7 @@ export default function Fedral_tax(props: any) {
                             >
                               Select your status for U.S. tax purposes
                             </Typography>
-                            <Typography align="right">
+                            <Typography align="right"     className="col-md-6 col-12">
                               <Button
                                 style={{
                                   color: "black",
