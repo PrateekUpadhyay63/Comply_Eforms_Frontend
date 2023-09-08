@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema ,firstStepBusinessSchema} from "../../../../schemas";
+import { firstStepSchema ,firstStepBusinessSchema,firstSchema} from "../../../../schemas";
 import "./index.scss";
 export default function Fedral_tax(props: any) {
   const {
@@ -28,8 +28,23 @@ export default function Fedral_tax(props: any) {
     firstName: "",
     lastName: "",
     businessName: "",
-    federalTaxClassificationId:"1",
+    federalTaxClassificationId:0,
   };
+
+  const arr=[
+    {
+      id: 1,
+      name: "Individual"
+    },
+    {
+      id: 3,
+      name:"Individual/Sole Proprietor"
+    },
+    {
+      id: 4,
+      name: "Limited Liability Company (Single-member)"
+    }
+  ]
  
   return (
     <>
@@ -37,7 +52,7 @@ export default function Fedral_tax(props: any) {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={selectedTaxClassification==257 ? firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
+                validationSchema={selectedTaxClassification<1 ? firstSchema :selectedTaxClassification==1 ?firstStepSchema : firstStepBusinessSchema}       // Uncomment after testing ,this is validation Schema
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");
@@ -115,6 +130,7 @@ export default function Fedral_tax(props: any) {
                             </Typography>
 
                             <FormControl className="w-100">
+
                               <Select
                                 onChange={(e)=>{handleChange(e);handleTaxClassificationChange(e)}}
                                 onBlur={handleBlur}
@@ -129,19 +145,17 @@ export default function Fedral_tax(props: any) {
                                   width: "100%",
                                 }}
                               >
-                                <MenuItem  value={""}>-Select-</MenuItem >
-                                <MenuItem  value={257}>Individual</MenuItem >
-                                <MenuItem  value={258}>
-                                  Individual/sole Propritor
-                                </MenuItem >
-                                <MenuItem  value={259}>
-                                  Limited Liability Company
-                                </MenuItem >
+                                <MenuItem value={0}>--Select--</MenuItem >
+                                {
+                                arr.map((i,ind)=>{return(
+                                  <MenuItem value={i.id}>{i.name}</MenuItem >
+                                )})
+                              }
                               </Select>
                             </FormControl>
                           </div>
                           </div>
-                          {selectedTaxClassification != "" ? (
+                          {selectedTaxClassification != 0 ? (
                             <div style={{ marginTop: "20px", display: "flex" }} className="row">
                               <div className="col-md-6 col-12">
                                 <Typography
@@ -225,7 +239,7 @@ export default function Fedral_tax(props: any) {
                             </div>
                           ) : null}
 
-                          {selectedTaxClassification == "258" || selectedTaxClassification == "259" ? (
+                          {selectedTaxClassification == 3 || selectedTaxClassification == 4 ? (
                             <>
                             <div className="row">
 

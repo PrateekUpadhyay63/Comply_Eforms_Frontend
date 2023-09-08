@@ -1,9 +1,15 @@
 import * as Yup from 'yup';
 
+export const firstSchema = () => {
+  return Yup.object().shape({
+    federalTaxClassificationId :Yup.number()
+    .required('This Field is Required.').notOneOf([0], 'Required Field'),
+  });
+};
 export const firstStepSchema = () => {
     return Yup.object().shape({
-      federalTaxClassificationId :Yup.string()
-      .required('This Field is Required.'),
+      federalTaxClassificationId :Yup.number()
+      .required('This Field is Required.').notOneOf([0], 'Please select a valid country'),
       firstName: Yup.string()
         .required('Please Enter First Name')
         .min(3, 'First Name should be minimum of 3 characters')
@@ -26,6 +32,8 @@ export const firstStepSchema = () => {
 
   export const firstStepBusinessSchema = () => {
     return Yup.object().shape({
+      ederalTaxClassificationId :Yup.number()
+      .required('This Field is Required.').min(0),
       firstName: Yup.string()
         .required('Please Enter First Name')
         .min(3, 'First Name should be minimum of 3 characters')

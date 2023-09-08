@@ -24,7 +24,7 @@ import { EntitySchema } from "../../schemas/entityindex";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Checkbox from '@mui/material/Checkbox';
-// import { apiGetUrl, apiPostUrl } from '../api/apiUtils';
+import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 
 export default function Entity() {
 //   //States
@@ -110,34 +110,34 @@ export default function Entity() {
     isConfirmed: true,
   });
 
-//   useEffect(() => {
-//     apiGetUrl('GetCountries', '', {})
-//       .then(res => {
-//         setCountries(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
+  useEffect(() => {
+    apiGetUrl('GetCountries', '', {})
+      .then(res => {
+        setCountries(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-//     apiGetUrl('GetCountriesCode', '', {})
-//       .then(res => {
-//         setCountriesCode(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
+    apiGetUrl('GetCountriesCode', '', {})
+      .then(res => {
+        setCountriesCode(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-//     apiGetUrl('GetAllIncomeCodes', '', {})
-//       .then(res => {
-//         setIncomeCodes(res.data);
-//         console.log(res.data, 'res.data');
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   }, []);
+    apiGetUrl('GetAllIncomeCodes', '', {})
+      .then(res => {
+        setIncomeCodes(res.data);
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   // const paymentSelection = val => {
   //   console.log(val);
@@ -149,18 +149,18 @@ export default function Entity() {
   //   }
   // };
 
-//   useEffect(() => {
-//     if (payload.permanentResidentialCountryId == 258) {
-//       apiGetUrl('GetStateByCountryId', '', {})
-//         .then(res => {
-//           setUsStates(res.data);
-//           console.log(res.data, 'res.data');
-//         })
-//         .catch(err => {
-//           console.log(err);
-//         });
-//     }
-//   }, [payload.permanentResidentialCountryId]);
+  useEffect(() => {
+    if (payload.permanentResidentialCountryId == 258) {
+      apiGetUrl('GetStateByCountryId', '', {})
+        .then(res => {
+          setUsStates(res.data);
+          console.log(res.data, 'res.data');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [payload.permanentResidentialCountryId]);
 
   const handleOpen = (val:any) => {
     if (open === val) {
@@ -182,14 +182,14 @@ export default function Entity() {
 
   const handleSub = (e: any) => {
     e.preventDefault();
-    // apiPostUrl('InsertAccountHolderDetail', '', payload)
-    //   .then(res:any => {
-    //     console.log(res.data, 'res.data');
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    // console.log(payload, 'payload2');
+    apiPostUrl('InsertAccountHolderDetail', '', payload)
+      .then(res => {
+        console.log(res.data, 'res.data');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(payload, 'payload2');
   };
 
   // const returnFieldName = () => {
@@ -217,6 +217,7 @@ export default function Entity() {
       'Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this'
     );
   };
+  // console.log(errors,"error")
   return (
     <section
       className="inner_content"
@@ -789,16 +790,14 @@ export default function Entity() {
                         })
                       }
                       onBlur={handleBlur}
-                          // error={Boolean(touched.permanentResidentialCountryId && errors.permanentResidentialCountryId)}
                       value={payload.permanentResidentialCountryId}
                     >
-                      <option value="1">-Select-</option>
-
+                      <option value={1}>-Select-</option>
                       {countries.map(({ id, name }) => (
                         <option value={id}>{name}</option>
                       ))}
                     </select>
-                    <p style={{color: "red",textAlign:"left"}}>{errors.dob}</p>
+                    <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCountryId}</p>
                   </FormControl>
                 </div>
                 <div className="row">
@@ -1171,7 +1170,7 @@ export default function Entity() {
                       </Typography>
 
                       <FormControl className="w-100">
-                        <Select
+                        <select
                           style={{
                             padding: ' 0 10px',
                             color: '#7e7e7e',
@@ -1188,7 +1187,6 @@ export default function Entity() {
                             })
                           }
                           onBlur={handleBlur}
-                          error={Boolean(touched.permanentResidentialCountryId1 && errors.permanentResidentialCountryId1)}
                           value={payload.permanentResidentialCountryId1}
                         >
                            <option value="">-Select-</option>
@@ -1198,7 +1196,7 @@ export default function Entity() {
                           {countries.map(({ id, name }) => (
                             <option value={id}> {name} </option>
                           ))}
-                        </Select>
+                        </select>
                         <p style={{color: "red",textAlign:"left"}}>{errors.permanentResidentialCountryId1}</p>
                       </FormControl>
                     </div>
@@ -2291,10 +2289,8 @@ export default function Entity() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
-                              >
-                                <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
+                              > 
                                 <option value="">-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
@@ -2303,6 +2299,7 @@ export default function Entity() {
                                   <option value={id}> {name} </option>
                                 ))}
                               </select>
+                              <p style={{color: "red",textAlign:"left"}}>{errors.accountBankBranchLocationId}</p>
                             </FormControl>
                           </div>
 
@@ -2446,15 +2443,14 @@ export default function Entity() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.payResidentalCountryId && errors.payResidentalCountryId)}
                                 value={payload.payResidentalCountryId}
                               >
-                              <p style={{color: "red",textAlign:"left"}}>{errors.payResidentalCountryId}</p>
                               <option value="">-Select-</option>
                                   {countries.map(({ id, name }) => (
                               <option value={id}>{name}</option>
                                   ))}
                               </select>
+                              <p style={{color: "red",textAlign:"left"}}>{errors.payResidentalCountryId}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2791,7 +2787,6 @@ export default function Entity() {
                                   })
                                 }
                                 onBlur={handleBlur}
-                                // error={Boolean(touched.accountBankBranchLocationId && errors.accountBankBranchLocationId)}
                                 value={payload.accountBankBranchLocationId}
                               >
                                 <option
