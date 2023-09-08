@@ -41,6 +41,7 @@ export default function VerifyDocs(props: any) {
   </Typography>
   <div style={{ margin: "20px" }}>
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -48,7 +49,7 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12">
         <Typography>Birth Certificate (Copy)</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           A government issued document that registers the birth of the
@@ -56,12 +57,13 @@ export default function VerifyDocs(props: any) {
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
     <Divider />
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -69,19 +71,20 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12">
         <Typography>Certificate of Incorporation</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           Certificate of Incorporation
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
     <Divider />
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -89,19 +92,20 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12">
         <Typography>Driving License</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           Driving License
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
     <Divider />
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -109,19 +113,20 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12">
         <Typography>Passport</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           Passport
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
     <Divider />
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -129,19 +134,20 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12">
         <Typography>Power of Attorney statement</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           Power of Attorney statement
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
     <Divider />
     <div
+    className="row"
       style={{
         margin: "10px",
         display: "flex",
@@ -149,14 +155,14 @@ export default function VerifyDocs(props: any) {
         justifyContent: "space-between",
       }}
     >
-      <div>
+      <div className="col-md-6 col-12" >
         <Typography>Proof of Residency</Typography>
         <Typography style={{ fontSize: "13px", color: "grey" }}>
           Proof of Residency
         </Typography>
       </div>
 
-      <div style={{ justifyContent: "flex-end" }}>
+      <div className="col-md-6 col-12" style={{ textAlign: "end" }}>
         <Input type="file" />
       </div>
     </div>
