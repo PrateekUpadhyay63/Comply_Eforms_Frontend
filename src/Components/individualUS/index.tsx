@@ -1866,7 +1866,8 @@ export default function IndividualUs() {
                     return (
                       <div className="col-lg-3 col-6 col-md-3 ">
                         <Typography className="d-flex w-100 pb-2">
-                          Income Type<span style={{ color: 'red' }}>*</span>
+                          Income Type
+                          {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
 
                         <FormControl className="w-100 d-flex" key={ind}>
