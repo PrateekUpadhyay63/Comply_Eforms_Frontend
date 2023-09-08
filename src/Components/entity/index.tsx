@@ -545,7 +545,7 @@ export default function Entity() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -610,7 +610,7 @@ export default function Entity() {
                           {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
-                          required
+                         
                           style={{
                             border: ' 1px solid #d9d9d9 ',
                             height: ' 36px',
@@ -657,7 +657,7 @@ export default function Entity() {
                           Alternative TIN Format
                         </Typography>
                         <Radio
-                          //   required
+                          
                           disabled
                           value="yes"
                           // alternativeTINFormat
@@ -841,7 +841,7 @@ export default function Entity() {
                     <FormControl className="w-100">
                       <Typography align="left">Apt/Suite:</Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -930,7 +930,7 @@ export default function Entity() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1243,7 +1243,7 @@ export default function Entity() {
                         <FormControl className="w-100">
                           <Typography align="left">Apt/Suite:</Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -1347,7 +1347,7 @@ export default function Entity() {
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
-                              required
+                            
                               style={{
                                 border: ' 1px solid #d9d9d9 ',
                                 height: ' 36px',
@@ -1605,7 +1605,7 @@ export default function Entity() {
                         <option></option>
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1659,7 +1659,7 @@ export default function Entity() {
                         <option></option>
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1728,7 +1728,7 @@ export default function Entity() {
                             />
                           </span>
                           <Input
-                            required
+                            
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -2460,7 +2460,7 @@ export default function Entity() {
                             </Typography>
                             <FormControl className="w-100">
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2533,7 +2533,7 @@ export default function Entity() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2736,7 +2736,7 @@ export default function Entity() {
                             <FormControl className="w-100">
                               <Typography> Bank name</Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2910,7 +2910,7 @@ export default function Entity() {
                                   {/* <span style={{ color: 'red' }}>*</span> */}
                                 </Typography>
                                 <Input
-                                  required
+                                  
                                   style={{
                                     border: ' 1px solid #d9d9d9 ',
                                     height: ' 36px',
@@ -2948,7 +2948,7 @@ export default function Entity() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',

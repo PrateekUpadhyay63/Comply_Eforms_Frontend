@@ -520,7 +520,6 @@ export default function IndividualUs() {
                           applicable)
                         </Typography>
                         <Input
-                          required
                           style={{
                             border: ' 1px solid #d9d9d9 ',
                             height: ' 36px',
@@ -709,7 +708,7 @@ export default function IndividualUs() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -776,7 +775,7 @@ export default function IndividualUs() {
                           {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
-                          required
+                          
                           style={{
                             border: ' 1px solid #d9d9d9 ',
                             height: ' 36px',
@@ -928,7 +927,7 @@ export default function IndividualUs() {
                     <FormControl className="w-100">
                       <Typography align="left">Apt/Suite:</Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -996,7 +995,7 @@ export default function IndividualUs() {
                         {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1272,7 +1271,7 @@ export default function IndividualUs() {
                         <FormControl className="w-100">
                           <Typography align="left">Apt/Suite:</Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -1377,7 +1376,7 @@ export default function IndividualUs() {
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
-                              required
+                            
                               style={{
                                 border: ' 1px solid #d9d9d9 ',
                                 height: ' 36px',
@@ -1637,7 +1636,7 @@ export default function IndividualUs() {
                         ))}
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1690,7 +1689,7 @@ export default function IndividualUs() {
                         ))}
                       </select>
                       <Input
-                        required
+                        
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -2314,7 +2313,7 @@ export default function IndividualUs() {
                                 <span style={{ color: 'red' }}>*</span>
                               </Typography>
                               <select
-                                // required
+                                required
                                 style={{
                                   padding: ' 0 10px',
                                   color: '#7e7e7e',
@@ -2386,7 +2385,7 @@ export default function IndividualUs() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2753,7 +2752,7 @@ export default function IndividualUs() {
                                   {/* <span style={{ color: 'red' }}>*</span> */}
                                 </Typography>
                                 <Input
-                                  required
+                                 
                                   style={{
                                     border: ' 1px solid #d9d9d9 ',
                                     height: ' 36px',
@@ -2791,7 +2790,7 @@ export default function IndividualUs() {
                                 {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
