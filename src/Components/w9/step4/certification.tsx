@@ -1,5 +1,6 @@
 import React , {useState} from "react";
-import {FormControl,Typography,Button, Input,Paper,Checkbox} from '@mui/material'
+import {FormControl,Typography,Button, Tooltip,
+  Link, Input,Paper,Checkbox} from '@mui/material'
 import InfoIcon from '@mui/icons-material/Info';
 
 export default function Penalties(props:any){
@@ -13,15 +14,44 @@ export default function Penalties(props:any){
     const [open2, setOpen2] = useState(false);
     const handleClickOpen2 = () => setOpen2(true);
     const handleClose2 = () => setOpen2(false);
-
+    const [toolInfo, setToolInfo] = useState("");
     
     return(
         <Paper  style={{ marginLeft: '5px', width: '80%' }}>
 <Typography align='left' style={{ margin: '10px',fontSize:"20px" ,fontWeight:'550',marginLeft:"20px"}}>Certification  <span style={{ color: 'red' }}>*</span>
-                      <InfoIcon
-                        style={{ color: '#ffc107', fontSize: '13px',verticalAlign:"super" }}
+<span><Tooltip style={{ backgroundColor: "black", color: "white" }} title={
+                            <>
+                              <Typography color="inherit">U.S. TIN Type Info</Typography>
+                              <a onClick={() => setToolInfo("basic")}>
+                                <Typography style={{ cursor: "pointer", textDecorationLine: "underline" }} align="center" > View More...</Typography>
+                              </a>
+                            </>
+                          }>
+                            <InfoIcon
+                              style={{
+                                color: '#ffc107',
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                                verticalAlign: "super"
+                              }}
 
-                      /> </Typography>
+                            />
+                          </Tooltip></span> </Typography>
+                          {toolInfo === "basic" ? (<div>
+                          <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
+                            <Typography>
+                            Please select a U.S. TIN type status from the dropdown.
+                            </Typography>
+                           
+                            <Typography style={{ marginTop: "10px" }}>
+                            If a TIN type is not available, ensure you select the checkbox to the right of the field and provide an explanation as to why it is not available in the corresponding boxes at the bottom of the screen.
+                            </Typography>
+
+
+                            <Link href="#" underline="none" style={{ marginTop: "10px", fontSize: "16px" }} onClick={() => { setToolInfo("") }}>--Show Less--</Link>
+                          </Paper>
+
+                        </div>) : ""}
                       <Typography style={{ margin: '10px',fontSize:"12px", color:"grey",marginLeft:"20px"}}>
                       Under penalties of perjury, I certify that:
                       </Typography>

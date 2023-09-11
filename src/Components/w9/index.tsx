@@ -213,19 +213,18 @@ export default function App() {
           ) : (
             ""
           )}
-        <Step3
+        {selectedContinue.step6 ?(<Step3
            selectedContinue={selectedContinue}
            handleTaxClassificationChange={handleTaxClassificationChange}
            selectedTaxClassification={selectedTaxClassification}
            data={data}
-          
            handleChange={handleChange}
            setselectedContinue={setselectedContinue}
            report={report}
            handleReportChange={handleReportChange}
            initialValue={initialValue}
 
-          />
+          />):""}
           
         </div>
 

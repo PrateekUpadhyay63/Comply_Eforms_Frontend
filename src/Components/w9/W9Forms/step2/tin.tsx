@@ -117,6 +117,9 @@ export default function Tin(props: any) {
     <Button variant="contained" style={{ color: "white" }}>
       SAVE & EXIT
     </Button>
+    <Button variant="contained" style={{ color: "white",marginLeft:"15px" }}>
+     View Form
+    </Button>
     <Button
       onClick={() => {
         setselectedContinue({
