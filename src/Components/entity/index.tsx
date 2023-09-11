@@ -58,12 +58,12 @@ export default function Entity() {
     entityName: '',
     usTinTypeId: 1,
     usTin: '',
-    foreignTINCountryId: 1,
+    foreignTINCountryId: 0,
     foreignTIN: '',
-    foreignTINNotAvailable: true,
-    alternativeTINFormat: true,
+    foreignTINNotAvailable: false,
+    alternativeTINFormat: false,
     giin: '',
-    permanentResidentialCountryId: 1,
+    permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: '',
     permanentResidentialAptSuite: '',
     permanentResidentialCityorTown: '',
@@ -73,7 +73,7 @@ export default function Entity() {
     isAddressPostOfficeBox: true,
     isCareOfAddress: true,
     isalternativebusinessaddress: true,
-    permanentResidentialCountryId1: 1,
+    permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: '',
     permanentResidentialAptSuite1: '',
     permanentResidentialCityorTown1: '',
@@ -501,11 +501,12 @@ export default function Entity() {
                 timeout="auto"
                 unmountOnExit
               >
-                <div className="col-12 d-flex">
-                  <div className="col-lg-3 col-6 col-md-3 ">
+               
+                {!payload.isUSEntity ? (
+                  <div className="col-12 d-flex mt-3">
+                     <div className="col-lg-3 col-6 col-md-3 ">
                     <Typography align="left" className="d-flex w-100 ">
                       U.S. TIN Type
-                      {/* <span style={{ color: 'red' }}>*</span> */}
                     </Typography>
 
                     <FormControl className="w-100">
@@ -532,44 +533,40 @@ export default function Entity() {
                         <option value="3">QIEIN</option>
                         <option value="4">WPEIN</option>
                         <option value="5">WTEIN</option>
-                        <option value="6">Applied for</option>
-                        <option value="7">U.S. TIN not applicable</option>
+                        <option value="6">U.S. TIN not applicable</option>
+                        <option value="7">U.S. TIN not available</option>
                       </select>
                     </FormControl>
                   </div>
-
+                  
                   <div className="col-lg-3 col-6 col-md-3 mx-2">
-                    <FormControl className="w-100">
-                      <Typography align="left">
-                        U.S. TIN
-                        {/* <span style={{ color: 'red' }}>*</span> */}
-                      </Typography>
-                      <Input
-                        
-                        style={{
-                          border: ' 1px solid #d9d9d9 ',
-                          height: ' 36px',
-                          lineHeight: '36px ',
-                          background: '#fff ',
-                          fontSize: '13px',
-                          color: ' #000 ',
-                          fontStyle: 'normal',
-                          borderRadius: '1px',
-                          padding: ' 0 10px ',
-                        }}
-                        id="outlined"
-                        name="usTin"
-                        placeholder="Enter U.S. TIN"
-                        onChange={(e: any) =>
-                          setPayload({ ...payload, usTin: e.target.value })
-                        }
-                        value={payload.usTin}
-                      />
-                    </FormControl>
-                  </div>
-                </div>
-                {!payload.isUSEntity ? (
-                  <div className="col-12 d-flex mt-3">
+                      <FormControl className="w-100" >
+                        <Typography align="left">
+                          U.S. TIN
+                        </Typography>
+                        <Input
+                          disabled = { payload.usTinTypeId == 6 || payload.usTinTypeId == 7}
+                          style={{
+                            border: ' 1px solid #d9d9d9 ',
+                            height: ' 36px',
+                            lineHeight: '36px ',
+                            background: '#fff ',
+                            fontSize: '13px',
+                            color: ' #000 ',
+                            fontStyle: 'normal',
+                            borderRadius: '1px',
+                            padding: ' 0 10px ',
+                          }}
+                          id="outlined"
+                          name="usTin"
+                          placeholder="Enter U.S. TIN"
+                          onChange={(e: any) =>
+                            setPayload({ ...payload, usTin: e.target.value })
+                          }
+                          value={payload.usTin}
+                        />
+                      </FormControl>
+                    </div>
                     <div className="col-lg-3 col-6 col-md-3 ">
                       <Typography align="left" className="d-flex w-100 ">
                         Foreign TIN Country
@@ -586,7 +583,7 @@ export default function Entity() {
                           }}
                           name="foreignTINCountryId"
                           id="Income"
-                          defaultValue={1}
+                          // defaultValue={1}
                           onChange={(e: any) =>
                             setPayload({
                               ...payload,
@@ -595,7 +592,7 @@ export default function Entity() {
                           }
                           value={payload.foreignTINCountryId}
                         >
-                     <option value="">-Select-</option>
+                     <option value={0}>-Select-</option>
                           {countries.map(({ id, name }) => (
                             <option value={id}>{name}</option>
                           ))}
@@ -603,13 +600,13 @@ export default function Entity() {
                       </FormControl>
                     </div>
 
-                    <div className="col-lg-3 col-6 col-md-3 mx-2">
+                    <div className="col-lg-3 col-6 col-md-3 mx-2"> 
                       <FormControl className="w-100">
                         <Typography align="left">
                           Foreign TIN
-                          {/* <span style={{ color: 'red' }}>*</span> */}
                         </Typography>
                         <Input
+                         disabled = { payload.foreignTINCountryId == 0 || (payload.foreignTINCountryId != 0 && payload.foreignTINNotAvailable == true) }
                          
                           style={{
                             border: ' 1px solid #d9d9d9 ',
@@ -641,15 +638,15 @@ export default function Entity() {
                           Not Available{' '}
                         </Typography>
                         <Radio
-                          disabled
+                           disabled = { payload.foreignTINCountryId == 0}
                           // foreignTINNotAvailable
                           name="radio-buttons"
                           checked={payload.foreignTINNotAvailable }
                           onChange={() =>
-                            setPayload({ ...payload, foreignTINNotAvailable: true })
+                            setPayload({ ...payload, foreignTINNotAvailable: !payload.foreignTINNotAvailable , alternativeTINFormat:payload.foreignTINNotAvailable})
                           }
-                          value="yes"
-                          inputProps={{ 'aria-label': 'Yes' }}
+                          // value="no"
+                          inputProps={{ 'aria-label': 'No' }}
                         />
                         <Typography
                           style={{ fontSize: '13px', marginTop: '10px' }}
@@ -657,29 +654,19 @@ export default function Entity() {
                           Alternative TIN Format
                         </Typography>
                         <Radio
-                          
-                          disabled
-                          value="yes"
-                          // alternativeTINFormat
+                          disabled = { payload.foreignTINCountryId == 0 || payload.foreignTINCountryId != 257}
                           name="radio-buttons"
                           checked={payload.alternativeTINFormat }
                           onChange={() =>
-                            setPayload({ ...payload, alternativeTINFormat: true })
+                            setPayload({ ...payload, alternativeTINFormat: !payload.alternativeTINFormat, foreignTINNotAvailable: payload.alternativeTINFormat })
                           }
                           inputProps={{ 'aria-label': 'Yes' }}
                         />
                       </div>
-                    </div>
-                  </div>
-                ) : (
-                  ''
-                )}
-                {!payload.isUSEntity ?(
-                  <div className="col-lg-3 col-6 col-md-3 ">
+                      <div className="col-lg-3 col-6 col-md-3 ">
                     <FormControl className="w-100">
                       <Typography align="left">
                         GIIN
-                        {/* <span style={{ color: 'red' }}>*</span> */}
                         <Info
                           style={{
                             color: '#ffc107',
@@ -716,9 +703,71 @@ export default function Entity() {
                       />
                     </FormControl>
                   </div>
+                    </div>
+                  </div>
                 ) : (
-                  ''
+                  <div className="col-12 d-flex">
+                    <div className="col-lg-3 col-6 col-md-3 ">
+                      <Typography align="left" className="d-flex w-100 ">
+                        U.S. TIN Type
+                      </Typography>
+  
+                      <FormControl className="w-100">
+                        <select
+                          style={{
+                            padding: ' 0 10px',
+                            color: '#7e7e7e',
+                            fontStyle: 'italic',
+                            height: '36px',
+                          }}
+                          name="usTinTypeId"
+                          id="Income"
+                          defaultValue={1}
+                          onChange={(e: any) =>
+                            setPayload({
+                              ...payload,
+                              usTinTypeId: e.target.value,
+                            })
+                          }
+                          value={payload.usTinTypeId}
+                        >
+                          <option value="1">-Select-</option>
+                          <option value="2">EIN</option>
+                        </select>
+                      </FormControl>
+                    </div>
+                  
+                    <div className="col-lg-3 col-6 col-md-3 mx-2">
+                      <FormControl className="w-100">
+                        <Typography align="left">
+                          U.S. TIN
+                        </Typography>
+                        <Input
+                          
+                          style={{
+                            border: ' 1px solid #d9d9d9 ',
+                            height: ' 36px',
+                            lineHeight: '36px ',
+                            background: '#fff ',
+                            fontSize: '13px',
+                            color: ' #000 ',
+                            fontStyle: 'normal',
+                            borderRadius: '1px',
+                            padding: ' 0 10px ',
+                          }}
+                          id="outlined"
+                          name="usTin"
+                          placeholder="Enter U.S. TIN"
+                          onChange={(e: any) =>
+                            setPayload({ ...payload, usTin: e.target.value })
+                          }
+                          value={payload.usTin}
+                        />
+                      </FormControl>
+                    </div>
+                  </div>
                 )}
+                
               </Collapse>
               <hr className="w-100"></hr>
 
@@ -782,7 +831,7 @@ export default function Entity() {
                       }}
                       name="permanentResidentialCountryId"
                       id="Income"
-                      defaultValue={1}
+                      // defaultValue={1}
                       onChange={(e: any) =>
                         setPayload({
                           ...payload,
@@ -792,7 +841,7 @@ export default function Entity() {
                       onBlur={handleBlur}
                       value={payload.permanentResidentialCountryId}
                     >
-                      <option value={1}>-Select-</option>
+                      <option value={0}>-Select-</option>
                       {countries.map(({ id, name }) => (
                         <option value={id}>{name}</option>
                       ))}
@@ -927,10 +976,9 @@ export default function Entity() {
                     <FormControl className="w-100">
                       <Typography align="left">
                         State or Province:
-                        {/* <span style={{ color: 'red' }}>*</span> */}
                       </Typography>
                       <Input
-                        
+                        disabled = {payload.permanentResidentialCountryId == 0}
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -955,7 +1003,6 @@ export default function Entity() {
                       />
                     </FormControl>
                   </div>
-                  {/* )} */}
                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                     <FormControl className="w-100">
                       <Typography align="left">
@@ -993,7 +1040,55 @@ export default function Entity() {
                   </div>
                 </div>
                 <div className="d-flex">
-                  <div>
+                  {payload.isUSEntity ? (
+                     <div className="mx-5">
+                     <Typography style={{ marginTop: '20px' }}>
+                       Is there an alternative mailing or business address in the
+                       US?
+                       <span style={{ color: 'red' }}>*</span>
+                       <Info
+                         style={{
+                           color: '#ffc107',
+                           fontSize: '15px',
+                           marginBottom: '12px',
+                         }}
+                         onClick={clickInfo}
+                       />
+                     </Typography>
+ 
+                     <div className="d-flex">
+                       <Typography className="my-auto">Yes</Typography>
+                       <Radio
+                         required
+                         checked={payload.isalternativebusinessaddress}
+                         onChange={() =>
+                           setPayload({
+                             ...payload,
+                             isalternativebusinessaddress: true,
+                           })
+                         }
+                         value={payload.isalternativebusinessaddress}
+                         name="radio-buttons"
+                         inputProps={{ 'aria-label': 'A' }}
+                       />
+                       <Typography className="my-auto">No</Typography>
+                       <Radio
+                         required
+                         checked={!payload.isalternativebusinessaddress}
+                         onChange={() =>
+                           setPayload({
+                             ...payload,
+                             isalternativebusinessaddress: false,
+                           })
+                         }
+                         value={!payload.isalternativebusinessaddress}
+                         name="radio-buttons"
+                         inputProps={{ 'aria-label': 'B' }}
+                       />
+                     </div>
+                   </div>   
+                  ):(
+                    <div>
                     <Typography align="left" style={{ marginTop: '20px' }}>
                       Is this address a Post Office Box?
                       <span style={{ color: 'red' }}>*</span>
@@ -1032,27 +1127,8 @@ export default function Entity() {
                           }
                         />
                       </RadioGroup>
-                      {/* <Typography className="my-auto">Yes</Typography>
-                    <Radio
-                      required
-                    //   checked={selectedValue === 'a'}
-                    //   onChange={handleRadio}
-                      value="a"
-                      name="radio-buttons"
-                      inputProps={{ 'aria-label': 'A' }}
-                    />
-                    <Typography className="my-auto">No</Typography>
-                    <Radio
-                      required
-                    //   checked={selectedValue === 'b'}
-                    //   onChange={handleRadio}
-                      value="b"
-                      name="radio-buttons"
-                      inputProps={{ 'aria-label': 'B' }}
-                    /> */}
                     </div>
-                  </div>
-                  <div className="mx-5">
+                    <div className="mx-5">
                     <Typography style={{ marginTop: '20px' }}>
                       Is this an In Care Of address?
                       <span style={{ color: 'red' }}>*</span>
@@ -1091,25 +1167,8 @@ export default function Entity() {
                           }
                         />
                       </RadioGroup>
-                      {/* <Typography className="my-auto">Yes</Typography>
-                    <Radio
-                      required
-                    //   checked={selectedValue === 'a'}
-                    //   onChange={handleRadio}
-                      value="a"
-                      name="radio-buttons"
-                      inputProps={{ 'aria-label': 'A' }}
-                    />
-                    <Typography className="my-auto">No</Typography>
-                    <Radio
-                      required
-                    //   checked={selectedValue === 'b'}
-                    //   onChange={handleRadio}
-                      value="b"
-                      name="radio-buttons"
-                      inputProps={{ 'aria-label': 'B' }}
-                    /> */}
-                    </div>
+                   
+                    </div> 
                   </div>
 
                   <div className="mx-5">
@@ -1159,6 +1218,9 @@ export default function Entity() {
                     </div>
                   </div>
                 </div>
+                 )}
+                  </div>
+               
                 {/* IF Alternate mailing address */}
 
                 {payload.isalternativebusinessaddress ? (
@@ -1179,7 +1241,7 @@ export default function Entity() {
                           }}
                           name="permanentResidentialCountryId1"
                           id="Income"
-                          defaultValue={1}
+                          // defaultValue={1}
                           onChange={(e: any) =>
                             setPayload({
                               ...payload,
@@ -1189,7 +1251,7 @@ export default function Entity() {
                           onBlur={handleBlur}
                           value={payload.permanentResidentialCountryId1}
                         >
-                           <option value="">-Select-</option>
+                           <option value={0}>-Select-</option>
                           <option value={257}>United Kingdom</option>
                           <option value={258}>United States</option>
                           <option value="">---</option>
@@ -1317,6 +1379,7 @@ export default function Entity() {
                                 fontStyle: 'italic',
                                 height: '36px',
                               }}
+                              
                               name="permanentResidentialStateorProvince1"
                               id="Income"
                               onChange={(e: any) =>
@@ -1347,7 +1410,7 @@ export default function Entity() {
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
-                            
+                            disabled = {payload.permanentResidentialCountryId1 == 0}
                               style={{
                                 border: ' 1px solid #d9d9d9 ',
                                 height: ' 36px',
@@ -1362,6 +1425,7 @@ export default function Entity() {
                               id="outlined"
                               name="permanentResidentialStateorProvince1"
                               placeholder="Enter State or Province"
+                              
                               onChange={(e: any) =>
                                 setPayload({
                                   ...payload,
@@ -1974,7 +2038,7 @@ export default function Entity() {
                         <option value="">Select</option>
                         <option value={1}>ACH</option>
                         <option value={2}>Check</option>
-                        <option value={3}>Wire</option>
+                        <option value={3}>Wire</option> 
                       </select>
                       <Delete
                         style={{
@@ -2059,7 +2123,7 @@ export default function Entity() {
                           <RemoveCircleOutlineOutlined />
                         )}
                       </IconButton>
-                    }
+                    }                                                                                                                                                                                                                                                                                                                                                                                                                                        
                   ></CardHeader>
                   <Collapse
                     className="px-5"
@@ -2863,7 +2927,7 @@ export default function Entity() {
                             </FormControl>
                           </div>
 
-                          {bankLocation === 'US' ? (
+                          {bankLocation == 'US' ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-2">
                               <FormControl className="w-100">
                                 <Typography>
@@ -2931,11 +2995,8 @@ export default function Entity() {
                                       iban: e.target.value,
                                     })
                                   }
-                                  // onBlur={handleBlur}
-                                  // error={Boolean(touched.iban && errors.iban)}
                                   value={payload.iban}
                                 />
-                                {/* <p style={{color: "red",textAlign:"left"}}>{errors.iban}</p> */}
                               </FormControl>
                             </div>
                           ) : (
@@ -2945,7 +3006,6 @@ export default function Entity() {
                             <FormControl className="w-100">
                               <Typography>
                                 Swift code
-                                {/* <span style={{ color: 'red' }}>*</span> */}
                               </Typography>
                               <Input
                                 
