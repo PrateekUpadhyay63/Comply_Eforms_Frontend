@@ -115,7 +115,7 @@ To Confirm:
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>Electronic Recipient Statement</Typography>
+          <Typography sx={{ width: '100%', flexShrink: 0 }}>Electronic Recipient Statement</Typography>
          
         </AccordionSummary>
         <AccordionDetails>
