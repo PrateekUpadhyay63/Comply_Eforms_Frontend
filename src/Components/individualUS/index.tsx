@@ -13,8 +13,10 @@ import {
   Paper,
   TextField
 } from '@mui/material';
+import Link from '@mui/material/Link';
+import Tooltip from '@mui/material/Tooltip';
 // import { useDispatch} from "react-redux";
-import {RemoveCircleOutlineOutlined,ControlPointOutlined,Info,Delete} from '@mui/icons-material';
+import {RemoveCircleOutlineOutlined,ControlPointOutlined,Info,Delete,} from '@mui/icons-material';
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom"
 import { individualSchema } from "../../schemas/individualindex";
@@ -192,7 +194,18 @@ export default function IndividualUs() {
       return 'Bank Code';
     }
   };
-
+  const formatTin=(e:any)=>{
+    if(e.key === "Backspace" || e.key === "Delete") return;
+    if(e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin +"-" })
+    }
+    if(e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin +"-" })
+    }
+    // if(e.target.value.length === 14) {
+    //   setPayload({ ...payload, usTin: payload.usTin +"-" })
+    // }
+  }
   const clickInfo = () => {
     alert(
       'Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this'
@@ -201,11 +214,11 @@ export default function IndividualUs() {
   return (
     <section
       className="inner_content"
-      style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}
+      style={{ backgroundColor: '#0c3d69' }}
     >
-      <div style={{ fontSize: '32px', fontWeight: '500', color: 'white' }}>
+      <Typography align="center"  style={{ fontSize: '32px', fontWeight: '500', color: 'white',marginBottom:"20px",marginTop:"10px" }}>
         Account Holder Details
-      </div>
+      </Typography >
 
       <div className="container-fluid">
         <div className="row"></div>
@@ -268,6 +281,13 @@ export default function IndividualUs() {
                     }}
                   >
                     Basic Details
+                    <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Basic details - individual</Typography>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+          
+           </>
+        }>
                     <Info
                       style={{
                         color: '#ffc107',
@@ -277,6 +297,7 @@ export default function IndividualUs() {
                       }}
                       onClick={clickInfo}
                     />
+                    </Tooltip>
                   </div>
                 }
                 action={
@@ -294,6 +315,21 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
+              <div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Basic details - are you a U.S. Individual?
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  Select 'Yes' for:
+                  </Typography>
+                  <Typography>An individual who was born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, or who retains U.S. Green Card entitlement, or who has a parent who is a U.S. citizen.</Typography>
+                <Typography style={{marginTop:"10px"}}>Select 'No' for: An individual who was not born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, who does not retain U.S. Green Card entitlement, and whose parents are not considered U.S. persons</Typography>
+                <Typography style={{marginTop:"10px"}}>Ref: EH165</Typography>
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}}>--Show Less--</Link>
+                </Paper>
+
+              </div>
 
               <Collapse
                 className="px-5"
@@ -664,6 +700,9 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
+
+
+              
               <Collapse
                 className="px-5"
                 in={open === 'tax'}
@@ -726,9 +765,11 @@ export default function IndividualUs() {
                         id="outlined"
                         name="usTin"
                         placeholder="Enter U.S. TIN"
+                        onKeyDown={formatTin}
                         onChange={(e: any) =>
                           setPayload({ ...payload, usTin: e.target.value })
                         }
+                        inputProps={{ maxLength: 11 }}
                         // onBlur={handleBlur}
                         //   error={Boolean(touched.usTin && errors.usTin)}
                         value={payload.usTin}
