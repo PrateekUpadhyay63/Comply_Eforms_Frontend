@@ -7,11 +7,13 @@ import Utils from '../Utils';
 // const ForgotPasswordWrapper = React.lazy(() => import('../Pages/Auth/forgotPassword'));
 // const ResetPasswordWrapper = React.lazy(() => import('../Pages/Auth/resetPassword'));
 // const DashboardWrapper = React.lazy(() => import('../Pages/dashboard'));
+const login = React.lazy(() => import('../Components/login'));
 const W9 = React.lazy(() => import('../Components/w9'));
 const IndividualUs = React.lazy(() => import('../Components/individualUS'));
 const EntityUs = React.lazy(() => import('../Components/entity'));
 const Term =  React.lazy(() => import('../Components/term'));
 const Certificates = React.lazy(() => import('../Components/certificates'));
+const Complete = React.lazy(() => import('../Components/complete'));
 
 // const RolesDetailWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail'));
 // const SubAdminWrapper = React.lazy(() => import('../Modules/RolesManagement/SubAdmin/index'));
@@ -186,9 +188,16 @@ const Certificates = React.lazy(() => import('../Components/certificates'));
 // const PageNotFoundWrapper = React.lazy(() => import('../Components/PageNotFound'));
 const ROUTES: Array<RouteType> = [
   {
+    name: 'Login',
+    path: "login",
+    id: 0,
+    Component: login,
+    isPrivate: true,
+  },
+  {
     name: 'IndividualUs',
     path: "/",
-    id: 0,
+    id: 10,
     Component: IndividualUs,
     isPrivate: true,
   },
@@ -224,11 +233,17 @@ const ROUTES: Array<RouteType> = [
         id: 4,
         Component: Certificates,
         isPrivate: true},
+        {
+          name: 'Complete',
+          path:"Complete",
+          id: 4,
+          Component: Complete,
+          isPrivate: true},
 
 
   
 
-//   {
+//   {Complete
 //     name: 'Login',
 //     path: Utils.PathName.Login,
 //     id: 4,

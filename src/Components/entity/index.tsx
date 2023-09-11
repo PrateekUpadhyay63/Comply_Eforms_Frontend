@@ -21,20 +21,19 @@ import { Formik, Form } from "formik";
 import { EntitySchema } from "../../schemas/entityindex";
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 // import "./style.css"
-
+import { useNavigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.css';
+import entity from "../../../src/assets/img/entity.png";
+import individual from "../../../src/assets/img/individual.png";
 import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 
+
 export default function Entity() {
+  const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
-
-  // const [is_US, setUS] = useState(false);
-  // const [is_USACH, setUSACH] = useState('');
-  // const [selectedValue, setSelectedValue] = useState('b');
-  // const [selectedValue1, setSelectedValue1] = useState('b');
-  // const [radioButton, setRadioButton] = useState(false);
+ 
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   // const [accInfoSection, setAccInfoSection] = useState(false);
   // const [accInfoType, setAccInfoType] = useState('');
@@ -229,6 +228,32 @@ export default function Entity() {
 
       <div className="container-fluid">
         <div className="row"></div>
+
+          <div className='row'>
+          <div className='col-12'>
+            <div className='tabview'>
+              <ul>
+                <li>
+                  <button onClick={()=>history("/IndividualUs")}>
+                    <div>
+                      <div> <img src={individual} /></div>
+                      <span>Individual</span>
+                    </div>
+                  </button>
+                </li>
+                <li>OR</li>
+                <li>
+                  <button className='active'>
+                    <div>
+                      <div> <img src={entity} /></div>
+                      <span>Entity</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <div className="col-lg-12 mt-3" style={{ padding: '8px' }}>
           <Paper elevation={6} style={{ padding: '17px' }}>
@@ -3258,7 +3283,9 @@ export default function Entity() {
                   <Button
                     type="submit"
                     disabled={!payload.isConfirmed}
-                    onClick={handleSub}
+                    onClick={()=>(
+                      history("/Term")
+                    )}
                     style={{
                       border: '1px solid #0095dd',
                       background: '#0095dd',

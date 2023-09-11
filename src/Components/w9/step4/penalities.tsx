@@ -1,6 +1,7 @@
 import React , {useState} from "react";
 import {FormControl,Typography,Button, Input,Paper,Checkbox} from '@mui/material'
 import InfoIcon from '@mui/icons-material/Info';
+import Declaration from "../../reusables/Declaration"
 
 export default function Penalties(props:any){
     const [open2, setOpen2] = useState(false);
@@ -10,7 +11,9 @@ export default function Penalties(props:any){
 
 
     return(
-<Paper  style={{ marginLeft: '5px', width: '80%' }}>
+
+      <>
+<Paper  style={{ marginLeft: '5px', width: '73%' }}>
 <Typography align='left' style={{ margin: '10px',fontSize:"20px" ,fontWeight:'550'}}>Part II Certification<span style={{ color: 'red' }}>*</span>
                       </Typography>
                       <Typography  align='left'style={{ margin: '10px',fontSize:"20px" ,fontWeight:'550'}}>W-9 Electronic Substitute Form Statement</Typography>
@@ -121,7 +124,7 @@ export default function Penalties(props:any){
         <Button 
 
           onClick={() => {
-           setOpen2(false)
+           setOpen2(true)
            
            
 
@@ -139,7 +142,16 @@ export default function Penalties(props:any){
           Back
         </Button>
       </Typography>
+      
 
 </Paper>
+<Declaration
+ open={open2}
+ setOpen={setOpen2}
+ handleClickOpen={handleClickOpen2}
+ handleClose={handleClose2}
+      
+      />
+</>
     )
 }
