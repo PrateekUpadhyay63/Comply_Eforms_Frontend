@@ -29,12 +29,10 @@ import Checkbox from '@mui/material/Checkbox';
 import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 
 
-
 export default function Entity() {
   const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
- 
  
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   // const [accInfoSection, setAccInfoSection] = useState(false);
