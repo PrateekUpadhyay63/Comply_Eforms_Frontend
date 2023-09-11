@@ -44,6 +44,7 @@ export default function IndividualUs() {
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
+  const [toolInfo,setToolInfo]=useState("");
   const [payload, setPayload] = useState({
     agentId: 3,
     businessTypeId: 1,
@@ -284,8 +285,9 @@ export default function IndividualUs() {
                     <Tooltip style={{backgroundColor:"black",color:"white"}} title={
        <>
             <Typography color="inherit">Basic details - individual</Typography>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-          
+            <a onClick={()=>setToolInfo("basic")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center" > View More...</Typography>
+           </a>
            </>
         }>
                     <Info
@@ -315,7 +317,7 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
-              <div>
+             {toolInfo==="basic" ? ( <div>
                 <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
                   <Typography>
                   Basic details - are you a U.S. Individual?
@@ -326,10 +328,10 @@ export default function IndividualUs() {
                   <Typography>An individual who was born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, or who retains U.S. Green Card entitlement, or who has a parent who is a U.S. citizen.</Typography>
                 <Typography style={{marginTop:"10px"}}>Select 'No' for: An individual who was not born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, who does not retain U.S. Green Card entitlement, and whose parents are not considered U.S. persons</Typography>
                 <Typography style={{marginTop:"10px"}}>Ref: EH165</Typography>
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}}>--Show Less--</Link>
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
                 </Paper>
 
-              </div>
+              </div>):""}
 
               <Collapse
                 className="px-5"
@@ -674,6 +676,16 @@ export default function IndividualUs() {
                     }}
                   >
                     Tax Identification Numbers
+
+                     <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Taxpayer information</Typography>
+            <a onClick={()=>setToolInfo("tin")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
                     <Info
                       style={{
                         color: '#ffc107',
@@ -683,6 +695,7 @@ export default function IndividualUs() {
                       }}
                       onClick={clickInfo}
                     />
+                    </Tooltip>
                   </div>
                 }
                 action={
@@ -700,7 +713,52 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
+ {toolInfo==="tin"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  Please note that some jurisdictions do not provide FTINs and this will be indicated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>Note: the Foreign TIN box restricts formatting per the Foreign Country selected, based on OECD guidance. By ticking “TIN Format not available”, this disables the formatting so that any format may be input. 
+An individual’s US TIN type is generally a Social Security Number (SSN) or an Individual Tax Identification Number (ITIN).?</Typography>
+                <Typography style={{marginTop:"10px"}}>An entity’s US TIN may be an employer identification number (EIN): including a withholding foreign partnership/trust EIN (WP/T-EIN) or a qualified intermediary EIN (QI-EIN). </Typography>
+                <Typography style={{marginTop:"10px"}}>
+A TIN must be furnished on US tax returns when filed or when claiming treaty benefits. A US or Foreign TIN must generally be provided on a withholding certificate (i.e. W-8) if the beneficial owner is receiving effectively connected income (ECI), claiming tax treaty benefits (other than for income from marketable, actively traded, securities), claiming an exemption for ECI or claiming an exemption for certain annuities.</Typography>
+           <Typography style={{marginTop:"10px"}}>
+           If you are required to have a US TIN but do not have one you may apply for an EIN on Form SS-4, Application for Employer Identification Number, a SSN on Form SS-5, Application for a Social Security Card or an ITIN on Form W-7, IRS Application for Individual Taxpayer Identification Number. 
+            </Typography>   
+            <Typography style={{marginTop:"10px"}}>
+            IRS Form Guidance: 
+              </Typography>  
+              <Typography style={{marginTop:"10px"}}>
+              See Regulations section 1.1441-1(e)(4) (vii) for when you are required to provide a U.S. TIN on a Form W-8 associated with a payment subject to chapter 3 withholding. A partner in a partnership conducting a trade or business in the United States will likely be allocated effectively connected taxable income. The partner is required to file a U.S. federal income tax return and must have a U.S. taxpayer identification number (TIN). You must provide a U.S. TIN if you are: 
+                </Typography>
+                <Typography style={{marginTop:"10px"}}>- Claiming an exemption from withholding under section 871(f) for certain annuities received under qualified plans, or </Typography>
+<Typography style={{marginTop:"10px"}}>- Claiming benefits under an income tax treaty and have not provided a foreign TIN on line 9b. </Typography>
+  <Typography style={{marginTop:"10px"}}>
+  However, a TIN is not required to be shown in order to claim treaty benefits on the following items of income: 
+    </Typography> 
+    <Typography style={{marginTop:"10px"}}>
+    However, a TIN is not required to be shown in order to claim treaty benefits on the following items of income: 
+      </Typography>  
+      <Typography style={{marginTop:"10px"}}>- Dividends and interest from stocks and debt obligations that are actively traded; 
+        </Typography>  
+        <Typography style={{marginTop:"10px"}}>
+        - investment company registered under the Investment Company Act of 1940 (mutual fund); 
+          </Typography>   
+          <Typography style={{marginTop:"10px"}}>
+          - Dividends, interest, or royalties from units of beneficial interest in a unit investment trust that are (or were upon issuance) publicly offered and are registered with the SEC under the Securities Act of 1933; 
+            </Typography>  
+            <Typography style={{marginTop:"10px"}}>
+            - and Income related to loans of any of the above securities.
+              </Typography>    
+                
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
 
+              </div>):""}
 
               
               <Collapse
@@ -864,6 +922,15 @@ export default function IndividualUs() {
                     }}
                   >
                     Permanent Residence Address
+                    <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Address Details</Typography>
+            <a onClick={()=>setToolInfo("Address")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
                     <Info
                       style={{
                         color: '#ffc107',
@@ -873,6 +940,8 @@ export default function IndividualUs() {
                       }}
                       onClick={clickInfo}
                     />
+                    </Tooltip>
+                  
                   </div>
                 }
                 action={
@@ -890,6 +959,24 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
+
+{toolInfo==="Address"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  Please note that some jurisdictions do not provide FTINs and this will be indicated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>IRS Guidance:</Typography>
+                <Typography style={{marginTop:"10px"}}>Non-US Person, W-8 submissions, should not use a Post Office (PO Box), a Care-of-address, or mailing address of a financial organization as these may not be considered valid. If you do, the agent receiving the form may require additional information from you to help validate your residency status. Ref: EH005</Typography>
+                
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}
               <Collapse
                 className="px-5 "
                 in={open === 'pra'}
@@ -1508,6 +1595,15 @@ export default function IndividualUs() {
                     }}
                   >
                     Contact Details
+                    <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Contact Details</Typography>
+            <a onClick={()=>setToolInfo("Contact")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
                     <Info
                       style={{
                         color: '#ffc107',
@@ -1517,6 +1613,7 @@ export default function IndividualUs() {
                       }}
                       onClick={clickInfo}
                     />
+                    </Tooltip>
                   </div>
                 }
                 action={
@@ -1534,6 +1631,36 @@ export default function IndividualUs() {
                   </IconButton>
                 }
               ></CardHeader>
+{toolInfo==="Contact"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  ated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>If you have not received the email within a few minutes, it probably means your local email service has detected an automated email and captured the email in a local spam or quarantine folder. Please see 'more' below for further information or contact:</Typography>
+                <Typography style={{marginTop:"10px"}}>If you do not receive the email containing your confirmation code:</Typography>
+                <Typography style={{marginTop:"10px"}}> 
+The email is dispatched to the email address given as soon as you confirm the details entered into this screen and move across to the next part of the submission process. Delivery should take place within a few minutes, although on occasion it may take a little longer because of issues outside of our control.
+
+                </Typography>
+                <Typography style={{marginTop:"10px"}}>
+                The following factors may impact delivery of the email: internet traffic, your internal email service delay, the way your internal email service is configured to accept automatically generated emails, or possibly the security settings of your browser.
+                  </Typography>
+
+                  <Typography style={{marginTop:"10px"}}>
+                  Please also check your spam or junk email folder.
+
+                  </Typography >
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}
+
+
 
               <Collapse
                 className="px-5"
