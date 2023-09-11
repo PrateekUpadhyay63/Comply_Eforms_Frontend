@@ -7,6 +7,7 @@ import Utils from '../Utils';
 // const ForgotPasswordWrapper = React.lazy(() => import('../Pages/Auth/forgotPassword'));
 // const ResetPasswordWrapper = React.lazy(() => import('../Pages/Auth/resetPassword'));
 // const DashboardWrapper = React.lazy(() => import('../Pages/dashboard'));
+const login = React.lazy(() => import('../Components/login'));
 const W9 = React.lazy(() => import('../Components/w9'));
 const IndividualUs = React.lazy(() => import('../Components/individualUS'));
 const EntityUs = React.lazy(() => import('../Components/entity'));
@@ -187,9 +188,16 @@ const Complete = React.lazy(() => import('../Components/complete'));
 // const PageNotFoundWrapper = React.lazy(() => import('../Components/PageNotFound'));
 const ROUTES: Array<RouteType> = [
   {
+    name: 'Login',
+    path: "login",
+    id: 0,
+    Component: login,
+    isPrivate: true,
+  },
+  {
     name: 'IndividualUs',
     path: "/",
-    id: 0,
+    id: 10,
     Component: IndividualUs,
     isPrivate: true,
   },

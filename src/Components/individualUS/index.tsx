@@ -35,7 +35,7 @@ import { apiGetUrl, apiPostUrl } from '../../api/apiUtils';
 
 export default function IndividualUs() {
   //States
-  const history = useNavigate()
+ 
   const [open, setOpen] = useState('');
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   const [bankLocation, setBankLocation] = useState('');
@@ -151,6 +151,7 @@ export default function IndividualUs() {
         });
     }
   }, [payload.permanentResidentialCountryId]);
+  const history = useNavigate();
 
   const handleOpen = (val:any) => {
     if (open === val) {

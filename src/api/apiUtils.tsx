@@ -60,7 +60,7 @@ export const apiDeleteUrl = (key: keyof typeof apiKeys, dynamicUrl: string, args
 };
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
-  const token = localStorage.getItem('accessToken')
+  const token = localStorage.getItem('')
   if (token) {
     config.headers['Authorization'] = `Bearer ${token}`
   }
