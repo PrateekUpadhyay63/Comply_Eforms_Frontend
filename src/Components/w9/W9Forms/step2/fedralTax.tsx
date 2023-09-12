@@ -65,7 +65,7 @@ export default function Fedral_tax(props: any) {
   };
   return (
     <>
-      <Paper className="col-md-9 col-8">
+      <Paper className="col-12">
         <Formik
           initialValues={initialValue}
           enableReinitialize
@@ -97,7 +97,7 @@ export default function Fedral_tax(props: any) {
 
           }) => (
             <Form onSubmit={handleSubmit}>
-              <div>
+              <div style={{width:"100%"}}>
                 <div>
                   <Typography align="left" style={{ margin: "10px" }}>
                     <div

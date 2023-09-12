@@ -26,7 +26,7 @@ export default function Step4(props: any) {
 
 
                 />
-            ) : ("")}
+) : ("")}
 
             {selectedContinue.step7 ? (
                 <Certification
