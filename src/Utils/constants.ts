@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from '.';
 
-const API_URL = 'https://sliceqaapi.appskeeper.in/main/slice/api/v1/admin';
+const API_URL = 'http://122.176.101.76:8088/api/';
 
 export const apiErrorCode = {
   unauthorized: 401,
@@ -18,7 +18,7 @@ const apiSuccessCode = {
 };
 
 export const $axios = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: API_URL,
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -48,7 +48,8 @@ $axios.interceptors.request.use(
 );
 const constants = {
   apiErrorCode,
-  API_URL: process.env.REACT_APP_API_URL,
+  // API_URL: process.env.REACT_APP_API_URL,
+  API_URL:"http://122.176.101.76:8088/api/",
   apiSuccessCode,
   axios: $axios,
 };

@@ -3,6 +3,7 @@ import EndPoint from './endpoints';
 import constants from './constants';
 import showAlert from './alert';
 import PathName from './pathname';
+import actionName from "./actionName"
 import moment from 'moment';
 
 const Utils = {
@@ -11,6 +12,7 @@ const Utils = {
   constants,
   showAlert,
   PathName,
+  actionName
 };
 
 export default Utils;

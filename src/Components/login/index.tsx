@@ -1,27 +1,26 @@
 import React, { Fragment, Component, useState, useEffect } from "react";
 
 // import Slider from "react-slick";
-// import {Button} from "@mui/material";
 import bg1 from "../../Utils/originals/city.jpg";
 import bg2 from "../../Utils/originals/citydark.jpg";
 import bg3 from "../../Utils/originals/citynights.jpg";
 import {Visibility,VisibilityOff} from '@mui/icons-material';
-
+import { useDispatch } from "react-redux";
+import { loginAction } from "../../Redux/Actions";
 
 import {
   Button,
   FormGroup,
   Input,
 } from "@mui/material";
-// import { Link, useHistory } from "react-router-dom";
 import "./index.scss";
-import { useDispatch } from "react-redux";
-// import { loginAction } from "../../../redux/Actions";
+import { useNavigate } from "react-router-dom"
+import { AppDispatch } from "../../Redux/store";
 
 const Login = () => {
-//   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useDispatch();
+  const history = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [isError, setError] = useState({ email: false, password: false });
   const [data, setData] = useState({
     email: "",
@@ -43,32 +42,34 @@ const Login = () => {
   useEffect(() => {
     localStorage.clear();
   }, []);
+  const redirectFunc=()=>{
+    history("/IndividualUs");
+    // window.location.reload();
+  }
   const handleChange = (e:any) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e:any) => {
     e.preventDefault();
-//     if(data.email.trim()!=="" && data.password.trim()!=="")
-//    { dispatch(
-//       loginAction(data, () => {
-//         history.push("/Agent");
-//         window.location.reload();
-//       })
-//     );}
-//     else{
-//       if(data.email.trim()===""){
-//         setError({ ...isError, email: true });
-//       }else
-//      { setError({ ...isError, password: true });}
-//     }
+    if(data.email.trim()!=="" && data.password.trim()!=="")
+   { 
+    dispatch(loginAction(data,redirectFunc))
+    redirectFunc();
+  }
+    else{
+      if(data.email.trim()===""){
+        setError({ ...isError, email: true });
+      }else
+     { setError({ ...isError, password: true });}
+    }
   };
   return (
     <Fragment>
       <div className="h-99">
         <div className="h-100 g-0 row">
-          {/* <Col lg="4" className="d-none d-lg-block">
+          <div className="d-none d-lg-block col-4">
             <div className="slider-light">
-              <Slider {...settings}>
+              {/* <Slider {...settings}>
                 <div className="h-100 d-flex justify-content-center align-items-center bg-plum-plate">
                   <div
                     className="slide-img-bg"
@@ -87,7 +88,7 @@ const Login = () => {
                 </div>
                 <div className="h-100 d-flex justify-content-center align-items-center bg-premium-dark">
                   <div
-                    className="slide-img-bg"
+                    className="slide-img-`        bg"
                     style={{
                       backgroundImage: "url(" + bg3 + ")",
                     }}
@@ -116,11 +117,11 @@ const Login = () => {
                     </p>
                   </div>
                 </div>
-              </Slider>
+              </Slider> */}
             </div>
-          </Col> */}
+          </div>
           <div
-            className=" col-md-12 col-lg-12 col h-100 d-flex bg-white justify-content-center align-items-center"
+            className=" col-md-8 col-lg-8 col h-100 d-flex bg-white justify-content-center align-items-center"
           >
             <div className="mx-auto app-login-box col-md-10 col-lg-9 col-sm-12 col">
               <div className="app-logo" />
@@ -175,7 +176,7 @@ const Login = () => {
                         />
                         <div
                           className="position-absolute d-flex end-0 mr-5 h-10"
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer" ,top:"1.7rem"}}
                         >
                           {showPassword ? (
                             <Visibility
@@ -196,15 +197,6 @@ const Login = () => {
 
                   <div className="d-flex align-items-center">
                     <div className="ms-auto">
-                      {/* <Link
-                        to="/forget"
-                        className="btn-lg btn btn-link"
-                        // onClick={() => {
-                        //   history.push("/forget");
-                        // }}
-                      >
-                        Forget Password
-                      </Link>{" "} */}
                       <Button type="submit" color="primary" size="small">
                         Login
                       </Button>
