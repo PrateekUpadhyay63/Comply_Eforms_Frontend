@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   FormControl,
   Typography,
@@ -8,6 +8,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Tooltip,
+  Link,
   TextField,
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
@@ -22,22 +24,55 @@ export default function Tin(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+
+  const [toolInfo, setToolInfo] = useState("");
   return( <Paper className="col-md-9 col-8">
   <Typography
     align="left"
     style={{ margin: "10px", fontSize: "20px" }}
   >
     Taxpayer Identification Number{" "}
-    <span style={{ color: "red" }}>*</span>
-    <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
+   
   </Typography>
 
   <div style={{ margin: "10px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
     <div className="col-md-6 col-12">
       <Typography>
         U.S. TIN Type<span style={{ color: "red" }}>*</span>
-        <Info style={{ color: "#ffc107", fontSize: "13px",verticalAlign:"super" }}/>
+        <span><Tooltip style={{ backgroundColor: "black", color: "white" }} title={
+                            <>
+                              <Typography color="inherit">U.S. TIN Type Info</Typography>
+                              <a onClick={() => setToolInfo("basic")}>
+                                <Typography style={{ cursor: "pointer", textDecorationLine: "underline" }} align="center" > View More...</Typography>
+                              </a>
+                            </>
+                          }>
+                            <Info
+                              style={{
+                                color: '#ffc107',
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                                verticalAlign: "super"
+                              }}
+
+                            />
+                          </Tooltip></span>
       </Typography>
+      {toolInfo === "basic" ? (<div>
+                          <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
+                            <Typography>
+                            Please select a U.S. TIN type status from the dropdown.
+                            </Typography>
+                           
+                            <Typography style={{ marginTop: "10px" }}>
+                            If a TIN type is not available, ensure you select the checkbox to the right of the field and provide an explanation as to why it is not available in the corresponding boxes at the bottom of the screen.
+                            </Typography>
+
+
+                            <Link href="#" underline="none" style={{ marginTop: "10px", fontSize: "16px" }} onClick={() => { setToolInfo("") }}>--Show Less--</Link>
+                          </Paper>
+
+                        </div>) : ""}
       <select
         style={{
           padding: " 0 10px",
@@ -81,6 +116,9 @@ export default function Tin(props: any) {
   >
     <Button variant="contained" style={{ color: "white" }}>
       SAVE & EXIT
+    </Button>
+    <Button variant="contained" style={{ color: "white",marginLeft:"15px" }}>
+     View Form
     </Button>
     <Button
       onClick={() => {
