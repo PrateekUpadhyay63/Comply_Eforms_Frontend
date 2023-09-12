@@ -33,7 +33,8 @@ export default function Entity() {
   const history = useNavigate();
 //   //States
   const [open, setOpen] = useState('');
- 
+  const [is_US, setUS] = useState(false);
+  const [is_USACH, setUSACH] = useState('');
   const [incomeArr, setIncomeArr] = useState(['intrest']);
   // const [accInfoSection, setAccInfoSection] = useState(false);
   // const [accInfoType, setAccInfoType] = useState('');
@@ -81,11 +82,11 @@ export default function Entity() {
     contactFirstName: '',
     contactLastName: '',
     contactEmail: '',
-    primaryContactNumberId: 1,
+    primaryContactNumberId: 0,
     primaryContactNumber: '',
-    alternativeNumberId: 1,
+    alternativeNumberId: 0,
     alternativeNumber: '',
-    alternativeNumberId1: 1,
+    alternativeNumberId1: 0,
     alternativeNumber1: '',
     incomeTypeId: 1,
     paymentTypeId: 1,
@@ -99,7 +100,7 @@ export default function Entity() {
     bankCode: '',
     doingBusinessAsName: '',
     makePayable: '',
-    payResidentalCountryId: 1,
+    payResidentalCountryId: 0,
     payStreetNumberAndName: '',
     payAptSuite: '',
     payCityorTown: '',
@@ -191,25 +192,25 @@ export default function Entity() {
     console.log(payload, 'payload2');
   };
 
-  // const returnFieldName = () => {
-  //   if (is_USACH === 'US') {
-  //     return 'ABA / Routing';
-  //   } else if (is_USACH === 'UK') {
-  //     return 'Sort Code';
-  //   } else {
-  //     return 'Bank Code';
-  //   }
-  // };
-
   const returnFieldName = () => {
-    if (payload.paymentTypeId === 1) {
+    if (is_USACH === 'US') {
       return 'ABA / Routing';
-    } else if (payload.paymentTypeId === 2) {
+    } else if (is_USACH === 'UK') {
       return 'Sort Code';
     } else {
       return 'Bank Code';
     }
   };
+
+  // const returnFieldName = () => {
+  //   if (payload.paymentTypeId === 1) {
+  //     return 'ABA / Routing';
+  //   } else if (payload.paymentTypeId === 2) {
+  //     return 'Sort Code';
+  //   } else {
+  //     return 'Bank Code';
+  //   }
+  // };
 
   const clickInfo = () => {
     alert(
@@ -618,6 +619,7 @@ export default function Entity() {
                           value={payload.foreignTINCountryId}
                         >
                      <option value={0}>-Select-</option>
+                     <option value={1}>-Select2-</option>
                           {countries.map(({ id, name }) => (
                             <option value={id}>{name}</option>
                           ))}
@@ -1397,7 +1399,7 @@ export default function Entity() {
                           </Typography>
 
                           <FormControl className="w-100">
-                            <Select
+                            <select
                               style={{
                                 padding: ' 0 10px',
                                 color: '#7e7e7e',
@@ -1424,7 +1426,7 @@ export default function Entity() {
                                {usStates.map(({ name }) => (
                                 <MenuItem value={name}>{name}</MenuItem>
                               ))}
-                            </Select>
+                            </select>
                           </FormControl>
                         </div>
                       ) : (
@@ -1687,14 +1689,15 @@ export default function Entity() {
                         }
                         value={payload.primaryContactNumberId}
                       >
-                        <option value="">-Select-</option>
+                        <option value={0}>-Select-</option>
+                        {/* <option value={1}>--Select1--</option> */}
                         {countriesCode.map(({ id, name }) => (
                           <option value={id}>{name}</option>
                         ))}
                         <option></option>
                       </select>
                       <Input
-                        
+                        disabled = {payload.primaryContactNumberId == 0}
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1741,14 +1744,15 @@ export default function Entity() {
                         }
                         value={payload.alternativeNumberId}
                       >
-                        <option value="">-Select-</option>
+                        <option value={0}>-Select-</option>
+                        {/* <option value={1}>--Select1--</option> */}
                         {countriesCode.map(({ id, name }) => (
                           <option value={id}>{name}</option>
                         ))}
                         <option></option>
                       </select>
                       <Input
-                        
+                        disabled = {payload.alternativeNumberId == 0}
                         style={{
                           border: ' 1px solid #d9d9d9 ',
                           height: ' 36px',
@@ -1800,7 +1804,8 @@ export default function Entity() {
                               }
                               value={payload.alternativeNumberId1}
                             >
-                              <option value="">--Select--</option>
+                              <option value={0}>--Select--</option>
+                              {/* <option value={1}>--Select1--</option> */}
                               {countriesCode.map(({ id, name }) => (
                                 <option value={id}>{name}</option>
                               ))}
@@ -1817,7 +1822,7 @@ export default function Entity() {
                             />
                           </span>
                           <Input
-                            
+                            disabled = {payload.alternativeNumberId1 == 0}
                             style={{
                               border: ' 1px solid #d9d9d9 ',
                               height: ' 36px',
@@ -2159,131 +2164,6 @@ export default function Entity() {
                     {/* ACH */}
                     {payload.paymentTypeId === 1 ? (
                       <>
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account holder name
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="Account_holder_name"
-                            id="outlined"
-                            placeholder="Enter Account holder name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Bank name<span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="bank_name"
-                            id="outlined"
-                            placeholder="Enter Bank name"
-                          />
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Residential Country:
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Select
-                            style={{
-                              padding: ' 0 10px',
-                              color: '#7e7e7e',
-                              fontStyle: 'italic',
-                              height: '36px',
-                            }}
-                            labelId="demo-simple-select-standard-label"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="" onClick={() => setUSACH('')}>
-                              <em>--Select--</em>
-                            </MenuItem>
-                            <MenuItem value={1} onClick={() => setUSACH('UK')}>
-                              UK
-                            </MenuItem>
-                            <MenuItem value={2} onClick={() => setUSACH('US')}>
-                              US
-                            </MenuItem>
-                            <MenuItem value={3} onClick={() => setUSACH('')}>
-                              Others
-                            </MenuItem>
-                          </Select>
-                        
-                        </FormControl> */}
-
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            Account Number
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="account_number"
-                            id="outlined"
-                            placeholder="Enter Account Number"
-                          />
-                        </FormControl> */}
-                        {/* <FormControl className="mx-1">
-                          <Typography>
-                            {returnFieldName()}
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
-                          <Input
-                            required
-                            style={{
-                              border: ' 1px solid #d9d9d9 ',
-                              height: ' 36px',
-                              lineHeight: '36px ',
-                              background: '#fff ',
-                              fontSize: '13px',
-                              color: ' #000 ',
-                              fontStyle: 'normal',
-                              borderRadius: '1px',
-                              padding: ' 0 10px ',
-                            }}
-                            name="bankCode"
-                            id="outlined"
-                            placeholder={returnFieldName()}
-                          />
-                        </FormControl> */}
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
@@ -2534,7 +2414,8 @@ export default function Entity() {
                                 onBlur={handleBlur}
                                 value={payload.payResidentalCountryId}
                               >
-                              <option value="">-Select-</option>
+                              <option value={0}>-Select-</option>
+                              <option value={1}>-Select1-</option>
                                   {countries.map(({ id, name }) => (
                               <option value={id}>{name}</option>
                                   ))}
@@ -2682,6 +2563,48 @@ export default function Entity() {
                               <p style={{color: "red",textAlign:"left"}}>{errors.payCityorTown}</p>
                             </FormControl>
                           </div>
+                          {payload.payResidentalCountryId == 258 ? (
+                            <div className="col-lg-3 col-6 col-md-3 mt-2">
+                            <FormControl className="w-100">
+                              <Typography align="left">
+                                State OR Provience
+                                <span style={{ color: 'red' }}>*</span>
+                              </Typography>
+                              <select
+                              // disabled ={payload.payResidentalCountryId == 0}
+                                style={{
+                                  border: ' 1px solid #d9d9d9 ',
+                                  height: ' 36px',
+                                  lineHeight: '36px ',
+                                  background: '#fff ',
+                                  fontSize: '13px',
+                                  color: ' #000 ',
+                                  fontStyle: 'normal',
+                                  borderRadius: '1px',
+                                  padding: ' 0 10px ',
+                                }}
+                                id="outlined"
+                                name="payStateOrProvince"
+                                placeholder="Enter State OR Provience"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    payStateOrProvince: e.target.value,
+                                  })
+                                }
+                                onBlur={handleBlur}
+                                value={payload.payStateOrProvince}
+                              >
+                                <MenuItem value="0">
+                                <em>--Select--</em>
+                              </MenuItem>
+                               {usStates.map(({ name }) => (
+                                <MenuItem value={name}>{name}</MenuItem>
+                              ))}
+                              </select>
+                            </FormControl>
+                          </div>
+                          ) : (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
                               <Typography align="left">
@@ -2689,7 +2612,7 @@ export default function Entity() {
                                 <span style={{ color: 'red' }}>*</span>
                               </Typography>
                               <Input
-                                required
+                              disabled ={payload.payResidentalCountryId == 0}
                                 style={{
                                   border: ' 1px solid #d9d9d9 ',
                                   height: ' 36px',
@@ -2717,6 +2640,7 @@ export default function Entity() {
                                <p style={{color: "red",textAlign:"left"}}>{errors.payStateOrProvince}</p>
                             </FormControl>
                           </div>
+                          )}
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
                               <Typography align="left">
