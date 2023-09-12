@@ -97,7 +97,7 @@ export default function Fedral_tax(props: any) {
 
           }) => (
             <Form onSubmit={handleSubmit}>
-              <div>
+              <div style={{width:"100%"}}>
                 <div>
                   <Typography align="left" style={{ margin: "10px" }}>
                     <div

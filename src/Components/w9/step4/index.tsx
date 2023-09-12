@@ -17,7 +17,7 @@ export default function Step4(props: any) {
     return (
         <>
             {selectedContinue.step6 ? (
-                <Penalties
+                <Certification
                 handleTaxClassificationChange={handleTaxClassificationChange}
                 selectedTaxClassification={selectedTaxClassification}
                 data={data}
@@ -26,10 +26,10 @@ export default function Step4(props: any) {
 
 
                 />
-            ) : ("")}
+) : ("")}
 
             {selectedContinue.step7 ? (
-                <Certification
+                <Penalties
                 handleTaxClassificationChange={handleTaxClassificationChange}
                 selectedTaxClassification={selectedTaxClassification}
                 data={data}

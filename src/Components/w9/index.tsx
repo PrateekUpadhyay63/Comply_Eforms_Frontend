@@ -11,6 +11,8 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import Formw9 from "../reusables/W9";
 import Backup from "../reusables/Backup";
 import Sidebar from "./W9Forms/sideMenu";
+import Tab from "./W9Forms/tabMenu";
+
 
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
@@ -187,7 +189,8 @@ export default function App() {
         }}
       >
         <div style={{ display: "flex" }} className="row">
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <Tab/>
         
         <Step2
         selectedContinue={selectedContinue}
@@ -213,7 +216,8 @@ export default function App() {
           ) : (
             ""
           )}
-        {selectedContinue.step6 ?(<Step3
+        {selectedContinue.step6 ?(
+        <Step3
            selectedContinue={selectedContinue}
            handleTaxClassificationChange={handleTaxClassificationChange}
            selectedTaxClassification={selectedTaxClassification}
@@ -224,7 +228,8 @@ export default function App() {
            handleReportChange={handleReportChange}
            initialValue={initialValue}
 
-          />):""}
+          />
+          ):""} 
           
         </div>
 
