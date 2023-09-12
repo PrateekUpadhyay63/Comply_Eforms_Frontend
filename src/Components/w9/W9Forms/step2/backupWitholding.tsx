@@ -34,7 +34,7 @@ export default function Backup_witholding(props: any) {
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
-   <Paper className="col-md-9 col-8">
+   <Paper className="col-12">
 
     <Formik
                 initialValues={initialValue}
