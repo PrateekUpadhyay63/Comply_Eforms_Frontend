@@ -345,9 +345,9 @@ export default function Entity() {
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
     >
-      <div style={{ fontSize: "32px", fontWeight: "500", color: "white" }}>
+     <Typography align="center"  style={{ fontSize: '32px', fontWeight: '500', color: 'white',marginBottom:"20px",marginTop:"10px" }}>
         Account Holder Details
-      </div>
+      </Typography >
 
       <div className="container-fluid">
         <div className="row"></div>
@@ -455,14 +455,25 @@ export default function Entity() {
                   {toolInfo==="basic" ? ( <div>
                 <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
                   <Typography>
-                  Basic details - are you a U.S. Individual?
+                  Are you a U.S. Business?
                   </Typography>
                   <Typography style={{marginTop:"10px"}}>
-                  Select 'Yes' for:
+                  Select 'Yes' if: You are submitting a form on behalf of a U.S. Business/Entity.
                   </Typography>
-                  <Typography>An individual who was born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, or who retains U.S. Green Card entitlement, or who has a parent who is a U.S. citizen.</Typography>
-                <Typography style={{marginTop:"10px"}}>Select 'No' for: An individual who was not born in the U.S., Puerto Rico, Guam, or the U.S. Virgin Islands, who does not retain U.S. Green Card entitlement, and whose parents are not considered U.S. persons</Typography>
-                <Typography style={{marginTop:"10px"}}>Ref: EH165</Typography>
+                  <Typography>Select 'No' if: You are submitting a form on behalf of a Business/Entity that is not a U.S. Business/Entity. 
+ </Typography>
+                <Typography style={{marginTop:"10px"}}>IRS Form Guidance</Typography>
+                <Typography style={{marginTop:"10px"}}>
+                A U.S. entity is an entity created or organized in the U.S. or under the law of any state in the United States.
+                </Typography>
+                <Typography style={{marginTop:"10px"}}>
+                The term 'Non-U.S. Entity' generally means any business or organization including corporations, partnerships, public or private limited companies, trusts etc, not created or organized in the United States or under the law of any state in the U.S. or its territories.
+                </Typography>
+                <Typography>
+                For additional clarification, follow the following link: <Link >https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes
+                  </Link> 
+                </Typography>
+                <Typography style={{marginTop:"10px"}}>Ref: H002 </Typography>
                 <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
                 </Paper>
 
@@ -480,7 +491,7 @@ export default function Entity() {
                             align="left"
                             style={{ marginTop: "20px" }}
                           >
-                            Are you a U.S Individual?
+                            Are you a U.S Entity?
                             <span style={{ color: "red" }}>*</span>
                             <Info
                               style={{
@@ -488,7 +499,7 @@ export default function Entity() {
                                 fontSize: "15px",
                                 marginBottom: "12px",
                               }}
-                              onClick={clickInfo}
+                              // onClick={clickInfo}
                             />
                           </Typography>
 
@@ -525,7 +536,7 @@ export default function Entity() {
                             <span style={{ color: "red" }}>*</span>
                             <Info
                               style={{ color: "#ffc107", fontSize: "15px" }}
-                              onClick={clickInfo}
+                              // onClick={clickInfo}
                             />
                           </Typography>
                           <Input
@@ -944,7 +955,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                                     fontSize: "15px",
                                     marginBottom: "12px",
                                   }}
-                                  onClick={clickInfo}
+                                  // onClick={clickInfo}
                                 />
                               </Typography>
                               <Input
@@ -1366,15 +1377,46 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                             Is there an alternative mailing or business address
                             in the US?
                             <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
+                           <span>
+                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Address Details</Typography>
+            <a onClick={()=>setToolInfo("mail")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
+                        <Info
+                          style={{
+                            color: "#ffc107",
+                            fontSize: "15px",
+                            marginLeft: "5px",
+                            cursor: "pointer",
+                          }}
+                          // onClick={clickInfo}
+                        />
+                        </Tooltip>
+                           </span>
+                              
+                          
                           </Typography>
+                          {toolInfo==="mail"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Please check this box if you have an alternative mailing address away from the permanent residential address entered here.
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  You will be asked to enter the alternative address later in the process and in some circumstances you may need to provide additional information.
+
+                  </Typography>
+                 
+                
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}
 
                           <div className="d-flex">
                             <Typography className="my-auto">Yes</Typography>
@@ -1415,15 +1457,46 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                           >
                             Is this address a Post Office Box?
                             <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
+                            <span>
+                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">PO Box Address</Typography>
+            <a onClick={()=>setToolInfo("post")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
+                        <Info
+                          style={{
+                            color: "#ffc107",
+                            fontSize: "15px",
+                            marginLeft: "5px",
+                            cursor: "pointer",
+                          }}
+                          // onClick={clickInfo}
+                        />
+                        </Tooltip>
+                           </span>
                           </Typography>
+                          {toolInfo==="post"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  A Post Office Box is a mail box located at a post office (versus at a permanent residence).
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
+                  </Typography>
+                 
+                  <Typography style={{marginTop:"10px"}}>
+                    If you reside in a country that does not use street addresses, you may enter a descriptive address.
+                  </Typography>
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}    
+                  
 
                           <div className="d-flex ">
                             <RadioGroup
@@ -1461,15 +1534,45 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                             <Typography style={{ marginTop: "20px" }}>
                               Is this an In Care Of address?
                               <span style={{ color: "red" }}>*</span>
-                              <Info
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  marginBottom: "12px",
-                                }}
-                                onClick={clickInfo}
-                              />
+                              <span>
+                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">In Care of Address</Typography>
+            <a onClick={()=>setToolInfo("care")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
+                        <Info
+                          style={{
+                            color: "#ffc107",
+                            fontSize: "15px",
+                            marginLeft: "5px",
+                            cursor: "pointer",
+                          }}
+                          // onClick={clickInfo}
+                        />
+                        </Tooltip>
+                           </span>
                             </Typography>
+                            {toolInfo==="care"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  An In Care Of Address denotes that something is to be delivered to an address where the recipient does not normally receive mail.
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
+                  </Typography>
+                 
+                  <Typography style={{marginTop:"10px"}}>
+                  If you reside in a country that does not use street addresses, you may enter a descriptive address.
+                  </Typography>
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}
 
                             <div className="d-flex">
                               <RadioGroup
@@ -1510,15 +1613,46 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                               Is there an alternative mailing or business
                               address in the US?
                               <span style={{ color: "red" }}>*</span>
-                              <Info
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  marginBottom: "12px",
-                                }}
-                                onClick={clickInfo}
-                              />
+                              <span>
+                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
+       <>
+            <Typography color="inherit">Alternate Mailing Address</Typography>
+            <a onClick={()=>setToolInfo("mail")}>
+           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
+           </a>
+           
+           </>
+        }>
+                        <Info
+                          style={{
+                            color: "#ffc107",
+                            fontSize: "15px",
+                            marginLeft: "5px",
+                            cursor: "pointer",
+                          }}
+                          // onClick={clickInfo}
+                        />
+                        </Tooltip>
+                           </span>
+
                             </Typography>
+                            {toolInfo==="mail"?(<div>
+                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                  <Typography>
+                  Please check this box if you have an alternative mailing address away from the permanent residential address entered here.
+
+                  </Typography>
+                  <Typography style={{marginTop:"10px"}}>
+                  You will be asked to enter the alternative address later in the process and in some circumstances you may need to provide additional information.
+
+                  </Typography>
+                 
+                
+                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
+                </Paper>
+
+              </div>):""}
+
 
                             <div className="d-flex">
                               <Typography className="my-auto">Yes</Typography>
@@ -1555,7 +1689,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                       )}
                     </div>
 
-                    {/* IF Alternate mailing address */}
+                   
 
                     {payload.isalternativebusinessaddress ? (
                       <>
@@ -2309,29 +2443,12 @@ The email is dispatched to the email address given as soon as you confirm the de
                     }
                   ></CardHeader>
                   {toolInfo==="Income"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                    <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
                   <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
-
+                  Income type or code is requested as part of the tax form completion process for purposes of calculating withholding rates, where applicable, and to further determine how you should be reported on. You should select the type of code that best defines the payments that you expect to receive. Income Types, associated with Form 1099 reporting, can include things like: Interest, Dividends, Rents, Royalties, Prizes and Awards. Income Codes, associated with Form 1042-S reporting, can be found here: https://www.irs.gov/pub/irs-pdf/p515.pdf
                   </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  ated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
-
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>If you have not received the email within a few minutes, it probably means your local email service has detected an automated email and captured the email in a local spam or quarantine folder. Please see 'more' below for further information or contact:</Typography>
-                <Typography style={{marginTop:"10px"}}>If you do not receive the email containing your confirmation code:</Typography>
-                <Typography style={{marginTop:"10px"}}> 
-The email is dispatched to the email address given as soon as you confirm the details entered into this screen and move across to the next part of the submission process. Delivery should take place within a few minutes, although on occasion it may take a little longer because of issues outside of our control.
-
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>
-                The following factors may impact delivery of the email: internet traffic, your internal email service delay, the way your internal email service is configured to accept automatically generated emails, or possibly the security settings of your browser.
-                  </Typography>
-
-                  <Typography style={{marginTop:"10px"}}>
-                  Please also check your spam or junk email folder.
-
-                  </Typography >
+                 
+                
                 <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
                 </Paper>
 
@@ -2467,29 +2584,12 @@ The email is dispatched to the email address given as soon as you confirm the de
                     }
                   ></CardHeader>
                   {toolInfo==="Payment"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                    <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
                   <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
-
+                  As part of the tax form completion process, your withholding agent has requested that you provide banking details associated with your account. Here, you will be asked to select the method for which payment will be remitted, as permitted by the withholding agent. Allowable options can include: ACH, Wire or Check
                   </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  ated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
-
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>If you have not received the email within a few minutes, it probably means your local email service has detected an automated email and captured the email in a local spam or quarantine folder. Please see 'more' below for further information or contact:</Typography>
-                <Typography style={{marginTop:"10px"}}>If you do not receive the email containing your confirmation code:</Typography>
-                <Typography style={{marginTop:"10px"}}> 
-The email is dispatched to the email address given as soon as you confirm the details entered into this screen and move across to the next part of the submission process. Delivery should take place within a few minutes, although on occasion it may take a little longer because of issues outside of our control.
-
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>
-                The following factors may impact delivery of the email: internet traffic, your internal email service delay, the way your internal email service is configured to accept automatically generated emails, or possibly the security settings of your browser.
-                  </Typography>
-
-                  <Typography style={{marginTop:"10px"}}>
-                  Please also check your spam or junk email folder.
-
-                  </Typography >
+                 
+                
                 <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
                 </Paper>
 
@@ -2628,29 +2728,50 @@ The email is dispatched to the email address given as soon as you confirm the de
                         }
                       ></CardHeader>
                       {toolInfo==="Account1"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
+                        <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
                   <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
-
+                  If you have an account number, or several account numbers relating to the certificate submission please identify here.
+The account details provided will be used to:
                   </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  ated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
+                  <Typography >1. Make payments to you if you are entitled to any
+                    </Typography>
+                    <Typography>
+                    2.Ensure your form is correctly matched to your account
+                    </Typography>
+                    <Typography>
+                    3.for further validation of new and existing information
+                    </Typography>
+                    <Typography>
+                    4.In some circumstance will allow us to document multiple accounts with the same certificate
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      Please see our privacy statement for further information.
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      See more information on what to do if you have a joint account.
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      Joint Accounts
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>If you have not received the email within a few minutes, it probably means your local email service has detected an automated email and captured the email in a local spam or quarantine folder. Please see 'more' below for further information or contact:</Typography>
-                <Typography style={{marginTop:"10px"}}>If you do not receive the email containing your confirmation code:</Typography>
-                <Typography style={{marginTop:"10px"}}> 
-The email is dispatched to the email address given as soon as you confirm the details entered into this screen and move across to the next part of the submission process. Delivery should take place within a few minutes, although on occasion it may take a little longer because of issues outside of our control.
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      Please note that if you are submitting a form on behalf of an entity, which is part of a joint account and in receipt of a payment, the joint account should submit their own form.
 
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>
-                The following factors may impact delivery of the email: internet traffic, your internal email service delay, the way your internal email service is configured to accept automatically generated emails, or possibly the security settings of your browser.
-                  </Typography>
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      The form you are submitting ONLY represents the legal entity named on the form and DOES NOT represent the account or any joint account holders.
 
-                  <Typography style={{marginTop:"10px"}}>
-                  Please also check your spam or junk email folder.
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      We can contact the joint account holder by email informing them that they may need to submit a form too.
 
-                  </Typography >
+                      </Typography>
+                      <Typography style={{marginTop:"10px"}}>
+                      Ref: EH025
+
+                      </Typography>
+                 
+                
                 <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
                 </Paper>
 
