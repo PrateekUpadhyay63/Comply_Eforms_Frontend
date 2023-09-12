@@ -27,7 +27,7 @@ export default function FCTA_Reporting(props: any) {
     report,
     handleReportChange
   } = props;
-  return (   <Paper className="col-md-9 col-8">
+  return (   <Paper className="col-12">
   <div style={{ margin: "10px" }}>
     <Typography
       align="left"

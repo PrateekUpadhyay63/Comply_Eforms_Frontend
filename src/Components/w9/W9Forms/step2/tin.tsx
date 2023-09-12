@@ -26,7 +26,7 @@ export default function Tin(props: any) {
   } = props;
 
   const [toolInfo, setToolInfo] = useState("");
-  return( <Paper className="col-md-9 col-8">
+  return( <Paper className="col-12">
   <Typography
     align="left"
     style={{ margin: "10px", fontSize: "20px" }}
@@ -90,6 +90,7 @@ export default function Tin(props: any) {
     <div className="col-md-6  col-12">
       <Typography>U.S. TIN</Typography>
       <Input
+      className="input-w9-cstm"
       fullWidth
         required
         style={{
