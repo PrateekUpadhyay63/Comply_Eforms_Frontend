@@ -1162,11 +1162,50 @@ export default function IndividualUs() {
                                 }
                                 value={payload.foreignTINCountryId}
                               >
-                                <option value="">-Select-</option>
+                                <option value={0}>-Select-</option>
+                                <option value={1}>-Select1-</option>
                                 {countries.map(({ id, name }) => (
                                   <option value={id}>{name}</option>
                                 ))}
                               </select>
+                            </FormControl>
+                            
+                          </div>
+
+                          <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <FormControl className="w-100">
+                              <Typography align="left">
+                                Foreign TIN
+                                {/* <span style={{ color: 'red' }}>*</span> */}
+                              </Typography>
+                              <Input
+                              disabled={
+                                payload.foreignTINCountryId == 0 ||
+                                (payload.foreignTINCountryId != 0 &&
+                                  payload.foreignTINNotAvailable == true)
+                              }
+                                style={{
+                                  border: " 1px solid #d9d9d9 ",
+                                  height: " 36px",
+                                  lineHeight: "36px ",
+                                  background: "#fff ",
+                                  fontSize: "13px",
+                                  color: " #000 ",
+                                  fontStyle: "normal",
+                                  borderRadius: "1px",
+                                  padding: " 0 10px ",
+                                }}
+                                id="outlined"
+                                name="foreignTIN"
+                                placeholder="Enter foreign TIN"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    foreignTIN: e.target.value,
+                                  })
+                                }
+                                value={payload.foreignTIN}
+                              />
                             </FormControl>
                             <div className="d-flex">
                               <Typography
@@ -1215,38 +1254,6 @@ export default function IndividualUs() {
                                 inputProps={{ "aria-label": "Yes" }}
                               />
                             </div>
-                          </div>
-
-                          <div className="col-lg-3 col-6 col-md-3 mx-2">
-                            <FormControl className="w-100">
-                              <Typography align="left">
-                                Foreign TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
-                              </Typography>
-                              <Input
-                                style={{
-                                  border: " 1px solid #d9d9d9 ",
-                                  height: " 36px",
-                                  lineHeight: "36px ",
-                                  background: "#fff ",
-                                  fontSize: "13px",
-                                  color: " #000 ",
-                                  fontStyle: "normal",
-                                  borderRadius: "1px",
-                                  padding: " 0 10px ",
-                                }}
-                                id="outlined"
-                                name="foreignTIN"
-                                placeholder="Enter foreign TIN"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    foreignTIN: e.target.value,
-                                  })
-                                }
-                                value={payload.foreignTIN}
-                              />
-                            </FormControl>
                           </div>
                           <div className="col-12 d-flex">
                             <div className="col-lg-3 col-6 col-md-3 ">
