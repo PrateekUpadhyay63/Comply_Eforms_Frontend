@@ -33,3 +33,61 @@ export const loginAction = (value:any,callback:Function):any => {
       );
     };
   };
+
+
+  export const postOnboarding= (value:any,callback:any) => {
+    return (dispatch:any) => {
+      Utils.api.postApiCall(
+        Utils.EndPoint.individualAccountHolder,
+        value,
+        (responseData) => {
+          let { data } = responseData;     
+          dispatch({
+            type: Utils.actionName.individualAccountHolder,
+            payload: { data: data.data },
+          });
+           if (responseData) {
+            if(responseData.status==500){
+              console.log("error")
+            }else
+            {Utils.showAlert(1, responseData.message);
+            if(callback){
+              callback();
+            }
+        }
+  
+          }
+        },
+        (error) => {
+          // Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
+
+  export const getAllCountries = () => {
+    return (dispatch:any) => {
+      Utils.api.getApiCall(
+        Utils.EndPoint.GetCountries,"",
+        (resData) => {
+          const { data } = resData;
+          if (resData.status === 200) {
+            dispatch({
+              type: Utils.actionName.GetCountries,
+              payload: {
+                allCountriesData: resData.data,
+              },
+            });
+          } else {
+            // Utils.showAlert(2, data.message);
+          }
+        },
+        (error:any) => {
+          Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
+

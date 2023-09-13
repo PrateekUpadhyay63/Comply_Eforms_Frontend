@@ -4,7 +4,12 @@ const ActionName = {
     SIGNUP: "SIGNUP",
     USER:"USER",
     CREATE_W9:"CREATE_W9",
-    ONBOARDING:"ONBOARDING",
+    individualAccountHolder: "individualAccountHolder",
+    GetCountries: "GetCountries",
+    GetCountriesCode: "GetCountriesCode",
+    GetAllIncomeCodes :"GetAllIncomeCodes",
+    GetStateByCountryId:"GetStateByCountryId",
+    InsertAccountHolderDetail:"InsertAccountHolderDetail"
   };
 
   export default ActionName;
