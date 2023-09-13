@@ -44,6 +44,7 @@ export default function IndividualUs() {
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
+  const [alternateIncome, setAlternateIncome] = useState(false);
   const [countries, setCountries] = useState([]);
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
@@ -110,11 +111,12 @@ export default function IndividualUs() {
     payCityorTown: "",
     payStateOrProvince: "",
     payZipPostalCode: "",
+    sortCode: "",
     isCorrectPaymentPurposes: true,
     isConfirmed: true,
-    vatTypeId:1,
-    vat:'',
-    });
+    vatTypeId: 0,
+    vat: "",
+  });
 
   useEffect(() => {
     apiGetUrl("GetCountries", "", {})
@@ -193,15 +195,128 @@ export default function IndividualUs() {
     console.log(payload, "payload2");
   };
 
-  const returnFieldName = () => {
-    if (payload.paymentTypeId === 1) {
-      return "ABA / Routing";
-    } else if (payload.paymentTypeId === 2) {
-      return "Sort Code";
+  const returnFieldName = (handleBlur: any, touched: any, errors: any) => {
+    if (payload.accountBankBranchLocationId == 258) {
+      return (
+        <div className="col-lg-3 col-6 col-md-3 mt-2">
+          <FormControl className="w-100">
+            <Typography align="left">
+              {/* {returnFieldName()} */}
+              ABA/Routing
+              <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <Input
+              required
+              style={{
+                border: " 1px solid #d9d9d9 ",
+                height: " 36px",
+                lineHeight: "36px ",
+                background: "#fff ",
+                fontSize: "13px",
+                color: " #000 ",
+                fontStyle: "normal",
+                borderRadius: "1px",
+                padding: " 0 10px ",
+              }}
+              id="outlined"
+              name="abaRouting"
+              placeholder="Enter ABA / Routing"
+              onChange={(e: any) =>
+                setPayload({
+                  ...payload,
+                  abaRouting: e.target.value,
+                })
+              }
+              onBlur={handleBlur}
+              error={Boolean(touched.abaRouting && errors.abaRouting)}
+              value={payload.abaRouting}
+            />
+            <p style={{ color: "red", textAlign: "left" }}>
+              {errors.abaRouting}
+            </p>
+          </FormControl>
+        </div>
+      );
+    } else if (payload.accountBankBranchLocationId == 257) {
+      return (
+        <div className="col-lg-3 col-6 col-md-3 mt-2">
+          <FormControl className="w-100">
+            <Typography align="left">
+              {/* {returnFieldName()} */}
+              Sort Code
+              <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <Input
+              required
+              style={{
+                border: " 1px solid #d9d9d9 ",
+                height: " 36px",
+                lineHeight: "36px ",
+                background: "#fff ",
+                fontSize: "13px",
+                color: " #000 ",
+                fontStyle: "normal",
+                borderRadius: "1px",
+                padding: " 0 10px ",
+              }}
+              id="outlined"
+              name="sortCode"
+              placeholder="Sort Code"
+              onChange={(e: any) =>
+                setPayload({
+                  ...payload,
+                  sortCode: e.target.value,
+                })
+              }
+              onBlur={handleBlur}
+              error={Boolean(touched.sortCode && errors.sortCode)}
+              value={payload.sortCode}
+            />
+            <p style={{ color: "red", textAlign: "left" }}>{errors.sortCode}</p>
+          </FormControl>
+        </div>
+      );
     } else {
-      return "Bank Code";
+      return (
+        <div className="col-lg-3 col-6 col-md-3 mt-2">
+          <FormControl className="w-100">
+            <Typography align="left">
+              Bank Code
+              <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <Input
+              required
+              style={{
+                border: " 1px solid #d9d9d9 ",
+                height: " 36px",
+                lineHeight: "36px ",
+                background: "#fff ",
+                fontSize: "13px",
+                color: " #000 ",
+                fontStyle: "normal",
+                borderRadius: "1px",
+                padding: " 0 10px ",
+              }}
+              id="outlined"
+              name="bankCode"
+              placeholder=" Enter Bank Code"
+              onChange={(e: any) =>
+                setPayload({
+                  ...payload,
+                  bankCode: e.target.value,
+                })
+              }
+              onBlur={handleBlur}
+              error={Boolean(touched.bankCode && errors.bankCode)}
+              value={payload.bankCode}
+            />
+            <p style={{ color: "red", textAlign: "left" }}>{errors.bankCode}</p>
+          </FormControl>
+        </div>
+      );
     }
   };
+
   const formatTin = (e: any) => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
@@ -594,6 +709,9 @@ export default function IndividualUs() {
                               value={payload.countryOfCitizenshipId}
                             >
                               <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
                               {countries.map(({ id, name }) => (
                                 <option value={id}>{name}</option>
                               ))}
@@ -984,10 +1102,10 @@ export default function IndividualUs() {
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
                             <Input
-                            disabled= {
-                              payload.usTinTypeId == 3 ||
-                              payload.usTinTypeId == 4
-                            }
+                              disabled={
+                                payload.usTinTypeId == 3 ||
+                                payload.usTinTypeId == 4
+                              }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -1050,6 +1168,53 @@ export default function IndividualUs() {
                                 ))}
                               </select>
                             </FormControl>
+                            <div className="d-flex">
+                              <Typography
+                                style={{ fontSize: "13px", marginTop: "10px" }}
+                              >
+                                Not Available{" "}
+                              </Typography>
+                              <Radio
+                                disabled={payload.foreignTINCountryId == 0}
+                                // foreignTINNotAvailable
+                                name="radio-buttons"
+                                checked={payload.foreignTINNotAvailable}
+                                onChange={() =>
+                                  setPayload({
+                                    ...payload,
+                                    foreignTINNotAvailable:
+                                      !payload.foreignTINNotAvailable,
+                                    alternativeTINFormat:
+                                      payload.foreignTINNotAvailable,
+                                  })
+                                }
+                                // value="no"
+                                inputProps={{ "aria-label": "No" }}
+                              />
+                              <Typography
+                                style={{ fontSize: "13px", marginTop: "10px" }}
+                              >
+                                Alternative TIN Format
+                              </Typography>
+                              <Radio
+                                disabled={
+                                  payload.foreignTINCountryId == 0 ||
+                                  payload.foreignTINCountryId != 257
+                                }
+                                name="radio-buttons"
+                                checked={payload.alternativeTINFormat}
+                                onChange={() =>
+                                  setPayload({
+                                    ...payload,
+                                    alternativeTINFormat:
+                                      !payload.alternativeTINFormat,
+                                    foreignTINNotAvailable:
+                                      payload.alternativeTINFormat,
+                                  })
+                                }
+                                inputProps={{ "aria-label": "Yes" }}
+                              />
+                            </div>
                           </div>
 
                           <div className="col-lg-3 col-6 col-md-3 mx-2">
@@ -1083,79 +1248,80 @@ export default function IndividualUs() {
                               />
                             </FormControl>
                           </div>
-                          <div className="col-12 d-flex">  
-                        <div className="col-lg-3 col-6 col-md-3 ">
-                          <Typography align="left" className="d-flex w-100">
-                            Value Added Tax Number (VAT)
-                            <span style={{ color: 'red' }}>*</span>
-                          </Typography>
+                          <div className="col-12 d-flex">
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              <Typography align="left" className="d-flex w-100">
+                                Value Added Tax Number (VAT)
+                                <span style={{ color: "red" }}>*</span>
+                              </Typography>
 
-                          <FormControl className="w-100">
-                            <select
-                              style={{
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "36px",
-                              }}
-                              name="vatTypeId"
-                             
-                              defaultValue={1}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  vatTypeId: e.target.value,
-                                })
-                              }
-                              value={payload.vatTypeId}
-                            >
-                              <option value="1">-Select-</option>
-                              <option value="2">My VAT Number is</option>
-                              <option value="3">I Do Not Have A VAT Number</option>
-                            </select>
-                          </FormControl>
-                        </div>
+                              <FormControl className="w-100">
+                                <select
+                                  style={{
+                                    padding: " 0 10px",
+                                    color: "#7e7e7e",
+                                    fontStyle: "italic",
+                                    height: "36px",
+                                  }}
+                                  name="vatTypeId"
+                                  defaultValue={1}
+                                  onChange={(e: any) =>
+                                    setPayload({
+                                      ...payload,
+                                      vatTypeId: e.target.value,
+                                    })
+                                  }
+                                  value={payload.vatTypeId}
+                                >
+                                  <option value="1">-Select-</option>
+                                  <option value="2">My VAT Number is</option>
+                                  <option value="3">
+                                    I Do Not Have A VAT Number
+                                  </option>
+                                </select>
+                              </FormControl>
+                            </div>
 
-                        <div className="col-lg-3 col-6 col-md-3 mx-2">
-                          <FormControl className="w-100">
-                            <Typography align="left">
-                              Value Added Tax Number (VAT)
-                              {/* <span style={{ color: 'red' }}>*</span> */}
-                            </Typography>
-                            <Input
-                            disabled = {
-                              payload.vatTypeId == 1 ||
-                              payload.vatTypeId == 3
-                            }
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
-                                height: " 36px",
-                                lineHeight: "36px ",
-                                background: "#fff ",
-                                fontSize: "13px",
-                                color: " #000 ",
-                                fontStyle: "normal",
-                                borderRadius: "1px",
-                                padding: " 0 10px ",
-                              }}
-                              id="outlined"
-                              name="vat"
-                              placeholder="Enter Value Added Tax Number"
-                              // onKeyDown={formatTin}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  vat: e.target.value,
-                                })
-                              }
-                              inputProps={{ maxLength: 11 }}
-                              // onBlur={handleBlur}
-                              //   error={Boolean(touched.usTin && errors.vat)}
-                              value={payload.vat}
-                            />
-                          </FormControl>
-                        </div>
-                      </div>
+                            <div className="col-lg-3 col-6 col-md-3 mx-2">
+                              <FormControl className="w-100">
+                                <Typography align="left">
+                                  Value Added Tax Number (VAT)
+                                  {/* <span style={{ color: 'red' }}>*</span> */}
+                                </Typography>
+                                <Input
+                                  disabled={
+                                    payload.vatTypeId == 1 ||
+                                    payload.vatTypeId == 3
+                                  }
+                                  style={{
+                                    border: " 1px solid #d9d9d9 ",
+                                    height: " 36px",
+                                    lineHeight: "36px ",
+                                    background: "#fff ",
+                                    fontSize: "13px",
+                                    color: " #000 ",
+                                    fontStyle: "normal",
+                                    borderRadius: "1px",
+                                    padding: " 0 10px ",
+                                  }}
+                                  id="outlined"
+                                  name="vat"
+                                  placeholder="Enter Value Added Tax Number"
+                                  // onKeyDown={formatTin}
+                                  onChange={(e: any) =>
+                                    setPayload({
+                                      ...payload,
+                                      vat: e.target.value,
+                                    })
+                                  }
+                                  inputProps={{ maxLength: 11 }}
+                                  // onBlur={handleBlur}
+                                  //   error={Boolean(touched.usTin && errors.vat)}
+                                  value={payload.vat}
+                                />
+                              </FormControl>
+                            </div>
+                          </div>
                         </div>
                       ) : (
                         ""
@@ -1309,7 +1475,12 @@ export default function IndividualUs() {
                             onBlur={handleBlur}
                             value={payload.permanentResidentialCountryId}
                           >
-                            <option value="">-Select-</option>
+                            <option value={0}>-Select-</option>
+                            {/* <option value={1}>-Select1-</option> */}
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {/* <option value={3}>-Select3-</option> */}
                             {countries.map(({ id, name }) => (
                               <option value={id}>{name}</option>
                             ))}
@@ -1435,40 +1606,82 @@ export default function IndividualUs() {
                             </p>
                           </FormControl>
                         </div>
-                        <div className="col-lg-3 col-6 col-md-3 mt-2">
-                          <FormControl className="w-100">
-                            <Typography align="left">
+                        {payload.permanentResidentialCountryId == 258 ? (
+                          <div className="col-lg-3 col-6 col-md-3 mt-2">
+                            <Typography align="left" className="d-flex w-100 ">
                               State or Province:
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
-                            <Input
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
-                                height: " 36px",
-                                lineHeight: "36px ",
-                                background: "#fff ",
-                                fontSize: "13px",
-                                color: " #000 ",
-                                fontStyle: "normal",
-                                borderRadius: "1px",
-                                padding: " 0 10px ",
-                              }}
-                              id="outlined"
-                              name="permanentResidentialStateorProvince"
-                              placeholder="Enter State or Province"
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  permanentResidentialStateorProvince:
-                                    e.target.value,
-                                })
-                              }
-                              value={
-                                payload.permanentResidentialStateorProvince
-                              }
-                            />
-                          </FormControl>
-                        </div>
+
+                            <FormControl className="w-100">
+                              <select
+                                style={{
+                                  padding: " 0 10px",
+                                  color: "#7e7e7e",
+                                  fontStyle: "italic",
+                                  height: "36px",
+                                }}
+                                name="permanentResidentialStateorProvince1"
+                                // id="Income"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    permanentResidentialStateorProvince1:
+                                      e.target.value,
+                                  })
+                                }
+                                value={
+                                  payload.permanentResidentialStateorProvince1
+                                }
+                              >
+                                <option value="0">
+                                  <em>--Select--</em>
+                                </option>
+                                {usStates.map(({ name }) => (
+                                  <option value={name}>{name}</option>
+                                ))}
+                              </select>
+                            </FormControl>
+                          </div>
+                        ) : (
+                          <div className="col-lg-3 col-6 col-md-3 mt-2">
+                            <FormControl className="w-100">
+                              <Typography align="left">
+                                State or Province:
+                                {/* <span style={{ color: 'red' }}>*</span> */}
+                              </Typography>
+                              <Input
+                                disabled={
+                                  payload.permanentResidentialCountryId == 0
+                                }
+                                style={{
+                                  border: " 1px solid #d9d9d9 ",
+                                  height: " 36px",
+                                  lineHeight: "36px ",
+                                  background: "#fff ",
+                                  fontSize: "13px",
+                                  color: " #000 ",
+                                  fontStyle: "normal",
+                                  borderRadius: "1px",
+                                  padding: " 0 10px ",
+                                }}
+                                // id="outlined"
+                                name="permanentResidentialStateorProvince1"
+                                placeholder="Enter State or Province"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    permanentResidentialStateorProvince1:
+                                      e.target.value,
+                                  })
+                                }
+                                value={
+                                  payload.permanentResidentialStateorProvince1
+                                }
+                              />
+                            </FormControl>
+                          </div>
+                        )}
 
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
@@ -1513,152 +1726,272 @@ export default function IndividualUs() {
                         </div>
                       </div>
                       <div className="d-flex">
-                        <div>
-                          <Typography
-                            align="left"
-                            style={{ marginTop: "20px" }}
-                          >
-                            Is this address a Post Office Box?
-                            <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
-                          </Typography>
-
-                          <div className="d-flex ">
-                            <RadioGroup
-                              row
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                              name="row-radio-buttons-group"
+                        {payload.isUSEntity ? (
+                          <div className="mx-5">
+                            <Typography
+                              align="left"
+                              style={{ marginTop: "20px" }}
                             >
-                              <FormControlLabel
-                                value="female"
-                                control={<Radio />}
-                                label="No"
-                                checked={!payload.isAddressPostOfficeBox}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isAddressPostOfficeBox: false,
-                                  })
-                                }
+                              Is there an alternative mailing or business
+                              address in the US?
+                              <span style={{ color: "red" }}>*</span>
+                              <Info
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginBottom: "12px",
+                                }}
+                                onClick={clickInfo}
                               />
-                              <FormControlLabel
-                                value="male"
-                                control={<Radio />}
-                                label="Yes"
-                                checked={payload.isAddressPostOfficeBox}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isAddressPostOfficeBox: true,
-                                  })
-                                }
-                              />
-                            </RadioGroup>
-                          </div>
-                        </div>
-                        <div className="mx-5">
-                          <Typography style={{ marginTop: "20px" }}>
-                            Is this an In Care Of address?
-                            <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
-                          </Typography>
+                            </Typography>
 
-                          <div className="d-flex">
-                            <RadioGroup
-                              row
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                              name="row-radio-buttons-group"
+                            <div className="d-flex">
+                              <Typography className="my-auto">Yes</Typography>
+                              <Radio
+                                required
+                                checked={payload.isalternativebusinessaddress}
+                                onChange={() =>
+                                  setPayload({
+                                    ...payload,
+                                    isalternativebusinessaddress: true,
+                                  })
+                                }
+                                value={payload.isalternativebusinessaddress}
+                                name="radio-buttons"
+                                inputProps={{ "aria-label": "A" }}
+                              />
+                              <Typography className="my-auto">No</Typography>
+                              <Radio
+                                required
+                                checked={!payload.isalternativebusinessaddress}
+                                onChange={() =>
+                                  setPayload({
+                                    ...payload,
+                                    isalternativebusinessaddress: false,
+                                  })
+                                }
+                                value={!payload.isalternativebusinessaddress}
+                                name="radio-buttons"
+                                inputProps={{ "aria-label": "B" }}
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <Typography
+                              align="left"
+                              style={{ marginTop: "20px" }}
                             >
-                              <FormControlLabel
-                                value="female"
-                                control={<Radio />}
-                                label="No"
-                                checked={!payload.isCareOfAddress}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isCareOfAddress: false,
-                                  })
-                                }
+                              Is this address a Post Office Box?
+                              <span style={{ color: "red" }}>*</span>
+                              <Info
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginBottom: "12px",
+                                }}
+                                onClick={clickInfo}
                               />
-                              <FormControlLabel
-                                value="male"
-                                control={<Radio />}
-                                label="Yes"
-                                checked={payload.isCareOfAddress}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isCareOfAddress: true,
-                                  })
-                                }
-                              />
-                            </RadioGroup>
-                          </div>
-                        </div>
-                        <div>
-                          <Typography
-                            align="left"
-                            style={{ marginTop: "20px" }}
-                          >
-                            Is there an alternative mailing or business address
-                            in the US?
-                            <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
-                          </Typography>
+                            </Typography>
 
-                          <div className="d-flex">
-                            <Typography className="my-auto">Yes</Typography>
-                            <Radio
-                              required
-                              checked={payload.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: true,
-                                })
-                              }
-                              value={payload.isalternativebusinessaddress}
-                              name="radio-buttons"
-                              inputProps={{ "aria-label": "A" }}
-                            />
-                            <Typography className="my-auto">No</Typography>
-                            <Radio
-                              required
-                              checked={!payload.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: false,
-                                })
-                              }
-                              value={!payload.isalternativebusinessaddress}
-                              name="radio-buttons"
-                              inputProps={{ "aria-label": "B" }}
-                            />
+                            <div className="d-flex ">
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                              >
+                                <FormControlLabel
+                                  value="female"
+                                  control={<Radio />}
+                                  label="No"
+                                  checked={!payload.isAddressPostOfficeBox}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isAddressPostOfficeBox: false,
+                                    })
+                                  }
+                                />
+                                <FormControlLabel
+                                  value="male"
+                                  control={<Radio />}
+                                  label="Yes"
+                                  checked={payload.isAddressPostOfficeBox}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isAddressPostOfficeBox: true,
+                                    })
+                                  }
+                                />
+                              </RadioGroup>
+                            </div>
+                            {/* </div> */}
+                            <div className="mx-5">
+                              <Typography style={{ marginTop: "20px" }}>
+                                Is this an In Care Of address?
+                                <span style={{ color: "red" }}>*</span>
+                                <Info
+                                  style={{
+                                    color: "#ffc107",
+                                    fontSize: "15px",
+                                    marginBottom: "12px",
+                                  }}
+                                  onClick={clickInfo}
+                                />
+                              </Typography>
+
+                              <div className="d-flex">
+                                <RadioGroup
+                                  row
+                                  aria-labelledby="demo-row-radio-buttons-group-label"
+                                  name="row-radio-buttons-group"
+                                >
+                                  <FormControlLabel
+                                    value="female"
+                                    control={<Radio />}
+                                    label="No"
+                                    checked={!payload.isCareOfAddress}
+                                    onChange={() =>
+                                      setPayload({
+                                        ...payload,
+                                        isCareOfAddress: false,
+                                      })
+                                    }
+                                  />
+                                  <FormControlLabel
+                                    value="male"
+                                    control={<Radio />}
+                                    label="Yes"
+                                    checked={payload.isCareOfAddress}
+                                    onChange={() =>
+                                      setPayload({
+                                        ...payload,
+                                        isCareOfAddress: true,
+                                      })
+                                    }
+                                  />
+                                </RadioGroup>
+                              </div>
+                            </div>
+                            <div className="mx-5">
+                              <Typography style={{ marginTop: "20px" }}>
+                                Is there an alternative mailing or business
+                                address in the US?
+                                <span style={{ color: "red" }}>*</span>
+                                <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                          Alternate Mailing Address
+                                        </Typography>
+                                        <a onClick={() => setToolInfo("mail")}>
+                                          <Typography
+                                            style={{
+                                              cursor: "pointer",
+                                              textDecorationLine: "underline",
+                                            }}
+                                            align="center"
+                                          >
+                                            {" "}
+                                            View More...
+                                          </Typography>
+                                        </a>
+                                      </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "15px",
+                                        marginLeft: "5px",
+                                        cursor: "pointer",
+                                      }}
+                                      // onClick={clickInfo}
+                                    />
+                                  </Tooltip>
+                                </span>
+                              </Typography>
+                              {toolInfo === "mail" ? (
+                                <div>
+                                  <Paper
+                                    style={{
+                                      backgroundColor: "#dedcb1",
+                                      padding: "15px",
+                                    }}
+                                  >
+                                    <Typography>
+                                      Please check this box if you have an
+                                      alternative mailing address away from the
+                                      permanent residential address entered
+                                      here.
+                                    </Typography>
+                                    <Typography style={{ marginTop: "10px" }}>
+                                      You will be asked to enter the alternative
+                                      address later in the process and in some
+                                      circumstances you may need to provide
+                                      additional information.
+                                    </Typography>
+
+                                    <Link
+                                      href="#"
+                                      underline="none"
+                                      style={{
+                                        marginTop: "10px",
+                                        fontSize: "16px",
+                                      }}
+                                      onClick={() => {
+                                        setToolInfo("");
+                                      }}
+                                    >
+                                      --Show Less--
+                                    </Link>
+                                  </Paper>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+
+                              <div className="d-flex">
+                                <Typography className="my-auto">Yes</Typography>
+                                <Radio
+                                  required
+                                  checked={payload.isalternativebusinessaddress}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isalternativebusinessaddress: true,
+                                    })
+                                  }
+                                  value={payload.isalternativebusinessaddress}
+                                  name="radio-buttons"
+                                  inputProps={{ "aria-label": "A" }}
+                                />
+                                <Typography className="my-auto">No</Typography>
+                                <Radio
+                                  required
+                                  checked={
+                                    !payload.isalternativebusinessaddress
+                                  }
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isalternativebusinessaddress: false,
+                                    })
+                                  }
+                                  value={!payload.isalternativebusinessaddress}
+                                  name="radio-buttons"
+                                  inputProps={{ "aria-label": "B" }}
+                                />
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                       {payload.isalternativebusinessaddress ? (
                         <>
@@ -1677,8 +2010,8 @@ export default function IndividualUs() {
                                   height: "36px",
                                 }}
                                 name="permanentResidentialCountryId1"
-                                id="Income"
-                                defaultValue={1}
+                                // id="Income"
+                                defaultValue={0}
                                 onChange={(e: any) =>
                                   setPayload({
                                     ...payload,
@@ -1689,10 +2022,9 @@ export default function IndividualUs() {
                                 onBlur={handleBlur}
                                 value={payload.permanentResidentialCountryId1}
                               >
-                                <option value="">-Select-</option>
+                                <option value={0}>-Select-</option>
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
-                                <option value="">---</option>
                                 {countries.map(({ id, name }) => (
                                   <option value={id}> {name} </option>
                                 ))}
@@ -1820,7 +2152,7 @@ export default function IndividualUs() {
                                 </p>
                               </FormControl>
                             </div>
-                            {payload.permanentResidentialCountryId === 258 ? (
+                            {payload.permanentResidentialCountryId1 == 258 ? (
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography
                                   align="left"
@@ -1831,7 +2163,7 @@ export default function IndividualUs() {
                                 </Typography>
 
                                 <FormControl className="w-100">
-                                  <Select
+                                  <select
                                     style={{
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
@@ -1839,7 +2171,7 @@ export default function IndividualUs() {
                                       height: "36px",
                                     }}
                                     name="permanentResidentialStateorProvince1"
-                                    id="Income"
+                                    // id="Income"
                                     onChange={(e: any) =>
                                       setPayload({
                                         ...payload,
@@ -1851,13 +2183,13 @@ export default function IndividualUs() {
                                       payload.permanentResidentialStateorProvince1
                                     }
                                   >
-                                    <MenuItem value="0">
+                                    <option value="0">
                                       <em>--Select--</em>
-                                    </MenuItem>
+                                    </option>
                                     {usStates.map(({ name }) => (
-                                      <MenuItem value={name}>{name}</MenuItem>
+                                      <option value={name}>{name}</option>
                                     ))}
-                                  </Select>
+                                  </select>
                                 </FormControl>
                               </div>
                             ) : (
@@ -1868,6 +2200,10 @@ export default function IndividualUs() {
                                     {/* <span style={{ color: 'red' }}>*</span> */}
                                   </Typography>
                                   <Input
+                                    disabled={
+                                      payload.permanentResidentialCountryId1 ==
+                                      0
+                                    }
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -1879,7 +2215,7 @@ export default function IndividualUs() {
                                       borderRadius: "1px",
                                       padding: " 0 10px ",
                                     }}
-                                    id="outlined"
+                                    // id="outlined"
                                     name="permanentResidentialStateorProvince1"
                                     placeholder="Enter State or Province"
                                     onChange={(e: any) =>
@@ -2225,12 +2561,13 @@ export default function IndividualUs() {
                               value={payload.primaryContactNumberId}
                             >
                               <option value={0}>-Select-</option>
+                              {/* <option value={1}>-Select1-</option> */}
                               {countriesCode.map(({ id, name }) => (
                                 <option value={id}>{name}</option>
                               ))}
                             </select>
                             <Input
-                            disabled = {payload.primaryContactNumberId == 0}
+                              disabled={payload.primaryContactNumberId == 0}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -2278,12 +2615,13 @@ export default function IndividualUs() {
                               value={payload.alternativeNumberId}
                             >
                               <option value={0}>-Select-</option>
+                              {/* <option value={1}>-Select1-</option> */}
                               {countriesCode.map(({ id, name }) => (
                                 <option value={id}>{name}</option>
                               ))}
                             </select>
                             <Input
-                            disabled = {payload.alternativeNumberId == 0}
+                              disabled={payload.alternativeNumberId == 0}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -2336,6 +2674,7 @@ export default function IndividualUs() {
                                     value={payload.alternativeNumberId1}
                                   >
                                     <option value={0}>--Select--</option>
+                                    {/* <option value={1}>--Select1--</option> */}
                                     {countriesCode.map(({ id, name }) => (
                                       <option value={id}>{name}</option>
                                     ))}
@@ -2352,8 +2691,7 @@ export default function IndividualUs() {
                                   />
                                 </span>
                                 <Input
-                                disabled = {payload.alternativeNumberId1 == 0}
-                                  
+                                  disabled={payload.alternativeNumberId1 == 0}
                                   style={{
                                     border: " 1px solid #d9d9d9 ",
                                     height: " 36px",
@@ -2396,7 +2734,7 @@ export default function IndividualUs() {
                     </Collapse>
 
                     <hr className="w-100 "></hr>
-
+                    {/* Income Type */}
                     <CardHeader
                       style={{ textAlign: "left", marginLeft: "13px" }}
                       className="flex-row-reverse"
@@ -2548,7 +2886,7 @@ export default function IndividualUs() {
                                   </select>
                                   <Delete
                                     onClick={() => {
-                                      setAlternateNo(false);
+                                      setAlternateIncome(false);
                                     }}
                                     style={{
                                       color: "red",
@@ -2575,7 +2913,7 @@ export default function IndividualUs() {
                       </Typography>
                     </Collapse>
                     <hr className="w-100"></hr>
-
+                    {/* Payment type */}
                     <CardHeader
                       style={{ textAlign: "left", marginLeft: "13px" }}
                       className="flex-row-reverse"
@@ -2711,7 +3049,7 @@ export default function IndividualUs() {
                               }
                               value={payload.paymentTypeId}
                             >
-                              <option value="">Select</option>
+                              <option value={0}>Select</option>
                               <option value={1}>ACH</option>
                               <option value={2}>Check</option>
                               <option value={3}>Wire</option>
@@ -3056,44 +3394,7 @@ export default function IndividualUs() {
                                     </p>
                                   </FormControl>
                                 </div>
-
-                                <div className="col-lg-3 col-6 col-md-3 mt-2">
-                                  <FormControl className="w-100">
-                                    <Typography align="left">
-                                      {returnFieldName()}
-                                      <span style={{ color: "red" }}>*</span>
-                                    </Typography>
-                                    <Input
-                                      required
-                                      style={{
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
-                                      }}
-                                      id="outlined"
-                                      name="bankCode"
-                                      placeholder={returnFieldName()}
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          bankCode: e.target.value,
-                                        })
-                                      }
-                                      onBlur={handleBlur}
-                                      error={Boolean(
-                                        touched.bankCode && errors.bankCode
-                                      )}
-                                      value={payload.bankCode}
-                                    />
-                                    <p className="error">{errors.bankCode}</p>
-                                  </FormControl>
-                                </div>
+                                {returnFieldName(handleBlur, touched, errors)}
                               </div>
                             </>
                           ) : (
@@ -3159,7 +3460,7 @@ export default function IndividualUs() {
                                       }}
                                       id="outlined"
                                       name="payResidentalCountryId"
-                                      defaultValue={1}
+                                      defaultValue={0}
                                       placeholder="Enter Residential Country"
                                       onChange={(e: any) =>
                                         setPayload({
@@ -3174,7 +3475,12 @@ export default function IndividualUs() {
                                       <p className="error">
                                         {errors.payResidentalCountryId}
                                       </p>
-                                      <option value="">-Select-</option>
+                                      <option value={0}>-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">-----</option>
                                       {countries.map(({ id, name }) => (
                                         <option value={id}>{name}</option>
                                       ))}
@@ -3297,46 +3603,89 @@ export default function IndividualUs() {
                                     </p>
                                   </FormControl>
                                 </div>
-                                <div className="col-lg-3 col-6 col-md-3 mt-2">
-                                  <FormControl className="w-100">
-                                    <Typography align="left">
-                                      State OR Provience
-                                      <span style={{ color: "red" }}>*</span>
+                                {payload.payResidentalCountryId == 258 ? (
+                                  <div className="col-lg-3 col-6 col-md-3 mt-2">
+                                    <Typography
+                                      align="left"
+                                      className="d-flex w-100 "
+                                    >
+                                      State or Province:
+                                      {/* <span style={{ color: 'red' }}>*</span> */}
                                     </Typography>
-                                    <Input
-                                      required
-                                      style={{
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
-                                      }}
-                                      id="outlined"
-                                      name="payStateOrProvince"
-                                      placeholder="Enter  State OR Provience"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          payStateOrProvince: e.target.value,
-                                        })
-                                      }
-                                      onBlur={handleBlur}
-                                      error={Boolean(
-                                        touched.payStateOrProvince &&
-                                          errors.payStateOrProvince
-                                      )}
-                                      value={payload.payStateOrProvince}
-                                    />
-                                    <p className="error">
-                                      {errors.payStateOrProvince}
-                                    </p>
-                                  </FormControl>
-                                </div>
+
+                                    <FormControl className="w-100">
+                                      <select
+                                        style={{
+                                          padding: " 0 10px",
+                                          color: "#7e7e7e",
+                                          fontStyle: "italic",
+                                          height: "36px",
+                                        }}
+                                        name="payStateOrProvince"
+                                        // id="Income"
+                                        onChange={(e: any) =>
+                                          setPayload({
+                                            ...payload,
+                                            payStateOrProvince: e.target.value,
+                                          })
+                                        }
+                                        value={payload.payStateOrProvince}
+                                      >
+                                        <option value="0">
+                                          <em>--Select--</em>
+                                        </option>
+                                        {usStates.map(({ name }) => (
+                                          <option value={name}>{name}</option>
+                                        ))}
+                                      </select>
+                                    </FormControl>
+                                  </div>
+                                ) : (
+                                  <div className="col-lg-3 col-6 col-md-3 mt-2">
+                                    <FormControl className="w-100">
+                                      <Typography align="left">
+                                        State OR Provience
+                                        <span style={{ color: "red" }}>*</span>
+                                      </Typography>
+                                      <Input
+                                        disabled={
+                                          payload.payResidentalCountryId == 0
+                                        }
+                                        required
+                                        style={{
+                                          border: " 1px solid #d9d9d9 ",
+                                          height: " 36px",
+                                          lineHeight: "36px ",
+                                          background: "#fff ",
+                                          fontSize: "13px",
+                                          color: " #000 ",
+                                          fontStyle: "normal",
+                                          borderRadius: "1px",
+                                          padding: " 0 10px ",
+                                        }}
+                                        id="outlined"
+                                        name="payStateOrProvince"
+                                        placeholder="Enter  State OR Provience"
+                                        onChange={(e: any) =>
+                                          setPayload({
+                                            ...payload,
+                                            payStateOrProvince: e.target.value,
+                                          })
+                                        }
+                                        onBlur={handleBlur}
+                                        error={Boolean(
+                                          touched.payStateOrProvince &&
+                                            errors.payStateOrProvince
+                                        )}
+                                        value={payload.payStateOrProvince}
+                                      />
+                                      <p className="error">
+                                        {errors.payStateOrProvince}
+                                      </p>
+                                    </FormControl>
+                                  </div>
+                                )}
+
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -3532,7 +3881,7 @@ export default function IndividualUs() {
                                       {countries.map(({ id, name }) => (
                                         <option
                                           value={id}
-                                          onClick={() => setBankLocation("")}
+                                          onClick={() => setBankLocation("id")}
                                         >
                                           {" "}
                                           {name}{" "}
@@ -3586,7 +3935,7 @@ export default function IndividualUs() {
                                   </FormControl>
                                 </div>
 
-                                {bankLocation === "US" ? (
+                                {payload.accountBankBranchLocationId == 258 ? (
                                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                                     <FormControl className="w-100">
                                       <Typography align="left">
@@ -3630,7 +3979,7 @@ export default function IndividualUs() {
                                 ) : (
                                   ""
                                 )}
-                                {bankLocation !== "" ? (
+                                {payload.accountBankBranchLocationId == 257 ? (
                                   <div className="col-lg-3 col-6 col-md-3 mt-2">
                                     <FormControl className="w-100">
                                       <Typography align="left">
@@ -3664,44 +4013,42 @@ export default function IndividualUs() {
                                       />
                                       {/* <p className='error'>{errors.iban}</p> */}
                                     </FormControl>
+                                    <FormControl className="w-100">
+                                      <Typography align="left">
+                                        Swift code
+                                        {/* <span style={{ color: 'red' }}>*</span> */}
+                                      </Typography>
+                                      <Input
+                                        style={{
+                                          border: " 1px solid #d9d9d9 ",
+                                          height: " 36px",
+                                          lineHeight: "36px ",
+                                          background: "#fff ",
+                                          fontSize: "13px",
+                                          color: " #000 ",
+                                          fontStyle: "normal",
+                                          borderRadius: "1px",
+                                          padding: " 0 10px ",
+                                        }}
+                                        id="outlined"
+                                        name="swiftCode"
+                                        placeholder="Enter Swift code"
+                                        onChange={(e: any) =>
+                                          setPayload({
+                                            ...payload,
+                                            swiftCode: e.target.value,
+                                          })
+                                        }
+                                        // onBlur={handleBlur}
+                                        // error={Boolean(touched.swiftCode && errors.swiftCode)}
+                                        value={payload.swiftCode}
+                                      />
+                                      {/* <p className='error'>{errors.swiftCode}</p> */}
+                                    </FormControl>
                                   </div>
                                 ) : (
                                   ""
                                 )}
-                                <div className="col-lg-3 col-6 col-md-3 mt-2">
-                                  <FormControl className="w-100">
-                                    <Typography align="left">
-                                      Swift code
-                                      {/* <span style={{ color: 'red' }}>*</span> */}
-                                    </Typography>
-                                    <Input
-                                      style={{
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
-                                      }}
-                                      id="outlined"
-                                      name="swiftCode"
-                                      placeholder="Enter Swift code"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          swiftCode: e.target.value,
-                                        })
-                                      }
-                                      // onBlur={handleBlur}
-                                      // error={Boolean(touched.swiftCode && errors.swiftCode)}
-                                      value={payload.swiftCode}
-                                    />
-                                    {/* <p className='error'>{errors.swiftCode}</p> */}
-                                  </FormControl>
-                                </div>
                               </div>
                             </>
                           ) : (

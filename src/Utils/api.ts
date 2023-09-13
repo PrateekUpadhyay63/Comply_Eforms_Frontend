@@ -1,279 +1,242 @@
-import { apiErrorCode, $axios } from './constants';
-import Utils from '.';
+import Utils from '../Utils';
 
-export const removeSession = () => {
-  Utils.showAlert(2, 'Session Expired');
-  sessionStorage.clear();
-  localStorage.clear();
-  window.location.reload();
+interface ApiResponse {
+  statusCode: number;
+  message?: string;
+}
+
+const headers = {
+  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+  'Content-Type': 'application/json',
 };
 
-export const checkUserValidation = (data: any) => {
-  if (data && data.statusCode) {
-    const { statusCode: stc } = data;
-    return (
-      stc === apiErrorCode.sessionExpired ||
-      stc === apiErrorCode.unauthorized ||
-      stc === apiErrorCode.accessDenied
-    );
+const checkUserValidation = (data: ApiResponse | null): boolean => {
+  if (data) {
+    const { statusCode } = data;
+    const { sessionExpired, unauthorized, accessDenied } = Utils.constants.apiErrorCode;
+
+    if (statusCode) {
+      return statusCode === sessionExpired || statusCode === unauthorized || statusCode === accessDenied;
+    }
+    return false;
   }
   return false;
 };
 
-const getApiCall = (
-  endPoint: string,
-  params: string,
-  successCallback: Function,
-  errorCallback: Function
-) => {
-  $axios
-    .get(endPoint + params, {})
-    .then((res: any) => {
-      successCallback(res);
-    })
-    .catch((err: any) => {
-      if (err?.response?.data?.statusCode === 401) {
-        removeSession();
+const logOutApiCall = () => {
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.reload();
+};
 
-        errorCallback(err.response.data);
-      }
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err.response?.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.response.data);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
+const loginApiCall = (
+  endPoint: string,
+  params: any,
+  successCallback: (response: any) => void,
+  errorCallback: (error: ApiResponse) => void
+) => {
+  Utils.constants.axios
+    .post(endPoint, params)
+    .then((response) => {
+      successCallback(response);
+    })
+    .catch((error) => {
+      if (error.code === 'ECONNABORTED') {
+        let payload: ApiResponse = {
+          statusCode: 408,
+          message: 'Something went wrong!',
+        };
+        errorCallback(payload);
+      } else if (error.response) {
+        let data: any = error.response.data;
+        if (data?.code == 401) {
+          logOutApiCall();
+        }
+        if (checkUserValidation(data)) {
+          Utils.showAlert(2, data.message || '');
+          setTimeout(() => {
+            logOutApiCall();
+          }, 1000);
+        } else {
+          errorCallback(error.response);
+        }
+      } else if (!error.response) {
+        let payload: ApiResponse = {
+          statusCode: -1,
+          message: 'Please try again later',
+        };
+        errorCallback(payload);
       }
     });
 };
 
+// const deleteApiCall = (
+//   endPoint: string,
+//   params: any,
+//   successCallback: (response: any) => void,
+//   errorCallback: (error: ApiResponse) => void
+// ) => {
+//   Utils.constants.axios
+//     .delete(endPoint, params, { headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` } })
+//     .then((response) => {
+//       successCallback(response);
+//     })
+//     .catch((error) => {
+//       if (error.code === 'ECONNABORTED') {
+//         let payload: ApiResponse = {
+//           statusCode: 408,
+//         };
+//         errorCallback(payload);
+//       } else if (error.response) {
+//         let data: ApiResponse = error.response.data;
+//         if (checkUserValidation(data)) {
+//           Utils.showAlert(2, data.message || '');
+//         } else {
+//           errorCallback(error.response);
+//         }
+//       } else if (!error.response) {
+//         let payload: ApiResponse = {
+//           statusCode: -1,
+//           message: 'Please try again later',
+//         };
+//         errorCallback(payload);
+//       }
+//     });
+// };
+
 const postApiCall = (
   endPoint: string,
-  params: { [key: string]: any },
-  successCallback: Function,
-  errorCallback: Function
+  params: any,
+  successCallback: (response: any) => void,
+  errorCallback: (error: ApiResponse) => void,
+  headerType?: string
 ) => {
-  $axios
-    .post(endPoint, params)
-    .then((res: any) => {
-      successCallback(res);
+  if (headerType === 'multi') {
+    headers['Content-Type'] = 'multipart/form-data';
+  }
+  Utils.constants.axios
+    .post(endPoint, params, { headers: headers })
+    .then((response) => {
+      successCallback(response);
     })
-    .catch((err: any) => {
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err.response?.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.response);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
+    .catch((error) => {
+      if (error.code === 'ECONNABORTED') {
+        let payload: any = {
+          statusCode: 408,
+        };
+        errorCallback(payload);
+      } else if (error.response) {
+        let data: any = error.response.data;
+        if (data.code === 401) {
+          logOutApiCall();
+        }
+        if (checkUserValidation(data)) {
+          Utils.showAlert(2, data.message || '');
+          setTimeout(() => {
+            logOutApiCall();
+          }, 1000);
+        } else {
+          errorCallback(error.response);
+        }
+      } else if (!error.response) {
+        let payload: ApiResponse = {
+          statusCode: -1,
+          message: 'Please try again later',
+        };
+        errorCallback(payload);
+      }
+    });
+};
+
+const getApiCall = (
+  endPoint: string,
+  params: string = '',
+  successCallback: (response: any) => void,
+  errorCallback: (error: ApiResponse) => void
+) => {
+  Utils.constants.axios
+    .get(Utils.constants.API_URL + endPoint + params, { headers: headers })
+    .then((response) => {
+      successCallback(response);
+    })
+    .catch((error) => {
+      if (error.code === 'ECONNABORTED') {
+        let payload: ApiResponse = {
+          statusCode: 408,
+        };
+        errorCallback(payload);
+      } else if (error.response) {
+        let data: any = error.response.data;
+        if (data.code === 401) {
+          logOutApiCall();
+        }
+        if (checkUserValidation(data)) {
+          // If user session expired
+          Utils.showAlert(2, data.message || '');
+          setTimeout(() => {
+            logOutApiCall();
+          }, 1000);
+        } else {
+          errorCallback(error.response);
+        }
+      } else if (!error.response) {
+        let payload: ApiResponse = {
+          statusCode: -1,
+          message: 'Please try again later',
+        };
+        errorCallback(payload);
       }
     });
 };
 
 const putApiCall = (
   endPoint: string,
-  params: { [key: string]: any },
-  successCallback: Function,
-  errorCallback: Function
-) => {
-  $axios
-    .put(endPoint, params)
-    .then((res: any) => {
-      successCallback(res);
-    })
-    .catch((err: any) => {
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err?.response?.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.response);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
-      }
-    });
-};
-
-const patchApiCall = (
-  endPoint: string,
-  params: string,
-  successCallback: Function,
-  errorCallback: Function
-) => {
-  $axios
-    .patch(endPoint + params, {})
-    .then((res: any) => {
-      successCallback(res);
-    })
-    .catch((err: any) => {
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err.response.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.message);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
-      }
-    });
-};
-
-const deleteApiCall = (
-  endPoint: string,
   params: any,
-  successCallback: Function,
-  errorCallback: Function
+  successCallback: (response: any) => void,
+  errorCallback: (error: ApiResponse) => void,
+  headerType?: string
 ) => {
-  $axios
-    .delete(endPoint, params)
-    .then((res: any) => {
-      successCallback(res);
+  if (headerType === 'multi') {
+    headers['Content-Type'] = 'multipart/form-data';
+  }
+  Utils.constants.axios
+    .put(endPoint, params, { headers: headers })
+    .then((response) => {
+      successCallback(response);
     })
-    .catch((err: any) => {
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err.response.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.message);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
-      }
-    });
-};
-
-const getApiCallWithoutParams = (
-  endPoint: string,
-  successCallback: Function,
-  errorCallback: Function
-) => {
-  $axios
-    .get(endPoint, {})
-    .then((res: any) => {
-      successCallback(res);
-    })
-    .catch((err: any) => {
-      if (err?.response?.data.statusCode === 401) {
-        removeSession();
-        errorCallback(err.response.data);
-      }
-      if (err.code === 'ECONNABORTED') {
-        errorCallback({
-          data: {
-            statusCode: 408,
-          },
-        });
-      } else if (err.code === 'ERR_NETWORK') {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'You are not connected to internet. Please check your connection.',
-          },
-        });
-      } else if (checkUserValidation(err.response?.data)) {
-        removeSession();
-      } else if (err.response && !checkUserValidation(err.response.data)) {
-        errorCallback(err.response.data);
-      } else if (!err.response) {
-        errorCallback({
-          data: {
-            statusCode: '',
-            message: 'Please try again later',
-          },
-        });
+    .catch((error) => {
+      if (error.code === 'ECONNABORTED') {
+        let payload: ApiResponse = {
+          statusCode: 408,
+        };
+        errorCallback(payload);
+      } else if (error.response) {
+        let data: ApiResponse = error.response.data;
+        if (checkUserValidation(data)) {
+          Utils.showAlert(2, data.message || '');
+          setTimeout(() => {
+            logOutApiCall();
+          }, 1000);
+        } else {
+          errorCallback(error.response);
+        }
+      } else if (!error.response) {
+        let payload: ApiResponse = {
+          statusCode: -1,
+          message: 'Please try again later',
+        };
+        errorCallback(payload);
       }
     });
 };
 
 const api = {
-  getApiCall,
   postApiCall,
+  loginApiCall,
   putApiCall,
-  patchApiCall,
-  deleteApiCall,
-  getApiCallWithoutParams,
+  getApiCall,
+  // deleteApiCall,
+  logOutApiCall,
 };
+
 export default api;

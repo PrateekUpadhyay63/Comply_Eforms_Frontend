@@ -20,8 +20,6 @@ import {
   Delete,
   Info,
 } from "@mui/icons-material";
-// import Link from '@mui/material/Link';
-// import Tooltip from '@mui/material/Tooltip';
 import Paper from "@mui/material/Paper";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -41,8 +39,6 @@ export default function Entity() {
   const history = useNavigate();
   //   //States
   const [open, setOpen] = useState("");
-  // const [is_US, setUS] = useState(false);
-  // const [is_USACH, setUSACH] = useState('');
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
   // const [accInfoSection, setAccInfoSection] = useState(false);
   // const [accInfoType, setAccInfoType] = useState('');
@@ -201,16 +197,6 @@ export default function Entity() {
     console.log(payload, "payload2");
   };
 
-  // const returnFieldName = () => {
-  //   if (is_USACH === 'US') {
-  //     return 'ABA / Routing';
-  //   } else if (is_USACH === 'UK') {
-  //     return 'Sort Code';
-  //   } else {
-  //     return 'Bank Code';
-  //   }
-  // };
-  //accountBankBranchLocationId
   const returnFieldName = (handleBlur: any, touched: any, errors: any) => {
     if (payload.accountBankBranchLocationId == 258) {
       return (
