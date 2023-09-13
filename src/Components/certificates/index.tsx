@@ -8,7 +8,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import Form from "../reusables/Formguide"
 import { useNavigate } from "react-router-dom"
 export default function Certificates(props:any) {
-  const history = useNavigate()
+const history = useNavigate()
 const clickInfo = () => {
     alert(
       'Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this'
@@ -20,9 +20,24 @@ const clickInfo = () => {
   const handleClose = () => setOpen(false);
 
   const [selectedCard, setSelectedCard] = useState("");
-
+  type ComponentPaths = {
+    [key: string]: string;
+  };
   const handleCardSelect = (cardId:any) => {
     setSelectedCard(cardId);
+  };
+ 
+  const redirectToComponent = (cardId: string) => {
+   
+    const componentPaths: ComponentPaths = {
+      'W-9': '/W9',
+      'W-8BEN': '/W-8BEN/Declaration',
+     
+    };
+
+    if (componentPaths.hasOwnProperty(cardId)) {
+      history(componentPaths[cardId]);
+    }
   };
 
   const cards = [
@@ -190,10 +205,11 @@ const clickInfo = () => {
                   style={{ fontSize: '16px',marginTop:"25px" }}
                   size="small"
                   type="submit"
+                  onClick={() => redirectToComponent(selectedCard)}
                   variant="contained"
-                  onClick={()=>(
-                    history("/W9")
-                  )}
+                  // onClick={()=>(
+                  //   history("/W9")
+                  // )}
                 >
                   Continue
                 </Button>

@@ -5,6 +5,7 @@ import {
 
     Button,
 } from '@mui/material';
+import {useNavigate} from "react-router-dom";
 import {Divider ,Paper}from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -14,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 export default function Term() {
     //States
-
+    const history = useNavigate()
     return (
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
 
@@ -74,7 +75,9 @@ export default function Term() {
                     </Paper>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-        <Button size="large" variant="contained" style={{ color: "white" }}>
+        <Button size="large" variant="contained" style={{ color: "white" }} onClick={()=>{
+            history("/W-8BEN/Declaration/US_Sourced")
+        }}>
           U.S. Sourced Income
         </Button>
         <Button size="large"  variant="contained" style={{ color: "white",marginLeft:"15px" }}>
