@@ -1,6 +1,5 @@
 import React, { Fragment, Component, useState, useEffect } from "react";
-
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import bg1 from "../../Utils/originals/city.jpg";
 import bg2 from "../../Utils/originals/citydark.jpg";
 import bg3 from "../../Utils/originals/citynights.jpg";
@@ -69,6 +68,7 @@ const Login = () => {
         <div className="h-100 g-0 row">
           <div className="d-none d-lg-block col-4">
             <div className="slider-light">
+              <img className="imageClass" src={bg1} alt="img"/>
               {/* <Slider {...settings}>
                 <div className="h-100 d-flex justify-content-center align-items-center bg-plum-plate">
                   <div
@@ -175,8 +175,8 @@ const Login = () => {
                           onChange={handleChange}
                         />
                         <div
-                          className="position-absolute d-flex end-0 mr-5 h-10"
-                          style={{ cursor: "pointer" ,top:"1.7rem"}}
+                          className="position-absolute d-flex eyePosition top-0 mr-5 h-10"
+                          style={{ cursor: "pointer"}}
                         >
                           {showPassword ? (
                             <Visibility

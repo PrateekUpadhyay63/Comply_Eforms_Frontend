@@ -5,6 +5,8 @@ const {LOGIN}= Utils.actionName
 
   let initialState:any = [];
 
+  
+
   export const loginReducer = (state = initialState, action:any) => {
     switch (action.type) {
       case LOGIN:

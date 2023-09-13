@@ -12,6 +12,7 @@ import {
   Select,
   MenuItem
 } from "@mui/material";
+import { useDispatch,useSelector } from "react-redux";
 import Link from '@mui/material/Link';
 import Tooltip from '@mui/material/Tooltip';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
@@ -22,7 +23,9 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { firstStepSchema, firstStepBusinessSchema, firstSchema } from "../../../../schemas";
 import "./index.scss";
+import { W9_state } from "../../../../Redux/Actions";
 export default function Fedral_tax(props: any) {
+  const dispatch=useDispatch();
   const {
     handleTaxClassificationChange,
     selectedTaxClassification,
@@ -63,6 +66,7 @@ export default function Fedral_tax(props: any) {
   const handleChangeAccodionState = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpandedState(newExpanded ? panel : false);
   };
+  const W9Data = useSelector((state:any) => state.w9Data);
   return (
     <>
       <Paper className="col-12">
@@ -83,6 +87,7 @@ export default function Fedral_tax(props: any) {
               step7: false,
               step8: false,
             });
+            dispatch(W9_state(values,()=>{console.log(W9Data,"Done")}))
             // uploadNews(dispatch, values, navigate);
           }}
         >

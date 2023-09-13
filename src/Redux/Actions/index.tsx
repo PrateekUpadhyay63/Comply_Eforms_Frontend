@@ -1,6 +1,16 @@
 import { AnyAction } from "redux";
 import Utils from "../../Utils";
 
+export const W9_state  =(value:any,callback:any=false):any=>{
+    return {
+        type: Utils.actionName.CREATE_W9,
+        payload:value
+     }
+     if(callback){
+        callback()
+     }
+}
+
 export const loginAction = (value:any,callback:Function):any => {
     return (dispatch:any) => {
       const dataToSend = { message: value };
