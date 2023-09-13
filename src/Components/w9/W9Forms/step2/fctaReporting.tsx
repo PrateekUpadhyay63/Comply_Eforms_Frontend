@@ -27,7 +27,10 @@ export default function FCTA_Reporting(props: any) {
     report,
     handleReportChange
   } = props;
-  return (   <Paper className="col-12">
+  return (  
+
+    
+    <Paper className="col-12">
   <div style={{ margin: "10px" }}>
     <Typography
       align="left"
@@ -164,4 +167,6 @@ export default function FCTA_Reporting(props: any) {
       Back
     </Button>
   </Typography>
-</Paper>)}
+</Paper>
+
+)}

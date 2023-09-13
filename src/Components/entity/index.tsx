@@ -48,7 +48,7 @@ export default function Entity() {
   // const [accInfoType, setAccInfoType] = useState('');
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
-
+  const [selectedValue, setSelectedValue] = useState('');
   const [countries, setCountries] = useState([]);
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
@@ -149,15 +149,14 @@ export default function Entity() {
       });
   }, []);
 
-  // const paymentSelection = val => {
-  //   console.log(val);
-  //   if (val === '') {
-  //     setAccInfoSection(false);
-  //   } else {
-  //     setAccInfoSection(true);
-  //     setAccInfoType(val);
-  //   }
-  // };
+
+  const handleDelete = (i: any) => {
+    const updatedIncomeCodes = [...incomeArr];
+    updatedIncomeCodes.splice(i, 1);
+    setIncomeArr(updatedIncomeCodes);
+  };
+  
+ 
 
   useEffect(() => {
     if (payload.permanentResidentialCountryId == 258) {
@@ -187,7 +186,7 @@ export default function Entity() {
   // };
 
   const addIncomeType = () => {
-    setIncomeArr((incomeArr) => [...incomeArr, ""]);
+    setIncomeArr((incomeArr) => [...incomeArr, "1"]);
   };
 
   const handleSub = (e: any) => {
@@ -2460,7 +2459,7 @@ The email is dispatched to the email address given as soon as you confirm the de
                     unmountOnExit
                   >
                     {incomeArr.length &&
-                      incomeArr.map((ind) => {
+                      incomeArr.map((ind , i) => {
                         return (
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography className="d-flex w-100 pb-2">
@@ -2494,9 +2493,7 @@ The email is dispatched to the email address given as soon as you confirm the de
                                   ))}
                                 </select>
                                 <Delete
-                                  onClick={() => {
-                                    setAlternateNo(false);
-                                  }}
+                                  onClick={() => handleDelete(i)}
                                   style={{
                                     color: "red",
                                     fontSize: "20px",
