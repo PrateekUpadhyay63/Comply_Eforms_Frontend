@@ -1,92 +1,202 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 export const individualSchema = () => {
-    return Yup.object().shape({
-      firstName: Yup.string()
-        .required('Please Enter First Name')
-        .min(3, 'First Name should be minimum of 3 characters')
-        .max(50, 'First Name should be maximum of 50 characters'),
-      lastName: Yup.string()
-      .required('Please Enter Last Name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 50 characters'),
-      uniqueIdentifier: Yup.string()
-      .required('Please Enter unique Identifier')
-      .min(3, 'Too short')
-      .max(50, 'Too long'),
-      countryOfCitizenshipId: Yup.number()
-      .required('Please select a country')
-      .notOneOf([0], 'Please select a valid country'),
-      dob: Yup.date()
-      .required('Please Enter DOB'),
-      nameOfDisregarded: Yup.string()
-      .required('Please Enter Entity name')
-      .min(3, 'Entity name should be minimum of 3 characters')
-      .max(50, 'Entity name should be maximum of 50 characters'),
-      permanentResidentialStreetNumberandName: Yup.string()
-      .required('Please enter Street number and name'),
-      permanentResidentialCityorTown: Yup.string()
-      .required('Please enter City or Town'),
-      permanentResidentialZipPostalCode: Yup.string()
-      .required('Zip/Postal code is required'),
-      permanentResidentialStreetNumberandName1: Yup.string()
-      .required('Please enter street Number and Name'),
-      permanentResidentialCityorTown1: Yup.string()
-      .required('Please enter city or town'),
-      permanentResidentialZipPostalCode1: Yup.string()
-      .required('Zip/Postal code is required'),
-      contactFirstName: Yup.string()
-      .required('Please enter First name')
-      .min(3, 'First Name should be minimum of 3 characters')
-      .max(50, 'First Name should be maximum of 50 characters'),
-      contactLastName: Yup.string()
-      .required('Please enter Last name')
-      .min(3, 'Last Name should be minimum of 3 characters')
-      .max(50, 'Last Name should be maximum of 50 characters'),
-      contactEmail: Yup.string()
-      .email('Invalid Email address')
-      .required('Please enter Email'),
-      accountHolderName: Yup.string()
-      .required('Please enter Account Holder Name')
-      .min(3, 'Name should be minimum of 3 characters')
-      .max(50, 'Name should be maximum of 50 characters'),
-      accountBankName: Yup.string()
-      .required('Please enter Bank Name')
-      .max(50, 'Bank Name should be maximum of 50 characters'),
-      accountBankBranchLocationId: Yup.number()
-      .required('Please select branch location')
-      .notOneOf([0], 'Please select a valid country'),
-      accountNumber: Yup.string()
-      .matches(/^\d{10}$/, 'Account number must be exactly 10 digits')
-      .required('Account Number is required'),
-      bankCode: Yup.string()
-      .required('Please enter Bank code')
-      .min(5, 'Bank code should be minimum of 5 characters'),
-      sortCode: Yup.string()
-      .required('Please enter sort code')
-      .min(10, 'sort code should be minimum of 10 characters'),
-      abaRouting:Yup.string()
-      .required("Please enter ABA/Routing"),
-      payResidentalCountryId: Yup.number()
-      .required('Please select country')
-      .notOneOf([0], 'Please select a valid country'),
-      permanentResidentialCountryId: Yup.number()
-      .required('Please select country')
-      .notOneOf([0], 'Please select a valid country'),
-      permanentResidentialCountryId1: Yup.number()
-      .required('Please select a country')
-      .notOneOf([0], 'Please select a valid country'),
-      makePayable: Yup.string()
-      .required('Please enter payable name')
-      .min(3, 'Name should be minimum of 3 characters')
-      .max(50, 'Name should be maximum of 50 characters'),
-      payStreetNumberAndName: Yup.string()
-      .required('Please enter street no. and name'),
-      payCityorTown: Yup.string()
-      .required('Please enter city or town'),
-      payStateOrProvince: Yup.string()
-      .required('Please enter state or province'),
-      payZipPostalCode: Yup.string()
-      .required('Please enter zip or postal code'),
-    });
-  };
+  return Yup.object().shape({
+    isUSEntity: Yup.boolean().default(true),
+    firstName: Yup.string()
+      .required("Please Enter First Name")
+      .min(3, "First Name should be minimum of 3 characters")
+      .max(50, "First Name should be maximum of 50 characters"),
+    lastName: Yup.string()
+      .required("Please Enter Last Name")
+      .min(3, "Last Name should be minimum of 3 characters")
+      .max(50, "Last Name should be maximum of 50 characters"),
+    uniqueIdentifier: Yup.string()
+      .required("Please Enter unique Identifier")
+      .min(3, "Too short")
+      .max(50, "Too long"),
+    countryOfCitizenshipId: Yup.number().when("isUSEntity", {
+      is: false,
+      then: () =>
+        Yup.number()
+          .required("Please select a country")
+          .notOneOf([0], "Please select a valid country"),
+    }),
+    dob: Yup.date().when("isUSEntity", {
+      is: false,
+      then: () => Yup.date().required("Please Enter DOB"),
+    }),
+    vatId: Yup.number().when("isUSEntity", {
+      is: false,
+      then: () =>
+        Yup.number()
+          .required("Please select an option")
+          .notOneOf([0], "Please select a valid option"),
+    }),
+    // nameOfDisregarded: Yup.string()
+    //   .required("Please Enter Entity name")
+    //   .min(3, "Entity name should be minimum of 3 characters")
+    //   .max(50, "Entity name should be maximum of 50 characters"),
+    permanentResidentialCountryId: Yup.number()
+      .required("Please select country")
+      .notOneOf([0], "Please select a valid country"),
+    permanentResidentialStreetNumberandName: Yup.string().required(
+      "Please enter Street number and name"
+    ),
+    permanentResidentialCityorTown: Yup.string().required(
+      "Please enter City or Town"
+    ),
+    permanentResidentialZipPostalCode: Yup.string().required(
+      "Zip/Postal code is required"
+    ),
+    isAddressPostOfficeBox: Yup.boolean().when("isUSEntity", {
+      is: false,
+      then: () => Yup.boolean().required("Please select an option"),
+    }),
+    isCareOfAddress: Yup.boolean().when("isUSEntity", {
+      is: false,
+      then: () => Yup.boolean().required("Please select an option"),
+    }),
+    isalternativebusinessaddress: Yup.boolean().default(true),
+    permanentResidentialCountryId1: Yup.number().when(
+      "isalternativebusinessaddress",
+      {
+        is: true,
+        then: () =>
+          Yup.number()
+            .required("Please select a country")
+            .notOneOf([0], "Please select a valid country"),
+      }
+    ),
+    permanentResidentialStreetNumberandName1: Yup.string().when(
+      "isalternativebusinessaddress",
+      {
+        is: true,
+        then: () =>
+          Yup.string().required("Please enter street Number and Name"),
+      }
+    ),
+
+    permanentResidentialCityorTown1: Yup.string().when(
+      "isalternativebusinessaddress",
+      {
+        is: true,
+        then: () => Yup.string().required("Please enter city or town"),
+      }
+    ),
+
+    permanentResidentialZipPostalCode1: Yup.string().when(
+      "isalternativebusinessaddress",
+      {
+        is: true,
+        then: () => Yup.string().required("Zip/Postal code is required"),
+      }
+    ),
+
+    contactFirstName: Yup.string()
+      .required("Please enter First name")
+      .min(3, "First Name should be minimum of 3 characters")
+      .max(50, "First Name should be maximum of 50 characters"),
+    contactLastName: Yup.string()
+      .required("Please enter Last name")
+      .min(3, "Last Name should be minimum of 3 characters")
+      .max(50, "Last Name should be maximum of 50 characters"),
+    contactEmail: Yup.string()
+      .email("Invalid Email address")
+      .required("Please enter Email"),
+
+    paymentTypeId: Yup.number()
+      .required("Please select an option")
+      .notOneOf([0], "Please select a valid option"),
+
+    accountHolderName: Yup.string().when("paymentTypeId", {
+      is: 1 || 3,
+      then: () =>
+        Yup.string()
+          .required("Please enter Account Holder Name")
+          .min(3, "Name should be minimum of 3 characters")
+          .max(50, "Name should be maximum of 50 characters"),
+    }),
+
+    accountBankName: Yup.string().when("paymentTypeId", {
+      is: 1 || 3,
+      then: () =>
+        Yup.string()
+          .required("Please enter Bank Name")
+          .max(50, "Bank Name should be maximum of 50 characters"),
+    }),
+
+    accountBankBranchLocationId: Yup.number().when("paymentTypeId", {
+      is: 1 || 3,
+      then: () =>
+        Yup.number()
+          .required("Please select branch location")
+          .notOneOf([0], "Please select a valid country"),
+    }),
+
+    accountNumber: Yup.string().when("paymentTypeId", {
+      is: 1 || 3,
+      then: () =>
+        Yup.string()
+          .matches(/^\d{10}$/, "Account number must be exactly 10 digits")
+          .required("Account Number is required"),
+    }),
+
+    bankCode: Yup.string().when("paymentTypeId", {
+      is: 1,
+      then: () =>
+        Yup.string()
+        .required("Please enter Bank code")
+        .min(5, "Bank code should be minimum of 5 characters"),
+    }),
+      
+    sortCode: Yup.string().when(["paymentTypeId", "accountBankBranchLocationId"], {
+      is: (paymentTypeId:any, accountBankBranchLocationId:any) => 
+      (paymentTypeId == 1) && accountBankBranchLocationId == 257,
+      then:() => Yup.string().required("Please enter sort code")
+      .min(10, "sort code should be minimum of 10 characters"),
+    }),
+
+    abaRouting: Yup.string().when(["paymentTypeId", "accountBankBranchLocationId"], {
+      is: (paymentTypeId:any, accountBankBranchLocationId:any) =>
+        (paymentTypeId == 1 || paymentTypeId == 3) && accountBankBranchLocationId == 258,
+      then: () => Yup.string().required("Please enter ABA/Routing"),
+    }),
+
+    payResidentalCountryId: Yup.number().when("paymentTypeId", {
+      is: 2,
+      then: () =>
+        Yup.number()
+          .required("Please select country")
+          .notOneOf([0], "Please select a valid country"),
+    }),
+    makePayable: Yup.string().when("paymentTypeId", {
+      is: 2,
+      then: () =>
+        Yup.string()
+          .required("Please enter payable name")
+          .min(3, "Name should be minimum of 3 characters")
+          .max(50, "Name should be maximum of 50 characters"),
+    }),
+
+    payStreetNumberAndName: Yup.string().when("paymentTypeId", {
+      is: 2,
+      then: () => Yup.string().required("Please enter street no. and name"),
+    }),
+
+    payCityorTown: Yup.string().when("paymentTypeId", {
+      is: 2,
+      then: () => Yup.string().required("Please enter city or town"),
+    }),
+
+    payStateOrProvince: Yup.string().when("paymentTypeId", {
+      is: 2,
+      then: () => Yup.string().required("Please enter state or province"),
+    }),
+
+    payZipPostalCode: Yup.string().when("paymentTypeId", {
+      is: 2,
+      then: () => Yup.string().required("Please enter zip or postal code"),
+    }),
+  });
+};

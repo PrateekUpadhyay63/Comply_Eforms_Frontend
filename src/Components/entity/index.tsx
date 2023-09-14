@@ -103,6 +103,8 @@ export default function Entity() {
     iban: "",
     swiftCode: "",
     bankCode: "",
+    vatId: 0,
+    vat: "",
     doingBusinessAsName: "",
     makePayable: "",
     payResidentalCountryId: 0,
