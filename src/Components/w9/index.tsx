@@ -178,7 +178,7 @@ export default function App() {
   };
 
   return (
-    <div className="row m-0">
+    <div className="row m-0 h-100">
 
       <div
         className="col-12"
@@ -187,11 +187,11 @@ export default function App() {
           marginBottom: "10px",
           padding: "20px",
         }}
-      >
+        >
         <div style={{ display: "flex" }} className="row">
           
           {/* <Sidebar /> */}
-          <Tab/>
+        <Tab/>
         
         <Step2
         selectedContinue={selectedContinue}
