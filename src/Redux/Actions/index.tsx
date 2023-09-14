@@ -35,13 +35,14 @@ export const loginAction = (value:any,callback:Function):any => {
   };
 
 
-  export const postOnboarding= (value:any,callback:any) => {
+  export const postOnboarding= (value:any,callback:Function):any => {
     return (dispatch:any) => {
       Utils.api.postApiCall(
         Utils.EndPoint.individualAccountHolder,
         value,
         (responseData) => {
-          let { data } = responseData;     
+          let { data } = responseData;  
+          console.log(data,"dataaa")   
           dispatch({
             type: Utils.actionName.individualAccountHolder,
             payload: { data: data.data },
