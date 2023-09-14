@@ -204,7 +204,7 @@ export default function Fedral_tax(props: any) {
 
                         </div>) : ""}
 
-                        <FormControl className="w-100">
+                        <FormControl className="w-50">
 
                           <Select
                             onChange={(e) => { handleChange(e); handleTaxClassificationChange(e) }}
@@ -250,7 +250,7 @@ export default function Fedral_tax(props: any) {
                             />
                           </Typography>
 
-                          <FormControl className="w-100">
+                          <FormControl className="w-50">
                             <TextField
                               autoComplete="firstName"
                               type="text"
@@ -286,7 +286,7 @@ export default function Fedral_tax(props: any) {
                             Last Name
                           </Typography>
 
-                          <FormControl className="w-100">
+                          <FormControl className="w-50">
                             <TextField
                               autoComplete="lastName"
                               type="text"
@@ -322,7 +322,7 @@ export default function Fedral_tax(props: any) {
                               different
                             </Typography>
 
-                            <FormControl className="w-100">
+                            <FormControl className="w-50">
                               <TextField
                                 name="businessName"
                                 fullWidth
@@ -357,7 +357,7 @@ export default function Fedral_tax(props: any) {
                 </div>
 
 
-                <div style={{ padding: "10px" }}>
+                <div style={{ padding: "10px" ,width:"50%"}}>
                   <Accordion expanded={expanded === 'groupPanel'} onChange={handleChangeAccodion('groupPanel')}>
                     <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel-content" id="panel-header">
                       <Typography style={{ fontSize: "18px", color: "blue" }}>Federal Tax Classification Guide</Typography>

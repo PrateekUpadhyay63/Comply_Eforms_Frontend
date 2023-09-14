@@ -2,11 +2,6 @@ import React from 'react';
 import { RouteType } from './types';
 import Utils from '../Utils';
 
-// // Instead of regular import statements, we will use the above approach for lazy loading
-// const LoginWrapper = React.lazy(() => import('../Pages/Auth/login'));
-// const ForgotPasswordWrapper = React.lazy(() => import('../Pages/Auth/forgotPassword'));
-// const ResetPasswordWrapper = React.lazy(() => import('../Pages/Auth/resetPassword'));
-// const DashboardWrapper = React.lazy(() => import('../Pages/dashboard'));
 const login = React.lazy(() => import('../Components/login'));
 const W9 = React.lazy(() => import('../Components/w9'));
 const IndividualUs = React.lazy(() => import('../Components/individualUS'));
@@ -15,177 +10,14 @@ const Term =  React.lazy(() => import('../Components/term'));
 const Certificates = React.lazy(() => import('../Components/certificates'));
 const Complete = React.lazy(() => import('../Components/complete'));
 
-// const RolesDetailWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail'));
-// const SubAdminWrapper = React.lazy(() => import('../Modules/RolesManagement/SubAdmin/index'));
-// const RolesAddSubAdminWrapper = React.lazy(
-//   () => import('../Modules/RolesManagement/SubAdmin/addSubAdmin')
-// );
-// const AddRoleWrapper = React.lazy(() => import('../Modules/RolesManagement/RolesDetail/addRole'));
-// const RolesSubAdminDetailWrapper = React.lazy(
-//   () => import('../Modules/RolesManagement/SubAdmin/subAdminDetails')
-// );
-// const UserManagementWrapper = React.lazy(() => import('../Pages/UserManagement'));
-// const propertyManagementWrapper = React.lazy(() => import('../Pages/PropertyManagement'));
-// const userWalletWrapper = React.lazy(() => import('../Pages/UserWallet'));
-// const propertyWalletWrapper = React.lazy(() => import('../Pages/PropertyWallet'));
-// const blockedUserWrapper = React.lazy(() => import('../Modules/UserManagement/BlockedUser'));
-// const upcomingPropertyWrapper = React.lazy(
-//   () => import('../Modules/PropertyManagement/UpcomingProperty')
-// );
-// const publishedPropertyWrapper = React.lazy(
-//   () => import('../Modules/PropertyManagement/PublishedProperty')
-// );
-// const addPropertyWrapper = React.lazy(() => import('../Modules/PropertyManagement/AddProperty'));
-// const ResendEmailWrapper = React.lazy(() => import('../Pages/Auth/resendEmail'));
-// const editPropertyWrapper = React.lazy(() => import('../Modules/PropertyManagement/EditProperty'));
-// const propertyDetailWrapper = React.lazy(
-//   () => import('src/Modules/PropertyManagement/PropertyDetail')
-// );
-// const userDetailWrapper = React.lazy(() => import('../Modules/UserManagement/UserDetail'));
-// const kycDetailWrapper = React.lazy(() => import('../Modules/UserManagement/UserDetail/kycDetail'));
-// const kycProfileDetailHistoryWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/profileDetailHistory')
-// );
-// const kycIdVerificationHistoryWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/idVerificationHistory')
-// );
-// const kycAddressVerificationHistoryWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/addressVerificationHistory')
-// );
-// const AMLCheckHistoryWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/amlCheckHistory')
-// );
-// const userWalletDetailWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/userWalletDetail')
-// );
-// const ViewTransaction = React.lazy(() => import('../Modules/PropertyManagement/ViewTransaction'));
-// const TransactionDetailWrapper = React.lazy(
-//   () => import('../Modules/UserManagement/UserDetail/transactionDetail')
-// );
-// const UserWalletTransactionDetailWrapper = React.lazy(
-//   () => import('../Modules/UserWallet/userWalletTransactionDetails')
-// );
-// const PropertyWalletTransactionDetailWrapper = React.lazy(
-//   () => import('../Modules/PropertyWallet/propertyWalletTransactionDetail')
-// );
-// const TransactionDetail = React.lazy(
-//   () => import('../Modules/PropertyManagement/ViewTransaction/transactionDetail')
-// );
-// const SliceWalletWrapper = React.lazy(() => import('../Pages/SliceWallet'));
-// const SliceWalletTransactionDetailWrapper = React.lazy(
-//   () => import('../Modules/SliceWallet/sliceWalletTransactionDetails')
-// );
-// const ExternalAccountWrapper = React.lazy(() => import('../Pages/ExternalAccount'));
+//
+const Declaration = React.lazy(() => import('../Components/W-8BEN/Declaration'));
+//
+const US_Sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/US'));
 
-// const ExternalAddAccountWrapper = React.lazy(() => import('../Modules/ExternalAccount/AddAccount'));
-// const ExternalEditAccountWrapper = React.lazy(
-//   () => import('../Modules/ExternalAccount/EditAccount')
-// );
-// const ExternalViewTypesWrapper = React.lazy(() => import('../Modules/ExternalAccount/ViewTypes'));
 
-// const ExternalAccountDetailWrapper = React.lazy(
-//   () => import('../Modules/ExternalAccount/AccountDetail')
-// );
 
-// const CouponManagementWrapper = React.lazy(() => import('../Pages/CouponManagement'));
-// const AddCoupontWrapper = React.lazy(() => import('../Modules/CouponManagement/AddCoupon'));
-// const PromotionWrapper = React.lazy(() => import('../Modules/CouponManagement/promotion/index'));
-// const PropertyManagementTransactionDetail = React.lazy(
-//   () => import('../Modules/PropertyManagement/ViewTransaction/transactionDetail')
-// );
 
-// const CMSManagementWrapper = React.lazy(() => import('../Pages/CMSManagement/'));
-// const AddJustSliceManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/JustSliceThing/AddJustSlice')
-// );
-// const EditJustSliceManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/JustSliceThing/EditSliceThings')
-// );
-// const AddBlogWrapper = React.lazy(() => import('../Modules/CMSManagement/Blog/AddBlog'));
-// const DailyDoseBlogWrapper = React.lazy(() => import('../Modules/CMSManagement/Blog/DailyDose'));
-// const EditBlogWrapper = React.lazy(() => import('../Modules/CMSManagement/Blog/EditBlog'));
-// const EditDailyDoseWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/Blog/EditDailyDose')
-// );
-
-// const BlogDetailWrapper = React.lazy(() => import('../Modules/CMSManagement/Blog/BlogDetail'));
-// const AddNewsWrapper = React.lazy(() => import('../Modules/CMSManagement/News/AddNews'));
-// const NewsDetailWrapper = React.lazy(() => import('../Modules/CMSManagement/News/NewsDetail'));
-
-// const JustSliceDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/JustSliceThing/JustSliceDetail')
-// );
-// const UnpublishedPropertyDetail = React.lazy(
-//   () => import('../Modules/PropertyManagement/UnpublishedProperty')
-// );
-// const AddSliceAmbassadorWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/SliceAmbassador/AddAmbassador')
-// );
-
-// const EditSliceAmbassadorWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/SliceAmbassador/EditAmbassador')
-// );
-// const SliceAmbassadorDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/SliceAmbassador/SliceAmbassadorDetail')
-// );
-
-// const AddPerkInvestmentWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/PerkInvestment/AddPerkInvestment')
-// );
-// const EditPerkInvestmentWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/PerkInvestment/EditPerkInvestment')
-// );
-// const PerkInvestmentDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/PerkInvestment/PerkInvestmentDetail')
-// );
-// const AddLearnToInvestWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/LearnToInvest/AddLearnToInvest')
-// );
-// const EditLearnToInvestWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/LearnToInvest/EditLearnToInvest')
-// );
-// const LearnToInvestDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/LearnToInvest/LearnToInvestDetail')
-// );
-// const AddIconWrapper = React.lazy(() => import('../Modules/CMSManagement/Icons/AddIcon'));
-// const EditIconWrapper = React.lazy(() => import('../Modules/CMSManagement/Icons/EditIcon'));
-// const IconDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/Icons/IconDetail')
-// );
-// const FaqDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/Faqs/FaqDetail')
-// );
-
-// const AddLegalTitleWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/LegalContent/AddLegalTitle')
-// );
-// // const AppScreenWrapper = React.lazy(() => import('../Modules/CMSManagement/LoginScreen/App'));
-// const AddRewardGrowMoreWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/RewardsAndGrowMore/AddRewardsAndGrowMore')
-// );
-// const EditRewardGrowMoreWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/RewardsAndGrowMore/EditRewardsAndGrowMore')
-// );
-// const RewardGrowMoreDetailManagementWrapper = React.lazy(
-//   () => import('../Modules/CMSManagement/RewardsAndGrowMore/RewardsAndGrowMoreDetail')
-// );
-// const DistributeDividendPropertyWalletWrapper = React.lazy(
-//   () => import('../Modules/PropertyWallet/distributeDividend')
-// );
-// const FinalSettlementPropertyWalletWrapper = React.lazy(
-//   () => import('../Modules/PropertyWallet/finalSettlement')
-// );
-// const PromotionDetailWrapper = React.lazy(
-//   () => import('../Modules/CouponManagement/promotion/details')
-// );
-// const ReferralDetailWrapper = React.lazy(
-//   () => import('../Modules/CouponManagement/Referral/details')
-// );
-// const AddCouponReferral = React.lazy(
-//   () => import('../Modules/CouponManagement/Referral/addCoupon')
-// );
-// const EditNewsWrapper = React.lazy(() => import('../Modules/CMSManagement/News/EditNews'));
-// const PageNotFoundWrapper = React.lazy(() => import('../Components/PageNotFound'));
 const ROUTES: Array<RouteType> = [
   {
     name: 'Login',
@@ -239,6 +71,22 @@ const ROUTES: Array<RouteType> = [
           id: 4,
           Component: Complete,
           isPrivate: true},
+
+          {
+            name:"Declaration",
+            path:"W-8BEN/Declaration",
+           id: 5,
+           Component: Declaration,
+           isPrivate: true
+          },
+
+          {
+            name:"US_Sourced",
+            path:"W-8BEN/Declaration/US_Sourced",
+           id: 4,
+           Component: US_Sourced,
+           isPrivate: true
+          }
 
 
   
