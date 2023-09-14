@@ -16,7 +16,7 @@ export const individualSchema = () => {
       .max(50, 'Too long'),
       countryOfCitizenshipId: Yup.number()
       .required('Please select a country')
-      .notOneOf([1], 'Please select a valid country'),
+      .notOneOf([0], 'Please select a valid country'),
       dob: Yup.date()
       .required('Please Enter DOB'),
       nameOfDisregarded: Yup.string()
@@ -55,24 +55,27 @@ export const individualSchema = () => {
       .max(50, 'Bank Name should be maximum of 50 characters'),
       accountBankBranchLocationId: Yup.number()
       .required('Please select branch location')
-      .notOneOf([1], 'Please select a valid country'),
+      .notOneOf([0], 'Please select a valid country'),
       accountNumber: Yup.string()
       .matches(/^\d{10}$/, 'Account number must be exactly 10 digits')
       .required('Account Number is required'),
       bankCode: Yup.string()
       .required('Please enter Bank code')
       .min(5, 'Bank code should be minimum of 5 characters'),
+      sortCode: Yup.string()
+      .required('Please enter sort code')
+      .min(10, 'sort code should be minimum of 10 characters'),
       abaRouting:Yup.string()
       .required("Please enter ABA/Routing"),
       payResidentalCountryId: Yup.number()
       .required('Please select country')
-      .notOneOf([1], 'Please select a valid country'),
+      .notOneOf([0], 'Please select a valid country'),
       permanentResidentialCountryId: Yup.number()
       .required('Please select country')
-      .notOneOf([1], 'Please select a valid country'),
+      .notOneOf([0], 'Please select a valid country'),
       permanentResidentialCountryId1: Yup.number()
       .required('Please select a country')
-      .notOneOf([1], 'Please select a valid country'),
+      .notOneOf([0], 'Please select a valid country'),
       makePayable: Yup.string()
       .required('Please enter payable name')
       .min(3, 'Name should be minimum of 3 characters')
@@ -85,18 +88,5 @@ export const individualSchema = () => {
       .required('Please enter state or province'),
       payZipPostalCode: Yup.string()
       .required('Please enter zip or postal code'),
-    //   businessName: Yup.string()
-    //   .required('Please Enter business Name')
-    //   .min(3, 'business Name should be minimum of 3 characters')
-    //   .max(50, 'business Name should be maximum of 250 characters'),
-    //     .matches(/^[0-9]+$/, 'Referrer Amount will always be a whole number')
-    //     .required('Please Enter Referrer Amount'),
-    //   refereeAmount: Yup.string()
-    //     .matches(/^[0-9]+$/, 'Referee Amount will always be a whole number')
-    //     .required('Please Enter Referee Amount'),
-    //   limit: Yup.string().matches(/^[0-9]+$/, 'Minimum Invest Amount will always be a whole number'),
-    //   campaignDetails: Yup.string()
-    //     .required('Please Enter Campaign Details')
-    //     .min(3, 'Campaign Details should be minimum of 3 characters'),
     });
   };

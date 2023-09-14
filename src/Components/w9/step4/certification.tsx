@@ -138,9 +138,9 @@ You may be requested to sign your submission by the withholding agent or request
          View form
         </Button>
         <Button 
-
+  type="submit"
           onClick={() => {
-            setselectedContinue({step1:false,step2:false,step3:false,step4:false,step5:false,step6:false,step7:false,step8:true})
+            setselectedContinue({step1:false,step2:false,step3:false,step4:false,step5:false,step6:false,step7:true,step8:false})
            
            
 
