@@ -4118,7 +4118,7 @@ export default function IndividualUs() {
 
       <div className="container-fluid">
         <footer>
-          <div className="row  ">
+          <div className="row w-100">
             <Typography
               className="mx-2"
               align="left"
