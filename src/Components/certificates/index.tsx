@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import InfoIcon from '@mui/icons-material/Info';
 import Form from "../reusables/Formguide"
 import { useNavigate } from "react-router-dom"
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function Certificates(props:any) {
 const history = useNavigate()
 const clickInfo = () => {
@@ -200,9 +201,9 @@ const clickInfo = () => {
     </Card> */}
 
     {selectedCard ? (
-                  <div className="text-center" >
+                  <div style={{marginTop:"20px"}}className="text-center" >
                   <Button
-                  style={{ fontSize: '16px',marginTop:"25px" }}
+                  style={{ fontSize: '16px',marginTop:"35px" }}
                   size="medium"
                   type="submit"
                   onClick={() => redirectToComponent(selectedCard)}
@@ -216,12 +217,12 @@ const clickInfo = () => {
 
                   </div>
                 ) : (
-                  <div className="text-center">
+                  <div style={{marginTop:"20px"}} className="text-center ">
                     <Button
                       type="submit"
                      
                       style={{
-                        marginTop:"25px",
+                        marginTop:"35px",
                         border: '1px solid #0095dd',
                         backgroundColor: '#D2D2D4',
                         borderColor: '#d2d2d2',
@@ -242,6 +243,22 @@ const clickInfo = () => {
                     </Button>
                   </div>
                 )}
+                <Typography
+          align="center"
+          style={{
+            color: "#adadac",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+        >
+          Do you want to go back?
+        </Typography>
+        <Typography align="center">
+        <Button variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
+         <span style={{marginRight:"5px"}}> <ArrowBackIcon/></span> Back
+        </Button>
+        </Typography>
         </div>
     </div>
 

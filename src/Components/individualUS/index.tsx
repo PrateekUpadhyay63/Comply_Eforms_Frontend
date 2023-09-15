@@ -337,11 +337,11 @@ export default function IndividualUs() {
     //   setPayload({ ...payload, usTin: payload.usTin +"-" })
     // }
   };
-  const clickInfo = () => {
-    alert(
-      "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
-    );
-  };
+  // const clickInfo = () => {
+  //   alert(
+  //     "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
+  //   );
+  // };
 
   // const chek = (err:any)=>{
   //   console.log(err);
@@ -464,7 +464,7 @@ export default function IndividualUs() {
                               marginLeft: "5px",
                               cursor: "pointer",
                             }}
-                            onClick={clickInfo}
+                          
                           />
                         </Tooltip>
                       </div>
@@ -547,7 +547,7 @@ export default function IndividualUs() {
                                 fontSize: "15px",
                                 marginBottom: "12px",
                               }}
-                              onClick={clickInfo}
+                              
                             />
                           </Typography>
 
@@ -583,7 +583,7 @@ export default function IndividualUs() {
                             <span style={{ color: "red" }}>*</span>
                             <Info
                               style={{ color: "#ffc107", fontSize: "15px" }}
-                              onClick={clickInfo}
+                          
                             />
                           </Typography>
                           <Input
@@ -918,7 +918,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                            
                             />
                           </Tooltip>
                         </div>
@@ -1392,7 +1392,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                             
                             />
                           </Tooltip>
                         </div>
@@ -1763,7 +1763,7 @@ export default function IndividualUs() {
                                   fontSize: "15px",
                                   marginBottom: "12px",
                                 }}
-                                onClick={clickInfo}
+                               
                               />
                             </Typography>
 
@@ -1815,7 +1815,7 @@ export default function IndividualUs() {
                                   fontSize: "15px",
                                   marginBottom: "12px",
                                 }}
-                                onClick={clickInfo}
+                              
                               />
                             </Typography>
 
@@ -1865,7 +1865,7 @@ export default function IndividualUs() {
                                     fontSize: "15px",
                                     marginBottom: "12px",
                                   }}
-                                  onClick={clickInfo}
+                                 
                                 />
                               </Typography>
 
@@ -2359,7 +2359,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                             
                             />
                           </Tooltip>
                         </div>
