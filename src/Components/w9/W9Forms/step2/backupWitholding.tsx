@@ -468,8 +468,8 @@ export default function Backup_witholding(props: any) {
                 <Button
                   onClick={() => {
                     setselectedContinue({
-                      step1: false,
-                      step2: true,
+                      step1: true,
+                      step2: false,
                       step3: false,
                       step4: false,
                       step5: false,
