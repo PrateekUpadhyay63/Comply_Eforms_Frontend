@@ -25,21 +25,24 @@ import {
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { individualSchema } from "../../schemas/individualindex";
-// import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-// import "./style.css"
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import "bootstrap/dist/css/bootstrap.css";
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
+import { useDispatch } from "react-redux";
+import { postOnboarding } from "../../Redux/Actions";
+import { AppDispatch } from "../../Redux/store";
 
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 // import { CheckBox } from '@mui/icons-material';
 
 export default function IndividualUs() {
   //States
-
+   
+  const history = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
   const [bankLocation, setBankLocation] = useState("");
@@ -107,6 +110,8 @@ export default function IndividualUs() {
     payResidentalCountryId: 0,
     payStreetNumberAndName: "",
     payAptSuite: "",
+    vatId: 0,
+    vat: "",
     doingBusinessAsName: "",
     payCityorTown: "",
     payStateOrProvince: "",
@@ -114,52 +119,60 @@ export default function IndividualUs() {
     sortCode: "",
     isCorrectPaymentPurposes: true,
     isConfirmed: true,
-    vatTypeId: 0,
-    vat: "",
+   
   });
 
+  // useEffect(() => {
+  //   apiGetUrl("GetCountries", "", {})
+  //     .then((res) => {
+  //       setCountries(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   apiGetUrl("GetCountriesCode", "", {})
+  //     .then((res) => {
+  //       setCountriesCode(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   apiGetUrl("GetAllIncomeCodes", "", {})
+  //     .then((res) => {
+  //       setIncomeCodes(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   if (payload.permanentResidentialCountryId == 258) {
+  //     apiGetUrl("GetStateByCountryId", "", {})
+  //       .then((res) => {
+  //         setUsStates(res.data);
+  //         console.log(res.data, "res.data");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [payload.permanentResidentialCountryId]);
+
   useEffect(() => {
-    apiGetUrl("GetCountries", "", {})
-      .then((res) => {
-        setCountries(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    apiGetUrl("GetCountriesCode", "", {})
-      .then((res) => {
-        setCountriesCode(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    apiGetUrl("GetAllIncomeCodes", "", {})
-      .then((res) => {
-        setIncomeCodes(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    localStorage.clear();
   }, []);
 
-  useEffect(() => {
-    if (payload.permanentResidentialCountryId == 258) {
-      apiGetUrl("GetStateByCountryId", "", {})
-        .then((res) => {
-          setUsStates(res.data);
-          console.log(res.data, "res.data");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [payload.permanentResidentialCountryId]);
-  const history = useNavigate();
+  const redirectFunc=()=>{
+    history("/Term");
+  }
+
+  // const history = useNavigate();
 
   const handleOpen = (val: any) => {
     if (open === val) {
@@ -183,16 +196,11 @@ export default function IndividualUs() {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
 
-  const handleSub = (e: any) => {
+  const continueSubmit = (e:any) => {
+    console.log("b dzsfdvcyghgc",payload)
     e.preventDefault();
-    apiPostUrl("InsertAccountHolderDetail", "", payload)
-      .then((res: any) => {
-        console.log(res.data, "res.data");
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
-    console.log(payload, "payload2");
+    dispatch(postOnboarding(payload,redirectFunc))
+    // redirectFunc();
   };
 
   const returnFieldName = (handleBlur: any, touched: any, errors: any) => {
@@ -334,6 +342,11 @@ export default function IndividualUs() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
+
+  // const chek = (err:any)=>{
+  //   console.log(err);
+    
+  // }
   return (
     <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
       <Typography
@@ -395,9 +408,7 @@ export default function IndividualUs() {
             <Formik
               initialValues={payload}
               enableReinitialize
-              onSubmit={() => {
-                console.log("submit!");
-              }}
+              onSubmit={continueSubmit}
               validationSchema={individualSchema}
             >
               {({
@@ -408,11 +419,12 @@ export default function IndividualUs() {
                 handleSubmit,
                 handleChange,
                 isSubmitting,
-              }) => (
-                <Form onSubmit={handleSubmit}>
+              }
+              ) => (
+                <Form onSubmit={continueSubmit}>
                   <></>
                   <CardHeader
-                    style={{ textAlign: "left", marginLeft: "13px" }}
+                    
                     className="flex-row-reverse"
                     title={
                       <div
@@ -866,7 +878,7 @@ export default function IndividualUs() {
                   {/* Tax Identifier Section */}
                   <div>
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -1162,11 +1174,50 @@ export default function IndividualUs() {
                                 }
                                 value={payload.foreignTINCountryId}
                               >
-                                <option value="">-Select-</option>
+                                <option value={0}>-Select-</option>
+                                <option value={1}>-Select1-</option>
                                 {countries.map(({ id, name }) => (
                                   <option value={id}>{name}</option>
                                 ))}
                               </select>
+                            </FormControl>
+                            
+                          </div>
+
+                          <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <FormControl className="w-100">
+                              <Typography align="left">
+                                Foreign TIN
+                                {/* <span style={{ color: 'red' }}>*</span> */}
+                              </Typography>
+                              <Input
+                              disabled={
+                                payload.foreignTINCountryId == 0 ||
+                                (payload.foreignTINCountryId != 0 &&
+                                  payload.foreignTINNotAvailable == true)
+                              }
+                                style={{
+                                  border: " 1px solid #d9d9d9 ",
+                                  height: " 36px",
+                                  lineHeight: "36px ",
+                                  background: "#fff ",
+                                  fontSize: "13px",
+                                  color: " #000 ",
+                                  fontStyle: "normal",
+                                  borderRadius: "1px",
+                                  padding: " 0 10px ",
+                                }}
+                                id="outlined"
+                                name="foreignTIN"
+                                placeholder="Enter foreign TIN"
+                                onChange={(e: any) =>
+                                  setPayload({
+                                    ...payload,
+                                    foreignTIN: e.target.value,
+                                  })
+                                }
+                                value={payload.foreignTIN}
+                              />
                             </FormControl>
                             <div className="d-flex">
                               <Typography
@@ -1216,38 +1267,6 @@ export default function IndividualUs() {
                               />
                             </div>
                           </div>
-
-                          <div className="col-lg-3 col-6 col-md-3 mx-2">
-                            <FormControl className="w-100">
-                              <Typography align="left">
-                                Foreign TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
-                              </Typography>
-                              <Input
-                                style={{
-                                  border: " 1px solid #d9d9d9 ",
-                                  height: " 36px",
-                                  lineHeight: "36px ",
-                                  background: "#fff ",
-                                  fontSize: "13px",
-                                  color: " #000 ",
-                                  fontStyle: "normal",
-                                  borderRadius: "1px",
-                                  padding: " 0 10px ",
-                                }}
-                                id="outlined"
-                                name="foreignTIN"
-                                placeholder="Enter foreign TIN"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    foreignTIN: e.target.value,
-                                  })
-                                }
-                                value={payload.foreignTIN}
-                              />
-                            </FormControl>
-                          </div>
                           <div className="col-12 d-flex">
                             <div className="col-lg-3 col-6 col-md-3 ">
                               <Typography align="left" className="d-flex w-100">
@@ -1263,22 +1282,25 @@ export default function IndividualUs() {
                                     fontStyle: "italic",
                                     height: "36px",
                                   }}
-                                  name="vatTypeId"
-                                  defaultValue={1}
+                                  name="vatId"
+                                  defaultValue={0}
                                   onChange={(e: any) =>
                                     setPayload({
                                       ...payload,
-                                      vatTypeId: e.target.value,
+                                      vatId: e.target.value,
                                     })
                                   }
-                                  value={payload.vatTypeId}
+                                  value={payload.vatId}
                                 >
-                                  <option value="1">-Select-</option>
-                                  <option value="2">My VAT Number is</option>
-                                  <option value="3">
+                                  <option value={0}>-Select-</option>
+                                  <option value={1}>My VAT Number is</option>
+                                  <option value={2}>
                                     I Do Not Have A VAT Number
                                   </option>
                                 </select>
+                                <p className="error">
+                              {errors.vatId}
+                            </p>
                               </FormControl>
                             </div>
 
@@ -1290,8 +1312,8 @@ export default function IndividualUs() {
                                 </Typography>
                                 <Input
                                   disabled={
-                                    payload.vatTypeId == 1 ||
-                                    payload.vatTypeId == 3
+                                    payload.vatId == 0 ||
+                                    payload.vatId == 2
                                   }
                                   style={{
                                     border: " 1px solid #d9d9d9 ",
@@ -1330,7 +1352,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
 
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -1774,6 +1796,9 @@ export default function IndividualUs() {
                                 name="radio-buttons"
                                 inputProps={{ "aria-label": "B" }}
                               />
+                              <p className="error">
+                                  {errors.isalternativebusinessaddress}
+                                </p>
                             </div>
                           </div>
                         ) : (
@@ -1801,7 +1826,7 @@ export default function IndividualUs() {
                                 name="row-radio-buttons-group"
                               >
                                 <FormControlLabel
-                                  value="female"
+                                  value="false"
                                   control={<Radio />}
                                   label="No"
                                   checked={!payload.isAddressPostOfficeBox}
@@ -1813,7 +1838,7 @@ export default function IndividualUs() {
                                   }
                                 />
                                 <FormControlLabel
-                                  value="male"
+                                  value="true"
                                   control={<Radio />}
                                   label="Yes"
                                   checked={payload.isAddressPostOfficeBox}
@@ -1825,6 +1850,9 @@ export default function IndividualUs() {
                                   }
                                 />
                               </RadioGroup>
+                              <p className="error">
+                              {errors.isAddressPostOfficeBox}
+                            </p>
                             </div>
                             {/* </div> */}
                             <div className="mx-5">
@@ -1848,7 +1876,7 @@ export default function IndividualUs() {
                                   name="row-radio-buttons-group"
                                 >
                                   <FormControlLabel
-                                    value="female"
+                                    value="false"
                                     control={<Radio />}
                                     label="No"
                                     checked={!payload.isCareOfAddress}
@@ -1860,7 +1888,7 @@ export default function IndividualUs() {
                                     }
                                   />
                                   <FormControlLabel
-                                    value="male"
+                                    value="true"
                                     control={<Radio />}
                                     label="Yes"
                                     checked={payload.isCareOfAddress}
@@ -1872,6 +1900,9 @@ export default function IndividualUs() {
                                     }
                                   />
                                 </RadioGroup>
+                                <p className="error">
+                              {errors.isCareOfAddress}
+                            </p>
                               </div>
                             </div>
                             <div className="mx-5">
@@ -1988,6 +2019,9 @@ export default function IndividualUs() {
                                   name="radio-buttons"
                                   inputProps={{ "aria-label": "B" }}
                                 />
+                                <p className="error">
+                                  {errors.isalternativebusinessaddress}
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -2285,7 +2319,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
 
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -2736,7 +2770,7 @@ export default function IndividualUs() {
                     <hr className="w-100 "></hr>
                     {/* Income Type */}
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -2915,7 +2949,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
                     {/* Payment type */}
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -3054,6 +3088,7 @@ export default function IndividualUs() {
                               <option value={2}>Check</option>
                               <option value={3}>Wire</option>
                             </select>
+                            <p className="error">{errors.paymentTypeId}</p>
                             <Delete
                               style={{
                                 color: "red",
@@ -3071,7 +3106,7 @@ export default function IndividualUs() {
                     {payload.paymentTypeId ? (
                       <>
                         <CardHeader
-                          style={{ textAlign: "left", marginLeft: "13px" }}
+                          
                           className="flex-row-reverse"
                           title={
                             <div
@@ -4088,7 +4123,7 @@ export default function IndividualUs() {
                         <Button
                           type="submit"
                           disabled={!payload.isConfirmed}
-                          onClick={() => history("/Term")}
+                          // onClick={() => history("/Term")}
                           style={{
                             border: "1px solid #0095dd",
                             background: "#0095dd",
@@ -4103,6 +4138,9 @@ export default function IndividualUs() {
                             letterSpacing: "1px",
                           }}
                           className="btn btn_submit  btn-primary-agent"
+                          
+                          // onClick={(errors)=> chek(errors)}
+
                         >
                           Continue
                         </Button>
@@ -4112,13 +4150,14 @@ export default function IndividualUs() {
                 </Form>
               )}
             </Formik>
+            
           </Paper>
         </div>
       </div>
-
+      
       <div className="container-fluid">
         <footer>
-          <div className="row  ">
+          <div className="row w-100">
             <Typography
               className="mx-2"
               align="left"

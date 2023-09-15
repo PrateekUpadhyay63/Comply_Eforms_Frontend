@@ -125,13 +125,13 @@ export default function Tin(props: any) {
       onClick={() => {
         setselectedContinue({
           step1: false,
-          step2: false,
-          step3: false,
-          step4: false,
-          step5: true,
-          step6: false,
-          step7: false,
-          step8: false,
+              step2: false,
+              step3: false,
+              step4: false,
+              step5: true,
+              step6: false,
+              step7: false,
+              step8: false,
         });
         // setOpen(true);
       }}

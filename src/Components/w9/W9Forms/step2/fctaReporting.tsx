@@ -15,9 +15,12 @@ import {
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema } from "../../../../schemas";
+import { fctaSchema } from "../../../../schemas";
+import { W9_state } from "../../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function FCTA_Reporting(props: any) {
+  const dispatch = useDispatch();
   const {
     handleTaxClassificationChange,
     selectedTaxClassification,
@@ -27,10 +30,47 @@ export default function FCTA_Reporting(props: any) {
     report,
     handleReportChange
   } = props;
+  const initialValue = {
+    isExemptionFATCAReportings: "",
+  };
   return (  
 
     
     <Paper className="col-12">
+       <Formik
+          initialValues={initialValue}
+          enableReinitialize
+          validationSchema={fctaSchema} // Uncomment after testing ,this is validation Schema
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            setselectedContinue({
+              step1: false,
+              step2: true,
+              step3: false,
+              step4: false,
+              step5: false,
+              step6: false,
+              step7: false,
+              step8: false,
+            });
+            dispatch(
+              W9_state(values, () => {
+                console.log( "Done");
+              })
+            );
+          }}
+        >
+          {({
+            errors,
+            touched,
+            handleBlur,
+            values,
+            handleSubmit,
+            handleChange,
+            isSubmitting,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <>{console.log(values,"errors,values",errors)}</>
   <div style={{ margin: "10px" }}>
     <Typography
       align="left"
@@ -50,25 +90,36 @@ export default function FCTA_Reporting(props: any) {
 
     <div style={{ marginTop: "20px", justifyContent: "center" }}>
       <RadioGroup
-        row
+        id="isExemptionFATCAReportings"
         aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
-        value={report}
-        onChange={handleReportChange}
+       row
+        value={values.isExemptionFATCAReportings}
+        onChange={handleChange}
       >
         <FormControlLabel
-          value={257}
-          control={<Radio />}
+        control={<Radio/>}
+          value={true}
+          name="isExemptionFATCAReportings"
           label="Yes"
         />
         <FormControlLabel
-          value={258}
-          control={<Radio />}
+        control={<Radio/>}
+          value={false}
+          name="isExemptionFATCAReportings"
           label="No"
         />
+           {errors.isExemptionFATCAReportings && touched.isExemptionFATCAReportings ? (
+                <div>
+                  <Typography color="error">
+                    {errors.isExemptionFATCAReportings}
+                  </Typography>
+                </div>
+              ) : (
+                ""
+              )}
       </RadioGroup>
     </div>
-    {report === "257" ? (
+    {report ? (
       <>
         <Typography
           align="left"
@@ -144,18 +195,7 @@ export default function FCTA_Reporting(props: any) {
   </Typography>
   <Typography align="center">
     <Button
-      onClick={() => {
-        setselectedContinue({
-          step1: false,
-          step2: true,
-          step3: false,
-          step4: false,
-          step5: false,
-          step6: false,
-          step7: false,
-          step8: false,
-        });
-      }}
+    type="submit"
       variant="contained"
       style={{
         color: "white",
@@ -167,6 +207,9 @@ export default function FCTA_Reporting(props: any) {
       Back
     </Button>
   </Typography>
+   </Form>
+   )}
+ </Formik>
 </Paper>
 
 )}

@@ -6,12 +6,12 @@ interface ApiResponse {
 }
 
 const headers = {
-  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+  // 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
   'Content-Type': 'application/json',
 };
 
 const checkUserValidation = (data: ApiResponse | null): boolean => {
-  if (data) {
+  if (data) {  
     const { statusCode } = data;
     const { sessionExpired, unauthorized, accessDenied } = Utils.constants.apiErrorCode;
 

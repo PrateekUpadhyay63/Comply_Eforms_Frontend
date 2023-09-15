@@ -13,13 +13,19 @@ import Backup from "../reusables/Backup";
 import Sidebar from "./W9Forms/sideMenu";
 import Tab from "./W9Forms/tabMenu";
 
-
+import Certifications from "./step4/certification"
+import Penalties from "./step4/penalities"
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
 import Step3 from "./step4";
-
+import { useNavigate } from "react-router-dom"
+import { AppDispatch } from "../../Redux/store";
+import { useDispatch } from "react-redux";
+import { getAllCountries } from "../../Redux/Actions";
 
 export default function App() {
+  const history = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     id: 0,
@@ -137,6 +143,9 @@ export default function App() {
     countryOfIncorporationOrganizationId: 0,
     usFederalTaxClassificationId: 0,
   };
+  useEffect(()=>{
+    dispatch(getAllCountries())
+  },[])
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -158,7 +167,6 @@ export default function App() {
   const handleTaxClassificationChange = (
     event: ChangeEvent<HTMLSelectElement>
   ) => {
-
     setSelectedTaxClassification(event.target.value);
   };
 
@@ -178,7 +186,7 @@ export default function App() {
   };
 
   return (
-    <div className="row m-0">
+    <div className="row m-0 h-100">
 
       <div
         className="col-12"
@@ -187,11 +195,11 @@ export default function App() {
           marginBottom: "10px",
           padding: "20px",
         }}
-      >
+        >
         <div style={{ display: "flex" }} className="row">
           
           {/* <Sidebar /> */}
-          <Tab/>
+        <Tab/>
         
         <Step2
         selectedContinue={selectedContinue}
@@ -205,7 +213,7 @@ export default function App() {
         initialValue={initialValue}/>
 
           {selectedContinue.step5 ? (
-            <VerifyDocs
+            <Certifications
             handleTaxClassificationChange={handleTaxClassificationChange}
             selectedTaxClassification={selectedTaxClassification}
             data={data}
@@ -214,11 +222,12 @@ export default function App() {
             report={report}
             handleReportChange={handleReportChange}
             initialValue={initialValue}/>
+
           ) : (
             ""
           )}
         {selectedContinue.step6 ?(
-        <Step3
+        <Penalties
            selectedContinue={selectedContinue}
            handleTaxClassificationChange={handleTaxClassificationChange}
            selectedTaxClassification={selectedTaxClassification}
