@@ -371,7 +371,7 @@ export default function Entity() {
           </div>
         </div>
 
-        <div className="col-lg-12 mt-3" style={{ padding: "8px" }}>
+        <div className="col-lg-12 mt-3" style={{ padding: "1.5rem 8px 8px 8px" }}>
           <Paper elevation={6} style={{ padding: "17px" }}>
             <Formik
               initialValues={payload}
