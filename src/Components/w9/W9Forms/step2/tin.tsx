@@ -29,7 +29,7 @@ export default function Tin(props: any) {
   return( <Paper className="col-12">
   <Typography
     align="left"
-    style={{ margin: "10px", fontSize: "20px" }}
+    style={{ margin: "10px", fontSize: "24px" ,fontWeight:"550"}}
   >
     Taxpayer Identification Number{" "}
    
@@ -154,6 +154,19 @@ export default function Tin(props: any) {
   </Typography>
   <Typography align="center">
     <Button
+    onClick={() => {
+      setselectedContinue({
+        step1: false,
+            step2: false,
+            step3: false,
+            step4: true,
+            step5: false,
+            step6: false,
+            step7: false,
+            step8: false,
+      });
+      // setOpen(true);
+    }}
       variant="contained"
       style={{
         color: "white",

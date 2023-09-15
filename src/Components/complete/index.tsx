@@ -28,7 +28,7 @@ export default function Term() {
                    
                     <Paper elevation={6} style={{ padding: '17px' ,marginTop:"20px"}}>
                         <Typography align='center' >
-                        <DoneIcon style={{color:"green",fontSize:"30px",fontWeight:"bold",justifyContent:"center"}}/>
+                        <DoneIcon style={{color:"green",fontSize:"50px",fontWeight:"bold",justifyContent:"center"}}/>
                         
                         </Typography>
                         <Typography style={{  fontSize: "20px",color:"grey" }} align='center'>Thank you for completing
