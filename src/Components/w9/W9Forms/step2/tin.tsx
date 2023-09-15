@@ -11,10 +11,12 @@ import {
   Tooltip,
   Link,
   TextField,
+  MenuItem,
+  Select
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
-import { firstStepSchema } from "../../../../schemas";
+import { firstStepBusinessSchema, firstStepSchema ,tinSchema} from "../../../../schemas";
 
 export default function Tin(props: any) {
   const {
@@ -25,8 +27,63 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
 
+  const arr = [
+    {
+      id: 1,
+      name: "SSN/TIN",
+    },
+    {
+      id: 2,
+      name: "Applied For",
+    },
+  ];
+  const initialValue = {
+    tiN_USTINId:0
+  };
+
   const [toolInfo, setToolInfo] = useState("");
   return( <Paper className="col-12">
+      <Formik
+          initialValues={initialValue}
+          enableReinitialize
+          validationSchema={
+            selectedTaxClassification == 0
+              ? tinSchema
+              : selectedTaxClassification == 1
+              ? firstStepSchema
+              : firstStepBusinessSchema
+          } // Uncomment after testing ,this is validation Schema
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            console.log(values, ":STEP1 VALUES");
+            setselectedContinue({
+              step1: false,
+              step2: true,
+              step3: false,
+              step4: false,
+              step5: false,
+              step6: false,
+              step7: false,
+              step8: false,
+            });
+            // dispatch(
+            //   W9_state(values, () => {
+            //     console.log(W9Data, "Done");
+            //   })
+            // );
+            // uploadNews(dispatch, values, navigate);
+          }}
+        >
+          {({
+            errors,
+            touched,
+            handleBlur,
+            values,
+            handleSubmit,
+            handleChange,
+            isSubmitting,
+          }) => (
+            <Form onSubmit={handleSubmit}>
   <Typography
     align="left"
     style={{ margin: "10px", fontSize: "20px" }}
@@ -73,18 +130,42 @@ export default function Tin(props: any) {
                           </Paper>
 
                         </div>) : ""}
-      <select
-        style={{
-          padding: " 0 10px",
-          color: "#7e7e7e",
-          fontStyle: "italic",
-          height: "36px",
-          width: "100%",
-        }}
-        name="permanentResidentialCountryId1"
-        id="Income"
-        defaultValue={1}
-      ></select>
+                        <FormControl className="w-50">
+                          <Select
+                            onChange={
+                              handleChange
+                            }
+                            onBlur={handleBlur}
+                            error={Boolean(
+                              touched.tiN_USTINId &&
+                                errors.tiN_USTINId
+                            )}
+                            name="tiN_USTINId"
+                            value={values.tiN_USTINId}
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "45px",
+                              width: "100%",
+                            }}
+                          >
+                            <MenuItem value={0}>--Select--</MenuItem>
+                            {arr.map((i, ind) => {
+                              return <MenuItem value={i.id}>{i.name}</MenuItem>;
+                            })}
+                          </Select>
+                          {errors.tiN_USTINId &&
+                          touched.tiN_USTINId ? (
+                            <div>
+                              <Typography color="error">
+                                {errors.tiN_USTINId}
+                              </Typography>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </FormControl>
     </div>
 
     <div className="col-md-6  col-12">
@@ -165,4 +246,7 @@ export default function Tin(props: any) {
       Back
     </Button>
   </Typography>
+   </Form>
+   )}
+ </Formik>
 </Paper>)}
