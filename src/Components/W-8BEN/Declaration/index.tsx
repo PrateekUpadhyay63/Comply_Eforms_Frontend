@@ -80,7 +80,9 @@ export default function Term() {
         }}>
           U.S. Sourced Income
         </Button>
-        <Button size="large"  variant="contained" style={{ color: "white",marginLeft:"15px" }}>
+        <Button onClick={()=>{
+            history("/W-8BEN/Declaration/Non_US_Sorced/Status")
+        }} size="large"  variant="contained" style={{ color: "white",marginLeft:"15px" }}>
        No U.S. Sourced Income
         </Button>
        

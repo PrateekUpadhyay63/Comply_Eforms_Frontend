@@ -432,12 +432,12 @@ export default function Fedral_tax(props: any) {
                     {selectedTaxClassification != 0 ? (
                       <div
                         style={{ marginTop: "20px", display: "flex" }}
-                        className="row"
+                        className="col-10"
                       >
-                        <div className="col-md-6 col-12">
+                        <div >
                           <Typography
                             align="left"
-                            className="d-flex w-100 "
+                            className="d-flex w-60 "
                             style={{ fontSize: "13px" }}
                           >
                             First Name
@@ -450,7 +450,7 @@ export default function Fedral_tax(props: any) {
                             />
                           </Typography>
 
-                          <FormControl className="w-50">
+                          <FormControl className="w-100">
                             <TextField
                               autoComplete="firstName"
                               type="text"
@@ -479,17 +479,17 @@ export default function Fedral_tax(props: any) {
                             />
                           </FormControl>
                         </div>
-                        <div className="col-md-6 col-12">
+                        <div style={{marginLeft:"30px"}}>
                           <Typography
                             align="left"
-                            className="d-flex w-100 "
+                            className="d-flex w-60 "
                             style={{ fontSize: "13px" }}
                           >
                             Last Name
                           </Typography>
 
-                          <FormControl className="w-50">
-                            <TextField
+                          <FormControl className="w-100">
+                            <TextField 
                               autoComplete="lastName"
                               type="text"
                               placeholder="Last Name"
@@ -505,16 +505,17 @@ export default function Fedral_tax(props: any) {
                             />
                           </FormControl>
                         </div>
+                        
                       </div>
                     ) : null}
 
                     {selectedTaxClassification > 1 ? (
                       <>
                         <div className="row">
-                          <div className="col-md-12 col-12">
+                          <div className=" col-12">
                             <Typography
                               align="left"
-                              className="d-flex w-100 "
+                              className="d-flex w-60 "
                               style={{
                                 fontSize: "13px",
                                 marginTop: "15px",

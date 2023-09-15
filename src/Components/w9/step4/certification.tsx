@@ -304,6 +304,18 @@ export default function Certifications(props: any) {
       </Typography>
       <Typography align="center">
         <Button
+         onClick={() => {
+          setselectedContinue({
+            step1: false,
+            step2: false,
+            step3: false,
+            step4: false,
+            step5: true,
+            step6: true,
+            step7: false,
+            step8: false,
+          });
+        }}
           variant="contained"
           style={{
             color: "white",
