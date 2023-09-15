@@ -330,7 +330,7 @@ export default function Entity() {
   return (
     <section
       className="inner_content"
-      style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
+      style={{ backgroundColor: "#0c3d69", }}
     >
      <Typography align="center"  style={{ fontSize: '32px', fontWeight: '500', color: 'white',marginBottom:"20px",marginTop:"10px" }}>
         Account Holder Details
@@ -371,7 +371,7 @@ export default function Entity() {
           </div>
         </div>
 
-        <div className="col-lg-12 mt-3" style={{ padding: "8px" }}>
+        <div className="col-lg-12 mt-3" style={{ padding: "1.5rem 8px 8px 8px" }}>
           <Paper elevation={6} style={{ padding: "17px" }}>
             <Formik
               initialValues={payload}
@@ -1111,6 +1111,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                     timeout="auto"
                     unmountOnExit
                   >
+                    <div className="row">
                     <div className="col-lg-3 col-6 col-md-3">
                       <Typography className="d-flex w-100 ">
                         Residential Country:
@@ -1146,6 +1147,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                           {errors.permanentResidentialCountryId}
                         </p>
                       </FormControl>
+                    </div>
                     </div>
                     <div className="row">
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1680,6 +1682,8 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
 
                     {payload.isalternativebusinessaddress ? (
                       <>
+                      <div className="row">
+
                         <div className="col-lg-3 col-6 col-md-3">
                           <Typography className="d-flex w-100 ">
                             Residential Country:
@@ -1720,6 +1724,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                             </p>
                           </FormControl>
                         </div>
+                      </div>
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
@@ -2128,9 +2133,9 @@ The email is dispatched to the email address given as soon as you confirm the de
                           </p>
                         </FormControl>
                       </div>
-                      <FormControl className="w-100">
                         <div className="row">
-                          <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2">
+                          <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2" style={{paddingLeft:"0px"}}>
+                      <FormControl className="w-100">
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Email<span style={{ color: "red" }}>*</span>
@@ -2168,9 +2173,9 @@ The email is dispatched to the email address given as soon as you confirm the de
                                 {errors.contactEmail}
                               </p>
                             </FormControl>
+                      </FormControl>
                           </div>
                         </div>
-                      </FormControl>
 
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">

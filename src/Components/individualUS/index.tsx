@@ -424,7 +424,7 @@ export default function IndividualUs() {
                 <Form onSubmit={continueSubmit}>
                   <></>
                   <CardHeader
-                    style={{ textAlign: "left", marginLeft: "13px" }}
+                    
                     className="flex-row-reverse"
                     title={
                       <div
@@ -878,7 +878,7 @@ export default function IndividualUs() {
                   {/* Tax Identifier Section */}
                   <div>
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -1352,7 +1352,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
 
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -2319,7 +2319,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
 
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -2770,7 +2770,7 @@ export default function IndividualUs() {
                     <hr className="w-100 "></hr>
                     {/* Income Type */}
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -2949,7 +2949,7 @@ export default function IndividualUs() {
                     <hr className="w-100"></hr>
                     {/* Payment type */}
                     <CardHeader
-                      style={{ textAlign: "left", marginLeft: "13px" }}
+                      
                       className="flex-row-reverse"
                       title={
                         <div
@@ -3106,7 +3106,7 @@ export default function IndividualUs() {
                     {payload.paymentTypeId ? (
                       <>
                         <CardHeader
-                          style={{ textAlign: "left", marginLeft: "13px" }}
+                          
                           className="flex-row-reverse"
                           title={
                             <div
@@ -4157,7 +4157,7 @@ export default function IndividualUs() {
       
       <div className="container-fluid">
         <footer>
-          <div className="row  ">
+          <div className="row w-100">
             <Typography
               className="mx-2"
               align="left"
