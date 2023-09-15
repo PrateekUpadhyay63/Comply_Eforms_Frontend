@@ -119,14 +119,6 @@ export default function Fedral_tax(props: any) {
             isSubmitting,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <>
-                {console.log(
-                  values,
-                  errors,
-                  selectedTaxClassification,
-                  "asdfgh"
-                )}
-              </>
               <div style={{ width: "100%" }}>
                 <div>
                   <Typography align="left" style={{ margin: "10px" }}>
@@ -516,7 +508,7 @@ export default function Fedral_tax(props: any) {
                       </div>
                     ) : null}
 
-                    {selectedTaxClassification >= 1 ? (
+                    {selectedTaxClassification > 1 ? (
                       <>
                         <div className="row">
                           <div className="col-md-12 col-12">

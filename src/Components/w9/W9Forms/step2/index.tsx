@@ -42,7 +42,7 @@ export default function Step2(props: any) {
       )}
 
       {/* step3 */}
-      {selectedContinue.step3 ? (
+      {/* {selectedContinue.step3 ? (
         <FCTA_Reporting
           handleTaxClassificationChange={handleTaxClassificationChange}
           selectedTaxClassification={selectedTaxClassification}
@@ -54,9 +54,9 @@ export default function Step2(props: any) {
         />
       ) : (
         ""
-      )}
+      )} */}
 
-      {selectedContinue.step4 ? (
+      {selectedContinue.step3 ? (
         <Tin
           handleTaxClassificationChange={handleTaxClassificationChange}
           selectedTaxClassification={selectedTaxClassification}

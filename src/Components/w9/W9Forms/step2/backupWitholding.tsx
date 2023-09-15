@@ -20,7 +20,6 @@ import { Formik, Form } from "formik";
 import { secondStepSchema } from "../../../../schemas";
 import { W9_state } from "../../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
-
 export default function Backup_witholding(props: any) {
   const dispatch = useDispatch();
   const {
