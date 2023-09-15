@@ -337,11 +337,11 @@ export default function IndividualUs() {
     //   setPayload({ ...payload, usTin: payload.usTin +"-" })
     // }
   };
-  const clickInfo = () => {
-    alert(
-      "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
-    );
-  };
+  // const clickInfo = () => {
+  //   alert(
+  //     "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
+  //   );
+  // };
 
   // const chek = (err:any)=>{
   //   console.log(err);
@@ -376,11 +376,11 @@ export default function IndividualUs() {
                         {" "}
                         <img src={individual} />
                       </div>
-                      <span>Individual</span>
+                      <span style={{fontSize:"20px",fontWeight:"600"}}>Individual</span>
                     </div>
                   </button>
                 </li>
-                <li>OR</li>
+                <li style={{fontSize:"20px",fontWeight:"600"}}>OR</li>
                 <li>
                   <button onClick={() => history("/EntityUs")}>
                     <div>
@@ -388,7 +388,7 @@ export default function IndividualUs() {
                         {" "}
                         <img src={entity} />
                       </div>
-                      <span>Entity</span>
+                      <span style={{fontSize:"20px",fontWeight:"600"}}>Entity</span>
                     </div>
                   </button>
                 </li>
@@ -464,7 +464,7 @@ export default function IndividualUs() {
                               marginLeft: "5px",
                               cursor: "pointer",
                             }}
-                            onClick={clickInfo}
+                          
                           />
                         </Tooltip>
                       </div>
@@ -541,14 +541,7 @@ export default function IndividualUs() {
                           >
                             Are you a U.S Individual?
                             <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              onClick={clickInfo}
-                            />
+                           
                           </Typography>
 
                           <div className="d-flex">
@@ -583,7 +576,7 @@ export default function IndividualUs() {
                             <span style={{ color: "red" }}>*</span>
                             <Info
                               style={{ color: "#ffc107", fontSize: "15px" }}
-                              onClick={clickInfo}
+                          
                             />
                           </Typography>
                           <Input
@@ -918,7 +911,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                            
                             />
                           </Tooltip>
                         </div>
@@ -1392,7 +1385,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                             
                             />
                           </Tooltip>
                         </div>
@@ -1763,7 +1756,7 @@ export default function IndividualUs() {
                                   fontSize: "15px",
                                   marginBottom: "12px",
                                 }}
-                                onClick={clickInfo}
+                               
                               />
                             </Typography>
 
@@ -1815,7 +1808,7 @@ export default function IndividualUs() {
                                   fontSize: "15px",
                                   marginBottom: "12px",
                                 }}
-                                onClick={clickInfo}
+                              
                               />
                             </Typography>
 
@@ -1865,7 +1858,7 @@ export default function IndividualUs() {
                                     fontSize: "15px",
                                     marginBottom: "12px",
                                   }}
-                                  onClick={clickInfo}
+                                 
                                 />
                               </Typography>
 
@@ -2359,7 +2352,7 @@ export default function IndividualUs() {
                                 marginLeft: "5px",
                                 cursor: "pointer",
                               }}
-                              onClick={clickInfo}
+                             
                             />
                           </Tooltip>
                         </div>
