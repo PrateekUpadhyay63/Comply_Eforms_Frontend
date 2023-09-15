@@ -17,9 +17,14 @@ import Tab from "./W9Forms/tabMenu";
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
 import Step3 from "./step4";
-
+import { useNavigate } from "react-router-dom"
+import { AppDispatch } from "../../Redux/store";
+import { useDispatch } from "react-redux";
+import { getAllCountries } from "../../Redux/Actions";
 
 export default function App() {
+  const history = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     id: 0,
@@ -137,6 +142,9 @@ export default function App() {
     countryOfIncorporationOrganizationId: 0,
     usFederalTaxClassificationId: 0,
   };
+  useEffect(()=>{
+    dispatch(getAllCountries())
+  },[])
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -158,7 +166,6 @@ export default function App() {
   const handleTaxClassificationChange = (
     event: ChangeEvent<HTMLSelectElement>
   ) => {
-
     setSelectedTaxClassification(event.target.value);
   };
 

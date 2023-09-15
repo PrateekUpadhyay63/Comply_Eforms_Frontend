@@ -66,7 +66,7 @@ export const loginAction = (value:any,callback:Function):any => {
   };
 
 
-  export const getAllCountries = () => {
+  export const getAllCountries = ():any => {
     return (dispatch:any) => {
       Utils.api.getApiCall(
         Utils.EndPoint.GetCountries,"",
