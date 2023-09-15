@@ -6,6 +6,7 @@ export const EntitySchema = () => {
     //     .required('Please Enter First Name')
     //     .min(3, 'First Name should be minimum of 3 characters')
     //     .max(50, 'First Name should be maximum of 50 characters'),
+    isUSEntity: Yup.boolean().default(true),
       entityName: Yup.string()
       .required('Please Enter Entity name'),
       uniqueIdentifier: Yup.string()
