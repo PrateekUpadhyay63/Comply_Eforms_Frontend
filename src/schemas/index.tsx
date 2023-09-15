@@ -52,8 +52,17 @@ export const firstStepSchema = () => {
 
   export const secondStepSchema = ()=>{
     return  Yup.object().shape({
-      isExemptionfromBackup: Yup.string()
-      .required("Please select one of the options")
+      // isExemptionfromBackup: Yup.string()
+      // .required("Please select one of the options"),
+      isExemptionfromBackup: Yup.string().required("Please select one of the options"),
     });
+      
+  }
+
+  export const fctaSchema=()=>{
+    return  Yup.object().shape({
+      isExemptionFATCAReportings: Yup.boolean().required("Please select one of the options"),
+    });
+      
   }
  
