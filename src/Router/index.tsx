@@ -6,6 +6,7 @@ import ROUTES from './routes';
 import { CircularProgress } from '@mui/material';
 // import AccessControlWrapper from './accessControlWrapper';
 import "../App.css"
+import Navbar from "../Components/Navbar"
 function RoutesWrapper() {
   
   return (
@@ -16,6 +17,7 @@ function RoutesWrapper() {
         </div>
       }
     >
+      <Navbar/>
       <Routes>
         {ROUTES.map(({ path, id, Component, isPrivate, name, roleName }: RouteType) => {
         //   if (isPrivate) {

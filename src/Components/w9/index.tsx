@@ -13,7 +13,8 @@ import Backup from "../reusables/Backup";
 import Sidebar from "./W9Forms/sideMenu";
 import Tab from "./W9Forms/tabMenu";
 
-
+import Certifications from "./step4/certification"
+import Penalties from "./step4/penalities"
 import VerifyDocs from "./step3";
 import Step2 from "./W9Forms/step2";
 import Step3 from "./step4";
@@ -212,7 +213,7 @@ export default function App() {
         initialValue={initialValue}/>
 
           {selectedContinue.step5 ? (
-            <VerifyDocs
+            <Certifications
             handleTaxClassificationChange={handleTaxClassificationChange}
             selectedTaxClassification={selectedTaxClassification}
             data={data}
@@ -221,11 +222,12 @@ export default function App() {
             report={report}
             handleReportChange={handleReportChange}
             initialValue={initialValue}/>
+
           ) : (
             ""
           )}
         {selectedContinue.step6 ?(
-        <Step3
+        <Penalties
            selectedContinue={selectedContinue}
            handleTaxClassificationChange={handleTaxClassificationChange}
            selectedTaxClassification={selectedTaxClassification}

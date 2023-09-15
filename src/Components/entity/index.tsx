@@ -397,11 +397,11 @@ export default function Entity() {
                         {" "}
                         <img src={individual} />
                       </div>
-                      <span>Individual</span>
+                      <span style={{fontSize:"20px",fontWeight:"600"}}>Individual</span>
                     </div>
                   </button>
                 </li>
-                <li>OR</li>
+                <li style={{fontSize:"20px",fontWeight:"600"}}>OR</li>
                 <li>
                   <button className="active">
                     <div>
@@ -409,7 +409,7 @@ export default function Entity() {
                         {" "}
                         <img src={entity} />
                       </div>
-                      <span>Entity</span>
+                      <span style={{fontSize:"20px",fontWeight:"600"}}>Entity</span>
                     </div>
                   </button>
                 </li>
@@ -570,14 +570,7 @@ export default function Entity() {
                           >
                             Are you a U.S Entity?
                             <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginBottom: "12px",
-                              }}
-                              // onClick={clickInfo}
-                            />
+                           
                           </Typography>
 
                           <div className="d-flex">
