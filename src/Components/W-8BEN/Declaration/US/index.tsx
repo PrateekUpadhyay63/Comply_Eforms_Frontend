@@ -1,22 +1,26 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   FormControl,
   Typography,
   Button,
   Input,
   Paper,
+  Tooltip,
   Accordion,
   AccordionSummary,
   AccordionDetails,
   TextField,
   RadioGroup,
   Radio,
+
   FormControlLabel,
 } from "@mui/material";
 import { ExpandMore, Info } from "@mui/icons-material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function Factors(){
+
+  const [toolInfo, setToolInfo] = useState("");
     return(
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
 
@@ -40,7 +44,26 @@ export default function Factors(){
                 style={{ fontSize: "22px", marginTop: "10px" }}
               >
                 Please select income type <span style={{ color: "red",fontSize:"30px" }}>*</span>
-                <Info style={{ color: "#ffc107", fontSize: "19px",verticalAlign:"super" }} />
+                <span>
+          <Tooltip style={{ backgroundColor: "black", color: "white" }} title={
+                            <>
+                              <Typography color="inherit">Exemptions - Backup Withholding</Typography>
+                              <a onClick={() => setToolInfo("basic")}>
+                                <Typography style={{ cursor: "pointer", textDecorationLine: "underline" }} align="center" > View More...</Typography>
+                              </a>
+                            </>
+                          }>
+                            <Info
+                              style={{
+                                color: '#ffc107',
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                                verticalAlign: "super"
+                              }}
+
+                            />
+                          </Tooltip>
+          </span>
               </Typography>
               <FormControl className="w-100">
                 <select

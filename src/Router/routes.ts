@@ -16,6 +16,12 @@ const Declaration = React.lazy(() => import('../Components/W-8BEN/Declaration'))
 const US_Sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/US'));
 
 
+// 
+const Non_us_sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Status'));
+const Non_us_tin = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/US_Tin'));
+const Claim = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Claim/index'));
+
+
 
 
 const ROUTES: Array<RouteType> = [
@@ -79,6 +85,13 @@ const ROUTES: Array<RouteType> = [
            Component: Declaration,
            isPrivate: true
           },
+          {
+name:"Non_us_sourced",
+path:"W-8BEN/Declaration/Non_US_Sorced/Status",
+           id: 5,
+           Component: Non_us_sourced,
+           isPrivate: true
+          },
 
           {
             name:"US_Sourced",
@@ -86,7 +99,22 @@ const ROUTES: Array<RouteType> = [
            id: 4,
            Component: US_Sourced,
            isPrivate: true
+          },
+          {
+            name:"Non_us_tin",
+            path:"W-8BEN/Declaration/US_Tin",
+           id: 4,
+           Component: Non_us_tin,
+           isPrivate: true
+          },
+          {
+            name:"Claim",
+            path:"W-8BEN/Declaration/US_Tin/Claim",
+           id: 5,
+           Component: Claim,
+           isPrivate: true
           }
+
 
 
   
