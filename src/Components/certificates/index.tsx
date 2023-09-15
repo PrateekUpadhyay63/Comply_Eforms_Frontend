@@ -203,7 +203,7 @@ const clickInfo = () => {
                   <div className="text-center" >
                   <Button
                   style={{ fontSize: '16px',marginTop:"25px" }}
-                  size="small"
+                  size="medium"
                   type="submit"
                   onClick={() => redirectToComponent(selectedCard)}
                   variant="contained"

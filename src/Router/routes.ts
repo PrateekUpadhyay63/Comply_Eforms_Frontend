@@ -67,7 +67,7 @@ const ROUTES: Array<RouteType> = [
       isPrivate: true},
       {
         name: 'Certificates',
-        path:"Certificates",
+        path:"/Certificates",
         id: 4,
         Component: Certificates,
         isPrivate: true},

@@ -11,10 +11,12 @@ import DoneIcon from '@mui/icons-material/Done';
 
 
 import 'bootstrap/dist/css/bootstrap.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Term() {
     //States
+    const history=useNavigate()
 
     return (
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
@@ -81,6 +83,9 @@ export default function Term() {
 <div style={{marginTop:"25px"}}>
 <Button
     type="submit"
+    onClick={()=>{
+        history("/Certificates")
+    }}
     
     style={{
         border: '1px solid #0095dd',
