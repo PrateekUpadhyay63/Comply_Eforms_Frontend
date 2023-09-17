@@ -39,7 +39,7 @@ export default function FCTA_Reporting(props: any) {
     
       <span><Tooltip style={{ backgroundColor: "black", color: "white" }} title={
                             <>
-                              <Typography color="inherit">U.S. TIN Type Info</Typography>
+                              <Typography color="inherit">Treaty claim information</Typography>
                               <a onClick={() => setToolInfo("basic")}>
                                 <Typography style={{ cursor: "pointer", textDecorationLine: "underline" }} align="center" > View More...</Typography>
                               </a>
@@ -48,7 +48,7 @@ export default function FCTA_Reporting(props: any) {
                             <Info
                               style={{
                                 color: '#ffc107',
-                                fontSize: '16px',
+                                fontSize: '19px',
                                 cursor: 'pointer',
                                 verticalAlign: "super"
                               }}
@@ -59,11 +59,34 @@ export default function FCTA_Reporting(props: any) {
     {toolInfo === "basic" ? (<div>
                           <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
                             <Typography>
-                            Please select a U.S. TIN type status from the dropdown.
+                            An entity that is claiming a reduced rate of, or exemption from, withholding under an income tax treaty must state they wish to make a treaty claim.
                             </Typography>
                            
                             <Typography style={{ marginTop: "10px" }}>
-                            If a TIN type is not available, ensure you select the checkbox to the right of the field and provide an explanation as to why it is not available in the corresponding boxes at the bottom of the screen.
+                            IRS Form Guidance 
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            An entity that is claiming a reduced rate of, or exemption from, withholding under an income tax treaty must check the box to certify that it:
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            Derives the item of income for which the treaty benefit is claimed, and meets the limitation on benefits provisions contained in the treaty, if any.
+ 
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            An item of income may be derived by either the entity receiving the item of income or by the interest holders in the entity or, in certain circumstances, both. An item of income paid to an entity is considered to be derived by the entity only if the entity is not fiscally transparent under the laws of the entity’s jurisdiction with respect to the item of income. An item of income paid to an entity shall be considered to be derived by the interest holder in the entity only if:
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            - The interest holder is not fiscally transparent in its jurisdiction with respect to the item of income, and
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            - The entity is considered to be fiscally transparent under the laws of the interest holder’s
+         jurisdiction with respect to the item of income.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            An item of income paid directly to a type of entity specifically identified in a treaty as a resident of a treaty jurisdiction is treated as derived by a resident of that treaty jurisdiction. To determine whether an entity meets the limitation on benefits provisions of a treaty, you must consult the specific provisions or articles under the treaty.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                            Ref: EH156
                             </Typography>
 
 

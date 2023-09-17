@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const individualSchema = () => {
   return Yup.object().shape({
-    isUSEntity: Yup.boolean().default(true),
+    isUSEntity: Yup.string(),
     firstName: Yup.string()
       .required("Please Enter First Name")
       .min(3, "First Name should be minimum of 3 characters")
@@ -16,18 +16,18 @@ export const individualSchema = () => {
       .min(3, "Too short")
       .max(50, "Too long"),
     countryOfCitizenshipId: Yup.number().when("isUSEntity", {
-      is: false,
+      is: "no",
       then: () =>
         Yup.number()
           .required("Please select a country")
           .notOneOf([0], "Please select a valid country"),
     }),
     dob: Yup.date().when("isUSEntity", {
-      is: false,
+      is: "no",
       then: () => Yup.date().required("Please Enter DOB"),
     }),
     vatId: Yup.number().when("isUSEntity", {
-      is: false,
+      is: 'no',
       then: () =>
         Yup.number()
           .required("Please select an option")
@@ -49,19 +49,19 @@ export const individualSchema = () => {
     permanentResidentialZipPostalCode: Yup.string().required(
       "Zip/Postal code is required"
     ),
-    isAddressPostOfficeBox: Yup.boolean().when("isUSEntity", {
-      is: false,
-      then: () => Yup.boolean().required("Please select an option"),
+    isAddressPostOfficeBox: Yup.string().when("isUSEntity", {
+      is: "no",
+      then: () => Yup.string().required("Please select an option"),
     }),
-    isCareOfAddress: Yup.boolean().when("isUSEntity", {
-      is: false,
-      then: () => Yup.boolean().required("Please select an option"),
+    isCareOfAddress: Yup.string().when("isUSEntity", {
+      is: "no",
+      then: () => Yup.string().required("Please select an option"),
     }),
-    isalternativebusinessaddress: Yup.boolean().default(true),
+    isalternativebusinessaddress: Yup.string(),
     permanentResidentialCountryId1: Yup.number().when(
       "isalternativebusinessaddress",
       {
-        is: true,
+        is: "yes",
         then: () =>
           Yup.number()
             .required("Please select a country")
@@ -71,7 +71,7 @@ export const individualSchema = () => {
     permanentResidentialStreetNumberandName1: Yup.string().when(
       "isalternativebusinessaddress",
       {
-        is: true,
+        is: "yes",
         then: () =>
           Yup.string().required("Please enter street Number and Name"),
       }
@@ -80,7 +80,7 @@ export const individualSchema = () => {
     permanentResidentialCityorTown1: Yup.string().when(
       "isalternativebusinessaddress",
       {
-        is: true,
+        is: "yes",
         then: () => Yup.string().required("Please enter city or town"),
       }
     ),
@@ -88,7 +88,7 @@ export const individualSchema = () => {
     permanentResidentialZipPostalCode1: Yup.string().when(
       "isalternativebusinessaddress",
       {
-        is: true,
+        is: "yes",
         then: () => Yup.string().required("Zip/Postal code is required"),
       }
     ),
@@ -110,7 +110,7 @@ export const individualSchema = () => {
       .notOneOf([0], "Please select a valid option"),
 
     accountHolderName: Yup.string().when("paymentTypeId", {
-      is: 1 || 3,
+      is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
         Yup.string()
           .required("Please enter Account Holder Name")
@@ -119,7 +119,7 @@ export const individualSchema = () => {
     }),
 
     accountBankName: Yup.string().when("paymentTypeId", {
-      is: 1 || 3,
+      is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
         Yup.string()
           .required("Please enter Bank Name")
@@ -127,7 +127,7 @@ export const individualSchema = () => {
     }),
 
     accountBankBranchLocationId: Yup.number().when("paymentTypeId", {
-      is: 1 || 3,
+      is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
         Yup.number()
           .required("Please select branch location")
@@ -135,7 +135,7 @@ export const individualSchema = () => {
     }),
 
     accountNumber: Yup.string().when("paymentTypeId", {
-      is: 1 || 3,
+      is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
         Yup.string()
           .matches(/^\d{10}$/, "Account number must be exactly 10 digits")
@@ -143,7 +143,8 @@ export const individualSchema = () => {
     }),
 
     bankCode: Yup.string().when("paymentTypeId", {
-      is: 1,
+      is: (paymentTypeId:any, accountBankBranchLocationId:any) =>
+      (paymentTypeId == 1) && accountBankBranchLocationId == 0,
       then: () =>
         Yup.string()
         .required("Please enter Bank code")
