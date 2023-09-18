@@ -10,7 +10,7 @@ import {
   Input,
   Button,
   Tooltip,
-  Link
+  Link,
 } from "@mui/material";
 
 import { useDispatch } from "react-redux";
@@ -44,12 +44,12 @@ export default function Entity() {
   // const [accInfoType, setAccInfoType] = useState('');
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
   const [countries, setCountries] = useState([]);
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
-  const [toolInfo,setToolInfo]=useState("");
+  const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
     agentId: 3,
     businessTypeId: 1,
@@ -68,6 +68,7 @@ export default function Entity() {
     foreignTINNotAvailable: false,
     alternativeTINFormat: false,
     giin: "",
+    BSB:"",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
@@ -147,14 +148,11 @@ export default function Entity() {
       });
   }, []);
 
-
   const handleDelete = (i: any) => {
     const updatedIncomeCodes = [...incomeArr];
     updatedIncomeCodes.splice(i, 1);
     setIncomeArr(updatedIncomeCodes);
   };
-  
- 
 
   useEffect(() => {
     if (payload.permanentResidentialCountryId == 258) {
@@ -280,7 +278,47 @@ export default function Entity() {
           </FormControl>
         </div>
       );
-    } else {
+    } 
+    else if (payload.accountBankBranchLocationId == 16) {
+      return (
+        <div className="col-lg-3 col-6 col-md-3 mt-2">
+          <FormControl className="w-100">
+            <Typography align="left">
+              {/* {returnFieldName()} */}
+              BSB
+              <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <Input
+              required
+              style={{
+                border: " 1px solid #d9d9d9 ",
+                height: " 36px",
+                lineHeight: "36px ",
+                background: "#fff ",
+                fontSize: "13px",
+                color: " #000 ",
+                fontStyle: "normal",
+                borderRadius: "1px",
+                padding: " 0 10px ",
+              }}
+              id="outlined"
+              name="BSB"
+              placeholder="Enter Bank Code"
+              onChange={(e: any) =>
+                setPayload({
+                  ...payload,
+                  BSB: e.target.value,
+                })
+              }
+              onBlur={handleBlur}
+              error={Boolean(touched.BSB && errors.BSB)}
+              value={payload.BSB}
+            />
+            <p style={{ color: "red", textAlign: "left" }}>{errors.BSB}</p>
+          </FormControl>
+        </div>
+      );
+    }else {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -332,9 +370,18 @@ export default function Entity() {
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", }}
     >
-     <Typography align="center"  style={{ fontSize: '32px', fontWeight: '500', color: 'white',marginBottom:"20px",marginTop:"10px" }}>
+      <Typography
+        align="center"
+        style={{
+          fontSize: "32px",
+          fontWeight: "500",
+          color: "white",
+          marginBottom: "20px",
+          marginTop: "10px",
+        }}
+      >
         Account Holder Details
-      </Typography >
+      </Typography>
 
       <div className="container-fluid">
         <div className="row"></div>
@@ -404,23 +451,37 @@ export default function Entity() {
                         }}
                       >
                         Basic Details
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Basic details - individual</Typography>
-            <a onClick={()=>setToolInfo("basic")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center" > View More...</Typography>
-           </a>
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                Basic details - individual
+                              </Typography>
+                              <a onClick={() => setToolInfo("basic")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
                         </Tooltip>
                       </div>
                     }
@@ -439,32 +500,61 @@ export default function Entity() {
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="basic" ? ( <div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Are you a U.S. Business?
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  Select 'Yes' if: You are submitting a form on behalf of a U.S. Business/Entity.
-                  </Typography>
-                  <Typography>Select 'No' if: You are submitting a form on behalf of a Business/Entity that is not a U.S. Business/Entity. 
- </Typography>
-                <Typography style={{marginTop:"10px"}}>IRS Form Guidance</Typography>
-                <Typography style={{marginTop:"10px"}}>
-                A U.S. entity is an entity created or organized in the U.S. or under the law of any state in the United States.
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>
-                The term 'Non-U.S. Entity' generally means any business or organization including corporations, partnerships, public or private limited companies, trusts etc, not created or organized in the United States or under the law of any state in the U.S. or its territories.
-                </Typography>
-                <Typography>
-                For additional clarification, follow the following link: <Link >https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes
-                  </Link> 
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>Ref: H002 </Typography>
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                  {toolInfo === "basic" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>Are you a U.S. Business?</Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Select 'Yes' if: You are submitting a form on behalf
+                          of a U.S. Business/Entity.
+                        </Typography>
+                        <Typography>
+                          Select 'No' if: You are submitting a form on behalf of
+                          a Business/Entity that is not a U.S. Business/Entity.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          IRS Form Guidance
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          A U.S. entity is an entity created or organized in the
+                          U.S. or under the law of any state in the United
+                          States.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          The term 'Non-U.S. Entity' generally means any
+                          business or organization including corporations,
+                          partnerships, public or private limited companies,
+                          trusts etc, not created or organized in the United
+                          States or under the law of any state in the U.S. or
+                          its territories.
+                        </Typography>
+                        <Typography>
+                          For additional clarification, follow the following
+                          link:{" "}
+                          <Link>
+                            https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes
+                          </Link>
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Ref: H002{" "}
+                        </Typography>
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Collapse
                     className="px-5"
                     in={open === "basics"}
@@ -654,25 +744,38 @@ export default function Entity() {
                         }}
                       >
                         Tax Identification Numbers
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Taxpayer information</Typography>
-            <a onClick={()=>setToolInfo("tin")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                         </Tooltip>
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                Taxpayer information
+                              </Typography>
+                              <a onClick={() => setToolInfo("tin")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
+                        </Tooltip>
                       </div>
                     }
                     action={
@@ -690,52 +793,130 @@ export default function Entity() {
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="tin"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  Please note that some jurisdictions do not provide FTINs and this will be indicated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>Note: the Foreign TIN box restricts formatting per the Foreign Country selected, based on OECD guidance. By ticking “TIN Format not available”, this disables the formatting so that any format may be input. 
-An individual’s US TIN type is generally a Social Security Number (SSN) or an Individual Tax Identification Number (ITIN).?</Typography>
-                <Typography style={{marginTop:"10px"}}>An entity’s US TIN may be an employer identification number (EIN): including a withholding foreign partnership/trust EIN (WP/T-EIN) or a qualified intermediary EIN (QI-EIN). </Typography>
-                <Typography style={{marginTop:"10px"}}>
-A TIN must be furnished on US tax returns when filed or when claiming treaty benefits. A US or Foreign TIN must generally be provided on a withholding certificate (i.e. W-8) if the beneficial owner is receiving effectively connected income (ECI), claiming tax treaty benefits (other than for income from marketable, actively traded, securities), claiming an exemption for ECI or claiming an exemption for certain annuities.</Typography>
-           <Typography style={{marginTop:"10px"}}>
-           If you are required to have a US TIN but do not have one you may apply for an EIN on Form SS-4, Application for Employer Identification Number, a SSN on Form SS-5, Application for a Social Security Card or an ITIN on Form W-7, IRS Application for Individual Taxpayer Identification Number. 
-            </Typography>   
-            <Typography style={{marginTop:"10px"}}>
-            IRS Form Guidance: 
-              </Typography>  
-              <Typography style={{marginTop:"10px"}}>
-              See Regulations section 1.1441-1(e)(4) (vii) for when you are required to provide a U.S. TIN on a Form W-8 associated with a payment subject to chapter 3 withholding. A partner in a partnership conducting a trade or business in the United States will likely be allocated effectively connected taxable income. The partner is required to file a U.S. federal income tax return and must have a U.S. taxpayer identification number (TIN). You must provide a U.S. TIN if you are: 
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>- Claiming an exemption from withholding under section 871(f) for certain annuities received under qualified plans, or </Typography>
-<Typography style={{marginTop:"10px"}}>- Claiming benefits under an income tax treaty and have not provided a foreign TIN on line 9b. </Typography>
-  <Typography style={{marginTop:"10px"}}>
-  However, a TIN is not required to be shown in order to claim treaty benefits on the following items of income: 
-    </Typography> 
-    <Typography style={{marginTop:"10px"}}>
-    However, a TIN is not required to be shown in order to claim treaty benefits on the following items of income: 
-      </Typography>  
-      <Typography style={{marginTop:"10px"}}>- Dividends and interest from stocks and debt obligations that are actively traded; 
-        </Typography>  
-        <Typography style={{marginTop:"10px"}}>
-        - investment company registered under the Investment Company Act of 1940 (mutual fund); 
-          </Typography>   
-          <Typography style={{marginTop:"10px"}}>
-          - Dividends, interest, or royalties from units of beneficial interest in a unit investment trust that are (or were upon issuance) publicly offered and are registered with the SEC under the Securities Act of 1933; 
-            </Typography>  
-            <Typography style={{marginTop:"10px"}}>
-            - and Income related to loans of any of the above securities.
-              </Typography>    
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
+                  {toolInfo === "tin" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>
+                          Where applicable enter your US and Non-US (i.e.
+                          “Foreign”) taxpayer identification number(s) along
+                          with the US TIN Type and Foreign Country(ies)
+                          correlating to the FTIN(s).?
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Please note that some jurisdictions do not provide
+                          FTINs and this will be indicated if you select one of
+                          those jurisdictions. If you select a country that
+                          normally does provide an FTIN, but you do not wish to
+                          provide or cannot provide, you have the option to
+                          provide an explanation. Not providing a FTIN when it
+                          would normally be available may lead to the highest
+                          rate of withholding being applied, where treaty
+                          benefits could apply.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Note: the Foreign TIN box restricts formatting per the
+                          Foreign Country selected, based on OECD guidance. By
+                          ticking “TIN Format not available”, this disables the
+                          formatting so that any format may be input. An
+                          individual’s US TIN type is generally a Social
+                          Security Number (SSN) or an Individual Tax
+                          Identification Number (ITIN).?
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          An entity’s US TIN may be an employer identification
+                          number (EIN): including a withholding foreign
+                          partnership/trust EIN (WP/T-EIN) or a qualified
+                          intermediary EIN (QI-EIN).{" "}
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          A TIN must be furnished on US tax returns when filed
+                          or when claiming treaty benefits. A US or Foreign TIN
+                          must generally be provided on a withholding
+                          certificate (i.e. W-8) if the beneficial owner is
+                          receiving effectively connected income (ECI), claiming
+                          tax treaty benefits (other than for income from
+                          marketable, actively traded, securities), claiming an
+                          exemption for ECI or claiming an exemption for certain
+                          annuities.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          If you are required to have a US TIN but do not have
+                          one you may apply for an EIN on Form SS-4, Application
+                          for Employer Identification Number, a SSN on Form
+                          SS-5, Application for a Social Security Card or an
+                          ITIN on Form W-7, IRS Application for Individual
+                          Taxpayer Identification Number.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          IRS Form Guidance:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          See Regulations section 1.1441-1(e)(4) (vii) for when
+                          you are required to provide a U.S. TIN on a Form W-8
+                          associated with a payment subject to chapter 3
+                          withholding. A partner in a partnership conducting a
+                          trade or business in the United States will likely be
+                          allocated effectively connected taxable income. The
+                          partner is required to file a U.S. federal income tax
+                          return and must have a U.S. taxpayer identification
+                          number (TIN). You must provide a U.S. TIN if you are:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - Claiming an exemption from withholding under section
+                          871(f) for certain annuities received under qualified
+                          plans, or{" "}
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - Claiming benefits under an income tax treaty and
+                          have not provided a foreign TIN on line 9b.{" "}
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          However, a TIN is not required to be shown in order to
+                          claim treaty benefits on the following items of
+                          income:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          However, a TIN is not required to be shown in order to
+                          claim treaty benefits on the following items of
+                          income:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - Dividends and interest from stocks and debt
+                          obligations that are actively traded;
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - investment company registered under the Investment
+                          Company Act of 1940 (mutual fund);
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - Dividends, interest, or royalties from units of
+                          beneficial interest in a unit investment trust that
+                          are (or were upon issuance) publicly offered and are
+                          registered with the SEC under the Securities Act of
+                          1933;
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          - and Income related to loans of any of the above
+                          securities.
+                        </Typography>
 
-              </div>):""}
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                   <Collapse
                     className="px-5"
@@ -925,7 +1106,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                               inputProps={{ "aria-label": "Yes" }}
                             />
                           </div>
-                          <div className="col-lg-3 col-6 col-md-3 ">
+                          {/* <div className="col-lg-3 col-6 col-md-3 ">
                             <FormControl className="w-100">
                               <Typography align="left">
                                 GIIN
@@ -935,7 +1116,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                                     fontSize: "15px",
                                     marginBottom: "12px",
                                   }}
-                                  // onClick={clickInfo}
+                                  
                                 />
                               </Typography>
                               <Input
@@ -964,6 +1145,80 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                                 value={payload.giin}
                               />
                             </FormControl>
+                          </div> */}
+                          <div className="col-12 d-flex">
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              <Typography align="left" className="d-flex w-100">
+                                Value Added Tax Number (VAT)
+                                <span style={{ color: "red" }}>*</span>
+                              </Typography>
+
+                              <FormControl className="w-100">
+                                <select
+                                  style={{
+                                    padding: " 0 10px",
+                                    color: "#7e7e7e",
+                                    fontStyle: "italic",
+                                    height: "36px",
+                                  }}
+                                  name="vatId"
+                                  defaultValue={0}
+                                  onChange={(e: any) =>
+                                    setPayload({
+                                      ...payload,
+                                      vatId: e.target.value,
+                                    })
+                                  }
+                                  value={payload.vatId}
+                                >
+                                  <option value={0}>-Select-</option>
+                                  <option value={1}>My VAT Number is</option>
+                                  <option value={2}>
+                                    I Do Not Have A VAT Number
+                                  </option>
+                                </select>
+                                <p className="error">{errors.vatId}</p>
+                              </FormControl>
+                            </div>
+
+                            <div className="col-lg-3 col-6 col-md-3 mx-2">
+                              <FormControl className="w-100">
+                                <Typography align="left">
+                                  Value Added Tax Number (VAT)
+                                  {/* <span style={{ color: 'red' }}>*</span> */}
+                                </Typography>
+                                <Input
+                                  disabled={
+                                    payload.vatId == 0 || payload.vatId == 2
+                                  }
+                                  style={{
+                                    border: " 1px solid #d9d9d9 ",
+                                    height: " 36px",
+                                    lineHeight: "36px ",
+                                    background: "#fff ",
+                                    fontSize: "13px",
+                                    color: " #000 ",
+                                    fontStyle: "normal",
+                                    borderRadius: "1px",
+                                    padding: " 0 10px ",
+                                  }}
+                                  id="outlined"
+                                  name="vat"
+                                  placeholder="Enter Value Added Tax Number"
+                                  // onKeyDown={formatTin}
+                                  onChange={(e: any) =>
+                                    setPayload({
+                                      ...payload,
+                                      vat: e.target.value,
+                                    })
+                                  }
+                                  inputProps={{ maxLength: 11 }}
+                                  // onBlur={handleBlur}
+                                  //   error={Boolean(touched.usTin && errors.vat)}
+                                  value={payload.vat}
+                                />
+                              </FormControl>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1045,24 +1300,37 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                         }}
                       >
                         Permanent Residence Address
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Address Details</Typography>
-            <a onClick={()=>setToolInfo("Address")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                Address Details
+                              </Typography>
+                              <a onClick={() => setToolInfo("Address")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
                         </Tooltip>
                       </div>
                     }
@@ -1081,23 +1349,55 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="Address"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
+                  {toolInfo === "Address" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>
+                          Where applicable enter your US and Non-US (i.e.
+                          “Foreign”) taxpayer identification number(s) along
+                          with the US TIN Type and Foreign Country(ies)
+                          correlating to the FTIN(s).?
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Please note that some jurisdictions do not provide
+                          FTINs and this will be indicated if you select one of
+                          those jurisdictions. If you select a country that
+                          normally does provide an FTIN, but you do not wish to
+                          provide or cannot provide, you have the option to
+                          provide an explanation. Not providing a FTIN when it
+                          would normally be available may lead to the highest
+                          rate of withholding being applied, where treaty
+                          benefits could apply.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          IRS Guidance:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Non-US Person, W-8 submissions, should not use a Post
+                          Office (PO Box), a Care-of-address, or mailing address
+                          of a financial organization as these may not be
+                          considered valid. If you do, the agent receiving the
+                          form may require additional information from you to
+                          help validate your residency status. Ref: EH005
+                        </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  Please note that some jurisdictions do not provide FTINs and this will be indicated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
-
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>IRS Guidance:</Typography>
-                <Typography style={{marginTop:"10px"}}>Non-US Person, W-8 submissions, should not use a Post Office (PO Box), a Care-of-address, or mailing address of a financial organization as these may not be considered valid. If you do, the agent receiving the form may require additional information from you to help validate your residency status. Ref: EH005</Typography>
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Collapse
                     className="px-5 "
                     in={open === "pra"}
@@ -1132,6 +1432,7 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                           value={payload.permanentResidentialCountryId}
                         >
                           <option value={0}>-Select-</option>
+                          <option value={45}>-canada-</option>
                           {countries.map(({ id, name }) => (
                             <option value={id}>{name}</option>
                           ))}
@@ -1351,6 +1652,52 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                           </p>
                         </FormControl>
                       </div>
+                      {payload.permanentResidentialCountryId == 45 ?(
+                        <div className="mx-5">
+                            <Typography style={{ marginTop: "20px" }}>
+                            Is this address a rural route number?
+                              <span style={{ color: "red" }}>*</span>
+                            </Typography>
+                            
+
+                            <div className="d-flex">
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                              >
+                                <FormControlLabel
+                                  value="no"
+                                  control={<Radio />}
+                                  label="No"
+                                  checked={!payload.isAddressRuralRoute}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isAddressRuralRoute: false,
+                                    })
+                                  }
+                                />
+                                <FormControlLabel
+                                  value="yes"
+                                  control={<Radio />}
+                                  label="Yes"
+                                  checked={payload.isAddressRuralRoute}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isAddressRuralRoute: true,
+                                    })
+                                  }
+                                />
+                              </RadioGroup>
+                            </div>
+                          </div>
+                      
+                      ):(
+                        ""
+                      )}
+                      
                     </div>
                     <div className="d-flex">
                       {payload.isUSEntity ? (
@@ -1359,46 +1706,82 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                             Is there an alternative mailing or business address
                             in the US?
                             <span style={{ color: "red" }}>*</span>
-                           <span>
-                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Address Details</Typography>
-            <a onClick={()=>setToolInfo("mail")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                        </Tooltip>
-                           </span>
-                              
-                          
+                            <span>
+                              <Tooltip
+                                style={{
+                                  backgroundColor: "black",
+                                  color: "white",
+                                }}
+                                title={
+                                  <>
+                                    <Typography color="inherit">
+                                      Address Details
+                                    </Typography>
+                                    <a onClick={() => setToolInfo("mail")}>
+                                      <Typography
+                                        style={{
+                                          cursor: "pointer",
+                                          textDecorationLine: "underline",
+                                        }}
+                                        align="center"
+                                      >
+                                        {" "}
+                                        View More...
+                                      </Typography>
+                                    </a>
+                                  </>
+                                }
+                              >
+                                <Info
+                                  style={{
+                                    color: "#ffc107",
+                                    fontSize: "15px",
+                                    marginLeft: "5px",
+                                    cursor: "pointer",
+                                  }}
+                                  // onClick={clickInfo}
+                                />
+                              </Tooltip>
+                            </span>
                           </Typography>
-                          {toolInfo==="mail"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Please check this box if you have an alternative mailing address away from the permanent residential address entered here.
+                          {toolInfo === "mail" ? (
+                            <div>
+                              <Paper
+                                style={{
+                                  backgroundColor: "#dedcb1",
+                                  padding: "15px",
+                                }}
+                              >
+                                <Typography>
+                                  Please check this box if you have an
+                                  alternative mailing address away from the
+                                  permanent residential address entered here.
+                                </Typography>
+                                <Typography style={{ marginTop: "10px" }}>
+                                  You will be asked to enter the alternative
+                                  address later in the process and in some
+                                  circumstances you may need to provide
+                                  additional information.
+                                </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  You will be asked to enter the alternative address later in the process and in some circumstances you may need to provide additional information.
-
-                  </Typography>
-                 
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                                <Link
+                                  href="#"
+                                  underline="none"
+                                  style={{
+                                    marginTop: "10px",
+                                    fontSize: "16px",
+                                  }}
+                                  onClick={() => {
+                                    setToolInfo("");
+                                  }}
+                                >
+                                  --Show Less--
+                                </Link>
+                              </Paper>
+                            </div>
+                          ) : (
+                            ""
+                          )}
 
                           <div className="d-flex">
                             <Typography className="my-auto">Yes</Typography>
@@ -1440,45 +1823,86 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                             Is this address a Post Office Box?
                             <span style={{ color: "red" }}>*</span>
                             <span>
-                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">PO Box Address</Typography>
-            <a onClick={()=>setToolInfo("post")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                        </Tooltip>
-                           </span>
+                              <Tooltip
+                                style={{
+                                  backgroundColor: "black",
+                                  color: "white",
+                                }}
+                                title={
+                                  <>
+                                    <Typography color="inherit">
+                                      PO Box Address
+                                    </Typography>
+                                    <a onClick={() => setToolInfo("post")}>
+                                      <Typography
+                                        style={{
+                                          cursor: "pointer",
+                                          textDecorationLine: "underline",
+                                        }}
+                                        align="center"
+                                      >
+                                        {" "}
+                                        View More...
+                                      </Typography>
+                                    </a>
+                                  </>
+                                }
+                              >
+                                <Info
+                                  style={{
+                                    color: "#ffc107",
+                                    fontSize: "15px",
+                                    marginLeft: "5px",
+                                    cursor: "pointer",
+                                  }}
+                                  // onClick={clickInfo}
+                                />
+                              </Tooltip>
+                            </span>
                           </Typography>
-                          {toolInfo==="post"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  A Post Office Box is a mail box located at a post office (versus at a permanent residence).
+                          {toolInfo === "post" ? (
+                            <div>
+                              <Paper
+                                style={{
+                                  backgroundColor: "#dedcb1",
+                                  padding: "15px",
+                                }}
+                              >
+                                <Typography>
+                                  A Post Office Box is a mail box located at a
+                                  post office (versus at a permanent residence).
+                                </Typography>
+                                <Typography style={{ marginTop: "10px" }}>
+                                  You should not use a P.O. Box or an
+                                  in-care-of-address (other than a registered
+                                  address). If you do, we may need to contact
+                                  you for further information to help validate
+                                  the submission.
+                                </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
-                  </Typography>
-                 
-                  <Typography style={{marginTop:"10px"}}>
-                    If you reside in a country that does not use street addresses, you may enter a descriptive address.
-                  </Typography>
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}    
-                  
+                                <Typography style={{ marginTop: "10px" }}>
+                                  If you reside in a country that does not use
+                                  street addresses, you may enter a descriptive
+                                  address.
+                                </Typography>
+                                <Link
+                                  href="#"
+                                  underline="none"
+                                  style={{
+                                    marginTop: "10px",
+                                    fontSize: "16px",
+                                  }}
+                                  onClick={() => {
+                                    setToolInfo("");
+                                  }}
+                                >
+                                  --Show Less--
+                                </Link>
+                              </Paper>
+                            </div>
+                          ) : (
+                            ""
+                          )}
 
                           <div className="d-flex ">
                             <RadioGroup
@@ -1517,44 +1941,87 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                               Is this an In Care Of address?
                               <span style={{ color: "red" }}>*</span>
                               <span>
-                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">In Care of Address</Typography>
-            <a onClick={()=>setToolInfo("care")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                        </Tooltip>
-                           </span>
+                                <Tooltip
+                                  style={{
+                                    backgroundColor: "black",
+                                    color: "white",
+                                  }}
+                                  title={
+                                    <>
+                                      <Typography color="inherit">
+                                        In Care of Address
+                                      </Typography>
+                                      <a onClick={() => setToolInfo("care")}>
+                                        <Typography
+                                          style={{
+                                            cursor: "pointer",
+                                            textDecorationLine: "underline",
+                                          }}
+                                          align="center"
+                                        >
+                                          {" "}
+                                          View More...
+                                        </Typography>
+                                      </a>
+                                    </>
+                                  }
+                                >
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "15px",
+                                      marginLeft: "5px",
+                                      cursor: "pointer",
+                                    }}
+                                    // onClick={clickInfo}
+                                  />
+                                </Tooltip>
+                              </span>
                             </Typography>
-                            {toolInfo==="care"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  An In Care Of Address denotes that something is to be delivered to an address where the recipient does not normally receive mail.
+                            {toolInfo === "care" ? (
+                              <div>
+                                <Paper
+                                  style={{
+                                    backgroundColor: "#dedcb1",
+                                    padding: "15px",
+                                  }}
+                                >
+                                  <Typography>
+                                    An In Care Of Address denotes that something
+                                    is to be delivered to an address where the
+                                    recipient does not normally receive mail.
+                                  </Typography>
+                                  <Typography style={{ marginTop: "10px" }}>
+                                    You should not use a P.O. Box or an
+                                    in-care-of-address (other than a registered
+                                    address). If you do, we may need to contact
+                                    you for further information to help validate
+                                    the submission.
+                                  </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
-                  </Typography>
-                 
-                  <Typography style={{marginTop:"10px"}}>
-                  If you reside in a country that does not use street addresses, you may enter a descriptive address.
-                  </Typography>
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                                  <Typography style={{ marginTop: "10px" }}>
+                                    If you reside in a country that does not use
+                                    street addresses, you may enter a
+                                    descriptive address.
+                                  </Typography>
+                                  <Link
+                                    href="#"
+                                    underline="none"
+                                    style={{
+                                      marginTop: "10px",
+                                      fontSize: "16px",
+                                    }}
+                                    onClick={() => {
+                                      setToolInfo("");
+                                    }}
+                                  >
+                                    --Show Less--
+                                  </Link>
+                                </Paper>
+                              </div>
+                            ) : (
+                              ""
+                            )}
 
                             <div className="d-flex">
                               <RadioGroup
@@ -1596,45 +2063,81 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                               address in the US?
                               <span style={{ color: "red" }}>*</span>
                               <span>
-                           <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Alternate Mailing Address</Typography>
-            <a onClick={()=>setToolInfo("mail")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                        </Tooltip>
-                           </span>
-
+                                <Tooltip
+                                  style={{
+                                    backgroundColor: "black",
+                                    color: "white",
+                                  }}
+                                  title={
+                                    <>
+                                      <Typography color="inherit">
+                                        Alternate Mailing Address
+                                      </Typography>
+                                      <a onClick={() => setToolInfo("mail")}>
+                                        <Typography
+                                          style={{
+                                            cursor: "pointer",
+                                            textDecorationLine: "underline",
+                                          }}
+                                          align="center"
+                                        >
+                                          {" "}
+                                          View More...
+                                        </Typography>
+                                      </a>
+                                    </>
+                                  }
+                                >
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "15px",
+                                      marginLeft: "5px",
+                                      cursor: "pointer",
+                                    }}
+                                    // onClick={clickInfo}
+                                  />
+                                </Tooltip>
+                              </span>
                             </Typography>
-                            {toolInfo==="mail"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Please check this box if you have an alternative mailing address away from the permanent residential address entered here.
+                            {toolInfo === "mail" ? (
+                              <div>
+                                <Paper
+                                  style={{
+                                    backgroundColor: "#dedcb1",
+                                    padding: "15px",
+                                  }}
+                                >
+                                  <Typography>
+                                    Please check this box if you have an
+                                    alternative mailing address away from the
+                                    permanent residential address entered here.
+                                  </Typography>
+                                  <Typography style={{ marginTop: "10px" }}>
+                                    You will be asked to enter the alternative
+                                    address later in the process and in some
+                                    circumstances you may need to provide
+                                    additional information.
+                                  </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  You will be asked to enter the alternative address later in the process and in some circumstances you may need to provide additional information.
-
-                  </Typography>
-                 
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
-
+                                  <Link
+                                    href="#"
+                                    underline="none"
+                                    style={{
+                                      marginTop: "10px",
+                                      fontSize: "16px",
+                                    }}
+                                    onClick={() => {
+                                      setToolInfo("");
+                                    }}
+                                  >
+                                    --Show Less--
+                                  </Link>
+                                </Paper>
+                              </div>
+                            ) : (
+                              ""
+                            )}
 
                             <div className="d-flex">
                               <Typography className="my-auto">Yes</Typography>
@@ -1670,8 +2173,6 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                         </div>
                       )}
                     </div>
-
-                   
 
                     {payload.isalternativebusinessaddress ? (
                       <>
@@ -1978,25 +2479,38 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                         }}
                       >
                         Contact Details
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Contact Details</Typography>
-            <a onClick={()=>setToolInfo("Contact")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
-                         </Tooltip>
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                Contact Details
+                              </Typography>
+                              <a onClick={() => setToolInfo("Contact")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
+                        </Tooltip>
                       </div>
                     }
                     action={
@@ -2014,34 +2528,72 @@ A TIN must be furnished on US tax returns when filed or when claiming treaty ben
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="Contact"?(<div>
-                <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Where applicable enter your US and Non-US (i.e. “Foreign”) taxpayer identification number(s) along with the US TIN Type and Foreign Country(ies) correlating to the FTIN(s).?  
+                  {toolInfo === "Contact" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>
+                          Where applicable enter your US and Non-US (i.e.
+                          “Foreign”) taxpayer identification number(s) along
+                          with the US TIN Type and Foreign Country(ies)
+                          correlating to the FTIN(s).?
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          ated if you select one of those jurisdictions. If you
+                          select a country that normally does provide an FTIN,
+                          but you do not wish to provide or cannot provide, you
+                          have the option to provide an explanation. Not
+                          providing a FTIN when it would normally be available
+                          may lead to the highest rate of withholding being
+                          applied, where treaty benefits could apply.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          If you have not received the email within a few
+                          minutes, it probably means your local email service
+                          has detected an automated email and captured the email
+                          in a local spam or quarantine folder. Please see
+                          'more' below for further information or contact:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          If you do not receive the email containing your
+                          confirmation code:
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          The email is dispatched to the email address given as
+                          soon as you confirm the details entered into this
+                          screen and move across to the next part of the
+                          submission process. Delivery should take place within
+                          a few minutes, although on occasion it may take a
+                          little longer because of issues outside of our
+                          control.
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          The following factors may impact delivery of the
+                          email: internet traffic, your internal email service
+                          delay, the way your internal email service is
+                          configured to accept automatically generated emails,
+                          or possibly the security settings of your browser.
+                        </Typography>
 
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>
-                  ated if you select one of those jurisdictions. If you select a country that normally does provide an FTIN, but you do not wish to provide or cannot provide, you have the option to provide an explanation. Not providing a FTIN when it would normally be available may lead to the highest rate of withholding being applied, where treaty benefits could apply.
-
-                  </Typography>
-                  <Typography style={{marginTop:"10px"}}>If you have not received the email within a few minutes, it probably means your local email service has detected an automated email and captured the email in a local spam or quarantine folder. Please see 'more' below for further information or contact:</Typography>
-                <Typography style={{marginTop:"10px"}}>If you do not receive the email containing your confirmation code:</Typography>
-                <Typography style={{marginTop:"10px"}}> 
-The email is dispatched to the email address given as soon as you confirm the details entered into this screen and move across to the next part of the submission process. Delivery should take place within a few minutes, although on occasion it may take a little longer because of issues outside of our control.
-
-                </Typography>
-                <Typography style={{marginTop:"10px"}}>
-                The following factors may impact delivery of the email: internet traffic, your internal email service delay, the way your internal email service is configured to accept automatically generated emails, or possibly the security settings of your browser.
-                  </Typography>
-
-                  <Typography style={{marginTop:"10px"}}>
-                  Please also check your spam or junk email folder.
-
-                  </Typography >
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                        <Typography style={{ marginTop: "10px" }}>
+                          Please also check your spam or junk email folder.
+                        </Typography>
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Collapse
                     className="px-5"
                     in={open === "cd"}
@@ -2391,24 +2943,37 @@ The email is dispatched to the email address given as soon as you confirm the de
                         >
                           (Optional)
                         </span>
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">Q&A, Income Type</Typography>
-            <a onClick={()=>setToolInfo("Income")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                Q&A, Income Type
+                              </Typography>
+                              <a onClick={() => setToolInfo("Income")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
                         </Tooltip>
                       </div>
                     }
@@ -2427,17 +2992,40 @@ The email is dispatched to the email address given as soon as you confirm the de
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="Income"?(<div>
-                    <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  Income type or code is requested as part of the tax form completion process for purposes of calculating withholding rates, where applicable, and to further determine how you should be reported on. You should select the type of code that best defines the payments that you expect to receive. Income Types, associated with Form 1099 reporting, can include things like: Interest, Dividends, Rents, Royalties, Prizes and Awards. Income Codes, associated with Form 1042-S reporting, can be found here: https://www.irs.gov/pub/irs-pdf/p515.pdf
-                  </Typography>
-                 
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
+                  {toolInfo === "Income" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>
+                          Income type or code is requested as part of the tax
+                          form completion process for purposes of calculating
+                          withholding rates, where applicable, and to further
+                          determine how you should be reported on. You should
+                          select the type of code that best defines the payments
+                          that you expect to receive. Income Types, associated
+                          with Form 1099 reporting, can include things like:
+                          Interest, Dividends, Rents, Royalties, Prizes and
+                          Awards. Income Codes, associated with Form 1042-S
+                          reporting, can be found here:
+                          https://www.irs.gov/pub/irs-pdf/p515.pdf
+                        </Typography>
 
-              </div>):""}
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Collapse
                     className="px-5"
                     in={open === "it"}
@@ -2445,7 +3033,7 @@ The email is dispatched to the email address given as soon as you confirm the de
                     unmountOnExit
                   >
                     {incomeArr.length &&
-                      incomeArr.map((ind , i) => {
+                      incomeArr.map((ind, i) => {
                         return (
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography className="d-flex w-100 pb-2">
@@ -2529,25 +3117,41 @@ The email is dispatched to the email address given as soon as you confirm the de
                         >
                           (Optional)
                         </span>
-                        <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">TT-134 Q&A, Account </Typography>
-            <Typography color="inherit"> information</Typography>
-            <a onClick={()=>setToolInfo("Payment")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                        <Info
-                          style={{
-                            color: "#ffc107",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                            cursor: "pointer",
-                          }}
-                          // onClick={clickInfo}
-                        />
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                                TT-134 Q&A, Account{" "}
+                              </Typography>
+                              <Typography color="inherit">
+                                {" "}
+                                information
+                              </Typography>
+                              <a onClick={() => setToolInfo("Payment")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
+                          <Info
+                            style={{
+                              color: "#ffc107",
+                              fontSize: "15px",
+                              marginLeft: "5px",
+                              cursor: "pointer",
+                            }}
+                            // onClick={clickInfo}
+                          />
                         </Tooltip>
                       </div>
                     }
@@ -2566,17 +3170,36 @@ The email is dispatched to the email address given as soon as you confirm the de
                       </IconButton>
                     }
                   ></CardHeader>
-                  {toolInfo==="Payment"?(<div>
-                    <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  As part of the tax form completion process, your withholding agent has requested that you provide banking details associated with your account. Here, you will be asked to select the method for which payment will be remitted, as permitted by the withholding agent. Allowable options can include: ACH, Wire or Check
-                  </Typography>
-                 
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
+                  {toolInfo === "Payment" ? (
+                    <div>
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
+                      >
+                        <Typography>
+                          As part of the tax form completion process, your
+                          withholding agent has requested that you provide
+                          banking details associated with your account. Here,
+                          you will be asked to select the method for which
+                          payment will be remitted, as permitted by the
+                          withholding agent. Allowable options can include: ACH,
+                          Wire or Check
+                        </Typography>
 
-              </div>):""}
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Collapse
                     className="px-5"
                     in={open === "pt"}
@@ -2673,25 +3296,44 @@ The email is dispatched to the email address given as soon as you confirm the de
                             >
                               (Mandatory)
                             </span>
-                            <Tooltip style={{backgroundColor:"black",color:"white"}} title={
-       <>
-            <Typography color="inherit">TT-126 Q&A,Account</Typography>
-            <Typography color="inherit"> information</Typography>
-            <a onClick={()=>setToolInfo("Account1")}>
-           <Typography style={{cursor:"pointer",textDecorationLine:"underline"}} align="center"> View More...</Typography>
-           </a>
-           
-           </>
-        }>
-                            <Info
+                            <Tooltip
                               style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginLeft: "5px",
-                                cursor: "pointer",
+                                backgroundColor: "black",
+                                color: "white",
                               }}
-                              // onClick={clickInfo}
-                            />
+                              title={
+                                <>
+                                  <Typography color="inherit">
+                                    TT-126 Q&A,Account
+                                  </Typography>
+                                  <Typography color="inherit">
+                                    {" "}
+                                    information
+                                  </Typography>
+                                  <a onClick={() => setToolInfo("Account1")}>
+                                    <Typography
+                                      style={{
+                                        cursor: "pointer",
+                                        textDecorationLine: "underline",
+                                      }}
+                                      align="center"
+                                    >
+                                      {" "}
+                                      View More...
+                                    </Typography>
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                                // onClick={clickInfo}
+                              />
                             </Tooltip>
                           </div>
                         }
@@ -2710,55 +3352,82 @@ The email is dispatched to the email address given as soon as you confirm the de
                           </IconButton>
                         }
                       ></CardHeader>
-                      {toolInfo==="Account1"?(<div>
-                        <Paper style={{backgroundColor:"#dedcb1",padding:'15px'}}>
-                  <Typography>
-                  If you have an account number, or several account numbers relating to the certificate submission please identify here.
-The account details provided will be used to:
-                  </Typography>
-                  <Typography >1. Make payments to you if you are entitled to any
-                    </Typography>
-                    <Typography>
-                    2.Ensure your form is correctly matched to your account
-                    </Typography>
-                    <Typography>
-                    3.for further validation of new and existing information
-                    </Typography>
-                    <Typography>
-                    4.In some circumstance will allow us to document multiple accounts with the same certificate
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      Please see our privacy statement for further information.
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      See more information on what to do if you have a joint account.
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      Joint Accounts
+                      {toolInfo === "Account1" ? (
+                        <div>
+                          <Paper
+                            style={{
+                              backgroundColor: "#dedcb1",
+                              padding: "15px",
+                            }}
+                          >
+                            <Typography>
+                              If you have an account number, or several account
+                              numbers relating to the certificate submission
+                              please identify here. The account details provided
+                              will be used to:
+                            </Typography>
+                            <Typography>
+                              1. Make payments to you if you are entitled to any
+                            </Typography>
+                            <Typography>
+                              2.Ensure your form is correctly matched to your
+                              account
+                            </Typography>
+                            <Typography>
+                              3.for further validation of new and existing
+                              information
+                            </Typography>
+                            <Typography>
+                              4.In some circumstance will allow us to document
+                              multiple accounts with the same certificate
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              Please see our privacy statement for further
+                              information.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              See more information on what to do if you have a
+                              joint account.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              Joint Accounts
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              Please note that if you are submitting a form on
+                              behalf of an entity, which is part of a joint
+                              account and in receipt of a payment, the joint
+                              account should submit their own form.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              The form you are submitting ONLY represents the
+                              legal entity named on the form and DOES NOT
+                              represent the account or any joint account
+                              holders.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              We can contact the joint account holder by email
+                              informing them that they may need to submit a form
+                              too.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                              Ref: EH025
+                            </Typography>
 
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      Please note that if you are submitting a form on behalf of an entity, which is part of a joint account and in receipt of a payment, the joint account should submit their own form.
-
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      The form you are submitting ONLY represents the legal entity named on the form and DOES NOT represent the account or any joint account holders.
-
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      We can contact the joint account holder by email informing them that they may need to submit a form too.
-
-                      </Typography>
-                      <Typography style={{marginTop:"10px"}}>
-                      Ref: EH025
-
-                      </Typography>
-                 
-                
-                <Link href="#" underline="none"  style={{marginTop:"10px",fontSize:"16px"}} onClick={()=>{setToolInfo("")}}>--Show Less--</Link>
-                </Paper>
-
-              </div>):""}
+                            <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+                          </Paper>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                       <Collapse
                         className="px-5"
                         in={open === "ai"}
@@ -2880,6 +3549,7 @@ The account details provided will be used to:
                                     value={payload.accountBankBranchLocationId}
                                   >
                                     <option value={0}>-Select-</option>
+                                    <option value={16}>Australia</option>
                                     <option value={257}>United Kingdom</option>
                                     <option value={258}>United States</option>
                                     <option value="">---</option>

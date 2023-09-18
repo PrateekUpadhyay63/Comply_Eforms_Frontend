@@ -65,4 +65,12 @@ export const firstStepSchema = () => {
     });
       
   }
+  export const tinSchema=()=>{
+    return  Yup.object().shape({
+      tiN_USTINId: Yup.number()
+      .required('This Field is Required.').notOneOf([0], 'Required Field'),
+    });
+      
+  }
+  
  
