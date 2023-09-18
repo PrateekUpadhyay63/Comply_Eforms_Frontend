@@ -1,5 +1,5 @@
 .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
-    font-size: 25px;
+    font-size: 20px;
     margin-top: .5rem;
 
 }
@@ -17,6 +17,7 @@
 .form input{
     height: 50px;
     font-size: 20px;
+    background-color: rgb(234, 231, 231);
 }
 .form {
     width: 40%;
@@ -24,5 +25,9 @@
 .form select{
     height: 50px;
     font-size: 18px;
+   
     
+}
+.mt-2 {
+    margin-top: 0.7rem!important;
 }
