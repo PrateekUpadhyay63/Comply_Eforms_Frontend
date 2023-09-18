@@ -18,8 +18,10 @@ import {
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss"
+import { useNavigate } from "react-router-dom";
 
 export default function FCTA_Reporting(props: any) {
+  const history= useNavigate()
     const [report, setReport] = useState<string>("");
     const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setReport((event.target as HTMLInputElement).value);
@@ -166,7 +168,9 @@ export default function FCTA_Reporting(props: any) {
       SAVE & EXIT
     </Button>
     <Button
-     
+     onClick={()=>{
+      history("/W-8BEN/Declaration/US_Tin/Rates")
+     }}
       variant="contained"
       style={{ color: "white", marginLeft: "15px" }}
     >

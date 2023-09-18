@@ -20,8 +20,8 @@ const US_Sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/US'
 const Non_us_sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Status'));
 const Non_us_tin = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/US_Tin'));
 const Claim = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Claim/index'));
-
-
+const Rates = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Rates/index'));
+const Certi = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Certificates'));
 
 
 const ROUTES: Array<RouteType> = [
@@ -113,6 +113,18 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
            id: 5,
            Component: Claim,
            isPrivate: true
+          },{
+            name:"Rates",
+            path:"W-8BEN/Declaration/US_Tin/Rates",
+           id: 6,
+           Component: Rates,
+           isPrivate: true
+          },{
+            name:"Certi",
+            path:"W-8BEN/Declaration/US_Tin/Certificates",
+            id: 6,
+            Component: Certi,
+            isPrivate: true
           }
 
 
