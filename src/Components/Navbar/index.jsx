@@ -16,7 +16,7 @@ export default function Nav() {
    }
    >
 <Button style={{borderRadius:"30px"}} variant="contained" >
-    signOut
+    Sign out
    
    
     </Button>

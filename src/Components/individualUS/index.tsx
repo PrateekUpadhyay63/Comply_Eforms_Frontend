@@ -32,7 +32,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 import { useDispatch } from "react-redux";
-import { postOnboarding } from "../../Redux/Actions";
+import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
@@ -120,7 +120,7 @@ export default function IndividualUs() {
     payZipPostalCode: "",
     sortCode: "",
     bsb: "",
-    capacityId: 0,
+    capacityId: 1,
     isCorrectPaymentPurposes: true,
     isConfirmed: true,
   });
@@ -151,7 +151,7 @@ export default function IndividualUs() {
     permanentResidentialZipPostalCode: "",
     isAddressRuralRoute: "yes",
     isAddressPostOfficeBox: "yes",
-    isCareOfAddress: "yes" ,
+    isCareOfAddress: "yes",
     isalternativebusinessaddress: "yes",
     permanentResidentialCountryId1: 0, 
     permanentResidentialStreetNumberandName1: "",
@@ -190,7 +190,7 @@ export default function IndividualUs() {
     payZipPostalCode: "",
     sortCode: "",
     bsb: "",
-    capacityId: 0,
+    capacityId: 1,
     isCorrectPaymentPurposes: true,
     isConfirmed: true,
   };
@@ -267,6 +267,12 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
+  };
+
+  const handleDelete = (i: any) => {
+    const updatedIncomeCodes = [...incomeArr];
+    updatedIncomeCodes.splice(i, 1);
+    setIncomeArr(updatedIncomeCodes);
   };
 
   const handleSubmit = (e: any, values: any) => {
@@ -351,7 +357,41 @@ export default function IndividualUs() {
           </FormControl>
         </div>
       );
-    } else {
+    }else if (payload.accountBankBranchLocationId == 16) {
+      return (
+        <div className="col-lg-3 col-6 col-md-3 mt-2">
+          <FormControl className="w-100">
+            <Typography align="left">
+              {/* {returnFieldName()} */}
+              BSB
+              <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <Input
+              required
+              style={{
+                border: " 1px solid #d9d9d9 ",
+                height: " 36px",
+                lineHeight: "36px ",
+                background: "#fff ",
+                fontSize: "13px",
+                color: " #000 ",
+                fontStyle: "normal",
+                borderRadius: "1px",
+                padding: " 0 10px ",
+              }}
+              id="outlined"
+              name="bsb"
+              placeholder="Enter Bank Code"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={Boolean(touched.bsb && errors.bsb)}
+              value={values.bsb}
+            />
+            <p style={{ color: "red", textAlign: "left" }}>{errors.bsb}</p>
+          </FormControl>
+        </div>
+      );
+    }  else {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -542,12 +582,6 @@ export default function IndividualUs() {
                   isConfirmed: values?.isConfirmed,
                 };
                 console.log(values,"values");
-                // values.isUSEntity = values.isUSEntity == "yes" ? true: false;
-                // values.isUSIndividual = values.isUSIndividual == "yes" ? true: false;
-                // values.isAddressRuralRoute = values.isAddressRuralRoute == "yes" ? true: false;
-                // values.isAddressPostOfficeBox = values.isAddressPostOfficeBox == "yes" ? true: false;
-                // values.isCareOfAddress = values.isCareOfAddress == "yes" ? true: false;
-                // values.isalternativebusinessaddress = values.isalternativebusinessaddress == "yes" ? true: false;
                 dispatch(postOnboarding(payload, redirectFunc));
               }}
               validationSchema={individualSchema}
@@ -690,36 +724,36 @@ export default function IndividualUs() {
                           <div className="d-flex">
                             <FormControl
                               error={Boolean(
-                                touched.isUSEntity &&
-                                  errors.isUSEntity
+                                touched.isUSIndividual &&
+                                  errors.isUSIndividual
                               )}
                             >
                               <RadioGroup
-                                id="isUSEntity"
+                                id="isUSIndividual"
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
-                                value={values.isUSEntity} 
+                                value={values.isUSIndividual} 
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
                                   control={<Radio />}
                                   
                                   value="yes"
-                                  name="isUSEntity"
+                                  name="isUSIndividual"
                                   label="Yes"
                                 />
                                 <FormControlLabel
                                   control={<Radio />}
                                   value="no"
-                                  name="isUSEntity"
+                                  name="isUSIndividual"
                                   label="No"
                                 />
                               </RadioGroup>
-                              {errors.isUSEntity &&
-                              touched.isUSEntity ? (
+                              {errors.isUSIndividual &&
+                              touched.isUSIndividual ? (
                                 <div>
                                   <Typography color="error">
-                                    {errors.isUSEntity}
+                                    {errors.isUSIndividual}
                                   </Typography>
                                 </div>
                               ) : (
@@ -784,7 +818,7 @@ export default function IndividualUs() {
                       </div>
                     </FormControl>
 
-                    {values.isUSEntity === 'no' ? (
+                    {values.isUSIndividual === 'no' ? (
                       <div className="row">
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
@@ -1269,7 +1303,7 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                       </div>
-                      {values.isUSEntity === 'no' ? (
+                      {values.isUSIndividual === 'no' ? (
                         <div className="col-12 d-flex mt-3">
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
@@ -1287,7 +1321,7 @@ export default function IndividualUs() {
                                 }}
                                 name="foreignTINCountryId"
                                 id="Income"
-                                defaultValue={1}
+                                defaultValue={0}
                                 onChange={(e)=>{handleChange(e)}}
                                 value={values.foreignTINCountryId}
                               >
@@ -1663,7 +1697,7 @@ export default function IndividualUs() {
                             value={values.permanentResidentialCountryId}
                           >
                             <option value={0}>-Select-</option>
-                            {/* <option value={1}>-Select1-</option> */}
+                            <option value={45}>-canada-</option>
                             <option value={257}>United Kingdom</option>
                             <option value={258}>United States</option>
                             <option value="">-----</option>
@@ -1789,11 +1823,11 @@ export default function IndividualUs() {
                                   fontStyle: "italic",
                                   height: "36px",
                                 }}
-                                name="permanentResidentialStateorProvince1"
+                                name="permanentResidentialStateorProvince"
                                 // id="Income"
                                 onChange={handleChange}
                                 value={
-                                  values.permanentResidentialStateorProvince1
+                                  values.permanentResidentialStateorProvince
                                 }
                               >
                                 <option value="0">
@@ -1828,11 +1862,11 @@ export default function IndividualUs() {
                                   padding: " 0 10px ",
                                 }}
                                 // id="outlined"
-                                name="permanentResidentialStateorProvince1"
+                                name="permanentResidentialStateorProvince"
                                 placeholder="Enter State or Province"
                                 onChange={handleChange}
                                 value={
-                                  values.permanentResidentialStateorProvince1
+                                  values.permanentResidentialStateorProvince
                                 }
                               />
                             </FormControl>
@@ -1874,8 +1908,58 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                       </div>
+                      {values.permanentResidentialCountryId == 45 ? (
+                        <div className="mx-5">
+                          <Typography style={{ marginTop: "20px" }}>
+                            Is this address a rural route number?
+                            <span style={{ color: "red" }}>*</span>
+                          </Typography>
+
+                          <div className="d-flex">
+                          <FormControl
+                              error={Boolean(
+                                touched.isAddressRuralRoute &&
+                                  errors.isAddressRuralRoute
+                              )}
+                            >
+                            <RadioGroup
+                              row
+                              aria-labelledby="demo-row-radio-buttons-group-label"
+                              name="row-radio-buttons-group"
+                              value= {values.isAddressRuralRoute}
+                              onChange={handleChange}
+                            >
+                              <FormControlLabel
+                                value="no"
+                                control={<Radio />}
+                                label="No"
+                                name= "isAddressRuralRoute"
+                              />
+                              <FormControlLabel
+                                value="yes"
+                                control={<Radio />}
+                                label="Yes"
+                                name= "isAddressRuralRoute"
+                              />
+                            </RadioGroup>
+                            {errors.isAddressRuralRoute &&
+                              touched.isAddressRuralRoute ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isAddressRuralRoute}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                       <div className="d-flex">
-                        {values.isUSEntity == 'yes' ? (
+                        {values.isUSIndividual == 'yes' ? (
                           <div className="mx-5">
                             <Typography
                               align="left"
@@ -3100,7 +3184,7 @@ export default function IndividualUs() {
                       unmountOnExit
                     >
                       {incomeArr.length &&
-                        incomeArr.map((ind) => {
+                        incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
                               <Typography className="d-flex w-100 pb-2">
@@ -3123,22 +3207,20 @@ export default function IndividualUs() {
                                     onChange={handleChange}
                                     value={values.incomeTypeId}
                                   >
-                                    <option value="1">-Select-</option>
+                                    <option value="0">-Select-</option>
                                     {incomeCodes.map(({ id, name }) => (
                                       <option value={id}>{name}</option>
                                     ))}
                                   </select>
                                   <Delete
-                                    onClick={() => {
-                                      setAlternateIncome(false);
-                                    }}
-                                    style={{
-                                      color: "red",
-                                      fontSize: "20px",
-                                      marginTop: "8px",
-                                      marginLeft: "4px",
-                                    }}
-                                  />
+                                  onClick={() => handleDelete(i)}
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "8px",
+                                    marginLeft: "4px",
+                                  }}
+                                />
                                 </span>
                               </FormControl>
                             </div>
@@ -3184,8 +3266,12 @@ export default function IndividualUs() {
                             title={
                               <>
                                 <Typography color="inherit">
-                                  TT-134 Q&A, Account information
+                                  TT-134 Q&A, Account{" "}
                                 </Typography>
+                                <Typography color="inherit">
+                                {" "}
+                                information
+                              </Typography>
                                 <a onClick={() => setToolInfo("account")}>
                                   <Typography
                                     style={{
@@ -3562,7 +3648,8 @@ export default function IndividualUs() {
                                       onBlur={handleBlur}
                                       value={values.accountBankBranchLocationId}
                                     >
-                                      <option value="">-Select-</option>
+                                      <option value={0}>-Select-</option>
+                                      <option value={16}>Australia</option>
                                       <option value={257}>
                                         United Kingdom
                                       </option>

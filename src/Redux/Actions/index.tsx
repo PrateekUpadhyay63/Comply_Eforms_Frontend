@@ -91,4 +91,76 @@ export const loginAction = (value:any,callback:Function):any => {
     };
   };
 
+  export const getAllCountriesCode = ():any => {
+    return (dispatch:any) => {
+      Utils.api.getApiCall(
+        Utils.EndPoint.GetCountriesCode,"",
+        (resData) => {
+          const { data } = resData;
+          if (resData.status === 200) {
+            dispatch({
+              type: Utils.actionName.GetCountriesCode,
+              payload: {
+                allCountriesCodeData: resData.data,
+              },
+            });
+          } else {
+            // Utils.showAlert(2, data.message);
+          }
+        },
+        (error:any) => {
+          Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
+  export const getAllCountriesIncomeCode = ():any => {
+    return (dispatch:any) => {
+      Utils.api.getApiCall(
+        Utils.EndPoint.GetAllIncomeCodes,"",
+        (resData) => {
+          const { data } = resData;
+          if (resData.status === 200) {
+            dispatch({
+              type: Utils.actionName.GetAllIncomeCodes,
+              payload: {
+                allCountriesIncomeCodeData: resData.data,
+              },
+            });
+          } else {
+            // Utils.showAlert(2, data.message);
+          }
+        },
+        (error:any) => {
+          Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
+  export const getAllStateByCountryId = ():any => {
+    return (dispatch:any) => {
+      Utils.api.getApiCall(
+        Utils.EndPoint.GetStateByCountryId,"",
+        (resData) => {
+          const { data } = resData;
+          if (resData.status === 200) {
+            dispatch({
+              type: Utils.actionName.GetStateByCountryId,
+              payload: {
+                allCountriesStateIdData: resData.data,
+              },
+            });
+          } else {
+            // Utils.showAlert(2, data.message);
+          }
+        },
+        (error:any) => {
+          Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
 

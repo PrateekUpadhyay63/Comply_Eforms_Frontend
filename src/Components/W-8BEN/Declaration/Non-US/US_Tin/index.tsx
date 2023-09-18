@@ -42,9 +42,9 @@ export default function Tin(props: any) {
      <Paper style={{padding:"18px"}}>
   <Typography
     align="left"
-    style={{ margin: "10px", fontSize: "20px" }}
+    style={{ margin: "10px",fontSize: "23px",fontWeight:"550" }}
   >
-    Taxpayer Identification Number{" "}
+    Taxpayer Identification Number
    
   </Typography>
 
