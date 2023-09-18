@@ -13,7 +13,7 @@ import {
   Link,
 } from "@mui/material";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import {
   RemoveCircleOutlineOutlined,
   ControlPointOutlined,
@@ -33,10 +33,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 import Checkbox from "@mui/material/Checkbox";
-import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
+// import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
+import { useDispatch } from "react-redux";
+import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
+import { AppDispatch } from "../../Redux/store";
 
 export default function Entity() {
   const history = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   //   //States
   const [open, setOpen] = useState("");
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
@@ -52,23 +56,24 @@ export default function Entity() {
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
     agentId: 3,
-    businessTypeId: 1,
+    businessTypeId: 2,
     isUSEntity: true,
+    isUSIndividual: true,
     uniqueIdentifier: "",
     firstName: "",
     lastName: "",
-    countryOfCitizenshipId: 1,
+    countryOfCitizenshipId: 0,
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
-    foreignTINNotAvailable: false,
-    alternativeTINFormat: false,
+    foreignTINNotAvailable: true,
+    alternativeTINFormat: true,
     giin: "",
-    BSB:"",
+    bsb: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
@@ -113,40 +118,112 @@ export default function Entity() {
     payAptSuite: "",
     payCityorTown: "",
     sortCode: "",
+    capacityId: 1,
     payStateOrProvince: "",
     payZipPostalCode: "",
     isCorrectPaymentPurposes: true,
     isConfirmed: true,
   });
 
-  useEffect(() => {
-    apiGetUrl("GetCountries", "", {})
-      .then((res) => {
-        setCountries(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  var initialValues = {
+    agentId: 3,
+    businessTypeId: 2,
+    isUSEntity: "yes",
+    isUSIndividual: "yes",
+    uniqueIdentifier: "",
+    firstName: "",
+    lastName: "",
+    countryOfCitizenshipId: 0,
+    dob: "",
+    nameOfDisregarded: "",
+    entityName: "",
+    usTinTypeId: 0,
+    usTin: "",
+    foreignTINCountryId: 0,
+    foreignTIN: "",
+    foreignTINNotAvailable: false, //
+    alternativeTINFormat: true, //
+    giin: "",
+    permanentResidentialCountryId: 0,
+    permanentResidentialStreetNumberandName: "",
+    permanentResidentialAptSuite: "",
+    permanentResidentialCityorTown: "",
+    permanentResidentialStateorProvince: "",
+    permanentResidentialZipPostalCode: "",
+    isAddressRuralRoute: "yes",
+    isAddressPostOfficeBox: "yes",
+    isCareOfAddress: "yes",
+    isalternativebusinessaddress: "yes",
+    permanentResidentialCountryId1: 0,
+    permanentResidentialStreetNumberandName1: "",
+    permanentResidentialAptSuite1: "",
+    permanentResidentialCityorTown1: "",
+    permanentResidentialStateorProvince1: "",
+    permanentResidentialZipPostalCode1: "",
+    contactFirstName: "",
+    contactLastName: "",
+    contactEmail: "",
+    primaryContactNumberId: 0,
+    primaryContactNumber: "",
+    alternativeNumberId: 0,
+    alternativeNumber: "",
+    alternativeNumberId1: 0,
+    alternativeNumber1: "",
+    incomeTypeId: 0,
+    paymentTypeId: 0,
+    accountHolderName: "",
+    accountBankName: "",
+    accountBankBranchLocationId: 0,
+    accountNumber: "",
+    abaRouting: "",
+    iban: "",
+    swiftCode: "",
+    bankCode: "",
+    makePayable: "",
+    payResidentalCountryId: 0,
+    payStreetNumberAndName: "",
+    payAptSuite: "",
+    vatId: 0,
+    vat: "",
+    doingBusinessAsName: "",
+    payCityorTown: "",
+    payStateOrProvince: "",
+    payZipPostalCode: "",
+    sortCode: "",
+    bsb: "",
+    capacityId: 1,
+    isCorrectPaymentPurposes: true,
+    isConfirmed: true,
+  };
 
-    apiGetUrl("GetCountriesCode", "", {})
-      .then((res) => {
-        setCountriesCode(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // useEffect(() => {
+  //   apiGetUrl("GetCountries", "", {})
+  //     .then((res) => {
+  //       setCountries(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
 
-    apiGetUrl("GetAllIncomeCodes", "", {})
-      .then((res) => {
-        setIncomeCodes(res.data);
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  //   apiGetUrl("GetCountriesCode", "", {})
+  //     .then((res) => {
+  //       setCountriesCode(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+
+  //   apiGetUrl("GetAllIncomeCodes", "", {})
+  //     .then((res) => {
+  //       setIncomeCodes(res.data);
+  //       console.log(res.data, "res.data");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   const handleDelete = (i: any) => {
     const updatedIncomeCodes = [...incomeArr];
@@ -154,18 +231,21 @@ export default function Entity() {
     setIncomeArr(updatedIncomeCodes);
   };
 
-  useEffect(() => {
-    if (payload.permanentResidentialCountryId == 258) {
-      apiGetUrl("GetStateByCountryId", "", {})
-        .then((res) => {
-          setUsStates(res.data);
-          console.log(res.data, "res.data");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [payload.permanentResidentialCountryId]);
+  // useEffect(() => {
+  //   if (payload.permanentResidentialCountryId == 258) {
+  //     apiGetUrl("GetStateByCountryId", "", {})
+  //       .then((res) => {
+  //         setUsStates(res.data);
+  //         console.log(res.data, "res.data");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [payload.permanentResidentialCountryId]);
+  const redirectFunc = () => {
+    history("/Term");
+  };
 
   const handleOpen = (val: any) => {
     if (open === val) {
@@ -185,20 +265,21 @@ export default function Entity() {
     setIncomeArr((incomeArr) => [...incomeArr, "1"]);
   };
 
-  const handleSub = (e: any) => {
+  const handleSubmit = (e: any, values: any) => {
+    console.log("entity form", values);
     e.preventDefault();
-    apiPostUrl("InsertAccountHolderDetail", "", payload)
-      .then((res) => {
-        console.log(res.data, "res.data");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(payload, "payload2");
+    dispatch(postOnboarding(values, redirectFunc));
+    // redirectFunc();
   };
 
-  const returnFieldName = (handleBlur: any, touched: any, errors: any) => {
-    if (payload.accountBankBranchLocationId == 258) {
+  const returnFieldName = (
+    handleBlur: any,
+     touched: any,
+      errors: any,
+      values: any,
+    handleChange: any
+    ) => {
+    if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -223,15 +304,10 @@ export default function Entity() {
               id="outlined"
               name="abaRouting"
               placeholder="Enter ABA / Routing"
-              onChange={(e: any) =>
-                setPayload({
-                  ...payload,
-                  abaRouting: e.target.value,
-                })
-              }
+              onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.abaRouting && errors.abaRouting)}
-              value={payload.abaRouting}
+              value={values.abaRouting}
             />
             <p style={{ color: "red", textAlign: "left" }}>
               {errors.abaRouting}
@@ -239,7 +315,7 @@ export default function Entity() {
           </FormControl>
         </div>
       );
-    } else if (payload.accountBankBranchLocationId == 257) {
+    } else if (values.accountBankBranchLocationId == 257) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -264,22 +340,16 @@ export default function Entity() {
               id="outlined"
               name="sortCode"
               placeholder="Sort Code"
-              onChange={(e: any) =>
-                setPayload({
-                  ...payload,
-                  sortCode: e.target.value,
-                })
-              }
+              onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.sortCode && errors.sortCode)}
-              value={payload.sortCode}
+              value={values.sortCode}
             />
             <p style={{ color: "red", textAlign: "left" }}>{errors.sortCode}</p>
           </FormControl>
         </div>
       );
-    } 
-    else if (payload.accountBankBranchLocationId == 16) {
+    } else if (values.accountBankBranchLocationId == 16) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -302,23 +372,18 @@ export default function Entity() {
                 padding: " 0 10px ",
               }}
               id="outlined"
-              name="BSB"
+              name="bsb"
               placeholder="Enter Bank Code"
-              onChange={(e: any) =>
-                setPayload({
-                  ...payload,
-                  BSB: e.target.value,
-                })
-              }
+              onChange={handleChange}
               onBlur={handleBlur}
-              error={Boolean(touched.BSB && errors.BSB)}
-              value={payload.BSB}
+              error={Boolean(touched.bsb && errors.bsb)}
+              value={values.bsb}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.BSB}</p>
+            <p style={{ color: "red", textAlign: "left" }}>{errors.bsb}</p>
           </FormControl>
         </div>
       );
-    }else {
+    } else {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -342,15 +407,10 @@ export default function Entity() {
               id="outlined"
               name="bankCode"
               placeholder=" Enter Bank Code"
-              onChange={(e: any) =>
-                setPayload({
-                  ...payload,
-                  bankCode: e.target.value,
-                })
-              }
+              onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.bankCode && errors.bankCode)}
-              value={payload.bankCode}
+              value={values.bankCode}
             />
             <p style={{ color: "red", textAlign: "left" }}>{errors.bankCode}</p>
           </FormControl>
@@ -366,10 +426,7 @@ export default function Entity() {
   };
   // console.log(errors,"error")
   return (
-    <section
-      className="inner_content"
-      style={{ backgroundColor: "#0c3d69", }}
-    >
+    <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
       <Typography
         align="center"
         style={{
@@ -397,11 +454,13 @@ export default function Entity() {
                         {" "}
                         <img src={individual} />
                       </div>
-                      <span style={{fontSize:"20px",fontWeight:"600"}}>Individual</span>
+                      <span style={{ fontSize: "20px", fontWeight: "600" }}>
+                        Individual
+                      </span>
                     </div>
                   </button>
                 </li>
-                <li style={{fontSize:"20px",fontWeight:"600"}}>OR</li>
+                <li style={{ fontSize: "20px", fontWeight: "600" }}>OR</li>
                 <li>
                   <button className="active">
                     <div>
@@ -409,7 +468,9 @@ export default function Entity() {
                         {" "}
                         <img src={entity} />
                       </div>
-                      <span style={{fontSize:"20px",fontWeight:"600"}}>Entity</span>
+                      <span style={{ fontSize: "20px", fontWeight: "600" }}>
+                        Entity
+                      </span>
                     </div>
                   </button>
                 </li>
@@ -418,13 +479,88 @@ export default function Entity() {
           </div>
         </div>
 
-        <div className="col-lg-12 mt-3" style={{ padding: "1.5rem 8px 8px 8px" }}>
+        <div
+          className="col-lg-12 mt-3"
+          style={{ padding: "1.5rem 8px 8px 8px" }}
+        >
           <Paper elevation={6} style={{ padding: "17px" }}>
             <Formik
-              initialValues={payload}
+              initialValues={initialValues}
               enableReinitialize
-              onSubmit={() => {
-                console.log("submit!");
+              onSubmit={(values, { setSubmitting }) => {
+                setSubmitting(true);
+               const payload = {
+                  agentId: values?.agentId,
+                  businessTypeId: values?.businessTypeId,
+                  isUSEntity: values?.isUSEntity == "yes" ? true : false,
+                  isUSIndividual: values?.isUSIndividual == "yes" ? true : false,
+                  uniqueIdentifier: values?.uniqueIdentifier,
+                  firstName: values?.firstName,
+                  lastName: values?.lastName,
+                  countryOfCitizenshipId:values?.countryOfCitizenshipId,
+                  dob: values?.dob,
+                  nameOfDisregarded: values?.nameOfDisregarded,
+                  entityName: values?.entityName,
+                  usTinTypeId: values?.usTinTypeId,
+                  usTin: values?.usTin,
+                  foreignTINCountryId:values?.foreignTINCountryId,
+                  foreignTIN: values?.foreignTIN,
+                  foreignTINNotAvailable: values?.foreignTINNotAvailable,//
+                  alternativeTINFormat: values?.alternativeTINFormat,//
+                  giin: values?.giin,
+                  permanentResidentialCountryId: values?.permanentResidentialCountryId,
+                  permanentResidentialStreetNumberandName: values?.permanentResidentialStreetNumberandName,
+                  permanentResidentialAptSuite: values?.permanentResidentialAptSuite,
+                  permanentResidentialCityorTown: values?.permanentResidentialCityorTown,
+                  permanentResidentialStateorProvince: values?.permanentResidentialStateorProvince,
+                  permanentResidentialZipPostalCode: values?.permanentResidentialZipPostalCode,
+                  isAddressRuralRoute: values?.isAddressRuralRoute == "yes" ? true : false,
+                  isAddressPostOfficeBox: values?.isAddressPostOfficeBox == "yes" ? true : false,
+                  isCareOfAddress: values?.isCareOfAddress == "yes" ? true : false,
+                  isalternativebusinessaddress: values?.isalternativebusinessaddress == "yes" ? true : false,
+                  permanentResidentialCountryId1: values?.permanentResidentialCountryId1,
+                  permanentResidentialStreetNumberandName1: values?.permanentResidentialStreetNumberandName1,
+                  permanentResidentialAptSuite1: values?.permanentResidentialAptSuite1,
+                  permanentResidentialCityorTown1: values?.permanentResidentialCityorTown1,
+                  permanentResidentialStateorProvince1: values?.permanentResidentialStateorProvince1,
+                  permanentResidentialZipPostalCode1: values?.permanentResidentialZipPostalCode1,
+                  contactFirstName: values?.contactFirstName,
+                  contactLastName: values?.contactLastName,
+                  contactEmail: values?.contactEmail,
+                  primaryContactNumberId: values?.primaryContactNumberId,
+                  primaryContactNumber: values?.primaryContactNumber,
+                  alternativeNumberId: values?.alternativeNumberId,
+                  alternativeNumber: values?.alternativeNumber,
+                  alternativeNumberId1: values?.alternativeNumberId1,
+                  alternativeNumber1: values?.alternativeNumber1,
+                  incomeTypeId: values?.incomeTypeId,
+                  paymentTypeId: values?.paymentTypeId,
+                  accountHolderName: values?.accountHolderName,
+                  accountBankName: values?.accountBankName,
+                  accountBankBranchLocationId: values?.accountBankBranchLocationId,
+                  accountNumber: values?.accountNumber,
+                  abaRouting: values?.abaRouting,
+                  iban: values?.iban,
+                  swiftCode: values?.swiftCode,
+                  bankCode: values?.bankCode,
+                  makePayable: values?.makePayable,
+                  payResidentalCountryId: values?.payResidentalCountryId,
+                  payStreetNumberAndName: values?.payStreetNumberAndName,
+                  payAptSuite: values?.payAptSuite,
+                  vatId: values?.vatId,
+                  vat: values?.vat,
+                  doingBusinessAsName: values?.doingBusinessAsName,
+                  payCityorTown: values?.payCityorTown,
+                  payStateOrProvince: values?.payStateOrProvince,
+                  payZipPostalCode: values?.payZipPostalCode,
+                  sortCode: values?.sortCode,
+                  bsb: values?.bsb,
+                  capacityId: values?.capacityId,
+                  isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
+                  isConfirmed: values?.isConfirmed,
+                };
+                console.log(values,"values");
+                dispatch(postOnboarding(payload, redirectFunc));
               }}
               validationSchema={EntitySchema}
             >
@@ -436,9 +572,13 @@ export default function Entity() {
                 handleSubmit,
                 handleChange,
                 isSubmitting,
+                setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                  <></>
+                  <>
+                  {console.log(values ,"entity",errors)
+                  }
+                  </>
                   <CardHeader
                     style={{ textAlign: "left" }}
                     className="flex-row-reverse"
@@ -570,10 +710,65 @@ export default function Entity() {
                           >
                             Are you a U.S Entity?
                             <span style={{ color: "red" }}>*</span>
-                           
                           </Typography>
-
                           <div className="d-flex">
+                            <FormControl
+                              error={Boolean(
+                                touched.isUSEntity &&
+                                  errors.isUSEntity
+                              )}
+                            >
+                              <RadioGroup
+                                id="isUSEntity"
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.isUSEntity} 
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  
+                                  value="yes"
+                                  name="isUSEntity"
+                                  label="Yes"
+                                />
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="no"
+                                  name="isUSEntity"
+                                  label="No"
+                                />
+                              </RadioGroup>
+                              {errors.isUSEntity &&
+                              touched.isUSEntity ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isUSEntity}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                            {/* <Typography className="my-auto">Yes</Typography>
+                            <Radio
+                              checked={values.isUSEntity}
+                              onChange={handleChange}
+                              // setPayload({ ...payload, isUSEntity: true })
+                              value={true}
+                              name="isUSEntity"
+                              inputProps={{ "aria-label": "Yes" }}
+                            />
+                            <Typography className="my-auto">No</Typography>
+                            <Radio
+                              checked={!values.isUSEntity}
+                              onChange={handleChange}
+                              value={false}
+                              name="isUSEntity"
+                              inputProps={{ "aria-label": "No" }}
+                            /> */}
+                          </div>
+                          {/* <div className="d-flex">
                             <Typography className="my-auto">Yes</Typography>
                             <Radio
                               required
@@ -597,7 +792,7 @@ export default function Entity() {
                               name="radio-buttons"
                               inputProps={{ "aria-label": "No" }}
                             />
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3">
@@ -610,7 +805,6 @@ export default function Entity() {
                             />
                           </Typography>
                           <Input
-                            required
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -623,21 +817,15 @@ export default function Entity() {
                               padding: " 0 10px ",
                             }}
                             className="w-100 input"
-                            name="uniqueIdentifier"
-                            id="outlined"
-                            placeholder="Enter Instructor Identifier"
-                            onChange={(e) =>
-                              setPayload({
-                                ...payload,
-                                uniqueIdentifier: e.target.value,
-                              })
-                            }
-                            onBlur={handleBlur}
-                            error={Boolean(
-                              touched.uniqueIdentifier &&
-                                errors.uniqueIdentifier
-                            )}
-                            value={payload.uniqueIdentifier}
+                            // id="outlined"
+                              name="uniqueIdentifier"
+                              placeholder="Enter Entity Name"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={Boolean(
+                                touched.uniqueIdentifier && errors.uniqueIdentifier
+                              )}
+                              value={values?.uniqueIdentifier}
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
                             {errors.uniqueIdentifier}
@@ -646,7 +834,7 @@ export default function Entity() {
                       </div>
                     </FormControl>
 
-                    {payload.isUSEntity ? (
+                    {values.isUSEntity === 'no' ? (
                       <div className="row">
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
@@ -669,17 +857,12 @@ export default function Entity() {
                               id="outlined"
                               name="entityName"
                               placeholder="Enter Business Name"
-                              onChange={(e) =>
-                                setPayload({
-                                  ...payload,
-                                  entityName: e.target.value,
-                                })
-                              }
+                              onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(
                                 touched.entityName && errors.entityName
                               )}
-                              value={payload.entityName}
+                              value={values.entityName}
                             />
                             <p style={{ color: "red", textAlign: "left" }}>
                               {errors.entityName}
@@ -710,17 +893,12 @@ export default function Entity() {
                               id="outlined"
                               name="entityName"
                               placeholder="Enter Business Name"
-                              onChange={(e) =>
-                                setPayload({
-                                  ...payload,
-                                  entityName: e.target.value,
-                                })
-                              }
+                              onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(
                                 touched.entityName && errors.entityName
                               )}
-                              value={payload.entityName}
+                              value={values.entityName}
                             />
                             <p style={{ color: "red", textAlign: "left" }}>
                               {errors.entityName}
@@ -924,7 +1102,7 @@ export default function Entity() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    {!payload.isUSEntity ? (
+                    {values.isUSEntity === 'no' ? (
                       <div className="col-12 d-flex mt-3">
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
@@ -942,13 +1120,8 @@ export default function Entity() {
                               name="usTinTypeId"
                               id="Income"
                               defaultValue={1}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  usTinTypeId: e.target.value,
-                                })
-                              }
-                              value={payload.usTinTypeId}
+                              onChange={handleChange}
+                              value={values.usTinTypeId}
                             >
                               <option value="1">-Select-</option>
                               <option value="2">EIN</option>
@@ -966,8 +1139,8 @@ export default function Entity() {
                             <Typography align="left">U.S. TIN</Typography>
                             <Input
                               disabled={
-                                payload.usTinTypeId == 6 ||
-                                payload.usTinTypeId == 7
+                                values.usTinTypeId == 6 ||
+                                values.usTinTypeId == 7
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -983,13 +1156,8 @@ export default function Entity() {
                               id="outlined"
                               name="usTin"
                               placeholder="Enter U.S. TIN"
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  usTin: e.target.value,
-                                })
-                              }
-                              value={payload.usTin}
+                              onChange={handleChange}
+                              value={values.usTin}
                             />
                           </FormControl>
                         </div>
@@ -1000,31 +1168,27 @@ export default function Entity() {
                           </Typography>
 
                           <FormControl className="w-100">
-                            <select
-                              style={{
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "36px",
-                              }}
-                              name="foreignTINCountryId"
-                              id="Income"
-                              // defaultValue={1}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  foreignTINCountryId: e.target.value,
-                                })
-                              }
-                              value={payload.foreignTINCountryId}
-                            >
-                              <option value={0}>-Select-</option>
-                              <option value={1}>-Select2-</option>
-                              {countries.map(({ id, name }) => (
-                                <option value={id}>{name}</option>
-                              ))}
-                            </select>
-                          </FormControl>
+                              <select
+                                style={{
+                                  padding: " 0 10px",
+                                  color: "#7e7e7e",
+                                  fontStyle: "italic",
+                                  height: "36px",
+                                }}
+                                name="foreignTINCountryId"
+                                id="Income"
+                                defaultValue={0}
+                                onChange={(e)=>{handleChange(e)}}
+                                value={values.foreignTINCountryId}
+                              >
+                                <option value={0}>-Select-</option>
+                                <option value={1}>-Select1-</option>
+                                <option value={257}>-uk-</option>
+                                {countries.map(({ id, name }) => (
+                                  <option value={id}>{name}</option>
+                                ))}
+                              </select>
+                            </FormControl>
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
@@ -1032,9 +1196,9 @@ export default function Entity() {
                             <Typography align="left">Foreign TIN</Typography>
                             <Input
                               disabled={
-                                payload.foreignTINCountryId == 0 ||
-                                (payload.foreignTINCountryId != 0 &&
-                                  payload.foreignTINNotAvailable == true)
+                                values.foreignTINCountryId == 0 ||
+                                (values.foreignTINCountryId != 0 &&
+                                  values.foreignTINNotAvailable == true)
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -1050,13 +1214,8 @@ export default function Entity() {
                               id="outlined"
                               name="foreignTIN"
                               placeholder="Enter foreign TIN"
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  foreignTIN: e.target.value,
-                                })
-                              }
-                              value={payload.foreignTIN}
+                              onChange={handleChange}
+                              value={values.foreignTIN}
                             />
                           </FormControl>
                           <div className="d-flex">
@@ -1065,46 +1224,68 @@ export default function Entity() {
                             >
                               Not Available{" "}
                             </Typography>
-                            <Radio
-                              disabled={payload.foreignTINCountryId == 0}
-                              // foreignTINNotAvailable
-                              name="radio-buttons"
-                              checked={payload.foreignTINNotAvailable}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  foreignTINNotAvailable:
-                                    !payload.foreignTINNotAvailable,
-                                  alternativeTINFormat:
-                                    payload.foreignTINNotAvailable,
-                                })
-                              }
-                              // value="no"
-                              inputProps={{ "aria-label": "No" }}
-                            />
+                            <FormControl
+                              error={Boolean(
+                                touched.foreignTINNotAvailable &&
+                                  errors.foreignTINNotAvailable
+                              )}
+                            >
+                              <Checkbox
+                                id="foreignTINNotAvailable"
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.foreignTINNotAvailable}
+                                disabled={values.foreignTINCountryId == 0}
+                                onChange={(e) => {handleChange(e)
+                                if(e.target.value) setFieldValue('alternativeTINFormat', true)
+                                } }
+                              />
+                              
+                              {errors.foreignTINNotAvailable &&
+                              touched.foreignTINNotAvailable ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.foreignTINNotAvailable}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
                             <Typography
                               style={{ fontSize: "13px", marginTop: "10px" }}
                             >
                               Alternative TIN Format
                             </Typography>
-                            <Radio
-                              disabled={
-                                payload.foreignTINCountryId == 0 ||
-                                payload.foreignTINCountryId != 257
-                              }
-                              name="radio-buttons"
-                              checked={payload.alternativeTINFormat}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  alternativeTINFormat:
-                                    !payload.alternativeTINFormat,
-                                  foreignTINNotAvailable:
-                                    payload.alternativeTINFormat,
-                                })
-                              }
-                              inputProps={{ "aria-label": "Yes" }}
-                            />
+                            <FormControl
+                              error={Boolean(
+                                touched.alternativeTINFormat &&
+                                  errors.alternativeTINFormat
+                              )}
+                            >
+                              <Checkbox
+                                id="alternativeTINFormat"
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.alternativeTINFormat}
+                                disabled={
+                                  values.foreignTINCountryId == 0 ||
+                                  values.foreignTINCountryId != 257 
+                                }
+                                onChange={(e) => {handleChange(e)
+                                if(e.target.value) setFieldValue('foreignTINNotAvailable', values.foreignTINNotAvailable)
+                                } }
+                              />
+                              
+                              {errors.alternativeTINFormat &&
+                              touched.alternativeTINFormat ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.alternativeTINFormat}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
                           </div>
                           {/* <div className="col-lg-3 col-6 col-md-3 ">
                             <FormControl className="w-100">
@@ -1163,13 +1344,8 @@ export default function Entity() {
                                   }}
                                   name="vatId"
                                   defaultValue={0}
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      vatId: e.target.value,
-                                    })
-                                  }
-                                  value={payload.vatId}
+                                  onChange={handleChange}
+                                  value={values.vatId}
                                 >
                                   <option value={0}>-Select-</option>
                                   <option value={1}>My VAT Number is</option>
@@ -1189,7 +1365,7 @@ export default function Entity() {
                                 </Typography>
                                 <Input
                                   disabled={
-                                    payload.vatId == 0 || payload.vatId == 2
+                                    values.vatId == 0 || values.vatId == 2
                                   }
                                   style={{
                                     border: " 1px solid #d9d9d9 ",
@@ -1206,16 +1382,11 @@ export default function Entity() {
                                   name="vat"
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      vat: e.target.value,
-                                    })
-                                  }
+                                  onChange={handleChange}
                                   inputProps={{ maxLength: 11 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
-                                  value={payload.vat}
+                                  value={values.vat}
                                 />
                               </FormControl>
                             </div>
@@ -1240,13 +1411,8 @@ export default function Entity() {
                               name="usTinTypeId"
                               id="Income"
                               defaultValue={1}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  usTinTypeId: e.target.value,
-                                })
-                              }
-                              value={payload.usTinTypeId}
+                              onChange={handleChange}
+                              value={values.usTinTypeId}
                             >
                               <option value="1">-Select-</option>
                               <option value="2">EIN</option>
@@ -1272,13 +1438,8 @@ export default function Entity() {
                               id="outlined"
                               name="usTin"
                               placeholder="Enter U.S. TIN"
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  usTin: e.target.value,
-                                })
-                              }
-                              value={payload.usTin}
+                              onChange={handleChange}
+                              value={values.usTin}
                             />
                           </FormControl>
                         </div>
@@ -1405,43 +1566,40 @@ export default function Entity() {
                     unmountOnExit
                   >
                     <div className="row">
-                    <div className="col-lg-3 col-6 col-md-3">
-                      <Typography className="d-flex w-100 ">
-                        Residential Country:
-                        <span style={{ color: "red" }}>*</span>
-                      </Typography>
+                      <div className="col-lg-3 col-6 col-md-3">
+                        <Typography className="d-flex w-100 ">
+                          Residential Country:
+                          <span style={{ color: "red" }}>*</span>
+                        </Typography>
 
-                      <FormControl className="w-100">
-                        <select
-                          style={{
-                            padding: " 0 10px",
-                            color: "#7e7e7e",
-                            fontStyle: "italic",
-                            height: "36px",
-                          }}
-                          name="permanentResidentialCountryId"
-                          id="Income"
-                          // defaultValue={1}
-                          onChange={(e: any) =>
-                            setPayload({
-                              ...payload,
-                              permanentResidentialCountryId: e.target.value,
-                            })
-                          }
-                          onBlur={handleBlur}
-                          value={payload.permanentResidentialCountryId}
-                        >
-                          <option value={0}>-Select-</option>
-                          <option value={45}>-canada-</option>
-                          {countries.map(({ id, name }) => (
-                            <option value={id}>{name}</option>
-                          ))}
-                        </select>
-                        <p style={{ color: "red", textAlign: "left" }}>
-                          {errors.permanentResidentialCountryId}
-                        </p>
-                      </FormControl>
-                    </div>
+                        <FormControl className="w-100">
+                          <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            // defaultValue={1}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            {countries.map(({ id, name }) => (
+                              <option value={id}>{name}</option>
+                            ))}
+                          </select>
+                          <p style={{ color: "red", textAlign: "left" }}>
+                            {errors.permanentResidentialCountryId}
+                          </p>
+                        </FormControl>
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -1466,20 +1624,14 @@ export default function Entity() {
                             id="outlined"
                             name="permanentResidentialStreetNumberandName"
                             placeholder="Enter Street Number and Name"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                permanentResidentialStreetNumberandName:
-                                  e.target.value,
-                              })
-                            }
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             error={Boolean(
                               touched.permanentResidentialStreetNumberandName &&
                                 errors.permanentResidentialStreetNumberandName
                             )}
                             value={
-                              payload.permanentResidentialStreetNumberandName
+                              values.permanentResidentialStreetNumberandName
                             }
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
@@ -1505,13 +1657,8 @@ export default function Entity() {
                             id="outlined"
                             name="permanentResidentialAptSuite"
                             placeholder="Enter Apt/Suite"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                permanentResidentialAptSuite: e.target.value,
-                              })
-                            }
-                            value={payload.permanentResidentialAptSuite}
+                            onChange={handleChange}
+                            value={values.permanentResidentialAptSuite}
                           />
                         </FormControl>
                       </div>
@@ -1536,18 +1683,13 @@ export default function Entity() {
                             id="outlined"
                             name="permanentResidentialCityorTown"
                             placeholder="Enter City or Town"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                permanentResidentialCityorTown: e.target.value,
-                              })
-                            }
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             error={Boolean(
                               touched.permanentResidentialCityorTown &&
                                 errors.permanentResidentialCityorTown
                             )}
-                            value={payload.permanentResidentialCityorTown}
+                            value={values.permanentResidentialCityorTown}
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
                             {errors.permanentResidentialCityorTown}
@@ -1577,6 +1719,38 @@ export default function Entity() {
                       </FormControl>
                     </div>
                   ) : ( */}
+                  {values.permanentResidentialCountryId == 258 ? (
+                          <div className="col-lg-3 col-6 col-md-3 mt-2">
+                            <Typography align="left" className="d-flex w-100 ">
+                              State or Province:
+                              {/* <span style={{ color: 'red' }}>*</span> */}
+                            </Typography>
+
+                            <FormControl className="w-100">
+                              <select
+                                style={{
+                                  padding: " 0 10px",
+                                  color: "#7e7e7e",
+                                  fontStyle: "italic",
+                                  height: "36px",
+                                }}
+                                name="permanentResidentialStateorProvince1"
+                                // id="Income"
+                                onChange={handleChange}
+                                value={
+                                  values.permanentResidentialStateorProvince1
+                                }
+                              >
+                                <option value="0">
+                                  <em>--Select--</em>
+                                </option>
+                                {usStates.map(({ name }) => (
+                                  <option value={name}>{name}</option>
+                                ))}
+                              </select>
+                            </FormControl>
+                          </div>
+                        ) : (
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
                           <Typography align="left">
@@ -1584,7 +1758,7 @@ export default function Entity() {
                           </Typography>
                           <Input
                             disabled={
-                              payload.permanentResidentialCountryId == 0
+                              values.permanentResidentialCountryId == 0
                             }
                             style={{
                               border: " 1px solid #d9d9d9 ",
@@ -1600,17 +1774,12 @@ export default function Entity() {
                             id="outlined"
                             name="permanentResidentialStateorProvince"
                             placeholder="Enter State or Province"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                permanentResidentialStateorProvince:
-                                  e.target.value,
-                              })
-                            }
-                            value={payload.permanentResidentialStateorProvince}
+                            onChange={handleChange}
+                            value={values.permanentResidentialStateorProvince}
                           />
                         </FormControl>
                       </div>
+                        )}
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
                           <Typography align="left">
@@ -1633,74 +1802,72 @@ export default function Entity() {
                             id="outlined"
                             name="permanentResidentialZipPostalCode"
                             placeholder="Enter Zip or Postal Code"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                permanentResidentialZipPostalCode:
-                                  e.target.value,
-                              })
-                            }
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             error={Boolean(
                               touched.permanentResidentialZipPostalCode &&
                                 errors.permanentResidentialZipPostalCode
                             )}
-                            value={payload.permanentResidentialZipPostalCode}
+                            value={values.permanentResidentialZipPostalCode}
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
                             {errors.permanentResidentialZipPostalCode}
                           </p>
                         </FormControl>
                       </div>
-                      {payload.permanentResidentialCountryId == 45 ?(
+                      {values.permanentResidentialCountryId == 45 ? (
                         <div className="mx-5">
-                            <Typography style={{ marginTop: "20px" }}>
+                          <Typography style={{ marginTop: "20px" }}>
                             Is this address a rural route number?
-                              <span style={{ color: "red" }}>*</span>
-                            </Typography>
-                            
+                            <span style={{ color: "red" }}>*</span>
+                          </Typography>
 
-                            <div className="d-flex">
-                              <RadioGroup
-                                row
-                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                name="row-radio-buttons-group"
-                              >
-                                <FormControlLabel
-                                  value="no"
-                                  control={<Radio />}
-                                  label="No"
-                                  checked={!payload.isAddressRuralRoute}
-                                  onChange={() =>
-                                    setPayload({
-                                      ...payload,
-                                      isAddressRuralRoute: false,
-                                    })
-                                  }
-                                />
-                                <FormControlLabel
-                                  value="yes"
-                                  control={<Radio />}
-                                  label="Yes"
-                                  checked={payload.isAddressRuralRoute}
-                                  onChange={() =>
-                                    setPayload({
-                                      ...payload,
-                                      isAddressRuralRoute: true,
-                                    })
-                                  }
-                                />
-                              </RadioGroup>
-                            </div>
+                          <div className="d-flex">
+                          <FormControl
+                              error={Boolean(
+                                touched.isAddressRuralRoute &&
+                                  errors.isAddressRuralRoute
+                              )}
+                            >
+                            <RadioGroup
+                              row
+                              aria-labelledby="demo-row-radio-buttons-group-label"
+                              name="row-radio-buttons-group"
+                              value= {values.isAddressRuralRoute}
+                              onChange={handleChange}
+                            >
+                              <FormControlLabel
+                                value="no"
+                                control={<Radio />}
+                                label="No"
+                                name= "isAddressRuralRoute"
+                              />
+                              <FormControlLabel
+                                value="yes"
+                                control={<Radio />}
+                                label="Yes"
+                                name= "isAddressRuralRoute"
+                              />
+                            </RadioGroup>
+                            {errors.isAddressRuralRoute &&
+                              touched.isAddressRuralRoute ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isAddressRuralRoute}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
                           </div>
-                      
-                      ):(
+                        </div>
+                      ) : (
                         ""
                       )}
-                      
                     </div>
                     <div className="d-flex">
-                      {payload.isUSEntity ? (
+                      {values.isUSEntity == 'yes' ? (
                         <div className="mx-5">
                           <Typography style={{ marginTop: "20px" }}>
                             Is there an alternative mailing or business address
@@ -1784,34 +1951,62 @@ export default function Entity() {
                           )}
 
                           <div className="d-flex">
-                            <Typography className="my-auto">Yes</Typography>
+                          <FormControl
+                              error={Boolean(
+                                touched.isalternativebusinessaddress &&
+                                  errors.isalternativebusinessaddress
+                              )}
+                            >
+                              <RadioGroup
+                                id="isalternativebusinessaddress"
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.isalternativebusinessaddress} 
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  
+                                  value="yes"
+                                  name="isalternativebusinessaddress"
+                                  label="Yes"
+                                />
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="no"
+                                  name="isalternativebusinessaddress"
+                                  label="No"
+                                />
+                              </RadioGroup>
+                              {errors.isalternativebusinessaddress &&
+                              touched.isalternativebusinessaddress ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isalternativebusinessaddress}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                            {/* <Typography className="my-auto">Yes</Typography>
                             <Radio
                               required
-                              checked={payload.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: true,
-                                })
-                              }
-                              value={payload.isalternativebusinessaddress}
+                              checked={values.isalternativebusinessaddress}
+                              onChange={handleChange}
+                              value={values.isalternativebusinessaddress}
                               name="radio-buttons"
                               inputProps={{ "aria-label": "A" }}
                             />
                             <Typography className="my-auto">No</Typography>
                             <Radio
                               required
-                              checked={!payload.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: false,
-                                })
-                              }
-                              value={!payload.isalternativebusinessaddress}
+                              checked={!values.isalternativebusinessaddress}
+                              onChange={handleChange}
+                              value={!values.isalternativebusinessaddress}
                               name="radio-buttons"
                               inputProps={{ "aria-label": "B" }}
-                            />
+                            /> */}
                           </div>
                         </div>
                       ) : (
@@ -1905,7 +2100,44 @@ export default function Entity() {
                           )}
 
                           <div className="d-flex ">
-                            <RadioGroup
+                          <FormControl
+                              error={Boolean(
+                                touched.isAddressPostOfficeBox &&
+                                  errors.isAddressPostOfficeBox
+                              )}
+                            >
+                              <RadioGroup
+                                id="isAddressPostOfficeBox"
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.isAddressPostOfficeBox} 
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="yes"
+                                  name="isAddressPostOfficeBox"
+                                  label="Yes"
+                                />
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="no"
+                                  name="isAddressPostOfficeBox"
+                                  label="No"
+                                />
+                              </RadioGroup>
+                              {errors.isAddressPostOfficeBox &&
+                              touched.isAddressPostOfficeBox ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isAddressPostOfficeBox}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                            {/* <RadioGroup
                               row
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               name="row-radio-buttons-group"
@@ -1914,27 +2146,17 @@ export default function Entity() {
                                 value="female"
                                 control={<Radio />}
                                 label="No"
-                                checked={!payload.isAddressPostOfficeBox}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isAddressPostOfficeBox: false,
-                                  })
-                                }
+                                checked={!values.isAddressPostOfficeBox}
+                                onChange={handleChange}
                               />
                               <FormControlLabel
                                 value="male"
                                 control={<Radio />}
                                 label="Yes"
-                                checked={payload.isAddressPostOfficeBox}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isAddressPostOfficeBox: true,
-                                  })
-                                }
+                                checked={values.isAddressPostOfficeBox}
+                                onChange={handleChange}
                               />
-                            </RadioGroup>
+                            </RadioGroup> */}
                           </div>
                           <div className="mx-5">
                             <Typography style={{ marginTop: "20px" }}>
@@ -2024,7 +2246,44 @@ export default function Entity() {
                             )}
 
                             <div className="d-flex">
+                            <FormControl
+                              error={Boolean(
+                                touched.isCareOfAddress &&
+                                  errors.isCareOfAddress
+                              )}
+                            >
                               <RadioGroup
+                                id="isCareOfAddress"
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.isCareOfAddress} 
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="yes"
+                                  name="isCareOfAddress"
+                                  label="Yes"
+                                />
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="no"
+                                  name="isCareOfAddress"
+                                  label="No"
+                                />
+                              </RadioGroup>
+                              {errors.isCareOfAddress &&
+                              touched.isCareOfAddress ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isCareOfAddress}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                              {/* <RadioGroup
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 name="row-radio-buttons-group"
@@ -2033,27 +2292,17 @@ export default function Entity() {
                                   value="female"
                                   control={<Radio />}
                                   label="No"
-                                  checked={!payload.isCareOfAddress}
-                                  onChange={() =>
-                                    setPayload({
-                                      ...payload,
-                                      isCareOfAddress: false,
-                                    })
-                                  }
+                                  checked={!values.isCareOfAddress}
+                                  onChange={handleChange}
                                 />
                                 <FormControlLabel
                                   value="male"
                                   control={<Radio />}
                                   label="Yes"
-                                  checked={payload.isCareOfAddress}
-                                  onChange={() =>
-                                    setPayload({
-                                      ...payload,
-                                      isCareOfAddress: true,
-                                    })
-                                  }
+                                  checked={values.isCareOfAddress}
+                                  onChange={handleChange}
                                 />
-                              </RadioGroup>
+                              </RadioGroup> */}
                             </div>
                           </div>
 
@@ -2140,85 +2389,106 @@ export default function Entity() {
                             )}
 
                             <div className="d-flex">
-                              <Typography className="my-auto">Yes</Typography>
+                            <FormControl
+                              error={Boolean(
+                                touched.isalternativebusinessaddress &&
+                                  errors.isalternativebusinessaddress
+                              )}
+                            >
+                              <RadioGroup
+                                id="isalternativebusinessaddress"
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.isalternativebusinessaddress} 
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  
+                                  value="yes"
+                                  name="isalternativebusinessaddress"
+                                  label="Yes"
+                                />
+                                <FormControlLabel
+                                  control={<Radio />}
+                                  value="no"
+                                  name="isalternativebusinessaddress"
+                                  label="No"
+                                />
+                              </RadioGroup>
+                              {errors.isalternativebusinessaddress &&
+                              touched.isalternativebusinessaddress ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isalternativebusinessaddress}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                              {/* <Typography className="my-auto">Yes</Typography>
                               <Radio
                                 required
-                                checked={payload.isalternativebusinessaddress}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isalternativebusinessaddress: true,
-                                  })
-                                }
-                                value={payload.isalternativebusinessaddress}
+                                checked={values.isalternativebusinessaddress}
+                                onChange={handleChange}
+                                value={values.isalternativebusinessaddress}
                                 name="radio-buttons"
                                 inputProps={{ "aria-label": "A" }}
                               />
                               <Typography className="my-auto">No</Typography>
                               <Radio
                                 required
-                                checked={!payload.isalternativebusinessaddress}
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isalternativebusinessaddress: false,
-                                  })
-                                }
-                                value={!payload.isalternativebusinessaddress}
+                                checked={!values.isalternativebusinessaddress}
+                                onChange={handleChange}
+                                value={!values.isalternativebusinessaddress}
                                 name="radio-buttons"
                                 inputProps={{ "aria-label": "B" }}
-                              />
+                              /> */}
                             </div>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    {payload.isalternativebusinessaddress ? (
+                    {values.isalternativebusinessaddress == 'yes' ? (
                       <>
-                      <div className="row">
+                        <div className="row">
+                          <div className="col-lg-3 col-6 col-md-3">
+                            <Typography className="d-flex w-100 ">
+                              Residential Country:
+                              <span style={{ color: "red" }}>*</span>
+                            </Typography>
 
-                        <div className="col-lg-3 col-6 col-md-3">
-                          <Typography className="d-flex w-100 ">
-                            Residential Country:
-                            <span style={{ color: "red" }}>*</span>
-                          </Typography>
-
-                          <FormControl className="w-100">
-                            <select
-                              style={{
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "36px",
-                              }}
-                              name="permanentResidentialCountryId1"
-                              id="Income"
-                              // defaultValue={1}
-                              onChange={(e: any) =>
-                                setPayload({
-                                  ...payload,
-                                  permanentResidentialCountryId1:
-                                    e.target.value,
-                                })
-                              }
-                              onBlur={handleBlur}
-                              value={payload.permanentResidentialCountryId1}
-                            >
-                              <option value={0}>-Select-</option>
-                              <option value={257}>United Kingdom</option>
-                              <option value={258}>United States</option>
-                              <option value="">---</option>
-                              {countries.map(({ id, name }) => (
-                                <option value={id}> {name} </option>
-                              ))}
-                            </select>
-                            <p style={{ color: "red", textAlign: "left" }}>
-                              {errors.permanentResidentialCountryId1}
-                            </p>
-                          </FormControl>
+                            <FormControl className="w-100">
+                              <select
+                                style={{
+                                  padding: " 0 10px",
+                                  color: "#7e7e7e",
+                                  fontStyle: "italic",
+                                  height: "36px",
+                                }}
+                                name="permanentResidentialCountryId1"
+                                id="Income"
+                                // defaultValue={1}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.permanentResidentialCountryId1}
+                              >
+                                <option value={0}>-Select-</option>
+                                <option value={257}>United Kingdom</option>
+                                <option value={258}>United States</option>
+                                <option value="">---</option>
+                                {countries.map(({ id, name }) => (
+                                  <option value={id}> {name} </option>
+                                ))}
+                              </select>
+                              <p style={{ color: "red", textAlign: "left" }}>
+                                {errors.permanentResidentialCountryId1}
+                              </p>
+                            </FormControl>
+                          </div>
                         </div>
-                      </div>
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
@@ -2242,20 +2512,14 @@ export default function Entity() {
                                 id="outlined"
                                 name="permanentResidentialStreetNumberandName1"
                                 placeholder="Enter Street Number and Name"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    permanentResidentialStreetNumberandName1:
-                                      e.target.value,
-                                  })
-                                }
+                                onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={Boolean(
                                   touched.permanentResidentialStreetNumberandName1 &&
                                     errors.permanentResidentialStreetNumberandName1
                                 )}
                                 value={
-                                  payload.permanentResidentialStreetNumberandName1
+                                  values.permanentResidentialStreetNumberandName1
                                 }
                               />
                               <p style={{ color: "red", textAlign: "left" }}>
@@ -2283,14 +2547,8 @@ export default function Entity() {
                                 id="outlined"
                                 name="permanentResidentialAptSuite1"
                                 placeholder="Enter Apt/Suite"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    permanentResidentialAptSuite1:
-                                      e.target.value,
-                                  })
-                                }
-                                value={payload.permanentResidentialAptSuite1}
+                                onChange={handleChange}
+                                value={values.permanentResidentialAptSuite1}
                               />
                             </FormControl>
                           </div>
@@ -2316,26 +2574,20 @@ export default function Entity() {
                                 id="outlined"
                                 name="permanentResidentialCityorTown1"
                                 placeholder="Enter City or Town"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    permanentResidentialCityorTown1:
-                                      e.target.value,
-                                  })
-                                }
+                                onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={Boolean(
                                   touched.permanentResidentialCityorTown1 &&
                                     errors.permanentResidentialCityorTown1
                                 )}
-                                value={payload.permanentResidentialCityorTown1}
+                                value={values.permanentResidentialCityorTown1}
                               />
                               <p style={{ color: "red", textAlign: "left" }}>
                                 {errors.permanentResidentialCityorTown1}
                               </p>
                             </FormControl>
                           </div>
-                          {payload.permanentResidentialCountryId === 258 ? (
+                          {values.permanentResidentialCountryId === 258 ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-2">
                               <Typography
                                 align="left"
@@ -2355,15 +2607,9 @@ export default function Entity() {
                                   }}
                                   name="permanentResidentialStateorProvince1"
                                   id="Income"
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      permanentResidentialStateorProvince1:
-                                        e.target.value,
-                                    })
-                                  }
+                                  onChange={handleChange}
                                   value={
-                                    payload.permanentResidentialStateorProvince1
+                                    values.permanentResidentialStateorProvince1
                                   }
                                 >
                                   <MenuItem value="0">
@@ -2384,7 +2630,7 @@ export default function Entity() {
                                 </Typography>
                                 <Input
                                   disabled={
-                                    payload.permanentResidentialCountryId1 == 0
+                                    values.permanentResidentialCountryId1 == 0
                                   }
                                   style={{
                                     border: " 1px solid #d9d9d9 ",
@@ -2400,15 +2646,9 @@ export default function Entity() {
                                   id="outlined"
                                   name="permanentResidentialStateorProvince1"
                                   placeholder="Enter State or Province"
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      permanentResidentialStateorProvince1:
-                                        e.target.value,
-                                    })
-                                  }
+                                  onChange={handleChange}
                                   value={
-                                    payload.permanentResidentialStateorProvince1
+                                    values.permanentResidentialStateorProvince1
                                   }
                                 />
                               </FormControl>
@@ -2436,20 +2676,14 @@ export default function Entity() {
                                 id="outlined"
                                 name="permanentResidentialZipPostalCode1"
                                 placeholder="Enter Zip or Postal Code"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    permanentResidentialZipPostalCode1:
-                                      e.target.value,
-                                  })
-                                }
+                                onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={Boolean(
                                   touched.permanentResidentialZipPostalCode1 &&
                                     errors.permanentResidentialZipPostalCode1
                                 )}
                                 value={
-                                  payload.permanentResidentialZipPostalCode1
+                                  values.permanentResidentialZipPostalCode1
                                 }
                               />
                               <p style={{ color: "red", textAlign: "left" }}>
@@ -2622,18 +2856,13 @@ export default function Entity() {
                             id="outlined"
                             name="contactFirstName"
                             placeholder="Enter First Name"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                contactFirstName: e.target.value,
-                              })
-                            }
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             error={Boolean(
                               touched.contactFirstName &&
                                 errors.contactFirstName
                             )}
-                            value={payload.contactFirstName}
+                            value={values.contactFirstName}
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
                             {errors.contactFirstName}
@@ -2661,26 +2890,24 @@ export default function Entity() {
                             id="outlined"
                             name="contactLastName"
                             placeholder="Enter Last Name"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                contactLastName: e.target.value,
-                              })
-                            }
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             error={Boolean(
                               touched.contactLastName && errors.contactLastName
                             )}
-                            value={payload.contactLastName}
+                            value={values.contactLastName}
                           />
                           <p style={{ color: "red", textAlign: "left" }}>
                             {errors.contactLastName}
                           </p>
                         </FormControl>
                       </div>
-                        <div className="row">
-                          <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2" style={{paddingLeft:"0px"}}>
-                      <FormControl className="w-100">
+                      <div className="row">
+                        <div
+                          className="col-lg-3 col-6 col-md-3 mt-2 mx-2"
+                          style={{ paddingLeft: "0px" }}
+                        >
+                          <FormControl className="w-100">
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Email<span style={{ color: "red" }}>*</span>
@@ -2702,25 +2929,20 @@ export default function Entity() {
                                 id="outlined"
                                 type="email"
                                 placeholder="example@domain.com"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    contactEmail: e.target.value,
-                                  })
-                                }
+                                onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={Boolean(
                                   touched.contactEmail && errors.contactEmail
                                 )}
-                                value={payload.contactEmail}
+                                value={values.contactEmail}
                               />
                               <p style={{ color: "red", textAlign: "left" }}>
                                 {errors.contactEmail}
                               </p>
                             </FormControl>
-                      </FormControl>
-                          </div>
+                          </FormControl>
                         </div>
+                      </div>
 
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
@@ -2736,13 +2958,8 @@ export default function Entity() {
                             }}
                             name="primaryContactNumberId"
                             id="Income"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                primaryContactNumberId: e.target.value,
-                              })
-                            }
-                            value={payload.primaryContactNumberId}
+                            onChange={handleChange}
+                            value={values.primaryContactNumberId}
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
@@ -2752,7 +2969,7 @@ export default function Entity() {
                             <option></option>
                           </select>
                           <Input
-                            disabled={payload.primaryContactNumberId == 0}
+                            disabled={values.primaryContactNumberId == 0}
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2767,13 +2984,8 @@ export default function Entity() {
                             id="outlined"
                             name="primaryContactNumber"
                             placeholder="Enter Primary Number"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                primaryContactNumber: e.target.value,
-                              })
-                            }
-                            value={payload.primaryContactNumber}
+                            onChange={handleChange}
+                            value={values.primaryContactNumber}
                           />
                         </FormControl>
                       </div>
@@ -2791,13 +3003,8 @@ export default function Entity() {
                             }}
                             name="alternativeNumberId"
                             id="Income"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                alternativeNumberId: e.target.value,
-                              })
-                            }
-                            value={payload.alternativeNumberId}
+                            onChange={handleChange}
+                            value={values.alternativeNumberId}
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
@@ -2807,7 +3014,7 @@ export default function Entity() {
                             <option></option>
                           </select>
                           <Input
-                            disabled={payload.alternativeNumberId == 0}
+                            disabled={values.alternativeNumberId == 0}
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2822,13 +3029,8 @@ export default function Entity() {
                             id="outlined"
                             name="alternativeNumber"
                             placeholder="Enter Alternate Mobile No"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                alternativeNumber: e.target.value,
-                              })
-                            }
-                            value={payload.alternativeNumber}
+                            onChange={handleChange}
+                            value={values.alternativeNumber}
                           />
                         </FormControl>
                       </div>
@@ -2851,13 +3053,8 @@ export default function Entity() {
                                   }}
                                   name="alternativeNumberId1"
                                   id="Income"
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      alternativeNumberId1: e.target.value,
-                                    })
-                                  }
-                                  value={payload.alternativeNumberId1}
+                                  onChange={handleChange}
+                                  value={values.alternativeNumberId1}
                                 >
                                   <option value={0}>--Select--</option>
                                   {/* <option value={1}>--Select1--</option> */}
@@ -2877,7 +3074,7 @@ export default function Entity() {
                                 />
                               </span>
                               <Input
-                                disabled={payload.alternativeNumberId1 == 0}
+                                disabled={values.alternativeNumberId1 == 0}
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2892,13 +3089,8 @@ export default function Entity() {
                                 id="outlined"
                                 name="alternativeNumber1"
                                 placeholder="Enter Alternate Mobile No"
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    alternativeNumber1: e.target.value,
-                                  })
-                                }
-                                value={payload.alternativeNumber1}
+                                onChange={handleChange}
+                                value={values.alternativeNumber1}
                               />
                             </FormControl>
                           </div>
@@ -3053,15 +3245,10 @@ export default function Entity() {
                                   }}
                                   name="incomeTypeId"
                                   id="Income"
-                                  onChange={(e: any) =>
-                                    setPayload({
-                                      ...payload,
-                                      incomeTypeId: e.target.value,
-                                    })
-                                  }
-                                  value={payload.incomeTypeId}
+                                  onChange={handleChange}
+                                  value={values.incomeTypeId}
                                 >
-                                  <option value="1">-Select-</option>
+                                  <option value="0">-Select-</option>
                                   {incomeCodes.map(({ id, name }) => (
                                     <option value={id}>{name}</option>
                                   ))}
@@ -3224,13 +3411,8 @@ export default function Entity() {
                             }}
                             name="paymentTypeId"
                             id="Payment"
-                            onChange={(e: any) =>
-                              setPayload({
-                                ...payload,
-                                paymentTypeId: parseInt(e.target.value),
-                              })
-                            }
-                            value={payload.paymentTypeId}
+                            onChange={handleChange}
+                            value={values.paymentTypeId}
                           >
                             <option value={0}>Select</option>
                             <option value={1}>ACH</option>
@@ -3272,7 +3454,7 @@ export default function Entity() {
                   </Collapse>
                   <hr className="w-100"></hr>
 
-                  {payload.paymentTypeId ? (
+                  {values.paymentTypeId ? (
                     <>
                       <CardHeader
                         style={{ textAlign: "left" }}
@@ -3435,7 +3617,7 @@ export default function Entity() {
                         unmountOnExit
                       >
                         {/* ACH */}
-                        {payload.paymentTypeId === 1 ? (
+                        {values.paymentTypeId == 1 ? (
                           <>
                             <div className="row">
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -3460,18 +3642,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountHolderName"
                                     placeholder="Enter  Account holder name"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountHolderName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountHolderName &&
                                         errors.accountHolderName
                                     )}
-                                    value={payload.accountHolderName}
+                                    value={values.accountHolderName}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3502,18 +3679,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountBankName"
                                     placeholder="Enter Bank name"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountBankName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountBankName &&
                                         errors.accountBankName
                                     )}
-                                    value={payload.accountBankName}
+                                    value={values.accountBankName}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3538,15 +3710,9 @@ export default function Entity() {
                                     // labelId="demo-simple-select-standard-label"
                                     id="demo-simple-select-standard"
                                     name="accountBankBranchLocationId"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountBankBranchLocationId:
-                                          e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={payload.accountBankBranchLocationId}
+                                    value={values.accountBankBranchLocationId}
                                   >
                                     <option value={0}>-Select-</option>
                                     <option value={16}>Australia</option>
@@ -3587,18 +3753,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountNumber"
                                     placeholder="Enter Account Number"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountNumber: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountNumber &&
                                         errors.accountNumber
                                     )}
-                                    value={payload.accountNumber}
+                                    value={values.accountNumber}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3607,49 +3768,20 @@ export default function Entity() {
                                   </p>
                                 </FormControl>
                               </div>
-                              {returnFieldName(handleBlur, touched, errors)}
-                              {/* <div className="col-lg-3 col-6 col-md-3 mt-2">
-                            <FormControl className="w-100">
-                              <Typography align="left">
-                                {returnFieldName()}
-                                <span style={{ color: 'red' }}>*</span>
-                              </Typography>
-                              <Input
-                                required
-                                style={{
-                                  border: ' 1px solid #d9d9d9 ',
-                                  height: ' 36px',
-                                  lineHeight: '36px ',
-                                  background: '#fff ',
-                                  fontSize: '13px',
-                                  color: ' #000 ',
-                                  fontStyle: 'normal',
-                                  borderRadius: '1px',
-                                  padding: ' 0 10px ',
-                                }}
-                                id="outlined"
-                                name="bankCode"
-                                placeholder={returnFieldName()}
-                                onChange={(e: any) =>
-                                  setPayload({
-                                    ...payload,
-                                    bankCode: e.target.value,
-                                  })
-                                }
-                                onBlur={handleBlur}
-                                error={Boolean(touched.bankCode && errors.bankCode)}
-                                value={payload.bankCode}
-                              />
-                              <p style={{color: "red",textAlign:"left"}}>{errors.bankCode}</p>
-                            </FormControl>
-                          </div> */}
+                              {returnFieldName(
+                                handleBlur,
+                                 touched,
+                                  errors,
+                                  values,
+                                  handleChange
+                                  )}
                             </div>
                           </>
                         ) : (
                           ""
                         )}
                         {/* Check */}
-                        {payload.paymentTypeId === 2 ? (
+                        {values.paymentTypeId == 2 ? (
                           <>
                             <div className="row">
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -3674,17 +3806,12 @@ export default function Entity() {
                                     id="outlined"
                                     name="makePayable"
                                     placeholder="Enter Make Payable To"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        makePayable: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.makePayable && errors.makePayable
                                     )}
-                                    value={payload.makePayable}
+                                    value={values.makePayable}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3711,17 +3838,15 @@ export default function Entity() {
                                     id="outlined"
                                     name="payResidentalCountryId"
                                     placeholder="Enter Residential Country"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        payResidentalCountryId: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={payload.payResidentalCountryId}
+                                    value={values.payResidentalCountryId}
                                   >
                                     <option value={0}>-Select-</option>
-                                    <option value={1}>-Select1-</option>
+                                    <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
                                     {countries.map(({ id, name }) => (
                                       <option value={id}>{name}</option>
                                     ))}
@@ -3755,15 +3880,10 @@ export default function Entity() {
                                     id="outlined"
                                     placeholder="Enter Doing Business As Name"
                                     name="doingBusinessAsName"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        doingBusinessAsName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     // onBlur={handleBlur}
                                     // error={Boolean(touched.doingBusinessAsName && errors.doingBusinessAsName)}
-                                    value={payload.doingBusinessAsName}
+                                    value={values.doingBusinessAsName}
                                   />
                                   {/* <p style={{color: "red",textAlign:"left"}}>{errors.doingBusinessAsName}</p> */}
                                 </FormControl>
@@ -3791,18 +3911,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="payStreetNumberAndName"
                                     placeholder="Enter Street Number And Name"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        payStreetNumberAndName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.payStreetNumberAndName &&
                                         errors.payStreetNumberAndName
                                     )}
-                                    value={payload.payStreetNumberAndName}
+                                    value={values.payStreetNumberAndName}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3833,13 +3948,8 @@ export default function Entity() {
                                     id="outlined"
                                     name="payAptSuite"
                                     placeholder="Enter Apt/Suite"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        payAptSuite: e.target.value,
-                                      })
-                                    }
-                                    value={payload.payAptSuite}
+                                    onChange={handleChange}
+                                    value={values.payAptSuite}
                                   />
                                 </FormControl>
                               </div>
@@ -3865,18 +3975,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="payCityorTown"
                                     placeholder="Enter  City OR Town"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        payCityorTown: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.payCityorTown &&
                                         errors.payCityorTown
                                     )}
-                                    value={payload.payCityorTown}
+                                    value={values.payCityorTown}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -3885,7 +3990,7 @@ export default function Entity() {
                                   </p>
                                 </FormControl>
                               </div>
-                              {payload.payResidentalCountryId == 258 ? (
+                              {values.payResidentalCountryId == 258 ? (
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -3908,14 +4013,9 @@ export default function Entity() {
                                       id="outlined"
                                       name="payStateOrProvince"
                                       placeholder="Enter State OR Provience"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          payStateOrProvince: e.target.value,
-                                        })
-                                      }
+                                      onChange={handleChange}
                                       onBlur={handleBlur}
-                                      value={payload.payStateOrProvince}
+                                      value={values.payStateOrProvince}
                                     >
                                       <MenuItem value="0">
                                         <em>--Select--</em>
@@ -3935,7 +4035,7 @@ export default function Entity() {
                                     </Typography>
                                     <Input
                                       disabled={
-                                        payload.payResidentalCountryId == 0
+                                        values.payResidentalCountryId == 0
                                       }
                                       style={{
                                         border: " 1px solid #d9d9d9 ",
@@ -3951,18 +4051,13 @@ export default function Entity() {
                                       id="outlined"
                                       name="payStateOrProvince"
                                       placeholder="Enter State OR Provience"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          payStateOrProvince: e.target.value,
-                                        })
-                                      }
+                                      onChange={handleChange}
                                       onBlur={handleBlur}
                                       error={Boolean(
                                         touched.payStateOrProvince &&
                                           errors.payStateOrProvince
                                       )}
-                                      value={payload.payStateOrProvince}
+                                      value={values.payStateOrProvince}
                                     />
                                     <p
                                       style={{
@@ -3997,18 +4092,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="payZipPostalCode"
                                     placeholder="Enter Zip/Postal Code"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        payZipPostalCode: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.payZipPostalCode &&
                                         errors.payZipPostalCode
                                     )}
-                                    value={payload.payZipPostalCode}
+                                    value={values.payZipPostalCode}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -4021,18 +4111,12 @@ export default function Entity() {
 
                             <div className="d-flex mt-3">
                               <Checkbox
-                                checked={payload.isCorrectPaymentPurposes}
+                                checked={values.isCorrectPaymentPurposes}
                                 name="radio-buttons"
-                                onChange={() =>
-                                  setPayload({
-                                    ...payload,
-                                    isConfirmed:
-                                      !payload.isCorrectPaymentPurposes,
-                                  })
-                                }
+                                onChange={handleChange}
                                 onBlur={handleBlur}
                                 // error={Boolean(touched.isCorrectPaymentPurposes && errors.isCorrectPaymentPurposes)}
-                                value={payload.isCorrectPaymentPurposes}
+                                value={values.isCorrectPaymentPurposes}
                               />
                               <p style={{ color: "red", textAlign: "left" }}>
                                 {errors.isCorrectPaymentPurposes}
@@ -4051,7 +4135,7 @@ export default function Entity() {
                           ""
                         )}
 
-                        {payload.paymentTypeId === 3 ? (
+                        {values.paymentTypeId == 3 ? (
                           <>
                             <div className="row">
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -4076,18 +4160,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountHolderName"
                                     placeholder="Enter Account holder name"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountHolderName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountHolderName &&
                                         errors.accountHolderName
                                     )}
-                                    value={payload.accountHolderName}
+                                    value={values.accountHolderName}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -4114,18 +4193,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountBankName"
                                     placeholder="Enter Bank name"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountBankName: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountBankName &&
                                         errors.accountBankName
                                     )}
-                                    value={payload.accountBankName}
+                                    value={values.accountBankName}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -4150,15 +4224,9 @@ export default function Entity() {
                                     // labelId="demo-simple-select-standard-label"
                                     id="demo-simple-select-standard"
                                     name="accountBankBranchLocationId"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountBankBranchLocationId:
-                                          e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
-                                    value={payload.accountBankBranchLocationId}
+                                    value={values.accountBankBranchLocationId}
                                   >
                                     <option
                                       value={0}
@@ -4224,18 +4292,13 @@ export default function Entity() {
                                     id="outlined"
                                     name="accountNumber"
                                     placeholder="Enter Account Number"
-                                    onChange={(e: any) =>
-                                      setPayload({
-                                        ...payload,
-                                        accountNumber: e.target.value,
-                                      })
-                                    }
+                                    onChange={handleChange}
                                     onBlur={handleBlur}
                                     error={Boolean(
                                       touched.accountNumber &&
                                         errors.accountNumber
                                     )}
-                                    value={payload.accountNumber}
+                                    value={values.accountNumber}
                                   />
                                   <p
                                     style={{ color: "red", textAlign: "left" }}
@@ -4245,7 +4308,7 @@ export default function Entity() {
                                 </FormControl>
                               </div>
 
-                              {payload.accountBankBranchLocationId == 258 ? (
+                              {values.accountBankBranchLocationId == 258 ? (
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography>
@@ -4268,17 +4331,12 @@ export default function Entity() {
                                       id="outlined"
                                       name="abaRouting"
                                       placeholder="Enter ABA / Routing"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          abaRouting: e.target.value,
-                                        })
-                                      }
+                                      onChange={handleChange}
                                       onBlur={handleBlur}
                                       error={Boolean(
                                         touched.abaRouting && errors.abaRouting
                                       )}
-                                      value={payload.abaRouting}
+                                      value={values.abaRouting}
                                     />
                                     <p
                                       style={{
@@ -4293,7 +4351,7 @@ export default function Entity() {
                               ) : (
                                 ""
                               )}
-                              {payload.accountBankBranchLocationId == 257 ? (
+                              {values.accountBankBranchLocationId == 257 ? (
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography>
@@ -4315,13 +4373,8 @@ export default function Entity() {
                                       id="outlined"
                                       name="iban"
                                       placeholder="Enter IBAN"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          iban: e.target.value,
-                                        })
-                                      }
-                                      value={payload.iban}
+                                      onChange={handleChange}
+                                      value={values.iban}
                                     />
                                   </FormControl>
                                   <FormControl className="w-100">
@@ -4341,13 +4394,8 @@ export default function Entity() {
                                       id="outlined"
                                       name="swiftCode"
                                       placeholder="Enter Swift code"
-                                      onChange={(e: any) =>
-                                        setPayload({
-                                          ...payload,
-                                          swiftCode: e.target.value,
-                                        })
-                                      }
-                                      value={payload.swiftCode}
+                                      onChange={handleChange}
+                                      value={values.swiftCode}
                                     />
                                   </FormControl>
                                 </div>
@@ -4585,14 +4633,11 @@ export default function Entity() {
                       <div className="w-auto px-2">
                         <Checkbox
                           className="pr-0"
-                          checked={payload.isConfirmed}
-                          name="radio-buttons"
-                          onChange={() =>
-                            setPayload({
-                              ...payload,
-                              isConfirmed: !payload.isConfirmed,
-                            })
-                          }
+                          checked={values.isConfirmed}
+                          name="isConfirmed"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                            value={values.isConfirmed}
                           // onBlur={handleBlur}
                           // error={Boolean(touched.isConfirmed && errors.isConfirmed)}
                           // value={payload.isConfirmed}
@@ -4609,8 +4654,8 @@ export default function Entity() {
                     <div className="text-center">
                       <Button
                         type="submit"
-                        disabled={!payload.isConfirmed}
-                        onClick={() => history("/Term")}
+                        disabled={isSubmitting}
+                        // onClick={() => history("/Term")}
                         style={{
                           border: "1px solid #0095dd",
                           background: "#0095dd",
