@@ -3,6 +3,7 @@ import * as Yup from "yup";
 export const individualSchema = () => {
   return Yup.object().shape({
     isUSEntity: Yup.string(),
+    isUSIndividual: Yup.string(),
     firstName: Yup.string()
       .required("Please Enter First Name")
       .min(3, "First Name should be minimum of 3 characters")
@@ -15,18 +16,18 @@ export const individualSchema = () => {
       .required("Please Enter unique Identifier")
       .min(3, "Too short")
       .max(50, "Too long"),
-    countryOfCitizenshipId: Yup.number().when("isUSEntity", {
+    countryOfCitizenshipId: Yup.number().when("isUSIndividual", {
       is: "no",
       then: () =>
         Yup.number()
           .required("Please select a country")
           .notOneOf([0], "Please select a valid country"),
     }),
-    dob: Yup.date().when("isUSEntity", {
+    dob: Yup.date().when("isUSIndividual", {
       is: "no",
       then: () => Yup.date().required("Please Enter DOB"),
     }),
-    vatId: Yup.number().when("isUSEntity", {
+    vatId: Yup.number().when("isUSIndividual", {
       is: 'no',
       then: () =>
         Yup.number()
@@ -49,15 +50,24 @@ export const individualSchema = () => {
     permanentResidentialZipPostalCode: Yup.string().required(
       "Zip/Postal code is required"
     ),
-    isAddressPostOfficeBox: Yup.string().when("isUSEntity", {
+    isAddressPostOfficeBox: Yup.string().when("isUSIndividual", {
       is: "no",
       then: () => Yup.string().required("Please select an option"),
     }),
-    isCareOfAddress: Yup.string().when("isUSEntity", {
+
+    isCareOfAddress: Yup.string().when("isUSIndividual", {
       is: "no",
       then: () => Yup.string().required("Please select an option"),
     }),
+
+    isAddressRuralRoute:Yup.string().when("permanentResidentialCountryId",{
+      is : (permanentResidentialCountryId:any) => permanentResidentialCountryId == 45,
+      then:() => 
+      Yup.string().required("Please select an option"),
+    }),
+
     isalternativebusinessaddress: Yup.string(),
+
     permanentResidentialCountryId1: Yup.number().when(
       "isalternativebusinessaddress",
       {
