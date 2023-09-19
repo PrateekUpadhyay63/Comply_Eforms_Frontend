@@ -238,13 +238,13 @@ export default function Tin(props: any) {
     onClick={() => {
       setselectedContinue({
         step1: false,
-            step2: false,
-            step3: false,
-            step4: true,
-            step5: false,
-            step6: false,
-            step7: false,
-            step8: false,
+        step2: true,
+        step3: false,
+        step4: false,
+        step5: false,
+        step6: false,
+        step7: false,
+        step8: false,
       });
       // setOpen(true);
     }}
@@ -255,16 +255,6 @@ export default function Tin(props: any) {
         marginTop: "10px",
         marginBottom: "20px",
       }}
-      onClick={()=>setselectedContinue({
-        step1: false,
-        step2: true,
-        step3: false,
-        step4: false,
-        step5: false,
-        step6: false,
-        step7: false,
-        step8: false,
-      })}
     >
       Back
     </Button>
