@@ -4,7 +4,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import InfoIcon from '@mui/icons-material/Info';
+import Info from '@mui/icons-material/Info';
+import {Tooltip,Paper,
+  Link,} from "@mui/material";
 import Form from "../reusables/Formguide"
 import { useNavigate } from "react-router-dom"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -27,7 +29,7 @@ const clickInfo = () => {
   const handleCardSelect = (cardId:any) => {
     setSelectedCard(cardId);
   };
- 
+  const [toolInfo, setToolInfo] = useState("");
   const redirectToComponent = (cardId: string) => {
    
     const componentPaths: ComponentPaths = {
@@ -61,11 +63,28 @@ const clickInfo = () => {
       style={{ fontSize: '32px', fontWeight: '500', color:'white' ,marginLeft:"10px"}}
     >
      Certificate Selection for U.S. Tax Purposes 
-     <InfoIcon
-        style={{ color: '#ffc107', fontSize: '15px', marginLeft: '5px', cursor: 'pointer' ,verticalAlign:"super"}}
-         onClick={clickInfo}
-                    />
+     <span>
+                <Tooltip style={{ backgroundColor: "black", color: "white" }} title={
+                  <>
+                    <Typography color="inherit">Certificate Selection</Typography>
+                    <a onClick={() => setToolInfo("basic")}>
+                      <Typography style={{ cursor: "pointer", textDecorationLine: "underline" }} align="center" > View More...</Typography>
+                    </a>
+                  </>
+                }>
+                  <Info
+                    style={{
+                      color: '#ffc107',
+                      fontSize: '20px',
+                      cursor: 'pointer',
+                      verticalAlign: "super"
+                    }}
+
+                  />
+                </Tooltip>
+              </span>
     </Typography >
+   
     <Typography align='right'>
         <Button  onClick={() => {
           history("/form")
@@ -74,6 +93,32 @@ const clickInfo = () => {
                 }} style={{backgroundColor:'#ffc107',color:'black',fontSize:"10px",fontWeight:'550'}}>Form Guide</Button>
     </Typography>
             </div>
+            {toolInfo === "basic" ? (<div>
+              <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
+                <Typography>
+                Certificate Selection for U.S. Tax Purposes
+                </Typography>
+                <Typography style={{ marginTop: "10px" }}>
+                Select the most appropriate withholding certificate for your status and click Continue.
+                </Typography>
+                <Typography style={{ marginTop: "20px" }}>
+
+                  
+Based on details entered on the previous page, certain form selections which may not be applicable have been greyed out. If you believe a form should be available for your completion, press the Back button and revisit your details entered on the Account Holder Details page.
+                </Typography>
+
+
+                <Typography style={{ marginTop: "20px" }}>
+
+                If you are uncertain which withholding certificate is correct, refer to the Read More link on each form and/or the Form Guide in the upper right-hand corner.
+                </Typography>
+               
+                <Typography style={{ marginTop: "20px" }}>EH022</Typography>
+
+                <Link href="#" underline="none" style={{ marginTop: "10px", fontSize: "16px" }} onClick={() => { setToolInfo("") }}>--Show Less--</Link>
+              </Paper>
+
+            </div>) : ""}
         
     <div className='d-flex row'>
     {cards.map((card) => (
