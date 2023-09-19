@@ -269,7 +269,7 @@ export default function Entity() {
     console.log("entity form", values);
     e.preventDefault();
     dispatch(postOnboarding(values, redirectFunc));
-    // redirectFunc();
+    redirectFunc();
   };
 
   const returnFieldName = (
@@ -309,7 +309,7 @@ export default function Entity() {
               error={Boolean(touched.abaRouting && errors.abaRouting)}
               value={values.abaRouting}
             />
-            <p style={{ color: "red", textAlign: "left" }}>
+            <p className="error">
               {errors.abaRouting}
             </p>
           </FormControl>
@@ -345,7 +345,7 @@ export default function Entity() {
               error={Boolean(touched.sortCode && errors.sortCode)}
               value={values.sortCode}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.sortCode}</p>
+            <p className="error">{errors.sortCode}</p>
           </FormControl>
         </div>
       );
@@ -379,7 +379,7 @@ export default function Entity() {
               error={Boolean(touched.bsb && errors.bsb)}
               value={values.bsb}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.bsb}</p>
+            <p className="error">{errors.bsb}</p>
           </FormControl>
         </div>
       );
@@ -412,7 +412,7 @@ export default function Entity() {
               error={Boolean(touched.bankCode && errors.bankCode)}
               value={values.bankCode}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.bankCode}</p>
+            <p className="error">{errors.bankCode}</p>
           </FormControl>
         </div>
       );
@@ -454,13 +454,13 @@ export default function Entity() {
                         {" "}
                         <img src={individual} />
                       </div>
-                      <span style={{ fontSize: "20px", fontWeight: "600" }}>
+                      <span style={{ fontSize: "14px", fontWeight: "600" }}>
                         Individual
                       </span>
                     </div>
                   </button>
                 </li>
-                <li style={{ fontSize: "20px", fontWeight: "600" }}>OR</li>
+                <li style={{ fontSize: "14px", fontWeight: "400" }}>OR</li>
                 <li>
                   <button className="active">
                     <div>
@@ -468,7 +468,7 @@ export default function Entity() {
                         {" "}
                         <img src={entity} />
                       </div>
-                      <span style={{ fontSize: "20px", fontWeight: "600" }}>
+                      <span style={{ fontSize: "14px", fontWeight: "600" }}>
                         Entity
                       </span>
                     </div>
@@ -624,7 +624,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                             {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory information Required" : ""}
                           </p>
                       </div>
@@ -831,7 +831,7 @@ export default function Entity() {
                               )}
                               value={values?.uniqueIdentifier}
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.uniqueIdentifier}
                           </p>
                         </div>
@@ -868,7 +868,7 @@ export default function Entity() {
                               )}
                               value={values.entityName}
                             />
-                            <p style={{ color: "red", textAlign: "left" }}>
+                            <p className="error">
                               {errors.entityName}
                             </p>
                           </FormControl>
@@ -904,7 +904,7 @@ export default function Entity() {
                               )}
                               value={values.entityName}
                             />
-                            <p style={{ color: "red", textAlign: "left" }}>
+                            <p className="error">
                               {errors.entityName}
                             </p>
                           </FormControl>
@@ -958,7 +958,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                             {errors?.vatId ? "Mandatory information required" : ""}
                           </p>
                       </div>
@@ -1500,7 +1500,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                             {errors?.permanentResidentialCountryId ||
                              errors?.permanentResidentialStreetNumberandName ||
                              errors?.permanentResidentialCityorTown || 
@@ -1616,7 +1616,7 @@ export default function Entity() {
                               <option value={id}>{name}</option>
                             ))}
                           </select>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.permanentResidentialCountryId}
                           </p>
                         </FormControl>
@@ -1655,7 +1655,7 @@ export default function Entity() {
                               values.permanentResidentialStreetNumberandName
                             }
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.permanentResidentialStreetNumberandName}
                           </p>
                         </FormControl>
@@ -1712,7 +1712,7 @@ export default function Entity() {
                             )}
                             value={values.permanentResidentialCityorTown}
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.permanentResidentialCityorTown}
                           </p>
                         </FormControl>
@@ -1831,7 +1831,7 @@ export default function Entity() {
                             )}
                             value={values.permanentResidentialZipPostalCode}
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.permanentResidentialZipPostalCode}
                           </p>
                         </FormControl>
@@ -2504,7 +2504,7 @@ export default function Entity() {
                                   <option value={id}> {name} </option>
                                 ))}
                               </select>
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {errors.permanentResidentialCountryId1}
                               </p>
                             </FormControl>
@@ -2543,7 +2543,7 @@ export default function Entity() {
                                   values.permanentResidentialStreetNumberandName1
                                 }
                               />
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {
                                   errors.permanentResidentialStreetNumberandName1
                                 }
@@ -2603,7 +2603,7 @@ export default function Entity() {
                                 )}
                                 value={values.permanentResidentialCityorTown1}
                               />
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {errors.permanentResidentialCityorTown1}
                               </p>
                             </FormControl>
@@ -2707,7 +2707,7 @@ export default function Entity() {
                                   values.permanentResidentialZipPostalCode1
                                 }
                               />
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {errors.permanentResidentialZipPostalCode1}
                               </p>
                             </FormControl>
@@ -2766,7 +2766,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                             {errors?.contactFirstName ||
                              errors?.contactLastName ||
                              errors?.contactEmail ? "Mandatory information required" : ""}
@@ -2890,7 +2890,7 @@ export default function Entity() {
                             )}
                             value={values.contactFirstName}
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.contactFirstName}
                           </p>
                         </FormControl>
@@ -2923,7 +2923,7 @@ export default function Entity() {
                             )}
                             value={values.contactLastName}
                           />
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.contactLastName}
                           </p>
                         </FormControl>
@@ -2962,7 +2962,7 @@ export default function Entity() {
                                 )}
                                 value={values.contactEmail}
                               />
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {errors.contactEmail}
                               </p>
                             </FormControl>
@@ -3366,7 +3366,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                           {errors?.paymentTypeId ? "Mandatory information required" : ""}
                         </p>
                       </div>
@@ -3527,7 +3527,7 @@ export default function Entity() {
                                 // onClick={clickInfo}
                               />
                             </Tooltip>
-                            <p style={{ color: "red", textAlign: "left" }}>
+                            <p className="error">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
                              errors?.accountBankBranchLocationId || 
@@ -3677,7 +3677,7 @@ export default function Entity() {
                                     value={values.accountHolderName}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountHolderName}
                                   </p>
@@ -3714,7 +3714,7 @@ export default function Entity() {
                                     value={values.accountBankName}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountBankName}
                                   </p>
@@ -3750,7 +3750,7 @@ export default function Entity() {
                                     ))}
                                   </select>
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountBankBranchLocationId}
                                   </p>
@@ -3788,7 +3788,7 @@ export default function Entity() {
                                     value={values.accountNumber}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountNumber}
                                   </p>
@@ -3840,7 +3840,7 @@ export default function Entity() {
                                     value={values.makePayable}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.makePayable}
                                   </p>
@@ -3878,7 +3878,7 @@ export default function Entity() {
                                     ))}
                                   </select>
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.payResidentalCountryId}
                                   </p>
@@ -3946,7 +3946,7 @@ export default function Entity() {
                                     value={values.payStreetNumberAndName}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.payStreetNumberAndName}
                                   </p>
@@ -4010,7 +4010,7 @@ export default function Entity() {
                                     value={values.payCityorTown}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.payCityorTown}
                                   </p>
@@ -4127,7 +4127,7 @@ export default function Entity() {
                                     value={values.payZipPostalCode}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.payZipPostalCode}
                                   </p>
@@ -4144,7 +4144,7 @@ export default function Entity() {
                                 // error={Boolean(touched.isCorrectPaymentPurposes && errors.isCorrectPaymentPurposes)}
                                 value={values.isCorrectPaymentPurposes}
                               />
-                              <p style={{ color: "red", textAlign: "left" }}>
+                              <p className="error">
                                 {errors.isCorrectPaymentPurposes}
                               </p>
                               <Typography
@@ -4195,7 +4195,7 @@ export default function Entity() {
                                     value={values.accountHolderName}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountHolderName}
                                   </p>
@@ -4228,7 +4228,7 @@ export default function Entity() {
                                     value={values.accountBankName}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountBankName}
                                   </p>
@@ -4289,7 +4289,7 @@ export default function Entity() {
                                     ))}
                                   </select>
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountBankBranchLocationId}
                                   </p>
@@ -4327,7 +4327,7 @@ export default function Entity() {
                                     value={values.accountNumber}
                                   />
                                   <p
-                                    style={{ color: "red", textAlign: "left" }}
+                                    className="error"
                                   >
                                     {errors.accountNumber}
                                   </p>
