@@ -154,7 +154,7 @@ export const individualSchema = () => {
 
     bankCode: Yup.string().when("paymentTypeId", {
       is: (paymentTypeId:any, accountBankBranchLocationId:any) =>
-      (paymentTypeId == 1) && accountBankBranchLocationId == 0,
+      paymentTypeId == 1 && accountBankBranchLocationId == 0,
       then: () =>
         Yup.string()
         .required("Please enter Bank code")
@@ -208,6 +208,12 @@ export const individualSchema = () => {
     payZipPostalCode: Yup.string().when("paymentTypeId", {
       is: 2,
       then: () => Yup.string().required("Please enter zip or postal code"),
+    }),
+
+    bsb: Yup.string().when("accountBankBranchLocationId", {
+      is: (accountBankBranchLocationId: any) =>
+      accountBankBranchLocationId == 16,
+      then: () => Yup.string().required("BSB is required"),
     }),
   });
 };

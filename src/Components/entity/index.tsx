@@ -289,7 +289,7 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              required
+              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -325,7 +325,7 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              required
+              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -359,7 +359,7 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              required
+              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -373,7 +373,7 @@ export default function Entity() {
               }}
               id="outlined"
               name="bsb"
-              placeholder="Enter Bank Code"
+              placeholder="Enter BSB"
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.bsb && errors.bsb)}
@@ -392,7 +392,7 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              required
+              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -591,12 +591,13 @@ export default function Entity() {
                         }}
                       >
                         Basic Details
+                        
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
                           title={
                             <>
                               <Typography color="inherit">
-                                Basic details - individual
+                                Basic details - Entity
                               </Typography>
                               <a onClick={() => setToolInfo("basic")}>
                                 <Typography
@@ -623,6 +624,9 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory information Required" : ""}
+                          </p>
                       </div>
                     }
                     action={
@@ -889,7 +893,7 @@ export default function Entity() {
                                 borderRadius: "1px",
                                 padding: " 0 10px ",
                               }}
-                              required
+                              
                               id="outlined"
                               name="entityName"
                               placeholder="Enter Business Name"
@@ -954,6 +958,9 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.vatId ? "Mandatory information required" : ""}
+                          </p>
                       </div>
                     }
                     action={
@@ -1328,7 +1335,7 @@ export default function Entity() {
                             </FormControl>
                           </div> */}
                           <div className="col-12 d-flex">
-                            <div className="col-lg-3 col-6 col-md-3 ">
+                            <div className="col-6 ">
                               <Typography align="left" className="d-flex w-100">
                                 Value Added Tax Number (VAT)
                                 <span style={{ color: "red" }}>*</span>
@@ -1357,7 +1364,7 @@ export default function Entity() {
                               </FormControl>
                             </div>
 
-                            <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <div className="col-6 mx-2">
                               <FormControl className="w-100">
                                 <Typography align="left">
                                   Value Added Tax Number (VAT)
@@ -1493,6 +1500,20 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.permanentResidentialCountryId ||
+                             errors?.permanentResidentialStreetNumberandName ||
+                             errors?.permanentResidentialCityorTown || 
+                             errors?.permanentResidentialZipPostalCode ||
+                             errors?.isAddressRuralRoute || 
+                             errors?.isalternativebusinessaddress ||
+                             errors?.isAddressPostOfficeBox ||
+                             errors?.isCareOfAddress ||
+                             errors?.permanentResidentialCountryId1 ||
+                             errors?.permanentResidentialStreetNumberandName1 ||
+                             errors?.permanentResidentialCityorTown1 ||
+                             errors?.permanentResidentialZipPostalCode1 ? "Mandatory information required" : ""}
+                          </p>
                       </div>
                     }
                     action={
@@ -1609,7 +1630,7 @@ export default function Entity() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -1668,7 +1689,7 @@ export default function Entity() {
                             City or Town:<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -1734,11 +1755,11 @@ export default function Entity() {
                                   fontStyle: "italic",
                                   height: "36px",
                                 }}
-                                name="permanentResidentialStateorProvince1"
+                                name="permanentResidentialStateorProvince"
                                 // id="Income"
                                 onChange={handleChange}
                                 value={
-                                  values.permanentResidentialStateorProvince1
+                                  values.permanentResidentialStateorProvince
                                 }
                               >
                                 <option value="0">
@@ -1787,7 +1808,7 @@ export default function Entity() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2497,7 +2518,7 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2559,7 +2580,7 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2661,7 +2682,7 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2745,6 +2766,11 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.contactFirstName ||
+                             errors?.contactLastName ||
+                             errors?.contactEmail ? "Mandatory information required" : ""}
+                          </p>
                       </div>
                     }
                     action={
@@ -2841,7 +2867,7 @@ export default function Entity() {
                             First Name<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2875,7 +2901,7 @@ export default function Entity() {
                             Last Name<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            required
+                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2913,7 +2939,7 @@ export default function Entity() {
                                 Email<span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                required
+                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -3340,6 +3366,9 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                          {errors?.paymentTypeId ? "Mandatory information required" : ""}
+                        </p>
                       </div>
                     }
                     action={
@@ -3419,6 +3448,7 @@ export default function Entity() {
                             <option value={2}>Check</option>
                             <option value={3}>Wire</option>
                           </select>
+                          <p className="error">{errors.paymentTypeId}</p>
                           <Delete
                             style={{
                               color: "red",
@@ -3430,27 +3460,7 @@ export default function Entity() {
                         </span>
                       </FormControl>
                     </div>
-                    {/* <FormControl>
-                  <Typography>Payment Type</Typography>
-                  <select
-                    style={{
-                      padding: ' 0 10px',
-                      color: '#7e7e7e',
-                      fontStyle: 'italic',
-                      height: '36px',
-                    }}
-                    name="Payment"
-                    id="Payment"
-                    onChange={e => {
-                      paymentSelection(e.target.value);
-                    }}
-                  >
-                    <option value="">Select</option>
-                    <option value="ACH">ACH</option>
-                    <option value="Check">Check</option>
-                    <option value="Wire">Wire</option>
-                  </select>
-                </FormControl> */}
+                    
                   </Collapse>
                   <hr className="w-100"></hr>
 
@@ -3517,6 +3527,22 @@ export default function Entity() {
                                 // onClick={clickInfo}
                               />
                             </Tooltip>
+                            <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.accountHolderName ||
+                             errors?.accountBankName ||
+                             errors?.accountBankBranchLocationId || 
+                             errors?.accountNumber ||
+                             errors?.makePayable || 
+                             errors?.payResidentalCountryId ||
+                             errors?.payStreetNumberAndName ||
+                             errors?.payCityorTown ||
+                             errors?.payStateOrProvince ||
+                             errors?.payZipPostalCode ||
+                             errors?.sortCode ||
+                             errors?.bsb ||
+                             errors?.bankCode ||
+                             errors?.abaRouting ? "Mandatory information required" : ""}
+                          </p>
                           </div>
                         }
                         action={
@@ -3627,7 +3653,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3664,7 +3690,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3738,7 +3764,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3791,7 +3817,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3828,7 +3854,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <select
-                                    required
+                                    
                                     style={{
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
@@ -3896,7 +3922,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3960,7 +3986,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4077,7 +4103,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4145,7 +4171,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4277,7 +4303,7 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    required
+                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4316,7 +4342,7 @@ export default function Entity() {
                                       <span style={{ color: "red" }}>*</span>
                                     </Typography>
                                     <Input
-                                      required
+                                      
                                       style={{
                                         border: " 1px solid #d9d9d9 ",
                                         height: " 36px",
