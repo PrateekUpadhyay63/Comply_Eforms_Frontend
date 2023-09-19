@@ -10,9 +10,12 @@ import {
   Checkbox,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
+import { useNavigate } from "react-router-dom";
 
 export default function Certifications(props: any) {
   
+
+  const history=useNavigate()
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
@@ -251,7 +254,9 @@ export default function Certifications(props: any) {
         </Button>
         <Button
           type="submit"
-         
+         onClick={()=>{
+          history("/W-8BEN/Declaration/US_Tin/Certification_Substitute")
+         }}
           variant="contained"
           style={{ color: "white", marginLeft: "15px" }}
         >
