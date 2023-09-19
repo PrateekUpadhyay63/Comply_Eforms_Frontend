@@ -1335,7 +1335,7 @@ export default function Entity() {
                             </FormControl>
                           </div> */}
                           <div className="col-12 d-flex">
-                            <div className="col-lg-3 col-6 col-md-3 ">
+                            <div className="col-6 ">
                               <Typography align="left" className="d-flex w-100">
                                 Value Added Tax Number (VAT)
                                 <span style={{ color: "red" }}>*</span>
@@ -1364,7 +1364,7 @@ export default function Entity() {
                               </FormControl>
                             </div>
 
-                            <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <div className="col-6 mx-2">
                               <FormControl className="w-100">
                                 <Typography align="left">
                                   Value Added Tax Number (VAT)
