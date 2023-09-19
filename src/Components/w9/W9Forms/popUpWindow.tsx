@@ -8,7 +8,7 @@ export default function PopUp(props: any) {
       <div className="popup-sidemenu-inner-div">
         <div className="content">
           <h5>Easy Help</h5>
-          <a>test</a>
+          {/* <a>test</a> */}
         </div>
         <div className="content">
           <h5>IRS Form Instructions</h5>
@@ -20,7 +20,7 @@ export default function PopUp(props: any) {
           <a>W-9 - U.S. Persons</a>
           <a>8233 - Personal Services</a>
         </div>
-        <button>
+        <button onClick={()=>setClick(!click)}>
             x
         </button>
       </div>
