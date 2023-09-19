@@ -31,10 +31,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import "bootstrap/dist/css/bootstrap.css";
 import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
+// import DatePicker from "react-datepicker";
 
+// import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
 // import { CheckBox } from '@mui/icons-material';
@@ -54,6 +56,7 @@ export default function IndividualUs() {
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
   const [toolInfo, setToolInfo] = useState("");
+  const allCountriesData = useSelector((state:any) => state.getCountriesReducer);
   const [payload, setPayload] = useState({
     agentId: 3,
     businessTypeId: 1,
@@ -238,7 +241,7 @@ export default function IndividualUs() {
   // }, [payload.permanentResidentialCountryId]);
 
   useEffect(() => {
-    localStorage.clear();
+   dispatch(getAllCountries())
   }, []);
 
   const redirectFunc = () => {
@@ -253,6 +256,7 @@ export default function IndividualUs() {
     } else setOpen(val);
   };
 
+  
   const addIncomeType = () => {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
@@ -267,7 +271,7 @@ export default function IndividualUs() {
     console.log("b dzsfdvcyghgc", values);
     e.preventDefault();
     dispatch(postOnboarding(values, redirectFunc));
-    // redirectFunc();
+    redirectFunc();
   };
 
   const returnFieldName = (
@@ -306,7 +310,7 @@ export default function IndividualUs() {
               error={Boolean(touched.abaRouting && errors.abaRouting)}
               value={values.abaRouting}
             />
-            <p style={{ color: "red", textAlign: "left" }}>
+            <p className="error">
               {errors.abaRouting}
             </p>
           </FormControl>
@@ -341,7 +345,7 @@ export default function IndividualUs() {
               error={Boolean(touched.sortCode && errors.sortCode)}
               value={values.sortCode}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.sortCode}</p>
+            <p className="error">{errors.sortCode}</p>
           </FormControl>
         </div>
       );
@@ -375,7 +379,7 @@ export default function IndividualUs() {
               error={Boolean(touched.bsb && errors.bsb)}
               value={values.bsb}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.bsb}</p>
+            <p className="error">{errors.bsb}</p>
           </FormControl>
         </div>
       );
@@ -407,7 +411,7 @@ export default function IndividualUs() {
               error={Boolean(touched.bankCode && errors.bankCode)}
               value={values.bankCode}
             />
-            <p style={{ color: "red", textAlign: "left" }}>{errors.bankCode}</p>
+            <p className="error">{errors.bankCode}</p>
           </FormControl>
         </div>
       );
@@ -465,11 +469,11 @@ export default function IndividualUs() {
                         {" "}
                         <img src={individual} />
                       </div>
-                      <span style={{fontSize:"20px",fontWeight:"600"}}>Individual</span>
+                      <span style={{fontSize:"14px",fontWeight:"600"}}>Individual</span>
                     </div>
                   </button>
                 </li>
-                <li style={{fontSize:"20px",fontWeight:"600"}}>OR</li>
+                <li style={{fontSize:"14px",fontWeight:"400"}}>OR</li>
                 <li>
                   <button onClick={() => history("/EntityUs")}>
                     <div>
@@ -477,7 +481,7 @@ export default function IndividualUs() {
                         {" "}
                         <img src={entity} />
                       </div>
-                      <span style={{fontSize:"20px",fontWeight:"600"}}>Entity</span>
+                      <span style={{fontSize:"14px",fontWeight:"600"}}>Entity</span>
                     </div>
                   </button>
                 </li>
@@ -632,7 +636,7 @@ export default function IndividualUs() {
                           
                           />
                         </Tooltip>
-                        <p style={{ color: "red", textAlign: "left" }}>
+                        <p className="error">
                             {
                             errors?.isUSIndividual ||
                             errors?.firstName ||
@@ -883,6 +887,7 @@ export default function IndividualUs() {
                               Country Of Citizenship
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
+                           <>{console.log(allCountriesData,"allCountriesData")}</>
                             <select
                               style={{
                                 padding: " 0 10px",
@@ -1084,7 +1089,7 @@ export default function IndividualUs() {
                             
                             />
                           </Tooltip>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors?.vatId ? "Mandatory information Required" : ""}
                           </p>
                         </div>
@@ -1599,7 +1604,7 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors?.permanentResidentialCountryId ||
                              errors?.permanentResidentialStreetNumberandName ||
                              errors?.permanentResidentialCityorTown || 
@@ -1691,7 +1696,7 @@ export default function IndividualUs() {
                     >
                       <div className="col-lg-3 col-6 col-md-3">
                         <Typography align="left" className="d-flex w-100 ">
-                          Residential Country:
+                          Country:
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
 
@@ -1720,7 +1725,7 @@ export default function IndividualUs() {
                               <option value={id}>{name}</option>
                             ))}
                           </select>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors.permanentResidentialCountryId}
                           </p>
                         </FormControl>
@@ -1980,7 +1985,7 @@ export default function IndividualUs() {
                               style={{ marginTop: "20px" }}
                             >
                               Is there an alternative mailing or business
-                              address in the US?
+                              address in the U.S.?
                               <span style={{ color: "red" }}>*</span>
                               <Info
                                 style={{
@@ -2130,7 +2135,7 @@ export default function IndividualUs() {
                               align="left"
                               style={{ marginTop: "20px" }}
                             >
-                              Is this address a Post Office Box?
+                              Is this address a PO Box?
                               <span style={{ color: "red" }}>*</span>
                               <Info
                                 style={{
@@ -2285,7 +2290,7 @@ export default function IndividualUs() {
                             <div className="mx-5">
                               <Typography style={{ marginTop: "20px" }}>
                                 Is there an alternative mailing or business
-                                address in the US?
+                                address in the U.S.?
                                 <span style={{ color: "red" }}>*</span>
                                 <span>
                                   <Tooltip
@@ -2442,7 +2447,7 @@ export default function IndividualUs() {
                         <>
                           <div className="col-lg-3 col-6 col-md-3">
                             <Typography align="left" className="d-flex w-100 ">
-                              Residential Country:
+                             Country:
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
 
@@ -2724,7 +2729,7 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                             {errors?.contactFirstName ||
                              errors?.contactLastName ||
                              errors?.contactEmail ? "Mandatory information required" : ""}
@@ -3076,6 +3081,7 @@ export default function IndividualUs() {
                                 cursor: "pointer",
                                 fontSize: "12px",
                                 marginTop: "8px",
+                                
                               }}
                               onClick={() => setAlternateNo(true)}
                             >
@@ -3315,7 +3321,7 @@ export default function IndividualUs() {
                               }}
                             />
                           </Tooltip>
-                          <p style={{ color: "red", textAlign: "left" }}>
+                          <p className="error">
                           {errors?.paymentTypeId ? "Mandatory information required" : ""}
                         </p>
                         </div>
@@ -3480,22 +3486,7 @@ export default function IndividualUs() {
                                   }}
                                 />
                               </Tooltip>
-                              <p style={{ color: "red", textAlign: "left" }}>
-                            {errors?.accountHolderName ||
-                             errors?.accountBankName ||
-                             errors?.accountBankBranchLocationId || 
-                             errors?.accountNumber ||
-                             errors?.makePayable || 
-                             errors?.payResidentalCountryId ||
-                             errors?.payStreetNumberAndName ||
-                             errors?.payCityorTown ||
-                             errors?.payStateOrProvince ||
-                             errors?.payZipPostalCode ||
-                             errors?.sortCode ||
-                             errors?.bsb ||
-                             errors?.bankCode ||
-                             errors?.abaRouting ? "Mandatory information required" : ""}
-                          </p>
+                              
                             </div>
                           }
                           action={
