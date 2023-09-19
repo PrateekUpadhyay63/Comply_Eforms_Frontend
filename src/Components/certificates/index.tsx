@@ -68,7 +68,8 @@ const clickInfo = () => {
     </Typography >
     <Typography align='right'>
         <Button  onClick={() => {
-                  setOpen(true);
+          history("/form")
+                  // setOpen(true);
                   
                 }} style={{backgroundColor:'#ffc107',color:'black',fontSize:"10px",fontWeight:'550'}}>Form Guide</Button>
     </Typography>

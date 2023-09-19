@@ -8,6 +8,8 @@ const IndividualUs = React.lazy(() => import('../Components/individualUS'));
 const EntityUs = React.lazy(() => import('../Components/entity'));
 const Term =  React.lazy(() => import('../Components/term'));
 const Certificates = React.lazy(() => import('../Components/certificates'));
+const form = React.lazy(() => import('../FormGuide/form/index'));
+const Guide = React.lazy(() => import('../FormGuide/form/guide'));
 const Complete = React.lazy(() => import('../Components/complete'));
 
 //
@@ -22,6 +24,8 @@ const Non_us_tin = React.lazy(() => import('../Components/W-8BEN/Declaration/Non
 const Claim = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Claim/index'));
 const Rates = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Rates/index'));
 const Certi = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Certificates'));
+const Part = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Part-certi'));
+
 
 
 const ROUTES: Array<RouteType> = [
@@ -66,6 +70,13 @@ const ROUTES: Array<RouteType> = [
       Component: Term,
       isPrivate: true},
       {
+        name:"Guide",
+        path:"/Guide",
+        id: 3,
+        Component: Guide,
+        isPrivate: true
+      },
+      {
         name: 'Certificates',
         path:"/Certificates",
         id: 4,
@@ -77,6 +88,13 @@ const ROUTES: Array<RouteType> = [
           id: 4,
           Component: Complete,
           isPrivate: true},
+          {
+            name:"form",
+            path:"/form",
+          id: 4,
+          Component: form,
+          isPrivate: true
+          },
 
           {
             name:"Declaration",
@@ -124,6 +142,13 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
             path:"W-8BEN/Declaration/US_Tin/Certificates",
             id: 6,
             Component: Certi,
+            isPrivate: true
+          },
+          {
+            name:"Part",
+            path:"W-8BEN/Declaration/US_Tin/Certification_Substitute",
+            id: 6,
+            Component: Part,
             isPrivate: true
           }
 
