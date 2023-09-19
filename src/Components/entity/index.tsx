@@ -1589,7 +1589,7 @@ export default function Entity() {
                     <div className="row">
                       <div className="col-lg-3 col-6 col-md-3">
                         <Typography className="d-flex w-100 ">
-                          Residential Country:
+                          Country:
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
 
@@ -2477,7 +2477,7 @@ export default function Entity() {
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3">
                             <Typography className="d-flex w-100 ">
-                              Residential Country:
+                              Country:
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
 
@@ -3018,7 +3018,7 @@ export default function Entity() {
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
                           <Typography align="left">
-                            Secondary Contact Number
+                           Alternative Number
                           </Typography>
                           <select
                             style={{
@@ -3065,9 +3065,9 @@ export default function Entity() {
                         {alternateNo ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-3">
                             <FormControl className="w-100">
-                              <Typography align="left">
+                              {/* <Typography align="left">
                                 Secondary Contact Number
-                              </Typography>
+                              </Typography> */}
                               <span className="w-100 d-flex">
                                 <select
                                   className="w-100"
@@ -3254,11 +3254,9 @@ export default function Entity() {
                       incomeArr.map((ind, i) => {
                         return (
                           <div className="col-lg-3 col-6 col-md-3 ">
-                            <Typography className="d-flex w-100 pb-2">
+                            {/* <Typography className="d-flex w-100 pb-2">
                               Income Type
-                              {/* <span style={{ color: 'red' }}>*</span> */}
-                            </Typography>
-
+                            </Typography> */}
                             <FormControl className="w-100 d-flex" key={ind}>
                               <span className="w-100 d-flex pb-2">
                                 <select
@@ -3448,7 +3446,7 @@ export default function Entity() {
                             <option value={2}>Check</option>
                             <option value={3}>Wire</option>
                           </select>
-                          <p className="error">{errors.paymentTypeId}</p>
+                          {/* <p className="error">{errors.paymentTypeId}</p> */}
                           <Delete
                             style={{
                               color: "red",
@@ -3722,7 +3720,7 @@ export default function Entity() {
                               </div>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography align="left">
-                                  Branch Location
+                                  Bank Branch Location
                                   <span style={{ color: "red" }}>*</span>
                                 </Typography>
                                 <FormControl className="w-100">
