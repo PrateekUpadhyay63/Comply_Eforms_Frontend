@@ -253,18 +253,6 @@ export default function IndividualUs() {
     } else setOpen(val);
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setPlaceholder({ ...placeholder, [name]: value });
-  // };
-  // const handleRadio = event => {
-  //   setSelectedValue(event.target.value);
-  // };
-
-  // const handleRadio1 = event => {
-  //   setSelectedValue1(event.target.value);
-  // };
-
   const addIncomeType = () => {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
@@ -644,6 +632,15 @@ export default function IndividualUs() {
                           
                           />
                         </Tooltip>
+                        <p style={{ color: "red", textAlign: "left" }}>
+                            {
+                            errors?.isUSIndividual ||
+                            errors?.firstName ||
+                            errors?.lastName ||
+                            errors?.countryOfCitizenshipId ||
+                            errors?.dob ||
+                             errors?.uniqueIdentifier ? "Mandatory information Required" : ""}
+                          </p>
                       </div>
                     }
                     action={
@@ -1087,6 +1084,9 @@ export default function IndividualUs() {
                             
                             />
                           </Tooltip>
+                          <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.vatId ? "Mandatory information Required" : ""}
+                          </p>
                         </div>
                       }
                       action={
@@ -1599,6 +1599,20 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
+                          <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.permanentResidentialCountryId ||
+                             errors?.permanentResidentialStreetNumberandName ||
+                             errors?.permanentResidentialCityorTown || 
+                             errors?.permanentResidentialZipPostalCode ||
+                             errors?.isAddressRuralRoute || 
+                             errors?.isalternativebusinessaddress ||
+                             errors?.isAddressPostOfficeBox ||
+                             errors?.isCareOfAddress ||
+                             errors?.permanentResidentialCountryId1 ||
+                             errors?.permanentResidentialStreetNumberandName1 ||
+                             errors?.permanentResidentialCityorTown1 ||
+                             errors?.permanentResidentialZipPostalCode1 ? "Mandatory information required" : ""}
+                          </p>
                         </div>
                       }
                       action={
@@ -2710,6 +2724,11 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
+                          <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.contactFirstName ||
+                             errors?.contactLastName ||
+                             errors?.contactEmail ? "Mandatory information required" : ""}
+                          </p>
                         </div>
                       }
                       action={
@@ -3296,6 +3315,9 @@ export default function IndividualUs() {
                               }}
                             />
                           </Tooltip>
+                          <p style={{ color: "red", textAlign: "left" }}>
+                          {errors?.paymentTypeId ? "Mandatory information required" : ""}
+                        </p>
                         </div>
                       }
                       action={
@@ -3458,6 +3480,22 @@ export default function IndividualUs() {
                                   }}
                                 />
                               </Tooltip>
+                              <p style={{ color: "red", textAlign: "left" }}>
+                            {errors?.accountHolderName ||
+                             errors?.accountBankName ||
+                             errors?.accountBankBranchLocationId || 
+                             errors?.accountNumber ||
+                             errors?.makePayable || 
+                             errors?.payResidentalCountryId ||
+                             errors?.payStreetNumberAndName ||
+                             errors?.payCityorTown ||
+                             errors?.payStateOrProvince ||
+                             errors?.payZipPostalCode ||
+                             errors?.sortCode ||
+                             errors?.bsb ||
+                             errors?.bankCode ||
+                             errors?.abaRouting ? "Mandatory information required" : ""}
+                          </p>
                             </div>
                           }
                           action={
