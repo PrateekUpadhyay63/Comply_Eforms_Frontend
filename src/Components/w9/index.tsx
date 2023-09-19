@@ -22,11 +22,13 @@ import { useNavigate } from "react-router-dom"
 import { AppDispatch } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { getAllCountries } from "../../Redux/Actions";
+import PopUp from "./W9Forms/popUpWindow";
 
 export default function App() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
+  const [click,setClick]=useState(false);
   const [data, setData] = useState({
     id: 0,
     agentId: 0,
@@ -199,7 +201,9 @@ export default function App() {
         <div style={{ display: "flex" }} className="row">
           
           {/* <Sidebar /> */}
-        <Tab/>
+        <Tab click={click} setClick={setClick}/>
+        <PopUp click={click} setClick={setClick}/>
+       
         
         <Step2
         selectedContinue={selectedContinue}

@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-export default function Tab(){
-    const [click,setClick]=useState(false);
+export default function Tab(props:any){
+   const {click,setClick}=props
     return(
         <div className="overlay-div">
-             <div className={click ? "abc" :"xyz"}>
-          XYZ
-        </div>
             <div className="overlay-div-group">
                 <div className="viewInstructions">View Instructions</div>
                 <div className="viewform" onClick={()=>setClick(!click)}>View Form</div>
