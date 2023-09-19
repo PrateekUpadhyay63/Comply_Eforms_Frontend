@@ -101,8 +101,8 @@ export const EntitySchema = () => {
       .email("Invalid Email address")
       .required("Please enter Email"),
     paymentTypeId: Yup.number()
-      .required("Please select an option")
-      .notOneOf([0], "Please select a valid option"),
+      .notOneOf([0], "Please select a valid option")
+      .required("Please select an option"),
     accountHolderName: Yup.string().when("paymentTypeId", {
       is: (paymentTypeId: any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
@@ -205,7 +205,12 @@ export const EntitySchema = () => {
     .when("paymentTypeId",{
       is: 2,
       then: () => Yup.string().required("Verify please"),
-    })
+    }),
+    bsb: Yup.string().when("accountBankBranchLocationId", {
+      is: (accountBankBranchLocationId: any) =>
+      accountBankBranchLocationId == 16,
+      then: () => Yup.string().required("BSB is required"),
+    }),
     
   });
 };
