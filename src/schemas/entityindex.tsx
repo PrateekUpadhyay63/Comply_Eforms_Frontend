@@ -100,9 +100,9 @@ export const EntitySchema = () => {
     contactEmail: Yup.string()
       .email("Invalid Email address")
       .required("Please enter Email"),
-    paymentTypeId: Yup.number()
-      .notOneOf([0], "Please select a valid option")
-      .required("Please select an option"),
+    paymentTypeId: Yup.number(),
+      // .notOneOf([0], "Please select a valid option")
+      // .required("Please select an option"),
     accountHolderName: Yup.string().when("paymentTypeId", {
       is: (paymentTypeId: any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>

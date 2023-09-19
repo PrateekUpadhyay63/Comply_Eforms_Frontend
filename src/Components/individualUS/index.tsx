@@ -1139,10 +1139,13 @@ export default function IndividualUs() {
                             the Foreign Country selected, based on OECD
                             guidance. By ticking “TIN Format not available”,
                             this disables the formatting so that any format may
-                            be input. An individual’s US TIN type is generally a
+                            be input.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                             An individual’s US TIN type is generally a
                             Social Security Number (SSN) or an Individual Tax
                             Identification Number (ITIN).?
-                          </Typography>
+                            </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             An entity’s US TIN may be an employer identification
                             number (EIN): including a withholding foreign
@@ -1198,11 +1201,6 @@ export default function IndividualUs() {
                             income:
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            However, a TIN is not required to be shown in order
-                            to claim treaty benefits on the following items of
-                            income:
-                          </Typography>
-                          <Typography style={{ marginTop: "10px" }}>
                             - Dividends and interest from stocks and debt
                             obligations that are actively traded;
                           </Typography>
@@ -1244,8 +1242,10 @@ export default function IndividualUs() {
                       timeout="auto"
                       unmountOnExit
                     >
-                      <div className="col-12 d-flex">
-                        <div className="col-lg-3 col-6 col-md-3 ">
+                      {values.isUSIndividual === 'no' ? (
+                        <div className="col-12 d-flex mt-3">
+                          
+                          <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100">
                             U.S. TIN Type
                             {/* <span style={{ color: 'red' }}>*</span> */}
@@ -1272,7 +1272,6 @@ export default function IndividualUs() {
                             </select>
                           </FormControl>
                         </div>
-
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
                             <Typography align="left">
@@ -1307,16 +1306,15 @@ export default function IndividualUs() {
                             />
                           </FormControl>
                         </div>
-                      </div>
-                      {values.isUSIndividual === 'no' ? (
-                        <div className="col-12 d-flex mt-3">
+                        
                           <div className="col-lg-3 col-6 col-md-3 ">
+                            
+
+                            <FormControl className="w-100">
                             <Typography align="left" className="d-flex w-100">
                               Foreign TIN Country
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
-
-                            <FormControl className="w-100">
                               <select
                                 style={{
                                   padding: " 0 10px",
@@ -1556,7 +1554,68 @@ export default function IndividualUs() {
                           </div>
                         </div>
                       ) : (
-                        ""
+                        <div className="col-12 d-flex">
+                        <div className="col-lg-3 col-6 col-md-3 ">
+                          <Typography align="left" className="d-flex w-100">
+                            U.S. TIN Type
+                            {/* <span style={{ color: 'red' }}>*</span> */}
+                          </Typography>
+
+                          <FormControl className="w-100">
+                            <select
+                              style={{
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "36px",
+                              }}
+                              name="usTinTypeId"
+                              id="Income"
+                              defaultValue={1}
+                              onChange={handleChange}
+                              value={values.usTinTypeId}
+                            >
+                              <option value="1">-Select-</option>
+                              <option value="2">SSN/ITIN</option>
+                              <option value="3">Applied for</option>
+                            </select>
+                          </FormControl>
+                        </div>
+                        <div className="col-lg-3 col-6 col-md-3 mx-2">
+                          <FormControl className="w-100">
+                            <Typography align="left">
+                              U.S. TIN
+                              {/* <span style={{ color: 'red' }}>*</span> */}
+                            </Typography>
+                            <Input
+                              disabled={
+                                values.usTinTypeId == 3 ||
+                                values.usTinTypeId == 4
+                              }
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                height: " 36px",
+                                lineHeight: "36px ",
+                                background: "#fff ",
+                                fontSize: "13px",
+                                color: " #000 ",
+                                fontStyle: "normal",
+                                borderRadius: "1px",
+                                padding: " 0 10px ",
+                              }}
+                              id="outlined"
+                              name="usTin"
+                              placeholder="Enter U.S. TIN"
+                              onKeyDown={formatTin}
+                              onChange={handleChange}
+                              inputProps={{ maxLength: 11 }}
+                              // onBlur={handleBlur}
+                              //   error={Boolean(touched.usTin && errors.usTin)}
+                              value={values.usTin}
+                            />
+                          </FormControl>
+                        </div>
+                        </div>
                       )}
                     </Collapse>
                     <hr className="w-100"></hr>
@@ -2973,7 +3032,7 @@ export default function IndividualUs() {
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
                             <Typography align="left">
-                              Secondary Contact Number
+                              Alternative Number
                             </Typography>
                             <select
                               style={{
@@ -3019,9 +3078,9 @@ export default function IndividualUs() {
                           {alternateNo ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-3">
                               <FormControl className="w-100">
-                                <Typography align="left">
+                                {/* <Typography align="left">
                                   Secondary Contact Number
-                                </Typography>
+                                </Typography> */}
                                 <span className="w-100 d-flex">
                                   <select
                                     className="w-100"
@@ -3094,7 +3153,10 @@ export default function IndividualUs() {
 
                     <hr className="w-100 "></hr>
                     {/* Income Type */}
-                    <CardHeader
+
+                    {values.isUSIndividual == "yes" ? (
+                      <>
+                      <CardHeader
                       className="flex-row-reverse"
                       title={
                         <div
@@ -3201,7 +3263,7 @@ export default function IndividualUs() {
                     ) : (
                       ""
                     )}
-
+                    
                     <Collapse
                       className="px-5"
                       in={open === "it"}
@@ -3212,10 +3274,9 @@ export default function IndividualUs() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <Typography className="d-flex w-100 pb-2">
+                              {/* <Typography className="d-flex w-100 pb-2">
                                 Income Type
-                                {/* <span style={{ color: 'red' }}>*</span> */}
-                              </Typography>
+                              </Typography> */}
 
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
@@ -3263,6 +3324,179 @@ export default function IndividualUs() {
                         <a>Add Income Type</a>
                       </Typography>
                     </Collapse>
+                    </>
+                    ):(
+                      <>
+                      <CardHeader
+                      className="flex-row-reverse"
+                      title={
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            marginLeft: "13px",
+                          }}
+                        >
+                          Income Code
+                          <span
+                            style={{
+                              fontSize: "13px",
+                              color: "grey",
+                              marginLeft: "4px",
+                              marginTop: "11px",
+                            }}
+                          >
+                            (Optional)
+                          </span>
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Q&A, Income Type
+                                </Typography>
+                                <a onClick={() => setToolInfo("income")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                            />
+                          </Tooltip>
+                        </div>
+                      }
+                      action={
+                        <IconButton
+                          onClick={() => handleOpen("it")}
+                          aria-label="expand"
+                          size="small"
+                          style={{ marginTop: "3px" }}
+                        >
+                          {open === "it" ? (
+                            <RemoveCircleOutlineOutlined />
+                          ) : (
+                            <ControlPointOutlined />
+                          )}
+                        </IconButton>
+                      }
+                    ></CardHeader>
+
+                    {toolInfo === "income" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
+                          }}
+                        >
+                          <Typography>
+                            Income type or code is requested as part of the tax
+                            form completion process for purposes of calculating
+                            withholding rates, where applicable, and to further
+                            determine how you should be reported on. You should
+                            select the type of code that best defines the
+                            payments that you expect to receive. Income Types,
+                            associated with Form 1099 reporting, can include
+                            things like: Interest, Dividends, Rents, Royalties,
+                            Prizes and Awards. Income Codes, associated with
+                            Form 1042-S reporting, can be found here:
+                            https://www.irs.gov/pub/irs-pdf/p515.pdf
+                          </Typography>
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <Collapse
+                      className="px-5"
+                      in={open === "it"}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      {incomeArr.length &&
+                        incomeArr.map((ind, i) => {
+                          return (
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              {/* <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography> */}
+
+                              <FormControl className="w-100 d-flex" key={ind}>
+                                <span className="w-100 d-flex pb-2">
+                                  <select
+                                    className="w-100"
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="incomeTypeId"
+                                    id="Income"
+                                    onChange={handleChange}
+                                    value={values.incomeTypeId}
+                                  >
+                                    <option value="0">-Select-</option>
+                                    {incomeCodes.map(({ id, name }) => (
+                                      <option value={id}>{name}</option>
+                                    ))}
+                                  </select>
+                                  <Delete
+                                  onClick={() => handleDelete(i)}
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "8px",
+                                    marginLeft: "4px",
+                                  }}
+                                />
+                                </span>
+                              </FormControl>
+                            </div>
+                          );
+                        })}
+
+                      <Typography
+                        style={{
+                          color: "#007bff",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                        }}
+                        onClick={() => addIncomeType()}
+                      >
+                        <a>Add Income Code</a>
+                      </Typography>
+                    </Collapse>
+                    </>
+                    )}
+                    
                     <hr className="w-100"></hr>
                     {/* Payment type */}
                     <CardHeader
@@ -3383,7 +3617,8 @@ export default function IndividualUs() {
                     >
                       <div className="col-lg-3 col-6 col-md-3 ">
                         <Typography className="d-flex w-100 pb-2">
-                          Payment Type<span style={{ color: "red" }}>*</span>
+                          Payment Type
+                          {/* <span style={{ color: "red" }}>*</span> */}
                         </Typography>
 
                         <FormControl className="w-100 d-flex">
@@ -3398,12 +3633,6 @@ export default function IndividualUs() {
                               }}
                               name="paymentTypeId"
                               id="Payment"
-                              // onChange={(e: any) =>
-                              //   setPayload({
-                              //     ...payload,
-                              //     paymentTypeId: parseInt(e.target.value),
-                              //   })
-                              // }
                               onChange={handleChange}
                               value={values.paymentTypeId}
                             >
@@ -3412,15 +3641,15 @@ export default function IndividualUs() {
                               <option value={2}>Check</option>
                               <option value={3}>Wire</option>
                             </select>
-                            <p className="error">{errors.paymentTypeId}</p>
-                            <Delete
+                            {/* <p className="error">{errors.paymentTypeId}</p> */}
+                            {/* <Delete
                               style={{
                                 color: "red",
                                 fontSize: "20px",
                                 marginTop: "8px",
                                 marginLeft: "4px",
                               }}
-                            />
+                            /> */}
                           </span>
                         </FormControl>
                       </div>
@@ -3660,7 +3889,7 @@ export default function IndividualUs() {
                                 </div>
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <Typography align="left">
-                                    Branch Location
+                                    Bank Branch Location
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <FormControl className="w-100">
