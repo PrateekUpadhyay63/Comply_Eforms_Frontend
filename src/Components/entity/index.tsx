@@ -3283,6 +3283,7 @@ export default function Entity() {
                                       <option value={id}>{name}</option>
                                     ))}
                                   </select>
+                                  {incomeArr.length > 1 && (
                                   <Delete
                                   onClick={() => handleDelete(i)}
                                   style={{
@@ -3292,6 +3293,8 @@ export default function Entity() {
                                     marginLeft: "4px",
                                   }}
                                 />
+                                )}
+                                  
                                 </span>
                               </FormControl>
                             </div>
@@ -3453,6 +3456,7 @@ export default function Entity() {
                                       <option value={id}>{name}</option>
                                     ))}
                                   </select>
+                                  {incomeArr.length > 1 && (
                                   <Delete
                                   onClick={() => handleDelete(i)}
                                   style={{
@@ -3462,6 +3466,7 @@ export default function Entity() {
                                     marginLeft: "4px",
                                   }}
                                 />
+                                )}
                                 </span>
                               </FormControl>
                             </div>
@@ -3619,7 +3624,7 @@ export default function Entity() {
                             onChange={handleChange}
                             value={values.paymentTypeId}
                           >
-                            <option value={0}>Select</option>
+                            <option value="">Select</option>
                             <option value={1}>ACH</option>
                             <option value={2}>Check</option>
                             <option value={3}>Wire</option>
