@@ -1704,21 +1704,10 @@ export default function IndividualUs() {
                           }}
                         >
                           <Typography>
-                            Where applicable enter your US and Non-US (i.e.
-                            “Foreign”) taxpayer identification number(s) along
-                            with the US TIN Type and Foreign Country(ies)
-                            correlating to the FTIN(s).?
+                          Please enter the permanent residence address of the individual, business or organization the submission represents. This should be in the country where that payee’s income tax submission is made.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            Please note that some jurisdictions do not provide
-                            FTINs and this will be indicated if you select one
-                            of those jurisdictions. If you select a country that
-                            normally does provide an FTIN, but you do not wish
-                            to provide or cannot provide, you have the option to
-                            provide an explanation. Not providing a FTIN when it
-                            would normally be available may lead to the highest
-                            rate of withholding being applied, where treaty
-                            benefits could apply.
+                          If there is a mailing address that differs from the permanent address, then please enter that as well.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             IRS Guidance:
@@ -2819,20 +2808,10 @@ export default function IndividualUs() {
                           }}
                         >
                           <Typography>
-                            Where applicable enter your US and Non-US (i.e.
-                            “Foreign”) taxpayer identification number(s) along
-                            with the US TIN Type and Foreign Country(ies)
-                            correlating to the FTIN(s).?
+                          Please enter your contact details here and the capacity in which you will be signing the submission.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            ated if you select one of those jurisdictions. If
-                            you select a country that normally does provide an
-                            FTIN, but you do not wish to provide or cannot
-                            provide, you have the option to provide an
-                            explanation. Not providing a FTIN when it would
-                            normally be available may lead to the highest rate
-                            of withholding being applied, where treaty benefits
-                            could apply.
+                            On confirmation an email will be sent to the address entered and contain a PIN that must be entered at the point of signature.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             If you have not received the email within a few
