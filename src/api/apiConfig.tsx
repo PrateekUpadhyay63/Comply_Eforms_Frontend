@@ -5,6 +5,6 @@ export const apiKeys = {
     GetCountries: "/Country/GetAllCountries",
     GetCountriesCode: "/Country/GetCountriesCode",
     GetAllIncomeCodes :"/Countries/GetAllIncomeCodes",
-    GetStateByCountryId:"/Country/GetStateByCountryId?CountryId=258",
+    GetStateByCountryId:"/Countries/GetCountriesById?id=258",
     InsertAccountHolderDetail:"/AccountHolderDetail/InsertAccountHolderDetail"
 }
