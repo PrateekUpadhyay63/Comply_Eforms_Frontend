@@ -156,3 +156,20 @@ export const partCertiSchema = () => {
     date: Yup.date().required("Please enter date"),
   });
 };
+
+export const declarationsSchema = () => {
+  return Yup.object().shape({
+    isAgreeWithDeclaration: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isNotConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+  });
+};
