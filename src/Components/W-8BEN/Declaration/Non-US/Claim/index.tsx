@@ -19,6 +19,7 @@ import { W8_state } from "../../../../../Redux/Actions";
 import { useDispatch } from "react-redux";
 
 export default function FCTA_Reporting(props: any) {
+<<<<<<< HEAD
   const history = useNavigate();
   const [report, setReport] = useState<string>("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +32,24 @@ export default function FCTA_Reporting(props: any) {
     <section
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
+=======
+  const history= useNavigate()
+    const [report, setReport] = useState<string>("");
+    const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setReport((event.target as HTMLInputElement).value);
+    };
+    const [toolInfo, setToolInfo] = useState("");
+  return (  
+    
+    <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+    <div style={{padding:"20px"}}>
+    <Paper style={{padding:"18px"}} >
+  <div>
+  <div style={{ margin: "10px" }}>
+    <Typography
+      align="left"
+      style={{ marginTop: "10px", fontSize: "32px" ,fontWeight:"550"}}
+>>>>>>> 5b1b67755dcc72db0e6587bbaae1b6312c9e42ae
     >
       <div style={{ padding: "20px" }}>
         <Paper style={{ padding: "18px" }}>

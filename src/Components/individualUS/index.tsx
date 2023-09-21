@@ -1469,7 +1469,6 @@ export default function IndividualUs() {
                                 checked={values.foreignTINNotAvailable}
                                 onChange={(e) => {handleChange(e)
                                 if(e.target.value) setFieldValue('alternativeTINFormat', false)
-                                // if(e.target.value) setFieldValue('foreignTINNotAvailable',!values.foreignTINNotAvailable)
                                 } }
                               />
                               
@@ -3284,13 +3283,14 @@ export default function IndividualUs() {
                       timeout="auto"
                       unmountOnExit
                     >
+                      <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography>
                       {incomeArr.length &&
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              {/* <Typography className="d-flex w-100 pb-2">
-                                Income Type
-                              </Typography> */}
+                              
 
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
@@ -3456,13 +3456,14 @@ export default function IndividualUs() {
                       timeout="auto"
                       unmountOnExit
                     >
+                      <Typography className="d-flex w-100 pb-2">
+                                Income Code
+                              </Typography>
                       {incomeArr.length &&
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              {/* <Typography className="d-flex w-100 pb-2">
-                                Income Type
-                              </Typography> */}
+                              
 
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
@@ -3848,6 +3849,13 @@ export default function IndividualUs() {
                           {values.paymentTypeId == 1 ? (
                             <>
                               <div className="row">
+                              <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Banking Information
+                                </Typography>
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -4001,6 +4009,13 @@ export default function IndividualUs() {
                           {values.paymentTypeId == 2 ? (
                             <>
                               <div className="row">
+                              <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Payment Information
+                                </Typography>
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -4297,6 +4312,13 @@ export default function IndividualUs() {
                           {values.paymentTypeId == 3 ? (
                             <>
                               <div className="row">
+                              <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Banking Information
+                                </Typography>
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
