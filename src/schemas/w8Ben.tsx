@@ -80,6 +80,10 @@ export const claimSchema = () => {
     isSubmissionClaimTreaty: Yup.string().required(
       "Please select one of the options"
     ),
+    ownerResidentId: Yup.boolean().when("isSubmissionClaimTreaty", {
+      is: "yes",
+      then: () => Yup.string().required("Please select owner"),
+    }),
   });
 };
 export const rateSchema = () => {
@@ -112,5 +116,43 @@ export const rateSchema = () => {
       is: "yes",
       then: () => Yup.string().required("Please select one of the options"),
     }),
+  });
+};
+export const certificateSchema = () => {
+  return Yup.object().shape({
+    isBeneficialOwnerIncome: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isPersonNameNotUSPerson: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isIncomeFormRelated: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isIncomeTaxTreaty: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+    isBrokerTransactions: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isAuthorizedForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+    isConfirmElectronicForm: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+  });
+};
+
+export const partCertiSchema = () => {
+  return Yup.object().shape({
+    signedBy: Yup.string().required("Please enter "),
+    code: Yup.string().required("Please enter code"),
+    date: Yup.date().required("Please enter date"),
   });
 };

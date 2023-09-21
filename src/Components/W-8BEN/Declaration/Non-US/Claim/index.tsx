@@ -35,7 +35,10 @@ export default function FCTA_Reporting(props: any) {
       <div style={{ padding: "20px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
-            initialValues={{ isSubmissionClaimTreaty: "No" }}
+            initialValues={{
+              isSubmissionClaimTreaty: "No",
+              ownerResidentId: "",
+            }}
             enableReinitialize
             validationSchema={claimSchema}
             onSubmit={(values, { setSubmitting }) => {
@@ -222,7 +225,7 @@ export default function FCTA_Reporting(props: any) {
                         ""
                       )}
                     </div>
-                    {report === "257" ? (
+                    {values.isSubmissionClaimTreaty == "yes" ? (
                       <>
                         <Typography
                           align="left"
@@ -248,16 +251,20 @@ export default function FCTA_Reporting(props: any) {
                               height: "50px",
                               width: "50%",
                             }}
-                            name="interestDividendPaymentId"
-                            id="Income"
-
-                            // onChange={handleChange}
+                            name="ownerResidentId"
+                            id="ownerResidentId"
+                            onBlur={handleBlur}
+                            value={values.ownerResidentId}
+                            onChange={(e) => {
+                              handleChange(e);
+                            }}
                           >
                             <option value={0}>-Select-</option>
                             <option value={1}>Individual</option>
                             <option value={2}>Individual/sole Propritor</option>
                             <option value={3}>Limited Liability Company</option>
                           </select>
+                          <p className="error">{errors.ownerResidentId}</p>
                         </FormControl>
                       </>
                     ) : null}
