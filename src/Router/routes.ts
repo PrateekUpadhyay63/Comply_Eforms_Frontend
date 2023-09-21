@@ -2,41 +2,58 @@ import React from "react";
 import { RouteType } from "./types";
 import Utils from "../Utils";
 
-const login = React.lazy(() => import('../Components/login'));
-const W9 = React.lazy(() => import('../Components/w9'));
-const IndividualUs = React.lazy(() => import('../Components/individualUS'));
-const EntityUs = React.lazy(() => import('../Components/entity'));
-const Term =  React.lazy(() => import('../Components/term'));
-const Certificates = React.lazy(() => import('../Components/certificates'));
-const form = React.lazy(() => import('../FormGuide/form/index'));
-const Guide = React.lazy(() => import('../FormGuide/form/guide'));
-const Complete = React.lazy(() => import('../Components/complete'));
-const Security = React.lazy(() => import('../Components/Security'));
-const Submit = React.lazy(() => import('../Components/Submit'));
+const login = React.lazy(() => import("../Components/login"));
+const W9 = React.lazy(() => import("../Components/w9"));
+const IndividualUs = React.lazy(() => import("../Components/individualUS"));
+const EntityUs = React.lazy(() => import("../Components/entity"));
+const Term = React.lazy(() => import("../Components/term"));
+const Certificates = React.lazy(() => import("../Components/certificates"));
+const form = React.lazy(() => import("../FormGuide/form/index"));
+const Guide = React.lazy(() => import("../FormGuide/form/guide"));
+const Complete = React.lazy(() => import("../Components/complete"));
+const Security = React.lazy(() => import("../Components/Security"));
+const Submit = React.lazy(() => import("../Components/Submit"));
 
 //
 const Declaration = React.lazy(
   () => import("../Components/W-8BEN/Declaration")
 );
 //
-const US_Sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/US'));
-
-
-// 
-const Non_us_sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Status'));
-const Non_us_tin = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/US_Tin'));
-const Claim = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Claim/index'));
-const Rates = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Rates/index'));
-const Certi = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Certificates'));
-const Part = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Part-certi'));
+const US_Sourced = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/US")
+);
 
 //
-const Eci = React.lazy(() => import('../Components/W-8ECI/Info'));
-const TaxPurpose = React.lazy(() => import('../Components/W-8ECI/TaxPurpose'));
-const TaxPayer = React.lazy(() => import('../Components/W-8ECI/TaxPayer'));
-const Income_Eci = React.lazy(() => import('../Components/W-8ECI/Income'));
-const Certi_Eci = React.lazy(() => import('../Components/W-8ECI/Certification'));
-const Part_ceri = React.lazy(() => import('../Components/W-8ECI/Participation'));
+const Non_us_sourced = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/Status")
+);
+const Non_us_tin = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/US_Tin")
+);
+const Claim = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/Claim/index")
+);
+const Rates = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/Rates/index")
+);
+const Certi = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/Certificates")
+);
+const Part = React.lazy(
+  () => import("../Components/W-8BEN/Declaration/Non-US/Part-certi")
+);
+
+//
+const Eci = React.lazy(() => import("../Components/W-8ECI/Info"));
+const TaxPurpose = React.lazy(() => import("../Components/W-8ECI/TaxPurpose"));
+const TaxPayer = React.lazy(() => import("../Components/W-8ECI/TaxPayer"));
+const Income_Eci = React.lazy(() => import("../Components/W-8ECI/Income"));
+const Certi_Eci = React.lazy(
+  () => import("../Components/W-8ECI/Certification")
+);
+const Part_ceri = React.lazy(
+  () => import("../Components/W-8ECI/Participation")
+);
 //
 
 const ROUTES: Array<RouteType> = [
@@ -69,154 +86,61 @@ const ROUTES: Array<RouteType> = [
     isPrivate: true,
   },
   {
-    name:"Security",
-    path:"/Security",
+    name: "Security",
+    path: "/Security",
     id: 2,
     Component: Security,
     isPrivate: true,
-
   },
   {
-    name: 'EntityUs',
-    path:"EntityUs",
+    name: "EntityUs",
+    path: "EntityUs",
     id: 2,
     Component: EntityUs,
-    isPrivate: true},
-    {
-      name: 'Term',
-      path:"Term",
-      id: 3,
-      Component: Term,
-      isPrivate: true},
-      {
-        name:"Guide",
-        path:"/Guide",
-        id: 3,
-        Component: Guide,
-        isPrivate: true
-      },
-      {
-        name:"Submit",
-        path:"/Submit",
-        id: 3,
-        Component: Submit,
-        isPrivate: true
-
-      },
-      {
-        name: 'Certificates',
-        path:"/Certificates",
-        id: 4,
-        Component: Certificates,
-        isPrivate: true},
-        {
-          name: 'Complete',
-          path:"Complete",
-          id: 4,
-          Component: Complete,
-          isPrivate: true},
-          {
-            name:"form",
-            path:"/form",
-          id: 4,
-          Component: form,
-          isPrivate: true
-          },
-
-          {
-            name:"Declaration",
-            path:"W-8BEN/Declaration",
-           id: 5,
-           Component: Declaration,
-           isPrivate: true
-          },
-          {
-name:"Non_us_sourced",
-path:"W-8BEN/Declaration/Non_US_Sorced/Status",
-           id: 5,
-           Component: Non_us_sourced,
-           isPrivate: true
-          },
-
-          {
-            name:"US_Sourced",
-            path:"W-8BEN/Declaration/US_Sourced",
-           id: 4,
-           Component: US_Sourced,
-           isPrivate: true
-          },
-          {
-            name:"Non_us_tin",
-            path:"W-8BEN/Declaration/US_Tin",
-           id: 4,
-           Component: Non_us_tin,
-           isPrivate: true
-          },
-          {
-            name:"Claim",
-            path:"W-8BEN/Declaration/US_Tin/Claim",
-           id: 5,
-           Component: Claim,
-           isPrivate: true
-          },{
-            name:"Rates",
-            path:"W-8BEN/Declaration/US_Tin/Rates",
-           id: 6,
-           Component: Rates,
-           isPrivate: true
-          },{
-            name:"Certi",
-            path:"W-8BEN/Declaration/US_Tin/Certificates",
-            id: 6,
-            Component: Certi,
-            isPrivate: true
-          },
-          {
-            name:"Part",
-            path:"W-8BEN/Declaration/US_Tin/Certification_Substitute",
-            id: 6,
-            Component: Part,
-            isPrivate: true
-          },
-          {
-            name:"Eci",
-            path:"W-8ECI/Info",
-            id: 6,
-            Component: Eci,
-            isPrivate: true
-          },
-          {
-            name:"TaxPurpose",
-            path:"W-8ECI/Tax_Purpose",
-            id: 6,
-            Component: TaxPurpose,
-            isPrivate: true
-          },{
-            name:"TaxPayer",
-            path:"W-8ECI/Tax_Payer",
-            id: 6,
-            Component: TaxPayer,
-            isPrivate: true
-
-          },
-          {
-            name:"Income_Eci",
-            path:"W-8ECI/Income",
-            id: 6,
-            Component: Income_Eci,
-            isPrivate: true
-          },
-          {
-            name:"Certi_Eci",
-            path:"W-8ECI/Certification",
-            id: 6,
-            Component: Certi_Eci,
-            isPrivate: true
-          },
-
-
-
-  
+    isPrivate: true,
+  },
+  {
+    name: "Term",
+    path: "Term",
+    id: 3,
+    Component: Term,
+    isPrivate: true,
+  },
+  {
+    name: "Guide",
+    path: "/Guide",
+    id: 3,
+    Component: Guide,
+    isPrivate: true,
+  },
+  {
+    name: "Submit",
+    path: "/Submit",
+    id: 3,
+    Component: Submit,
+    isPrivate: true,
+  },
+  {
+    name: "Certificates",
+    path: "/Certificates",
+    id: 4,
+    Component: Certificates,
+    isPrivate: true,
+  },
+  {
+    name: "Complete",
+    path: "Complete",
+    id: 4,
+    Component: Complete,
+    isPrivate: true,
+  },
+  {
+    name: "form",
+    path: "/form",
+    id: 4,
+    Component: form,
+    isPrivate: true,
+  },
 
   {
     name: "Declaration",
@@ -276,13 +200,105 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
     isPrivate: true,
   },
   {
-    name:"Part_ceri",
-    path:"W-8ECI/Certification/Participation",
-            id: 6,
-            Component: Part_ceri,
-            isPrivate: true
+    name: "Eci",
+    path: "W-8ECI/Info",
+    id: 6,
+    Component: Eci,
+    isPrivate: true,
+  },
+  {
+    name: "TaxPurpose",
+    path: "W-8ECI/Tax_Purpose",
+    id: 6,
+    Component: TaxPurpose,
+    isPrivate: true,
+  },
+  {
+    name: "TaxPayer",
+    path: "W-8ECI/Tax_Payer",
+    id: 6,
+    Component: TaxPayer,
+    isPrivate: true,
+  },
+  {
+    name: "Income_Eci",
+    path: "W-8ECI/Income",
+    id: 6,
+    Component: Income_Eci,
+    isPrivate: true,
+  },
+  {
+    name: "Certi_Eci",
+    path: "W-8ECI/Certification",
+    id: 6,
+    Component: Certi_Eci,
+    isPrivate: true,
+  },
 
-  }
+  {
+    name: "Declaration",
+    path: "W-8BEN/Declaration",
+    id: 5,
+    Component: Declaration,
+    isPrivate: true,
+  },
+  {
+    name: "Non_us_sourced",
+    path: "W-8BEN/Declaration/Non_US_Sorced/Status",
+    id: 5,
+    Component: Non_us_sourced,
+    isPrivate: true,
+  },
+
+  {
+    name: "US_Sourced",
+    path: "W-8BEN/Declaration/US_Sourced",
+    id: 4,
+    Component: US_Sourced,
+    isPrivate: true,
+  },
+  {
+    name: "Non_us_tin",
+    path: "W-8BEN/Declaration/US_Tin",
+    id: 4,
+    Component: Non_us_tin,
+    isPrivate: true,
+  },
+  {
+    name: "Claim",
+    path: "W-8BEN/Declaration/US_Tin/Claim",
+    id: 5,
+    Component: Claim,
+    isPrivate: true,
+  },
+  {
+    name: "Rates",
+    path: "W-8BEN/Declaration/US_Tin/Rates",
+    id: 6,
+    Component: Rates,
+    isPrivate: true,
+  },
+  {
+    name: "Certi",
+    path: "W-8BEN/Declaration/US_Tin/Certificates",
+    id: 6,
+    Component: Certi,
+    isPrivate: true,
+  },
+  {
+    name: "Part",
+    path: "W-8BEN/Declaration/US_Tin/Certification_Substitute",
+    id: 6,
+    Component: Part,
+    isPrivate: true,
+  },
+  {
+    name: "Part_ceri",
+    path: "W-8ECI/Certification/Participation",
+    id: 6,
+    Component: Part_ceri,
+    isPrivate: true,
+  },
 ];
 
 export default ROUTES;
