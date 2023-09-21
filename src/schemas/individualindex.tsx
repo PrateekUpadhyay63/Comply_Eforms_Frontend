@@ -115,9 +115,9 @@ export const individualSchema = () => {
       .email("Invalid Email address")
       .required("Please enter Email"),
 
-    paymentTypeId: Yup.number()
-      .required("Please select an option")
-      .notOneOf([0], "Please select a valid option"),
+    paymentTypeId: Yup.number(),
+      // .required("Please select an option")
+      // .notOneOf([0], "Please select a valid option"),
 
     accountHolderName: Yup.string().when("paymentTypeId", {
       is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,

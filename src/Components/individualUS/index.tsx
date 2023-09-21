@@ -35,15 +35,19 @@ import { useDispatch,useSelector } from "react-redux";
 import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 // import DatePicker from "react-datepicker";
-
+import DatePicker from 'react-date-picker';
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 // import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
 // import { CheckBox } from '@mui/icons-material';
-
+type ValuePiece = Date | null;
+console.log(Date ,"date")
+type Value2 = ValuePiece | [ValuePiece, ValuePiece];
 export default function IndividualUs() {
   //States
-
+  const [value, onChange] = useState<Value2>(null);
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
@@ -239,7 +243,16 @@ export default function IndividualUs() {
   //       });
   //   }
   // }, [payload.permanentResidentialCountryId]);
-
+  const formatDate = (date:any) => {
+    const dateObj = new Date(date);
+    const month = dateObj.getMonth() + 1; // Months are 0-indexed
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+  
+    const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+    // return formattedDate;
+    console.log('formattedDate==',formattedDate)
+  };
   useEffect(() => {
    dispatch(getAllCountries())
   }, []);
@@ -256,7 +269,6 @@ export default function IndividualUs() {
     } else setOpen(val);
   };
 
-  
   const addIncomeType = () => {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
@@ -923,7 +935,7 @@ export default function IndividualUs() {
                               Date of Birth
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
-                            <Input
+                            {/* <Input
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -938,10 +950,31 @@ export default function IndividualUs() {
                               type="date"
                               id="outlined"
                               name="dob"
-                              onChange={handleChange}
+                              // onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(touched.dob && errors.dob)}
                               value={values.dob}
+                              onChange={(e) => { handleChange(e)
+
+                                setFieldValue('dob', formatDate(e.target.value));
+                                // console.log(formatDate(e.target.value),e.target.value,"e.target.value")
+                              }}
+                            /> */}
+                            <DatePicker 
+                             name="dob"
+                            onChange={
+                            (date) => {
+                              onChange(date);
+                              setFieldValue("dob",date)
+                            }
+                            } 
+                            value={value}
+                            onBlur={handleBlur}
+                            clearIcon ={null}
+                            format="MM-dd-yy"
+                            dayPlaceholder="DD"
+                            monthPlaceholder="MM"
+                            yearPlaceholder="YYYY"
                             />
                             <p className="error">{errors.dob}</p>
                           </FormControl>
@@ -1139,10 +1172,13 @@ export default function IndividualUs() {
                             the Foreign Country selected, based on OECD
                             guidance. By ticking “TIN Format not available”,
                             this disables the formatting so that any format may
-                            be input. An individual’s US TIN type is generally a
+                            be input.
+                            </Typography>
+                            <Typography style={{ marginTop: "10px" }}>
+                             An individual’s US TIN type is generally a
                             Social Security Number (SSN) or an Individual Tax
                             Identification Number (ITIN).?
-                          </Typography>
+                            </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             An entity’s US TIN may be an employer identification
                             number (EIN): including a withholding foreign
@@ -1198,11 +1234,6 @@ export default function IndividualUs() {
                             income:
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            However, a TIN is not required to be shown in order
-                            to claim treaty benefits on the following items of
-                            income:
-                          </Typography>
-                          <Typography style={{ marginTop: "10px" }}>
                             - Dividends and interest from stocks and debt
                             obligations that are actively traded;
                           </Typography>
@@ -1244,8 +1275,10 @@ export default function IndividualUs() {
                       timeout="auto"
                       unmountOnExit
                     >
-                      <div className="col-12 d-flex">
-                        <div className="col-lg-3 col-6 col-md-3 ">
+                      {values.isUSIndividual === 'no' ? (
+                        <div className="col-12 d-flex mt-3">
+                          
+                          <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100">
                             U.S. TIN Type
                             {/* <span style={{ color: 'red' }}>*</span> */}
@@ -1272,7 +1305,6 @@ export default function IndividualUs() {
                             </select>
                           </FormControl>
                         </div>
-
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
                             <Typography align="left">
@@ -1307,16 +1339,15 @@ export default function IndividualUs() {
                             />
                           </FormControl>
                         </div>
-                      </div>
-                      {values.isUSIndividual === 'no' ? (
-                        <div className="col-12 d-flex mt-3">
+                        
                           <div className="col-lg-3 col-6 col-md-3 ">
+                            
+
+                            <FormControl className="w-100">
                             <Typography align="left" className="d-flex w-100">
                               Foreign TIN Country
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
-
-                            <FormControl className="w-100">
                               <select
                                 style={{
                                   padding: " 0 10px",
@@ -1437,8 +1468,10 @@ export default function IndividualUs() {
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.foreignTINNotAvailable}
                                 disabled={values.foreignTINCountryId == 0}
+                                checked={values.foreignTINNotAvailable}
                                 onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('alternativeTINFormat', true)
+                                if(e.target.value) setFieldValue('alternativeTINFormat', false)
+                                // if(e.target.value) setFieldValue('foreignTINNotAvailable',!values.foreignTINNotAvailable)
                                 } }
                               />
                               
@@ -1472,8 +1505,10 @@ export default function IndividualUs() {
                                   values.foreignTINCountryId == 0 ||
                                   values.foreignTINCountryId != 257 
                                 }
+                                checked={values.alternativeTINFormat}
                                 onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('foreignTINNotAvailable', values.foreignTINNotAvailable)
+                                if(e.target.value) setFieldValue('foreignTINNotAvailable', false)
+                                // if(e.target.value) setFieldValue('alternativeTINFormat',!values.alternativeTINFormat)
                                 } }
                               />
                               
@@ -1556,7 +1591,68 @@ export default function IndividualUs() {
                           </div>
                         </div>
                       ) : (
-                        ""
+                        <div className="col-12 d-flex">
+                        <div className="col-lg-3 col-6 col-md-3 ">
+                          <Typography align="left" className="d-flex w-100">
+                            U.S. TIN Type
+                            {/* <span style={{ color: 'red' }}>*</span> */}
+                          </Typography>
+
+                          <FormControl className="w-100">
+                            <select
+                              style={{
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "36px",
+                              }}
+                              name="usTinTypeId"
+                              id="Income"
+                              defaultValue={1}
+                              onChange={handleChange}
+                              value={values.usTinTypeId}
+                            >
+                              <option value="1">-Select-</option>
+                              <option value="2">SSN/ITIN</option>
+                              <option value="3">Applied for</option>
+                            </select>
+                          </FormControl>
+                        </div>
+                        <div className="col-lg-3 col-6 col-md-3 mx-2">
+                          <FormControl className="w-100">
+                            <Typography align="left">
+                              U.S. TIN
+                              {/* <span style={{ color: 'red' }}>*</span> */}
+                            </Typography>
+                            <Input
+                              disabled={
+                                values.usTinTypeId == 3 ||
+                                values.usTinTypeId == 4
+                              }
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                height: " 36px",
+                                lineHeight: "36px ",
+                                background: "#fff ",
+                                fontSize: "13px",
+                                color: " #000 ",
+                                fontStyle: "normal",
+                                borderRadius: "1px",
+                                padding: " 0 10px ",
+                              }}
+                              id="outlined"
+                              name="usTin"
+                              placeholder="Enter U.S. TIN"
+                              onKeyDown={formatTin}
+                              onChange={handleChange}
+                              inputProps={{ maxLength: 11 }}
+                              // onBlur={handleBlur}
+                              //   error={Boolean(touched.usTin && errors.usTin)}
+                              value={values.usTin}
+                            />
+                          </FormControl>
+                        </div>
+                        </div>
                       )}
                     </Collapse>
                     <hr className="w-100"></hr>
@@ -1645,21 +1741,10 @@ export default function IndividualUs() {
                           }}
                         >
                           <Typography>
-                            Where applicable enter your US and Non-US (i.e.
-                            “Foreign”) taxpayer identification number(s) along
-                            with the US TIN Type and Foreign Country(ies)
-                            correlating to the FTIN(s).?
+                          Please enter the permanent residence address of the individual, business or organization the submission represents. This should be in the country where that payee’s income tax submission is made.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            Please note that some jurisdictions do not provide
-                            FTINs and this will be indicated if you select one
-                            of those jurisdictions. If you select a country that
-                            normally does provide an FTIN, but you do not wish
-                            to provide or cannot provide, you have the option to
-                            provide an explanation. Not providing a FTIN when it
-                            would normally be available may lead to the highest
-                            rate of withholding being applied, where treaty
-                            benefits could apply.
+                          If there is a mailing address that differs from the permanent address, then please enter that as well.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             IRS Guidance:
@@ -2760,20 +2845,10 @@ export default function IndividualUs() {
                           }}
                         >
                           <Typography>
-                            Where applicable enter your US and Non-US (i.e.
-                            “Foreign”) taxpayer identification number(s) along
-                            with the US TIN Type and Foreign Country(ies)
-                            correlating to the FTIN(s).?
+                          Please enter your contact details here and the capacity in which you will be signing the submission.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
-                            ated if you select one of those jurisdictions. If
-                            you select a country that normally does provide an
-                            FTIN, but you do not wish to provide or cannot
-                            provide, you have the option to provide an
-                            explanation. Not providing a FTIN when it would
-                            normally be available may lead to the highest rate
-                            of withholding being applied, where treaty benefits
-                            could apply.
+                            On confirmation an email will be sent to the address entered and contain a PIN that must be entered at the point of signature.
                           </Typography>
                           <Typography style={{ marginTop: "10px" }}>
                             If you have not received the email within a few
@@ -2973,7 +3048,7 @@ export default function IndividualUs() {
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
                             <Typography align="left">
-                              Secondary Contact Number
+                              Alternative Number
                             </Typography>
                             <select
                               style={{
@@ -3019,9 +3094,9 @@ export default function IndividualUs() {
                           {alternateNo ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-3">
                               <FormControl className="w-100">
-                                <Typography align="left">
+                                {/* <Typography align="left">
                                   Secondary Contact Number
-                                </Typography>
+                                </Typography> */}
                                 <span className="w-100 d-flex">
                                   <select
                                     className="w-100"
@@ -3094,7 +3169,10 @@ export default function IndividualUs() {
 
                     <hr className="w-100 "></hr>
                     {/* Income Type */}
-                    <CardHeader
+
+                    {values.isUSIndividual == "yes" ? (
+                      <>
+                      <CardHeader
                       className="flex-row-reverse"
                       title={
                         <div
@@ -3201,7 +3279,7 @@ export default function IndividualUs() {
                     ) : (
                       ""
                     )}
-
+                    
                     <Collapse
                       className="px-5"
                       in={open === "it"}
@@ -3212,10 +3290,9 @@ export default function IndividualUs() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <Typography className="d-flex w-100 pb-2">
+                              {/* <Typography className="d-flex w-100 pb-2">
                                 Income Type
-                                {/* <span style={{ color: 'red' }}>*</span> */}
-                              </Typography>
+                              </Typography> */}
 
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
@@ -3237,6 +3314,7 @@ export default function IndividualUs() {
                                       <option value={id}>{name}</option>
                                     ))}
                                   </select>
+                                  {incomeArr.length > 1 && (
                                   <Delete
                                   onClick={() => handleDelete(i)}
                                   style={{
@@ -3246,6 +3324,7 @@ export default function IndividualUs() {
                                     marginLeft: "4px",
                                   }}
                                 />
+                                )}
                                 </span>
                               </FormControl>
                             </div>
@@ -3263,6 +3342,181 @@ export default function IndividualUs() {
                         <a>Add Income Type</a>
                       </Typography>
                     </Collapse>
+                    </>
+                    ):(
+                      <>
+                      <CardHeader
+                      className="flex-row-reverse"
+                      title={
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            marginLeft: "13px",
+                          }}
+                        >
+                          Income Code
+                          <span
+                            style={{
+                              fontSize: "13px",
+                              color: "grey",
+                              marginLeft: "4px",
+                              marginTop: "11px",
+                            }}
+                          >
+                            (Optional)
+                          </span>
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Q&A, Income Type
+                                </Typography>
+                                <a onClick={() => setToolInfo("income")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                            />
+                          </Tooltip>
+                        </div>
+                      }
+                      action={
+                        <IconButton
+                          onClick={() => handleOpen("it")}
+                          aria-label="expand"
+                          size="small"
+                          style={{ marginTop: "3px" }}
+                        >
+                          {open === "it" ? (
+                            <RemoveCircleOutlineOutlined />
+                          ) : (
+                            <ControlPointOutlined />
+                          )}
+                        </IconButton>
+                      }
+                    ></CardHeader>
+
+                    {toolInfo === "income" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
+                          }}
+                        >
+                          <Typography>
+                            Income type or code is requested as part of the tax
+                            form completion process for purposes of calculating
+                            withholding rates, where applicable, and to further
+                            determine how you should be reported on. You should
+                            select the type of code that best defines the
+                            payments that you expect to receive. Income Types,
+                            associated with Form 1099 reporting, can include
+                            things like: Interest, Dividends, Rents, Royalties,
+                            Prizes and Awards. Income Codes, associated with
+                            Form 1042-S reporting, can be found here:
+                            https://www.irs.gov/pub/irs-pdf/p515.pdf
+                          </Typography>
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <Collapse
+                      className="px-5"
+                      in={open === "it"}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      {incomeArr.length &&
+                        incomeArr.map((ind, i) => {
+                          return (
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              {/* <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography> */}
+
+                              <FormControl className="w-100 d-flex" key={ind}>
+                                <span className="w-100 d-flex pb-2">
+                                  <select
+                                    className="w-100"
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="incomeTypeId"
+                                    id="Income"
+                                    onChange={handleChange}
+                                    value={values.incomeTypeId}
+                                  >
+                                    <option value="0">-Select-</option>
+                                    {incomeCodes.map(({ id, name }) => (
+                                      <option value={id}>{name}</option>
+                                    ))}
+                                  </select>
+                                  {incomeArr.length > 1 && (
+                                  <Delete
+                                  onClick={() => handleDelete(i)}
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "8px",
+                                    marginLeft: "4px",
+                                  }}
+                                />
+                                )}
+                                </span>
+                              </FormControl>
+                            </div>
+                          );
+                        })}
+
+                      <Typography
+                        style={{
+                          color: "#007bff",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                        }}
+                        onClick={() => addIncomeType()}
+                      >
+                        <a>Add Income Code</a>
+                      </Typography>
+                    </Collapse>
+                    </>
+                    )}
+                    
                     <hr className="w-100"></hr>
                     {/* Payment type */}
                     <CardHeader
@@ -3383,7 +3637,8 @@ export default function IndividualUs() {
                     >
                       <div className="col-lg-3 col-6 col-md-3 ">
                         <Typography className="d-flex w-100 pb-2">
-                          Payment Type<span style={{ color: "red" }}>*</span>
+                          Payment Type
+                          {/* <span style={{ color: "red" }}>*</span> */}
                         </Typography>
 
                         <FormControl className="w-100 d-flex">
@@ -3398,29 +3653,23 @@ export default function IndividualUs() {
                               }}
                               name="paymentTypeId"
                               id="Payment"
-                              // onChange={(e: any) =>
-                              //   setPayload({
-                              //     ...payload,
-                              //     paymentTypeId: parseInt(e.target.value),
-                              //   })
-                              // }
                               onChange={handleChange}
                               value={values.paymentTypeId}
                             >
-                              <option value={0}>Select</option>
+                              <option value="">Select</option>
                               <option value={1}>ACH</option>
                               <option value={2}>Check</option>
                               <option value={3}>Wire</option>
                             </select>
-                            <p className="error">{errors.paymentTypeId}</p>
-                            <Delete
+                            {/* <p className="error">{errors.paymentTypeId}</p> */}
+                            {/* <Delete
                               style={{
                                 color: "red",
                                 fontSize: "20px",
                                 marginTop: "8px",
                                 marginLeft: "4px",
                               }}
-                            />
+                            /> */}
                           </span>
                         </FormControl>
                       </div>
@@ -3429,6 +3678,7 @@ export default function IndividualUs() {
 
                     {values.paymentTypeId ? (
                       <>
+                      {console.log(values.paymentTypeId,"values.paymentTypeId")}
                         <CardHeader
                           className="flex-row-reverse"
                           title={
@@ -3486,7 +3736,22 @@ export default function IndividualUs() {
                                   }}
                                 />
                               </Tooltip>
-                              
+                              <p className="error">
+                            {errors?.accountHolderName ||
+                             errors?.accountBankName ||
+                             errors?.accountBankBranchLocationId || 
+                             errors?.accountNumber ||
+                             errors?.makePayable || 
+                             errors?.payResidentalCountryId ||
+                             errors?.payStreetNumberAndName ||
+                             errors?.payCityorTown ||
+                             errors?.payStateOrProvince ||
+                             errors?.payZipPostalCode ||
+                             errors?.sortCode ||
+                             errors?.bsb ||
+                             errors?.bankCode ||
+                             errors?.abaRouting ? "Mandatory information required" : ""}
+                          </p>
                             </div>
                           }
                           action={
@@ -3515,25 +3780,20 @@ export default function IndividualUs() {
                               <Typography>
                                 If you have an account number, or several
                                 account numbers relating to the certificate
-                                submission please identify here. The account
-                                details provided will be used to:
+                                submission please identify here.
                               </Typography>
                               <Typography>
-                                1. Make payments to you if you are entitled to
-                                any
+                              The account details provided will be used to:
                               </Typography>
                               <Typography>
-                                2.Ensure your form is correctly matched to your
-                                account
+                                <ul>
+                                  <li>Make payments to you if you are entitled to any</li>
+                                  <li>Ensure your form is correctly matched to your account</li>
+                                  <li>for further validation of new and existing information</li>
+                                  <li>In some circumstance will allow us to document multiple accounts with the same certificate</li>
+                                </ul>
                               </Typography>
-                              <Typography>
-                                3.for further validation of new and existing
-                                information
-                              </Typography>
-                              <Typography>
-                                4.In some circumstance will allow us to document
-                                multiple accounts with the same certificate
-                              </Typography>
+                              
                               <Typography style={{ marginTop: "10px" }}>
                                 Please see our privacy statement for further
                                 information.
@@ -3660,7 +3920,7 @@ export default function IndividualUs() {
                                 </div>
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <Typography align="left">
-                                    Branch Location
+                                    Bank Branch Location
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <FormControl className="w-100">
