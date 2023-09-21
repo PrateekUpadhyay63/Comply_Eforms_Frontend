@@ -49,7 +49,7 @@ $axios.interceptors.request.use(
 const constants = {
   apiErrorCode,
   // API_URL: process.env.REACT_APP_API_URL,
-  API_URL:"http://122.176.101.76:8088/api/",
+  API_URL:"http://122.176.101.76:8088/api",
   apiSuccessCode,
   axios: $axios,
 };
