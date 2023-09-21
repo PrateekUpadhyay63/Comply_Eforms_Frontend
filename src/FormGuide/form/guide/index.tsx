@@ -274,7 +274,7 @@ If you need further guidance you may wish to contact your local tax advisers.
               </Typography>
 
     </>
-):
+): Reverse === "No" ?
 <>
 <Typography align="center"
     className="mt-3"
@@ -320,11 +320,11 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                   Confirm
                 </Button>
               </Typography>
-</>
+</>:""
 }
 
     </>
-):<>
+): Hybrid === "No" ?
 <>
 <Typography align="center"
             className="mt-3"
@@ -485,7 +485,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
     ):""}
         </>
-    ):
+    ): Trust === "No" ?
     <>
     <Typography align="center"
     className="mt-3"
@@ -655,17 +655,17 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
         </>
 
     ):""}
-    </>
+    </>:""
     }
     </>
 
 ):""}
-</>
-</>
+</>:""
+
 }
     </>
 
-):
+):Intermediary === "No" ?
 <>
 <Typography align="center"
             className="mt-3"
@@ -827,7 +827,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
     ): <>
     <Typography align="center"
     className="mt-3"
-    style={{ fontSize: '20px', color: '#383a3b' }}>
+    style={{ fontSize: '20px', color: '#383a3b' ,fontWeight:"bold"}}>
     Foreign Government or International Organization
     </Typography>
     <Typography  align="left"
@@ -998,7 +998,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
     ):""}
     </>
 
-):
+): Tin === "No" ?
 <>
 <Typography align="center"
             className="mt-3"
@@ -1021,9 +1021,9 @@ A disregarded entity is defined as a business entity that has a single owner and
     
 A disregarded entity should not submit a Form W-8BEN to a partnership for purposes of section 1446. Instead the owner of such entity shall provide appropriate documentation. See Regulations section 1.1446-1.
 </Typography>
-</>
+</>: ""
 }
-</>
+</>:""
 }
 
 

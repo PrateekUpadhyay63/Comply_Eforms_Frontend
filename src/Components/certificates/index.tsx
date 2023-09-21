@@ -30,11 +30,13 @@ const clickInfo = () => {
     setSelectedCard(cardId);
   };
   const [toolInfo, setToolInfo] = useState("");
+  const [InfoMore, setInfoMore] = useState("");
   const redirectToComponent = (cardId: string) => {
    
     const componentPaths: ComponentPaths = {
       'W-9': '/W9',
       'W-8BEN': '/W-8BEN/Declaration',
+      'W-8ECI':'/W-8ECI/Info'
      
     };
 
@@ -58,6 +60,32 @@ const clickInfo = () => {
 
     <section className="inner_content" style={{ backgroundColor: '#0c3d69',marginBottom:'10px' }}>
       <div style={{padding:"17px"}}>
+      {InfoMore === "basic" ? (<div>
+              <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
+                <Typography>
+                Certificate Selection for U.S. Tax Purposes
+                </Typography>
+                <Typography style={{ marginTop: "10px" }}>
+                Select the most appropriate withholding certificate for your status and click Continue.
+                </Typography>
+                <Typography style={{ marginTop: "20px" }}>
+
+                  
+Based on details entered on the previous page, certain form selections which may not be applicable have been greyed out. If you believe a form should be available for your completion, press the Back button and revisit your details entered on the Account Holder Details page.
+                </Typography>
+
+
+                <Typography style={{ marginTop: "20px" }}>
+
+                If you are uncertain which withholding certificate is correct, refer to the Read More link on each form and/or the Form Guide in the upper right-hand corner.
+                </Typography>
+               
+                <Typography style={{ marginTop: "20px" }}>EH022</Typography>
+
+                <Link href="#" underline="none" style={{ marginTop: "10px", fontSize: "16px" }} onClick={() => { setToolInfo("") }}>--Show Less--</Link>
+              </Paper>
+
+            </div>) : ""}
             <div style={{justifyContent:'space-between',display:"flex"}}>
             <Typography align="left"
       style={{ fontSize: '32px', fontWeight: '500', color:'white' ,marginLeft:"10px"}}
