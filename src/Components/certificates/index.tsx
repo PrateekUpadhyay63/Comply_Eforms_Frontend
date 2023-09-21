@@ -53,7 +53,7 @@ const clickInfo = () => {
     { id: 'W-8ECI', title: 'W-8ECI', description: 'Used by individuals, or entities, to certify beneficial owner receiving U.S. sourced income that is effectively connected with a U.S. trade or business ' },
     { id: 'W-8EXP', title: 'W-8EXP', description: 'Used by governments, or other tax exempt entities, to certify beneficial owner, or account holder of financial institution' },
     { id: 'W-8IMY', title: 'W-8IMY', description: 'Used by entities to certify intermediary, or flow through entity, receiving payments on behalf of another person' },
-    { id: 'form 8233', title: 'form 8233', description: 'Used by individuals to certify beneficial owner claiming treaty exemption on compensation for personal services' },
+    { id: 'form 8233', title: 'Form 8233', description: 'Used by individuals to certify beneficial owner claiming treaty exemption on compensation for personal services' },
  
   ];
 
@@ -89,7 +89,7 @@ Based on details entered on the previous page, certain form selections which may
             </div>) : ""}
             <div style={{justifyContent:'space-between',display:"flex"}}>
             <Typography align="left"
-      style={{ fontSize: '32px', fontWeight: '500', color:'white' ,marginLeft:"10px"}}
+      style={{ fontSize: '34px', fontWeight: '500', color:'white' ,marginLeft:"10px"}}
     >
      Certificate Selection for U.S. Tax Purposes 
      <span>
@@ -165,7 +165,7 @@ Based on details entered on the previous page, certain form selections which may
         {card.title}
         </Typography>
        
-        <Typography align='center'  style={{fontSize:"12px",marginTop:"14px"}}>
+        <Typography align='center'  style={{fontSize:"13px",marginTop:"14px"}}>
         {card.description}
           <br />
          
