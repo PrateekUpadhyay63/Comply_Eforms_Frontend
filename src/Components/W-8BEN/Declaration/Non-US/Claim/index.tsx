@@ -19,10 +19,9 @@ import { W8_state } from "../../../../../Redux/Actions";
 import { useDispatch } from "react-redux";
 
 export default function FCTA_Reporting(props: any) {
-
   const history = useNavigate();
   const [report, setReport] = useState<string>("");
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
   };
   const [toolInfo, setToolInfo] = useState("");
@@ -36,17 +35,17 @@ export default function FCTA_Reporting(props: any) {
       <div style={{ padding: "20px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
-            initialValues={{ isSubmissionClaimTreaty: false }}
+            initialValues={{ isSubmissionClaimTreaty: "No" }}
             enableReinitialize
             validationSchema={claimSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values, "vallllll");
               dispatch(
                 W8_state(values, () => {
                   history("/W-8BEN/Declaration/US_Tin/Rates");
                 })
               );
+              history("/W-8BEN/Declaration/US_Tin/Rates");
             }}
           >
             {({
@@ -59,7 +58,7 @@ export default function FCTA_Reporting(props: any) {
               setFieldValue,
             }) => (
               <Form onSubmit={handleSubmit}>
-                <>{console.log(errors, values)}</>
+                <>{console.log(errors, values, "valeeeeeeeeeee")}</>
                 <div>
                   <div style={{ margin: "10px" }}>
                     <Typography
@@ -311,6 +310,6 @@ export default function FCTA_Reporting(props: any) {
           </Formik>
         </Paper>
       </div>
-    </section>    
+    </section>
   );
 }

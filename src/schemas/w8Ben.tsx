@@ -82,3 +82,35 @@ export const claimSchema = () => {
     ),
   });
 };
+export const rateSchema = () => {
+  return Yup.object().shape({
+    isSubmissionSpecialRates: Yup.string().required(
+      "Please select one of the options"
+    ),
+    articleBeneficalOwner: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+
+    paragraphArticleClaimed: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    subParagraphArticle: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please enter one of the options"),
+    }),
+    withHoldingClaim: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    incomeExpected: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    articleExplanation: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+  });
+};
