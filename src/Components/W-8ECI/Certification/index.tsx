@@ -234,7 +234,7 @@ export default function Certifications(props: any) {
         <Button
           type="submit"
          onClick={()=>{
-          history("/W-8BEN/Declaration/US_Tin/Certification_Substitute")
+          history("/W-8ECI/Certification/Participation")
          }}
           variant="contained"
           style={{ color: "white", marginLeft: "15px" }}

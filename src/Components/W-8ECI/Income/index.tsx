@@ -19,12 +19,18 @@ import {
 } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./index.scss";
+import { Formik, Form } from "formik";
 import {  ExpandMore, Info } from "@mui/icons-material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
 import Divider from '@mui/material/Divider';
 
 export default function Factors() {
+    const initialValue={
+        incomeDescription:"",
+        itemIncomeType:"",
+        isAppplicationCheck:""
+    }
 const history = useNavigate()
     const [numPapers, setNumPapers] = useState(1);
     const addIncomeTypePaper = () => {
@@ -40,6 +46,23 @@ const history = useNavigate()
         setStatus(event.target.value);
     };
     return (
+        <>
+        <Formik initialValues={initialValue}
+        onSubmit={(values, { setSubmitting }) => {
+           setSubmitting(true);
+        }}
+        >
+           {({
+                   errors,
+                   touched,
+                   handleBlur,
+                   values,
+                   handleSubmit,
+                   handleChange,
+                   isSubmitting,
+                 }) => (
+       <Form onSubmit={handleSubmit}>
+
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
 
             <div style={{ padding: "20px" }}>
@@ -147,8 +170,8 @@ const history = useNavigate()
                                                         height: "50px",
                                                         marginBottom: "20px"
                                                     }}
-                                                    name="interestDividendPaymentId"
-                                                    id="Income"
+                                                    name="itemIncomeType"
+                                                   
 
                                                 >
 
@@ -170,6 +193,7 @@ const history = useNavigate()
                                     </Typography>
                                     <FormControl className="w-50">
                                         <input
+                                        name="incomeDescription"
                                             className="col-md-12col-12"
                                             style={{
                                                 padding: " 0 10px",
@@ -194,7 +218,7 @@ const history = useNavigate()
 
                             </div>
                             <div style={{display:"flex",marginTop:"2rem"}}>
-                                <Checkbox size="medium" style={{fontSize:"2rem"}}/>
+                                <Checkbox name="isAppplicationCheck" size="medium" style={{fontSize:"2rem"}}/>
                                 <Typography style={{ fontSize: "20px"}}>
                                 If applicable check to certify that
                                 <span>
@@ -302,6 +326,10 @@ const history = useNavigate()
             </div>
 
         </section>
+        </Form>
+          )}
+</Formik>
+</>
 
     )
 }
