@@ -3139,145 +3139,152 @@ export default function Entity() {
 
                   <hr className="w-100 "></hr>
 
-                  <CardHeader
-                    style={{ textAlign: "left" }}
-                    className="flex-row-reverse"
-                    title={
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "left",
-                          marginLeft: "13px",
-                        }}
-                      >
-                        Income Type
-                        <span
+                  {values.isUSEntity == "yes" ? (
+                      <>
+                      <CardHeader
+                      className="flex-row-reverse"
+                      title={
+                        <div
                           style={{
-                            fontSize: "13px",
-                            color: "grey",
-                            marginLeft: "4px",
-                            marginTop: "11px",
+                            display: "flex",
+                            alignItems: "left",
+                            marginLeft: "13px",
                           }}
                         >
-                          (Optional)
-                        </span>
-                        <Tooltip
-                          style={{ backgroundColor: "black", color: "white" }}
-                          title={
-                            <>
-                              <Typography color="inherit">
-                                Q&A, Income Type
-                              </Typography>
-                              <a onClick={() => setToolInfo("Income")}>
-                                <Typography
-                                  style={{
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline",
-                                  }}
-                                  align="center"
-                                >
-                                  {" "}
-                                  View More...
-                                </Typography>
-                              </a>
-                            </>
-                          }
-                        >
-                          <Info
+                          Income Type
+                          <span
                             style={{
-                              color: "#ffc107",
-                              fontSize: "15px",
-                              marginLeft: "5px",
-                              cursor: "pointer",
+                              fontSize: "13px",
+                              color: "grey",
+                              marginLeft: "4px",
+                              marginTop: "11px",
                             }}
-                            // onClick={clickInfo}
-                          />
-                        </Tooltip>
-                      </div>
-                    }
-                    action={
-                      <IconButton
-                        onClick={() => handleOpen("it")}
-                        aria-label="expand"
-                        size="small"
-                        style={{ marginTop: "3px" }}
-                      >
-                        {open === "it" ? (
-                          <RemoveCircleOutlineOutlined />
-                        ) : (
-                          <ControlPointOutlined />
-                        )}
-                      </IconButton>
-                    }
-                  ></CardHeader>
-                  {toolInfo === "Income" ? (
-                    <div>
-                      <Paper
-                        style={{ backgroundColor: "#dedcb1", padding: "15px" }}
-                      >
-                        <Typography>
-                          Income type or code is requested as part of the tax
-                          form completion process for purposes of calculating
-                          withholding rates, where applicable, and to further
-                          determine how you should be reported on. You should
-                          select the type of code that best defines the payments
-                          that you expect to receive. Income Types, associated
-                          with Form 1099 reporting, can include things like:
-                          Interest, Dividends, Rents, Royalties, Prizes and
-                          Awards. Income Codes, associated with Form 1042-S
-                          reporting, can be found here:
-                          https://www.irs.gov/pub/irs-pdf/p515.pdf
-                        </Typography>
+                          >
+                            (Optional)
+                          </span>
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Q&A, Income Type
+                                </Typography>
+                                <a onClick={() => setToolInfo("income")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                            />
+                          </Tooltip>
+                        </div>
+                      }
+                      action={
+                        <IconButton
+                          onClick={() => handleOpen("it")}
+                          aria-label="expand"
+                          size="small"
+                          style={{ marginTop: "3px" }}
+                        >
+                          {open === "it" ? (
+                            <RemoveCircleOutlineOutlined />
+                          ) : (
+                            <ControlPointOutlined />
+                          )}
+                        </IconButton>
+                      }
+                    ></CardHeader>
 
-                        <Link
-                          href="#"
-                          underline="none"
-                          style={{ marginTop: "10px", fontSize: "16px" }}
-                          onClick={() => {
-                            setToolInfo("");
+                    {toolInfo === "income" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
                           }}
                         >
-                          --Show Less--
-                        </Link>
-                      </Paper>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  <Collapse
-                    className="px-5"
-                    in={open === "it"}
-                    timeout="auto"
-                    unmountOnExit
-                  >
-                    {incomeArr.length &&
-                      incomeArr.map((ind, i) => {
-                        return (
-                          <div className="col-lg-3 col-6 col-md-3 ">
-                            {/* <Typography className="d-flex w-100 pb-2">
-                              Income Type
-                            </Typography> */}
-                            <FormControl className="w-100 d-flex" key={ind}>
-                              <span className="w-100 d-flex pb-2">
-                                <select
-                                  className="w-100 "
-                                  style={{
-                                    padding: " 0 10px",
-                                    color: "#7e7e7e",
-                                    fontStyle: "italic",
-                                    height: "36px",
-                                  }}
-                                  name="incomeTypeId"
-                                  id="Income"
-                                  onChange={handleChange}
-                                  value={values.incomeTypeId}
-                                >
-                                  <option value="0">-Select-</option>
-                                  {incomeCodes.map(({ id, name }) => (
-                                    <option value={id}>{name}</option>
-                                  ))}
-                                </select>
-                                <Delete
+                          <Typography>
+                            Income type or code is requested as part of the tax
+                            form completion process for purposes of calculating
+                            withholding rates, where applicable, and to further
+                            determine how you should be reported on. You should
+                            select the type of code that best defines the
+                            payments that you expect to receive. Income Types,
+                            associated with Form 1099 reporting, can include
+                            things like: Interest, Dividends, Rents, Royalties,
+                            Prizes and Awards. Income Codes, associated with
+                            Form 1042-S reporting, can be found here:
+                            https://www.irs.gov/pub/irs-pdf/p515.pdf
+                          </Typography>
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    
+                    <Collapse
+                      className="px-5"
+                      in={open === "it"}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      {incomeArr.length &&
+                        incomeArr.map((ind, i) => {
+                          return (
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              {/* <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography> */}
+
+                              <FormControl className="w-100 d-flex" key={ind}>
+                                <span className="w-100 d-flex pb-2">
+                                  <select
+                                    className="w-100"
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="incomeTypeId"
+                                    id="Income"
+                                    onChange={handleChange}
+                                    value={values.incomeTypeId}
+                                  >
+                                    <option value="0">-Select-</option>
+                                    {incomeCodes.map(({ id, name }) => (
+                                      <option value={id}>{name}</option>
+                                    ))}
+                                  </select>
+                                  {incomeArr.length > 1 && (
+                                  <Delete
                                   onClick={() => handleDelete(i)}
                                   style={{
                                     color: "red",
@@ -3286,23 +3293,199 @@ export default function Entity() {
                                     marginLeft: "4px",
                                   }}
                                 />
-                              </span>
-                            </FormControl>
-                          </div>
-                        );
-                      })}
+                                )}
+                                  
+                                </span>
+                              </FormControl>
+                            </div>
+                          );
+                        })}
 
-                    <Typography
-                      style={{
-                        color: "#007bff",
-                        cursor: "pointer",
-                        fontSize: "12px",
-                      }}
-                      onClick={() => addIncomeType()}
+                      <Typography
+                        style={{
+                          color: "#007bff",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                        }}
+                        onClick={() => addIncomeType()}
+                      >
+                        <a>Add Income Type</a>
+                      </Typography>
+                    </Collapse>
+                    </>
+                    ):(
+                      <>
+                      <CardHeader
+                      className="flex-row-reverse"
+                      title={
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            marginLeft: "13px",
+                          }}
+                        >
+                          Income Code
+                          <span
+                            style={{
+                              fontSize: "13px",
+                              color: "grey",
+                              marginLeft: "4px",
+                              marginTop: "11px",
+                            }}
+                          >
+                            (Optional)
+                          </span>
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Q&A, Income Type
+                                </Typography>
+                                <a onClick={() => setToolInfo("income")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                            />
+                          </Tooltip>
+                        </div>
+                      }
+                      action={
+                        <IconButton
+                          onClick={() => handleOpen("it")}
+                          aria-label="expand"
+                          size="small"
+                          style={{ marginTop: "3px" }}
+                        >
+                          {open === "it" ? (
+                            <RemoveCircleOutlineOutlined />
+                          ) : (
+                            <ControlPointOutlined />
+                          )}
+                        </IconButton>
+                      }
+                    ></CardHeader>
+
+                    {toolInfo === "income" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
+                          }}
+                        >
+                          <Typography>
+                            Income type or code is requested as part of the tax
+                            form completion process for purposes of calculating
+                            withholding rates, where applicable, and to further
+                            determine how you should be reported on. You should
+                            select the type of code that best defines the
+                            payments that you expect to receive. Income Types,
+                            associated with Form 1099 reporting, can include
+                            things like: Interest, Dividends, Rents, Royalties,
+                            Prizes and Awards. Income Codes, associated with
+                            Form 1042-S reporting, can be found here:
+                            https://www.irs.gov/pub/irs-pdf/p515.pdf
+                          </Typography>
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <Collapse
+                      className="px-5"
+                      in={open === "it"}
+                      timeout="auto"
+                      unmountOnExit
                     >
-                      <a>Add Income Type</a>
-                    </Typography>
-                  </Collapse>
+                      {incomeArr.length &&
+                        incomeArr.map((ind, i) => {
+                          return (
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              {/* <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography> */}
+
+                              <FormControl className="w-100 d-flex" key={ind}>
+                                <span className="w-100 d-flex pb-2">
+                                  <select
+                                    className="w-100"
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="incomeTypeId"
+                                    id="Income"
+                                    onChange={handleChange}
+                                    value={values.incomeTypeId}
+                                  >
+                                    <option value="0">-Select-</option>
+                                    {incomeCodes.map(({ id, name }) => (
+                                      <option value={id}>{name}</option>
+                                    ))}
+                                  </select>
+                                  {incomeArr.length > 1 && (
+                                  <Delete
+                                  onClick={() => handleDelete(i)}
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "8px",
+                                    marginLeft: "4px",
+                                  }}
+                                />
+                                )}
+                                </span>
+                              </FormControl>
+                            </div>
+                          );
+                        })}
+
+                      <Typography
+                        style={{
+                          color: "#007bff",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                        }}
+                        onClick={() => addIncomeType()}
+                      >
+                        <a>Add Income Code</a>
+                      </Typography>
+                    </Collapse>
+                    </>
+                    )}
                   <hr className="w-100"></hr>
 
                   {/* Payment Type   */}
@@ -3441,7 +3624,7 @@ export default function Entity() {
                             onChange={handleChange}
                             value={values.paymentTypeId}
                           >
-                            <option value={0}>Select</option>
+                            <option value="">Select</option>
                             <option value={1}>ACH</option>
                             <option value={2}>Check</option>
                             <option value={3}>Wire</option>

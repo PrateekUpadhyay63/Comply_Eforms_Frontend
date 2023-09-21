@@ -739,7 +739,7 @@ export default function Fedral_tax(props: any) {
                             style={{ fontSize: "18px", color: "blue" }}
                           >
                             Limited Liability Company(Single-Member)
-                          </Typography>
+                           </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Typography align="left">

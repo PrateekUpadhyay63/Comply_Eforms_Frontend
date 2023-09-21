@@ -1,6 +1,6 @@
-import React from 'react';
-import { RouteType } from './types';
-import Utils from '../Utils';
+import React from "react";
+import { RouteType } from "./types";
+import Utils from "../Utils";
 
 const login = React.lazy(() => import('../Components/login'));
 const W9 = React.lazy(() => import('../Components/w9'));
@@ -14,7 +14,9 @@ const Complete = React.lazy(() => import('../Components/complete'));
 const Security = React.lazy(() => import('../Components/Security'));
 
 //
-const Declaration = React.lazy(() => import('../Components/W-8BEN/Declaration'));
+const Declaration = React.lazy(
+  () => import("../Components/W-8BEN/Declaration")
+);
 //
 const US_Sourced = React.lazy(() => import('../Components/W-8BEN/Declaration/US'));
 
@@ -37,29 +39,29 @@ const Certi_Eci = React.lazy(() => import('../Components/W-8ECI/Certification'))
 
 const ROUTES: Array<RouteType> = [
   {
-    name: 'Login',
+    name: "Login",
     path: "login",
     id: 0,
     Component: login,
     isPrivate: true,
   },
   {
-    name: 'IndividualUs',
+    name: "IndividualUs",
     path: "/",
     id: 10,
     Component: IndividualUs,
     isPrivate: true,
   },
   {
-    name: 'W9',
+    name: "W9",
     path: "W9",
     id: 1,
     Component: W9,
     isPrivate: true,
   },
   {
-    name: 'IndividualUs',
-    path:"IndividualUs",
+    name: "IndividualUs",
+    path: "IndividualUs",
     id: 2,
     Component: IndividualUs,
     isPrivate: true,
@@ -200,13 +202,69 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
             id: 6,
             Component: Certi_Eci,
             isPrivate: true
-          }
+          },
 
 
 
   
 
+  {
+    name: "Declaration",
+    path: "W-8BEN/Declaration",
+    id: 5,
+    Component: Declaration,
+    isPrivate: true,
+  },
+  {
+    name: "Non_us_sourced",
+    path: "W-8BEN/Declaration/Non_US_Sorced/Status",
+    id: 5,
+    Component: Non_us_sourced,
+    isPrivate: true,
+  },
 
+  {
+    name: "US_Sourced",
+    path: "W-8BEN/Declaration/US_Sourced",
+    id: 4,
+    Component: US_Sourced,
+    isPrivate: true,
+  },
+  {
+    name: "Non_us_tin",
+    path: "W-8BEN/Declaration/US_Tin",
+    id: 4,
+    Component: Non_us_tin,
+    isPrivate: true,
+  },
+  {
+    name: "Claim",
+    path: "W-8BEN/Declaration/US_Tin/Claim",
+    id: 5,
+    Component: Claim,
+    isPrivate: true,
+  },
+  {
+    name: "Rates",
+    path: "W-8BEN/Declaration/US_Tin/Rates",
+    id: 6,
+    Component: Rates,
+    isPrivate: true,
+  },
+  {
+    name: "Certi",
+    path: "W-8BEN/Declaration/US_Tin/Certificates",
+    id: 6,
+    Component: Certi,
+    isPrivate: true,
+  },
+  {
+    name: "Part",
+    path: "W-8BEN/Declaration/US_Tin/Certification_Substitute",
+    id: 6,
+    Component: Part,
+    isPrivate: true,
+  },
 ];
 
 export default ROUTES;
