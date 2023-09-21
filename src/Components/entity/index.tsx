@@ -677,8 +677,8 @@ export default function Entity() {
                         <Typography>
                           For additional clarification, follow the following
                           link:{" "}
-                          <Link>
-                            https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes
+                          <Link href= "https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes">
+                          https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes                          
                           </Link>
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
@@ -1004,8 +1004,10 @@ export default function Entity() {
                           Note: the Foreign TIN box restricts formatting per the
                           Foreign Country selected, based on OECD guidance. By
                           ticking “TIN Format not available”, this disables the
-                          formatting so that any format may be input. An
-                          individual’s US TIN type is generally a Social
+                          formatting so that any format may be input.
+                        </Typography>
+                        <Typography>
+                        An individual’s US TIN type is generally a Social
                           Security Number (SSN) or an Individual Tax
                           Identification Number (ITIN).?
                         </Typography>
@@ -1056,11 +1058,6 @@ export default function Entity() {
                         <Typography style={{ marginTop: "10px" }}>
                           - Claiming benefits under an income tax treaty and
                           have not provided a foreign TIN on line 9b.{" "}
-                        </Typography>
-                        <Typography style={{ marginTop: "10px" }}>
-                          However, a TIN is not required to be shown in order to
-                          claim treaty benefits on the following items of
-                          income:
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
                           However, a TIN is not required to be shown in order to
@@ -1242,8 +1239,9 @@ export default function Entity() {
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.foreignTINNotAvailable}
                                 disabled={values.foreignTINCountryId == 0}
+                                checked={values.foreignTINNotAvailable}
                                 onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('alternativeTINFormat', true)
+                                if(e.target.value) setFieldValue('alternativeTINFormat', false)
                                 } }
                               />
                               
@@ -1277,9 +1275,10 @@ export default function Entity() {
                                   values.foreignTINCountryId == 0 ||
                                   values.foreignTINCountryId != 257 
                                 }
+                                checked={values.alternativeTINFormat}
                                 onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('foreignTINNotAvailable', values.foreignTINNotAvailable)
-                                } }
+                                if(e.target.value) setFieldValue('foreignTINNotAvailable', false)
+                                }}
                               />
                               
                               {errors.alternativeTINFormat &&
@@ -1537,21 +1536,10 @@ export default function Entity() {
                         style={{ backgroundColor: "#dedcb1", padding: "15px" }}
                       >
                         <Typography>
-                          Where applicable enter your US and Non-US (i.e.
-                          “Foreign”) taxpayer identification number(s) along
-                          with the US TIN Type and Foreign Country(ies)
-                          correlating to the FTIN(s).?
+                        Please enter the permanent residence address of the individual, business or organization the submission represents. This should be in the country where that payee’s income tax submission is made.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
-                          Please note that some jurisdictions do not provide
-                          FTINs and this will be indicated if you select one of
-                          those jurisdictions. If you select a country that
-                          normally does provide an FTIN, but you do not wish to
-                          provide or cannot provide, you have the option to
-                          provide an explanation. Not providing a FTIN when it
-                          would normally be available may lead to the highest
-                          rate of withholding being applied, where treaty
-                          benefits could apply.
+                        If there is a mailing address that differs from the permanent address, then please enter that as well.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
                           IRS Guidance:
@@ -1892,7 +1880,7 @@ export default function Entity() {
                         <div className="mx-5">
                           <Typography style={{ marginTop: "20px" }}>
                             Is there an alternative mailing or business address
-                            in the US?
+                            in the U.S.?
                             <span style={{ color: "red" }}>*</span>
                             <span>
                               <Tooltip
@@ -2036,7 +2024,7 @@ export default function Entity() {
                             align="left"
                             style={{ marginTop: "20px" }}
                           >
-                            Is this address a Post Office Box?
+                            Is this address a PO Box?
                             <span style={{ color: "red" }}>*</span>
                             <span>
                               <Tooltip
@@ -2330,7 +2318,7 @@ export default function Entity() {
                           <div className="mx-5">
                             <Typography style={{ marginTop: "20px" }}>
                               Is there an alternative mailing or business
-                              address in the US?
+                              address in the U.S.?
                               <span style={{ color: "red" }}>*</span>
                               <span>
                                 <Tooltip
@@ -2794,19 +2782,10 @@ export default function Entity() {
                         style={{ backgroundColor: "#dedcb1", padding: "15px" }}
                       >
                         <Typography>
-                          Where applicable enter your US and Non-US (i.e.
-                          “Foreign”) taxpayer identification number(s) along
-                          with the US TIN Type and Foreign Country(ies)
-                          correlating to the FTIN(s).?
+                        Please enter your contact details here and the capacity in which you will be signing the submission.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
-                          ated if you select one of those jurisdictions. If you
-                          select a country that normally does provide an FTIN,
-                          but you do not wish to provide or cannot provide, you
-                          have the option to provide an explanation. Not
-                          providing a FTIN when it would normally be available
-                          may lead to the highest rate of withholding being
-                          applied, where treaty benefits could apply.
+                        On confirmation an email will be sent to the address entered and contain a PIN that must be entered at the point of signature.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
                           If you have not received the email within a few
@@ -3063,7 +3042,7 @@ export default function Entity() {
 
                       <div>
                         {alternateNo ? (
-                          <div className="col-lg-3 col-6 col-md-3 mt-3">
+                          <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <FormControl className="w-100">
                               {/* <Typography align="left">
                                 Secondary Contact Number
@@ -3255,14 +3234,13 @@ export default function Entity() {
                       timeout="auto"
                       unmountOnExit
                     >
+                      <Typography className="d-flex w-100 pb-2">
+                                Income Type
+                              </Typography>
                       {incomeArr.length &&
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              {/* <Typography className="d-flex w-100 pb-2">
-                                Income Type
-                              </Typography> */}
-
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
@@ -3428,14 +3406,13 @@ export default function Entity() {
                       timeout="auto"
                       unmountOnExit
                     >
+                      <Typography className="d-flex w-100 pb-2">
+                                Income Code
+                              </Typography>
                       {incomeArr.length &&
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              {/* <Typography className="d-flex w-100 pb-2">
-                                Income Type
-                              </Typography> */}
-
                               <FormControl className="w-100 d-flex" key={ind}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
@@ -3630,14 +3607,6 @@ export default function Entity() {
                             <option value={3}>Wire</option>
                           </select>
                           {/* <p className="error">{errors.paymentTypeId}</p> */}
-                          <Delete
-                            style={{
-                              color: "red",
-                              fontSize: "20px",
-                              marginTop: "8px",
-                              marginLeft: "4px",
-                            }}
-                          />
                         </span>
                       </FormControl>
                     </div>
@@ -3752,23 +3721,22 @@ export default function Entity() {
                             <Typography>
                               If you have an account number, or several account
                               numbers relating to the certificate submission
-                              please identify here. The account details provided
+                              please identify here. 
+                              <Typography>
+                              The account details provided
                               will be used to:
+                              </Typography>
                             </Typography>
                             <Typography>
-                              1. Make payments to you if you are entitled to any
-                            </Typography>
-                            <Typography>
-                              2.Ensure your form is correctly matched to your
-                              account
-                            </Typography>
-                            <Typography>
-                              3.for further validation of new and existing
-                              information
-                            </Typography>
-                            <Typography>
-                              4.In some circumstance will allow us to document
-                              multiple accounts with the same certificate
+                              <ul>
+                                <li>Make payments to you if you are entitled to any</li>
+                                <li>Ensure your form is correctly matched to your
+                              account</li>
+                                <li>for further validation of new and existing
+                              information</li>
+                                <li>In some circumstance will allow us to document
+                              multiple accounts with the same certificate</li>
+                              </ul>
                             </Typography>
                             <Typography style={{ marginTop: "10px" }}>
                               Please see our privacy statement for further
@@ -3827,7 +3795,15 @@ export default function Entity() {
                         {values.paymentTypeId == 1 ? (
                           <>
                             <div className="row">
+                            <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Banking Information
+                                </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
+                                
                                 <FormControl className="w-100">
                                   <Typography align="left">
                                     Account holder name
@@ -3991,6 +3967,13 @@ export default function Entity() {
                         {values.paymentTypeId == 2 ? (
                           <>
                             <div className="row">
+                            <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Payment Information
+                                </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <FormControl className="w-100">
                                   <Typography align="left">
@@ -4031,7 +4014,7 @@ export default function Entity() {
                                 <FormControl className="w-100">
                                   <Typography align="left">
                                     {" "}
-                                    Residential Country
+                                    Country
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <select
@@ -4345,6 +4328,13 @@ export default function Entity() {
                         {values.paymentTypeId == 3 ? (
                           <>
                             <div className="row">
+                            <Typography style={{
+                                fontSize: "20px",
+                                color: "grey",
+                                marginBottom:"20px"
+                              }}>
+                                  Banking Information
+                                </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <FormControl className="w-100">
                                   <Typography>
