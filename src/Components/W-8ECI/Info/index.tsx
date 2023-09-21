@@ -24,19 +24,39 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Tin(props: any) {
+
+  const initialValue = {
+    streetNumberName: "",
+    eciUsTinTypeId: "",
+    eciUsTin: "",
+    aptSuite:"",
+    cityTown:"",
+    stateProvinceId:"",
+    zipPostalCode:""
+    
+  };
   const history= useNavigate()
-  const {
-    handleTaxClassificationChange,
-    selectedTaxClassification,
-    data,
-    handleChange,
-    setselectedContinue,
-  } = props;
+  
 
   const [toolInfo, setToolInfo] = useState("");
   return(
 
-    
+    <>
+    <Formik initialValues={initialValue}
+    onSubmit={(values, { setSubmitting }) => {
+       setSubmitting(true);
+    }}
+    >
+       {({
+               errors,
+               touched,
+               handleBlur,
+               values,
+               handleSubmit,
+               handleChange,
+               isSubmitting,
+             }) => (
+              <Form onSubmit={handleSubmit}>
     <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>   
     <div style={{padding:"20px"}}>
      <Paper style={{padding:"18px"}}>
@@ -70,16 +90,15 @@ export default function Tin(props: any) {
           height: "50px",
           width: "100%",
         }}
-        name="permanentResidentialCountryId1"
-        id="Income"
-        defaultValue={1}
+        name="eciUsTinTypeId"
+       
       ></select>
     </div>
 
     <div className="col-4">
       <Typography>U.S. TIN <span style={{ color: "red" }}>*</span></Typography>
       <Input
-     
+     name="eciUsTin"
       fullWidth
         required
         style={{
@@ -115,9 +134,8 @@ export default function Tin(props: any) {
           height: "50px",
           width: "100%",
         }}
-        name="permanentResidentialCountryId1"
-        id="Income"
-        defaultValue={1}
+        name="streetNumberName"
+       
       ></select>
      
       <div>
@@ -128,7 +146,7 @@ export default function Tin(props: any) {
     <div className="col-4">
       <Typography>Apt/Suite: </Typography>
       <Input
-     
+     name="aptSuite"
       fullWidth
         required
         style={{
@@ -144,7 +162,7 @@ export default function Tin(props: any) {
     <div className="col-4">
       <Typography>City or Town: <span style={{ color: "red" }}>*</span></Typography>
       <Input
-     
+     name="cityTown"
       fullWidth
         required
         style={{
@@ -172,7 +190,7 @@ export default function Tin(props: any) {
           height: "50px",
           width: "100%",
         }}
-        name="permanentResidentialCountryId1"
+        name="stateProvinceId"
         id="Income"
         defaultValue={1}
       ></select>
@@ -181,7 +199,7 @@ export default function Tin(props: any) {
     <div className="col-4">
       <Typography>Zip or Postal Code:<span style={{ color: "red" }}>*</span></Typography>
       <Input
-     
+     name="zipPostalCode"
       fullWidth
         required
         style={{
@@ -252,4 +270,8 @@ export default function Tin(props: any) {
 </Paper>
 </div>
 </section>
+</Form>
+)}
+</Formik>
+</>
 )}

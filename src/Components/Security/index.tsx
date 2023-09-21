@@ -19,7 +19,7 @@ const DialogEdit = (props:any) => {
 
   return (
     <Fragment>
-        <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+    <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
     <div style={{padding:"25px"}}>
     <Paper style={{padding:"22px"}}>
      

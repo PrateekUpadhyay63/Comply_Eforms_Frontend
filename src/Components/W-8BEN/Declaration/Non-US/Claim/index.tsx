@@ -28,6 +28,7 @@ export default function FCTA_Reporting(props: any) {
     };
     const [toolInfo, setToolInfo] = useState("");
   return (  
+    
     <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
     <div style={{padding:"20px"}}>
     <Paper style={{padding:"18px"}} >

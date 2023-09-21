@@ -24,6 +24,21 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Tin(props: any) {
+
+    const initialValue = {
+        usTin: "",
+        usTinTypeId: "",
+        foreignTINCountry: "",
+        foreignTIN: "",
+        isFTINLegally: "",
+        isNotAvailable: "",
+        alternativeTINFormat:"",
+        isExplanationNotLegallyFTIN:""
+
+
+        
+      };
+
     const history = useNavigate()
     const [tax, setTax] = useState<string>('');
 
@@ -34,7 +49,22 @@ export default function Tin(props: any) {
     const [toolInfo, setToolInfo] = useState("");
     return (
 
-
+        <>
+        <Formik initialValues={initialValue}
+        onSubmit={(values, { setSubmitting }) => {
+           setSubmitting(true);
+        }}
+        >
+           {({
+                   errors,
+                   touched,
+                   handleBlur,
+                   values,
+                   handleSubmit,
+                   handleChange,
+                   isSubmitting,
+                 }) => (
+       <Form onSubmit={handleSubmit}>
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
             <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>
@@ -86,6 +116,7 @@ export default function Tin(props: any) {
 
                                 </div>) : ""}
                                 <select
+                                name="usTinTypeId"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -94,16 +125,15 @@ export default function Tin(props: any) {
                                         height: "50px",
                                         width: "100%",
                                     }}
-                                    name="permanentResidentialCountryId1"
-                                    id="Income"
-                                    defaultValue={1}
+                                   
+                                   
                                 ></select>
                             </div>
 
                             <div className="col-4">
                                 <Typography>U.S. TIN</Typography>
                                 <Input
-
+ name="usTin"
                                     fullWidth
                                     required
                                     style={{
@@ -140,12 +170,11 @@ export default function Tin(props: any) {
                                         height: "50px",
                                         width: "100%",
                                     }}
-                                    name="permanentResidentialCountryId1"
-                                    id="Income"
-                                    defaultValue={1}
+                                    name="foreignTINCountry"
+                                    
                                 ></select>
                                 <div style={{ marginTop: "1rem" }}>
-                                    <Checkbox size="medium" />
+                                    <Checkbox size="medium"  name="isFTINLegally"/>
                                     <span style={{ fontSize: "20px", marginTop: "5px" }}>
 
 
@@ -177,7 +206,7 @@ export default function Tin(props: any) {
                             <div className="col-4">
                                 <Typography>Foreign TIN </Typography>
                                 <Input
-
+name="foreignTIN"
                                     fullWidth
                                     required
                                     style={{
@@ -197,8 +226,8 @@ export default function Tin(props: any) {
                                         name="row-radio-buttons-group"
 
                                     >
-                                        <FormControlLabel disabled value="Yes" control={<Radio />} label="Not Available" />
-                                        <FormControlLabel disabled defaultChecked className="label" value="no" control={<Radio />} label="Alternative TIN Format" />
+                                        <FormControlLabel name="isNotAvailable" disabled value="Yes" control={<Radio />} label="Not Available" />
+                                        <FormControlLabel name="alternativeTINFormat" disabled defaultChecked className="label" value="no" control={<Radio />} label="Alternative TIN Format" />
 
                                     </RadioGroup>
 
@@ -368,5 +397,9 @@ export default function Tin(props: any) {
                 </Paper>
             </div>
         </section>
+        </Form>
     )
 }
+</Formik>
+</>
+    )}

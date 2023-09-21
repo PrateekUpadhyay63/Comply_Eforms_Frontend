@@ -12,6 +12,7 @@ const form = React.lazy(() => import('../FormGuide/form/index'));
 const Guide = React.lazy(() => import('../FormGuide/form/guide'));
 const Complete = React.lazy(() => import('../Components/complete'));
 const Security = React.lazy(() => import('../Components/Security'));
+const Submit = React.lazy(() => import('../Components/Submit'));
 
 //
 const Declaration = React.lazy(
@@ -35,6 +36,7 @@ const TaxPurpose = React.lazy(() => import('../Components/W-8ECI/TaxPurpose'));
 const TaxPayer = React.lazy(() => import('../Components/W-8ECI/TaxPayer'));
 const Income_Eci = React.lazy(() => import('../Components/W-8ECI/Income'));
 const Certi_Eci = React.lazy(() => import('../Components/W-8ECI/Certification'));
+const Part_ceri = React.lazy(() => import('../Components/W-8ECI/Participation'));
 //
 
 const ROUTES: Array<RouteType> = [
@@ -92,6 +94,14 @@ const ROUTES: Array<RouteType> = [
         id: 3,
         Component: Guide,
         isPrivate: true
+      },
+      {
+        name:"Submit",
+        path:"/Submit",
+        id: 3,
+        Component: Submit,
+        isPrivate: true
+
       },
       {
         name: 'Certificates',
@@ -265,6 +275,14 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
     Component: Part,
     isPrivate: true,
   },
+  {
+    name:"Part_ceri",
+    path:"W-8ECI/Certification/Participation",
+            id: 6,
+            Component: Part_ceri,
+            isPrivate: true
+
+  }
 ];
 
 export default ROUTES;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState }  from "react";
+import "./index.scss";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
