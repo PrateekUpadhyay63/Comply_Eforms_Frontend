@@ -11,6 +11,7 @@ const Certificates = React.lazy(() => import('../Components/certificates'));
 const form = React.lazy(() => import('../FormGuide/form/index'));
 const Guide = React.lazy(() => import('../FormGuide/form/guide'));
 const Complete = React.lazy(() => import('../Components/complete'));
+const Security = React.lazy(() => import('../Components/Security'));
 
 //
 const Declaration = React.lazy(() => import('../Components/W-8BEN/Declaration'));
@@ -26,7 +27,13 @@ const Rates = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/R
 const Certi = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Certificates'));
 const Part = React.lazy(() => import('../Components/W-8BEN/Declaration/Non-US/Part-certi'));
 
-
+//
+const Eci = React.lazy(() => import('../Components/W-8ECI/Info'));
+const TaxPurpose = React.lazy(() => import('../Components/W-8ECI/TaxPurpose'));
+const TaxPayer = React.lazy(() => import('../Components/W-8ECI/TaxPayer'));
+const Income_Eci = React.lazy(() => import('../Components/W-8ECI/Income'));
+const Certi_Eci = React.lazy(() => import('../Components/W-8ECI/Certification'));
+//
 
 const ROUTES: Array<RouteType> = [
   {
@@ -56,6 +63,14 @@ const ROUTES: Array<RouteType> = [
     id: 2,
     Component: IndividualUs,
     isPrivate: true,
+  },
+  {
+    name:"Security",
+    path:"/Security",
+    id: 2,
+    Component: Security,
+    isPrivate: true,
+
   },
   {
     name: 'EntityUs',
@@ -149,6 +164,41 @@ path:"W-8BEN/Declaration/Non_US_Sorced/Status",
             path:"W-8BEN/Declaration/US_Tin/Certification_Substitute",
             id: 6,
             Component: Part,
+            isPrivate: true
+          },
+          {
+            name:"Eci",
+            path:"W-8ECI/Info",
+            id: 6,
+            Component: Eci,
+            isPrivate: true
+          },
+          {
+            name:"TaxPurpose",
+            path:"W-8ECI/Tax_Purpose",
+            id: 6,
+            Component: TaxPurpose,
+            isPrivate: true
+          },{
+            name:"TaxPayer",
+            path:"W-8ECI/Tax_Payer",
+            id: 6,
+            Component: TaxPayer,
+            isPrivate: true
+
+          },
+          {
+            name:"Income_Eci",
+            path:"W-8ECI/Income",
+            id: 6,
+            Component: Income_Eci,
+            isPrivate: true
+          },
+          {
+            name:"Certi_Eci",
+            path:"W-8ECI/Certification",
+            id: 6,
+            Component: Certi_Eci,
             isPrivate: true
           }
 

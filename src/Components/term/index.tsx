@@ -11,10 +11,11 @@ import DialogEdit from "../reusables/ElectronicSign";
 
 
 import 'bootstrap/dist/css/bootstrap.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Term() {
-
+const history = useNavigate()
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -87,7 +88,8 @@ export default function Term() {
                             <Button
                                 type="submit"
                                 onClick={()=>(
-                                    setOpen(true)
+                                    history("/Security")
+                                    // setOpen(true)
                                 )}
                                 
                                 style={{
