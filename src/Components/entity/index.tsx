@@ -42,6 +42,8 @@ export default function Entity() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   //   //States
+  const [incomeData, setIncomeData] = useState<any>([]);
+  // const [value, onChange] = useState<Value2>(null);
   const [open, setOpen] = useState("");
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
   // const [accInfoSection, setAccInfoSection] = useState(false);
@@ -236,11 +238,7 @@ export default function Entity() {
    const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
    const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
 
-  const handleDelete = (i: any) => {
-    const updatedIncomeCodes = [...incomeArr];
-    updatedIncomeCodes.splice(i, 1);
-    setIncomeArr(updatedIncomeCodes);
-  };
+
 
   // useEffect(() => {
   //   if (payload.permanentResidentialCountryId == 258) {
@@ -273,9 +271,17 @@ export default function Entity() {
   // };
 
   const addIncomeType = () => {
-    setIncomeArr((incomeArr) => [...incomeArr, "1"]);
+    setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
-
+  const handleDelete = (i: any) => {
+    console.log(i, "dhcjd");
+    
+    const updatedIncomeCodes = [...incomeArr];
+    updatedIncomeCodes.splice(i, 1);
+    incomeData.splice(i,1);
+    setIncomeArr(updatedIncomeCodes);
+    setIncomeData(incomeData)
+  };
   const handleSubmit = (e: any, values: any) => {
     console.log("entity form", values);
     e.preventDefault();
@@ -435,6 +441,13 @@ export default function Entity() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
+
+  const handleIcome = (e:any, i : number)=>{
+    const newValue = e.target.value;
+    const updatedIncomeArr = [...incomeArr];
+    updatedIncomeArr[i] = newValue;
+    setIncomeArr(updatedIncomeArr);
+  }
   // console.log(errors,"error")
   return (
     <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
@@ -3423,7 +3436,7 @@ export default function Entity() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={ind}>
+                              <FormControl className="w-100 d-flex" key={i}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
                                     className="w-100"
@@ -3434,9 +3447,9 @@ export default function Entity() {
                                       height: "36px",
                                     }}
                                     name="incomeTypeId"
-                                    id="Income"
-                                    onChange={handleChange}
-                                    value={values.incomeTypeId}
+                                    // id="Income"
+                                    onChange={(e:any) => handleIcome(e, i)}
+                                    value={incomeArr[i]}
                                   >
                                     <option value="0">-Select-</option>
                                     {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
