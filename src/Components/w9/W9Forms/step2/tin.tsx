@@ -130,7 +130,7 @@ export default function Tin(props: any) {
                           </Paper>
 
                         </div>) : ""}
-                        <FormControl className="w-50">
+                        <FormControl className="w-100">
                           <Select
                             onChange={
                               handleChange
@@ -177,7 +177,7 @@ export default function Tin(props: any) {
         style={{
           width: "100%",
           border: " 1px solid #d9d9d9 ",
-          height: " 36px",
+          height: " 45px",
           lineHeight: "36px ",
           background: "#fff ",
           fontSize: "13px",

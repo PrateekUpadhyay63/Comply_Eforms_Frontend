@@ -390,7 +390,7 @@ export default function Fedral_tax(props: any) {
                           ""
                         )}
 
-                        <FormControl className="w-50">
+                        <FormControl className="w-100">
                           <Select
                             onChange={(e) => {
                               handleChange(e);
@@ -563,7 +563,7 @@ export default function Fedral_tax(props: any) {
                   </Typography>
                 </div>
 
-                <div style={{ padding: "10px", width: "50%" ,paddingRight:"0px"}}>
+                <div style={{ padding: "10px", width: "100%" ,paddingRight:"0px"}}>
                   <Accordion
                     expanded={expanded === "groupPanel"}
                     onChange={handleChangeAccodion("groupPanel")}
