@@ -1,30 +1,37 @@
 import React from "react";
-  import {Button,Tooltip,Typography} from "@mui/material"
-
+import { Button, Tooltip, Typography } from "@mui/material";
 
 export default function Nav() {
-    return(
-
-<div style={{width:'100%',backgroundColor:"white",height:"90px"}}>
-<div style={{marginLeft:"22px",marginTop:"13px",display:"flex",justifyContent:"space-between"}}>
-<img className="navbar"src={require("../../assets/img/logo.png")}/>
-<div  style={{height:"40px",width:"10%",marginTop:'20px'}}>
-<Tooltip style={{backgroundColor:"black",color:"white"}} title={
-     <Typography >
-     Are you sure you want to exit the process?
-   </Typography>
-   }
-   >
-<Button style={{borderRadius:"30px"}} variant="contained" >
-    Sign out
-   
-   
-    </Button>
-   </Tooltip>
-
-</div>
-</div>
+  return (
+    <div style={{ width: "100%", backgroundColor: "white" }}>
+      <div
+        className="m-2"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <img
+          style={{ width: "50%",maxWidth:"250px" }}
+          className="navbar"
+          src={require("../../assets/img/logo.png")}
+        />
+        <div className="my-auto" style={{ height: "40px" }}>
+          <Tooltip
+            style={{ backgroundColor: "black", color: "white" }}
+            title={
+              <Typography>
+                Are you sure you want to exit the process?
+              </Typography>
+            }
+          >
+            <Button
+              className="my-auto"
+              style={{ borderRadius: "30px", minWidth: "max-content" }}
+              variant="contained"
+            >
+              Sign out
+            </Button>
+          </Tooltip>
         </div>
-    )
-
+      </div>
+    </div>
+  );
 }
