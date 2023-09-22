@@ -241,31 +241,40 @@ export default function FCTA_Reporting(props: any) {
                             }}
                           />
                         </Typography>
-                        <FormControl className="w-100">
-                          <select
-                            className="col-md-6 col-12"
-                            style={{
-                              padding: " 0 10px",
-                              color: "#7e7e7e",
-                              fontStyle: "italic",
-                              height: "50px",
-                              width: "50%",
-                            }}
-                            name="ownerResidentId"
-                            id="ownerResidentId"
-                            onBlur={handleBlur}
-                            value={values.ownerResidentId}
-                            onChange={(e) => {
-                              handleChange(e);
-                            }}
-                          >
-                            <option value={0}>-Select-</option>
-                            <option value={1}>Individual</option>
-                            <option value={2}>Individual/sole Propritor</option>
-                            <option value={3}>Limited Liability Company</option>
-                          </select>
-                          <p className="error">{errors.ownerResidentId}</p>
-                        </FormControl>
+                        <div className="row px-2">
+                            <div className="col-12" style={{padding:"0px"}}>
+                              <FormControl className="w-100">
+                                <div className="row">
+                                  <div    className="col-md-6 col-12 d-flex" >
+                                    <select
+                                      style={{
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "50px",
+                          
+                                        width: "98%",
+                                      }}
+                                      name="ownerResidentId"
+                                      id="ownerResidentId"
+                                      onBlur={handleBlur}
+                                      value={values.ownerResidentId}
+                                      onChange={(e) => {
+                                        handleChange(e);
+                                      }}
+                                    >
+                                      <option value={0}>-Select-</option>
+                                      <option value={1}>Individual</option>
+                                      <option value={2}>Individual/sole Propritor</option>
+                                      <option value={3}>Limited Liability Company</option>
+                                    </select>
+
+                                  </div>
+                                </div>
+                                
+                                <p className="error">{errors.ownerResidentId}</p>
+                              </FormControl>
+                            </div>
+                        </div>
                       </>
                     ) : null}
                   </div>
