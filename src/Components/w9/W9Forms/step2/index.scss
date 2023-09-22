@@ -32,17 +32,17 @@ display: none;
 
 // overlay class
 .overlay-div:hover{
-    right: 1% !important;
+    right: 0.8% !important;
 
 }
 .overlay-div {
     position: absolute;
-    right: 1%;
+    right: 0.8%;
     width: fit-content;
     z-index: 1;
     transform: rotate(270deg);
     transform-origin: right;
-    top: 7%;
+    top: 15%;
 }
 .overlay-div .overlay-div-group{
     display: flex;
@@ -52,6 +52,7 @@ display: none;
 .overlay-div .overlay-div-group div{
     margin: 0px 7px;
     height: 30px;
+    min-width: max-content;
 }
 
 // overlay class end
