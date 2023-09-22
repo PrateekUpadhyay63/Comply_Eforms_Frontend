@@ -630,12 +630,17 @@ export default function IndividualUs() {
                     className="flex-row-reverse"
                     title={
                       <div
-                        style={{
+                      style={{
+                 
+                        marginLeft: "13px",
+                      }}
+                      >
+                        <div       style={{
                           display: "flex",
                           alignItems: "left",
-                          marginLeft: "13px",
-                        }}
-                      >
+                   
+                        }}>
+
                         Basic Details
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -669,7 +674,8 @@ export default function IndividualUs() {
                           
                           />
                         </Tooltip>
-                        <p className="error">
+                        </div>
+                        <p className="error mb-0">
                             {
                             errors?.isUSIndividual ||
                             errors?.firstName ||
@@ -1105,11 +1111,16 @@ export default function IndividualUs() {
                       title={
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "left",
+                     
                             marginLeft: "13px",
                           }}
                         >
+                          <div           style={{
+                            display: "flex",
+                            alignItems: "left",
+                    
+                          }}>
+
                           Tax Identification Numbers
                           <Tooltip
                             style={{ backgroundColor: "black", color: "white" }}
@@ -1143,6 +1154,7 @@ export default function IndividualUs() {
                             
                             />
                           </Tooltip>
+                          </div>
                           <p className="error">
                             {errors?.vatId ? "Mandatory information Required" : ""}
                           </p>
@@ -1681,11 +1693,16 @@ export default function IndividualUs() {
                       title={
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "left",
                             marginLeft: "13px",
                           }}
                         >
+                          <div
+                              style={{
+                                display: "flex",
+                                alignItems: "left",
+                          
+                              }}>
+
                           Permanent Residence Address
                           <Tooltip
                             style={{ backgroundColor: "black", color: "white" }}
@@ -1719,7 +1736,8 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
-                          <p className="error">
+                          </div>
+                          <p className="error mb-0">
                             {errors?.permanentResidentialCountryId ||
                              errors?.permanentResidentialStreetNumberandName ||
                              errors?.permanentResidentialCityorTown || 
@@ -2798,11 +2816,18 @@ export default function IndividualUs() {
                       title={
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "left",
+                     
                             marginLeft: "13px",
                           }}
                         >
+                          <div
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                        
+                          }}
+                          >
+
                           Contact Details
                           <Tooltip
                             style={{ backgroundColor: "black", color: "white" }}
@@ -2836,7 +2861,8 @@ export default function IndividualUs() {
                              
                             />
                           </Tooltip>
-                          <p className="error">
+                          </div>
+                          <p className="error mb-0">
                             {errors?.contactFirstName ||
                              errors?.contactLastName ||
                              errors?.contactEmail ? "Mandatory information required" : ""}
@@ -3713,11 +3739,17 @@ export default function IndividualUs() {
                           title={
                             <div
                               style={{
-                                display: "flex",
-                                alignItems: "left",
+              
                                 marginLeft: "13px",
                               }}
                             >
+                              <div
+                                          style={{
+                                            display: "flex",
+                                            alignItems: "left",
+                                        
+                                          }}>
+
                               Account Information
                               <span
                                 style={{
@@ -3765,7 +3797,8 @@ export default function IndividualUs() {
                                   }}
                                 />
                               </Tooltip>
-                              <p className="error">
+                              </div>
+                              <p className="error mb-0">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
                              errors?.accountBankBranchLocationId || 

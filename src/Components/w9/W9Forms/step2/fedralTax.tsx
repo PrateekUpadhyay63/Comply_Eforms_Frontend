@@ -563,7 +563,7 @@ export default function Fedral_tax(props: any) {
                   </Typography>
                 </div>
 
-                <div style={{ padding: "10px", width: "50%" }}>
+                <div style={{ padding: "10px", width: "50%" ,paddingRight:"0px"}}>
                   <Accordion
                     expanded={expanded === "groupPanel"}
                     onChange={handleChangeAccodion("groupPanel")}

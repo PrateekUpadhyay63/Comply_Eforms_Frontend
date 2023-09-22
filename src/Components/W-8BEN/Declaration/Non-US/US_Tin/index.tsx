@@ -93,11 +93,11 @@ export default function Tin(props: any) {
                       margin: "10px",
                       display: "flex",
                       marginTop: "25px",
-                      justifyContent: "space-between",
+                   
                     }}
-                    className="row col-12"
+                    className="row"
                   >
-                    <div className="col-4">
+                    <div className="col-lg-4 col-12">
                       <Typography>
                         U.S. TIN Type<span style={{ color: "red" }}>*</span>
                         <span>
@@ -195,7 +195,7 @@ export default function Tin(props: any) {
                       <p className="error">{errors.usTinTypeId}</p>
                     </div>
 
-                    <div className="col-4">
+                    <div className="col-lg-4 col-12">
                       <Typography>U.S. TIN</Typography>
                       <Input
                         fullWidth
@@ -216,7 +216,7 @@ export default function Tin(props: any) {
                       />
                       <p className="error">{errors.usTin}</p>
                     </div>
-                    <div className="col-3">
+                    <div className="col-lg-4 col-12">
                       <div style={{ marginTop: "27px" }}>
                         <Checkbox
                           value={values.notAvailable}
@@ -245,11 +245,10 @@ export default function Tin(props: any) {
                       margin: "10px",
                       display: "flex",
                       marginTop: "25px",
-                      justifyContent: "space-between",
                     }}
-                    className="row col-12"
+                    className="row"
                   >
-                    <div className="col-4">
+                    <div className="col-lg-4">
                       <Typography>
                         Foreign TIN Country
                         <span style={{ color: "red" }}>*</span>
@@ -335,7 +334,7 @@ export default function Tin(props: any) {
                         </span>
                       </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-12">
                       <Typography>Foreign TIN </Typography>
                       <Input
                         fullWidth
@@ -357,7 +356,6 @@ export default function Tin(props: any) {
                       />
                       <p className="error">{errors.foreignTIN}</p>
                     </div>
-                    ````````{" "}
                   </div>
                 </div>
                 <Typography style={{ margin: "20px", fontSize: "20px" }}>

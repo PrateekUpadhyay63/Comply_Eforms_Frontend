@@ -609,11 +609,17 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "left",
+                  
                           marginLeft: "13px",
                         }}
                       >
+                        <div 
+                                style={{
+                                  display: "flex",
+                                  alignItems: "left",
+                               
+                                }}>
+
                         Basic Details
                         
                         <Tooltip
@@ -648,7 +654,8 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p className="error">
+                        </div>
+                        <p className="error mb-0">
                             {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory information Required" : ""}
                           </p>
                       </div>
@@ -944,11 +951,17 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "left",
+                 
                           marginLeft: "13px",
                         }}
                       >
+                        <div
+                               style={{
+                                display: "flex",
+                                alignItems: "left",
+                          
+                              }}>
+
                         Tax Identification Numbers
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -982,6 +995,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        </div>
                         <p className="error">
                             {errors?.vatId ? "Mandatory information required" : ""}
                           </p>
@@ -1484,11 +1498,18 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "left",
+           
                           marginLeft: "13px",
                         }}
                       >
+                        <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "left",
+                     
+                                }}
+                        >
+
                         Permanent Residence Address
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -1522,7 +1543,8 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p className="error">
+                        </div>
+                        <p className="error mb-0">
                             {errors?.permanentResidentialCountryId ||
                              errors?.permanentResidentialStreetNumberandName ||
                              errors?.permanentResidentialCityorTown || 
@@ -2739,11 +2761,17 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "left",
+                    
                           marginLeft: "13px",
                         }}
                       >
+                        <div
+                              style={{
+                                display: "flex",
+                                alignItems: "left",
+                
+                              }}>
+
                         Contact Details
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -2777,7 +2805,8 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
-                        <p className="error">
+                        </div>
+                        <p className="error mb-0">
                             {errors?.contactFirstName ||
                              errors?.contactLastName ||
                              errors?.contactEmail ? "Mandatory information required" : ""}
@@ -3646,11 +3675,18 @@ export default function Entity() {
                         title={
                           <div
                             style={{
-                              display: "flex",
-                              alignItems: "left",
+                       
                               marginLeft: "13px",
                             }}
                           >
+                            <div
+                                       style={{
+                                        display: "flex",
+                                        alignItems: "left",
+                             
+                                      }}
+                            >
+
                             Account Information
                             <span
                               style={{
@@ -3701,7 +3737,8 @@ export default function Entity() {
                                 // onClick={clickInfo}
                               />
                             </Tooltip>
-                            <p className="error">
+                            </div>
+                            <p className="error mb-0">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
                              errors?.accountBankBranchLocationId || 
