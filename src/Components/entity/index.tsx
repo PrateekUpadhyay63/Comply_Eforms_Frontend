@@ -3481,6 +3481,7 @@ export default function Entity() {
                         }}
                         onClick={() => addIncomeType()}
                       >
+                        {/* //changs */}
                         <a>Add Income Code</a>
                       </Typography>
                     </Collapse>
