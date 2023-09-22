@@ -3264,7 +3264,7 @@ export default function Entity() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={ind}>
+                              <FormControl className="w-100 d-flex" key={i}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
                                     className="w-100"
@@ -3276,12 +3276,12 @@ export default function Entity() {
                                     }}
                                     name="incomeTypeId"
                                     id="Income"
-                                    onChange={handleChange}
-                                    value={values.incomeTypeId}
+                                    onChange={(e:any) => handleIcome(e, i)}
+                                    value={incomeArr[i]}
                                   >
                                     <option value="0">-Select-</option>
-                                    {incomeCodes.map(({ id, name }) => (
-                                      <option value={id}>{name}</option>
+                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
+                                       <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
                                     ))}
                                   </select>
                                   {incomeArr.length > 1 && (
@@ -3481,6 +3481,7 @@ export default function Entity() {
                         }}
                         onClick={() => addIncomeType()}
                       >
+                        {/* //changs */}
                         <a>Add Income Code</a>
                       </Typography>
                     </Collapse>
