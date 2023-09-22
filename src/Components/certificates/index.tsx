@@ -61,37 +61,121 @@ const clickInfo = () => {
 
     <section className="inner_content" style={{ backgroundColor: '#0c3d69',marginBottom:'10px' }}>
       <div style={{padding:"17px"}}>
-      {InfoMore === "basic" ? (<div>
-              <Paper style={{ backgroundColor: "#dedcb1", padding: '15px', marginBottom: "10px" }}>
-                <Typography>
-                Certificate Selection for U.S. Tax Purposes
-                </Typography>
-                <Typography style={{ marginTop: "10px" }}>
-                Select the most appropriate withholding certificate for your status and click Continue.
-                </Typography>
-                <Typography style={{ marginTop: "20px" }}>
+  
 
-                  
-Based on details entered on the previous page, certain form selections which may not be applicable have been greyed out. If you believe a form should be available for your completion, press the Back button and revisit your details entered on the Account Holder Details page.
-                </Typography>
+            {InfoMore == "W-9" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+                W-9
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+                Form W-9 - Request for Taxpayer Identification Number and Certification.
+ 
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+              The requestor must obtain your correct taxpayer identification number (TIN) which may be your social security number (SSN), individual taxpayer identification number (ITIN), adoption taxpayer identification number (ATIN), or employer identification number (EIN), to report on an information return the amount paid to you, or other amount reportable on an information return.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "W-8BEN" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              W-8BEN
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+               Form W-8BEN - Certificate of Foreign Status of Beneficial Owner for US Tax Withholding
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+              The purpose of the W-8BEN form is to establish that you are a non-US person or entity. As the beneficial owner of the income for which, the W-8BEN form is being provided, completion of this form will enable you to claim a reduced rate of or exemption from withholding tax as a resident of a foreign country with which, the US has an Income Treaty.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "W-8BEN-E" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              W-8BEN-E
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+               Form W-8BEN-E - Certificate of Foreign Status of Beneficial Owner for U.S. Tax Withholding and Reporting (Entities).
+ 
+ 
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+                 
+The purpose of the W-8BEN-E form is to establish that you are a non-U.S. person or entity. As the beneficial owner of the income for which, the W-8BEN-E form is being provided, completion of this form will enable you to claim a reduced rate of or exemption from withholding tax as a resident of a foreign country with which, the U.S. has an Income Treaty.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "W-8IMY" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              W-8IMY
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+               FORM W-8IMY - Certificate of Foreign Intermediary, Foreign Flow-Through, or Certain U.S. Branches for United States Tax Withholding
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+ 
+Primarily, you must submit Form W-8IMY if you are a foreign person, or a foreign branch of a U.S. person, to establish that you are either a Qualified or Non-qualified intermediary that is not acting on your own account.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "W-8ECI" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              W-8ECI
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+               Form W-8ECI - Certificate of Foreign Person’s Claim That Income is Effectively Connected With the Conduct of a Trade or Business in the US.
+ 
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+              Submit form W-8ECI if you are a FOREIGN PERSON (Individual or a Foreign Business or Organization) and the Beneficial Owner of U..source income that is (or deemed to be) effectively connected with the conduct or trade of business with in the US. You may also need to file an annual US income tax return to report income claimed to be effectively connected. A Disregarded Entity may also need to fill out Form W-8ECI.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "W-8EXP" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              W-8EXP
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+               FORM W-8EXP - Certificate of Foreign Government or Other Foreign Organization For United States Tax Withholding 
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+              Submit Form W-8EXP if you are a Foreign Government, International Organization, Foreign Central Bank of Issue, Foreign Tax-exempt Organization, Foreign Private Foundation, or Government of a U.S. possession. Submit Form W-8EXP whether or not you are claiming a reduced rate of, or exemption from U.S. tax withholding.
+              </Typography>
+              </div>
+             </Paper>):""}
+
+             {InfoMore == "form 8233" ?( <Paper style={{ backgroundColor: "#cce5ff", padding: '15px', marginBottom: "10px" }}>
+              <div style={{margin:"20px"}}>
+              <Typography style={{fontSize:"20px",marginTop:"10px",color:"#56595c",fontWeight:"550"}}>
+              8233
+              </Typography>
+               <Typography style={{fontSize:"16px",marginTop:"20px",fontWeight:"550",color:"#274b6e"}}>
+
+               FORM 8233 - Exemption From Withholding on Compensation for Independent (and Certain Dependent) Personal Services of a Nonresident Alien Individual 
+              </Typography>
+              <Typography style={{fontSize:"16px",marginTop:"18px",color:"#274b6e"}}>
+                
+The Form 8233 is used by non-U.S. persons to certify their status as a non-U.S. individual and to claim treaty benefits for compensation for independent or dependent personal services in the United States. Residents of a treaty country are entitled to reduced withholding under an applicable the treaty.
+              </Typography>
+              </div>
+             </Paper>):""}
 
 
-                <Typography style={{ marginTop: "20px" }}>
 
-                If you are uncertain which withholding certificate is correct, refer to the Read More link on each form and/or the Form Guide in the upper right-hand corner.
-                </Typography>
-               
-                <Typography style={{ marginTop: "20px" }}>EH022</Typography>
-
-                <Link href="#" underline="none" style={{ marginTop: "10px", fontSize: "16px" }} onClick={() => { setToolInfo("") }}>--Show Less--</Link>
-              </Paper>
-
-            </div>) : ""}
             <div style={{justifyContent:'space-between',display:"flex"}}>
             <Typography align="left"
       style={{ fontSize: '34px', fontWeight: '500', color:'white' ,marginLeft:"10px"}}
     >
-     Certificate Selection for U.S. Tax Purposes 
+     Certificate Selection for U.S. Tax Purposes
      <span>
                 <Tooltip style={{ backgroundColor: "black", color: "white" }} title={
                   <>
@@ -152,26 +236,28 @@ Based on details entered on the previous page, certain form selections which may
     <div className='d-flex row'>
     {cards.map((card) => (
     <Card 
-     key={card.id}
+     key={card?.id}
     className="mx-3 mt-3"
     sx={{
       width: '310px',
       border: selectedCard === card.id ? '7px solid #ffc107' : '2px solid transparent',
     }}
-    onClick={() => handleCardSelect(card.id)}>
+    onClick={() => handleCardSelect(card?.id)}>
       <CardContent>
        
         <Typography align='center' variant="h5" component="div">
-        {card.title}
+        {card?.title}
         </Typography>
        
         <Typography align='center'  style={{fontSize:"13px",marginTop:"14px"}}>
-        {card.description}
+        {card?.description}
           <br />
          
         </Typography>
        <Typography align='center' >
-       <Button  className="mt-4"size="small" style={{fontWeight:"bold"}} >Read More</Button>
+       <Button onClick={()=>{
+        setInfoMore(card?.id)
+       }}  className="mt-4"size="small" style={{fontWeight:"bold"}} >Read More</Button>
        </Typography>
       </CardContent>
       

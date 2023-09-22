@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Divider from '@mui/material/Divider';
 import {
   FormControl,
   Typography,
@@ -133,6 +134,7 @@ export default function Certifications(props: any) {
         style={{ marginLeft: "20px", width: "80%", backgroundColor: "#d2d6d3" }}
       >
         <div style={{ margin: "10px" }}>
+        <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2" />
             <Typography
@@ -141,6 +143,7 @@ export default function Certifications(props: any) {
              I am the beneficial owner (or I am authorized to sign for the beneficial owner) of all the payments to which this form relates,
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -149,6 +152,7 @@ export default function Certifications(props: any) {
               The amounts for which this certification is provided are effectively connected with the conduct of a trade or business in the United States,
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -160,7 +164,7 @@ export default function Certifications(props: any) {
             
             
           </Typography>
-      
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -169,6 +173,7 @@ export default function Certifications(props: any) {
              The beneficial owner is not a U.S. person.
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -177,6 +182,7 @@ export default function Certifications(props: any) {
                 Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the payments of which I am the beneficial owner or any withholding agent that can disburse or make payments of the amounts of which I am the beneficial owner
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
           <Checkbox  className="mx-2"  />
             <Typography
@@ -187,7 +193,7 @@ export default function Certifications(props: any) {
             </span>
             </Typography>
           </Typography>
-
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography
             style={{
               fontSize: "20px",
@@ -198,6 +204,7 @@ export default function Certifications(props: any) {
           >
             
           </Typography>
+          
          
           <Typography style={{ display: "flex" }}>
             <Checkbox className="mx-2" />
@@ -212,6 +219,7 @@ export default function Certifications(props: any) {
               </span>
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
         </div>
       </Paper>
 

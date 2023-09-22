@@ -6,6 +6,7 @@ import {
   Tooltip,
   Link,
   Input,
+  Divider,
   Paper,
   Checkbox,
 } from "@mui/material";
@@ -132,6 +133,7 @@ export default function Certifications(props: any) {
         style={{ marginLeft: "20px", width: "80%", backgroundColor: "#d2d6d3" }}
       >
         <div style={{ margin: "10px" }}>
+        <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2" />
             <Typography
@@ -140,6 +142,7 @@ export default function Certifications(props: any) {
               1. I am the individual that is the beneficial owner (or am authorized to sign for the individual that is the beneficial owner) of all the income to which this form relates or am using this form to document myself as an individual that is an owner or account holder of a foreign financial institution
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -148,6 +151,7 @@ export default function Certifications(props: any) {
               2. The person named on line 1 of this form is not a U.S. person,
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -159,6 +163,7 @@ export default function Certifications(props: any) {
             
             
           </Typography>
+          
          <div style={{ marginLeft: "60px",fontSize:"17px" }}>
          <li>
             (a) not effectively connected with the conduct of a trade or business in the United States,
@@ -173,6 +178,7 @@ export default function Certifications(props: any) {
             (d) the partner’s amount realized from the transfer of a partnership interest subject to withholding under section 1446(f)
             </li>
          </div>
+         <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -181,6 +187,7 @@ export default function Certifications(props: any) {
              4. The person named on line 1 of this form is a resident of the treaty country listed on line 9 of the form (if any) within the meaning of the income tax treaty between the United States and that country, and
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox  className="mx-2"  />
             <Typography
@@ -189,6 +196,7 @@ export default function Certifications(props: any) {
           5. For broker transactions or barter exchanges, the beneficial owner is an exempt foreign person as defined in the instructions.
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
           <Checkbox  className="mx-2"  />
             <Typography
@@ -200,6 +208,7 @@ export default function Certifications(props: any) {
             </span>
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
 
           <Typography
             style={{
@@ -220,6 +229,7 @@ export default function Certifications(props: any) {
               withholding.
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
           <Typography style={{ display: "flex" }}>
             <Checkbox className="mx-2" />
             <Typography
@@ -233,6 +243,7 @@ export default function Certifications(props: any) {
               </span>
             </Typography>
           </Typography>
+          <Divider style={{marginTop:"1rem",marginBottom:"1rem",backgroundColor:"black"}}/>
         </div>
       </Paper>
 
