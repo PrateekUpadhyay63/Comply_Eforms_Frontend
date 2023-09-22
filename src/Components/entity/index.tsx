@@ -3654,11 +3654,18 @@ export default function Entity() {
                         title={
                           <div
                             style={{
-                              display: "flex",
-                              alignItems: "left",
+                       
                               marginLeft: "13px",
                             }}
                           >
+                            <div
+                                       style={{
+                                        display: "flex",
+                                        alignItems: "left",
+                             
+                                      }}
+                            >
+
                             Account Information
                             <span
                               style={{
@@ -3709,6 +3716,7 @@ export default function Entity() {
                                 // onClick={clickInfo}
                               />
                             </Tooltip>
+                            </div>
                             <p className="error">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||

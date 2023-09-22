@@ -3733,11 +3733,17 @@ export default function IndividualUs() {
                           title={
                             <div
                               style={{
-                                display: "flex",
-                                alignItems: "left",
+              
                                 marginLeft: "13px",
                               }}
                             >
+                              <div
+                                          style={{
+                                            display: "flex",
+                                            alignItems: "left",
+                                        
+                                          }}>
+
                               Account Information
                               <span
                                 style={{
@@ -3785,6 +3791,7 @@ export default function IndividualUs() {
                                   }}
                                 />
                               </Tooltip>
+                              </div>
                               <p className="error">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
