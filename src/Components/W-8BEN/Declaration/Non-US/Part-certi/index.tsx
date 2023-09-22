@@ -102,16 +102,15 @@ export default function Penalties() {
                   </Typography>
 
                   <div
-                    className="col-12"
+                    className="row"
                     style={{
-                      margin: "20px",
-                      display: "flex",
+                      margin: "10px",
+  
                       marginTop: "20px",
-                      width: "70%",
-                      justifyContent: "space-between",
+            
                     }}
                   >
-                    <div className="col-6">
+                    <div className="col-md-6 col-12 p-0">
                       <Typography style={{ fontSize: "15px" }}>
                         Signed by<span style={{ color: "red" }}>*</span>
                         <span>
@@ -199,11 +198,11 @@ export default function Penalties() {
 
                       <TextField
                         style={{
-                          padding: " 0 10px",
+                          
                           color: "#7e7e7e",
                           fontStyle: "italic",
                           height: "3.5rem",
-                          width: "30em",
+                          width: "100%",
                         }}
                         fullWidth
                         type="text"
@@ -216,7 +215,7 @@ export default function Penalties() {
                       <p className="error">{errors.signedBy}</p>
                     </div>
 
-                    <div className="col-6">
+                    <div className="col-md-6 col-12">
                       <Typography style={{ fontSize: "15px" }}>
                         Enter Confirmation Code:
                         <span style={{ color: "red" }}>*</span>
@@ -305,7 +304,7 @@ export default function Penalties() {
                           )}
                           type="password"
                           required
-                          style={{ width: "20em" }}
+                          style={{ width: "100%" }}
                         />
                         <span
                           style={{
@@ -320,22 +319,32 @@ export default function Penalties() {
                       </div>
                     </div>
                   </div>
-                  <Typography
-                    align="left"
-                    style={{ margin: "10px", marginLeft: "20px" }}
-                  >
-                    <Typography style={{ fontSize: "15px" }}>Date</Typography>
-                    <TextField
-                      style={{ width: "20em" }}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      error={Boolean(touched.date && errors.date)}
-                      value={values.date}
-                      type="date"
-                      name="date"
-                    />
-                    <p className="error">{errors.date}</p>
-                  </Typography>
+                  <div  
+                  className="row"
+                    style={{
+                      margin: "10px",
+  
+                      marginTop: "20px",}}>
+                    <div className="col-12 col-md-6 p-0">
+
+                    <Typography
+                      align="left"
+                      style={{ padding:"0px"}}
+                    >
+                      <Typography style={{ fontSize: "15px" }}>Date</Typography>
+                      <TextField
+                        style={{ width: "100%" }}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={Boolean(touched.date && errors.date)}
+                        value={values.date}
+                        type="date"
+                        name="date"
+                      />
+                      <p className="error">{errors.date}</p>
+                    </Typography>
+                    </div>
+                  </div>
 
                   <Typography style={{ display: "flex", marginLeft: "10px" }}>
                     <Checkbox
