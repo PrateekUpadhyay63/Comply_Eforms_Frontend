@@ -62,6 +62,7 @@ export default function Tin(props: any) {
                   history("/W-8BEN/Declaration/US_Tin/Claim");
                 })
               );
+              history("/W-8BEN/Declaration/US_Tin/Claim");
             }}
           >
             {({
@@ -333,9 +334,7 @@ export default function Tin(props: any) {
                           </span>
                         </span>
                       </div>
-                      <div></div>
                     </div>
-
                     <div className="col-4">
                       <Typography>Foreign TIN </Typography>
                       <Input
@@ -358,7 +357,7 @@ export default function Tin(props: any) {
                       />
                       <p className="error">{errors.foreignTIN}</p>
                     </div>
-                    <div className="col-3"></div>
+                    ````````{" "}
                   </div>
                 </div>
                 <Typography style={{ margin: "20px", fontSize: "20px" }}>

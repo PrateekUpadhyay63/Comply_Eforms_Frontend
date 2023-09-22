@@ -80,5 +80,96 @@ export const claimSchema = () => {
     isSubmissionClaimTreaty: Yup.string().required(
       "Please select one of the options"
     ),
+    ownerResidentId: Yup.boolean().when("isSubmissionClaimTreaty", {
+      is: "yes",
+      then: () => Yup.string().required("Please select owner"),
+    }),
+  });
+};
+export const rateSchema = () => {
+  return Yup.object().shape({
+    isSubmissionSpecialRates: Yup.string().required(
+      "Please select one of the options"
+    ),
+    articleBeneficalOwner: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+
+    paragraphArticleClaimed: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    subParagraphArticle: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please enter one of the options"),
+    }),
+    withHoldingClaim: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    incomeExpected: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+    articleExplanation: Yup.string().when("isSubmissionSpecialRates", {
+      is: "yes",
+      then: () => Yup.string().required("Please select one of the options"),
+    }),
+  });
+};
+export const certificateSchema = () => {
+  return Yup.object().shape({
+    isBeneficialOwnerIncome: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isPersonNameNotUSPerson: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isIncomeFormRelated: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isIncomeTaxTreaty: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+    isBrokerTransactions: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isAuthorizedForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+    isConfirmElectronicForm: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+  });
+};
+
+export const partCertiSchema = () => {
+  return Yup.object().shape({
+    signedBy: Yup.string().required("Please enter "),
+    code: Yup.string().required("Please enter code"),
+    date: Yup.date().required("Please enter date"),
+  });
+};
+
+export const declarationsSchema = () => {
+  return Yup.object().shape({
+    isAgreeWithDeclaration: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+    isNotConsentReceipentstatement: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
   });
 };

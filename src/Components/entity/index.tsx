@@ -34,7 +34,7 @@ import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 import Checkbox from "@mui/material/Checkbox";
 // import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector  } from "react-redux";
 import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
@@ -42,6 +42,8 @@ export default function Entity() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   //   //States
+  const [incomeData, setIncomeData] = useState<any>([]);
+  // const [value, onChange] = useState<Value2>(null);
   const [open, setOpen] = useState("");
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
   // const [accInfoSection, setAccInfoSection] = useState(false);
@@ -224,12 +226,19 @@ export default function Entity() {
   //       console.log(err);
   //     });
   // }, []);
+  useEffect(() => {
+    dispatch(getAllCountries())   
+    dispatch(getAllCountriesCode())   
+    dispatch(getAllCountriesIncomeCode())   
+    dispatch(getAllStateByCountryId())   
+   }, []);
+ 
+   const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
+   const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
+   const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
+   const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
 
-  const handleDelete = (i: any) => {
-    const updatedIncomeCodes = [...incomeArr];
-    updatedIncomeCodes.splice(i, 1);
-    setIncomeArr(updatedIncomeCodes);
-  };
+
 
   // useEffect(() => {
   //   if (payload.permanentResidentialCountryId == 258) {
@@ -262,9 +271,17 @@ export default function Entity() {
   // };
 
   const addIncomeType = () => {
-    setIncomeArr((incomeArr) => [...incomeArr, "1"]);
+    setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
-
+  const handleDelete = (i: any) => {
+    console.log(i, "dhcjd");
+    
+    const updatedIncomeCodes = [...incomeArr];
+    updatedIncomeCodes.splice(i, 1);
+    incomeData.splice(i,1);
+    setIncomeArr(updatedIncomeCodes);
+    setIncomeData(incomeData)
+  };
   const handleSubmit = (e: any, values: any) => {
     console.log("entity form", values);
     e.preventDefault();
@@ -349,7 +366,7 @@ export default function Entity() {
           </FormControl>
         </div>
       );
-    } else if (values.accountBankBranchLocationId == 16) {
+    } else if (values?.accountBankBranchLocationId == 16) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
@@ -373,7 +390,7 @@ export default function Entity() {
               }}
               id="outlined"
               name="bsb"
-              placeholder="Enter BSB"
+              placeholder="Enter Bank code"
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.bsb && errors.bsb)}
@@ -424,6 +441,13 @@ export default function Entity() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
+
+  const handleIcome = (e:any, i : number)=>{
+    const newValue = e.target.value;
+    const updatedIncomeArr = [...incomeArr];
+    updatedIncomeArr[i] = newValue;
+    setIncomeArr(updatedIncomeArr);
+  }
   // console.log(errors,"error")
   return (
     <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
@@ -1186,11 +1210,10 @@ export default function Entity() {
                                 value={values.foreignTINCountryId}
                               >
                                 <option value={0}>-Select-</option>
-                                <option value={1}>-Select1-</option>
                                 <option value={257}>-uk-</option>
-                                {countries.map(({ id, name }) => (
-                                  <option value={id}>{name}</option>
-                                ))}
+                                {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                               </select>
                             </FormControl>
                         </div>
@@ -1600,9 +1623,9 @@ export default function Entity() {
                             <option value={45}>-canada-</option>
                             <option value={257}>United Kingdom</option>
                             <option value={258}>United States</option>
-                            {countries.map(({ id, name }) => (
-                              <option value={id}>{name}</option>
-                            ))}
+                            {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                           </select>
                           <p className="error">
                             {errors.permanentResidentialCountryId}
@@ -1728,7 +1751,7 @@ export default function Entity() {
                       </FormControl>
                     </div>
                   ) : ( */}
-                  {values.permanentResidentialCountryId == 258 ? (
+                  {values?.permanentResidentialCountryId == 258 ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left" className="d-flex w-100 ">
                               State or Province:
@@ -1737,7 +1760,7 @@ export default function Entity() {
 
                             <FormControl className="w-100">
                               <select
-                                style={{
+                                 style={{
                                   padding: " 0 10px",
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
@@ -1753,9 +1776,9 @@ export default function Entity() {
                                 <option value="0">
                                   <em>--Select--</em>
                                 </option>
-                                {usStates.map(({ name }) => (
-                                  <option value={name}>{name}</option>
-                                ))}
+                                {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
+                                 <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
+                                 ))}
                               </select>
                             </FormControl>
                           </div>
@@ -2488,9 +2511,9 @@ export default function Entity() {
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
                                 <option value="">---</option>
-                                {countries.map(({ id, name }) => (
-                                  <option value={id}> {name} </option>
-                                ))}
+                                {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                               </select>
                               <p className="error">
                                 {errors.permanentResidentialCountryId1}
@@ -2596,7 +2619,7 @@ export default function Entity() {
                               </p>
                             </FormControl>
                           </div>
-                          {values.permanentResidentialCountryId === 258 ? (
+                          {values.permanentResidentialCountryId1 == 258 ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-2">
                               <Typography
                                 align="left"
@@ -2621,11 +2644,11 @@ export default function Entity() {
                                     values.permanentResidentialStateorProvince1
                                   }
                                 >
-                                  <MenuItem value="0">
+                                  <option value="0">
                                     <em>--Select--</em>
-                                  </MenuItem>
-                                  {usStates.map(({ name }) => (
-                                    <MenuItem value={name}>{name}</MenuItem>
+                                  </option>
+                                  {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
+                                          <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
                                   ))}
                                 </select>
                               </FormControl>
@@ -2968,9 +2991,9 @@ export default function Entity() {
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
-                            {countriesCode.map(({ id, name }) => (
-                              <option value={id}>{name}</option>
-                            ))}
+                            {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
+                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                              ))}
                             <option></option>
                           </select>
                           <Input
@@ -3013,9 +3036,9 @@ export default function Entity() {
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
-                            {countriesCode.map(({ id, name }) => (
-                              <option value={id}>{name}</option>
-                            ))}
+                            {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
+                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                              ))}
                             <option></option>
                           </select>
                           <Input
@@ -3063,9 +3086,9 @@ export default function Entity() {
                                 >
                                   <option value={0}>--Select--</option>
                                   {/* <option value={1}>--Select1--</option> */}
-                                  {countriesCode.map(({ id, name }) => (
-                                    <option value={id}>{name}</option>
-                                  ))}
+                                  {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
+                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                              ))}
                                 </select>
                                 <Delete
                                   style={{
@@ -3241,7 +3264,7 @@ export default function Entity() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={ind}>
+                              <FormControl className="w-100 d-flex" key={i}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
                                     className="w-100"
@@ -3253,12 +3276,12 @@ export default function Entity() {
                                     }}
                                     name="incomeTypeId"
                                     id="Income"
-                                    onChange={handleChange}
-                                    value={values.incomeTypeId}
+                                    onChange={(e:any) => handleIcome(e, i)}
+                                    value={incomeArr[i]}
                                   >
                                     <option value="0">-Select-</option>
-                                    {incomeCodes.map(({ id, name }) => (
-                                      <option value={id}>{name}</option>
+                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
+                                       <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
                                     ))}
                                   </select>
                                   {incomeArr.length > 1 && (
@@ -3413,7 +3436,7 @@ export default function Entity() {
                         incomeArr.map((ind, i) => {
                           return (
                             <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={ind}>
+                              <FormControl className="w-100 d-flex" key={i}>
                                 <span className="w-100 d-flex pb-2">
                                   <select
                                     className="w-100"
@@ -3424,13 +3447,13 @@ export default function Entity() {
                                       height: "36px",
                                     }}
                                     name="incomeTypeId"
-                                    id="Income"
-                                    onChange={handleChange}
-                                    value={values.incomeTypeId}
+                                    // id="Income"
+                                    onChange={(e:any) => handleIcome(e, i)}
+                                    value={incomeArr[i]}
                                   >
                                     <option value="0">-Select-</option>
-                                    {incomeCodes.map(({ id, name }) => (
-                                      <option value={id}>{name}</option>
+                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
+                                       <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
                                     ))}
                                   </select>
                                   {incomeArr.length > 1 && (
@@ -3458,6 +3481,7 @@ export default function Entity() {
                         }}
                         onClick={() => addIncomeType()}
                       >
+                        {/* //changs */}
                         <a>Add Income Code</a>
                       </Typography>
                     </Collapse>
@@ -3902,9 +3926,9 @@ export default function Entity() {
                                     <option value={257}>United Kingdom</option>
                                     <option value={258}>United States</option>
                                     <option value="">---</option>
-                                    {countries.map(({ id, name }) => (
-                                      <option value={id}> {name} </option>
-                                    ))}
+                                    {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                                   </select>
                                   <p
                                     className="error"
@@ -4037,9 +4061,9 @@ export default function Entity() {
                                         United Kingdom
                                       </option>
                                       <option value={258}>United States</option>
-                                    {countries.map(({ id, name }) => (
-                                      <option value={id}>{name}</option>
-                                    ))}
+                                      {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                                   </select>
                                   <p
                                     className="error"
@@ -4180,7 +4204,7 @@ export default function Entity() {
                                   </p>
                                 </FormControl>
                               </div>
-                              {values.payResidentalCountryId == 258 ? (
+                              {values?.payResidentalCountryId == 258 ? (
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -4190,28 +4214,23 @@ export default function Entity() {
                                     <select
                                       // disabled ={payload.payResidentalCountryId == 0}
                                       style={{
-                                        border: " 1px solid #d9d9d9 ",
-                                        height: " 36px",
-                                        lineHeight: "36px ",
-                                        background: "#fff ",
-                                        fontSize: "13px",
-                                        color: " #000 ",
-                                        fontStyle: "normal",
-                                        borderRadius: "1px",
-                                        padding: " 0 10px ",
+                                        padding: " 0 10px",
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "36px",
                                       }}
-                                      id="outlined"
+                                      // id="outlined"
                                       name="payStateOrProvince"
                                       placeholder="Enter State OR Provience"
                                       onChange={handleChange}
                                       onBlur={handleBlur}
                                       value={values.payStateOrProvince}
                                     >
-                                      <MenuItem value="0">
+                                      <option value="0">
                                         <em>--Select--</em>
-                                      </MenuItem>
-                                      {usStates.map(({ name }) => (
-                                        <MenuItem value={name}>{name}</MenuItem>
+                                      </option>
+                                      {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
+                                          <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
                                       ))}
                                     </select>
                                   </FormControl>
@@ -4449,15 +4468,9 @@ export default function Entity() {
                                     >
                                       ---
                                     </option>
-                                    {countries.map(({ id, name }) => (
-                                      <option
-                                        value={id}
-                                        onClick={() => setBankLocation("id")}
-                                      >
-                                        {" "}
-                                        {name}{" "}
-                                      </option>
-                                    ))}
+                                    {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                                   </select>
                                   <p
                                     className="error"
