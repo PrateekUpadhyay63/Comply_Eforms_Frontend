@@ -3792,7 +3792,7 @@ export default function IndividualUs() {
                                 />
                               </Tooltip>
                               </div>
-                              <p className="error">
+                              <p className="error mb-0">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
                              errors?.accountBankBranchLocationId || 

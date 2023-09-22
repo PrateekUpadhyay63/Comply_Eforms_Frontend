@@ -3717,7 +3717,7 @@ export default function Entity() {
                               />
                             </Tooltip>
                             </div>
-                            <p className="error">
+                            <p className="error mb-0">
                             {errors?.accountHolderName ||
                              errors?.accountBankName ||
                              errors?.accountBankBranchLocationId || 
