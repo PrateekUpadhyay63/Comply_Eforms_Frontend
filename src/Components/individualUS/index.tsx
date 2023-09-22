@@ -1111,11 +1111,16 @@ export default function IndividualUs() {
                       title={
                         <div
                           style={{
-                            display: "flex",
-                            alignItems: "left",
+                     
                             marginLeft: "13px",
                           }}
                         >
+                          <div           style={{
+                            display: "flex",
+                            alignItems: "left",
+                    
+                          }}>
+
                           Tax Identification Numbers
                           <Tooltip
                             style={{ backgroundColor: "black", color: "white" }}
@@ -1149,6 +1154,7 @@ export default function IndividualUs() {
                             
                             />
                           </Tooltip>
+                          </div>
                           <p className="error">
                             {errors?.vatId ? "Mandatory information Required" : ""}
                           </p>

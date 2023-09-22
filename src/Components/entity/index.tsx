@@ -938,11 +938,17 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "left",
+                 
                           marginLeft: "13px",
                         }}
                       >
+                        <div
+                               style={{
+                                display: "flex",
+                                alignItems: "left",
+                          
+                              }}>
+
                         Tax Identification Numbers
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -976,6 +982,7 @@ export default function Entity() {
                             // onClick={clickInfo}
                           />
                         </Tooltip>
+                        </div>
                         <p className="error">
                             {errors?.vatId ? "Mandatory information required" : ""}
                           </p>
