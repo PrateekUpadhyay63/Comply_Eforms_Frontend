@@ -606,7 +606,6 @@ export default function IndividualUs() {
                   isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
                   isConfirmed: values?.isConfirmed,
                 };
-                console.log(values,"values");
                 dispatch(postOnboarding(payload, redirectFunc));
               }}
               validationSchema={individualSchema}
@@ -1309,7 +1308,7 @@ export default function IndividualUs() {
                       unmountOnExit
                     >
                       {values.isUSIndividual === 'no' ? (
-                        <div className="col-12 d-flex mt-3">
+                        <div className="row d-flex mt-3">
                           
                           <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100">
@@ -1338,7 +1337,7 @@ export default function IndividualUs() {
                             </select>
                           </FormControl>
                         </div>
-                        <div className="col-lg-3 col-6 col-md-3 mx-2">
+                        <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
                             <Typography align="left">
                               U.S. TIN
@@ -1403,7 +1402,7 @@ export default function IndividualUs() {
                             </FormControl>
                           </div>
 
-                          <div className="col-lg-3 col-6 col-md-3 mx-2">
+                          <div className="col-lg-3 col-6 col-md-3">
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Foreign TIN
