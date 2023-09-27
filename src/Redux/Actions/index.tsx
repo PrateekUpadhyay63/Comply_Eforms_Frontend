@@ -21,6 +21,16 @@ export const W8_state  =(value:any,callback:any=false):any=>{
    }
 }
 
+export const CREATE_8233  =(value:any,callback:any=false):any=>{
+  return {
+      type: Utils.actionName.CREATE_8233,
+      payload:value
+   }
+   if(callback){
+      callback()
+   }
+}
+
 export const loginAction = (value:any,callback:Function):any => {
     return (dispatch:any) => {
       const dataToSend = { message: value };

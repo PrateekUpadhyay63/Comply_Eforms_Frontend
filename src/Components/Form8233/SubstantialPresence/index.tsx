@@ -13,21 +13,38 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
 import { Formik,Form } from "formik";
-
+import { SubstantialSchema } from "../../../schemas/8233";
+import {CREATE_8233} from "../../../Redux/Actions";
+import { useDispatch } from "react-redux";
 export default function Presence(props: any) {
     const initialValue = {
+  daysAvailableInThisYear: "",
+  daysAvailableIn_OneYearbefore: "",
+  daysAvailableIn_TwoYearbefore: "",
+  totalQualifyingDays: "",
         
       };
     
   
     const [toolInfo, setToolInfo] = useState("");
 const history = useNavigate()
-
+const dispatch=useDispatch();
   return (
     
     <Formik  initialValues={initialValue}
+    enableReinitialize
+    validationSchema={SubstantialSchema}
     onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(true)}}>
+        setSubmitting(true);
+        console.log(values)
+        dispatch(
+          CREATE_8233 (values, () => {
+            history("/Form8233/TaxPayer_Identification");  
+
+          })
+        ) ;
+        history("/Form8233/TaxPayer_Identification");
+            }}>
              {({
           errors,
           touched,
@@ -216,11 +233,11 @@ the 5 calendar years need not be consecutive; and once a cumulative total of 5 c
             <Input
                         
                         type="number"
-                        name="usTin"
-                        // value={values.usTin}
-                        // onBlur={handleBlur}
-                        // onChange={handleChange}
-                        // error={Boolean(touched.usTin && errors.usTin)}
+                        name="daysAvailableInThisYear"
+                        value={values.daysAvailableInThisYear}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        error={Boolean(touched.daysAvailableInThisYear && errors.daysAvailableInThisYear)}
                         style={{
                           border: " 1px solid #d9d9d9 ",
                           padding: " 0 10px",
@@ -229,6 +246,7 @@ the 5 calendar years need not be consecutive; and once a cumulative total of 5 c
                           height: "50px",
                           width: "30%",
                         }}/>
+                         <p className="error">{errors.daysAvailableInThisYear}</p>
             </FormControl>
         </div>
       </div>
@@ -241,11 +259,11 @@ the 5 calendar years need not be consecutive; and once a cumulative total of 5 c
             <Input
                         
                         type="text"
-                        name="usTin"
-                        // value={values.usTin}
-                        // onBlur={handleBlur}
-                        // onChange={handleChange}
-                        // error={Boolean(touched.usTin && errors.usTin)}
+                        name="daysAvailableIn_OneYearbefore"
+                        value={values.daysAvailableIn_OneYearbefore}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        error={Boolean(touched.daysAvailableIn_OneYearbefore && errors.daysAvailableIn_OneYearbefore)}
                         style={{
                           border: " 1px solid #d9d9d9 ",
                           padding: " 0 10px",
@@ -255,6 +273,7 @@ the 5 calendar years need not be consecutive; and once a cumulative total of 5 c
                           width: "30%",
                           
                         }}/>
+                         <p className="error">{errors.daysAvailableIn_OneYearbefore}</p>
             </FormControl>
         </div>
       </div>
@@ -268,11 +287,11 @@ How many days has the Individual been in the second year before the current year
             <Input
                         
                         type="number"
-                        name="usTin"
-                        // value={values.usTin}
-                        // onBlur={handleBlur}
-                        // onChange={handleChange}
-                        // error={Boolean(touched.usTin && errors.usTin)}
+                        name="daysAvailableIn_TwoYearbefore"
+                        value={values.daysAvailableIn_TwoYearbefore}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        error={Boolean(touched.daysAvailableIn_TwoYearbefore && errors.daysAvailableIn_TwoYearbefore)}
                         style={{
                           border: " 1px solid #d9d9d9 ",
                           padding: " 0 10px",
@@ -281,6 +300,8 @@ How many days has the Individual been in the second year before the current year
                           height: "50px",
                           width: "30%",
                         }}/>
+                         <p className="error">{errors.daysAvailableIn_TwoYearbefore}</p>
+
             </FormControl>
         </div>
       </div>
@@ -291,14 +312,14 @@ How many days has the Individual been in the second year before the current year
             </Typography>
             <FormControl className="col-lg-4">
             <Input
-                        disabled
-                        value={0}
+                        
+                        
                         type="text"
-                        name="usTin"
-                        // value={values.usTin}
-                        // onBlur={handleBlur}
-                        // onChange={handleChange}
-                        // error={Boolean(touched.usTin && errors.usTin)}
+                        name="totalQualifyingDays"
+                        // value={values.totalQualifyingDays}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        error={Boolean(touched.totalQualifyingDays && errors.totalQualifyingDays)}
                         style={{
                             backgroundColor:"#d6d6d6",
                           border: " 1px solid #d9d9d9 ",
@@ -308,6 +329,7 @@ How many days has the Individual been in the second year before the current year
                           height: "50px",
                           width: "30%",
                         }}/>
+                         <p className="error">{errors.totalQualifyingDays}</p>
             </FormControl>
         </div>
       </div>
@@ -334,9 +356,7 @@ How many days has the Individual been in the second year before the current year
                     View Form
                   </Button>
                   <Button
-                  onClick={()=>{
-                    history("/Form8233/TaxPayer_Identification")
-                  }}
+                 
                     variant="contained"
                     style={{ color: "white", marginLeft: "15px" }}
                     type="submit"

@@ -17,29 +17,31 @@ import {
     RadioGroup,
     Radio,
 } from "@mui/material";
+import {CREATE_8233} from "../../../Redux/Actions";
 import { ExpandMore, Info,DeleteOutline } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
+import { US_TINSchema } from "../../../schemas/8233";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
 
 export default function Tin(props: any) {
 
     const initialValue = {
-        usTin: "",
-        usTinTypeId: "",
-        foreignTINCountry: "",
-        foreignTIN: "",
-        isFTINLegally: "",
-        isNotAvailable: "",
-        alternativeTINFormat:"",
-        isExplanationNotLegallyFTIN:""
+  usTINTypeId: "",
+  usTIN: "",
+  foreginTIN_CountryId: "",
+  foregionTIN: "",
+  reasionForForegionTIN_NotAvailable: "",
+  notAvailable: "",
+  alternativeTIN_Format: "",
 
 
         
       };
 
     const history = useNavigate()
+    const dispatch=useDispatch();
     const [tax, setTax] = useState<string>('');
 
     const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,8 +53,19 @@ export default function Tin(props: any) {
 
         <>
         <Formik initialValues={initialValue}
+        enableReinitialize
+    validationSchema={US_TINSchema}
+
         onSubmit={(values, { setSubmitting }) => {
            setSubmitting(true);
+           console.log(values)
+           dispatch(
+            CREATE_8233 (values, () => {
+             history("/Form8233/TaxPayer_Identification/Owner");  
+  
+            })
+          ) ;
+         history("/Form8233/TaxPayer_Identification/Owner");
         }}
         >
            {({
@@ -65,6 +78,7 @@ export default function Tin(props: any) {
                    isSubmitting,
                  }) => (
        <Form onSubmit={handleSubmit}>
+        <>{console.log(errors,"errorsssss")}</>
         <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
             <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>
@@ -117,6 +131,10 @@ export default function Tin(props: any) {
                                 </div>) : ""}
                                 <select
                                 name="usTinTypeId"
+                                value={values.usTINTypeId}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                               
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -128,14 +146,19 @@ export default function Tin(props: any) {
                                    
                                    
                                 ></select>
+                                   <p className="error">{errors.usTINTypeId}</p>
                             </div>
 
                             <div className="col-4">
                                 <Typography>U.S. TIN</Typography>
                                 <Input
- name="usTin"
+
                                     fullWidth
-                                    required
+                                    name="usTIN"
+                                    value={values.usTIN}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    error={Boolean(touched.usTIN && errors.usTIN)}
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -145,6 +168,7 @@ export default function Tin(props: any) {
                                         width: "100%",
                                     }}
                                 />
+                                <p className="error">{errors.usTIN}</p>
                             </div>
                             <div className="col-3">
 
@@ -170,9 +194,14 @@ export default function Tin(props: any) {
                                         height: "50px",
                                         width: "100%",
                                     }}
-                                    name="foreignTINCountry"
+                                    name="foreginTIN_CountryId"
+                                    value={values.foreginTIN_CountryId}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    // error={Boolean(touched.foreginTIN_CountryId && errors.foreginTIN_CountryId)}
                                     
                                 ></select>
+                                 <p className="error">{errors.foreginTIN_CountryId}</p>
                                
                                 <div>
 
@@ -182,9 +211,12 @@ export default function Tin(props: any) {
                             <div className="col-4">
                                 <Typography>Foreign TIN </Typography>
                                 <Input
-name="foreignTIN"
+name="foregionTIN"
+value={values.foregionTIN}
+onBlur={handleBlur}
+onChange={handleChange}
                                     fullWidth
-                                    required
+                                    
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -194,20 +226,21 @@ name="foreignTIN"
                                         width: "100%",
                                     }}
                                 />
+                                 <p className="error">{errors.foregionTIN}</p>
                                <div style={{ marginTop: "10px" ,display:"flex",justifyContent:"space-between"}}>
                                <FormControl>
 
 <RadioGroup 
     row
-    id={values.isNotAvailable}
+    id={values.notAvailable}
     aria-labelledby="demo-row-radio-buttons-group-label"
     name="row-radio-buttons-group"
     onChange={handleTaxChange}
     
 
 >
-    <FormControlLabel name={values.isNotAvailable}  value="isNotAvailable" control={<Radio />} label="Not Available" />
-    <FormControlLabel name={values.alternativeTINFormat}   className="label" value="alternativeTINFormat" control={<Radio />} label="Alternative TIN Format" />
+    <FormControlLabel name={values.notAvailable}  value="notAvailable" control={<Radio />} label="Not Available" />
+    <FormControlLabel name={values.alternativeTIN_Format}   className="label" value="alternativeTINFormat" control={<Radio />} label="Alternative TIN Format" />
 
  
 
@@ -219,7 +252,7 @@ name="foreignTIN"
 
 
 </FormControl>
-{ tax === "isNotAvailable"
+{ tax === "notAvailable"
                             ?(<Button  style={{marginTop:"5px",color:"red"}}>
    <DeleteOutline />
     </Button>):""} 
@@ -232,7 +265,7 @@ name="foreignTIN"
                     </div>
                    
                     {
-                        tax === "isNotAvailable"
+                        tax === "notAvailable"
                             ?
                             (
                                 <div style={{ margin: '20px' }}>
@@ -248,8 +281,13 @@ name="foreignTIN"
                                         You have selected a FTIN country that is not on the IRS exemption list, where, in most cases a FTIN should be provided. You must provide a written explanation here explaining why you are not providing. By not providing we may not be able to apply treaty benefits should they apply and may render the form invalid.
                                         </Typography>
                                         <Input
-                                            fullWidth
-                                            required
+                                        name="reasionForForegionTIN_NotAvailable"
+                                        value={values.reasionForForegionTIN_NotAvailable}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        error={Boolean(touched.reasionForForegionTIN_NotAvailable && errors.reasionForForegionTIN_NotAvailable)}    
+                                        fullWidth
+                                            
                                             style={{
                                                 border: " 1px solid #d9d9d9 ",
                                                 padding: " 0 10px",
@@ -259,6 +297,7 @@ name="foreignTIN"
                                                 width: "100%",
                                             }}
                                         />
+                                      <p className="error">{errors.reasionForForegionTIN_NotAvailable}</p>   
                                     </div>
                                 )
                             :
@@ -286,9 +325,7 @@ name="foreignTIN"
                         </Button>
                         <Button
 
-                            onClick={() => {
-                                history("/Form8233/TaxPayer_Identification/Owner")
-                            }}
+                           type="submit"
                             variant="contained"
                             style={{ color: "white", marginLeft: "15px" }}
                         >

@@ -22,23 +22,30 @@ import { Formik, Form } from "formik";
 // import "./index.scss";
 import { useNavigate } from "react-router-dom";
 
-
+import { ownerSchema } from "../../../schemas/8233";
+import {CREATE_8233} from "../../../Redux/Actions";
+import { useDispatch } from "react-redux";
 export default function Tin(props: any) {
 
     const initialValue = {
-        usTin: "",
-        usTinTypeId: "",
-        foreignTINCountry: "",
-        foreignTIN: "",
-        isFTINLegally: "",
-        isNotAvailable: "",
-        alternativeTINFormat:"",
-        isExplanationNotLegallyFTIN:""
+        exemptionApplicableForCompensationForCalnderYear: 0,
+        otherTaxBeginingYear: 0,
+        otherTaxEndYear: "",
+        usVisaTypeID: "",
+        countryIssuingPassportId: "",
+        countryIssuingPassportNumber: "",
+        dateOfEntryIntoUS: "",
+        nonImmigrationStatus: true,
+        currentNonImmigrationStatus: "",
+        dateNonImmigrationStatusExpire: "",
+        declarationOfDurationStayStatus: true,
+        foreignStudent_Teacher_Professor_ResearcherStatus: true,
+        statementToForm8233_FileUpoad: "",
 
 
         
       };
-
+      const dispatch=useDispatch();
     const history = useNavigate()
     const [tax, setTax] = useState<string>('');
 
@@ -51,8 +58,19 @@ export default function Tin(props: any) {
 
         <>
         <Formik initialValues={initialValue}
+        enableReinitialize
+        validationSchema={ownerSchema}
         onSubmit={(values, { setSubmitting }) => {
            setSubmitting(true);
+           console.log(values)
+        dispatch(
+          CREATE_8233 (values, () => {
+              
+      history("/Form8233/TaxPayer_Identification/Owner/Claim_part")
+
+          })
+        ) ;
+        history("/Form8233/TaxPayer_Identification/Owner/Claim_part")
         }}
         >
            {({
@@ -91,9 +109,13 @@ Identification of Beneficial Owner (See instructions.)
                                             height: "50px",
                                             width: "20%",
                                         }}
-                                        name="foreignTINCountry"
-                                        
+                                        name="exemptionApplicableForCompensationForCalnderYear"
+                                        value={values.exemptionApplicableForCompensationForCalnderYear}
+                                        onBlur={handleBlur}
+                                        onChange={handleChange}
+                                        // error={Boolean(touched.exemptionApplicableForCompensationForCalnderYear && errors.exemptionApplicableForCompensationForCalnderYear)} 
             ></select>
+             <p className="error">{errors.exemptionApplicableForCompensationForCalnderYear}</p>
         </FormControl>
     </div>
 </div>
@@ -115,9 +137,14 @@ Identification of Beneficial Owner (See instructions.)
                                         height: "50px",
                                  
                                     }}
-                                    name="foreignTINCountry"
+                                    name="otherTaxBeginingYear"
+                                    value={values.otherTaxBeginingYear}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    // error={Boolean(touched.otherTaxBeginingYear && errors.otherTaxBeginingYear)}
                                     
                                 ></select>
+                                <p className="error">{errors.otherTaxBeginingYear}</p>
         </FormControl>
 
 
@@ -135,9 +162,14 @@ Identification of Beneficial Owner (See instructions.)
                                    
                                         
                                     }}
-                                    name="foreignTINCountry"
+                                    name="otherTaxEndYear"
+                                    value={values.otherTaxEndYear}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    // error={Boolean(touched.otherTaxEndYear && errors.otherTaxEndYear)}
                                     
                                 ></select>
+                                 <p className="error">{errors.otherTaxEndYear}</p>
         </FormControl>
     </div>
 
@@ -207,7 +239,11 @@ Identification of Beneficial Owner (See instructions.)
 
                                 </div>) : ""}
                                 <select
-                                name="usTinTypeId"
+                                 value={values.usVisaTypeID}
+                                 onBlur={handleBlur}
+                                 onChange={handleChange}
+                                // error={Boolean(touched.usVisaTypeID && errors.usVisaTypeID)}
+                                name="usVisaTypeID"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -217,8 +253,8 @@ Identification of Beneficial Owner (See instructions.)
                                         width: "100%",
                                     }}
                                    
-                                   
                                 ></select>
+                                <p className="error">{errors.usVisaTypeID}</p>
               
 
 </div>
@@ -263,7 +299,7 @@ Identification of Beneficial Owner (See instructions.)
 
                                 </div>) : ""}
                                 <select
-                                name="usTinTypeId"
+                                name="countryIssuingPassportId"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -272,9 +308,13 @@ Identification of Beneficial Owner (See instructions.)
                                         height: "50px",
                                         width: "100%",
                                     }}
-                                   
+                                    value={values.countryIssuingPassportId}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        // error={Boolean(touched.countryIssuingPassportId && errors.countryIssuingPassportId)}
                                    
                                 ></select>
+                                 <p className="error">{errors.countryIssuingPassportId}</p>
               
 
 </div>
@@ -320,7 +360,7 @@ Identification of Beneficial Owner (See instructions.)
 
                                 </div>) : ""}
                                 <select
-                                name="usTinTypeId"
+                                name="countryIssuingPassportNumber"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -330,8 +370,12 @@ Identification of Beneficial Owner (See instructions.)
                                         width: "100%",
                                     }}
                                    
-                                   
+                                    value={values.countryIssuingPassportNumber}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    // error={Boolean(touched.countryIssuingPassportNumber && errors.countryIssuingPassportNumber)}
                                 ></select>
+                                 <p className="error">{errors.countryIssuingPassportNumber}</p>
               
 
 </div>
@@ -377,8 +421,13 @@ Identification of Beneficial Owner (See instructions.)
                                     </Paper>
 
                                 </div>) : ""}
-                                <select
-                                name="usTinTypeId"
+                                <Input
+
+type="date"
+                                name="dateOfEntryIntoUS"
+                                value={values.dateOfEntryIntoUS}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -389,12 +438,13 @@ Identification of Beneficial Owner (See instructions.)
                                     }}
                                    
                                    
-                                ></select>
+                                />
+                                <p className="error">{errors.dateOfEntryIntoUS}</p>
               
 
 </div>
 <div>
-                                    <Checkbox size="medium"/>
+                                    <Checkbox name="nonImmigrationStatus" size="medium"/>
                                     <span style={{ fontSize: "20px", marginTop: "5px" }}>
 
 
@@ -443,7 +493,10 @@ Identification of Beneficial Owner (See instructions.)
 
                                 </div>) : ""}
                                 <select
-                                name="usTinTypeId"
+                                name="currentNonImmigrationStatus"
+                                value={values.currentNonImmigrationStatus}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -455,6 +508,7 @@ Identification of Beneficial Owner (See instructions.)
                                    
                                    
                                 ></select>
+                                 <p className="error">{errors.currentNonImmigrationStatus}</p>
                             </div>
 
                             <div className="col-6 mt-1">
@@ -497,9 +551,15 @@ Identification of Beneficial Owner (See instructions.)
                                 </div>) : ""}
                                 
                                 <Input
- name="usTin"
+                                type="date"
+
+ name="dateNonImmigrationStatusExpire" 
+ value={values.dateNonImmigrationStatusExpire}
+ onBlur={handleBlur}
+ onChange={handleChange}
+ error={Boolean(touched.dateNonImmigrationStatusExpire && errors.dateNonImmigrationStatusExpire)}
                                     fullWidth
-                                    required
+                                    
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -509,6 +569,7 @@ Identification of Beneficial Owner (See instructions.)
                                         width: "100%",
                                     }}
                                 />
+                          <p className="error">{errors.dateNonImmigrationStatusExpire}</p>       
                                 <div className="mt-2">
                                     <Checkbox size="medium"/>
                                     <span style={{ fontSize: "20px", marginTop: "13px" ,fontWeight:"550"}}>
@@ -597,10 +658,7 @@ style={{
 </Button>
 <Button
 
-    onClick={() => {
-
-history("/Form8233/TaxPayer_Identification/Owner/Claim_part")
-    }}
+   type="submit"
     variant="contained"
     style={{ color: "white", marginLeft: "15px" }}
 >

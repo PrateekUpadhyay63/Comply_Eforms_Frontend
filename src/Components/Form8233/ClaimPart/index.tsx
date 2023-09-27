@@ -17,6 +17,9 @@ import {
     RadioGroup,
     Radio,
 } from "@mui/material";
+import { amountSchema } from "../../../schemas/8233";
+import {CREATE_8233} from "../../../Redux/Actions";
+import { useDispatch } from "react-redux";
 import { ExpandMore, Info,DeleteOutline } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 // import "./index.scss";
@@ -26,19 +29,23 @@ import { useNavigate } from "react-router-dom";
 export default function Tin(props: any) {
 
     const initialValue = {
-        usTin: "",
-        usTinTypeId: "",
-        foreignTINCountry: "",
-        foreignTIN: "",
-        isFTINLegally: "",
-        isNotAvailable: "",
-        alternativeTINFormat:"",
-        isExplanationNotLegallyFTIN:""
+        taxTreaty_DescriptionOfPersonalServiceYouProvide: "",
+        taxTreaty_TotalCompensationYouExpectForThisCalenderYear: "",
+        taxTreaty_TreatyId: "",
+        taxTreaty_TreatyArticleId: "",
+        taxTreaty_TotalCompensationListedon11bExemptFromTax: "",
+        taxTreaty_CheckAll: true,
+        taxTreaty_CountryOfResidenceId: "",
+        taxTreaty_NoncompensatoryScholarshiporFellowshipIncome: "",
+        taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID: "",
+        taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID: "",
+        totalIncomeListedIncomeonLine13ATaxExemptAmount: "",
+        sufficientFactToJustfyExemptionForClaim12A_13: "",
 
 
         
       };
-
+      const dispatch=useDispatch();
     const history = useNavigate()
     const [tax, setTax] = useState<string>('');
 
@@ -51,8 +58,18 @@ export default function Tin(props: any) {
 
         <>
         <Formik initialValues={initialValue}
+         enableReinitialize
+         validationSchema={amountSchema}
         onSubmit={(values, { setSubmitting }) => {
            setSubmitting(true);
+
+           dispatch(
+            CREATE_8233 (values, () => {
+                history("/Form8233/TaxPayer_Identification/Owner/Documentaion")
+  
+            })
+          ) ;
+          history("/Form8233/TaxPayer_Identification/Owner/Documentaion")
         }}
         >
            {({
@@ -138,7 +155,11 @@ For compensation for dependent personal services, examples of acceptable descrip
 
                                 </div>) : ""}
                                 <Input
-                                name="usTinTypeId"
+                                name="taxTreaty_DescriptionOfPersonalServiceYouProvide"
+                                value={values.taxTreaty_DescriptionOfPersonalServiceYouProvide}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                error={Boolean(touched.taxTreaty_DescriptionOfPersonalServiceYouProvide && errors.taxTreaty_DescriptionOfPersonalServiceYouProvide)}
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -150,6 +171,7 @@ For compensation for dependent personal services, examples of acceptable descrip
                                    
                                    
                                 />
+             <p className="error">{errors.taxTreaty_DescriptionOfPersonalServiceYouProvide}</p>                    
               
 
 </div>
@@ -194,7 +216,12 @@ For compensation for dependent personal services, examples of acceptable descrip
                                 </div>) : ""}
                                 <Input
                                 placeholder="$"
-                                name="usTinTypeId"
+                                value={values.taxTreaty_TotalCompensationYouExpectForThisCalenderYear}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                error={Boolean(touched.taxTreaty_TotalCompensationYouExpectForThisCalenderYear && errors.taxTreaty_TotalCompensationYouExpectForThisCalenderYear)}
+                               
+                                name="taxTreaty_TotalCompensationYouExpectForThisCalenderYear"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -206,6 +233,7 @@ For compensation for dependent personal services, examples of acceptable descrip
                                    
                                    
                                 />
+                                 <p className="error">{errors.taxTreaty_TotalCompensationYouExpectForThisCalenderYear}</p>
               
 
 </div>
@@ -264,7 +292,11 @@ For compensation for dependent personal services, examples of acceptable descrip
 </Typography>
 
 <select
-name="usTinTypeId"
+name="taxTreaty_TreatyId"
+value={values.taxTreaty_TreatyId}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        // error={Boolean(touched.taxTreaty_TreatyId && errors.taxTreaty_TreatyId)}
     style={{
         border: " 1px solid #d9d9d9 ",
         padding: " 0 10px",
@@ -276,6 +308,7 @@ name="usTinTypeId"
    
    
 ></select>
+<p className="error">{errors.taxTreaty_TreatyId}</p>
 
 
 </div>
@@ -288,7 +321,11 @@ name="usTinTypeId"
 </Typography>
 
 <select
-name="usTinTypeId"
+ value={values.taxTreaty_TreatyArticleId}
+ onBlur={handleBlur}
+ onChange={handleChange}
+//  error={Boolean(touched.taxTreaty_TreatyArticleId && errors.taxTreaty_TreatyArticleId)}
+name="taxTreaty_TreatyArticleId"
     style={{
         border: " 1px solid #d9d9d9 ",
         padding: " 0 10px",
@@ -300,7 +337,7 @@ name="usTinTypeId"
    
    
 ></select>
-
+<p className="error">{errors.taxTreaty_TreatyArticleId}</p>
 
 </div>
 </div>
@@ -350,8 +387,13 @@ name="usTinTypeId"
     </Paper>
 
 </div>) : ""}
+
 <Input
-name="usTinTypeId"
+name="taxTreaty_TotalCompensationListedon11bExemptFromTax"
+value={values.taxTreaty_TotalCompensationListedon11bExemptFromTax}
+onBlur={handleBlur}
+onChange={handleChange}
+error={Boolean(touched.taxTreaty_TotalCompensationListedon11bExemptFromTax && errors.taxTreaty_TotalCompensationListedon11bExemptFromTax)}
     style={{
         border: " 1px solid #d9d9d9 ",
         padding: " 0 10px",
@@ -363,12 +405,12 @@ name="usTinTypeId"
    
    
 />
-
+<p className="error">{errors.taxTreaty_TotalCompensationListedon11bExemptFromTax}</p>
 
 </div>
 <div className="col-6 my-3 d-flex">
-<Checkbox className="mt-4"/>
-<Typography style={{marginTop:"2.3rem",fontSize:"20px"}}>
+<Checkbox className="mt-2"/>
+<Typography style={{marginTop:"2.5rem",fontSize:"20px"}}>
 Check for All
 </Typography>
 
@@ -421,8 +463,13 @@ Check for All
 
                                 </div>) : ""}
                                 <Input
-                                name="usTinTypeId"
-                                    style={{
+                                name="taxTreaty_CountryOfResidenceId"
+                                value={values.taxTreaty_CountryOfResidenceId}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                error={Boolean(touched.taxTreaty_CountryOfResidenceId && errors.taxTreaty_CountryOfResidenceId)}   
+                                
+                                style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
@@ -433,7 +480,7 @@ Check for All
                                    
                                    
                                 />
-              
+               <p className="error">{errors.taxTreaty_CountryOfResidenceId}</p>
 
 </div>
 <Typography style={{fontSize:"20px"}}>
@@ -486,7 +533,11 @@ Check for All
 
                                 </div>) : ""}
                                 <Input
-                                name="usTinTypeId"
+                                 value={values.taxTreaty_NoncompensatoryScholarshiporFellowshipIncome}
+                                 onBlur={handleBlur}
+                                 onChange={handleChange}
+                                 error={Boolean(touched.taxTreaty_NoncompensatoryScholarshiporFellowshipIncome && errors.taxTreaty_NoncompensatoryScholarshiporFellowshipIncome)}
+                                name="taxTreaty_NoncompensatoryScholarshiporFellowshipIncome"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -498,7 +549,7 @@ Check for All
                                    
                                    
                                 />
-              
+               <p className="error">{errors.taxTreaty_NoncompensatoryScholarshiporFellowshipIncome}</p>
 
 </div>
 
@@ -553,8 +604,12 @@ Check for All
                                 </Typography>
                                
                                 <select
-                                name="usTinTypeId"
-                                    style={{
+                                name="taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID"
+                                value={values.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID}
+                                onBlur={handleBlur}
+                                onChange={handleChange} 
+                                
+                                style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
@@ -565,6 +620,7 @@ Check for All
                                    
                                    
                                 ></select>
+                                 <p className="error">{errors.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID}</p>
                             </div>
 
                             <div className="col-6 ">
@@ -575,9 +631,13 @@ Check for All
                              
                                 
                                 <Input
- name="usTin"
+                              value={values.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                              error={Boolean(touched.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID && errors.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID)}  
+ name="taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID"
                                     fullWidth
-                                    required
+                                    
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -587,7 +647,7 @@ Check for All
                                         width: "100%",
                                     }}
                                 />
-                               
+                               <p className="error">{errors.taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID}</p> 
                             </div>
                            
                         </div>
@@ -633,8 +693,11 @@ Check for All
 
 </div>) : ""}
 <Input
-
-name="usTinTypeId"
+ value={values.totalIncomeListedIncomeonLine13ATaxExemptAmount}
+ onBlur={handleBlur}
+ onChange={handleChange}
+ error={Boolean(touched.totalIncomeListedIncomeonLine13ATaxExemptAmount && errors.totalIncomeListedIncomeonLine13ATaxExemptAmount)}
+name="totalIncomeListedIncomeonLine13ATaxExemptAmount"
     style={{
         border: " 1px solid #d9d9d9 ",
         padding: " 0 10px",
@@ -646,7 +709,7 @@ name="usTinTypeId"
    
    
 />
-
+<p className="error">{errors.totalIncomeListedIncomeonLine13ATaxExemptAmount}</p>
 
 </div>
 
@@ -691,8 +754,11 @@ name="usTinTypeId"
 
                                 </div>) : ""}
                                 <Input
-                                
-                                name="usTinTypeId"
+                                value={values.sufficientFactToJustfyExemptionForClaim12A_13}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                error={Boolean(touched.sufficientFactToJustfyExemptionForClaim12A_13 && errors.sufficientFactToJustfyExemptionForClaim12A_13)}
+                                name="sufficientFactToJustfyExemptionForClaim12A_13"
                                     style={{
                                         border: " 1px solid #d9d9d9 ",
                                         padding: " 0 10px",
@@ -704,6 +770,7 @@ name="usTinTypeId"
                                    
                                    
                                 />
+                                 <p className="error">{errors.sufficientFactToJustfyExemptionForClaim12A_13}</p>
               
 
 </div>
@@ -726,10 +793,7 @@ style={{
 </Button>
 <Button
 
-    onClick={() => {
-
-history("/Form8233/TaxPayer_Identification/Owner/Documentaion")
-    }}
+  type="submit"
     variant="contained"
     style={{ color: "white", marginLeft: "15px" }}
 >
