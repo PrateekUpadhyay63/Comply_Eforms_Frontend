@@ -1145,7 +1145,7 @@ export default function Entity() {
                     unmountOnExit
                   >
                     {values.isUSEntity === 'no' ? (
-                      <div className="col-12 d-flex mt-3">
+                      <div className="row d-flex mt-3">
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
                             U.S. TIN Type
@@ -1176,7 +1176,7 @@ export default function Entity() {
                           </FormControl>
                         </div>
 
-                        <div className="col-lg-3 col-6 col-md-3 mx-2">
+                        <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
                             <Typography align="left">U.S. TIN</Typography>
                             <Input
@@ -1232,7 +1232,7 @@ export default function Entity() {
                             </FormControl>
                         </div>
 
-                        <div className="col-lg-3 col-6 col-md-3 mx-2">
+                        <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
                             <Typography align="left">Foreign TIN</Typography>
                             <Input
