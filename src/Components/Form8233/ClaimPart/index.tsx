@@ -409,12 +409,14 @@ error={Boolean(touched.taxTreaty_TotalCompensationListedon11bExemptFromTax && er
 
 </div>
 <div className="col-6 my-3 d-flex">
-<Checkbox className="mt-2"/>
+<Checkbox className="mt-2" name="taxTreaty_CheckAll"/>
 <Typography style={{marginTop:"2.5rem",fontSize:"20px"}}>
 Check for All
 </Typography>
 
+
 </div>
+<p className="error">{errors.taxTreaty_CheckAll}</p>
 
 </div>
 

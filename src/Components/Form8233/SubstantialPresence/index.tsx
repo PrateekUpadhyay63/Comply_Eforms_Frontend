@@ -26,7 +26,7 @@ export default function Presence(props: any) {
       };
     
   
-    const [toolInfo, setToolInfo] = useState("");
+const [toolInfo, setToolInfo] = useState("");
 const history = useNavigate()
 const dispatch=useDispatch();
   return (

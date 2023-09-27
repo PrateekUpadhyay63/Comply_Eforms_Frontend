@@ -571,18 +571,19 @@ type="date"
                                 />
                           <p className="error">{errors.dateNonImmigrationStatusExpire}</p>       
                                 <div className="mt-2">
-                                    <Checkbox size="medium"/>
+                                    <Checkbox size="medium" name="declarationOfDurationStayStatus"/>
                                     <span style={{ fontSize: "20px", marginTop: "13px" ,fontWeight:"550"}}>
                                     Please check this box if you wish to declare Duration of Stay (DS)
                                        
                                     </span>
                                 </div>
+                                <p className="error">{errors.declarationOfDurationStayStatus}</p>  
                             </div>
                            
                         </div>
 
                         <div className="mt-2">
-                                    <Checkbox size="medium"/>
+                                    <Checkbox name="foreignStudent_Teacher_Professor_ResearcherStatus" size="medium"/>
                                     <span style={{ fontSize: "20px", marginTop: "13px" }}>
                                   <span style={{fontWeight:"550"}}> 10</span> If you are a foreign student, trainee, professor/teacher, or researcher, check this box
                                        
@@ -625,11 +626,16 @@ type="date"
                                 </div>) : ""}
                                     
                                 </div>
+
+
+
+                                <p className="error">{errors.foreignStudent_Teacher_Professor_ResearcherStatus}</p>
                                 <div  style={{fontSize:"20px"}}className="d-flex mt-5 mx-3">
                                 You have selected Line 10 Checkbox. Please provide Statement to Form 8233 <span style={{color:"red"}}>
                                     *
                                 </span>
-                                <Input  className="mx-5"type="file"/>
+                                <Input name="statementToForm8233_FileUpoad" id="statementToForm8233_FileUpoad"  className="mx-5"type="file"  onChange={handleChange} />
+                                <p className="error">{errors.statementToForm8233_FileUpoad}</p>
                                 </div>
 
         </div>
