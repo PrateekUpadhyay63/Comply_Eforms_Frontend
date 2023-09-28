@@ -9,9 +9,11 @@ import {
   Tooltip,
   Link,
 } from "@mui/material";
-import {  Info, DeleteOutline } from "@mui/icons-material";
+import { Info, DeleteOutline } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
+import { CREATE_8233 } from "../../../Redux/Actions";
+import { useDispatch } from "react-redux";
 
 export default function Tin(props: any) {
   const [incomeArr, setIncomeArr] = useState<string[]>([]);
@@ -30,6 +32,7 @@ export default function Tin(props: any) {
   };
 
   const history = useNavigate();
+  const dispatch = useDispatch();
   const [tax, setTax] = useState<string>("");
 
   const [submit, setSubmit] = useState<string>("1");
@@ -49,6 +52,16 @@ export default function Tin(props: any) {
         initialValues={initialValue}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+          dispatch(
+            CREATE_8233(values, () => {
+              history(
+                "/Form8233/TaxPayer_Identification/Owner/Documentaion/certification"
+              );
+            })
+          );
+          history(
+            "/Form8233/TaxPayer_Identification/Owner/Documentaion/certification"
+          );
         }}
       >
         {({
@@ -186,6 +199,10 @@ export default function Tin(props: any) {
 
                     <div className="col-4">
                       <Select
+                        name="taxTreaty_TreatyId"
+                        // value={values.}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
                         //   onChange={handleFile}
                         style={{
                           minWidth: "140px",
@@ -278,11 +295,7 @@ export default function Tin(props: any) {
                       View Form
                     </Button>
                     <Button
-                      onClick={() => {
-                        history(
-                          "/Form8233/TaxPayer_Identification/Owner/Documentaion/certification"
-                        );
-                      }}
+                      type="submit"
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >
