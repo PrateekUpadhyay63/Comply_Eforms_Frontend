@@ -16,7 +16,7 @@ import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
-import { US_TINSchema } from "../../../schemas/w8ECI";
+import { TaxPayerSchema } from "../../../schemas/w8ECI";
 import { W8_state_ECI } from "../../../Redux/Actions";
 import { useDispatch } from "react-redux";
 export default function Tin(props: any) {
@@ -28,7 +28,6 @@ export default function Tin(props: any) {
     isFTINLegally: true,
     notAvailable: false,
     isNotAvailable: true,
-    // alternativeTINFormat: "",
     isExplanationNotLegallyFTIN: "No",
     nonAvailabilityReason: "",
   };
@@ -46,7 +45,7 @@ export default function Tin(props: any) {
     <>
       <Formik
         initialValues={initialValue}
-        validationSchema={US_TINSchema}
+        validationSchema={TaxPayerSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           let payload = {
@@ -65,6 +64,7 @@ export default function Tin(props: any) {
               history("/W-8ECI/Income");
             })
           );
+          history("/W-8ECI/Income");
         }}
       >
         {({
@@ -77,6 +77,7 @@ export default function Tin(props: any) {
           isSubmitting,
         }) => (
           <Form onSubmit={handleSubmit}>
+            <>{console.log(errors)}</>
             <section
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}

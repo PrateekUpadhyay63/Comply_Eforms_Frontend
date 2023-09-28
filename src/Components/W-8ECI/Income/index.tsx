@@ -3,34 +3,31 @@ import {
   FormControl,
   Typography,
   Button,
-  Input,
   Paper,
   Link,
   Tooltip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  TextField,
-  RadioGroup,
-  Radio,
   Checkbox,
-  FormControlLabel,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./index.scss";
 import { Formik, Form } from "formik";
-import { ExpandMore, Info } from "@mui/icons-material";
+import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
+import { IncomeSchema } from "../../../schemas/w8ECI";
+import { useDispatch } from "react-redux";
+import { W8_state_ECI } from "../../../Redux/Actions";
 
 export default function Factors() {
   const initialValue = {
-    incomeDescription: "",
     itemIncomeType: "",
+    incomeDescription: "",
     isAppplicationCheck: "",
   };
   const history = useNavigate();
+  const dispatch = useDispatch();
+
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {
     setNumPapers(numPapers + 1);
@@ -40,16 +37,20 @@ export default function Factors() {
     setNumPapers(numPapers - 1);
   };
   const [toolInfo, setToolInfo] = useState("");
-  const [status, setStatus] = useState("");
-  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStatus(event.target.value);
-  };
+
   return (
     <>
       <Formik
         initialValues={initialValue}
+        validationSchema={IncomeSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+          dispatch(
+            W8_state_ECI(values, () => {
+              history("/W-8ECI/Certification");
+            })
+          );
+          history("/W-8ECI/Certification");
         }}
       >
         {({
@@ -62,6 +63,7 @@ export default function Factors() {
           isSubmitting,
         }) => (
           <Form onSubmit={handleSubmit}>
+            <>{console.log(values, errors)}</>
             <section
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
@@ -90,7 +92,6 @@ export default function Factors() {
                                   }}
                                   align="center"
                                 >
-                                  {" "}
                                   View More...
                                 </Typography>
                               </a>
@@ -205,16 +206,23 @@ export default function Factors() {
                                     marginTop: "10px",
                                   }}
                                 >
-                                  Select Item of Income:{" "}
+                                  Select Item of Income:
                                   <span
                                     style={{ color: "red", fontSize: "30px" }}
                                   >
                                     *
                                   </span>
-                                  <span></span>
                                 </Typography>
                                 <FormControl className="w-50">
                                   <select
+                                    name="itemIncomeType"
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    value={values.itemIncomeType}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
                                     style={{
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
@@ -222,8 +230,14 @@ export default function Factors() {
                                       height: "50px",
                                       marginBottom: "20px",
                                     }}
-                                    name="itemIncomeType"
-                                  ></select>
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value={257}>United Kingdom</option>
+                                    <option value={258}>United States</option>
+                                  </select>
+                                  <p className="error">
+                                    {errors.itemIncomeType}
+                                  </p>
                                 </FormControl>
                               </div>
                             </div>
@@ -232,7 +246,7 @@ export default function Factors() {
                               align="left"
                               style={{ fontSize: "22px", marginTop: "10px" }}
                             >
-                              Description of Income:{" "}
+                              Description of Income:
                               <span style={{ color: "red", fontSize: "30px" }}>
                                 *
                               </span>
@@ -240,6 +254,10 @@ export default function Factors() {
                             <FormControl className="w-50">
                               <input
                                 name="incomeDescription"
+                                type="text"
+                                value={values.incomeDescription}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
                                 className="col-md-12col-12"
                                 style={{
                                   padding: " 0 10px",
@@ -248,6 +266,9 @@ export default function Factors() {
                                   height: "9rem",
                                 }}
                               />
+                              <p className="error">
+                                {errors.incomeDescription}
+                              </p>
                             </FormControl>
                           </div>
                         </Paper>
@@ -266,6 +287,8 @@ export default function Factors() {
                       <div style={{ display: "flex", marginTop: "2rem" }}>
                         <Checkbox
                           name="isAppplicationCheck"
+                          value={values.isAppplicationCheck}
+                          onChange={handleChange}
                           size="medium"
                           style={{ fontSize: "2rem" }}
                         />
@@ -290,7 +313,6 @@ export default function Factors() {
                                       }}
                                       align="center"
                                     >
-                                      {" "}
                                       View More...
                                     </Typography>
                                   </a>
@@ -447,9 +469,7 @@ export default function Factors() {
                       View form
                     </Button>
                     <Button
-                      onClick={() => {
-                        history("/W-8ECI/Certification");
-                      }}
+                      type="submit"
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >
@@ -479,7 +499,6 @@ export default function Factors() {
                       }}
                     >
                       <span style={{ marginRight: "5px" }}>
-                        {" "}
                         <ArrowBackIcon />
                       </span>{" "}
                       Back
