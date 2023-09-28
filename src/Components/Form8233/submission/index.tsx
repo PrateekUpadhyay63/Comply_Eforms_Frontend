@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   FormControl,
@@ -12,12 +11,9 @@ import {
   Select,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-// import Declaration from "../../../../reusables/Declaration";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
-// import { W8_state } from "../../../../../Redux/Actions";
 import { useNavigate } from "react-router";
-// import { partCertiSchema } from "../../../../../schemas/w8Ben";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
@@ -81,7 +77,7 @@ export default function Penalties() {
                       fontWeight: "550",
                     }}
                   >
-                    Part III  Certification
+                    Part III Certification
                   </Typography>
                   <Typography
                     align="left"
@@ -97,16 +93,19 @@ export default function Penalties() {
                     align="left"
                     style={{ margin: "10px", fontSize: "20px", color: "grey" }}
                   >
-                    The Internal Revenue Service does not require your consent to any provisions of this document other than the certifications required to establish your status as a non-U.S. person and, if applicable, obtain a reduced rate of withholding.
+                    The Internal Revenue Service does not require your consent
+                    to any provisions of this document other than the
+                    certifications required to establish your status as a
+                    non-U.S. person and, if applicable, obtain a reduced rate of
+                    withholding.
                   </Typography>
 
                   <div
                     className="row"
                     style={{
                       margin: "10px",
-  
+
                       marginTop: "20px",
-            
                     }}
                   >
                     <div className="col-md-6 col-12 p-0">
@@ -197,7 +196,6 @@ export default function Penalties() {
 
                       <TextField
                         style={{
-                          
                           color: "#7e7e7e",
                           fontStyle: "italic",
                           height: "3.5rem",
@@ -318,30 +316,30 @@ export default function Penalties() {
                       </div>
                     </div>
                   </div>
-                  <div  
-                  className="row"
+                  <div
+                    className="row"
                     style={{
                       margin: "10px",
-  
-                      marginTop: "20px",}}>
-                    <div className="col-12 col-md-6 p-0">
 
-                    <Typography
-                      align="left"
-                      style={{ padding:"0px"}}
-                    >
-                      <Typography style={{ fontSize: "15px" }}>Date</Typography>
-                      <TextField
-                        style={{ width: "100%" }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={Boolean(touched.date && errors.date)}
-                        value={values.date}
-                        type="date"
-                        name="date"
-                      />
-                      <p className="error">{errors.date}</p>
-                    </Typography>
+                      marginTop: "20px",
+                    }}
+                  >
+                    <div className="col-12 col-md-6 p-0">
+                      <Typography align="left" style={{ padding: "0px" }}>
+                        <Typography style={{ fontSize: "15px" }}>
+                          Date
+                        </Typography>
+                        <TextField
+                          style={{ width: "100%" }}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={Boolean(touched.date && errors.date)}
+                          value={values.date}
+                          type="date"
+                          name="date"
+                        />
+                        <p className="error">{errors.date}</p>
+                      </Typography>
                     </div>
                   </div>
 
@@ -478,8 +476,8 @@ export default function Penalties() {
                     <Button
                       type="submit"
                       onClick={() => {
-                        history("/Submit")
-                      //  setOpen2(true)
+                        history("/Submit");
+                        //  setOpen2(true)
                       }}
                       // onClick={() => {
                       //   setOpen2(true);
