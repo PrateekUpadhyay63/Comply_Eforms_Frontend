@@ -193,4 +193,31 @@ export const loginAction = (value:any,callback:Function):any => {
     };
   };
 
+  //PDF API's
+
+  export const getW9PDF = ():any => {
+    return (dispatch:any) => {
+      Utils.api.getApiCall(
+        Utils.EndPoint.W9PDF,"",
+        (resData) => {
+          const { data } = resData;
+          if (resData.status === 200) {
+            dispatch({
+              type: Utils.actionName.W9PDF,
+              payload: {
+                W9PdfData: resData.data,
+              },
+            });
+          } else {
+            // Utils.showAlert(2, data.message);
+          }
+        },
+        (error:any) => {
+          Utils.showAlert(2, error);
+        }
+      );
+    };
+  };
+
+
 
