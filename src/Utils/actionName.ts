@@ -5,6 +5,7 @@ const ActionName = {
     USER:"USER",
     CREATE_W9:"CREATE_W9",
     CREATE_W8:"CREATE_W8",
+    CREATE_W8_ECI:"CREATE_W8_ECI",
     individualAccountHolder: "individualAccountHolder",
     GetCountries: "GetCountries",
     GetCountriesCode: "GetCountriesCode",

@@ -21,6 +21,16 @@ export const W8_state  =(value:any,callback:any=false):any=>{
    }
 }
 
+export const W8_state_ECI  =(value:any,callback:any=false):any=>{
+  return {
+      type: Utils.actionName.CREATE_W8_ECI,
+      payload:value
+   }
+   if(callback){
+      callback()
+   }
+}
+
 export const CREATE_8233  =(value:any,callback:any=false):any=>{
   return {
       type: Utils.actionName.CREATE_8233,

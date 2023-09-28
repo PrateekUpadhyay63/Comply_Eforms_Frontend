@@ -4,6 +4,7 @@ import { getCountriesReducer,getCountriesCodeReducer,GetAllIncomeCodesReducer,Ge
 import w9Reducer from "./Reducers/w9Reducer";
 import w8Reducer from "./Reducers/w8BenNonUs";
 import form8233Reducer from "./Reducers/form8233"
+import w8ReducerECI from "./Reducers/w8ECI";
 
 let reducers={
     getCountriesReducer,
@@ -16,8 +17,7 @@ const rootReducer = combineReducers({
     w9Data:w9Reducer,
     w8Data:w8Reducer,
     form8233:form8233Reducer,
-//   movieData: getMovieDataReducer,
-//   searchData: getSearchDataReducer,
+    w8eciDATA:w8ReducerECI,
 });
 
 export default rootReducer; 
