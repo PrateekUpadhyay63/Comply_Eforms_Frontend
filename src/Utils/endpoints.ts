@@ -6,6 +6,6 @@ const EndPoint = {
   GetAllIncomeCodes :"/Countries/GetAllIncomeCodes",
   GetStateByCountryId:"/Country/GetStateByCountryId?CountryId=258",
   InsertAccountHolderDetail:"/AccountHolderDetail/InsertAccountHolderDetail",
-  
+  W9PDF:"/W9Common/W9ViewFormPdf"
 };
 export default EndPoint;

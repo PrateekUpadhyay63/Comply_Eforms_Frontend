@@ -1,6 +1,6 @@
 import Utils from "../../Utils";
 
-const {LOGIN,GetCountries,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId}= Utils.actionName
+const {LOGIN,GetCountries,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF}= Utils.actionName
 
 
   let initialState:any = [];
@@ -43,9 +43,20 @@ export const GetAllIncomeCodesReducer = (state = initialState, action:any) => {
   }
 };
 
-export const GetStateByCountryIdReducer = (state = initialState, action:any) => {
+export const GetStateByCountryIdReducer = (state = initialState, action:any):any => {
   switch (action.type) {
     case GetStateByCountryId:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+
+//PDF Reducers
+export const W9PDFReducer = (state = initialState, action:any):any => {
+  switch (action.type) {
+    case W9PDF:
       return { ...state, ...action.payload };
     default:
       return state;

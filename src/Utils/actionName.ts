@@ -12,7 +12,10 @@ const ActionName = {
     GetAllIncomeCodes :"GetAllIncomeCodes",
     GetStateByCountryId:"GetStateByCountryId",
     InsertAccountHolderDetail:"InsertAccountHolderDetail",
-    CREATE_8233:"CREATE_8233"
+    CREATE_8233:"CREATE_8233",
+  
+    //PDFs
+    W9PDF:"W9PDF",
   
   };
 
