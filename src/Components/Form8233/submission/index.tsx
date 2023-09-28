@@ -77,29 +77,27 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "22px",
                       fontWeight: "550",
                     }}
                   >
-                    Part II Certification<span style={{ color: "red" }}>*</span>
+                    Part III  Certification
                   </Typography>
                   <Typography
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "30px",
                       fontWeight: "550",
                     }}
                   >
-                    W-8ECI Electronic Substitute F Statement
+                    8233 Electronic Substitute Form Statement
                   </Typography>
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px", color: "grey" }}
+                    style={{ margin: "10px", fontSize: "20px", color: "grey" }}
                   >
-                    The Internal Revenue Service does not require your consent
-                    to any provisions of this document other than the
-                    certifications required to avoid backup withholding.
+                    The Internal Revenue Service does not require your consent to any provisions of this document other than the certifications required to establish your status as a non-U.S. person and, if applicable, obtain a reduced rate of withholding.
                   </Typography>
 
                   <div

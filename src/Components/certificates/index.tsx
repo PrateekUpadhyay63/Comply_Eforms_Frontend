@@ -37,7 +37,8 @@ const clickInfo = () => {
     const componentPaths: ComponentPaths = {
       'W-9': '/W9',
       'W-8BEN': '/W-8BEN/Declaration',
-      'W-8ECI':'/W-8ECI/Info'
+      'W-8ECI':'/W-8ECI/Info',
+      'form 8233':'/Form8233/SubstantialPresence'
      
     };
 

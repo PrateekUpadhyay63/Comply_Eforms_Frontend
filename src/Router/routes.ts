@@ -56,6 +56,14 @@ const Part_ceri = React.lazy(
 );
 //
 
+const Presence= React.lazy(() => import("../Components/Form8233/SubstantialPresence"));
+const TaxPay= React.lazy(() => import("../Components/Form8233/Taxpayer"));
+const Owner= React.lazy(() => import("../Components/Form8233/owner"));
+const Claim_part= React.lazy(() => import("../Components/Form8233/ClaimPart"));
+const Documentaion= React.lazy(() => import("../Components/Form8233/Documentation"));
+const Certi_8233= React.lazy(() => import("../Components/Form8233/Certi"));
+const Submission= React.lazy(() => import("../Components/Form8233/submission"));
+
 const ROUTES: Array<RouteType> = [
   {
     name: "Login",
@@ -299,6 +307,53 @@ const ROUTES: Array<RouteType> = [
     Component: Part_ceri,
     isPrivate: true,
   },
+  {
+    name:"Presence",
+    path: "Form8233/SubstantialPresence",
+    id: 7,
+    Component: Presence,
+    isPrivate: true,
+  },{
+    name:"TaxPay",
+    path: "Form8233/TaxPayer_Identification",
+    id: 7,
+    Component: TaxPay,
+    isPrivate: true,
+  },
+  {
+    name:"Owner",
+    path: "Form8233/TaxPayer_Identification/Owner",
+    id: 7,
+    Component: Owner,
+    isPrivate: true,
+  },
+  {
+name:"Claim_part",
+path: "Form8233/TaxPayer_Identification/Owner/Claim_part",
+id: 7,
+Component: Claim_part,
+isPrivate: true,
+  },
+  {
+    name:"Documentaion",
+    path: "Form8233/TaxPayer_Identification/Owner/Documentaion",
+    id: 7,
+    Component: Documentaion,
+    isPrivate: true,
+  },{
+    name:'Certi_8233',
+    path: "Form8233/TaxPayer_Identification/Owner/Documentaion/certification",
+    id: 7,
+    Component: Certi_8233,
+    isPrivate: true,
+  },
+  {
+    name:"Submission",
+    path: "Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission",
+    id: 7,
+    Component: Submission,
+    isPrivate: true,
+  }
 ];
 
 export default ROUTES;
