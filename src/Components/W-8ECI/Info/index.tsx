@@ -43,7 +43,7 @@ export default function Tin(props: any) {
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           history("/W-8ECI/Tax_Purpose");
-          console.log(values)
+          console.log(values);
         }}
       >
         {({
@@ -108,7 +108,6 @@ export default function Tin(props: any) {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.eciUsTinTypeId}
-                          
                         >
                           <option value={1}>-Select-</option>
                           <option value={2}>SSN/ITIN</option>
@@ -142,10 +141,10 @@ export default function Tin(props: any) {
                           onChange={handleChange}
                           inputProps={{ maxLength: 11 }}
                           onBlur={handleBlur}
-                            error={Boolean(touched.eciUsTin && errors.eciUsTin)}
+                          error={Boolean(touched.eciUsTin && errors.eciUsTin)}
                           value={values.eciUsTin}
                         />
-                         <p className="error">{errors.eciUsTin}</p>
+                        <p className="error">{errors.eciUsTin}</p>
                       </div>
                       <div className="col-4"></div>
                     </div>
@@ -174,75 +173,67 @@ export default function Tin(props: any) {
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
                         <Input
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
                             height: "50px",
                             width: "100%",
-                              }}
-                              id="outlined"
-                              name="streetNumberName"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={Boolean(
-                                touched.streetNumberName &&
-                                  errors.streetNumberName
-                              )}
-                              value={
-                                values.streetNumberName
-                              }
-                            />
+                          }}
+                          id="outlined"
+                          name="streetNumberName"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={Boolean(
+                            touched.streetNumberName && errors.streetNumberName
+                          )}
+                          value={values.streetNumberName}
+                        />
 
-<p className="error">{errors.streetNumberName}</p>
+                        <p className="error">{errors.streetNumberName}</p>
                       </div>
 
                       <div className="col-4">
                         <Typography>Apt/Suite: </Typography>
                         <Input
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "50px",
-                                width: "100%",
-                              }}
-                              id="outlined"
-                              name="aptSuite"
-                              placeholder="Enter Apt/Suite"
-                              onChange={handleChange}
-                              value={values.aptSuite}
-                            />
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                          id="outlined"
+                          name="aptSuite"
+                          placeholder="Enter Apt/Suite"
+                          onChange={handleChange}
+                          value={values.aptSuite}
+                        />
                       </div>
                       <div className="col-4">
                         <Typography>
                           City or Town: <span style={{ color: "red" }}>*</span>
                         </Typography>
                         <Input
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "50px",
-                                width: "100%",
-                              }}
-                              id="outlined"
-                              name="cityTown"
-                              placeholder="Enter City or Town"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={Boolean(
-                                touched.cityTown &&
-                                  errors.cityTown
-                              )}
-                              value={values.cityTown}
-                            />
-                            <p className="error">
-                              {errors.cityTown}
-                            </p>
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                          id="outlined"
+                          name="cityTown"
+                          placeholder="Enter City or Town"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={Boolean(touched.cityTown && errors.cityTown)}
+                          value={values.cityTown}
+                        />
+                        <p className="error">{errors.cityTown}</p>
                       </div>
                     </div>
                     <div
@@ -260,27 +251,29 @@ export default function Tin(props: any) {
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
                         <Input
-                                // disabled={
-                                //   values.stateProvinceId == 0
-                                // }
-                                style={{
-                                 border: " 1px solid #d9d9d9 ",
+                          // disabled={
+                          //   values.stateProvinceId == 0
+                          // }
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
                             height: "50px",
                             width: "100%",
-                                }}
-                                // id="outlined"
-                                name="stateProvinceId"
-                                placeholder="Enter State or Province"
-                                type="text"
-                                value={values.stateProvinceId}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                error={Boolean(touched.stateProvinceId && errors.stateProvinceId)}
-                              />
-                              <p className="error">{errors.stateProvinceId}</p>
+                          }}
+                          // id="outlined"
+                          name="stateProvinceId"
+                          placeholder="Enter State or Province"
+                          type="text"
+                          value={values.stateProvinceId}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          error={Boolean(
+                            touched.stateProvinceId && errors.stateProvinceId
+                          )}
+                        />
+                        <p className="error">{errors.stateProvinceId}</p>
                       </div>
 
                       <div className="col-4">
@@ -288,27 +281,26 @@ export default function Tin(props: any) {
                           Zip or Postal Code:
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
-                         <Input
-                              style={{
-                                border: " 1px solid #d9d9d9 ",
-                                padding: " 0 10px",
-                                color: "#7e7e7e",
-                                fontStyle: "italic",
-                                height: "50px",
-                                width: "100%",
-                              }}
-                              id="outlined"
-                              name="zipPostalCode"
-                              placeholder="Enter Zip or Postal Code"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={Boolean(
-                                touched.zipPostalCode &&
-                                  errors.zipPostalCode
-                              )}
-                              value={values.zipPostalCode}
-                            />
-                             <p className="error">{errors.zipPostalCode}</p>
+                        <Input
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                          id="outlined"
+                          name="zipPostalCode"
+                          placeholder="Enter Zip or Postal Code"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={Boolean(
+                            touched.zipPostalCode && errors.zipPostalCode
+                          )}
+                          value={values.zipPostalCode}
+                        />
+                        <p className="error">{errors.zipPostalCode}</p>
                       </div>
                       <div className="col-4"></div>
                     </div>
@@ -331,7 +323,7 @@ export default function Tin(props: any) {
                       View Form
                     </Button>
                     <Button
-                    type="submit"
+                      type="submit"
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >

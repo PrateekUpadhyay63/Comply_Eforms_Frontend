@@ -93,7 +93,6 @@ export default function Tin(props: any) {
                       margin: "10px",
                       display: "flex",
                       marginTop: "25px",
-                   
                     }}
                     className="row"
                   >
@@ -338,7 +337,6 @@ export default function Tin(props: any) {
                       <Typography>Foreign TIN </Typography>
                       <Input
                         fullWidth
-                        required
                         type="text"
                         name="foreignTIN"
                         value={values.foreignTIN}
