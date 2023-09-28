@@ -75,3 +75,14 @@ export const certificateSchema = () => {
     isElectronicForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
   });
 };
+export const partCertiSchema = () => {
+  return Yup.object().shape({
+    signedBy: Yup.string().required("Please enter "),
+    confirmationCode: Yup.string().required("Please enter code"),
+    date: Yup.date().required("Please enter date"),
+    isAgreeWithDeclaration: Yup.boolean().oneOf(
+      [true],
+      "Please mark the checkbox"
+    ),
+  });
+};
