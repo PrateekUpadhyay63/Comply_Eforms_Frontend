@@ -8,27 +8,53 @@ import {
   MenuItem,
   Tooltip,
   Link,
+  SelectChangeEvent
 } from "@mui/material";
 import { Info, DeleteOutline } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { CREATE_8233 } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 export default function Tin(props: any) {
+  const getFirstDocData = useSelector((state:any) => state.form8233);
+
   const [incomeArr, setIncomeArr] = useState<string[]>([]);
   const initialValue = {
-    usTin: "",
-    usTinTypeId: "",
-    foreignTINCountry: "",
-    foreignTIN: "",
-    isFTINLegally: "",
-    isNotAvailable: "",
-    alternativeTINFormat: "",
-    isExplanationNotLegallyFTIN: "",
+    sufficientFactToJustfyExemptionForClaim12A_13: (getFirstDocData?.statementToForm8233_FileUpoad ? getFirstDocData?.statementToForm8233_FileUpoad : ""),
+    additinalDocument1ID: 0,
+    additinalDocument1Name: "",
+    additinalDocument2ID: 0,
+    additinalDocument2Name: "",
+    additinalDocument3ID: 0,
+    additinalDocument3Name: "",
+    additinalDocument4ID: 0,
+    additinalDocument4Name: "",
+    additinalDocument5ID: 0,
+    additinalDocument5Name: "",
+    additinalDocument6ID: 0,
+    additinalDocument6Name: "",
+    additinalDocument7ID: 0,
+    additinalDocument7Name: "",
+    additinalDocument8ID: 0,
+    additinalDocument8Name: "",
+    additinalDocument9ID: 0,
+    additinalDocument9Name: "",
+    additinalDocument10ID: 0,
+    additinalDocument10Name: "",
   };
+  // statementToForm8233_FileUpoad
   const addIncomeType = () => {
-    setIncomeArr([...incomeArr, ""]);
+    if (incomeArr.length < 10) {
+      setIncomeArr([...incomeArr, ""]);
+    } else {
+      
+    }
+  };
+  const handleDelete = (indexToDelete: number) => {
+    const updatedIncomeArr = [...incomeArr];
+    updatedIncomeArr.splice(indexToDelete, 1);
+    setIncomeArr(updatedIncomeArr);
   };
 
   const history = useNavigate();
@@ -37,7 +63,7 @@ export default function Tin(props: any) {
 
   const [submit, setSubmit] = useState<string>("1");
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (event: SelectChangeEvent<string>) => {
     const selectedSubmit = event.target.value;
     setSubmit(selectedSubmit);
   };
@@ -46,6 +72,7 @@ export default function Tin(props: any) {
   };
 
   const [toolInfo, setToolInfo] = useState("");
+  console.log(getFirstDocData,"getFirstDocData")
   return (
     <>
       <Formik
@@ -199,11 +226,12 @@ export default function Tin(props: any) {
 
                     <div className="col-4">
                       <Select
+                        value={submit}
                         name="taxTreaty_TreatyId"
                         // value={values.}
                         onBlur={handleBlur}
-                        onChange={handleChange}
-                        //   onChange={handleFile}
+                        onChange={handleFile}
+                       
                         style={{
                           minWidth: "140px",
                           height: "45px",
@@ -211,7 +239,7 @@ export default function Tin(props: any) {
                         }}
                       >
                         <MenuItem value="1">Keep Existing</MenuItem>
-                        <MenuItem value="2">Upload</MenuItem>
+                        <MenuItem value="2">Upload:</MenuItem>
                         <MenuItem value="3">Remove</MenuItem>
                       </Select>
 
@@ -257,6 +285,7 @@ export default function Tin(props: any) {
                       </div>
                       <div className="col-3">
                         <DeleteOutline
+                          onClick={() => handleDelete(index)}
                           style={{ color: "red", fontSize: "30px" }}
                         />
                       </div>
