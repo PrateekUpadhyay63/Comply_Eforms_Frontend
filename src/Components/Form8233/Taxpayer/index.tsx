@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   FormControl,
   Typography,
@@ -18,7 +18,8 @@ import { Formik, Form } from "formik";
 import "./index.scss";
 import { US_TINSchema } from "../../../schemas/8233";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import { getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../../Redux/Actions";
 
 export default function Tin(props: any) {
   const initialValue = {
@@ -30,7 +31,17 @@ export default function Tin(props: any) {
     notAvailable: false,
     alternativeTIN_Format: "",
   };
-
+  useEffect(() => {
+    dispatch(getAllCountries())   
+    dispatch(getAllCountriesCode())   
+    dispatch(getAllCountriesIncomeCode())   
+    dispatch(getAllStateByCountryId())   
+   }, []);
+ 
+   const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
+   const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
+   const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
+   const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
   const history = useNavigate();
   const dispatch = useDispatch();
   const [toolInfo, setToolInfo] = useState("");
@@ -183,9 +194,10 @@ export default function Tin(props: any) {
                             width: "100%",
                           }}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                           <option value="1">-Select-</option>
+                              <option value="2">SSN/ITIN</option>
+                              <option value="3">U.S. TIN not applicable</option>
+                              <option value="4">U.S. TIN not available</option>
                         </select>
                         <p className="error">{errors.usTINTypeId}</p>
                       </div>
@@ -238,7 +250,7 @@ export default function Tin(props: any) {
                     >
                       <div className="col-4">
                         <Typography>
-                          Foreign TIN Countr
+                          Foreign TIN Country
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
                         <select
@@ -255,10 +267,14 @@ export default function Tin(props: any) {
                           onBlur={handleBlur}
                           onChange={handleChange}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
-                        </select>
+                            <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                            </select>
                         <p className="error">{errors.foreginTIN_CountryId}</p>
                       </div>
 
