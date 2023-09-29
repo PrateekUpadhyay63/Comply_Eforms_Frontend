@@ -14,27 +14,19 @@ import InfoIcon from "@mui/icons-material/Info";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { CREATE_8233 } from "../../../Redux/Actions";
+import { partCertiSchema } from "../../../schemas/8233";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
-  const [selectedContinue, setselectedContinue] = useState({
-    step1: true,
-    step2: false,
-    step3: false,
-    step4: false,
-    step5: false,
-    step6: false,
-    step7: false,
-    step8: false,
-  });
+
   const [toolInfo, setToolInfo] = useState("");
 
   const initialValue = {
-    signedBy: "",
-    confirmationCode: "",
-    date: "",
-    isAgreeWithDeclaration: false,
+    signBy: "",
+    enterConfirmationCode: "",
+    signDate: "",
+    confirmationOfAcceptanceWithTheAboveDeclarations: false,
   };
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -43,14 +35,15 @@ export default function Penalties() {
     <>
       <Formik
         initialValues={initialValue}
-        // validationSchema={partCertiSchema}
+        validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          // dispatch(
-          //   W8_state(values, () => {
-          //     history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
-          //   })
-          // );
+          dispatch(
+            CREATE_8233(values, () => {
+              history("/Submit");
+            })
+          );
+          history("/Submit");
         }}
       >
         {({
@@ -203,13 +196,13 @@ export default function Penalties() {
                         }}
                         fullWidth
                         type="text"
-                        name="signedBy"
-                        value={values.signedBy}
+                        name="signBy"
+                        value={values.signBy}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        error={Boolean(touched.signedBy && errors.signedBy)}
+                        error={Boolean(touched.signBy && errors.signBy)}
                       />
-                      <p className="error">{errors.signedBy}</p>
+                      <p className="error">{errors.signBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -292,15 +285,15 @@ export default function Penalties() {
                       )}
                       <div>
                         <TextField
-                          name="confirmationCode"
-                          value={values.confirmationCode}
+                          name="enterConfirmationCode"
+                          value={values.enterConfirmationCode}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
+                            touched.enterConfirmationCode &&
+                              errors.enterConfirmationCode
                           )}
                           type="password"
-                          required
                           style={{ width: "100%" }}
                         />
                         <span
@@ -312,7 +305,7 @@ export default function Penalties() {
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.confirmationCode}</p>
+                        <p className="error">{errors.enterConfirmationCode}</p>
                       </div>
                     </div>
                   </div>
@@ -333,21 +326,25 @@ export default function Penalties() {
                           style={{ width: "100%" }}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          error={Boolean(touched.date && errors.date)}
-                          value={values.date}
+                          error={Boolean(touched.signDate && errors.signDate)}
+                          value={values.signDate}
                           type="date"
-                          name="date"
+                          name="signDate"
                         />
-                        <p className="error">{errors.date}</p>
+                        <p className="error">{errors.signDate}</p>
                       </Typography>
                     </div>
                   </div>
 
                   <Typography style={{ display: "flex", marginLeft: "10px" }}>
                     <Checkbox
-                      name="isAgreeWithDeclaration"
-                      value={values.isAgreeWithDeclaration}
-                      checked={values.isAgreeWithDeclaration}
+                      name="confirmationOfAcceptanceWithTheAboveDeclarations"
+                      value={
+                        values.confirmationOfAcceptanceWithTheAboveDeclarations
+                      }
+                      checked={
+                        values.confirmationOfAcceptanceWithTheAboveDeclarations
+                      }
                       onChange={handleChange}
                     />
                     <Typography
@@ -359,16 +356,11 @@ export default function Penalties() {
                     >
                       Please "check" box to confirm your acceptance with the
                       above declarations{" "}
-                      {errors.isAgreeWithDeclaration &&
-                      touched.isAgreeWithDeclaration ? (
-                        <div>
-                          <Typography color="error">
-                            {errors.isAgreeWithDeclaration}
-                          </Typography>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                      <Typography color="error">
+                        {
+                          errors.confirmationOfAcceptanceWithTheAboveDeclarations
+                        }
+                      </Typography>
                       <span>
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -475,13 +467,6 @@ export default function Penalties() {
                     </Button>
                     <Button
                       type="submit"
-                      onClick={() => {
-                        history("/Submit");
-                        //  setOpen2(true)
-                      }}
-                      // onClick={() => {
-                      //   setOpen2(true);
-                      // }}
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >

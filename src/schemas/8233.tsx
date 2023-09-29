@@ -13,7 +13,7 @@ export const US_TINSchema = () => {
   return Yup.object().shape({
     usTINTypeId: Yup.string().required("Please select"),
     usTIN: Yup.string().required("Please enter US Tin"),
-    notAvailable: Yup.string(),
+    notAvailable: Yup.boolean().oneOf([true], "Please mark the checkbox"),
     foreginTIN_CountryId: Yup.string().required(
       "Please select Foriegn Tin Country"
     ),

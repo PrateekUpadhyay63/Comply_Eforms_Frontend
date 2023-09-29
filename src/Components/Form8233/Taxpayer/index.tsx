@@ -6,11 +6,9 @@ import {
   Input,
   Paper,
   FormControlLabel,
-  AccordionSummary,
   Tooltip,
   Link,
   Checkbox,
-  TextField,
   RadioGroup,
   Radio,
 } from "@mui/material";
@@ -29,15 +27,12 @@ export default function Tin(props: any) {
     foreginTIN_CountryId: "",
     foregionTIN: "",
     reasionForForegionTIN_NotAvailable: "",
-    notAvailable: "",
+    notAvailable: false,
     alternativeTIN_Format: "",
   };
 
   const history = useNavigate();
   const dispatch = useDispatch();
-  const [tax, setTax] = useState<string>("");
-
-
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
@@ -66,7 +61,7 @@ export default function Tin(props: any) {
           isSubmitting,
         }) => (
           <Form onSubmit={handleSubmit}>
-            <>{console.log(errors, "errorsssss")}</>
+            <>{console.log(errors, values, "errorsssss")}</>
             <section
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
@@ -217,10 +212,18 @@ export default function Tin(props: any) {
                       </div>
                       <div className="col-3">
                         <div style={{ marginTop: "27px" }}>
-                          <Checkbox size="medium" />
+                          <Checkbox
+                            className="mx-2"
+                            name="notAvailable"
+                            value={values.notAvailable}
+                            onChange={handleChange}
+                            size="medium"
+                            style={{ fontSize: "2rem" }}
+                          />
                           <span style={{ fontSize: "18px" }}>
                             Not Available
                           </span>
+                          <p className="error">{errors.notAvailable}</p>
                         </div>
                       </div>
                     </div>
@@ -287,18 +290,18 @@ export default function Tin(props: any) {
                           <FormControl>
                             <RadioGroup
                               row
-                              value={values.notAvailable}
+                              value={values.reasionForForegionTIN_NotAvailable}
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               onChange={handleChange}
                             >
                               <FormControlLabel
-                                name="notAvailable"
+                                name="reasionForForegionTIN_NotAvailable"
                                 value="Yes"
                                 control={<Radio />}
                                 label="Not Available"
                               />
                               <FormControlLabel
-                                name="notAvailable"
+                                name="reasionForForegionTIN_NotAvailable"
                                 className="label"
                                 value="No"
                                 control={<Radio />}
@@ -306,7 +309,8 @@ export default function Tin(props: any) {
                               />
                             </RadioGroup>
                           </FormControl>
-                          {values.notAvailable === "notAvailable" ? (
+                          {values.reasionForForegionTIN_NotAvailable ===
+                          "reasionForForegionTIN_NotAvailable" ? (
                             <Button style={{ marginTop: "5px", color: "red" }}>
                               <DeleteOutline />
                             </Button>
@@ -319,7 +323,7 @@ export default function Tin(props: any) {
                     </div>
                   </div>
 
-                  {values.notAvailable === "notAvailable" ? (
+                  {values.reasionForForegionTIN_NotAvailable === "No" ? (
                     <div style={{ margin: "20px" }}>
                       <Typography
                         style={{ fontSize: "20px", marginTop: "3rem" }}
@@ -360,7 +364,7 @@ export default function Tin(props: any) {
                         {errors.reasionForForegionTIN_NotAvailable}
                       </p>
                     </div>
-                  ) : values.notAvailable === "No" ? (
+                  ) : values.reasionForForegionTIN_NotAvailable === "No" ? (
                     <></>
                   ) : (
                     <></>
