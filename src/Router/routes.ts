@@ -13,7 +13,7 @@ const Guide = React.lazy(() => import("../FormGuide/form/guide"));
 const Complete = React.lazy(() => import("../Components/complete"));
 const Security = React.lazy(() => import("../Components/Security"));
 const Submit = React.lazy(() => import("../Components/Submit"));
-
+const PDFViewer=React.lazy(() => import("../Components/reusables/PdfViewer"));
 //
 const Declaration = React.lazy(
   () => import("../Components/W-8BEN/Declaration")
@@ -353,7 +353,15 @@ isPrivate: true,
     id: 7,
     Component: Submission,
     isPrivate: true,
-  }
+  },
+  {
+    name:"PDFViewer",
+    path: "PDFViewer",
+    id: 7,
+    Component: PDFViewer,
+    isPrivate: true,
+  },
+  
 ];
 
 export default ROUTES;
