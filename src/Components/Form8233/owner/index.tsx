@@ -201,7 +201,7 @@ export default function Tin(props: any) {
                   <div className="col-12">
                     <div className="col-6 my-3">
                       <Typography style={{ fontSize: "20px" }}>
-                        <span style={{ fontWeight: "550" }}>6</span> U.S. visa
+                        <span style={{ fontWeight: "550" }}>6</span> U.S.visa
                         type<span style={{ color: "red" }}>*</span>
                         <span>
                           <Tooltip
@@ -313,8 +313,12 @@ export default function Tin(props: any) {
                         }}
                       >
                         <option value="">-Select-</option>
-                        <option value={257}>United Kingdom</option>
-                        <option value={258}>United States</option>
+                        <option value={257}>A-Visa (Employees of foreign governments)</option>
+                        <option value={258}>B1-Visa (Business visitors)</option>
+                        <option value={257}>B2-Visa (Tourist - combined B1 and B2)</option>
+                        <option value={258}>B1-Visa (Business visitors)</option>
+                        <option value={257}>C-Visa (Transit aliens)</option>
+                        <option value={258}>D-Visa (Crew members of ships and aircraft)</option>
                       </select>
                       <p className="error">{errors.usVisaTypeID}</p>
                     </div>
@@ -409,6 +413,12 @@ export default function Tin(props: any) {
                         <option value="">-Select-</option>
                         <option value={257}>United Kingdom</option>
                         <option value={258}>United States</option>
+                        <option>Afghanistan</option>
+                        <option>Akrotiri</option>
+                        <option>Aland Islands</option>
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                        <option>American Samoa</option>
                       </select>
                       <p className="error">{errors.countryIssuingPassportId}</p>
                     </div>
