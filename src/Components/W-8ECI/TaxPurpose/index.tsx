@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   FormControl,
   Typography,
@@ -18,6 +18,7 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
+import { getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../../Redux/Actions";
 import { TaxPurposeSchema } from "../../../schemas/w8ECI";
 export default function Fedral_tax(props: any) {
   const dispatch = useDispatch();
@@ -37,6 +38,17 @@ export default function Fedral_tax(props: any) {
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>(false);
+  useEffect(() => {
+    dispatch(getAllCountries())   
+    dispatch(getAllCountriesCode())   
+    dispatch(getAllCountriesIncomeCode())   
+    dispatch(getAllStateByCountryId())   
+   }, []);
+ 
+   const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
+   const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
+   const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
+   const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
 
   const handleChangeAccodion =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -445,29 +457,28 @@ export default function Fedral_tax(props: any) {
                               </Typography>
 
                               <FormControl className="w-50">
-                                <Select
+                                <select
                                   name="businessName"
-                                  fullWidth
                                   value={values.businessName}
                                   onChange={handleChange}
                                   autoComplete="businessName"
-                                  type="text"
                                   placeholder="Business Name"
                                   onBlur={handleBlur}
-                                  error={Boolean(
-                                    touched.businessName && errors.businessName
-                                  )}
-                                  className="inputClassFull"
+                                  style={{
+                                    padding: " 0 10px",
+                                    color: "#7e7e7e",
+                                    fontStyle: "italic",
+                                    height: "36px",
+                                  }}
                                 >
-                                  <MenuItem value={1}>-Select-</MenuItem>
-                                  <MenuItem value={2}>SSN/ITIN</MenuItem>
-                                  <MenuItem value={3}>
-                                    U.S. TIN not applicable
-                                  </MenuItem>
-                                  <MenuItem value={4}>
-                                    U.S. TIN not available
-                                  </MenuItem>
-                                </Select>
+                                <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                                </select>
                                 <p className="error">{errors.businessName}</p>
                               </FormControl>
                             </div>

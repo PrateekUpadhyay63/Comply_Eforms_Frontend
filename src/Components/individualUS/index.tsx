@@ -141,7 +141,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 0,
+    usTinTypeId: "0",
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -1326,7 +1326,7 @@ export default function IndividualUs() {
                               }}
                               name="usTinTypeId"
                               id="Income"
-                              defaultValue={1}
+                              defaultValue={"1"}
                               onChange={handleChange}
                               value={values.usTinTypeId}
                             >
@@ -1345,8 +1345,8 @@ export default function IndividualUs() {
                             </Typography>
                             <Input
                               disabled={
-                                values.usTinTypeId == 3 ||
-                                values.usTinTypeId == 4
+                                values.usTinTypeId == "3" ||
+                                values.usTinTypeId == "4"
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -1656,8 +1656,8 @@ export default function IndividualUs() {
                             </Typography>
                             <Input
                               disabled={
-                                values.usTinTypeId == 3 ||
-                                values.usTinTypeId == 4
+                                values.usTinTypeId == "3" ||
+                                values.usTinTypeId == "4"
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",

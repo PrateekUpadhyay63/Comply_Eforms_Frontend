@@ -203,7 +203,6 @@ export default function App() {
           {/* <Sidebar /> */}
         <Tab click={click} setClick={setClick}/>
         <PopUp click={click} setClick={setClick}/>
-       
         
         <Step2
         selectedContinue={selectedContinue}
