@@ -200,9 +200,10 @@ export default function Tin(props: any) {
                             width: "100%",
                           }}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                          <option value="1">-Select-</option>
+                              <option value="2">SSN/ITIN</option>
+                              <option value="3">U.S. TIN not applicable</option>
+                              <option value="4">U.S. TIN not available</option>
                         </select>
                         <p className="error">{errors.usTinTypeId}</p>
                       </div>
@@ -296,7 +297,7 @@ export default function Tin(props: any) {
                             onChange={handleChange}
                             size="medium"
                             name="isFTINLegally"
-                          />
+                          /> 
                           <span style={{ fontSize: "20px" }}>
                             Check if FTIN not legally required
                             {errors.isFTINLegally && touched.isFTINLegally ? (

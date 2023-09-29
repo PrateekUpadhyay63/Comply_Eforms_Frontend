@@ -29,15 +29,15 @@ export const TaxPayerSchema = () => {
     usTinTypeId: Yup.number().required("Field Cannot be Empty"),
     usTin: Yup.string().required("Field Cannot be Empty"),
     isNotAvailable: Yup.string().required("Please select one of the options"),
-    notAvailable: Yup.string().required("Please select one of the options"),
+    // notAvailable: Yup.string().required("Please select one of the options"),
     foreignTINCountry: Yup.string().required("Field Cannot be Empty"),
     foreignTIN: Yup.string().required("Field Cannot be Empty"),
-    isFTINLegally: Yup.boolean(),
-    isExplanationNotLegallyFTIN: Yup.string().required("Field Cannot be Empty"),
-    nonAvailabilityReason: Yup.boolean().when("isExplanationNotLegallyFTIN", {
-      is: "no",
-      then: () => Yup.string().required("Field Cannot be Empty"),
-    }),
+    // isFTINLegally: Yup.boolean(),
+    // isExplanationNotLegallyFTIN: Yup.string().required("Field Cannot be Empty"),
+    // nonAvailabilityReason: Yup.boolean().when("isExplanationNotLegallyFTIN", {
+    //   is: "no",
+    //   then: () => Yup.string().required("Field Cannot be Empty"),
+    // }),
   });
 };
 export const IncomeSchema = () => {

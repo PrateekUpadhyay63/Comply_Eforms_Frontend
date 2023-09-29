@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   return (
     <Provider store={store}>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <BrowserRouter>
         <RoutesWrapper />
       </BrowserRouter>
