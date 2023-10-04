@@ -59,43 +59,45 @@ const history=useNavigate()
               </Typography>
               <Typography
                 align="left"
-                className="mt-2"
+                className="mt-3"
                 style={{ fontSize: '16px', color: '#383a3b' }}
               >
                Do you wish to apply for reduced rates of withholding that may apply if the country of your permanent establishment has an applicable tax treaty in place with the United States?
               </Typography>
               <Typography
                 align="left"
-                className="mt-2"
+                className="mt-3"
                 style={{ fontSize: '16px', color: '#383a3b' }}
               >
-              Income derived effectively connected with the conduct of trade or business within the U.S.
+             Are you applying for an exemption from U.S. tax obligations? Or is the
               </Typography>
               <Typography
                 align="left"
-                className="mt-2"
+                className="mt-3"
                 style={{ fontSize: '16px', color: '#383a3b' }}
               >
               
-Select "Next" and you will be taken to the first of a series of questions. Depending on your response you may be asked further questions or taken to the next stage in the process.
+              Income derived effectively connected with the conduct of trade or business within the U.S.?
+ 
               </Typography>
               <Typography
                 align="left"
-                className="mt-2"
+                className="mt-3"
                 style={{ fontSize: '16px', color: '#383a3b' }}
               >
-               Do you wish to apply for reduced rates of withholding that may apply if the country of your permanent establishment has an applicable tax treaty in place with the United States?
+              Select "Confirm" and you will be taken to the first of a series of questions. Depending on your response you may be asked further questions or taken to the next stage in the process.
+ 
               </Typography>
               <Typography
                 align="left"
-                className="mt-2"
+                className="mt-3"
                 style={{ fontSize: '16px', color: '#383a3b' }}
               >
                We are not allowed nor aim to provide tax advice through this process. This tool is provided to take you through a process and help you determine which form is most appropriate for you to submit.
               </Typography>
               <Typography
                 align="center"
-                className="mt-3"
+                className="my-4"
                 style={{ fontSize: '16px', color: 'black',fontWeight:"550" }}
               >
               Should you need specific help or guidance you should consult your tax advisers.
@@ -128,7 +130,9 @@ Select "Next" and you will be taken to the first of a series of questions. Depen
           Do you want to go back?
         </Typography>
         <Typography align="center">
-        <Button variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
+        <Button onClick={()=>{
+          history("/Certificates")
+        }}  variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
          <span style={{marginRight:"5px"}}> <ArrowBackIcon/></span> Back
         </Button>
         </Typography>

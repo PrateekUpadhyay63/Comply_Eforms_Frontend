@@ -269,7 +269,7 @@ If you need further guidance you may wish to contact your local tax advisers.
                 }}
                   variant="contained"
                 >
-                  Confirm
+                  Close
                 </Button>
               </Typography>
 
@@ -380,6 +380,11 @@ The Form W-8ECI is not considered valid when provided without an appropriate TIN
     style={{ fontSize: '20px', color: '#383a3b',fontWeight:"bold" }}>
         Non-U.S. Partnerships or non-U.S. Trusts
     </Typography>
+    <Typography align="left"
+            className="mt-3"
+            style={{ fontSize: '16px', color: '#383a3b' }}>
+    Is the income derived allocated through a non-U.S. Partnership or a non-U.S. Trust?
+    </Typography>
     <FormControl >
 
     <RadioGroup
@@ -478,7 +483,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                 //   onClick={handleClose}
                   variant="contained"
                 >
-                  Confirm
+                  Close
                 </Button>
               </Typography>
         </>
@@ -600,7 +605,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                //   onClick={handleClose}
                  variant="contained"
                >
-                 Confirm
+                 Close
                </Button>
              </Typography>
        </>
@@ -654,7 +659,52 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
     }
         </>
 
-    ):""}
+    ): <>
+        <Typography align="center"
+    className="mt-3"
+    style={{ fontSize: '26px', color: '#383a3b', fontWeight:"bold"}}>
+        Form Selection Guide Result
+        </Typography>
+
+        <Typography align="left"
+    className="mt-3"
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+       We are not authorized to provide tax advice through this process, but the answers provided suggest that you may need to provide a Form W-8EXP. "Certificate of Foreign Government or Other Foreign Organization for United States Tax Withholding".
+            </Typography>
+
+            <Typography align="left"
+    className="mt-3"
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+           Who should submit a Form W-8EXP?
+            </Typography>
+
+            <Typography align="left"
+    className="mt-3"
+    style={{ fontSize: '16px', color: '#383a3b' }}>
+                
+You must provide a valid Form W-8BEN-E to the withholding agent or payer if submitting a U.S. tax certificate on behalf of a Foreign Person who is the beneficial owner of an amount subject to U.S. tax withholding. Form W-8BEN-E should be provided whether or not you are claiming a reduced rate of, or exemption from withholding.
+            </Typography>
+
+            <Typography align="center"
+    className="mt-3"
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+           If you need further guidance you may wish to contact your local tax advisers.
+            </Typography>
+            <Typography align="center" style={{ marginTop: '20px' }}>
+                <Button
+                  style={{ fontSize: '16px' }}
+                  size="small"
+                  type="submit"
+                  onClick={()=>{
+                    history("/Certificates")
+                }}
+                //   onClick={handleClose}
+                  variant="contained"
+                >
+                  Confirm
+                </Button>
+              </Typography>
+        </>}
     </>:""
     }
     </>
@@ -720,6 +770,11 @@ The Form W-8ECI is not considered valid when provided without an appropriate TIN
     className="mt-3"
     style={{ fontSize: '20px', color: '#383a3b',fontWeight:"bold" }}>
         Non-U.S. Partnerships or non-U.S. Trusts
+    </Typography>
+    <Typography align="left"
+            className="mt-3"
+            style={{ fontSize: '16px', color: '#383a3b' }}>
+    Is the income derived allocated through a non-U.S. Partnership or a non-U.S. Trust?
     </Typography>
     <FormControl >
 
@@ -819,7 +874,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                 //   onClick={handleClose}
                   variant="contained"
                 >
-                  Confirm
+                  Close
                 </Button>
               </Typography>
         </>
@@ -938,7 +993,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                //   onClick={handleClose}
                  variant="contained"
                >
-                 Confirm
+                 Close
                </Button>
              </Typography>
        </>
@@ -985,7 +1040,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
                 //   onClick={handleClose}
                   variant="contained"
                 >
-                  Confirm
+                  Close
                 </Button>
               </Typography>
         </>
@@ -995,7 +1050,53 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
     ):""}
     </>}
         </>
-    ):""}
+    ): Trust === "No" ?
+   ( <>
+    <Typography align="center"
+className="mt-3"
+style={{ fontSize: '26px', color: '#383a3b', fontWeight:"bold"}}>
+    Form Selection Guide Result
+    </Typography>
+
+    <Typography align="left"
+className="mt-3"
+style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+   We are not authorized to provide tax advice through this process, but the answers provided suggest that you may need to provide a Form W-8EXP. "Certificate of Foreign Government or Other Foreign Organization for United States Tax Withholding".
+        </Typography>
+
+        <Typography align="left"
+className="mt-3"
+style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+       Who should submit a Form W-8EXP?
+        </Typography>
+
+        <Typography align="left"
+className="mt-3"
+style={{ fontSize: '16px', color: '#383a3b' }}>
+            
+You must provide a valid Form W-8BEN-E to the withholding agent or payer if submitting a U.S. tax certificate on behalf of a Foreign Person who is the beneficial owner of an amount subject to U.S. tax withholding. Form W-8BEN-E should be provided whether or not you are claiming a reduced rate of, or exemption from withholding.
+        </Typography>
+
+        <Typography align="center"
+className="mt-3"
+style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
+       If you need further guidance you may wish to contact your local tax advisers.
+        </Typography>
+        <Typography align="center" style={{ marginTop: '20px' }}>
+            <Button
+              style={{ fontSize: '16px' }}
+              size="small"
+              type="submit"
+              onClick={()=>{
+                history("/Certificates")
+            }}
+            //   onClick={handleClose}
+              variant="contained"
+            >
+              Close
+            </Button>
+          </Typography>
+    </>):""}
     </>
 
 ): Tin === "No" ?
