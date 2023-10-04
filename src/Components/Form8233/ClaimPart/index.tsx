@@ -85,6 +85,7 @@ export default function Tin(props: any) {
                         backgroundColor: "black",
                         color: "white",
                         padding: "7px",
+                        margin:"5px"
                       }}
                     >
                       Part II
