@@ -114,9 +114,9 @@ const DialogEdit = (props:any) => {
                 </Typography>
               </div>
 
-              <Typography align="center" style={{ marginTop: '20px' }}>
+              <Typography align="center" style={{ marginTop: "4rem" }}>
                 <Button
-                  style={{ fontSize: '12px' }}
+                  style={{ fontSize: '18px' }}
                   size="small"
                   type="submit"
                   onClick={()=>(

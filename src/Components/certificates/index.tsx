@@ -204,7 +204,7 @@ The Form 8233 is used by non-U.S. persons to certify their status as a non-U.S. 
           history("/form")
                   // setOpen(true);
                   
-                }} style={{backgroundColor:'#ffc107',color:'black',fontSize:"10px",fontWeight:'550'}}>Form Guide</Button>
+                }} style={{backgroundColor:'#ffc107',color:'black',fontSize:"15px",fontWeight:'550'}}>Form Guide</Button>
     </Typography>
             </div>
             {toolInfo === "basic" ? (<div>
