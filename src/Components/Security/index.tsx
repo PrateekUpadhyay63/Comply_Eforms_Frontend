@@ -23,11 +23,15 @@ const DialogEdit = (props:any) => {
   useEffect(() => {
     dispatch(postSecurityCode(()=>console.log("hi")));
   }, []);
+
   
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(()=>{
 console.log(postSecurityCodeData,"postSecurityCodeData")
+
+  },[postSecurityCodeData])
   return (
     <Fragment>
     <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>

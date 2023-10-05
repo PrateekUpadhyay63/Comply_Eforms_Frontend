@@ -74,13 +74,9 @@ export const postSecurityCode = (callback: Function): any => {
       Utils.EndPoint.postSecurutyCode,
       "",
       (responseData) => {
-        let { data } = responseData;
-        console.log(data, "dataaa");
-        dispatch({
-          type: Utils.actionName.postSecurutyCode,
-          payload: { data: data.data },
-        });
+     
         if (responseData) {
+
           if (responseData.status === 200) {
             dispatch({
               type: Utils.actionName.postSecurutyCode,
