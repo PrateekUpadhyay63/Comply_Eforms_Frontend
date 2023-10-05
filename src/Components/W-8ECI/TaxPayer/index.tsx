@@ -616,6 +616,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history('/W-8ECI/Tax_Purpose')
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

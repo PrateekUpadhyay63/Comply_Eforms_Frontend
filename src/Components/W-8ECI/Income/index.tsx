@@ -489,6 +489,9 @@ export default function Factors() {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/W-8ECI/Tax_Payer")
+                    }}
                       variant="contained"
                       size="large"
                       style={{

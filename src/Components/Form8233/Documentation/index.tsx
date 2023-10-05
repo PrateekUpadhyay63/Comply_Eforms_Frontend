@@ -344,6 +344,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/Form8233/TaxPayer_Identification/Owner/Claim_part")
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

@@ -644,6 +644,9 @@ export default function Factors() {
                 </Typography>
                 <Typography align="center">
                   <Button
+                  onClick={()=>{
+                    history('/W-8BEN/Declaration/US_Tin/Claim')
+                  }}
                     variant="contained"
                     size="large"
                     style={{

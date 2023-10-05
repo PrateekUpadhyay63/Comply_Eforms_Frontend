@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 
 import Paper from '@mui/material/Paper';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import DialogContentText from '@mui/material/DialogContentText';
 import React from 'react';
@@ -290,7 +290,7 @@ If you need further guidance you may wish to contact your local tax advisers.
 
             <Typography align="left"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
             Who should submit a Form W-8BEN-E?
             </Typography>
 
@@ -303,7 +303,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
             <Typography align="center"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
            If you need further guidance you may wish to contact your local tax advisers.
             </Typography>
             <Typography align="center" style={{ marginTop: '20px' }}>
@@ -418,11 +418,11 @@ A Treaty Benefit or Foreign Person Claim
  
 
 </Typography>
-<Typography align="left"
+{/* <Typography align="left"
     className="mt-3"
     style={{ fontSize: '16px', color: '#383a3b' }}>
 A Foreign Person in this context includes all non-U.S. persons that could be described as, non-resident alien individuals, foreign (non-U.S.); corporations, partnerships, trusts estates and any other person that is not a U.S. person for U.S. tax purposes whether or not the resident country has an applicable tax treaty with the United States. It also includes a foreign branch or office of a U.S. financial institution or U.S. clearing organization if the foreign branch is a registered as a qualified intermediary.
-</Typography>
+</Typography> */}
 <FormControl >
 
     <RadioGroup
@@ -456,7 +456,7 @@ A Foreign Person in this context includes all non-U.S. persons that could be des
 
             <Typography align="left"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
             Who should submit a Form W-8BEN-E?
             </Typography>
 
@@ -469,7 +469,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
             <Typography align="center"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
            If you need further guidance you may wish to contact your local tax advisers.
             </Typography>
             <Typography align="center" style={{ marginTop: '20px' }}>
@@ -578,7 +578,7 @@ An international organization is any public international organization entitled 
 
            <Typography align="left"
    className="mt-3"
-   style={{ fontSize: '16px', color: '#383a3b' }}>
+   style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
            Who should submit a Form W-8BEN-E?
            </Typography>
 
@@ -591,7 +591,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
            <Typography align="center"
    className="mt-3"
-   style={{ fontSize: '16px', color: '#383a3b' }}>
+   style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
           If you need further guidance you may wish to contact your local tax advisers.
            </Typography>
            <Typography align="center" style={{ marginTop: '20px' }}>
@@ -809,11 +809,11 @@ A Treaty Benefit or Foreign Person Claim
  
 
 </Typography>
-<Typography align="left"
+{/* <Typography align="left"
     className="mt-3"
     style={{ fontSize: '16px', color: '#383a3b' }}>
 A Foreign Person in this context includes all non-U.S. persons that could be described as, non-resident alien individuals, foreign (non-U.S.); corporations, partnerships, trusts estates and any other person that is not a U.S. person for U.S. tax purposes whether or not the resident country has an applicable tax treaty with the United States. It also includes a foreign branch or office of a U.S. financial institution or U.S. clearing organization if the foreign branch is a registered as a qualified intermediary.
-</Typography>
+</Typography> */}
 <FormControl >
 
     <RadioGroup
@@ -847,7 +847,7 @@ A Foreign Person in this context includes all non-U.S. persons that could be des
 
             <Typography align="left"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
             Who should submit a Form W-8BEN-E?
             </Typography>
 
@@ -860,7 +860,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
             <Typography align="center"
     className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
+    style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
            If you need further guidance you may wish to contact your local tax advisers.
             </Typography>
             <Typography align="center" style={{ marginTop: '20px' }}>
@@ -966,7 +966,7 @@ An international organization is any public international organization entitled 
 
            <Typography align="left"
    className="mt-3"
-   style={{ fontSize: '16px', color: '#383a3b' }}>
+   style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
            Who should submit a Form W-8BEN-E?
            </Typography>
 
@@ -979,7 +979,7 @@ You must provide a valid Form W-8BEN-E to the withholding agent or payer if subm
 
            <Typography align="center"
    className="mt-3"
-   style={{ fontSize: '16px', color: '#383a3b' }}>
+   style={{ fontSize: '16px', color: '#383a3b',fontWeight:"bold" }}>
           If you need further guidance you may wish to contact your local tax advisers.
            </Typography>
            <Typography align="center" style={{ marginTop: '20px' }}>
@@ -1148,7 +1148,24 @@ A disregarded entity should not submit a Form W-8BEN to a partnership for purpos
 
 
 </Paper>
-             
+<Typography
+          align="center"
+          style={{
+            color: "#adadac",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+        >
+          Do you want to go back?
+        </Typography>
+        <Typography align="center">
+        <Button onClick={()=>{
+          history("/form")
+        }}  variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
+         <span style={{marginRight:"5px"}}> <ArrowBackIcon/></span> Back
+        </Button>
+        </Typography>
        
             </Paper>
             </div>

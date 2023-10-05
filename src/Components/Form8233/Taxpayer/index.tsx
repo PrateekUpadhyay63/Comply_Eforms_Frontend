@@ -423,6 +423,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/Form8233/SubstantialPresence")
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

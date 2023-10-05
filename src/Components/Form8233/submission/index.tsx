@@ -486,6 +486,9 @@ export default function Penalties() {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification")
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

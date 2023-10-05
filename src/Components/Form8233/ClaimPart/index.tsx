@@ -428,7 +428,7 @@ export default function Tin(props: any) {
                           }}
                         >
                           <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
+                          <option value={257}>33</option>
                           <option value={258}>United States</option>
                           <option>Afghanistan</option>
                         <option>Akrotiri</option>
@@ -1229,6 +1229,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history('/Form8233/TaxPayer_Identification/Owner')
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

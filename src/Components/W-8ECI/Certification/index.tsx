@@ -441,6 +441,9 @@ export default function Certifications(props: any) {
                 </Typography>
                 <Typography align="center">
                   <Button
+                  onClick={()=>{
+                    history("/W-8ECI/Income")
+                  }}
                     variant="contained"
                     style={{
                       color: "white",
