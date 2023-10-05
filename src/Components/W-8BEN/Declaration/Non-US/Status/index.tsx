@@ -86,7 +86,7 @@ export default function Factors() {
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
     >
-              <div className="overlay-div">
+       <div className="overlay-div">
             <div className="overlay-div-group">
                 <div className="viewInstructions">View Instructions</div>
                 <div className="viewform">View Form</div>
