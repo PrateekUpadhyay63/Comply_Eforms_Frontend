@@ -55,8 +55,8 @@ const Declaration = (props: any) => {
                 handleChange,
                 isSubmitting,
               }) => (
-                <Form onSubmit={handleSubmit}>
-                  <form>
+                <form onSubmit={handleSubmit}>
+                  {/* <form> */}
                     {
                       <Typography
                         align="left"
@@ -328,7 +328,7 @@ const Declaration = (props: any) => {
                       </Button>
                     </Typography>
                   </form>
-                </Form>
+                // </Form>
               )}
             </Formik>
           </Paper>

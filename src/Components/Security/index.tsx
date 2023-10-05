@@ -1,22 +1,37 @@
-import { Fragment } from 'react';
+import { Fragment,useEffect } from 'react';
 import Dialog from '@mui/material/Dialog';
 
 import DialogContent from '@mui/material/DialogContent';
 import {ContentCopy} from '@mui/icons-material';
-
+import { AppDispatch } from "../../Redux/store";
 import DialogContentText from '@mui/material/DialogContentText';
 import React from 'react';
 import { useNavigate } from "react-router-dom"
 import { TextField, Select, Button, Typography,Paper } from '@mui/material';
 import Divider from '@mui/material/Divider';
+import { useDispatch, useSelector } from "react-redux";
+import { postSecurityCode } from '../../Redux/Actions';
 
 const DialogEdit = (props:any) => {
+  const dispatch = useDispatch<AppDispatch>();
   const history = useNavigate()
   const { open, setOpen } = props;
+  const postSecurityCodeData = useSelector(
+    (state: any) => state.postSecurityCodeReducer
+  );
+
+  useEffect(() => {
+    dispatch(postSecurityCode(()=>console.log("hi")));
+  }, []);
+
+  
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(()=>{
+console.log(postSecurityCodeData,"postSecurityCodeData")
 
+  },[postSecurityCodeData])
   return (
     <Fragment>
     <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>

@@ -40,10 +40,10 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             CREATE_8233(values, () => {
-              history("/Submit");
+              history("/Complete");
             })
           );
-          history("/Submit");
+          history("/Complete");
         }}
       >
         {({

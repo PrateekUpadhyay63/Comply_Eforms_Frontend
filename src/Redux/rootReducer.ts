@@ -6,6 +6,7 @@ import {
   GetAllIncomeCodesReducer,
   GetStateByCountryIdReducer,
   W9PDFReducer,
+  postSecurityCodeReducer,
 } from "./Reducers";
 import w9Reducer from "./Reducers/w9Reducer";
 import w8Reducer from "./Reducers/w8BenNonUs";
@@ -18,6 +19,7 @@ let reducers = {
   GetAllIncomeCodesReducer,
   GetStateByCountryIdReducer,
   W9PDFReducer,
+  postSecurityCodeReducer,
 };
 const rootReducer = combineReducers({
   ...reducers,

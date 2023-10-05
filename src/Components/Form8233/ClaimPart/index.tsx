@@ -936,9 +936,21 @@ export default function Tin(props: any) {
                             width: "100%",
                           }}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                         <option value="">-Select-</option>
+                          <option value={257}>21 Other Income</option>
+                          <option value={258}>20 Students and Apprentices</option>
+                          <option>
+                          12 Royalties
+                          </option>
+                          <option>
+                          14 Independent Personal Services
+                          </option>
+                          <option>
+                          15 Dependent Personal Services
+                          </option>
+                          <option>
+                          17 Artistes and Athletes
+                          </option>
                         </select>
                         <p className="error">
                           {

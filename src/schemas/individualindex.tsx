@@ -215,5 +215,8 @@ export const individualSchema = () => {
       accountBankBranchLocationId == 16,
       then: () => Yup.string().required("BSB is required"),
     }),
+    isConfirmed:Yup.boolean()
+    .required("The terms and conditions must be accepted.")
+    .oneOf([true], "The terms and conditions must be accepted.")
   });
 };
