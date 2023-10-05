@@ -459,17 +459,16 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any) => {
+  const formatTin = (e: any,values:any):any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
     }
-    // if(e.target.value.length === 14) {
-    //   setPayload({ ...payload, usTin: payload.usTin +"-" })
-    // }
   };
   // const clickInfo = () => {
   //   alert(
@@ -1406,9 +1405,9 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={formatTin}
+                                onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 9 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1669,7 +1668,7 @@ export default function IndividualUs() {
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
                                   onChange={handleChange}
-                                  inputProps={{ maxLength: 11 }}
+                                  inputProps={{ maxLength: 9 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
                                   value={values.vat}
@@ -1731,7 +1730,7 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={formatTin}
+                                onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
                                 inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
@@ -4056,6 +4055,7 @@ export default function IndividualUs() {
                                       <span style={{ color: "red" }}>*</span>
                                     </Typography>
                                     <Input
+                                    disabled
                                       style={{
                                         border: " 1px solid #d9d9d9 ",
                                         height: " 36px",
@@ -4070,13 +4070,13 @@ export default function IndividualUs() {
                                       id="outlined"
                                       name="accountHolderName"
                                       placeholder="Enter  Account holder name"
-                                      onChange={handleChange}
+                                      // onChange={handleChange}
                                       onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountHolderName &&
                                           errors.accountHolderName
                                       )}
-                                      value={values.accountHolderName}
+                                      value={values.firstName+ " "+values.lastName}
                                     />
                                     <p className="error">
                                       {errors.accountHolderName}
@@ -4831,7 +4831,7 @@ export default function IndividualUs() {
                       <div className="text-center">
                         <Button
                           type="submit"
-                          disabled={isSubmitting}
+                          disabled={!values.isConfirmed}
                           // onClick={() => history("/Term")}
                           style={{
                             border: "1px solid #0095dd",

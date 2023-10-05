@@ -124,7 +124,7 @@ export default function Entity() {
     payStateOrProvince: "",
     payZipPostalCode: "",
     isCorrectPaymentPurposes: true,
-    isConfirmed: true,
+    isConfirmed: false,
   });
 
   var initialValues = {
@@ -195,7 +195,7 @@ export default function Entity() {
     bsb: "",
     capacityId: 1,
     isCorrectPaymentPurposes: true,
-    isConfirmed: true,
+    isConfirmed: false,
   };
 
   // useEffect(() => {
@@ -274,8 +274,6 @@ export default function Entity() {
     setIncomeArr((incomeArr) => [...incomeArr, ""]);
   };
   const handleDelete = (i: any) => {
-    console.log(i, "dhcjd");
-    
     const updatedIncomeCodes = [...incomeArr];
     updatedIncomeCodes.splice(i, 1);
     incomeData.splice(i,1);
@@ -4901,7 +4899,7 @@ export default function Entity() {
                     <div className="text-center">
                       <Button
                         type="submit"
-                        disabled={isSubmitting}
+                        disabled={!values.isConfirmed}
                         // onClick={() => history("/Term")}
                         style={{
                           border: "1px solid #0095dd",
