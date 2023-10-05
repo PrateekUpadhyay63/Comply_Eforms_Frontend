@@ -5,7 +5,7 @@ import PrivateRoute from './privateRoute';
 import ROUTES from './routes';
 import { CircularProgress } from '@mui/material';
 // import AccessControlWrapper from './accessControlWrapper';
-import "../App.css"
+import "../App.scss"
 import Navbar from "../Components/Navbar"
 
 function RoutesWrapper() {

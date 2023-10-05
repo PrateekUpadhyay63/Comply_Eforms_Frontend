@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import "../App.css";
+// import "../App.scss";
 const commonErr = 'OOPS! something went wrong!';
 
 const toastList = new Set();
