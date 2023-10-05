@@ -420,6 +420,9 @@ export default function Presence(props: any) {
                 </Typography>
                 <Typography align="center">
                   <Button
+                  onClick={()=>{
+                    history("/Certificates")
+                  }}
                     variant="contained"
                     style={{
                       color: "white",

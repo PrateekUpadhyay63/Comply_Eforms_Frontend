@@ -417,7 +417,9 @@ Based on details entered on the previous page, certain form selections which may
           Do you want to go back?
         </Typography>
         <Typography align="center">
-        <Button variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
+        <Button onClick={()=>{
+          history("/")
+        }} variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
          <span style={{marginRight:"5px"}}> <ArrowBackIcon/></span> Back
         </Button>
         </Typography>

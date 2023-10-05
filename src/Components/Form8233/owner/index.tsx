@@ -496,7 +496,7 @@ export default function Tin(props: any) {
                       ) : (
                         ""
                       )}
-                      <select
+                      <Input
                         name="countryIssuingPassportNumber"
                         style={{
                           border: " 1px solid #d9d9d9 ",
@@ -506,14 +506,8 @@ export default function Tin(props: any) {
                           height: "50px",
                           width: "100%",
                         }}
-                        value={values.countryIssuingPassportNumber}
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                      >
-                        <option value="">-Select-</option>
-                        <option value={257}>United Kingdom</option>
-                        <option value={258}>United States</option>
-                      </select>
+                       
+                      />
                       <p className="error">
                         {errors.countryIssuingPassportNumber}
                       </p>
@@ -1013,6 +1007,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/Form8233/TaxPayer_Identification")
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

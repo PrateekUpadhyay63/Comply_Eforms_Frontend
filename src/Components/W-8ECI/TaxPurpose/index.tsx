@@ -726,7 +726,17 @@ export default function Fedral_tax(props: any) {
                       Do you want to go back?
                     </Typography>
                     <Typography align="center">
-                      <Button>Back</Button>
+                      <Button onClick={()=>{
+                        history('/W-8ECI/Info')
+                      }}
+                      variant="contained"
+                      style={{
+                        color: "white",
+                        backgroundColor: "black",
+                        marginTop: "10px",
+                        marginBottom: "20px",
+                      }}
+                      >Back</Button>
                     </Typography>
                   </div>
                 </Form>

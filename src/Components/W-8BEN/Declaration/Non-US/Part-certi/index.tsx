@@ -491,6 +491,9 @@ export default function Penalties() {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history('/W-8BEN/Declaration/US_Tin/Certificates')
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

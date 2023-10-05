@@ -41,7 +41,7 @@ export default function Tin(props: any) {
     isFTINNotLegallyRequired: true,
     // tinisFTINNotLegallyRequired: true,
     // tinAlternativeFormate: true,
-    isNotLegallyFTIN: true,
+    isNotLegallyFTIN: "",
   };
   return (
     <section
@@ -367,6 +367,8 @@ export default function Tin(props: any) {
                     </div>
                   </div>
                 </div>
+               {values.isFTINNotLegallyRequired === true &&
+                (<>
                 <Typography style={{ margin: "20px", fontSize: "20px" }}>
                   Do you wish to provide a further (or other) explanation why
                   you are not legally required to provide an FTIN?
@@ -375,22 +377,23 @@ export default function Tin(props: any) {
                 <FormControl style={{ marginLeft: "20px" }}>
                   <RadioGroup
                     row
+                    name="isNotLegallyFTIN"
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     value={values.isNotLegallyFTIN}
                     onChange={handleChange}
                   >
                     <FormControlLabel
-                      value="yes"
+                      value="Yes"
                       control={<Radio />}
                       label="Yes"
-                      name="isNotLegallyFTIN"
+                      // name="isNotLegallyFTIN"
                     />
                     <FormControlLabel
                       className="label"
                       value="No"
                       control={<Radio />}
                       label="No"
-                      name="isNotLegallyFTIN"
+                      // name="isNotLegallyFTIN"
                     />
                   </RadioGroup>
                   {errors.isNotLegallyFTIN && touched.isNotLegallyFTIN ? (
@@ -403,7 +406,7 @@ export default function Tin(props: any) {
                     ""
                   )}
                 </FormControl>
-                <div style={{ margin: "20px" }}>
+               {values.isNotLegallyFTIN  ==="Yes" ?( <div style={{ margin: "20px" }}>
                   <Typography style={{ fontSize: "25px", fontWeight: "550" }}>
                     Foreign TIN Provision – Reasonable Explanation
                   </Typography>
@@ -461,7 +464,8 @@ export default function Tin(props: any) {
                       document may need to obtain further information.
                     </Typography>
                   </Typography>
-                </div>
+                </div>):""}
+               </>)}
                 <div
                   style={{
                     display: "flex",
@@ -499,6 +503,9 @@ export default function Tin(props: any) {
                 </Typography>
                 <Typography align="center">
                   <Button
+                  onClick={()=>{
+                    history('/W-8BEN/Declaration/Non_US_Sorced/Status')
+                  }}
                     variant="contained"
                     style={{
                       color: "white",

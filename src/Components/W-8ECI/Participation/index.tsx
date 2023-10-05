@@ -483,6 +483,9 @@ export default function Penalties() {
                   </Typography>
                   <Typography align="center">
                     <Button
+                    onClick={()=>{
+                      history("/W-8ECI/Certification")
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

@@ -4882,20 +4882,20 @@ export default function Entity() {
                           name="isConfirmed"
                           onChange={handleChange}
                           onBlur={handleBlur}
-                            value={values.isConfirmed}
+                          value={values.isConfirmed}
                           // onBlur={handleBlur}
                           // error={Boolean(touched.isConfirmed && errors.isConfirmed)}
                           // value={payload.isConfirmed}
                         />
                       </div>
-                      {/* <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p> */}
+                      <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p>
                       <div className="w-auto d-flex p-0">
                         <Typography className="my-auto">
                           I confirm the information above is correct
                         </Typography>
                       </div>
                     </div>
-                    {/* {payload.isConfirmed ? ( */}
+                    {payload.isConfirmed ? (
                     <div className="text-center">
                       <Button
                         type="submit"
@@ -4919,7 +4919,7 @@ export default function Entity() {
                         Continue
                       </Button>
                     </div>
-                    {/* ) : (
+                    ) : (
                   <div className="text-center">
                     <Button
                       type="submit"
@@ -4944,7 +4944,7 @@ export default function Entity() {
                       Continue
                     </Button>
                   </div>
-                )} */}
+                )}
                   </div>
                 </Form>
               )}

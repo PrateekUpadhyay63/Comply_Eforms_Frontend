@@ -350,6 +350,9 @@ export default function Certifications(props: any) {
                 </Typography>
                 <Typography align="center">
                   <Button
+                  onClick={()=>{
+                    history("/Form8233/TaxPayer_Identification/Owner/Documentaion")
+                  }}
                     variant="contained"
                     style={{
                       color: "white",

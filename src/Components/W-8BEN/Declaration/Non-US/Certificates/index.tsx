@@ -399,6 +399,9 @@ export default function Certifications(props: any) {
           </Typography>
           <Typography align="center">
             <Button
+            onClick={()=>{
+              history("/W-8BEN/Declaration/US_Tin/Rates")
+            }}
               variant="contained"
               style={{
                 color: "white",
