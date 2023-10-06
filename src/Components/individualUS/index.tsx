@@ -154,7 +154,7 @@ export default function IndividualUs() {
     foreignTINCountryId: 0,
     foreignTIN: "",
     foreignTINNotAvailable: false, //
-    alternativeTINFormat: true, //
+    alternativeTINFormat: "yes", //
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -459,16 +459,17 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any,values:any):any => {
+  const formatTin = (e: any) => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
     }
+    // if(e.target.value.length === 14) {
+    //   setPayload({ ...payload, usTin: payload.usTin +"-" })
+    // }
   };
   // const clickInfo = () => {
   //   alert(
@@ -572,7 +573,8 @@ export default function IndividualUs() {
                   foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
                   foreignTINNotAvailable: values?.foreignTINNotAvailable, //
-                  alternativeTINFormat: values?.alternativeTINFormat, //
+                  alternativeTINFormat:
+                    values?.alternativeTINFormat == "yes" ? true : false, //
                   giin: values?.giin,
                   permanentResidentialCountryId:
                     values?.permanentResidentialCountryId,
@@ -1405,9 +1407,9 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={(e)=>formatTin(e,values)}
+                                onKeyDown={formatTin}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1529,7 +1531,7 @@ export default function IndividualUs() {
                                 inputProps={{ "aria-label": "Yes" }}
                               />
                             </div> */}
-                            <div className="d-flex">
+                            {/* <div className="d-flex">
                               <Typography
                                 style={{ fontSize: "13px", marginTop: "10px" }}
                               >
@@ -1610,6 +1612,45 @@ export default function IndividualUs() {
                                   ""
                                 )}
                               </FormControl>
+                            </div> */}
+                            <div className="d-flex">
+                              <FormControl
+                                error={Boolean(
+                                  touched.alternativeTINFormat &&
+                                    errors.alternativeTINFormat
+                                )}
+                              >
+                                <RadioGroup
+                                  id="alternativeTINFormat"
+                                  row
+                                  aria-labelledby="demo-row-radio-buttons-group-label"
+                                  value={values.alternativeTINFormat}
+                                  onChange={handleChange}
+                                >
+                                  <FormControlLabel
+                                    control={<Radio />}
+                                    value="yes"
+                                    name="alternativeTINFormat"
+                                    label="Not Available"
+                                  />
+                                  <FormControlLabel
+                                    control={<Radio />}
+                                    value="no"
+                                    name="alternativeTINFormat"
+                                    label="Alternative TIN Format"
+                                  />
+                                </RadioGroup>
+                                {errors.alternativeTINFormat &&
+                                touched.alternativeTINFormat ? (
+                                  <div>
+                                    <Typography color="error">
+                                      {errors.alternativeTINFormat}
+                                    </Typography>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </FormControl>
                             </div>
                           </div>
                           <div className="col-12 d-flex">
@@ -1668,7 +1709,7 @@ export default function IndividualUs() {
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
                                   onChange={handleChange}
-                                  inputProps={{ maxLength: 9 }}
+                                  inputProps={{ maxLength: 11 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
                                   value={values.vat}
@@ -1730,7 +1771,7 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={(e)=>formatTin(e,values)}
+                                onKeyDown={formatTin}
                                 onChange={handleChange}
                                 inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
@@ -4055,7 +4096,6 @@ export default function IndividualUs() {
                                       <span style={{ color: "red" }}>*</span>
                                     </Typography>
                                     <Input
-                                    disabled
                                       style={{
                                         border: " 1px solid #d9d9d9 ",
                                         height: " 36px",
@@ -4070,13 +4110,13 @@ export default function IndividualUs() {
                                       id="outlined"
                                       name="accountHolderName"
                                       placeholder="Enter  Account holder name"
-                                      // onChange={handleChange}
+                                      onChange={handleChange}
                                       onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountHolderName &&
                                           errors.accountHolderName
                                       )}
-                                      value={values.firstName+ " "+values.lastName}
+                                      value={values.accountHolderName}
                                     />
                                     <p className="error">
                                       {errors.accountHolderName}
@@ -4831,7 +4871,7 @@ export default function IndividualUs() {
                       <div className="text-center">
                         <Button
                           type="submit"
-                          disabled={!values.isConfirmed}
+                          disabled={isSubmitting}
                           // onClick={() => history("/Term")}
                           style={{
                             border: "1px solid #0095dd",
