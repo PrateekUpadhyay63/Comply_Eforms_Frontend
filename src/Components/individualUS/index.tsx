@@ -79,7 +79,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 0,
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -149,7 +149,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: "0",
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -573,7 +573,7 @@ export default function IndividualUs() {
                   dob: values?.dob,
                   nameOfDisregarded: values?.nameOfDisregarded,
                   entityName: values?.entityName,
-                  usTinTypeId: values?.usTinTypeId,
+                  usTinTypeId: (+values?.usTinTypeId),
                   usTin: values?.usTin,
                   foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
@@ -1396,8 +1396,8 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == "3" ||
-                                  values.usTinTypeId == "4"
+                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 4
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -1721,8 +1721,8 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == "3" ||
-                                  values.usTinTypeId == "4"
+                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 4
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
