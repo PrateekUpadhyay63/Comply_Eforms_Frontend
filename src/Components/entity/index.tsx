@@ -195,7 +195,7 @@ export default function Entity() {
     bsb: "",
     capacityId: 1,
     isCorrectPaymentPurposes: true,
-    isConfirmed: true,
+    isConfirmed: false,
   };
 
   // useEffect(() => {
@@ -4897,7 +4897,7 @@ export default function Entity() {
                         </Typography>
                       </div>
                     </div>
-                    {payload.isConfirmed ? (
+                    {values.isConfirmed ? (
                     <div className="text-center">
                       <Button
                         type="submit"

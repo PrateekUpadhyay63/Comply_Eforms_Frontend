@@ -140,7 +140,7 @@ export default function Fedral_tax(props: any) {
                       >
                         Select your status for U.S. tax purposes
                       </Typography>
-                      <Typography align="right" className="col-md-6 col-12">
+                      {/* <Typography align="right" className="col-md-6 col-12">
                         <Button
                           style={{
                             color: "black",
@@ -151,7 +151,7 @@ export default function Fedral_tax(props: any) {
                         >
                           Federal Tax Classification Guide
                         </Button>
-                      </Typography>
+                      </Typography> */}
                     </div>
                     <div className="row">
                       <div
@@ -681,7 +681,7 @@ export default function Fedral_tax(props: any) {
                           </Typography>
                           <Typography
                             align="left"
-                            style={{ marginTop: "20px", fontSize: "12px" }}
+                            style={{ marginTop: "20px", }}
                           >
                             This guide is provided to help you determine the
                             classification of the entity the submission
@@ -690,7 +690,7 @@ export default function Fedral_tax(props: any) {
 
                           <Typography
                             align="left"
-                            style={{ marginTop: "10px", fontSize: "12px" }}
+                            style={{ marginTop: "10px",  }}
                           >
                             In the menu below you will see several different
                             classification types. Please select each in turn
@@ -700,7 +700,7 @@ export default function Fedral_tax(props: any) {
                           </Typography>
                           <Typography
                             align="left"
-                            style={{ marginTop: "10px", fontSize: "12px" }}
+                            style={{ marginTop: "10px", }}
                           >
                             Depending on the type selected you may either be
                             provided with further selections, more detailed
@@ -709,7 +709,7 @@ export default function Fedral_tax(props: any) {
                           </Typography>
                           <Typography
                             align="left"
-                            style={{ marginTop: "10px", fontSize: "12px" }}
+                            style={{ marginTop: "10px",}}
                           >
                             Please note that although this guide is provided to
                             assist your selection, it is not intended nor aims
