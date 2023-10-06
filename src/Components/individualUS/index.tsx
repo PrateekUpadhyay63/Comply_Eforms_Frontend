@@ -470,6 +470,12 @@ export default function IndividualUs() {
       values.usTin= values.usTin+"-"
     }
   };
+  const setAccountHolder =(e: any,values:any):any => {
+    if(values.accountHolderName===""){
+      values.accountHolderName=values.firstName+values.lastName
+    }
+    else values.accountHolderName=e.target.value;
+  }
   // const clickInfo = () => {
   //   alert(
   //     "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
@@ -909,6 +915,7 @@ export default function IndividualUs() {
                               id="outlined"
                               name="firstName"
                               placeholder="Enter First Name"
+                              onKeyDown={(e)=>setAccountHolder(e,values)}
                               onBlur={handleBlur}
                               error={Boolean(
                                 touched.firstName && errors.firstName
@@ -945,6 +952,7 @@ export default function IndividualUs() {
                                 touched.lastName && errors.lastName
                               )}
                               value={values.lastName}
+                              onKeyDown={(e)=>setAccountHolder(e,values)}
                             />
                             <p className="error">{errors.lastName}</p>
                           </FormControl>
@@ -4827,31 +4835,56 @@ export default function IndividualUs() {
                         <p className="error">{errors.isConfirmed}</p>
                       </div>
 
-                      <div className="text-center">
-                        <Button
-                          type="submit"
-                          disabled={!values.isConfirmed}
-                          // onClick={() => history("/Term")}
-                          style={{
-                            border: "1px solid #0095dd",
-                            background: "#0095dd",
-                            height: "45px",
-                            lineHeight: "normal",
-                            textAlign: "center",
-                            fontSize: "16px",
-                            textTransform: "uppercase",
-                            borderRadius: "0px",
-                            color: "#fff",
-                            padding: "0 35px",
-                            letterSpacing: "1px",
-                          }}
-                          className="btn btn_submit  btn-primary-agent"
+                      {values.isConfirmed ? (
+                    <div className="text-center">
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        // onClick={() => history("/Term")}
+                        style={{
+                          border: "1px solid #0095dd",
+                          background: "#0095dd",
+                          height: "45px",
+                          lineHeight: "normal",
+                          textAlign: "center",
+                          fontSize: "16px",
+                          textTransform: "uppercase",
+                          borderRadius: "0px",
+                          color: "#fff",
+                          padding: "0 35px",
+                          letterSpacing: "1px",
+                        }}
+                        className="btn btn_submit  btn-primary-agent"
+                      >
+                        Continue
+                      </Button>
+                    </div>
+                    ) : (
+                  <div className="text-center">
+                    <Button
+                      type="submit"
+                      disabled
+                      style={{
+                        border: '1px solid #0095dd',
+                        backgroundColor: '#D2D2D4',
+                        borderColor: '#d2d2d2',
+                        color: '#4a4a4a',
+                        height: '45px',
+                        lineHeight: 'normal',
+                        textAlign: 'center',
+                        fontSize: '16px',
+                        textTransform: 'uppercase',
+                        borderRadius: '0px',
 
-                          // onClick={(errors)=> chek(errors)}
-                        >
-                          Continue
-                        </Button>
-                      </div>
+                        padding: '0 35px',
+                        letterSpacing: '1px',
+                      }}
+                      className="btn btn_submit  btn-primary-agent"
+                    >
+                      Continue
+                    </Button>
+                  </div>
+                )}
                     </div>
                   </div>
                 </Form>
