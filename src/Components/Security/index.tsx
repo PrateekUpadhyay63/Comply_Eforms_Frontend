@@ -1,4 +1,4 @@
-import { Fragment,useEffect } from 'react';
+import { Fragment,useEffect,useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 
 import DialogContent from '@mui/material/DialogContent';
@@ -17,8 +17,10 @@ const DialogEdit = (props:any) => {
   const history = useNavigate()
   const { open, setOpen } = props;
   const postSecurityCodeData = useSelector(
-    (state: any) => state.postSecurityCodeReducer
+    (state: any) => state.postSecurityCodeReducer.postSecurutyCodeData
   );
+
+  const [payload,setPayload]=useState({code:"",signature:""})
 
   useEffect(() => {
     dispatch(postSecurityCode(()=>console.log("hi")));
@@ -29,8 +31,7 @@ const DialogEdit = (props:any) => {
     setOpen(false);
   };
   useEffect(()=>{
-console.log(postSecurityCodeData,"postSecurityCodeData")
-
+    setPayload({...payload,code:postSecurityCodeData})
   },[postSecurityCodeData])
   return (
     <Fragment>
@@ -74,8 +75,9 @@ console.log(postSecurityCodeData,"postSecurityCodeData")
                   <TextField
                     fullWidth
                     size="small"
-                    name="description"
-                    
+                    name="code"
+                    value={payload.code}
+                    disabled
                   />
                 </Typography>
                 <Typography className="col-1">
@@ -105,9 +107,13 @@ console.log(postSecurityCodeData,"postSecurityCodeData")
 
               <div className="row col-12 d-flex mt-2">
                 <Typography className="col-5 ">
-                  <Select
-                    style={{ width: '90%', height: '38px', marginTop: '3px' }}
-                  ></Select>
+                <TextField
+                    fullWidth
+                    size="small"
+                    name="signature"
+                    value={payload.signature}
+                    onChange={(e)=>setPayload({...payload,signature:e.target.value})}
+                  />
                 </Typography>
                 <Typography className="col-7 ">
                   <TextField

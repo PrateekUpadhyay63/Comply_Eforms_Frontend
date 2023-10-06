@@ -124,8 +124,7 @@ export const individualSchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter Account Holder Name")
-          .min(3, "Name should be minimum of 3 characters")
-          .max(50, "Name should be maximum of 50 characters"),
+          
     }),
 
     accountBankName: Yup.string().when("paymentTypeId", {
@@ -186,8 +185,7 @@ export const individualSchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter payable name")
-          .min(3, "Name should be minimum of 3 characters")
-          .max(50, "Name should be maximum of 50 characters"),
+          
     }),
 
     payStreetNumberAndName: Yup.string().when("paymentTypeId", {
