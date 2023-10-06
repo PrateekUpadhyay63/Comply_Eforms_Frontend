@@ -135,7 +135,7 @@ export default function IndividualUs() {
     bsb: "",
     capacityId: 1,
     isCorrectPaymentPurposes: true,
-    isConfirmed: true,
+    isConfirmed: false,
   });
   var initialValues = {
     agentId: 3,
@@ -4831,9 +4831,11 @@ export default function IndividualUs() {
                               I confirm the information above is correct
                             </Typography>
                           </div>
+                         
                         </div>
-                        <p className="error">{errors.isConfirmed}</p>
+                       
                       </div>
+                      <p className="error">{errors.isConfirmed}</p>
 
                       {values.isConfirmed ? (
                     <div className="text-center">

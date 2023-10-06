@@ -4888,13 +4888,15 @@ export default function Entity() {
                           // value={payload.isConfirmed}
                         />
                       </div>
-                      <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p>
+                     
                       <div className="w-auto d-flex p-0">
                         <Typography className="my-auto">
                           I confirm the information above is correct
                         </Typography>
                       </div>
+                     
                     </div>
+                    <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p>
                     {values.isConfirmed ? (
                     <div className="text-center">
                       <Button
