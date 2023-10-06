@@ -13,7 +13,7 @@ const ActionName = {
     GetStateByCountryId:"GetStateByCountryId",
     InsertAccountHolderDetail:"InsertAccountHolderDetail",
     CREATE_8233:"CREATE_8233",
-    postSecurutyCode:"postSecurutyCode",
+    postSecurutyCode:"postSecurityCode",
   
     //PDFs
     W9PDF:"W9PDF",

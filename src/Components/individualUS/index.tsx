@@ -154,7 +154,7 @@ export default function IndividualUs() {
     foreignTINCountryId: 0,
     foreignTIN: "",
     foreignTINNotAvailable: false, //
-    alternativeTINFormat: true, //
+    alternativeTINFormat: "yes", //
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -573,7 +573,8 @@ export default function IndividualUs() {
                   foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
                   foreignTINNotAvailable: values?.foreignTINNotAvailable, //
-                  alternativeTINFormat: values?.alternativeTINFormat, //
+                  alternativeTINFormat:
+                    values?.alternativeTINFormat == "yes" ? true : false, //
                   giin: values?.giin,
                   permanentResidentialCountryId:
                     values?.permanentResidentialCountryId,
@@ -1530,7 +1531,7 @@ export default function IndividualUs() {
                                 inputProps={{ "aria-label": "Yes" }}
                               />
                             </div> */}
-                            <div className="d-flex">
+                            {/* <div className="d-flex">
                               <Typography
                                 style={{ fontSize: "13px", marginTop: "10px" }}
                               >
@@ -1600,6 +1601,45 @@ export default function IndividualUs() {
                                   }}
                                 />
 
+                                {errors.alternativeTINFormat &&
+                                touched.alternativeTINFormat ? (
+                                  <div>
+                                    <Typography color="error">
+                                      {errors.alternativeTINFormat}
+                                    </Typography>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </FormControl>
+                            </div> */}
+                            <div className="d-flex">
+                              <FormControl
+                                error={Boolean(
+                                  touched.alternativeTINFormat &&
+                                    errors.alternativeTINFormat
+                                )}
+                              >
+                                <RadioGroup
+                                  id="alternativeTINFormat"
+                                  row
+                                  aria-labelledby="demo-row-radio-buttons-group-label"
+                                  value={values.alternativeTINFormat}
+                                  onChange={handleChange}
+                                >
+                                  <FormControlLabel
+                                    control={<Radio />}
+                                    value="yes"
+                                    name="alternativeTINFormat"
+                                    label="Not Available"
+                                  />
+                                  <FormControlLabel
+                                    control={<Radio />}
+                                    value="no"
+                                    name="alternativeTINFormat"
+                                    label="Alternative TIN Format"
+                                  />
+                                </RadioGroup>
                                 {errors.alternativeTINFormat &&
                                 touched.alternativeTINFormat ? (
                                   <div>

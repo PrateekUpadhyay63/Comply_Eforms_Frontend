@@ -1,7 +1,7 @@
 import Utils from "../../Utils";
-import { postSecurityCode } from "../Actions";
+// import { postSecurityCode } from "../Actions";
 
-const {LOGIN,GetCountries,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF}= Utils.actionName
+const {LOGIN,GetCountries,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
 
 
   let initialState:any = [];
@@ -66,7 +66,8 @@ export const W9PDFReducer = (state = initialState, action:any):any => {
 
 export const postSecurityCodeReducer= (state = initialState, action:any):any => {
   switch (action.type) {
-    case postSecurityCode:
+    case postSecurutyCode:
+      console.log(action.payload,"Reducer payload")
       return { ...state, ...action.payload };
     default:
       return state;
