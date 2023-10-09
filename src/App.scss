@@ -385,3 +385,80 @@ transition: all 1.5s ease;
 
 
 
+
+.steper-check-icon{
+  width: 10px;
+ 
+}
+.steper-check-icon-solid{
+  width: 18px;
+}
+.stepper{
+  .accordian-header{
+    img{
+      opacity: 0;
+    }
+  }
+  .accordian-header .active{
+    img{
+      opacity: 1;
+    }
+  }
+
+  ul li::before{
+    background: url(assets/img/check.png);
+    content: "";
+    width: 15px;
+    height: 15px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    margin-top: auto;
+    opacity: 0;
+  }
+  ul li.active::before{
+  opacity: 1 !important;
+  }
+  ul{
+    padding: 0px;
+    li{
+      display: flex !important;
+        color: #535353;
+        font-size: 13px;
+        padding: 6px 0;
+        display: table;
+        list-style: none;
+    
+    }
+  }
+  .MuiAccordionDetails-root{
+    padding: 0px;
+    .MuiPaper-rounded{
+      background-color: #f0f0f0 !important;
+      padding: 15px 20px;
+    }
+  }
+}
+.bg-none{
+  background-color: none !important;
+  background: none !important;
+}
+
+.stepper .MuiPaper-elevation {
+  margin-top: 0 !important;
+  margin-bottom: 2px;
+}
+
+.stepper p{
+  
+    padding: 0px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-right: 10px;
+    width: 100%;
+    text-align: left;
+
+}
