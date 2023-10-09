@@ -7,6 +7,7 @@ import {
   GetStateByCountryIdReducer,
   W9PDFReducer,
   postSecurityCodeReducer,
+  getSecurityQuestionsReducer,
 } from "./Reducers";
 import w9Reducer from "./Reducers/w9Reducer";
 import w8Reducer from "./Reducers/w8BenNonUs";
@@ -20,6 +21,7 @@ let reducers = {
   GetStateByCountryIdReducer,
   W9PDFReducer,
   postSecurityCodeReducer,
+  getSecurityQuestionsReducer,
 };
 const rootReducer = combineReducers({
   ...reducers,

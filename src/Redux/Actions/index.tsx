@@ -68,6 +68,8 @@ export const loginAction = (value: any, callback: Function): any => {
   };
 };
 
+
+
 export const postSecurityCode = (callback: Function): any => {
   return (dispatch: any) => {
     Utils.api.postApiCall(
@@ -148,6 +150,31 @@ export const getAllCountries = (): any => {
     );
   };
 };
+
+export const getSecurityQuestions = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetSecurityQuestions,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetSecurityQuestions,
+            payload: {
+              getSecurityQuestionsData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+
 
 export const getAllCountriesCode = (): any => {
   return (dispatch: any) => {
