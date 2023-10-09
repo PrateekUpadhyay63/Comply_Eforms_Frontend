@@ -5,26 +5,183 @@ import {
 
     Button,
 } from '@mui/material';
+import checksolid from "../../../assets/img/check-solid.png";
+import check from "../../../assets/img/check.png";
+import { Formik, Form } from "formik";
 import {useNavigate} from "react-router-dom";
 import {Divider ,Paper}from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./index.scss"
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Term() {
     //States
     const history = useNavigate()
+    const [expanded, setExpanded] = React.useState<string | false>("");
+
+    const handleChangestatus =
+      (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+        setExpanded(isExpanded ? panel : false);
+      };
+
     return (
-        <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+<section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+<div className="overlay-div">
+            <div className="overlay-div-group">
+                <div className="viewInstructions">View Instructions</div>
+                <div className="viewform">View Form</div>
+                <div className="helpvideo"> 
+                {/* <a target="_blank" href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-">Help Video</a> */}
+                <a href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-" target="popup" onClick={()=>window.open('https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-','name','width=600,height=400')}>Help Video</a>
+                </div>
+            </div>
+        </div>
+           
 
+            <div className="row w-100 h-100">
+          <div className="col-4">
+          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+        <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
+         
+              <div style={{background:"#ffffff33",height:"100%"}}>
+                <div className="stepper">
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChangestatus("panel1")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
+                          className="accordian-header"
+                        >
+                          <Typography
+                          className="text-uppercase d-flex active"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
 
+                        <AccordionDetails>
+                          <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">Name and Address </label></li>
+                              <li className="active">Account Indivation(Optional)</li>
+                              <li className="active">Tax Identification Number</li>
+                              <li className="active">Contact Details</li>
+                              <li className="active">Form Selection</li>
+                            </ul>
+                          </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel2"}
+                        onChange={handleChangestatus("panel2")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">US Sourced Income Declaration (optional)</label></li>
+                              <li >United States Citizenship Status</li>
+                              <li>Tax Identification Number</li>
+                              <li>Treaty Claim</li>
+                              <li>
+                              Special Rates and Conditions
+                              </li>
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
+              </div>
+           
+        </Paper>
+      </div>
+      </div>
+      <div className="col-8">
 
-            <div className="container-fluid">
-
-
-                <div className="col-lg-12 mt-20" style={{ padding: "18px"}}>
+                <div style={{ padding: "20px 0px" }}>
                 <Paper elevation={6} style={{ padding: '17px' ,marginTop:"20px",}}>
                     <>
                     <Paper elevation={6} style={{ padding: '17px' ,marginTop:"20px",backgroundColor:"#e8e1e1"}}>
@@ -98,10 +255,16 @@ export default function Term() {
       </Typography>
  
                 </div>
+</div>
+                </div>
+         
 
 
 
-            </div>
+           
+
+
+
             <div className="container-fluid">
                 <footer>
                     <div className="row mx-1">
