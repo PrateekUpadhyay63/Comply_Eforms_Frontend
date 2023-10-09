@@ -79,7 +79,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 0,
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -149,12 +149,12 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: "0",
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
     foreignTINNotAvailable: false, //
-    alternativeTINFormat: "yes", //
+    alternativeTINFormat: true, //
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -459,18 +459,23 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any) => {
+  const formatTin = (e: any,values:any):any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
     }
-    // if(e.target.value.length === 14) {
-    //   setPayload({ ...payload, usTin: payload.usTin +"-" })
-    // }
   };
+  const setAccountHolder =(e: any,values:any):any => {
+    if(values.accountHolderName===""){
+      values.accountHolderName=values.firstName+values.lastName
+    }
+    else values.accountHolderName=e.target.value;
+  }
   // const clickInfo = () => {
   //   alert(
   //     "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
@@ -568,13 +573,12 @@ export default function IndividualUs() {
                   dob: values?.dob,
                   nameOfDisregarded: values?.nameOfDisregarded,
                   entityName: values?.entityName,
-                  usTinTypeId: values?.usTinTypeId,
+                  usTinTypeId: (+values?.usTinTypeId),
                   usTin: values?.usTin,
                   foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
                   foreignTINNotAvailable: values?.foreignTINNotAvailable, //
-                  alternativeTINFormat:
-                    values?.alternativeTINFormat == "yes" ? true : false, //
+                  alternativeTINFormat: values?.alternativeTINFormat, //
                   giin: values?.giin,
                   permanentResidentialCountryId:
                     values?.permanentResidentialCountryId,
@@ -621,7 +625,7 @@ export default function IndividualUs() {
                   alternativeNumber1: values?.alternativeNumber1,
                   incomeTypeId: incomeArr,
                   paymentTypeId: values?.paymentTypeId,
-                  accountHolderName: values?.accountHolderName,
+                  accountHolderName: values?.accountHolderName==="" ?values?.firstName+" " +values?.lastName : values?.accountHolderName,
                   accountBankName: values?.accountBankName,
                   accountBankBranchLocationId:
                     values?.accountBankBranchLocationId,
@@ -911,6 +915,7 @@ export default function IndividualUs() {
                               id="outlined"
                               name="firstName"
                               placeholder="Enter First Name"
+                              onKeyDown={(e)=>setAccountHolder(e,values)}
                               onBlur={handleBlur}
                               error={Boolean(
                                 touched.firstName && errors.firstName
@@ -947,6 +952,7 @@ export default function IndividualUs() {
                                 touched.lastName && errors.lastName
                               )}
                               value={values.lastName}
+                              onKeyDown={(e)=>setAccountHolder(e,values)}
                             />
                             <p className="error">{errors.lastName}</p>
                           </FormControl>
@@ -1390,8 +1396,8 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == "3" ||
-                                  values.usTinTypeId == "4"
+                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 4
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -1407,9 +1413,9 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={formatTin}
+                                onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 9 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1531,7 +1537,7 @@ export default function IndividualUs() {
                                 inputProps={{ "aria-label": "Yes" }}
                               />
                             </div> */}
-                            {/* <div className="d-flex">
+                            <div className="d-flex">
                               <Typography
                                 style={{ fontSize: "13px", marginTop: "10px" }}
                               >
@@ -1612,45 +1618,6 @@ export default function IndividualUs() {
                                   ""
                                 )}
                               </FormControl>
-                            </div> */}
-                            <div className="d-flex">
-                              <FormControl
-                                error={Boolean(
-                                  touched.alternativeTINFormat &&
-                                    errors.alternativeTINFormat
-                                )}
-                              >
-                                <RadioGroup
-                                  id="alternativeTINFormat"
-                                  row
-                                  aria-labelledby="demo-row-radio-buttons-group-label"
-                                  value={values.alternativeTINFormat}
-                                  onChange={handleChange}
-                                >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="yes"
-                                    name="alternativeTINFormat"
-                                    label="Not Available"
-                                  />
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="no"
-                                    name="alternativeTINFormat"
-                                    label="Alternative TIN Format"
-                                  />
-                                </RadioGroup>
-                                {errors.alternativeTINFormat &&
-                                touched.alternativeTINFormat ? (
-                                  <div>
-                                    <Typography color="error">
-                                      {errors.alternativeTINFormat}
-                                    </Typography>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </FormControl>
                             </div>
                           </div>
                           <div className="col-12 d-flex">
@@ -1709,7 +1676,7 @@ export default function IndividualUs() {
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
                                   onChange={handleChange}
-                                  inputProps={{ maxLength: 11 }}
+                                  inputProps={{ maxLength: 9 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
                                   value={values.vat}
@@ -1754,8 +1721,8 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == "3" ||
-                                  values.usTinTypeId == "4"
+                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 4
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -1771,7 +1738,7 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={formatTin}
+                                onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
                                 inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
@@ -4116,7 +4083,7 @@ export default function IndividualUs() {
                                         touched.accountHolderName &&
                                           errors.accountHolderName
                                       )}
-                                      value={values.accountHolderName}
+                                      value={values.accountHolderName === "" ? values.firstName+ " "+values.lastName :values.accountHolderName}
                                     />
                                     <p className="error">
                                       {errors.accountHolderName}

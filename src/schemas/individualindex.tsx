@@ -119,13 +119,12 @@ export const individualSchema = () => {
       // .required("Please select an option")
       // .notOneOf([0], "Please select a valid option"),
 
-    accountHolderName: Yup.string().when("paymentTypeId", {
-      is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
-      then: () =>
-        Yup.string()
-          .required("Please enter Account Holder Name")
-          
-    }),
+    // accountHolderName: Yup.string().when("paymentTypeId", {
+    //   is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
+    //   then: () =>
+    //     Yup.string()
+    //       .required("Please enter Account Holder Name")
+    // }),
 
     accountBankName: Yup.string().when("paymentTypeId", {
       is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
@@ -185,7 +184,6 @@ export const individualSchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter payable name")
-          
     }),
 
     payStreetNumberAndName: Yup.string().when("paymentTypeId", {
