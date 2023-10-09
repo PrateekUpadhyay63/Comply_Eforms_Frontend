@@ -625,7 +625,7 @@ export default function IndividualUs() {
                   alternativeNumber1: values?.alternativeNumber1,
                   incomeTypeId: incomeArr,
                   paymentTypeId: values?.paymentTypeId,
-                  accountHolderName: values?.accountHolderName,
+                  accountHolderName: values?.accountHolderName==="" ?values?.firstName+" " +values?.lastName : values?.accountHolderName,
                   accountBankName: values?.accountBankName,
                   accountBankBranchLocationId:
                     values?.accountBankBranchLocationId,
