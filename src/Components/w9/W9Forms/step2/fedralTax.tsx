@@ -78,6 +78,7 @@ export default function Fedral_tax(props: any) {
   return (
     <>
       <Paper className="col-12">
+        
         <Formik
           initialValues={initialValue}
           enableReinitialize
