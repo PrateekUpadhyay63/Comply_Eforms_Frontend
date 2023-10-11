@@ -53,9 +53,13 @@ const DialogEdit = (props:any) => {
               enableReinitialize
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
+                let submitData= {agentId: 3,
+                confirmationCode: values.confirmationCode,
+                securityAnswer: values.securityAnswer,
+                formSelection: "",}
                   history("/Certificates")
 
-                dispatch(postFormSelection(values, () => {
+                dispatch(postFormSelection(submitData, () => {
                   history("/Certificates")
                 }));
               }}
