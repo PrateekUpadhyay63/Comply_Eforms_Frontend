@@ -2132,7 +2132,7 @@ export default function IndividualUs() {
                         </div>
                       </div>
                       {values.permanentResidentialCountryId == 45 ? (
-                        <div className="mx-5">
+                        <div >
                           <Typography style={{ marginTop: "20px" }}>
                             Is this address a rural route number?
                             <span style={{ color: "red" }}>*</span>
@@ -2183,7 +2183,7 @@ export default function IndividualUs() {
                       )}
                       <div className="d-flex">
                         {values.isUSIndividual == "yes" ? (
-                          <div className="mx-5">
+                          <div >
                             <Typography
                               align="left"
                               style={{ marginTop: "20px" }}
@@ -2487,7 +2487,7 @@ export default function IndividualUs() {
                                 </p> */}
                               </div>
                             </div>
-                            <div className="mx-5">
+                            <div >
                               <Typography style={{ marginTop: "20px" }}>
                                 Is there an alternative mailing or business
                                 address in the U.S.?

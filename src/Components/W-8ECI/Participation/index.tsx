@@ -480,10 +480,12 @@ export default function Penalties() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           error={Boolean(touched.date && errors.date)}
-                          value={values.date}
+                          // value={values.date}
                           type="date"
                           name="date"
+                          value={new Date().toISOString().split('T')[0]}
                         />
+                        
                         <p className="error">{errors.date}</p>
                       </Typography>
                     </div>

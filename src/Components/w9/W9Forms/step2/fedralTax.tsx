@@ -19,6 +19,7 @@ import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import {
@@ -26,6 +27,7 @@ import {
   firstStepBusinessSchema,
   firstSchema,
 } from "../../../../schemas";
+import checksolid from "../../../../assets/img/check-solid.png";
 import "./index.scss";
 import { W9_state } from "../../../../Redux/Actions";
 export default function Fedral_tax(props: any) {
@@ -44,6 +46,12 @@ export default function Fedral_tax(props: any) {
     federalTaxClassificationId: 0,
   };
   const [toolInfo, setToolInfo] = useState("");
+  
+
+  const handleChangestatus =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   const arr = [
     {
       id: 1,
@@ -77,7 +85,10 @@ export default function Fedral_tax(props: any) {
   const W9Data = useSelector((state: any) => state.w9Data);
   return (
     <>
-      <Paper className="col-12">
+      <section
+      className="inner_content"
+      style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
+    >
         
         <Formik
           initialValues={initialValue}
@@ -120,7 +131,142 @@ export default function Fedral_tax(props: any) {
             isSubmitting,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <div style={{ width: "100%" }}>
+            <div className="row w-100 h-100">
+          <div className="col-4" >
+          <div className="bg-none" style={{ padding: "10px 0px",height:"100%", }}>
+        <Paper style={{ padding: "0px 0px 0px 0px", height:"100%" ,backgroundColor:"#ffffff33"}} >
+        
+             
+                <div className="stepper" >
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChangestatus("panel1")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
+                          className="accordian-header"
+                        >
+                          <Typography
+                          className="text-uppercase d-flex active"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                          <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">Name and Address </label></li>
+                              <li className="active">Account Information(Optional)</li>
+                              <li  className="active">Tax Identification Number</li>
+                              <li  className="active">Contact Details</li>
+                              <li  className="active">Form Selection</li>
+                            </ul>
+                          </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel2"}
+                        onChange={handleChangestatus("panel2")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                           <ul>
+                              <li > <label className="my-auto">Federal Tax</label></li>
+                              <li >Exemption from Backup Withholding</li>
+                              <li >Exemption from FATCA reporting</li>
+                              <li>Tax Identification Number</li>
+                             
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
+          
+          
+        </Paper>
+      </div>
+          </div>
+          <div className="col-8">   
+              <div style={{ width: "100%" ,backgroundColor:"#fff"}}>
                 <div>
                   <Typography align="left" style={{ margin: "10px" }}>
                     <div
@@ -643,7 +789,7 @@ export default function Fedral_tax(props: any) {
                   </Typography>
                 </div>
 
-                <div style={{ padding: "10px", width: "100%" ,paddingRight:"0px"}}>
+                <div style={{ padding: "10px", width: "90%" ,paddingRight:"0px"}}>
                   <Accordion
                     expanded={expanded === "groupPanel"}
                     onChange={handleChangeAccodion("groupPanel")}
@@ -1027,10 +1173,12 @@ export default function Fedral_tax(props: any) {
                   </Button>
                 </Typography>
               </div>
+              </div>
+              </div>
             </Form>
           )}
         </Formik>
-      </Paper>
+        </section>
     </>
   );
 }

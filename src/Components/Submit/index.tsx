@@ -20,7 +20,7 @@ const Declaration = (props: any) => {
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
-  const handleChange =
+  const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
@@ -52,7 +52,7 @@ const Declaration = (props: any) => {
                 handleBlur,
                 values,
                 handleSubmit,
-                handleChange,
+               
                 isSubmitting,
               }) => (
                 <form onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ const Declaration = (props: any) => {
                     <div>
                       <Accordion
                         expanded={expanded === "panel1"}
-                        onChange={handleChange("panel1")}
+                        onChange={handleChangestatus("panel1")}
                       >
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
@@ -122,7 +122,7 @@ const Declaration = (props: any) => {
                                 style={{
                                   color: "black",
                                   fontWeight: "bold",
-                                  fontSize: "12px",
+                                  fontSize: "15px",
                                 }}
                               >
                                 Under Penalties or Perjury
@@ -179,7 +179,7 @@ const Declaration = (props: any) => {
                             <Typography
                               align="left"
                               style={{
-                                fontSize: "20px",
+                                fontSize: "17px",
                                 marginTop: "13px",
                                 fontWeight: "bold",
                               }}
@@ -201,7 +201,7 @@ const Declaration = (props: any) => {
                                 style={{
                                   color: "black",
                                   fontWeight: "bold",
-                                  fontSize: "12px",
+                                  fontSize: "15px",
                                 }}
                               >
                                 "I agree with the above declaration"
@@ -219,7 +219,7 @@ const Declaration = (props: any) => {
 
                             <Typography
                               align="left"
-                              style={{ fontSize: "20px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               On submission your details will be transmitted to
                               your withholding agent previously selected, who
@@ -239,7 +239,7 @@ const Declaration = (props: any) => {
                       </Accordion>
                       <Accordion
                         expanded={expanded === "panel2"}
-                        onChange={handleChange("panel2")}
+                        onChange={handleChangestatus("panel2")}
                       >
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
@@ -317,7 +317,7 @@ const Declaration = (props: any) => {
                       </Accordion>
                     </div>
 
-                    <Typography align="center" style={{ marginTop: "20px" }}>
+                    {/* <Typography align="center" style={{ marginTop: "20px" }}>
                       <Button
                         style={{ fontSize: "12px" }}
                         size="small"
@@ -326,7 +326,63 @@ const Declaration = (props: any) => {
                       >
                         Submit
                       </Button>
-                    </Typography>
+                    </Typography> */}
+                    <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <Button
+            
+            variant="contained"
+            style={{ color: "white" }}
+          >
+            SAVE & EXIT
+          </Button>
+          <Button
+          
+            variant="contained"
+            style={{ color: "white" ,marginLeft: "15px"}}
+          >
+            View Form
+          </Button>
+
+          <Button
+             type="submit"
+            variant="contained"
+            style={{ color: "white", marginLeft: "15px" }}
+          >
+            Submit Electronically
+          </Button>
+        </div>
+        <Typography
+          align="center"
+          style={{
+            color: "#adadac",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+        >
+          Do you want to go back?
+        </Typography>
+        <Typography align="center">
+          <Button
+            variant="contained"
+            style={{
+              color: "white",
+              backgroundColor: "black",
+              marginTop: "10px",
+              marginBottom: "20px",
+            }}
+           
+          
+          >
+            Back
+          </Button>
+        </Typography>
                   </form>
                 // </Form>
               )}
