@@ -1,7 +1,7 @@
 import { Fragment,useEffect,useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 
-import DialogContent from '@mui/material/DialogContent';
+import Input from '@mui/material/Input';
 import {ContentCopy} from '@mui/icons-material';
 import { AppDispatch } from "../../Redux/store";
 import DialogContentText from '@mui/material/DialogContentText';
@@ -10,7 +10,10 @@ import { useNavigate } from "react-router-dom"
 import { TextField, Select, Button, Typography,Paper } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useDispatch, useSelector } from "react-redux";
-import { postSecurityCode } from '../../Redux/Actions';
+import { getSecurityQuestions, postSecurityCode } from '../../Redux/Actions';
+import { Formik,Form } from 'formik';
+import { securitySchema } from "../../schemas";
+
 
 const DialogEdit = (props:any) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,11 +22,17 @@ const DialogEdit = (props:any) => {
   const postSecurityCodeData = useSelector(
     (state: any) => state.postSecurityCodeReducer.postSecurutyCodeData
   );
-
-  const [payload,setPayload]=useState({code:"",signature:""})
+  const getSecurityQuestionsReducer = useSelector(
+    (state: any) => state.getSecurityQuestionsReducer.getSecurityQuestionsData
+  );
+  
+  const [payload,setPayload]=useState({confirmationCode:"",securityQuestion:"" ,securityAnswer:""})
+  var initialValues ={confirmationCode:payload.confirmationCode,securityQuestion:"" ,securityAnswer:""}
 
   useEffect(() => {
     dispatch(postSecurityCode(()=>console.log("hi")));
+    dispatch(getSecurityQuestions());
+    
   }, []);
 
   
@@ -31,14 +40,35 @@ const DialogEdit = (props:any) => {
     setOpen(false);
   };
   useEffect(()=>{
-    setPayload({...payload,code:postSecurityCodeData})
+
+    setPayload({...payload,confirmationCode:postSecurityCodeData})
   },[postSecurityCodeData])
   return (
     <Fragment>
     <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
     <div style={{padding:"25px"}}>
     <Paper style={{padding:"22px"}}>
-     
+    <Formik
+              initialValues={initialValues}
+              enableReinitialize
+              onSubmit={(values, { setSubmitting }) => {
+                setSubmitting(true);
+                  history("/Certificates")
+                // dispatch(postOnboarding(payload, redirectFunc));
+              }}
+              validationSchema={securitySchema}
+            >
+              {({
+                errors,
+                touched,
+                handleBlur,
+                values,
+                handleSubmit,
+                handleChange,
+                isSubmitting,
+                setFieldValue,
+              }) => (
+                <Form onSubmit={handleSubmit}>
                 <Typography
                 className='my-2'
                   align="left"
@@ -76,12 +106,12 @@ const DialogEdit = (props:any) => {
                     fullWidth
                     size="small"
                     name="code"
-                    value={payload.code}
+                    value={values.confirmationCode}
                     disabled
                   />
                 </Typography>
                 <Typography className="col-1">
-                  <ContentCopy
+                  <ContentCopy onClick={() => {navigator.clipboard.writeText(payload.confirmationCode)}}
                     style={{ fontSize: '18px', marginTop: '5px' }}
                   />
                 </Typography>
@@ -107,21 +137,56 @@ const DialogEdit = (props:any) => {
 
               <div className="row col-12 d-flex mt-2">
                 <Typography className="col-5 ">
-                <TextField
-                    fullWidth
-                    size="small"
-                    name="signature"
-                    value={payload.signature}
-                    onChange={(e)=>setPayload({...payload,signature:e.target.value})}
-                  />
+             
+                    <select
+                                    style={{
+                                      border: " 1px solid #d9d9d9 ",
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      width: "100%",
+                                    }}
+                              name="securityQuestion"
+                              id="countryId"
+                              onChange={(e) => {
+                                handleChange(e); //condition
+                              }}
+                              onBlur={handleBlur}
+                              value={values.securityQuestion}
+                            >
+                              <option value="">-Select-</option>
+                              {getSecurityQuestionsReducer?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.id}>
+                                    {ele?.question}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                            <p className="error">
+                              {errors.securityQuestion}
+                            </p>
                 </Typography>
                 <Typography className="col-7 ">
-                  <TextField
-                    fullWidth
-                    size="small"
-                    placeholder="Enter Security Word"
-                   
-                  />
+               
+                    <Input
+                          fullWidth
+                          type="text"
+                          name="securityAnswer"
+                          value={values.securityAnswer}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          error={Boolean(touched.securityAnswer && errors.securityAnswer)}
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                        />
                   <Typography
                     className=" mt-2"
                     style={{
@@ -130,6 +195,9 @@ const DialogEdit = (props:any) => {
                       fontWeight: '550',
                     }}
                   >
+                     <p className="error">
+                              {errors.securityAnswer}
+                            </p>
                     Please note: This word is case sensitive
                   </Typography>
                 </Typography>
@@ -140,14 +208,15 @@ const DialogEdit = (props:any) => {
                   style={{ fontSize: '18px' }}
                   size="small"
                   type="submit"
-                  onClick={()=>(
-                    history("/Certificates")
-                  )}
+              
                   variant="contained"
                 >
                   OK
                 </Button>
               </Typography>
+              </Form>
+              )}
+            </Formik>
     </Paper>
 </div>
 </section>

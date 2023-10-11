@@ -256,6 +256,18 @@ export default function Entity() {
     history("/Term");
   };
 
+  const formatTin = (e: any,values:any):any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin= values.usTin+"-"
+    }
+  };
+
   const handleOpen = (val: any) => {
     if (open === val) {
       setOpen("");
@@ -852,7 +864,7 @@ export default function Entity() {
                             className="w-100 input"
                             // id="outlined"
                               name="uniqueIdentifier"
-                              placeholder="Enter Entity Name"
+                              placeholder="Enter Instructor Identifier"
                               onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(
@@ -1196,7 +1208,9 @@ export default function Entity() {
                               id="outlined"
                               name="usTin"
                               placeholder="Enter U.S. TIN"
-                              onChange={handleChange}
+                              onKeyDown={(e)=>formatTin(e,values)}
+                                onChange={handleChange}
+                                inputProps={{ maxLength: 9 }}
                               value={values.usTin}
                             />
                           </FormControl>
