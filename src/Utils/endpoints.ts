@@ -8,7 +8,7 @@ const EndPoint = {
   InsertAccountHolderDetail:"/AccountHolderDetail/InsertAccountHolderDetail",
   W9PDF:"/W9Common/W9ViewFormPdf",
   postSecurutyCode:"/W9Common/SecurityCode",
-  GetSecurityQuestions:"WebAppBasic/GetAllSecurityQuestion",
+  GetSecurityQuestions:"/WebAppBasic/GetAllSecurityQuestion",
 
 };
 export default EndPoint;

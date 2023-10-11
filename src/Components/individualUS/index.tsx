@@ -36,6 +36,7 @@ import {
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
 } from "../../Redux/Actions";
+import moment from "moment";
 import { AppDispatch } from "../../Redux/store";
 // import DatePicker from "react-datepicker";
 import DatePicker from "react-date-picker";
@@ -963,12 +964,7 @@ export default function IndividualUs() {
                               Country Of Citizenship
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
-                            <>
-                              {console.log(
-                                allCountriesData,
-                                "allCountriesData"
-                              )}
-                            </>
+                           
                             <select
                               style={{
                                 padding: " 0 10px",
@@ -1039,6 +1035,7 @@ export default function IndividualUs() {
                                 onChange(date);
                                 setFieldValue("dob", date);
                               }}
+                              maxDate={moment().toDate()}
                               value={value}
                               onBlur={handleBlur}
                               clearIcon={null}
