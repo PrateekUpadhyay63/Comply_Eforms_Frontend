@@ -269,3 +269,31 @@ export const getW9PDF = (): any => {
     );
   };
 };
+
+
+export const postFormSelection = (value: any, callback: Function): any => {
+  return (dispatch: any) => {
+    Utils.api.postApiCall(
+      Utils.EndPoint.PostFormSelection,
+      value,
+      (responseData) => {
+        let { data } = responseData;
+        dispatch({
+          type: Utils.actionName.PostFormSelection,
+          payload: { data: data.data },
+        });
+        if (responseData) {
+          if (responseData.status == 500) {
+            console.log("error");
+          } else {
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      },
+      (error) => {
+      }
+    );
+  };
+};

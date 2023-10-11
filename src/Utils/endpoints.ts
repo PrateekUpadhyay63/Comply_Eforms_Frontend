@@ -9,6 +9,6 @@ const EndPoint = {
   W9PDF:"/W9Common/W9ViewFormPdf",
   postSecurutyCode:"/W9Common/SecurityCode",
   GetSecurityQuestions:"/WebAppBasic/GetAllSecurityQuestion",
-
+  PostFormSelection:"/AccountHolderDetail/InsertConfirmationCode",
 };
 export default EndPoint;
