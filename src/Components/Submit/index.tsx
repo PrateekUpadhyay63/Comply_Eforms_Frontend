@@ -219,7 +219,7 @@ const Declaration = (props: any) => {
 
                             <Typography
                               align="left"
-                              style={{ fontSize: "17px", marginTop: "13px" }}
+                              style={{ fontSize: "15px", marginTop: "13px" }}
                             >
                               On submission your details will be transmitted to
                               your withholding agent previously selected, who
