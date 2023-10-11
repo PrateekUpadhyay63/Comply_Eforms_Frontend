@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 import { TextField, Select, Button, Typography,Paper } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { useDispatch, useSelector } from "react-redux";
-import { getSecurityQuestions, postSecurityCode } from '../../Redux/Actions';
+import { getSecurityQuestions, postFormSelection, postSecurityCode } from '../../Redux/Actions';
 import { Formik,Form } from 'formik';
 import { securitySchema } from "../../schemas";
 
@@ -54,7 +54,10 @@ const DialogEdit = (props:any) => {
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
                   history("/Certificates")
-                // dispatch(postOnboarding(payload, redirectFunc));
+
+                dispatch(postFormSelection(values, () => {
+                  history("/Certificates")
+                }));
               }}
               validationSchema={securitySchema}
             >
