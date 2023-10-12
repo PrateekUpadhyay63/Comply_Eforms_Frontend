@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
@@ -16,6 +16,12 @@ const Declaration = (props: any) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState<boolean>(false);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsCheckboxChecked(event.target.checked);
+  };
+
   const history = useNavigate();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -299,7 +305,8 @@ const Declaration = (props: any) => {
                             <Divider style={{ marginBottom: "10px" }} />
                           </Paper>
                           <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
+                            <Checkbox    checked={isCheckboxChecked}
+        onChange={handleCheckboxChange}/>
                             <Typography style={{ marginTop: "9px" }}>
                               I give consent to receiving a recipent statement
                               electronically
@@ -335,7 +342,7 @@ const Declaration = (props: any) => {
           }}
         >
           <Button
-            
+            disabled={!isCheckboxChecked}
             variant="contained"
             style={{ color: "white" }}
           >
@@ -350,6 +357,7 @@ const Declaration = (props: any) => {
           </Button>
 
           <Button
+          disabled={!isCheckboxChecked}
              type="submit"
             variant="contained"
             style={{ color: "white", marginLeft: "15px" }}

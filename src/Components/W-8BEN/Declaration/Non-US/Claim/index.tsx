@@ -420,14 +420,80 @@ export default function FCTA_Reporting(props: any) {
                         >
                           I certify the beneficial owner is a resident of:{" "}
                           <span style={{ color: "red" }}>*</span>
+                          <span>
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                              Treaty Claim Q2
+                              </Typography>
+                              <a onClick={() => setToolInfo("claim")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
                           <Info
                             style={{
                               color: "#ffc107",
-                              fontSize: "20px",
+                              fontSize: "19px",
+                              cursor: "pointer",
                               verticalAlign: "super",
                             }}
                           />
+                        </Tooltip>
+                      </span>
                         </Typography>
+
+                        {toolInfo === "claim" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
+                            marginBottom: "10px",
+                          }}
+                        >
+                          <Typography>
+                          Select the country where you claim the Treaty
+                          </Typography>
+
+                          <Typography style={{ marginTop: "10px",fontWeight:"bold" }}>
+                          IRS Form Guidance: 
+                          </Typography>
+                          <Typography style={{ marginTop: "10px" }}>
+                          Select the country where you claim the individual, business or organization is a resident for income tax treaty purposes.
+                          </Typography>
+                          <Typography style={{ marginTop: "10px" }}>
+                          Ref: EH032 
+                          </Typography>
+                         
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                         <div className="row px-2">
                             <div className="col-12" style={{padding:"0px"}}>
                               <FormControl className="w-100">

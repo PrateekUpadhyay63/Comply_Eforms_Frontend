@@ -1476,7 +1476,7 @@ export default function IndividualUs() {
                                   padding: " 0 10px ",
                                 }}
                                 id="outlined"
-                                inputProps={{ maxLength: 10 }}
+                               
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}

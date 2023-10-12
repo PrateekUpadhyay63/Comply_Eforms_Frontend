@@ -35,7 +35,12 @@ export default function Backup_witholding(props: any) {
   const initialValue = {
     isExemptionfromBackup: "",
   };
- 
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleRadioChange = (value:string) => {
+    setSelectedValue(value);
+  };
+  const isRadioSelected = selectedValue !== "";
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -616,57 +621,92 @@ These payment types include:
         <AccordionDetails>
           <Typography    style={{fontSize:"12px",marginTop:"10px"}}>
             <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "1"}
+            onChange={() => handleRadioChange("1")}/>
             </span>
         1.  An organization exempt from tax under section 501(a), any IRA, or a custodial account under section 403(b)(7) if the account satisfies the requirements of section 401(f)(2)
           </Typography>
           <Typography   style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "2"}
+            onChange={() => handleRadioChange("2")} />
             </span>
         2.  The United States or any of its agencies or instrumentalities
           </Typography>
           <Typography     style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "3"}
+            onChange={() => handleRadioChange("3")} />
             </span>
         3.  A state, the District of Columbia, a possession of the United States, or any of their political subdivisions or instrumentalities
           </Typography>
           <Typography    style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "4"}
+            onChange={() => handleRadioChange("4")}/>
             </span>
-        4.  A foreign government or any of its political subdivisions, agencies, or instrumentalities
+        4. A foreign government or any of its political subdivisions, agencies, or instrumentalities
           </Typography>
-          <Typography    style={{fontSize:"12px",marginTop:"10px"}}>
+          {/* <Typography    style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
                 <Checkbox />
             </span>
         5.   A dealer in securities or commodities required to register in the United States, the District of Columbia, or a possession of the United States
-          </Typography>
+          </Typography> */}
           <Typography     style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "6"}
+            onChange={() => handleRadioChange("6")}/>
             </span>
-        6.    A real estate investment trust
+        6.    A dealer in securities or commodities required to register in the United States, the District of Columbia, or a possession of the United States
           </Typography>
-          <Typography     style={{fontSize:"12px",marginTop:"10px"}}>
+          {/* <Typography     style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
                 <Checkbox />
             </span>
         7.    An entity registered at all times during the tax year under the Investment Company Act of 1940
-          </Typography>
+          </Typography> */}
           <Typography     style={{fontSize:"12px",marginTop:"10px"}}>
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "8"}
+            onChange={() => handleRadioChange("8")}/>
             </span>
-        8.    A common trust fund operated by a bank under section 584(a)
+        8.    A real estate investment trust
           </Typography>
           <Typography  style={{fontSize:"12px",marginTop:"10px"}} >
           <span>
-                <Checkbox />
+                <Checkbox  checked={selectedValue === "9"}
+            onChange={() => handleRadioChange("9")}/>
             </span>
-        9.    A financial institution
+        9.    An entity registered at all times during the tax year under the Investment Company Act of 1940
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}} >
+          <span>
+                <Checkbox  checked={selectedValue === "10"}
+            onChange={() => handleRadioChange("10")} />
+            </span>
+        10.   A common trust fund operated by a bank under section 584(a)
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}} >
+          <span>
+                <Checkbox  checked={selectedValue === "11"}
+            onChange={() => handleRadioChange("11")}/>
+            </span>
+        11.   	A financial institution
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}} >
+          <span>
+                <Checkbox  checked={selectedValue === "12"}
+            onChange={() => handleRadioChange("12")}/>
+            </span>
+        12.    A middleman known in the investment community as a nominee or custodian
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}} >
+          <span>
+                <Checkbox  checked={selectedValue === "13"}
+            onChange={() => handleRadioChange("13")}/>
+            </span>
+        13.    A trust exempt from tax under section 664 or described in section 4947
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -706,6 +746,43 @@ These payment types include:
                 <Checkbox />
             </span>
           4.  A foreign government or any of its political subdivisions, agencies, or instrumentalities
+          </Typography>
+          
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          6.  	A dealer in securities or commodities required to register in the United States, the District of Columbia, or a possession of the United States
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          7. A futures commission merchant registered with the Commodity Futures Trading Commission
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          8.  A real estate investment trust
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          9.  An entity registered at all times during the tax year under the Investment Company Act of 1940
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          10.  A common trust fund operated by a bank under section 584(a)
+          </Typography>
+          <Typography  style={{fontSize:"12px",marginTop:"10px"}}>
+          <span>
+                <Checkbox />
+            </span>
+          11.  A financial institution
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -900,6 +977,7 @@ If you are not able to make a selection from the income types and exemption code
                   View Form
                 </Button>
                 <Button
+                disabled={!isRadioSelected}
                   type="submit"
                   variant="contained"
                   style={{ color: "white", marginLeft: "15px" }}

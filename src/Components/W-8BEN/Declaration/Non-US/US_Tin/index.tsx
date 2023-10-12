@@ -49,8 +49,8 @@ export default function Tin(props: any) {
     notAvailable: false,
     foreignTINCountry: "",
     foreignTIN: "",
-    isFTINNotLegallyRequired: true,
-    // tinisFTINNotLegallyRequired: true,
+    isFTINNotLegallyRequired: false,
+    tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -357,6 +357,7 @@ export default function Tin(props: any) {
                     <div className="col-lg-4 col-12">
                       <Typography>U.S. TIN</Typography>
                       <Input
+                      disabled={values.notAvailable}
                         fullWidth
                         type="text"
                         name="usTin"
@@ -373,7 +374,7 @@ export default function Tin(props: any) {
                           width: "100%",
                         }}
                       />
-                      <p className="error">{errors.usTin}</p>
+                     {values.notAvailable ?( ""):<p className="error">{errors.usTin}</p>}
                     </div>
                     <div className="col-lg-4 col-12">
                       <div style={{ marginTop: "27px" }}>
@@ -464,9 +465,9 @@ export default function Tin(props: any) {
                               title={
                                 <>
                                   <Typography color="inherit">
-                                    U.S. TIN Type Info
+                                  FTIN not legally required
                                   </Typography>
-                                  <a onClick={() => setToolInfo("check")}>
+                                  <a onClick={() => setToolInfo("require")}>
                                     <Typography
                                       style={{
                                         cursor: "pointer",
@@ -492,6 +493,34 @@ export default function Tin(props: any) {
                           </span>
                         </span>
                       </div>
+
+{toolInfo === "require" ?(
+  <Paper
+  style={{
+    backgroundColor: "#dedcb1",
+    padding: "15px",
+    marginBottom: "10px",
+  }}
+>
+  <Typography>
+  You may check the box on this line 6b (for Form W-8BEN), line 9c (for Form W-8BEN-E) or line 8b (For Form W-8ECI) if you are an account holder as described for purposes of line 6a (for Form W-8BEN), line 9b (for Form W-8BEN-E) or line 8a (for Form W-8ECI) and you are not legally required to obtain an FTIN from your jurisdiction of residence (including if the jurisdiction does not issue TINs). By checking this box, you will be treated as having provided an explanation for not providing an FTIN on line 6a (W-8BEN), line 9b (W-8BEN-E), or line line 8a (W-8ECI). If you wish to provide a further (or other) explanation why you are not required to provide an FTIN, which appears on line 6a, 9b or 8a (W-8BEN, W-8BEN-E or W-8ECI respectively), you will be able to enter this as part of the eForms process.
+  </Typography>
+  <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+  </Paper>
+
+):""}
+
+
+
                     </div>
                     <div className="col-lg-4 col-12">
                       <Typography>Foreign TIN </Typography>
@@ -513,6 +542,40 @@ export default function Tin(props: any) {
                         }}
                       />
                       <p className="error">{errors.foreignTIN}</p>
+                      <FormControl style={{marginLeft:"10px"}}>
+                  <RadioGroup
+                    row
+                    name="tinisFTINNotLegallyRequired"
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    value={values.tinisFTINNotLegallyRequired}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="Yes"
+                      disabled={values.isFTINNotLegallyRequired}
+                      control={<Radio />}
+                      label="Yes"
+                      name="tinisFTINNotLegallyRequired"
+                    />
+                    <FormControlLabel
+                      className="label"
+                      value="No"
+                      control={<Radio />}
+                      label="No"
+                      disabled={values.isFTINNotLegallyRequired}
+                      name="tinisFTINNotLegallyRequired"
+                    />
+                  </RadioGroup>
+                  {errors.tinisFTINNotLegallyRequired && touched.tinisFTINNotLegallyRequired ? (
+                    <div>
+                      <Typography color="error">
+                        {errors.tinisFTINNotLegallyRequired}
+                      </Typography>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </FormControl>
                     </div>
                   </div>
                 </div>
@@ -533,9 +596,10 @@ export default function Tin(props: any) {
                   >
                     <FormControlLabel
                       value="Yes"
+                      
                       control={<Radio />}
                       label="Yes"
-                      // name="isNotLegallyFTIN"
+                      name="isNotLegallyFTIN"
                     />
                     <FormControlLabel
                       className="label"
@@ -613,8 +677,37 @@ export default function Tin(props: any) {
                       document may need to obtain further information.
                     </Typography>
                   </Typography>
-                </div>):""}
+                </div>):values.isNotLegallyFTIN  ==="No" ?(""):
+                ""}
                </>)}
+
+               {values.tinisFTINNotLegallyRequired === "Yes" ? (
+                <div className="my-3">
+<Typography align="left" style={{fontWeight:"bold"}}>
+Please specify the reason for non-availability of Foreign TIN  
+<br/>
+</Typography>
+<Typography align="left" style={{fontWeight:"bold",marginTop:"2rem"}}>
+You have selected a FTIN country that is not on the IRS exemption list, where, in most cases a FTIN should be provided. You must provide a written explanation here explaining why you are not providing. By not providing we may not be able to apply treaty benefits should they apply and may render the form invalid.
+</Typography>
+<Input
+                        fullWidth
+                        type="text"
+                       
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                       
+                        style={{
+                          border: " 1px solid #d9d9d9 ",
+                          padding: " 0 10px",
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "7rem",
+                          width: "100%",
+                        }}
+/>
+                </div>
+               ):""}
                 <div
                   style={{
                     display: "flex",

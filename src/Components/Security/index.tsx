@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import Dialog from "@mui/material/Dialog";
-
+import { toast,ToastContainer  } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Input from "@mui/material/Input";
 import { ContentCopy } from "@mui/icons-material";
 import { AppDispatch } from "../../Redux/store";
@@ -47,6 +48,14 @@ const DialogEdit = (props: any) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(payload.confirmationCode);
+    toast.success("Code copied to clipboard!",{
+      autoClose: 2000
+    })
+    
   };
   useEffect(() => {
     setPayload({ ...payload, confirmationCode: postSecurityCodeData });
@@ -138,14 +147,16 @@ const DialogEdit = (props: any) => {
                     </Typography>
                     <Typography className="col-1">
                       <ContentCopy
-                        onClick={() => {
-                          navigator.clipboard.writeText(
-                            payload.confirmationCode
-                          );
-                        }}
+                       onClick={handleCopyClick}
+                        // onClick={() => {
+                        //   navigator.clipboard.writeText(
+                        //     payload.confirmationCode
+                        //   );
+                        // }}
                         style={{ fontSize: "18px", marginTop: "5px" }}
                       />
                     </Typography>
+                    <ToastContainer />
                   </div>
 
                   <Typography

@@ -457,10 +457,12 @@ export default function Penalties() {
                           style={{ width: "100%" }}
                         />
                         <span
+                        onClick={toggleRecoverSection}
                           style={{
                             fontSize: "16px",
                             color: "blue",
                             marginLeft: "10px",
+                            cursor:"pointer"
                           }}
                         >
                           Recover Password
