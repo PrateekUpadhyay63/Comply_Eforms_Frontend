@@ -1410,7 +1410,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1481,6 +1481,7 @@ export default function IndividualUs() {
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
                                 value={values.foreignTIN}
+                                inputProps={{ maxLength: 10 }}
                               />
                             </FormControl>
                             {/* <div className="d-flex">
@@ -2328,7 +2329,8 @@ export default function IndividualUs() {
                             </div> */}
                           </div>
                         ) : (
-                          <div>
+                          <div className="d-flex">
+                            <div>
                             <Typography
                               align="left"
                               style={{ marginTop: "20px" }}
@@ -2344,7 +2346,8 @@ export default function IndividualUs() {
                               />
                             </Typography>
 
-                            <div className="d-flex ">
+                           <>
+                           <div className="d-flex ">
                               <FormControl
                                 error={Boolean(
                                   touched.isAddressPostOfficeBox &&
@@ -2406,6 +2409,7 @@ export default function IndividualUs() {
                                 {errors.isAddressPostOfficeBox}
                               </p> */}
                             </div>
+                           </>
                             {/* </div> */}
                             <div className="mx-5">
                               <Typography style={{ marginTop: "20px" }}>
@@ -2636,6 +2640,7 @@ export default function IndividualUs() {
                               </div>
                             </div>
                           </div>
+                            </div>
                         )}
                       </div>
                       {values.isalternativebusinessaddress == "yes" ? (
@@ -3230,15 +3235,11 @@ export default function IndividualUs() {
                               value={values.alternativeNumber}
                             />
                           </FormControl>
-                        </div>
-
-                        <div>
+                          <div>
                           {alternateNo ? (
-                            <div className="col-lg-3 col-6 col-md-3 mt-3">
+                            <div className="mt-3">
                               <FormControl className="w-100">
-                                {/* <Typography align="left">
-                                  Secondary Contact Number
-                                </Typography> */}
+                               
                                 <span className="w-100 d-flex">
                                   <select
                                     className="w-100"
@@ -3309,6 +3310,10 @@ export default function IndividualUs() {
                             </Typography>
                           )}
                         </div>
+                        </div>
+                       
+
+                       
                       </div>
                     </Collapse>
 

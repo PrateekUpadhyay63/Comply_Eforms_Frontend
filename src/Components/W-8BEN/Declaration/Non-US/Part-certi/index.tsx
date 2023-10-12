@@ -26,7 +26,11 @@ export default function Penalties() {
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
   const [expanded, setExpanded] = React.useState<string | false>("");
+  const [showRecoverSection, setShowRecoverSection] = useState(false);
 
+    const toggleRecoverSection = () => {
+      setShowRecoverSection(true);
+    };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -465,6 +469,65 @@ export default function Penalties() {
                       </div>
                     </div>
                   </div>
+                  {showRecoverSection &&(<div style={{margin:"10px"}}>
+  <Typography align="left" style={{fontWeight:"bold"}}>
+  Electronic Signature Confirmation Code Recovery
+  </Typography>
+  <Typography style={{fontSize:"14px"}}>
+  To recover your Confirmation Code, please type in your security word below. Select the 'Hint?' if you need a reminder of your security word.
+  </Typography>
+
+  <div className="d-flex my-3 col-8">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.5rem",
+                          width: "50%",
+                        }}
+                        fullWidth
+                        type="text"
+                        name="signedBy"
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8">
+    <Link className="my-2 col-4" >Hint?</Link>
+    <TextField className=" col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.5rem",
+                          width: "50%",
+                        }}
+                        fullWidth
+                        type="text"
+                        
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8 ">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.5rem",
+                          width: "50%",
+                        }}
+                        fullWidth
+                        type="text"
+                       
+                        
+                      />
+
+  </div>
+</div>)}
+
+
                   <div
                     className="row"
                     style={{
@@ -483,11 +546,11 @@ export default function Penalties() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           error={Boolean(touched.date && errors.date)}
-                          value={values.date}
+                          value={new Date().toISOString().split('T')[0]}
                           type="date"
                           name="date"
                         />
-                        <p className="error">{errors.date}</p>
+                        {/* <p className="error">{errors.date}</p> */}
                       </Typography>
                     </div>
                   </div>
