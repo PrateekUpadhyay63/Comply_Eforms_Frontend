@@ -916,7 +916,6 @@ export default function IndividualUs() {
                               id="outlined"
                               name="firstName"
                               placeholder="Enter First Name"
-                              onKeyDown={(e)=>setAccountHolder(e,values)}
                               onBlur={handleBlur}
                               error={Boolean(
                                 touched.firstName && errors.firstName
@@ -953,7 +952,6 @@ export default function IndividualUs() {
                                 touched.lastName && errors.lastName
                               )}
                               value={values.lastName}
-                              onKeyDown={(e)=>setAccountHolder(e,values)}
                             />
                             <p className="error">{errors.lastName}</p>
                           </FormControl>
@@ -1478,6 +1476,7 @@ export default function IndividualUs() {
                                   padding: " 0 10px ",
                                 }}
                                 id="outlined"
+                                inputProps={{ maxLength: 10 }}
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
