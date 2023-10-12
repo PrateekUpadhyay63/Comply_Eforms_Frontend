@@ -10,5 +10,6 @@ const EndPoint = {
   postSecurutyCode:"/W9Common/SecurityCode",
   GetSecurityQuestions:"/WebAppBasic/GetAllSecurityQuestion",
   PostFormSelection:"/AccountHolderDetail/InsertConfirmationCode",
+ getBreadCrums:"/Form/GetBreadCrumbs",
 };
 export default EndPoint;

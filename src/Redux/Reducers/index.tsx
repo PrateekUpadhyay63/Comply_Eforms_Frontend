@@ -1,7 +1,7 @@
 import Utils from "../../Utils";
 // import { postSecurityCode } from "../Actions";
 
-const {LOGIN,GetCountries,GetSecurityQuestions,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
+const {LOGIN,GetCountries,getBreadCrums,GetSecurityQuestions,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
 
 
   let initialState:any = [];
@@ -83,5 +83,16 @@ export const getSecurityQuestionsReducer= (state = initialState, action:any):any
       return state;
   }
 };
+
+export const getBreadCrumsReducer= (state = initialState, action:any):any => {
+  switch (action.type) {
+    case getBreadCrums:
+      console.log(action.payload,"Reducer payload")
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
 
 

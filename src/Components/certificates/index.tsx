@@ -45,6 +45,14 @@ export default function Certificates(props: any) {
       securityAnswer: formSelection.securityAnswer,
       formSelection: cardId,
     };
+//Id	FormName
+// 1	W-9
+// 2	W-8BEN
+// 3	W-8BEN-E
+// 4	W-8ECI
+// 6	W-8EXP
+// 7	W-8IMY
+// 8	Form 8233
     const componentPaths: ComponentPaths = {
       "W-9": "/W9",
       "W-8BEN": "/W-8BEN/Declaration",

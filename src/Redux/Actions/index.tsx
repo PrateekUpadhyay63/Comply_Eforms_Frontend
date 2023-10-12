@@ -128,6 +128,31 @@ export const postOnboarding = (value: any, callback: Function): any => {
   };
 };
 
+export const getBreadCrums = (FormId:Number,callback:Function): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.getBreadCrums,
+      `?FormId=${FormId}`,
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.getBreadCrums,
+            payload: {
+              getBreadCrumsData: resData.data,
+            },
+          });
+          if(callback){
+            callback(resData.data);
+          }
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
 export const getAllCountries = (): any => {
   return (dispatch: any) => {
     Utils.api.getApiCall(
