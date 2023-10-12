@@ -1481,7 +1481,6 @@ export default function IndividualUs() {
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
                                 value={values.foreignTIN}
-                                inputProps={{ maxLength: 10 }}
                               />
                             </FormControl>
                             {/* <div className="d-flex">
