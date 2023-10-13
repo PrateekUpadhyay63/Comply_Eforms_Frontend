@@ -1934,7 +1934,7 @@ export default function Entity() {
                     </div>
                     <div className="d-flex">
                       {values.isUSEntity == 'yes' ? (
-                        <div className="mx-5">
+                        <div className="">
                           <Typography style={{ marginTop: "20px" }}>
                             Is there an alternative mailing or business address
                             in the U.S.?
@@ -2372,7 +2372,7 @@ export default function Entity() {
                             </div>
                           </div>
 
-                          <div className="mx-5">
+                          <div className="">
                             <Typography style={{ marginTop: "20px" }}>
                               Is there an alternative mailing or business
                               address in the U.S.?
@@ -3102,11 +3102,9 @@ export default function Entity() {
                             value={values.alternativeNumber}
                           />
                         </FormControl>
-                      </div>
-
                       <div>
                         {alternateNo ? (
-                          <div className="col-lg-3 col-6 col-md-3 mt-2">
+                          <div className="mt-2">
                             <FormControl className="w-100">
                               {/* <Typography align="left">
                                 Secondary Contact Number
@@ -3132,10 +3130,12 @@ export default function Entity() {
                               ))}
                                 </select>
                                 <Delete
+                                sx={{ right: { xs: "-10%", md: "-10%", lg: "-8%", xl: "-5%", }, }}
                                   style={{
                                     color: "red",
                                     fontSize: "20px",
                                     marginTop: "5px",
+                                    position:"absolute"
                                   }}
                                   onClick={() => {
                                     setAlternateNo(false);
@@ -3177,6 +3177,8 @@ export default function Entity() {
                           </Typography>
                         )}
                       </div>
+                      </div>
+
                     </div>
                   </Collapse>
 

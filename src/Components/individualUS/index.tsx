@@ -1616,69 +1616,73 @@ export default function IndividualUs() {
                               </FormControl>
                             </div>
                           </div>
-                          <div className="col-12 d-flex">
-                            <div className="col-lg-3 col-6 col-md-3 ">
-                              <Typography align="left" className="d-flex w-100">
-                                Value Added Tax Number (VAT)
-                                <span style={{ color: "red" }}>*</span>
-                              </Typography>
+                          <div className="col-12">
+                                <div className="row">
+                                
+                                    <div className="col-lg-3 col-6 col-md-3 ">
+                                      <Typography align="left" className="d-flex w-100">
+                                        Value Added Tax Number (VAT)
+                                        <span style={{ color: "red" }}>*</span>
+                                      </Typography>
 
-                              <FormControl className="w-100">
-                                <select
-                                  style={{
-                                    padding: " 0 10px",
-                                    color: "#7e7e7e",
-                                    fontStyle: "italic",
-                                    height: "36px",
-                                  }}
-                                  name="vatId"
-                                  defaultValue={0}
-                                  onChange={handleChange}
-                                  value={values.vatId}
-                                >
-                                  <option value={0}>-Select-</option>
-                                  <option value={1}>My VAT Number is</option>
-                                  <option value={2}>
-                                    I Do Not Have A VAT Number
-                                  </option>
-                                </select>
-                                <p className="error">{errors.vatId}</p>
-                              </FormControl>
-                            </div>
+                                      <FormControl className="w-100">
+                                        <select
+                                          style={{
+                                            padding: " 0 10px",
+                                            color: "#7e7e7e",
+                                            fontStyle: "italic",
+                                            height: "36px",
+                                          }}
+                                          name="vatId"
+                                          defaultValue={0}
+                                          onChange={handleChange}
+                                          value={values.vatId}
+                                        >
+                                          <option value={0}>-Select-</option>
+                                          <option value={1}>My VAT Number is</option>
+                                          <option value={2}>
+                                            I Do Not Have A VAT Number
+                                          </option>
+                                        </select>
+                                        <p className="error">{errors.vatId}</p>
+                                      </FormControl>
+                                    </div>
 
-                            <div className="col-lg-3 col-6 col-md-3 mx-2">
-                              <FormControl className="w-100">
-                                <Typography align="left">
-                                  Value Added Tax Number (VAT)
-                                  {/* <span style={{ color: 'red' }}>*</span> */}
-                                </Typography>
-                                <Input
-                                  disabled={
-                                    values.vatId == 0 || values.vatId == 2
-                                  }
-                                  style={{
-                                    border: " 1px solid #d9d9d9 ",
-                                    height: " 36px",
-                                    lineHeight: "36px ",
-                                    background: "#fff ",
-                                    fontSize: "13px",
-                                    color: " #000 ",
-                                    fontStyle: "normal",
-                                    borderRadius: "1px",
-                                    padding: " 0 10px ",
-                                  }}
-                                  id="outlined"
-                                  name="vat"
-                                  placeholder="Enter Value Added Tax Number"
-                                  // onKeyDown={formatTin}
-                                  onChange={handleChange}
-                                  inputProps={{ maxLength: 9 }}
-                                  // onBlur={handleBlur}
-                                  //   error={Boolean(touched.usTin && errors.vat)}
-                                  value={values.vat}
-                                />
-                              </FormControl>
-                            </div>
+                                    <div className="col-lg-3 col-6 col-md-3 ">
+                                      <FormControl className="w-100">
+                                        <Typography align="left">
+                                          Value Added Tax Number (VAT)
+                                          {/* <span style={{ color: 'red' }}>*</span> */}
+                                        </Typography>
+                                        <Input
+                                          disabled={
+                                            values.vatId == 0 || values.vatId == 2
+                                          }
+                                          style={{
+                                            border: " 1px solid #d9d9d9 ",
+                                            height: " 36px",
+                                            lineHeight: "36px ",
+                                            background: "#fff ",
+                                            fontSize: "13px",
+                                            color: " #000 ",
+                                            fontStyle: "normal",
+                                            borderRadius: "1px",
+                                            padding: " 0 10px ",
+                                          }}
+                                          id="outlined"
+                                          name="vat"
+                                          placeholder="Enter Value Added Tax Number"
+                                          // onKeyDown={formatTin}
+                                          onChange={handleChange}
+                                          inputProps={{ maxLength: 9 }}
+                                          // onBlur={handleBlur}
+                                          //   error={Boolean(touched.usTin && errors.vat)}
+                                          value={values.vat}
+                                        />
+                                      </FormControl>
+                                    </div>
+                                
+                                </div>
                           </div>
                         </div>
                       ) : (
@@ -2410,7 +2414,7 @@ export default function IndividualUs() {
                             </div>
                            </>
                             {/* </div> */}
-                            <div className="mx-5">
+                            <div className="">
                               <Typography style={{ marginTop: "20px" }}>
                                 Is this an In Care Of address?
                                 <span style={{ color: "red" }}>*</span>
@@ -3268,7 +3272,9 @@ export default function IndividualUs() {
                                       color: "red",
                                       fontSize: "20px",
                                       marginTop: "5px",
+                                      position:"absolute"
                                     }}
+                                    sx={{ right: { xs: "-10%", md: "-10%", lg: "-8%", xl: "-5%", }, }}
                                     onClick={() => {
                                       setAlternateNo(false);
                                     }}
