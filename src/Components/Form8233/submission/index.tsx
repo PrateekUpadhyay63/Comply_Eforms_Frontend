@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { CREATE_8233 } from "../../../Redux/Actions";
 import { partCertiSchema } from "../../../schemas/8233";
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
@@ -60,6 +61,13 @@ export default function Penalties() {
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
             >
+              <div className="row w-100 h-100">
+        <div className="col-4">
+          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <BreadCrumbComponent breadCrumbCode={1450} formName={2}/>
+      </div>
+      </div>
+      <div className="col-8 mt-3">
               <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
@@ -501,6 +509,8 @@ export default function Penalties() {
                     </Button>
                   </Typography>
                 </Paper>
+              </div>
+              </div>
               </div>
             </section>
           </Form>
