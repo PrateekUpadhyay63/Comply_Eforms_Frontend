@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Button } from "@mui/material";
-import checksolid from "../../../assets/img/check-solid.png";
-import check from "../../../assets/img/check.png";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Divider, Paper } from "@mui/material";
@@ -9,56 +7,14 @@ import DoneIcon from "@mui/icons-material/Done";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./index.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { getBreadCrums } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../Redux/store";
-
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Term() {
   //States
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const [expanded, setExpanded] = React.useState<string | false>("");
-
-  const [breadCrumb, setBreadCrumb] = useState([]);
-  const [breadCrumbDisplay, setBreadCrumbDisplay] = useState([]);
-  const getBreadCrumsData = useSelector(
-    (state: any) => state.getBreadCrumsReducer.getBreadCrumsData
-  );
-
-  useEffect(() => {
-    dispatch(getBreadCrums(2, (data: any) => setBreadCrumb(data)));
-  }, []);
-
-  useEffect(() => {
-    groupDataByBreadcrumbPart(breadCrumb);
-  }, [breadCrumb]);
-
-  function groupDataByBreadcrumbPart(data: any) {
-    const groupedData: any = {};
-
-    data.forEach((item: any) => {
-      const breadcrumbpart = item.breadcrumbpart.trim(); // Remove leading/trailing whitespace
-
-      if (!groupedData[breadcrumbpart]) {
-        groupedData[breadcrumbpart] = [];
-      }
-
-      groupedData[breadcrumbpart].push(item);
-    });
-
-    setBreadCrumbDisplay(groupedData);
-  }
-
-  const handleChangestatus =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
-  console.log(getBreadCrumsData, "getBreadCrumsData");
-
+  
   return (
     <section
       className="inner_content"
@@ -69,7 +25,6 @@ export default function Term() {
           <div className="viewInstructions">View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
-            {/* <a target="_blank" href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-">Help Video</a> */}
             <a
               href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-"
               target="popup"
@@ -92,70 +47,7 @@ export default function Term() {
           <div
             style={{ padding: "20px 0px", height: "100%", marginTop: "20px" }}
           >
-            <Paper
-              style={{ padding: "0px 0px 0px 18px", height: "100%" }}
-              className="bg-none"
-            >
-              <div style={{ background: "#ffffff33", height: "100%" }}>
-                <div className="stepper">
-                  <>{console.log(Object.entries(breadCrumbDisplay),"ITTHAM")}</>
-                  {Object.entries(breadCrumbDisplay)?.map((item: any, index: number) => {
-                    return (<>
-                      <Accordion
-                        expanded={expanded === item[0]}
-                        onChange={handleChangestatus(item[0])}
-                      >
-                      
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                          className="accordian-header"
-                        >
-                          <Typography
-                            className="text-uppercase d-flex active"
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            {item[0]}
-                            <img
-                              className="steper-check-icon-solid my-auto mx-2"
-                              src={checksolid}
-                            />
-                          </Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                          <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#f0f0f0",
-                              overflow: "auto",
-                            }}
-                          >
-                            <ul>
-                              {item[1].map((items: any) => {
-                                return( <li className="active">
-                                {" "}
-                                <label className="my-auto">
-                                  {items?.title}{" "}
-                                </label>
-                              </li>)
-                              })}
-                            </ul>
-                          </Paper>
-                        </AccordionDetails>
-                      </Accordion>
-                      </>
-                    );
-                  })}
-                </div>
-              </div>
-            </Paper>
+            <BreadCrumbComponent breadCrumbCode={1204} formName={2}/>
           </div>
         </div>
         <div className="col-8">

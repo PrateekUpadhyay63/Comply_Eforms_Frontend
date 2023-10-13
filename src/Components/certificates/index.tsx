@@ -64,6 +64,7 @@ export default function Certificates(props: any) {
       postFormSelection(submitData, () => {
         if (componentPaths.hasOwnProperty(cardId)) {
           history(componentPaths[cardId]);
+          localStorage.removeItem("formSelection");
         }
       })
     );

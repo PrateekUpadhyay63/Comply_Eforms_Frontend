@@ -652,6 +652,7 @@ export default function IndividualUs() {
                   isConfirmed: values?.isConfirmed,
                 };
                 dispatch(postOnboarding(payload, redirectFunc));
+                localStorage.setItem("agentDetails", JSON.stringify(payload));
               }}
               validationSchema={individualSchema}
             >
