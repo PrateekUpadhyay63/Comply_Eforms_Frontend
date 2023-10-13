@@ -82,13 +82,10 @@ return(  <div
                     }}
                   >
                     {item[0]}
-                 {/* {item[1] */}
                  {item[1][item[1].length-1].order <breadCrumbCode ?( <img
                       className="steper-check-icon-solid my-auto mx-2"
                       src={checksolid}
-                    />):""}
-                    {/*  } */}
-                     {/* { item[1]?.order < 1204 ?():""} */}
+                    />):""} 
                   </Typography>
                   {}
                 </AccordionSummary>
