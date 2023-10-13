@@ -24,7 +24,6 @@ export default function BreadCrumbComponent(props:any):any {
   );
 
   useEffect(() => {
-    console.log(formName,breadCrumbCode,"hdsgjf")
     dispatch(getBreadCrums(formName, (data: any) => setBreadCrumb(data)));
   }, []);
   useEffect(() => {
@@ -64,8 +63,8 @@ return(  <div
             return (
               <Accordion
               key={index}
-                expanded={expanded === item[0]}
-                onChange={handleChangestatus(item[0])}
+              expanded={expanded === item[0]}
+              onChange={handleChangestatus(item[0])}
               >
               
                 <AccordionSummary
@@ -83,12 +82,15 @@ return(  <div
                     }}
                   >
                     {item[0]}
-                  <img
+                 {/* {item[1] */}
+                 {item[1][item[1].length-1].order <breadCrumbCode ?( <img
                       className="steper-check-icon-solid my-auto mx-2"
                       src={checksolid}
-                    />
+                    />):""}
+                    {/*  } */}
                      {/* { item[1]?.order < 1204 ?():""} */}
                   </Typography>
+                  {}
                 </AccordionSummary>
 
                 <AccordionDetails>
