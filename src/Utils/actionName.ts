@@ -14,7 +14,9 @@ const ActionName = {
     InsertAccountHolderDetail:"InsertAccountHolderDetail",
     CREATE_8233:"CREATE_8233",
     postSecurutyCode:"postSecurityCode",
-  
+    GetSecurityQuestions:"GetSecurityQuestions",
+    PostFormSelection:"PostFormSelection",
+    getBreadCrums:"getBreadCrums",
     //PDFs
     W9PDF:"W9PDF",
   

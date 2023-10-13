@@ -34,10 +34,6 @@ export const individualSchema = () => {
           .required("Please select an option")
           .notOneOf([0], "Please select a valid option"),
     }),
-    // nameOfDisregarded: Yup.string()
-    //   .required("Please Enter Entity name")
-    //   .min(3, "Entity name should be minimum of 3 characters")
-    //   .max(50, "Entity name should be maximum of 50 characters"),
     permanentResidentialCountryId: Yup.number()
       .required("Please select country")
       .notOneOf([0], "Please select a valid country"),
@@ -116,7 +112,7 @@ export const individualSchema = () => {
       .required("Please enter Email"),
 
     paymentTypeId: Yup.number(),
-      // .required("Please select an option")
+      // .required("Please sel=ect an option")
       // .notOneOf([0], "Please select a valid option"),
 
     // accountHolderName: Yup.string().when("paymentTypeId", {

@@ -5,15 +5,20 @@ import {
   Button,
   Input,
   Paper,
+  Accordion,
   FormControlLabel,
+  AccordionSummary,
+  AccordionDetails,
   Tooltip,
   Link,
   Checkbox,
   RadioGroup,
   Radio,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
+import checksolid from "../../../assets/img/check-solid.png";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import { TaxPayerSchema } from "../../../schemas/w8ECI";
@@ -32,6 +37,8 @@ export default function Tin(props: any) {
     nonAvailabilityReason: "",
   };
 
+ 
+
   const history = useNavigate();
   const dispatch = useDispatch();
   const [tax, setTax] = useState<string>("");
@@ -39,6 +46,13 @@ export default function Tin(props: any) {
   const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTax(event.target.value);
   };
+  const [expanded, setExpanded] = React.useState<string | false>("");
+
+  const handleChangestatus =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+
 
   const [toolInfo, setToolInfo] = useState("");
   return (
@@ -82,6 +96,152 @@ export default function Tin(props: any) {
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
             >
+<div className="overlay-div">
+            <div className="overlay-div-group">
+                <div className="viewInstructions">View Instructions</div>
+                <div className="viewform">View Form</div>
+                <div className="helpvideo"> 
+                {/* <a target="_blank" href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-">Help Video</a> */}
+                <a href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-" target="popup" onClick={()=>window.open('https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-','name','width=600,height=400')}>Help Video</a>
+                </div>
+            </div>
+        </div>
+        <div className="row w-100 h-100">
+        <div className="col-4">
+          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+        <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
+         
+              <div style={{background:"#ffffff33",height:"100%"}}>
+                <div className="stepper">
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChangestatus("panel1")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
+                          className="accordian-header"
+                        >
+                          <Typography
+                          className="text-uppercase d-flex active"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                          <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">Name and Address </label></li>
+                              <li className="active">Account Indivation(Optional)</li>
+                              <li className="active">Tax Identification Number</li>
+                              <li className="active">Contact Details</li>
+                              <li className="active">Form Selection</li>
+                            </ul>
+                          </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel2"}
+                        onChange={handleChangestatus("panel2")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">ECI Mandatory Information</label></li>
+                              <li className="active">Chapter 3 Status</li>
+                              <li >Tax Identification Number</li>
+                              <li >ECI Income report</li>
+                            
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
+              </div>
+           
+        </Paper>
+      </div>
+      </div>
+      <div className="col-8">
+
               <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
@@ -631,6 +791,8 @@ export default function Tin(props: any) {
                     </Button>
                   </Typography>
                 </Paper>
+              </div>
+              </div>
               </div>
             </section>
           </Form>

@@ -68,6 +68,8 @@ export const loginAction = (value: any, callback: Function): any => {
   };
 };
 
+
+
 export const postSecurityCode = (callback: Function): any => {
   return (dispatch: any) => {
     Utils.api.postApiCall(
@@ -126,6 +128,31 @@ export const postOnboarding = (value: any, callback: Function): any => {
   };
 };
 
+export const getBreadCrums = (FormId:Number,callback:Function): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.getBreadCrums,
+      `?FormId=${FormId}`,
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.getBreadCrums,
+            payload: {
+              getBreadCrumsData: resData.data,
+            },
+          });
+          if(callback){
+            callback(resData.data);
+          }
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
 export const getAllCountries = (): any => {
   return (dispatch: any) => {
     Utils.api.getApiCall(
@@ -148,6 +175,31 @@ export const getAllCountries = (): any => {
     );
   };
 };
+
+export const getSecurityQuestions = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetSecurityQuestions,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetSecurityQuestions,
+            payload: {
+              getSecurityQuestionsData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+
 
 export const getAllCountriesCode = (): any => {
   return (dispatch: any) => {
@@ -238,6 +290,34 @@ export const getW9PDF = (): any => {
         }
       },
       (error: any) => {
+      }
+    );
+  };
+};
+
+
+export const postFormSelection = (value: any, callback: Function): any => {
+  return (dispatch: any) => {
+    Utils.api.postApiCall(
+      Utils.EndPoint.PostFormSelection,
+      value,
+      (responseData) => {
+        let { data } = responseData;
+        dispatch({
+          type: Utils.actionName.PostFormSelection,
+          payload: { data: data.data },
+        });
+        if (responseData) {
+          if (responseData.status == 500) {
+            console.log("error");
+          } else {
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      },
+      (error) => {
       }
     );
   };

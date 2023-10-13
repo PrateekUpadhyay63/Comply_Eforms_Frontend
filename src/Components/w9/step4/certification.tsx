@@ -6,11 +6,15 @@ import {
   Tooltip,
   Link,
   Input,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Paper,
   Checkbox,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-
+import checksolid from "../../../assets/img/check-solid.png";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 export default function Certifications(props: any) {
   const {
     handleTaxClassificationChange,
@@ -19,13 +23,172 @@ export default function Certifications(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const [checkbox2, setCheckbox2] = useState(false);
+  const [checkbox5, setCheckbox5] = useState(false);
+  const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false);
+
+  const handleCheckbox2Change = () => {
+    setCheckbox2(!checkbox2);
+    setCheckbox5(false);
+    setIsSaveButtonEnabled(!isSaveButtonEnabled);
+  }
+
+  const handleCheckbox5Change = () => {
+    setCheckbox5(!checkbox5);
+    setCheckbox2(false);
+    setIsSaveButtonEnabled(!isSaveButtonEnabled);
+  }
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const handleChangestatus =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
   const [toolInfo, setToolInfo] = useState("");
 
   return (
-    <Paper style={{ marginLeft: "5px", width: "73%" }}>
+    <section
+    className="inner_content"
+    style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
+  >
+    <div className="row w-100 h-100">
+              <div className="col-4"  >
+          <div className="bg-none" style={{ padding: "10px 0px",height:"100%", }}>
+        <Paper style={{ padding: "0px 0px 0px 0px", height:"100%" ,backgroundColor:"#ffffff33"}} >
+        
+             
+                <div className="stepper" >
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChangestatus("panel1")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
+                          className="accordian-header"
+                        >
+                          <Typography
+                          className="text-uppercase d-flex active"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                          <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">Name and Address </label></li>
+                              <li className="active">Account Information(Optional)</li>
+                              <li  className="active">Tax Identification Number</li>
+                              <li  className="active">Contact Details</li>
+                              <li  className="active">Form Selection</li>
+                            </ul>
+                          </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel2"}
+                        onChange={handleChangestatus("panel2")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                           <ul>
+                              <li className="active"> <label className="my-auto">Federal Tax</label></li>
+                              <li className="active">Exemption from Backup Withholding</li>
+                              <li className="active">Exemption from FATCA reporting</li>
+                              <li className="active">Tax Identification Number</li>
+                             
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
+          
+          
+        </Paper>
+      </div>
+          </div>
+          <div className="col-8" style={{backgroundColor:"#ffff" }}> 
+    
       <Typography
         align="left"
         style={{
@@ -161,7 +324,7 @@ export default function Certifications(props: any) {
       </Typography>
 
       <Paper
-        style={{ marginLeft: "20px", width: "80%", backgroundColor: "#d2d6d3" }}
+        style={{ marginLeft: "20px", width: "95%", backgroundColor: "#d2d6d3" }}
       >
         <div style={{ margin: "10px" }}>
           <Typography style={{ display: "flex" }}>
@@ -175,7 +338,7 @@ export default function Certifications(props: any) {
             </Typography>
           </Typography>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox checked={checkbox2} onChange={handleCheckbox2Change}  />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -229,7 +392,7 @@ export default function Certifications(props: any) {
             </span>
           </Typography>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox checked={checkbox5} onChange={handleCheckbox5Change}  />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -257,6 +420,7 @@ export default function Certifications(props: any) {
         style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}
       >
         <Button
+         disabled={!isSaveButtonEnabled}
           onClick={() => {
             setOpen2(true);
           }}
@@ -266,6 +430,7 @@ export default function Certifications(props: any) {
           SAVE & EXIT
         </Button>
         <Button
+         
           variant="contained"
           style={{ color: "white", marginLeft: "15px" }}
         >
@@ -273,6 +438,7 @@ export default function Certifications(props: any) {
         </Button>
         <Button
           type="submit"
+          disabled={!isSaveButtonEnabled}
           onClick={() => {
             setselectedContinue({
               step1: false,
@@ -329,6 +495,9 @@ export default function Certifications(props: any) {
           Back
         </Button>
       </Typography>
-    </Paper>
+ 
+    </div>
+    </div>
+    </section>
   );
 }

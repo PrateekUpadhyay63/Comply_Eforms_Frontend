@@ -54,6 +54,7 @@ export default function FCTA_Reporting(props: any) {
                 </div>
             </div>
         </div>
+        
         <div className="row w-100 h-100">
           <div className="col-4">
           <div style={{ padding: "20px 0px",height:"100%" }}>
@@ -120,9 +121,9 @@ export default function FCTA_Reporting(props: any) {
                             <ul>
                               <li className="active"> <label className="my-auto">Name and Address </label></li>
                               <li className="active">Account Information(Optional)</li>
-                              <li>Tax Identification Number</li>
-                              <li>Contact Details</li>
-                              <li>Form Selection</li>
+                              <li  className="active">Tax Identification Number</li>
+                              <li  className="active">Contact Details</li>
+                              <li  className="active">Form Selection</li>
                             </ul>
                           </Paper>
                         </AccordionDetails>
@@ -157,11 +158,54 @@ export default function FCTA_Reporting(props: any) {
                               overflow: "auto",
                             }}
                           >
+                           <ul>
+                              <li className="active"> <label className="my-auto">US Sourced Income Declaration (optional)</label></li>
+                              <li className="active">United States Citizenship Status</li>
+                              <li className="active">Tax Identification Number</li>
+                              <li>Treaty Claim</li>
+                              <li>
+                              Special Rates and Conditions
+                              </li>
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
                             <ul>
-                              <li className="active"> <label className="my-auto">Federal Tax</label></li>
-                              <li className="active">Exemption from Backup Withholding</li>
-                              <li>Exemption from FATCA reporting</li>
-                              <li>Tax Identification Number</li>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
                             </ul>
                         </Paper>
                         </AccordionDetails>
@@ -376,14 +420,80 @@ export default function FCTA_Reporting(props: any) {
                         >
                           I certify the beneficial owner is a resident of:{" "}
                           <span style={{ color: "red" }}>*</span>
+                          <span>
+                        <Tooltip
+                          style={{ backgroundColor: "black", color: "white" }}
+                          title={
+                            <>
+                              <Typography color="inherit">
+                              Treaty Claim Q2
+                              </Typography>
+                              <a onClick={() => setToolInfo("claim")}>
+                                <Typography
+                                  style={{
+                                    cursor: "pointer",
+                                    textDecorationLine: "underline",
+                                  }}
+                                  align="center"
+                                >
+                                  {" "}
+                                  View More...
+                                </Typography>
+                              </a>
+                            </>
+                          }
+                        >
                           <Info
                             style={{
                               color: "#ffc107",
-                              fontSize: "20px",
+                              fontSize: "19px",
+                              cursor: "pointer",
                               verticalAlign: "super",
                             }}
                           />
+                        </Tooltip>
+                      </span>
                         </Typography>
+
+                        {toolInfo === "claim" ? (
+                      <div>
+                        <Paper
+                          style={{
+                            backgroundColor: "#dedcb1",
+                            padding: "15px",
+                            marginBottom: "10px",
+                          }}
+                        >
+                          <Typography>
+                          Select the country where you claim the Treaty
+                          </Typography>
+
+                          <Typography style={{ marginTop: "10px",fontWeight:"bold" }}>
+                          IRS Form Guidance: 
+                          </Typography>
+                          <Typography style={{ marginTop: "10px" }}>
+                          Select the country where you claim the individual, business or organization is a resident for income tax treaty purposes.
+                          </Typography>
+                          <Typography style={{ marginTop: "10px" }}>
+                          Ref: EH032 
+                          </Typography>
+                         
+
+                          <Link
+                            href="#"
+                            underline="none"
+                            style={{ marginTop: "10px", fontSize: "16px" }}
+                            onClick={() => {
+                              setToolInfo("");
+                            }}
+                          >
+                            --Show Less--
+                          </Link>
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                         <div className="row px-2">
                             <div className="col-12" style={{padding:"0px"}}>
                               <FormControl className="w-100">
@@ -422,251 +532,7 @@ export default function FCTA_Reporting(props: any) {
                     ) : null}
                   </div>
                 </div>
-                <div>
-                      <Accordion
-                        expanded={expanded === "panel1"}
-                        onChange={handleChangestatus("panel1")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <Typography
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Electronic Submission Declaration
-                          </Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                          <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#d4d9d4",
-                              height: "280px",
-                              overflow: "auto",
-                            }}
-                          >
-                            <Typography
-                              align="left"
-                              style={{
-                                color: "black",
-                                fontWeight: "bold",
-                                fontSize: "18px",
-                                width: "100%",
-                              }}
-                            >
-                              Electronic Submission Declaration
-                            </Typography>
-
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              <span
-                                style={{
-                                  color: "black",
-                                  fontWeight: "bold",
-                                  fontSize: "12px",
-                                }}
-                              >
-                                Under Penalties or Perjury
-                              </span>{" "}
-                              you hereby declare that, pursuant to the
-                              Electronic Signature in Global and National
-                              Commerce Act - the E-Sign Act - Title 15 U.S.C.
-                              §7001, you are declaring that you have examined
-                              the information you are about to electronically
-                              submit and that to the best of your knowledge and
-                              belief it is true, correct and complete.
-                            </Typography>
-
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              Furthermore you acknowledge that you understand
-                              your rights and obligations under Title 28 U.S.C.
-                              §1746 governing unsworn declarations made under
-                              the Penalties of Perjury.
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              Additionally, you are certifying that you have
-                              read and agreed the certification statement
-                              presented through the submission process,
-                              confirming that:
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              1. You are the beneficial owner (or an authorized
-                              to sign for the beneficial owner) of all the
-                              income to which the form relates,
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              2. The beneficial owner is not a U.S person.
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
-                            >
-                              3. You are a U.S. person submitting a Form type
-                              W-9
-                            </Typography>
-
-                            <Typography
-                              align="left"
-                              style={{
-                                fontSize: "20px",
-                                marginTop: "13px",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              To Confirm:
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px" }}
-                            >
-                              1. You have entered your name in the box provided
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px" }}
-                            >
-                              2. Checked the{" "}
-                              <span
-                                style={{
-                                  color: "black",
-                                  fontWeight: "bold",
-                                  fontSize: "12px",
-                                }}
-                              >
-                                "I agree with the above declaration"
-                              </span>
-                              and
-                            </Typography>
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "15px" }}
-                            >
-                              3. By submitting the form here will have provided
-                              a legally binding self certified electronic
-                              signature.
-                            </Typography>
-
-                            <Typography
-                              align="left"
-                              style={{ fontSize: "20px", marginTop: "13px" }}
-                            >
-                              On submission your details will be transmitted to
-                              your withholding agent previously selected, who
-                              may wish to contact you for further confirmation.
-                              No data is stored within the Comply Exchange
-                              Service on transfer and it is again recommended
-                              that you save a copy locally for your own records.
-                            </Typography>
-                          </Paper>
-                          <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
-                            <Typography style={{ marginTop: "9px" }}>
-                              I agree with the above Declarations
-                            </Typography>
-                          </div>
-                        </AccordionDetails>
-                      </Accordion>
-                      <Accordion
-                        expanded={expanded === "panel2"}
-                        onChange={handleChangestatus("panel2")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel2bh-content"
-                          id="panel2bh-header"
-                        >
-                          <Typography
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Electronic Recipient Statement
-                          </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#d4d9d4",
-                            }}
-                          >
-                            <Divider
-                              style={{ marginTop: "10px", color: "black" }}
-                            />
-                            <Typography
-                              style={{
-                                color: "black",
-                                fontWeight: "bold",
-                                fontSize: "16px",
-                                marginTop: "10px",
-                              }}
-                            >
-                              We may be required to provide you with a Form
-                              1042-S or 1099 depending on your U.S. status. In
-                              order to receive this statement electronically, by
-                              email or accessible through our onboarding portal
-                              you must provide your consent by checking the box
-                              below. If you do not provide consent a paper copy
-                              will be provided. Furthermore: The statement will
-                              be provided in PDF format. This consent will
-                              remain in place until you withdraw your consent.
-                              You may withdraw this consent at any time by
-                              writing to our support centre requesting that a
-                              paper copy is provided to you. If you require a
-                              paper copy after giving consent you may request a
-                              copy by writing to our support centre requesting
-                              that a paper copy is provided to you. We reserve
-                              the right to change our delivery processes and
-                              should circumstances change we will contact you by
-                              written notice after which time statements will be
-                              provided by paper, until a further consent is
-                              given by you.
-                            </Typography>
-                            <Divider style={{ marginBottom: "10px" }} />
-                          </Paper>
-                          <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
-                            <Typography style={{ marginTop: "9px" }}>
-                              I give consent to receiving a recipent statement
-                              electronically
-                            </Typography>
-                          </div>
-                          <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
-                            <Typography style={{ marginTop: "9px" }}>
-                              {" "}
-                              I do not give consent to receiving a recipent
-                              statement electronically
-                            </Typography>
-                          </div>
-                        </AccordionDetails>
-                      </Accordion>
-                    </div>
+              
 
 
                 <div

@@ -15,10 +15,15 @@ import {
 import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
+import checksolid from "../../../../../assets/img/check-solid.png";
 import { useNavigate } from "react-router-dom";
 import { US_TINSchema } from "../../../../../schemas/w8Ben";
 import { W8_state } from "../../../../../Redux/Actions";
 import { useDispatch } from "react-redux";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Tin(props: any) {
   const history = useNavigate();
@@ -29,6 +34,12 @@ export default function Tin(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const [expanded, setExpanded] = React.useState<string | false>("");
+
+  const handleChangestatus =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
@@ -38,8 +49,8 @@ export default function Tin(props: any) {
     notAvailable: false,
     foreignTINCountry: "",
     foreignTIN: "",
-    isFTINNotLegallyRequired: true,
-    // tinisFTINNotLegallyRequired: true,
+    isFTINNotLegallyRequired: false,
+    tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -59,6 +70,144 @@ export default function Tin(props: any) {
                 </div>
             </div>
         </div>
+        <div className="row w-100 h-100">
+        <div className="col-4">
+          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+        <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
+         
+              <div style={{background:"#ffffff33",height:"100%"}}>
+                <div className="stepper">
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChangestatus("panel1")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1bh-content"
+                          id="panel1bh-header"
+                          className="accordian-header"
+                        >
+                          <Typography
+                          className="text-uppercase d-flex active"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                          <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">Name and Address </label></li>
+                              <li className="active">Account Indivation(Optional)</li>
+                              <li className="active">Tax Identification Number</li>
+                              <li className="active">Contact Details</li>
+                              <li className="active">Form Selection</li>
+                            </ul>
+                          </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel2"}
+                        onChange={handleChangestatus("panel2")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li className="active"> <label className="my-auto">US Sourced Income Declaration (optional)</label></li>
+                              <li className="active">United States Citizenship Status</li>
+                              <li>Tax Identification Number</li>
+                              <li>Treaty Claim</li>
+                              <li>
+                              Special Rates and Conditions
+                              </li>
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion
+                        expanded={expanded === "panel3"}
+                        onChange={handleChangestatus("panel3")}
+                      >
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2bh-content"
+                          id="panel2bh-header"
+                          className="accordian-header"
+                        >
+                                     <Typography
+                          className="text-uppercase d-flex"
+                            sx={{
+                              width: "100%",
+                              flexShrink: 0,
+                              fontSize: "20px",
+                            }}
+                          >
+                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Paper
+                            elevation={3}
+                            style={{
+                              padding: "20px",
+                              backgroundColor: "#f0f0f0",
+                              overflow: "auto",
+                            }}
+                          >
+                            <ul>
+                              <li > <label className="my-auto">Penalties of Perjury Certification</label></li>
+                              <li >Electronic Signature</li>
+                              <li>Electronic Signature Confirmation</li>
+                              <li>U.S. Tax Certification Complete</li>
+                              
+                            </ul>
+                        </Paper>
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
+              </div>
+           
+        </Paper>
+      </div>
+      </div>
+
+      <div className="col-8">
       <div style={{ padding: "20px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
@@ -208,6 +357,7 @@ export default function Tin(props: any) {
                     <div className="col-lg-4 col-12">
                       <Typography>U.S. TIN</Typography>
                       <Input
+                      disabled={values.notAvailable}
                         fullWidth
                         type="text"
                         name="usTin"
@@ -224,7 +374,7 @@ export default function Tin(props: any) {
                           width: "100%",
                         }}
                       />
-                      <p className="error">{errors.usTin}</p>
+                     {values.notAvailable ?( ""):<p className="error">{errors.usTin}</p>}
                     </div>
                     <div className="col-lg-4 col-12">
                       <div style={{ marginTop: "27px" }}>
@@ -315,9 +465,9 @@ export default function Tin(props: any) {
                               title={
                                 <>
                                   <Typography color="inherit">
-                                    U.S. TIN Type Info
+                                  FTIN not legally required
                                   </Typography>
-                                  <a onClick={() => setToolInfo("check")}>
+                                  <a onClick={() => setToolInfo("require")}>
                                     <Typography
                                       style={{
                                         cursor: "pointer",
@@ -343,6 +493,34 @@ export default function Tin(props: any) {
                           </span>
                         </span>
                       </div>
+
+{toolInfo === "require" ?(
+  <Paper
+  style={{
+    backgroundColor: "#dedcb1",
+    padding: "15px",
+    marginBottom: "10px",
+  }}
+>
+  <Typography>
+  You may check the box on this line 6b (for Form W-8BEN), line 9c (for Form W-8BEN-E) or line 8b (For Form W-8ECI) if you are an account holder as described for purposes of line 6a (for Form W-8BEN), line 9b (for Form W-8BEN-E) or line 8a (for Form W-8ECI) and you are not legally required to obtain an FTIN from your jurisdiction of residence (including if the jurisdiction does not issue TINs). By checking this box, you will be treated as having provided an explanation for not providing an FTIN on line 6a (W-8BEN), line 9b (W-8BEN-E), or line line 8a (W-8ECI). If you wish to provide a further (or other) explanation why you are not required to provide an FTIN, which appears on line 6a, 9b or 8a (W-8BEN, W-8BEN-E or W-8ECI respectively), you will be able to enter this as part of the eForms process.
+  </Typography>
+  <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+  </Paper>
+
+):""}
+
+
+
                     </div>
                     <div className="col-lg-4 col-12">
                       <Typography>Foreign TIN </Typography>
@@ -364,6 +542,40 @@ export default function Tin(props: any) {
                         }}
                       />
                       <p className="error">{errors.foreignTIN}</p>
+                      <FormControl style={{marginLeft:"10px"}}>
+                  <RadioGroup
+                    row
+                    name="tinisFTINNotLegallyRequired"
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    value={values.tinisFTINNotLegallyRequired}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="Yes"
+                      disabled={values.isFTINNotLegallyRequired}
+                      control={<Radio />}
+                      label="Yes"
+                      name="tinisFTINNotLegallyRequired"
+                    />
+                    <FormControlLabel
+                      className="label"
+                      value="No"
+                      control={<Radio />}
+                      label="No"
+                      disabled={values.isFTINNotLegallyRequired}
+                      name="tinisFTINNotLegallyRequired"
+                    />
+                  </RadioGroup>
+                  {errors.tinisFTINNotLegallyRequired && touched.tinisFTINNotLegallyRequired ? (
+                    <div>
+                      <Typography color="error">
+                        {errors.tinisFTINNotLegallyRequired}
+                      </Typography>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </FormControl>
                     </div>
                   </div>
                 </div>
@@ -384,9 +596,10 @@ export default function Tin(props: any) {
                   >
                     <FormControlLabel
                       value="Yes"
+                      
                       control={<Radio />}
                       label="Yes"
-                      // name="isNotLegallyFTIN"
+                      name="isNotLegallyFTIN"
                     />
                     <FormControlLabel
                       className="label"
@@ -464,8 +677,37 @@ export default function Tin(props: any) {
                       document may need to obtain further information.
                     </Typography>
                   </Typography>
-                </div>):""}
+                </div>):values.isNotLegallyFTIN  ==="No" ?(""):
+                ""}
                </>)}
+
+               {values.tinisFTINNotLegallyRequired === "Yes" ? (
+                <div className="my-3">
+<Typography align="left" style={{fontWeight:"bold"}}>
+Please specify the reason for non-availability of Foreign TIN  
+<br/>
+</Typography>
+<Typography align="left" style={{fontWeight:"bold",marginTop:"2rem"}}>
+You have selected a FTIN country that is not on the IRS exemption list, where, in most cases a FTIN should be provided. You must provide a written explanation here explaining why you are not providing. By not providing we may not be able to apply treaty benefits should they apply and may render the form invalid.
+</Typography>
+<Input
+                        fullWidth
+                        type="text"
+                       
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                       
+                        style={{
+                          border: " 1px solid #d9d9d9 ",
+                          padding: " 0 10px",
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "7rem",
+                          width: "100%",
+                        }}
+/>
+                </div>
+               ):""}
                 <div
                   style={{
                     display: "flex",
@@ -521,6 +763,8 @@ export default function Tin(props: any) {
             )}
           </Formik>
         </Paper>
+      </div>
+      </div>
       </div>
     </section>
   );
