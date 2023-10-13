@@ -22,6 +22,7 @@ import { Formik, Form } from "formik";
 import { SubstantialSchema } from "../../../schemas/8233";
 import { CREATE_8233 } from "../../../Redux/Actions";
 import { useDispatch } from "react-redux";
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Presence(props: any) {
   const initialValue = {
     daysAvailableInThisYear: "",
@@ -81,178 +82,11 @@ export default function Presence(props: any) {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
-        <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
-         
-              <div style={{background:"#ffffff33",height:"100%"}}>
-                <div className="stepper">
-                      <Accordion
-                        expanded={expanded === "panel1"}
-                        onChange={handleChangestatus("panel1")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                          className="accordian-header"
-                        >
-                          <Typography
-                          className="text-uppercase d-flex active"
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
-                          </Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                          <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#f0f0f0",
-                              overflow: "auto",
-                            }}
-                          >
-                            <ul>
-                              <li className="active"> <label className="my-auto">Name and Address </label></li>
-                              <li className="active">Account Indivation(Optional)</li>
-                              <li className="active">Tax Identification Number</li>
-                              <li className="active">Contact Details</li>
-                             
-                            </ul>
-                          </Paper>
-                        </AccordionDetails>
-                      </Accordion>
-                      <Accordion
-                        expanded={expanded === "panel2"}
-                        onChange={handleChangestatus("panel2")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel2bh-content"
-                          id="panel2bh-header"
-                          className="accordian-header"
-                        >
-                                     <Typography
-                          className="text-uppercase d-flex"
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Step II<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
-                          </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#f0f0f0",
-                              overflow: "auto",
-                            }}
-                          >
-                            <ul>
-                              <li > <label className="my-auto">Substantial U.S. Presence Test</label></li>
-                              <li >Identification of Beneficial Owner</li>
-                              <li >Treaty Claim</li>
-                              <li >Tax Identification Number</li>
-                            
-                            </ul>
-                        </Paper>
-                        </AccordionDetails>
-                      </Accordion>
-                      <Accordion
-                        expanded={expanded === "panel3"}
-                        onChange={handleChangestatus("panel3")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel2bh-content"
-                          id="panel2bh-header"
-                          className="accordian-header"
-                        >
-                                     <Typography
-                          className="text-uppercase d-flex"
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Step III<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
-                          </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#f0f0f0",
-                              overflow: "auto",
-                            }}
-                          >
-                            <ul>
-                              <li > <label className="my-auto">Supporting Documentation</label></li>
-                             
-                              
-                            </ul>
-                        </Paper>
-                        </AccordionDetails>
-                      </Accordion>
-                      <Accordion
-                        expanded={expanded === "panel1"}
-                        onChange={handleChangestatus("panel1")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                          className="accordian-header"
-                        >
-                          <Typography
-                          className="text-uppercase d-flex"
-                            sx={{
-                              width: "100%",
-                              flexShrink: 0,
-                              fontSize: "20px",
-                            }}
-                          >
-                            Step IV<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
-                          </Typography>
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                          <Paper
-                            elevation={3}
-                            style={{
-                              padding: "20px",
-                              backgroundColor: "#f0f0f0",
-                              overflow: "auto",
-                            }}
-                          >
-                            <ul>
-                              <li > <label className="my-auto">Penalties of Perjury Certification </label></li>
-                              <li >Electronic Signature</li>
-                              <li >Electronic Signature Confirmation</li>
-                              <li >U.S. Tax Certification Complete</li>
-                              
-                            </ul>
-                          </Paper>
-                        </AccordionDetails>
-                      </Accordion>
-                    </div>
-              </div>
-           
-        </Paper>
+          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <BreadCrumbComponent breadCrumbCode={1355} formName={2}/>
       </div>
       </div>
-      <div className="col-8">
+      <div className="col-8 mt-3">
             <div style={{ padding: "20px" }}>
               <Paper style={{ padding: "18px" }}>
                 <Typography

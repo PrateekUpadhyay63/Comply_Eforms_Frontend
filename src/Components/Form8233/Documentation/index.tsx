@@ -15,6 +15,7 @@ import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { CREATE_8233 } from "../../../Redux/Actions";
 import { useDispatch,useSelector } from "react-redux";
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 
 export default function Tin(props: any) {
   const getFirstDocData = useSelector((state:any) => state.form8233);
@@ -105,6 +106,14 @@ export default function Tin(props: any) {
               className="inner_content"
               style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
             >
+<div className="row w-100 h-100">
+        <div className="col-4">
+          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <BreadCrumbComponent breadCrumbCode={1362} formName={2}/>
+      </div>
+      </div>
+      <div className="col-8 mt-3">
+
               <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
@@ -359,6 +368,8 @@ export default function Tin(props: any) {
                     </Button>
                   </Typography>
                 </Paper>
+              </div>
+              </div>
               </div>
             </section>
           </Form>
