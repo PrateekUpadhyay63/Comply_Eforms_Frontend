@@ -3128,6 +3128,7 @@ export default function Entity() {
                                   }}
                                 />
                               </span>
+                              <div className="d-flex">
                               <Input
                                 disabled={values.alternativeNumberId1 == 0}
                                 style={{
@@ -3140,6 +3141,7 @@ export default function Entity() {
                                   fontStyle: "normal",
                                   borderRadius: "1px",
                                   padding: " 0 10px ",
+                                  width:"100%"
                                 }}
                                 id="outlined"
                                 name="alternativeNumber1"
@@ -3147,6 +3149,15 @@ export default function Entity() {
                                 onChange={handleChange}
                                 value={values.alternativeNumber1}
                               />
+                                       <Delete
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "5px",
+                                    opacity:0,
+                                  }}
+                                />
+                              </div>
                             </FormControl>
                           </div>
                         ) : (

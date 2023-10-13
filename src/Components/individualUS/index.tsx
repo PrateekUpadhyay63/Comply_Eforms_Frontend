@@ -1620,7 +1620,9 @@ export default function IndividualUs() {
                               </FormControl>
                             </div>
                           </div>
-                          <div className="col-12 d-flex">
+                          <div className="col-12 ">
+                            <div className="row">
+
                             <div className="col-lg-3 col-6 col-md-3 ">
                               <Typography align="left" className="d-flex w-100">
                                 Value Added Tax Number (VAT)
@@ -1650,7 +1652,7 @@ export default function IndividualUs() {
                               </FormControl>
                             </div>
 
-                            <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <div className="col-lg-3 col-6 col-md-3">
                               <FormControl className="w-100">
                                 <Typography align="left">
                                   Value Added Tax Number (VAT)
@@ -1682,6 +1684,7 @@ export default function IndividualUs() {
                                   value={values.vat}
                                 />
                               </FormControl>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -2183,7 +2186,7 @@ export default function IndividualUs() {
                       )}
                       <div className="d-flex">
                         {values.isUSIndividual == "yes" ? (
-                          <div className="mx-5">
+                          <div className="">
                             <Typography
                               align="left"
                               style={{ marginTop: "20px" }}
@@ -3236,82 +3239,105 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
 
-                        <div>
-                          {alternateNo ? (
-                            <div className="col-lg-3 col-6 col-md-3 mt-3">
-                              <FormControl className="w-100">
-                                {/* <Typography align="left">
-                                  Secondary Contact Number
-                                </Typography> */}
-                                <span className="w-100 d-flex">
-                                  <select
-                                    className="w-100"
-                                    style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
-                                      fontStyle: "italic",
-                                      height: "36px",
-                                    }}
-                                    name="alternativeNumberId1"
-                                    id="Income"
-                                    onChange={handleChange}
-                                    value={values.alternativeNumberId1}
-                                  >
-                                    <option value={0}>--Select--</option>
-                                    {/* <option value={1}>--Select1--</option> */}
-                                    {getCountriesCodeReducer.allCountriesCodeData?.map(
-                                      (ele: any) => (
-                                        <option key={ele?.id} value={ele?.id}>
-                                          {ele?.name}
-                                        </option>
-                                      )
+                        <div className="col-12">
+                          <div className="row">
+                            <div className="col-12 col-md-6">
+                              <div className="row">
+                              <div className="col-lg-6 col-6  mt-2">
+
+                              </div>
+                               <div className="col-lg-6 col-6  mt-2">
+
+                                    {alternateNo ? (
+                                      <div className="col-12 mt-3">
+                                        <FormControl className="w-100" style={{position:"relative"}}>
+                                          {/* <Typography align="left">
+                                            Secondary Contact Number
+                                          </Typography> */}
+                                          <span className="w-100 d-flex">
+                                            <select
+                                              className="w-100"
+                                              style={{
+                                                padding: " 0 10px",
+                                                color: "#7e7e7e",
+                                                fontStyle: "italic",
+                                                height: "36px",
+                                              }}
+                                              name="alternativeNumberId1"
+                                              id="Income"
+                                              onChange={handleChange}
+                                              value={values.alternativeNumberId1}
+                                            >
+                                              <option value={0}>--Select--</option>
+                                              {/* <option value={1}>--Select1--</option> */}
+                                              {getCountriesCodeReducer.allCountriesCodeData?.map(
+                                                (ele: any) => (
+                                                  <option key={ele?.id} value={ele?.id}>
+                                                    {ele?.name}
+                                                  </option>
+                                                )
+                                              )}
+                                            </select>
+                                            <Delete
+                                                sx={{
+                                                  right: {
+                                                    xs: "-10%",
+                                                    md: "-10%",
+                                                    lg: "-8%",
+                                                    xl: "-5%",
+                                                  },
+                                                }}
+                                              style={{
+                                                color: "red",
+                                                fontSize: "20px",
+                                                marginTop: "5px",
+                                                position:"absolute",
+                                      
+                                              }}
+                                              onClick={() => {
+                                                setAlternateNo(false);
+                                              }}
+                                            />
+                                          </span>
+                                          <Input
+                                            disabled={values.alternativeNumberId1 == 0}
+                                            style={{
+                                              border: " 1px solid #d9d9d9 ",
+                                              height: " 36px",
+                                              lineHeight: "36px ",
+                                              background: "#fff ",
+                                              fontSize: "13px",
+                                              color: " #000 ",
+                                              fontStyle: "normal",
+                                              borderRadius: "1px",
+                                              padding: " 0 10px ",
+                                            }}
+                                            id="outlined"
+                                            name="alternativeNumber1"
+                                            placeholder="Enter Alternate Mobile No"
+                                            onChange={handleChange}
+                                            value={values.alternativeNumber1}
+                                          />
+                                        </FormControl>
+                                      </div>
+                                    ) : (
+                                      <Typography
+                                        style={{
+                                          color: "#007bff",
+                                          cursor: "pointer",
+                                          fontSize: "12px",
+                                          marginTop: "8px",
+                                        }}
+                                        onClick={() => setAlternateNo(true)}
+                                      >
+                                        <a>Add Alternative Number</a>
+                                      </Typography>
                                     )}
-                                  </select>
-                                  <Delete
-                                    style={{
-                                      color: "red",
-                                      fontSize: "20px",
-                                      marginTop: "5px",
-                                    }}
-                                    onClick={() => {
-                                      setAlternateNo(false);
-                                    }}
-                                  />
-                                </span>
-                                <Input
-                                  disabled={values.alternativeNumberId1 == 0}
-                                  style={{
-                                    border: " 1px solid #d9d9d9 ",
-                                    height: " 36px",
-                                    lineHeight: "36px ",
-                                    background: "#fff ",
-                                    fontSize: "13px",
-                                    color: " #000 ",
-                                    fontStyle: "normal",
-                                    borderRadius: "1px",
-                                    padding: " 0 10px ",
-                                  }}
-                                  id="outlined"
-                                  name="alternativeNumber1"
-                                  placeholder="Enter Alternate Mobile No"
-                                  onChange={handleChange}
-                                  value={values.alternativeNumber1}
-                                />
-                              </FormControl>
+                              </div>
+
+                              </div>
                             </div>
-                          ) : (
-                            <Typography
-                              style={{
-                                color: "#007bff",
-                                cursor: "pointer",
-                                fontSize: "12px",
-                                marginTop: "8px",
-                              }}
-                              onClick={() => setAlternateNo(true)}
-                            >
-                              <a>Add Alternative Number</a>
-                            </Typography>
-                          )}
+                          </div>
                         </div>
                       </div>
                     </Collapse>
