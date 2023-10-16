@@ -2333,8 +2333,11 @@ export default function IndividualUs() {
                             </div> */}
                           </div>
                         ) : (
-                          <div className="d-flex">
-                            <div>
+                          <div className="col-12">
+                            <div className=" d-lg-flex justify-content-between" style={{justifyContent:"between"}}>
+
+                           <>
+                           <div >
                             <Typography
                               align="left"
                               style={{ marginTop: "20px" }}
@@ -2349,9 +2352,6 @@ export default function IndividualUs() {
                                 }}
                               />
                             </Typography>
-
-                           <>
-                           <div className="d-flex ">
                               <FormControl
                                 error={Boolean(
                                   touched.isAddressPostOfficeBox &&

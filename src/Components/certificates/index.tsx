@@ -54,7 +54,7 @@ export default function Certificates(props: any) {
 // 7	W-8IMY
 // 8	Form 8233
     const componentPaths: ComponentPaths = {
-      "W-9": "/W9",
+      "W-9": "/W9/purposes",
       "W-8BEN": "/W-8BEN/Declaration",
       "W-8ECI": "/W-8ECI/Info",
       "form 8233": "/Form8233/SubstantialPresence",

@@ -3,7 +3,7 @@ import { RouteType } from "./types";
 import Utils from "../Utils";
 
 const login = React.lazy(() => import("../Components/login"));
-const W9 = React.lazy(() => import("../Components/w9"));
+// const W9 = React.lazy(() => import("../Components/w9"));
 const IndividualUs = React.lazy(() => import("../Components/individualUS"));
 const EntityUs = React.lazy(() => import("../Components/entity"));
 const Term = React.lazy(() => import("../Components/term"));
@@ -43,6 +43,14 @@ const Part = React.lazy(
   () => import("../Components/W-8BEN/Declaration/Non-US/Part-certi")
 );
 
+
+//
+const Fedral_tax= React.lazy(() => import("../Components/W9Form/Purposes/index"));
+const Back= React.lazy(() => import("../Components/W9Form/Backup"));
+const Exemption= React.lazy(() => import("../Components/W9Form/Exemption"));
+const tax= React.lazy(() => import("../Components/W9Form/tax"));
+const Certificates_w9 = React.lazy(() => import("../Components/W9Form/Certification"));
+const Penlities_W9= React.lazy(() => import("../Components/W9Form/penalities"));
 //
 const Eci = React.lazy(() => import("../Components/W-8ECI/Info"));
 const TaxPurpose = React.lazy(() => import("../Components/W-8ECI/TaxPurpose"));
@@ -80,10 +88,10 @@ const ROUTES: Array<RouteType> = [
     isPrivate: true,
   },
   {
-    name: "W9",
-    path: "W9",
+    name: "purposes",
+    path: "/W9/purposes",
     id: 1,
-    Component: W9,
+    Component: Fedral_tax,
     isPrivate: true,
   },
   {
@@ -361,6 +369,41 @@ isPrivate: true,
     Component: PDFViewer,
     isPrivate: true,
   },
+  {
+    name:"Back",
+    path: "US_Purposes/Back",
+    id: 7,
+    Component: Back,
+    isPrivate: true,
+  },
+  {
+    name:"Exemption",
+    path: "US_Purposes/Back/Exemption",
+    id: 7,
+    Component: Exemption,
+    isPrivate: true,
+  },
+  {
+    name:"tax",
+    path: "US_Purposes/Back/Exemption/Tax",
+    id: 7,
+    Component: tax,
+    isPrivate: true,
+  },
+  {
+    name:"Certificates_w9",
+    path: "US_Purposes/Back/Exemption/Tax/Certificates",
+    id: 7,
+    Component: Certificates_w9,
+    isPrivate: true,
+  },
+  {
+    name:"Penlities_W9",
+    path: "US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9",
+    id: 7,
+    Component: Penlities_W9,
+    isPrivate: true,
+  }
   
 ];
 
