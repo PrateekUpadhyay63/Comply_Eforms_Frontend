@@ -15,6 +15,7 @@ const ActionName = {
     CREATE_8233:"CREATE_8233",
     postSecurutyCode:"postSecurityCode",
     GetSecurityQuestions:"GetSecurityQuestions",
+    GetTinTypes:"GetTinTypes",
     PostFormSelection:"PostFormSelection",
     getBreadCrums:"getBreadCrums",
     //PDFs

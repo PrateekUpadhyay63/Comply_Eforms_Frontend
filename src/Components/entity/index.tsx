@@ -311,7 +311,6 @@ export default function Entity() {
         <div className="col-lg-3 col-6 col-md-3 mt-2">
           <FormControl className="w-100">
             <Typography align="left">
-              {/* {returnFieldName()} */}
               ABA/Routing
               <span style={{ color: "red" }}>*</span>
             </Typography>

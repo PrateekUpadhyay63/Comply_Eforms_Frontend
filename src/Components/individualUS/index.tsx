@@ -34,7 +34,8 @@ import {
   getAllCountries,
   getAllCountriesCode,
   getAllCountriesIncomeCode,
-  getAllStateByCountryId,
+  getAllStateByCountryId,getTinTypes,
+
 } from "../../Redux/Actions";
 import moment from "moment";
 import { AppDispatch } from "../../Redux/store";
@@ -267,8 +268,12 @@ export default function IndividualUs() {
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
+    dispatch(getTinTypes(3,()=>{console.log("HI")}));
   }, []);
 
+  const GetTinTypesData = useSelector(
+    (state: any) => state.GetTinTypesReducer.GetTinTypesData
+  );
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );

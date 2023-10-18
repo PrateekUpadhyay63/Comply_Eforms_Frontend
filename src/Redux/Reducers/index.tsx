@@ -1,7 +1,7 @@
 import Utils from "../../Utils";
 // import { postSecurityCode } from "../Actions";
 
-const {LOGIN,GetCountries,getBreadCrums,GetSecurityQuestions,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
+const {LOGIN,GetCountries,getBreadCrums,GetTinTypes,GetSecurityQuestions,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
 
 
   let initialState:any = [];
@@ -67,7 +67,6 @@ export const W9PDFReducer = (state = initialState, action:any):any => {
 export const postSecurityCodeReducer= (state = initialState, action:any):any => {
   switch (action.type) {
     case postSecurutyCode:
-      console.log(action.payload,"Reducer payload")
       return { ...state, ...action.payload };
     default:
       return state;
@@ -77,7 +76,6 @@ export const postSecurityCodeReducer= (state = initialState, action:any):any => 
 export const getSecurityQuestionsReducer= (state = initialState, action:any):any => {
   switch (action.type) {
     case GetSecurityQuestions:
-      console.log(action.payload,"Reducer payload")
       return { ...state, ...action.payload };
     default:
       return state;
@@ -87,7 +85,16 @@ export const getSecurityQuestionsReducer= (state = initialState, action:any):any
 export const getBreadCrumsReducer= (state = initialState, action:any):any => {
   switch (action.type) {
     case getBreadCrums:
-      console.log(action.payload,"Reducer payload")
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+
+export const GetTinTypesReducer= (state = initialState, action:any):any => {
+  switch (action.type) {
+    case GetTinTypes:
       return { ...state, ...action.payload };
     default:
       return state;
