@@ -43,6 +43,7 @@ const Declaration = (props: any) => {
               initialValues={initialValue}
               // validationSchema={}
               onSubmit={(values, { setSubmitting }) => {
+                console.log("values" , values)
                 setSubmitting(true);
                 dispatch(
                   W8_state_ECI(values, () => {

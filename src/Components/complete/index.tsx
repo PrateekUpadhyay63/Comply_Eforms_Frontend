@@ -1,4 +1,7 @@
 import React from 'react';
+import {jsPDF} from "jspdf"
+import html2canvas from "html2canvas";
+
 import {
 
     Typography,
@@ -18,8 +21,36 @@ export default function Term() {
     //States
     const history=useNavigate()
 
+
+    const exportPDF = () => {
+        const element = document.getElementById("WECI");
+      
+        if (element) {
+          // Use html2canvas to capture the content as an image
+          html2canvas(element).then((canvas) => {
+            // Convert canvas to data URL
+            const imgData = canvas.toDataURL("image/png");
+      
+            // Initialize jsPDF
+            const pdf = new jsPDF();
+      
+            // Calculate PDF width and height based on the captured content
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+            // Add the captured image to the PDF
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      
+            // Save the PDF file
+            pdf.save("document.pdf");
+          });
+        } else {
+          console.error("Element with id 'WECI' not found.");
+        }
+      };
+    
     return (
-        <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+        <section className="inner_content" id = 'WECI' style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
 
 
 
@@ -60,7 +91,9 @@ export default function Term() {
 
 <Button
     type="submit"
-    
+    onClick={()=>{
+        exportPDF()
+    }}
     style={{
         border: '1px solid #0095dd',
         background: '#0095dd',
