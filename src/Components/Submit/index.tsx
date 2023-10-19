@@ -309,7 +309,7 @@ const Declaration = (props: any) => {
         onChange={handleCheckboxChange}/>
                             <Typography style={{ marginTop: "9px" }}>
                               I give consent to receiving a recipent statement
-                              electronically
+                              electronically.
                             </Typography>
                           </div>
                           <div style={{ display: "flex", marginTop: "10px" }}>
@@ -317,7 +317,7 @@ const Declaration = (props: any) => {
                             <Typography style={{ marginTop: "9px" }}>
                               {" "}
                               I do not give consent to receiving a recipent
-                              statement electronically
+                              statement electronically.
                             </Typography>
                           </div>
                         </AccordionDetails>

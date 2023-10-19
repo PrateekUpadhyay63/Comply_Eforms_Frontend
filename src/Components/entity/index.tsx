@@ -628,7 +628,11 @@ export default function Entity() {
                                   display: "flex",
                                   alignItems: "left",
                                
-                                }}>
+                                }}
+                                onClick={() => handleOpen("basics")}
+                                
+                                >
+                                  
 
                         Basic Details
                         
@@ -970,7 +974,9 @@ export default function Entity() {
                                 display: "flex",
                                 alignItems: "left",
                           
-                              }}>
+                              }}
+                              onClick={() => handleOpen("tax")}
+                              >
 
                         Tax Identification Numbers
                         <Tooltip
@@ -1520,6 +1526,8 @@ export default function Entity() {
                                   alignItems: "left",
                      
                                 }}
+
+                                onClick={() => handleOpen("pra")}
                         >
 
                         Permanent Residence Address
@@ -2782,7 +2790,10 @@ export default function Entity() {
                                 display: "flex",
                                 alignItems: "left",
                 
-                              }}>
+                              }}
+                              onClick={() => handleOpen("cd")}
+                              
+                              >
 
                         Contact Details
                         <Tooltip
@@ -3195,6 +3206,7 @@ export default function Entity() {
                             alignItems: "left",
                             marginLeft: "13px",
                           }}
+                          onClick={() => handleOpen("it")}
                         >
                           Income Type
                           <span
@@ -3543,6 +3555,8 @@ export default function Entity() {
                           alignItems: "left",
                           marginLeft: "13px",
                         }}
+
+                        onClick={() => handleOpen("pt")}
                       >
                         Payment Type
                         <span
@@ -3699,6 +3713,7 @@ export default function Entity() {
                                         alignItems: "left",
                              
                                       }}
+                                      onClick={() => handleOpen("ai")}
                             >
 
                             Account Information

@@ -116,8 +116,8 @@ export default function Factors() {
 
       </div>
       </div>
-      <div className="col-8">
-      <div style={{ padding: "20px" }}>
+      <div className="col-8 mt-5">
+      <div style={{ padding: "30px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
             initialValues={initialValue}
