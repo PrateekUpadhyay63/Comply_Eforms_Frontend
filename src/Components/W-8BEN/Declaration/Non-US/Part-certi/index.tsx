@@ -8,7 +8,12 @@ import {
   Checkbox,
   Tooltip,
   Link,
+  FormControl,
 } from "@mui/material";
+import "./index.scss"
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 import InfoIcon from "@mui/icons-material/Info";
 import Declaration from "../../../../reusables/Declaration";
 import { Formik, Form } from "formik";
@@ -375,24 +380,28 @@ export default function Penalties() {
                           fontStyle: "italic",
                           height: "3.5rem",
                           width: "50%",
+                          backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         type="text"
+                        disabled
                         
                         
                       />
 
   </div>
   <div className="d-flex my-3 col-8 ">
-    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
     <TextField className="col-4"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
                           height: "3.5rem",
                           width: "50%",
+                          backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
+                        disabled
                         type="text"
                        
                         
@@ -415,15 +424,23 @@ export default function Penalties() {
                         <Typography style={{ fontSize: "15px" }}>
                           Date
                         </Typography>
-                        <TextField
-                          style={{ width: "100%" }}
-                          onChange={handleChange}
+                        {/* <TextField */}
+                          <FormControl style={{ width: "100%" }}>
+                          <DatePicker
+                          name="dob"
+                          
+                         
+                         
                           onBlur={handleBlur}
-                          error={Boolean(touched.date && errors.date)}
-                          value={new Date().toISOString().split('T')[0]}
-                          type="date"
-                          name="date"
+                          clearIcon={null}
+                          format="MM/dd/yy"
+                          dayPlaceholder="DD"
+                          monthPlaceholder="MM"
+                          yearPlaceholder="YYYY"
                         />
+                          </FormControl>
+                         
+                        {/* /> */}
                         {/* <p className="error">{errors.date}</p> */}
                       </Typography>
                     </div>
@@ -550,12 +567,19 @@ export default function Penalties() {
                       marginTop: "40px",
                     }}
                   >
+                     <Button
+                     
+                      variant="contained"
+                      style={{ color: "white" }}
+                    >
+                    View Form
+                    </Button>
                     <Button
                       onClick={() => {
                         setOpen2(true);
                       }}
                       variant="contained"
-                      style={{ color: "white" }}
+                      style={{ color: "white" , marginLeft: "15px" }}
                     >
                       SAVE & EXIT
                     </Button>

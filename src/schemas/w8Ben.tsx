@@ -151,7 +151,7 @@ export const certificateSchema = () => {
 
 export const partCertiSchema = () => {
   return Yup.object().shape({
-    signedBy: Yup.string().required("Please enter "),
+    signedBy: Yup.string().required("Please enter Signed By "),
     code: Yup.string().required("Please enter code"),
     date: Yup.date().required("Please enter date"),
   });

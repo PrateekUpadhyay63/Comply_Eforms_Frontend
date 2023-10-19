@@ -666,6 +666,7 @@ export default function IndividualUs() {
                             display: "flex",
                             alignItems: "left",
                           }}
+                          onClick={() => handleOpen("basics")}
                         >
                           Basic Details
                           <Tooltip
@@ -1144,6 +1145,7 @@ export default function IndividualUs() {
                               display: "flex",
                               alignItems: "left",
                             }}
+                            onClick={() => handleOpen("tax")}
                           >
                             Tax Identification Numbers
                             <Tooltip
@@ -1784,6 +1786,7 @@ export default function IndividualUs() {
                               display: "flex",
                               alignItems: "left",
                             }}
+                            onClick={() => handleOpen("pra")}
                           >
                             Permanent Residence Address
                             <Tooltip
@@ -2935,6 +2938,7 @@ export default function IndividualUs() {
                               display: "flex",
                               alignItems: "left",
                             }}
+                            onClick={() => handleOpen("cd")}
                           >
                             Contact Details
                             <Tooltip
@@ -3364,6 +3368,7 @@ export default function IndividualUs() {
                                 alignItems: "left",
                                 marginLeft: "13px",
                               }}
+                              onClick={() => handleOpen("it")}
                             >
                               Income Type
                               <span
@@ -3732,6 +3737,7 @@ export default function IndividualUs() {
                             alignItems: "left",
                             marginLeft: "13px",
                           }}
+                          onClick={() => handleOpen("pt")}
                         >
                           Payment Type
                           <span
@@ -3905,6 +3911,7 @@ export default function IndividualUs() {
                                   display: "flex",
                                   alignItems: "left",
                                 }}
+                                onClick={() => handleOpen("ai")}
                               >
                                 Account Information
                                 <span

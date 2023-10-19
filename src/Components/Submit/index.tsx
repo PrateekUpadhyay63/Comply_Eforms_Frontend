@@ -218,7 +218,7 @@ const Declaration = (props: any) => {
                               align="left"
                               style={{ fontSize: "15px" }}
                             >
-                              3. By submitting the form here will have provided
+                              3. By submitting this form you are providing
                               a legally binding self certified electronic
                               signature.
                             </Typography>
@@ -228,7 +228,7 @@ const Declaration = (props: any) => {
                               style={{ fontSize: "15px", marginTop: "13px" }}
                             >
                               On submission your details will be transmitted to
-                              your withholding agent previously selected, who
+                              your previously selected withholding agent previously selected, who
                               may wish to contact you for further confirmation.
                               No data is stored within the Comply Exchange
                               Service on transfer and it is again recommended
@@ -309,7 +309,7 @@ const Declaration = (props: any) => {
         onChange={handleCheckboxChange}/>
                             <Typography style={{ marginTop: "9px" }}>
                               I give consent to receiving a recipent statement
-                              electronically
+                              electronically.
                             </Typography>
                           </div>
                           <div style={{ display: "flex", marginTop: "10px" }}>
@@ -317,7 +317,7 @@ const Declaration = (props: any) => {
                             <Typography style={{ marginTop: "9px" }}>
                               {" "}
                               I do not give consent to receiving a recipent
-                              statement electronically
+                              statement electronically.
                             </Typography>
                           </div>
                         </AccordionDetails>

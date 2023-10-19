@@ -30,11 +30,11 @@ import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 
 export default function Factors() {
   const initialValue = {
-    isHeldUSCitizenship: false,
+    isHeldUSCitizenship: "",
     countryOfCitizenship: "",
     dob: "",
-    isTaxationUSCitizenOrResident: false,
-    isPermamnentResidentCardHolder: false,
+    isTaxationUSCitizenOrResident: "",
+    isPermamnentResidentCardHolder: "",
     isHoldDualCitizenshipStatus: false,
     isHoldDualCitizenshipIncludeUSCitizenship: false,
     // isRenouncedCitizenship: false,
@@ -57,18 +57,18 @@ export default function Factors() {
     };
   const W8Data = useSelector((state: any) => state.w8Data);
 
-  const [tax, setTax] = useState<string>("No");
+  const [tax, setTax] = useState<string>("");
 
   const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTax(event.target.value);
   };
 
-  const [tax1, setTax1] = useState<string>("No");
+  const [tax1, setTax1] = useState<string>("");
 
   const handleTaxChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTax1(event.target.value);
   };
-  const [renounced, setRenounced] = useState<string>("No");
+  const [renounced, setRenounced] = useState<string>("");
 
   const handleRenouncedChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -76,14 +76,14 @@ export default function Factors() {
     setRenounced(event.target.value);
   };
 
-  const [individual, setIndividual] = useState<string>("No");
+  const [individual, setIndividual] = useState<string>("");
 
   const handleIndividualChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setIndividual(event.target.value);
   };
-  const [citizenship, setCitizenship] = useState<string>("No");
+  const [citizenship, setCitizenship] = useState<string>("");
 
   const handleCitizenshipChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -116,8 +116,8 @@ export default function Factors() {
 
       </div>
       </div>
-      <div className="col-8">
-      <div style={{ padding: "20px" }}>
+      <div className="col-8 mt-5">
+      <div style={{ padding: "30px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
             initialValues={initialValue}
@@ -298,9 +298,9 @@ export default function Factors() {
                   </FormControl>
                   <Divider className="dividr" />
 
-                  {individual === "Yes" ? (
+                  {values.isHeldUSCitizenship == "Yes" ? (
                     <>
-                      <Typography
+                       <Typography
                         style={{
                           fontSize: "19px",
                           marginTop: "10px",
@@ -310,18 +310,7 @@ export default function Factors() {
                         Date of Birth (mm/dd/yyyy)
                       </Typography>
                       <FormControl className="form">
-                        <TextField
-                          autoComplete="dob"
-                          type="date"
-                          placeholder="Date of Birth"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          helperText={touched.dob && errors.dob}
-                          error={Boolean(touched.dob && errors.dob)}
-                          name="dob"
-                          className="inputClass"
-                          value={values.dob}
-                        />
+                        <input className="input" type="date" />
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
@@ -342,13 +331,13 @@ export default function Factors() {
                         >
                           <FormControlLabel
                             control={<Radio />}
-                            value={true}
+                          
                             name="isTaxationUSCitizenOrResident"
                             label="Yes"
                           />
                           <FormControlLabel
                             control={<Radio />}
-                            value={false}
+                            
                             name="isTaxationUSCitizenOrResident"
                             label="No"
                           />
@@ -373,13 +362,13 @@ export default function Factors() {
                         >
                           <FormControlLabel
                             control={<Radio />}
-                            value={true}
+                          
                             name="isPermamnentResidentCardHolder"
                             label="Yes"
                           />
                           <FormControlLabel
                             control={<Radio />}
-                            value={false}
+                            
                             name="isPermamnentResidentCardHolder"
                             label="No"
                           />
@@ -639,7 +628,7 @@ export default function Factors() {
 
                       <Divider className="dividr" />
                     </>
-                  ) : (
+                  ) : values.isHeldUSCitizenship == "No" ?(
                     <>
                       <Typography>
                         Country of citizenship of the individual?
@@ -942,7 +931,8 @@ export default function Factors() {
                       </FormControl>
                       <Divider className="dividr" />
                     </>
-                  )}
+                    
+                  ):""}
 
                   {/* <Typography style={{ fontSize: "19px", marginTop: "10px" }}>
               Is the individual subject to taxation as a U.S. citizen or resident alien?<span style={{ color: "red" }}>*</span>
