@@ -10,6 +10,7 @@ import {
   getSecurityQuestionsReducer,
   getBreadCrumsReducer,
   GetTinTypesReducer,
+  GetAgentPaymentTypeReducer,
 } from "./Reducers";
 import w9Reducer from "./Reducers/w9Reducer";
 import w8Reducer from "./Reducers/w8BenNonUs";
@@ -26,6 +27,7 @@ let reducers = {
   getSecurityQuestionsReducer,
   getBreadCrumsReducer,
   GetTinTypesReducer,
+  GetAgentPaymentTypeReducer,
 };
 const rootReducer = combineReducers({
   ...reducers,

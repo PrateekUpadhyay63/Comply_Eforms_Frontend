@@ -18,6 +18,7 @@ const ActionName = {
     GetTinTypes:"GetTinTypes",
     PostFormSelection:"PostFormSelection",
     getBreadCrums:"getBreadCrums",
+    GetAgentPaymentType:"GetAgentPaymentType",
     //PDFs
     W9PDF:"W9PDF",
   

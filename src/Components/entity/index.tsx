@@ -35,7 +35,7 @@ import individual from "../../../src/assets/img/individual.png";
 import Checkbox from "@mui/material/Checkbox";
 // import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { useDispatch,useSelector  } from "react-redux";
-import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,getAllStateByCountryId } from "../../Redux/Actions";
+import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,GetAgentPaymentType,getAllStateByCountryId } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
 export default function Entity() {
@@ -230,14 +230,21 @@ export default function Entity() {
     dispatch(getAllCountries())   
     dispatch(getAllCountriesCode())   
     dispatch(getAllCountriesIncomeCode())   
-    dispatch(getAllStateByCountryId())   
+    dispatch(getAllStateByCountryId())  
+    dispatch(
+      GetAgentPaymentType(3, () => {
+        console.log("Data");
+      })
+    ); 
    }, []);
  
    const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
    const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
    const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
    const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
-
+   const GetAgentPaymentTypeData = useSelector(
+    (state: any) => state.GetAgentPaymentTypeReducer.GetAgentPaymentTypeData
+  );
 
 
   // useEffect(() => {
@@ -3668,9 +3675,13 @@ export default function Entity() {
                             value={values.paymentTypeId}
                           >
                             <option value="">Select</option>
-                            <option value={1}>ACH</option>
-                            <option value={2}>Check</option>
-                            <option value={3}>Wire</option>
+                            {GetAgentPaymentTypeData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.paymentTypeId} value={ele?.paymentTypeId}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                           </select>
                           {/* <p className="error">{errors.paymentTypeId}</p> */}
                         </span>
