@@ -98,7 +98,7 @@ export default function IndividualUs() {
     isAddressRuralRoute: true,
     isAddressPostOfficeBox: true,
     isCareOfAddress: true,
-    isalternativebusinessaddress: true,
+    isalternativebusinessaddress: "No",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
@@ -168,7 +168,7 @@ export default function IndividualUs() {
     isAddressRuralRoute: "yes",
     isAddressPostOfficeBox: "yes",
     isCareOfAddress: "yes",
-    isalternativebusinessaddress: "yes",
+    isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
@@ -1677,7 +1677,7 @@ export default function IndividualUs() {
                                     placeholder="Enter Value Added Tax Number"
                                     // onKeyDown={formatTin}
                                     onChange={handleChange}
-                                    inputProps={{ maxLength: 9 }}
+                                    // inputProps={{ maxLength: 9 }}
                                     // onBlur={handleBlur}
                                     //   error={Boolean(touched.usTin && errors.vat)}
                                     value={values.vat}
