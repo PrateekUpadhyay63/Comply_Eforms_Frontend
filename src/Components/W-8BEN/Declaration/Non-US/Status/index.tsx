@@ -494,8 +494,8 @@ export default function Factors() {
                           Please enter the date U.S. citizenship was
                           renounced: <span style={{ color: "red" }}>*</span>
                         </Typography>
-                        <FormControl className="form">
-                          <TextField
+                        
+                          {/* <TextField
                             autoComplete="dateRenouncedUSCitizenship"
                             type="date"
                             placeholder="date U.S. citizenship was
@@ -513,7 +513,10 @@ export default function Factors() {
                             name="dateRenouncedUSCitizenship"
                             className="inputClass"
                             value={values.dateRenouncedUSCitizenship}
-                          />
+                          /> */}
+                          <FormControl className="form">
+                        <input className="input" type="date" />
+                   
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography style={{ fontSize: "19px", marginTop: "10px" }}>
@@ -793,7 +796,7 @@ export default function Factors() {
                             />
                           </RadioGroup>
                         </FormControl>
-                        <Divider className="divider"/>
+                        <Divider className="dividr"/>
                         {values.isHoldDualCitizenshipStatus == "Yes" ? (
                           <>
                             <Typography
@@ -827,7 +830,7 @@ export default function Factors() {
                                 />
                               </RadioGroup>
                             </FormControl>
-                        <Divider className="divider"/>
+                        <Divider className="dividr"/>
                           </>
                         ) : (
                           ""
@@ -863,10 +866,10 @@ export default function Factors() {
                               />
                             </RadioGroup>
                           </FormControl>
-                          <Divider className = "divider"/>
+                          <Divider className = "dividr"/>
                         </>
                         ) : ("")}
-                        <Divider className="dividr" />
+                        
                         {values.isRenouncedCitizenship === "Yes" ? (
                           <>
                             <Typography
@@ -875,7 +878,7 @@ export default function Factors() {
                               Please enter the date U.S. citizenship was
                               renounced: <span style={{ color: "red" }}>*</span>
                             </Typography>
-                            <FormControl className="form">
+                            <FormControl >
                               <TextField
                                 autoComplete="dateRenouncedUSCitizenship"
                                 type="date"
@@ -892,7 +895,7 @@ export default function Factors() {
                                   errors.dateRenouncedUSCitizenship
                                 )}
                                 name="dateRenouncedUSCitizenship"
-                                className="inputClass"
+                               
                                 value={values.dateRenouncedUSCitizenship}
                               />
                             </FormControl>
@@ -977,7 +980,7 @@ export default function Factors() {
                             </Typography>
                             <div className="d-flex">
                               <FormControl className="form">
-                                <input className="input" />
+                                <input disabled className="input" />
                               </FormControl>
                               <div className="d-flex">
                                 <Checkbox required />
@@ -986,6 +989,38 @@ export default function Factors() {
                                 </div>
                               </div>
                             </div>
+                            <Typography
+                          style={{ fontSize: "19px", marginTop: "10px" }}
+                        >
+                          Does the individual the submission represents have tax
+                          liability in any other jurisdictions?
+                          <span style={{ color: "red" }}>*</span>
+                        </Typography>
+
+                        <FormControl>
+                          <RadioGroup
+                            row
+                           
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            id="isTaxLiabilityJurisdictions"
+                            value={values.isTaxLiabilityJurisdictions}
+                            onChange={handleChange}
+                          >
+                            <FormControlLabel
+                              control={<Radio />}
+                              value="Yes"
+                              name="isTaxLiabilityJurisdictions"
+                              label="Yes"
+                            />
+                            <FormControlLabel
+                              control={<Radio />}
+                              value="No"
+                              name="isTaxLiabilityJurisdictions"
+                              label="No"
+                            />
+                          </RadioGroup>
+                        </FormControl>
+
                           </>
                         ) : (
                           ""

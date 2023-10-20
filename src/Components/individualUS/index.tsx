@@ -86,8 +86,8 @@ export default function IndividualUs() {
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
-    foreignTINNotAvailable: true,
-    alternativeTINFormat: true,
+    foreignTINNotAvailable: false,
+    alternativeTINFormat: false,
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -98,7 +98,7 @@ export default function IndividualUs() {
     isAddressRuralRoute: true,
     isAddressPostOfficeBox: true,
     isCareOfAddress: true,
-    isalternativebusinessaddress: true,
+    isalternativebusinessaddress: false,
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
@@ -157,7 +157,7 @@ export default function IndividualUs() {
     foreignTINCountryId: 0,
     foreignTIN: "",
     foreignTINNotAvailable: false, //
-    alternativeTINFormat: true, //
+    alternativeTINFormat: false, //
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -168,7 +168,7 @@ export default function IndividualUs() {
     isAddressRuralRoute: "yes",
     isAddressPostOfficeBox: "yes",
     isCareOfAddress: "yes",
-    isalternativebusinessaddress: "yes",
+    isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
@@ -1550,7 +1550,7 @@ export default function IndividualUs() {
                                   id="foreignTINNotAvailable"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.foreignTINNotAvailable}
-                                  disabled={values.foreignTINCountryId == 0}
+                                  // disabled={values.foreignTINCountryId == 0}
                                   checked={values.foreignTINNotAvailable}
                                   onChange={(e) => {
                                     handleChange(e);
@@ -1588,10 +1588,10 @@ export default function IndividualUs() {
                                   id="alternativeTINFormat"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.alternativeTINFormat}
-                                  disabled={
-                                    values.foreignTINCountryId == 0 ||
-                                    values.foreignTINCountryId != 257
-                                  }
+                                  // disabled={
+                                  //   values.foreignTINCountryId == 0 ||
+                                  //   values.foreignTINCountryId != 257
+                                  // }
                                   checked={values.alternativeTINFormat}
                                   onChange={(e) => {
                                     handleChange(e);
@@ -2497,7 +2497,7 @@ export default function IndividualUs() {
                                     label="No"
                                     checked={!values.isCareOfAddress}
                                     onChange={handleChange}
-                                  />
+                                  />foreignTINNotAvailable
                                   <FormControlLabel
                                     value={true}
                                     control={<Radio />}
