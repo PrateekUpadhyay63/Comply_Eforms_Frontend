@@ -34,7 +34,7 @@ export default function BreadCrumbComponent(props:any):any {
     const groupedData: any = {};
 
     data.forEach((item: any) => {
-      const breadcrumbpart = item.breadcrumbpart.trim(); // Remove leading/trailing whitespace
+      const breadcrumbpart = item.breadcrumbpart.trim(); 
 
       if (!groupedData[breadcrumbpart]) {
         groupedData[breadcrumbpart] = [];
