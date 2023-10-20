@@ -543,7 +543,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                           }}
                         >
                           The Form W-8ECI is not considered valid when provided
-                          without an appropriate TIN.
+                          without an appropriate TIN....
                         </Typography>
                         <FormControl>
                           <RadioGroup
@@ -570,323 +570,163 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                         {Tin === "Yes" ? (
                           <>
                             <Typography
-                              align="center"
-                              className="mt-3"
-                              style={{
-                                fontSize: "20px",
-                                color: "#383a3b",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              Non-U.S. Partnerships or non-U.S. Trusts
-                            </Typography>
-                            <Typography
-                              align="left"
-                              className="mt-3"
-                              style={{ fontSize: "16px", color: "#383a3b" }}
-                            >
-                              Is the income derived allocated through a non-U.S.
-                              Partnership or a non-U.S. Trust?
-                            </Typography>
-                            <FormControl>
-                              <RadioGroup
-                                row
-                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                name="row-radio-buttons-group"
-                                value={Trust}
-                                onChange={handleTrustChange}
-                              >
-                                <FormControlLabel
-                                  value="Yes"
-                                  control={<Radio />}
-                                  label="Yes"
-                                />
-                                <FormControlLabel
-                                  className="label"
-                                  value="No"
-                                  control={<Radio />}
-                                  label="No"
-                                />
-                              </RadioGroup>
-                            </FormControl>
-
-                            {Trust === "Yes" ? (
-                              <>
-                                <Typography
-                                  align="center"
-                                  className="mt-3"
-                                  style={{
-                                    fontSize: "20px",
-                                    color: "#383a3b",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  A Treaty Benefit or Foreign Person Claim
-                                </Typography>
-                                <Typography
-                                  align="left"
-                                  className="mt-3"
-                                  style={{ fontSize: "16px", color: "#383a3b" }}
-                                >
-                                  Are you making this submission to claim treaty
-                                  benefits (if applicable) or making the
-                                  submission only to claim Foreign Person status
-                                  for U.S. tax purposes?
-                                </Typography>
-                                {/* <Typography align="left"
-    className="mt-3"
-    style={{ fontSize: '16px', color: '#383a3b' }}>
-A Foreign Person in this context includes all non-U.S. persons that could be described as, non-resident alien individuals, foreign (non-U.S.); corporations, partnerships, trusts estates and any other person that is not a U.S. person for U.S. tax purposes whether or not the resident country has an applicable tax treaty with the United States. It also includes a foreign branch or office of a U.S. financial institution or U.S. clearing organization if the foreign branch is a registered as a qualified intermediary.
-</Typography> */}
-                                <FormControl>
-                                  <RadioGroup
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    name="row-radio-buttons-group"
-                                    value={Result}
-                                    onChange={handleResultChange}
-                                  >
-                                    <FormControlLabel
-                                      value="Yes"
-                                      control={<Radio />}
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      className="label"
-                                      value="No"
-                                      control={<Radio />}
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                </FormControl>
-                                {Result === "Yes" ? (
-                                  <>
-                                    <Typography
-                                      align="center"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "26px",
-                                        color: "#383a3b",
-                                      }}
-                                    >
-                                      Form Selection Guide Result
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                      }}
-                                    >
-                                      We are not authorized to provide tax
-                                      advice through this process, but the
-                                      answers provided suggest that you may need
-                                      to provide a Form W-8BEN-E. A Form
-                                      W-8BEN-E is "A Certificate of Foreign
-                                      Status of Beneficial Owner for United
-                                      States Tax Withholding".
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      Who should submit a Form W-8BEN-E?
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                      }}
-                                    >
-                                      You must provide a valid Form W-8BEN-E to
-                                      the withholding agent or payer if
-                                      submitting a U.S. tax certificate on
-                                      behalf of a Foreign Person who is the
-                                      beneficial owner of an amount subject to
-                                      U.S. tax withholding. Form W-8BEN-E should
-                                      be provided whether or not you are
-                                      claiming a reduced rate of, or exemption
-                                      from withholding.
-                                    </Typography>
-
-                                    <Typography
-                                      align="center"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      If you need further guidance you may wish
-                                      to contact your local tax advisers.
-                                    </Typography>
-                                    <Typography
-                                      align="center"
-                                      style={{ marginTop: "20px" }}
-                                    >
-                                      <Button
-                                        style={{ fontSize: "16px" }}
-                                        size="small"
-                                        type="submit"
-                                        onClick={() => {
-                                          history("/Certificates");
-                                        }}
-                                        //   onClick={handleClose}
-                                        variant="contained"
-                                      >
-                                        Close
-                                      </Button>
-                                    </Typography>
-                                  </>
-                                ) : (
-                                  ""
-                                )}
-                              </>
-                            ) : Trust === "No" ? (
-                              <>
-                                <Typography
-                                  align="center"
-                                  className="mt-3"
-                                  style={{
-                                    fontSize: "20px",
-                                    color: "#383a3b",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  Foreign Government or International
-                                  Organization
-                                </Typography>
-                                <Typography
-                                  align="left"
-                                  className="mt-3"
-                                  style={{ fontSize: "16px", color: "#383a3b" }}
-                                >
-                                  Are you making the submission on behalf of a
-                                  foreign government or other foreign
-                                  organization, claiming applicability of
-                                  sections of 115(2), 501(c) 892 895 or 1443(b)
-                                  of the Internal Revenue Code?
-                                </Typography>
-                                <Typography
-                                  align="left"
-                                  className="mt-3"
-                                  style={{ fontSize: "16px", color: "#383a3b" }}
-                                >
-                                  AA foreign government includes only the
-                                  integral parts or controlled entities of a
-                                  foreign sovereign as defined in Temporary
-                                  Regulations section 1.892-2T.
-                                </Typography>
-                                <Typography
-                                  align="left"
-                                  className="mt-3"
-                                  style={{ fontSize: "16px", color: "#383a3b" }}
-                                >
-                                  An integral part of a foreign sovereign, in
-                                  general is any person, body of persons,
-                                  organizations, agency, bureau fund,
-                                  instrumentality, or other body, however
-                                  designated that constitutes a governing of a
-                                  foreign country. The net earnings of the
-                                  governing authority must be credited to its
-                                  own account or to other accounts of the
-                                  foreign sovereign with no portion benefiting
-                                  any private person.
-                                </Typography>
-                                <Typography
-                                  align="left"
-                                  className="mt-3"
-                                  style={{ fontSize: "16px", color: "#383a3b" }}
-                                >
-                                  An international organization is any public
-                                  international organization entitled to enjoy
-                                  privileges exemptions and immunities as an
-                                  international organization under the
-                                  International Organizations Immunity Act. (22
-                                  U.S.C. 288-288(f)). In general to qualify as
-                                  an international organization, the United
-                                  States must participate in the organization
-                                  pursuant to a treaty or under the authority of
-                                  an Act of Congress authorization such
-                                  participation.
-                                </Typography>
-                                <FormControl>
-                                  <RadioGroup
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    name="row-radio-buttons-group"
-                                    value={Foreign}
-                                    onChange={handleForeignChange}
-                                  >
-                                    <FormControlLabel
-                                      value="Yes"
-                                      control={<Radio />}
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      className="label"
-                                      value="No"
-                                      control={<Radio />}
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                </FormControl>
-
-                                {Foreign === "Yes" ? (
-                                  <>
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "20px",
-                                        color: "#383a3b",
-                                      }}
-                                    >
-                                      Are you a qualifying tax exempt
-                                      organization under U.S. tax principles
-                                      receiving unrelated business taxable
-                                      income subject to withholding under
-                                      section 1443 (a)?
-                                    </Typography>
-
-                                    <FormControl>
-                                      <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="row-radio-buttons-group"
-                                        value={Tax}
-                                        onChange={handleTaxChange}
-                                      >
-                                        <FormControlLabel
-                                          value="Yes"
-                                          control={<Radio />}
-                                          label="Yes"
-                                        />
-                                        <FormControlLabel
-                                          className="label"
-                                          value="No"
-                                          control={<Radio />}
-                                          label="No"
-                                        />
-                                      </RadioGroup>
-                                    </FormControl>
-                                    {Tax === "Yes" ? (
-                                      <>
-                                        <Typography
                                           align="center"
                                           className="mt-3"
+                                          style={{
+                                            fontSize: "26px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          Form Selection Guide Result
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                          }}
+                                        >
+                                          We are not authorized to provide tax
+                                          advice through this process, but the
+                                          answers provided suggest that you may
+                                          need to provide a Form W-8BEN-E. A
+                                          Form W-8BEN-E is "A Certificate of
+                                          Foreign Status of Beneficial Owner for
+                                          United States Tax Withholding".
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          Who should submit a Form W-8BEN-E?
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                          }}
+                                        >
+                                          You must provide a valid Form W-8BEN-E
+                                          to the withholding agent or payer if
+                                          submitting a U.S. tax certificate on
+                                          behalf of a Foreign Person who is the
+                                          beneficial owner of an amount subject
+                                          to U.S. tax withholding. Form W-8BEN-E
+                                          should be provided whether or not you
+                                          are claiming a reduced rate of, or
+                                          exemption from withholding.
+                                        </Typography>
+
+                                        <Typography
+                                          align="center"
+                                          className="mt-3 mb-5"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          If you need further guidance you may
+                                          wish to contact your local tax
+                                          advisers.
+                                        </Typography>
+                                     <br/>
+
+                                    {""}
+                                    <Typography
+                                          align="center"
+                                          className="mt-3 my-3"
+                                          style={{
+                                            fontSize: "26px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          Form Selection Guide Result
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                          }}
+                                        >
+                                          We are not authorized to provide tax
+                                          advice through this process, but the
+                                          answers provided suggest that you may
+                                          need to provide a Form W-8BEN-E. A
+                                          Form W-8BEN-E is "A Certificate of
+                                          Foreign Status of Beneficial Owner for
+                                          United States Tax Withholding".
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          Who should submit a Form W-8BEN-E?
+                                        </Typography>
+
+                                        <Typography
+                                          align="left"
+                                          className="mt-3"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                          }}
+                                        >
+                                          You must provide a valid Form W-8BEN-E
+                                          to the withholding agent or payer if
+                                          submitting a U.S. tax certificate on
+                                          behalf of a Foreign Person who is the
+                                          beneficial owner of an amount subject
+                                          to U.S. tax withholding. Form W-8BEN-E
+                                          should be provided whether or not you
+                                          are claiming a reduced rate of, or
+                                          exemption from withholding.
+                                        </Typography>
+
+                                        <Typography
+                                          align="center"
+                                          // className="mt-3"
+                                          className="mt-3 mb-5"
+                                          style={{
+                                            fontSize: "16px",
+                                            color: "#383a3b",
+                                            fontWeight: "bold",
+                                          }}
+                                        >
+                                          If you need further guidance you may
+                                          wish to contact your local tax
+                                          advisers.
+                                        </Typography>
+                                       {""}
+                                       <div className="my-3">
+                                        </div>
+
+
+                                       {/* <Typography
+                                          align="center"
+                                          className="mt-5 my-3"
                                           style={{
                                             fontSize: "26px",
                                             color: "#383a3b",
@@ -957,6 +797,7 @@ A Foreign Person in this context includes all non-U.S. persons that could be des
                                           wish to contact your local tax
                                           advisers.
                                         </Typography>
+                                        */}
                                         <Typography
                                           align="center"
                                           style={{ marginTop: "20px" }}
@@ -974,204 +815,65 @@ A Foreign Person in this context includes all non-U.S. persons that could be des
                                             Close
                                           </Button>
                                         </Typography>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <Typography
-                                          align="center"
-                                          className="mt-3"
-                                          style={{
-                                            fontSize: "26px",
-                                            color: "#383a3b",
-                                            fontWeight: "bold",
-                                          }}
-                                        >
-                                          Form Selection Guide Result
-                                        </Typography>
-
-                                        <Typography
-                                          align="left"
-                                          className="mt-3"
-                                          style={{
-                                            fontSize: "16px",
-                                            color: "#383a3b",
-                                            fontWeight: "bold",
-                                          }}
-                                        >
-                                          We are not authorized to provide tax
-                                          advice through this process, but the
-                                          answers provided suggest that you may
-                                          need to provide a Form W-8EXP.
-                                          "Certificate of Foreign Government or
-                                          Other Foreign Organization for United
-                                          States Tax Withholding".
-                                        </Typography>
-
-                                        <Typography
-                                          align="left"
-                                          className="mt-3"
-                                          style={{
-                                            fontSize: "16px",
-                                            color: "#383a3b",
-                                            fontWeight: "bold",
-                                          }}
-                                        >
-                                          Who should submit a Form W-8EXP?
-                                        </Typography>
-
-                                        <Typography
-                                          align="left"
-                                          className="mt-3"
-                                          style={{
-                                            fontSize: "16px",
-                                            color: "#383a3b",
-                                          }}
-                                        >
-                                          You must provide a valid Form W-8BEN-E
-                                          to the withholding agent or payer if
-                                          submitting a U.S. tax certificate on
-                                          behalf of a Foreign Person who is the
-                                          beneficial owner of an amount subject
-                                          to U.S. tax withholding. Form W-8BEN-E
-                                          should be provided whether or not you
-                                          are claiming a reduced rate of, or
-                                          exemption from withholding.
-                                        </Typography>
-
-                                        <Typography
-                                          align="center"
-                                          className="mt-3"
-                                          style={{
-                                            fontSize: "16px",
-                                            color: "#383a3b",
-                                            fontWeight: "bold",
-                                          }}
-                                        >
-                                          If you need further guidance you may
-                                          wish to contact your local tax
-                                          advisers.
-                                        </Typography>
-                                        <Typography
-                                          align="center"
-                                          style={{ marginTop: "20px" }}
-                                        >
-                                          <Button
-                                            style={{ fontSize: "16px" }}
-                                            size="small"
-                                            type="submit"
-                                            onClick={() => {
-                                              history("/Certificates");
-                                            }}
-                                            //   onClick={handleClose}
-                                            variant="contained"
-                                          >
-                                            Confirm
-                                          </Button>
-                                        </Typography>
-                                      </>
-                                    )}
-                                  </>
-                                ) : (
-                                  <>
-                                    <Typography
-                                      align="center"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "26px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      Form Selection Guide Result
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      We are not authorized to provide tax
-                                      advice through this process, but the
-                                      answers provided suggest that you may need
-                                      to provide a Form W-8EXP. "Certificate of
-                                      Foreign Government or Other Foreign
-                                      Organization for United States Tax
-                                      Withholding".
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      Who should submit a Form W-8EXP?
-                                    </Typography>
-
-                                    <Typography
-                                      align="left"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                      }}
-                                    >
-                                      You must provide a valid Form W-8BEN-E to
-                                      the withholding agent or payer if
-                                      submitting a U.S. tax certificate on
-                                      behalf of a Foreign Person who is the
-                                      beneficial owner of an amount subject to
-                                      U.S. tax withholding. Form W-8BEN-E should
-                                      be provided whether or not you are
-                                      claiming a reduced rate of, or exemption
-                                      from withholding.
-                                    </Typography>
-
-                                    <Typography
-                                      align="center"
-                                      className="mt-3"
-                                      style={{
-                                        fontSize: "16px",
-                                        color: "#383a3b",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      If you need further guidance you may wish
-                                      to contact your local tax advisers.
-                                    </Typography>
-                                    <Typography
-                                      align="center"
-                                      style={{ marginTop: "20px" }}
-                                    >
-                                      <Button
-                                        style={{ fontSize: "16px" }}
-                                        size="small"
-                                        type="submit"
-                                        onClick={() => {
-                                          history("/Certificates");
-                                        }}
-                                        //   onClick={handleClose}
-                                        variant="contained"
-                                      >
-                                        Confirm
-                                      </Button>
-                                    </Typography>
-                                  </>
-                                )}
-                              </>
-                            ) : (
-                              ""
-                            )}
+                          
                           </>
                         ) : (
-                          ""
+                          <>
+                             <Typography
+                      align="center"
+                      className="mt-3"
+                      style={{
+                        fontSize: "20px",
+                        color: "#383a3b",
+                        fontWeight: "bold",
+                      }}
+                    >
+                     Disregarded Entity
+ 
+                    </Typography>
+                    <Typography
+                      align="left"
+                      className="mt-3"
+                      style={{ fontSize: "16px", color: "#383a3b" }}
+                    >
+                     Are you making the submission on behalf of a Disregarded Entity for U.S. tax purposes?
+                    </Typography>
+                    <Typography
+                      align="left"
+                      className="mt-3"
+                      style={{ fontSize: "16px", color: "#383a3b" }}
+                    >
+                     A disregarded entity is defined as a business entity that has a single owner and is not a corporation under Regulations section 301.7701-2(b) is disregarded as an entity separate from its owner.
+                    </Typography>
+                    <Typography
+                      align="left"
+                      className="mt-3"
+                      style={{ fontSize: "16px", color: "#383a3b" }}
+                    >
+                      A disregarded entity should not submit a Form W-8BEN to a partnership for purposes of section 1446. Instead the owner of such entity shall provide appropriate documentation. See Regulations section 1.1446-1.
+                    </Typography>
+                    <FormControl className="mt-5">
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                        value={Disregarded}
+                        onChange={handleDisregardedChange}
+                      >
+                        <FormControlLabel
+                          value="Yes"
+                          control={<Radio />}
+                          label="Yes"
+                        />
+                        <FormControlLabel
+                          className="label"
+                          value="No"
+                          control={<Radio />}
+                          label="No"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                          </>
                         )}
                       </>
                     ) : (
@@ -2102,13 +1804,216 @@ A Foreign Person in this context includes all non-U.S. persons that could be des
 
 
                 {Disregarded === "Yes" ? (
-                  <>
+                 <>
+                 <Typography
+                  align="center"
+                  className="mt-3"
+                  style={{
+                    fontSize: "26px",
+                    color: "#383a3b",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Form Selection Guide Result
+                </Typography>
 
-                  </>
+              
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                    fontWeight: "bold",
+                  }}
+                >
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest you may need to provide a Form W-8IMY. "Certificate of Foreign Intermediary, Foreign Flow-through Entity, or Certain U.S. Branches for United States Tax Withholding".
+
+                </Typography>
+
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+                A valid Form W-IMY and any associated documentation must be provided by:
+                </Typography>
+
+
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+                 Qualified Intermediaries not acting on their own account representing they will provide withholding statements as required
+                </Typography>
+
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+Nonqualified intermediaries not acting on their own account and if applicable transmit withholding statements, associated certificates or other documentary evidence as required
+                </Typography>
+
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+Foreign Partnerships, Foreign Simple or Grantor Trusts to establish that they are non-withholding for purposes of section 1441 and 1442 and to represent that the income is not effectively connected with a U.S. trade or business; and that the form is being used to transmit withholding certificates and associated documentation as required
+                </Typography>
+
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+For a detailed explanation of who should submit a form W-8IMY please see the IRS instructions.
+                </Typography>
+
+
+
+                <Typography
+                  align="center"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                    fontWeight: "bold",
+                  }}
+                >
+                  If you need further guidance you may
+                  wish to contact your local tax
+                  advisers.
+                </Typography>
+                <Typography
+                  align="center"
+                  style={{ marginTop: "20px" }}
+                >
+                  <Button
+                    style={{ fontSize: "16px" }}
+                    size="small"
+                    type="submit"
+                    onClick={() => {
+                      history("/Certificates");
+                    }}
+                    //   onClick={handleClose}
+                    variant="contained"
+                  >
+                    Close
+                  </Button>
+                </Typography>
+                 </>
 
                 ) :
-                  <>
-                  </>}
+                Disregarded === "No" ?(<>
+                  <Typography
+                    align="center"
+                    className="mt-3"
+                    style={{
+                      fontSize: "26px",
+                      color: "#383a3b",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Form Selection Guide Result
+                  </Typography>
+ 
+                  <Typography
+                    align="left"
+                    className="mt-3"
+                    style={{
+                      fontSize: "16px",
+                      color: "#383a3b",
+                    }}
+                  >
+                    We are not authorized to provide tax
+                    advice through this process, but the
+                    answers provided suggest that you may
+                    need to provide a Form W-8BEN-E. A
+                    Form W-8BEN-E is "A Certificate of
+                    Foreign Status of Beneficial Owner for
+                    United States Tax Withholding".
+                  </Typography>
+ 
+                  <Typography
+                    align="left"
+                    className="mt-3"
+                    style={{
+                      fontSize: "16px",
+                      color: "#383a3b",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Who should submit a Form W-8BEN-E?
+                  </Typography>
+ 
+                  <Typography
+                    align="left"
+                    className="mt-3"
+                    style={{
+                      fontSize: "16px",
+                      color: "#383a3b",
+                    }}
+                  >
+                    You must provide a valid Form W-8BEN-E
+                    to the withholding agent or payer if
+                    submitting a U.S. tax certificate on
+                    behalf of a Foreign Person who is the
+                    beneficial owner of an amount subject
+                    to U.S. tax withholding. Form W-8BEN-E
+                    should be provided whether or not you
+                    are claiming a reduced rate of, or
+                    exemption from withholding.
+                  </Typography>
+ 
+                  <Typography
+                    align="center"
+                    className="mt-3"
+                    style={{
+                      fontSize: "16px",
+                      color: "#383a3b",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    If you need further guidance you may
+                    wish to contact your local tax
+                    advisers.
+                  </Typography>
+                  <Typography
+                    align="center"
+                    style={{ marginTop: "20px" }}
+                  >
+                    <Button
+                      style={{ fontSize: "16px" }}
+                      size="small"
+                      type="submit"
+                      onClick={() => {
+                        history("/Certificates");
+                      }}
+                      //   onClick={handleClose}
+                      variant="contained"
+                    >
+                      Close
+                    </Button>
+                  </Typography>
+                </> ):""}
 
 
               </Paper>
