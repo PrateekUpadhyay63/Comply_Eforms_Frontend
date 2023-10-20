@@ -153,6 +153,59 @@ export const getBreadCrums = (FormId:Number,callback:Function): any => {
     );
   };
 };
+
+
+export const GetAgentPaymentType = (agentId:Number,callback:Function): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentPaymentType,
+      `?agentId=${agentId}`,
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentPaymentType,
+            payload: {
+              GetAgentPaymentTypeData: resData.data,
+            },
+          });
+          if(callback){
+            callback(resData.data);
+          }
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const getTinTypes = (agentId:Number,callback:Function): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetTinTypes,
+      `?agentId=${agentId}`,
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetTinTypes,
+            payload: {
+              GetTinTypesData: resData.data,
+            },
+          });
+          if(callback){
+            callback(resData.data);
+          }
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
 export const getAllCountries = (): any => {
   return (dispatch: any) => {
     Utils.api.getApiCall(
