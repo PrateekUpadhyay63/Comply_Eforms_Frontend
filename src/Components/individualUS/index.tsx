@@ -35,6 +35,8 @@ import {
   getAllCountriesCode,
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
+  getTinTypes,
+  GetAgentPaymentType,
 } from "../../Redux/Actions";
 import moment from "moment";
 import { AppDispatch } from "../../Redux/store";
@@ -209,47 +211,6 @@ export default function IndividualUs() {
     isConfirmed: false,
   };
 
-  // useEffect(() => {
-  //   apiGetUrl("GetCountries", "", {})
-  //     .then((res) => {
-  //       setCountries(res.data);
-  //       console.log(res.data, "res.data");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-
-  //   apiGetUrl("GetCountriesCode", "", {})
-  //     .then((res) => {
-  //       setCountriesCode(res.data);
-  //       console.log(res.data, "res.data");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-
-  //   apiGetUrl("GetAllIncomeCodes", "", {})
-  //     .then((res) => {
-  //       setIncomeCodes(res.data);
-  //       console.log(res.data, "res.data");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   if (payload.permanentResidentialCountryId == 258) {
-  //     apiGetUrl("GetStateByCountryId", "", {})
-  //       .then((res) => {
-  //         setUsStates(res.data);
-  //         console.log(res.data, "res.data");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }, [payload.permanentResidentialCountryId]);
   const formatDate = (date: any) => {
     const dateObj = new Date(date);
     const month = dateObj.getMonth() + 1; // Months are 0-indexed
@@ -260,15 +221,35 @@ export default function IndividualUs() {
       .toString()
       .padStart(2, "0")}-${year}`;
     // return formattedDate;
-    console.log("formattedDate==", formattedDate);
   };
+
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
+    dispatch(
+      getTinTypes(3, () => {
+        console.log("Data");
+      })
+    );
+    dispatch(
+      GetAgentPaymentType(3, () => {
+        console.log("Data");
+      })
+    );
+    
   }, []);
+  
+  const GetTinTypesData = useSelector(
+    (state: any) => state.GetTinTypesReducer.GetTinTypesData
+  );
 
+  const GetAgentPaymentTypeData = useSelector(
+    (state: any) => state.GetAgentPaymentTypeReducer.GetAgentPaymentTypeData
+  );
+
+  
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -277,18 +258,20 @@ export default function IndividualUs() {
   );
   const GetAllIncomeCodesReducer = useSelector(
     (state: any) => state.GetAllIncomeCodesReducer
-  );
-  const GetStateByCountryIdReducer = useSelector(
-    (state: any) => state.GetStateByCountryIdReducer
-  );
-
-  // console.log(data,"dataaaa");GetAllIncomeCodes
-
-  const redirectFunc = () => {
-    history("/Term");
-  };
-
-  // const history = useNavigate();
+    );
+    const GetStateByCountryIdReducer = useSelector(
+      (state: any) => state.GetStateByCountryIdReducer
+      );
+      
+      const redirectFunc = () => {
+        history("/Term");
+      };
+      
+      
+        useEffect(()=>{
+          
+        },[GetTinTypesData])
+      // const history = useNavigate();
 
   const handleOpen = (val: any) => {
     if (open === val) {
@@ -460,23 +443,22 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any,values:any):any => {
+  const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
+      values.usTin = values.usTin + "-";
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
+      values.usTin = values.usTin + "-";
     }
   };
-  const setAccountHolder =(e: any,values:any):any => {
-    if(values.accountHolderName===""){
-      values.accountHolderName=values.firstName+values.lastName
-    }
-    else values.accountHolderName=e.target.value;
-  }
+  const setAccountHolder = (e: any, values: any): any => {
+    if (values.accountHolderName === "") {
+      values.accountHolderName = values.firstName + values.lastName;
+    } else values.accountHolderName = e.target.value;
+  };
   // const clickInfo = () => {
   //   alert(
   //     "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
@@ -574,7 +556,7 @@ export default function IndividualUs() {
                   dob: values?.dob,
                   nameOfDisregarded: values?.nameOfDisregarded,
                   entityName: values?.entityName,
-                  usTinTypeId: (+values?.usTinTypeId),
+                  usTinTypeId: +values?.usTinTypeId,
                   usTin: values?.usTin,
                   foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
@@ -626,7 +608,10 @@ export default function IndividualUs() {
                   alternativeNumber1: values?.alternativeNumber1,
                   incomeTypeId: incomeArr,
                   paymentTypeId: values?.paymentTypeId,
-                  accountHolderName: values?.accountHolderName==="" ?values?.firstName+" " +values?.lastName : values?.accountHolderName,
+                  accountHolderName:
+                    values?.accountHolderName === ""
+                      ? values?.firstName + " " + values?.lastName
+                      : values?.accountHolderName,
                   accountBankName: values?.accountBankName,
                   accountBankBranchLocationId:
                     values?.accountBankBranchLocationId,
@@ -964,7 +949,7 @@ export default function IndividualUs() {
                               Country Of Citizenship
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
-                           
+
                             <select
                               style={{
                                 padding: " 0 10px",
@@ -1376,16 +1361,33 @@ export default function IndividualUs() {
                                 value={values.usTinTypeId}
                               >
                                 <option value="1">-Select-</option>
-                                <option value="2">SSN/ITIN</option>
-                                <option value="3">
-                                  U.S. TIN not applicable
-                                </option>
-                                <option value="4">
-                                  U.S. TIN not available
-                                </option>
+                                {/* {GetTinTypesData?.map(
+                                (ele: object) => (
+                                  {ele?.nonUSIndividual && values?.isUSIndividual=="no" || ele?.usIndividual && values?.isUSIndividual=="Yes" ? (<option key={ele?.taxpayerIdTypeID} value={ele?.taxpayerIdTypeID}>
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                ):null}))} */}
                               </select>
                             </FormControl>
+                                {GetTinTypesData?.map((ele: any) => {
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ? 
+                                  // (
+                                    <option
+                                      key={ele?.taxpayerIdTypeID}
+                                      value={ele?.taxpayerIdTypeID}
+                                    >
+                                      {ele?.taxpayerIdTypeName}
+                                    </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                })}
                           </div>
+
+                         <>{console.log(values,"values")}</>
                           <div className="col-lg-3 col-6 col-md-3">
                             <FormControl className="w-100">
                               <Typography align="left">
@@ -1411,7 +1413,7 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={(e)=>formatTin(e,values)}
+                                onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
                                 inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
@@ -1479,7 +1481,6 @@ export default function IndividualUs() {
                                   padding: " 0 10px ",
                                 }}
                                 id="outlined"
-                               
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
@@ -1620,72 +1621,73 @@ export default function IndividualUs() {
                             </div>
                           </div>
                           <div className="col-12">
-                                <div className="row">
-                                
-                                    <div className="col-lg-3 col-6 col-md-3 ">
-                                      <Typography align="left" className="d-flex w-100">
-                                        Value Added Tax Number (VAT)
-                                        <span style={{ color: "red" }}>*</span>
-                                      </Typography>
+                            <div className="row">
+                              <div className="col-lg-3 col-6 col-md-3 ">
+                                <Typography
+                                  align="left"
+                                  className="d-flex w-100"
+                                >
+                                  Value Added Tax Number (VAT)
+                                  <span style={{ color: "red" }}>*</span>
+                                </Typography>
 
-                                      <FormControl className="w-100">
-                                        <select
-                                          style={{
-                                            padding: " 0 10px",
-                                            color: "#7e7e7e",
-                                            fontStyle: "italic",
-                                            height: "36px",
-                                          }}
-                                          name="vatId"
-                                          defaultValue={0}
-                                          onChange={handleChange}
-                                          value={values.vatId}
-                                        >
-                                          <option value={0}>-Select-</option>
-                                          <option value={1}>My VAT Number is</option>
-                                          <option value={2}>
-                                            I Do Not Have A VAT Number
-                                          </option>
-                                        </select>
-                                        <p className="error">{errors.vatId}</p>
-                                      </FormControl>
-                                    </div>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="vatId"
+                                    defaultValue={0}
+                                    onChange={handleChange}
+                                    value={values.vatId}
+                                  >
+                                    <option value={0}>-Select-</option>
+                                    <option value={1}>My VAT Number is</option>
+                                    <option value={2}>
+                                      I Do Not Have A VAT Number
+                                    </option>
+                                  </select>
+                                  <p className="error">{errors.vatId}</p>
+                                </FormControl>
+                              </div>
 
-                                    <div className="col-lg-3 col-6 col-md-3 ">
-                                      <FormControl className="w-100">
-                                        <Typography align="left">
-                                          Value Added Tax Number (VAT)
-                                          {/* <span style={{ color: 'red' }}>*</span> */}
-                                        </Typography>
-                                        <Input
-                                          disabled={
-                                            values.vatId == 0 || values.vatId == 2
-                                          }
-                                          style={{
-                                            border: " 1px solid #d9d9d9 ",
-                                            height: " 36px",
-                                            lineHeight: "36px ",
-                                            background: "#fff ",
-                                            fontSize: "13px",
-                                            color: " #000 ",
-                                            fontStyle: "normal",
-                                            borderRadius: "1px",
-                                            padding: " 0 10px ",
-                                          }}
-                                          id="outlined"
-                                          name="vat"
-                                          placeholder="Enter Value Added Tax Number"
-                                          // onKeyDown={formatTin}
-                                          onChange={handleChange}
-                                          inputProps={{ maxLength: 9 }}
-                                          // onBlur={handleBlur}
-                                          //   error={Boolean(touched.usTin && errors.vat)}
-                                          value={values.vat}
-                                        />
-                                      </FormControl>
-                                    </div>
-                                
-                                </div>
+                              <div className="col-lg-3 col-6 col-md-3 ">
+                                <FormControl className="w-100">
+                                  <Typography align="left">
+                                    Value Added Tax Number (VAT)
+                                    {/* <span style={{ color: 'red' }}>*</span> */}
+                                  </Typography>
+                                  <Input
+                                    disabled={
+                                      values.vatId == 0 || values.vatId == 2
+                                    }
+                                    style={{
+                                      border: " 1px solid #d9d9d9 ",
+                                      height: " 36px",
+                                      lineHeight: "36px ",
+                                      background: "#fff ",
+                                      fontSize: "13px",
+                                      color: " #000 ",
+                                      fontStyle: "normal",
+                                      borderRadius: "1px",
+                                      padding: " 0 10px ",
+                                    }}
+                                    id="outlined"
+                                    name="vat"
+                                    placeholder="Enter Value Added Tax Number"
+                                    // onKeyDown={formatTin}
+                                    onChange={handleChange}
+                                    inputProps={{ maxLength: 9 }}
+                                    // onBlur={handleBlur}
+                                    //   error={Boolean(touched.usTin && errors.vat)}
+                                    value={values.vat}
+                                  />
+                                </FormControl>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       ) : (
@@ -1709,10 +1711,26 @@ export default function IndividualUs() {
                                 defaultValue={1}
                                 onChange={handleChange}
                                 value={values.usTinTypeId}
-                              >
+                              >{
+                                console.log(GetTinTypesData,"GetTinTypesData")
+                              }
                                 <option value="1">-Select-</option>
-                                <option value="2">SSN/ITIN</option>
-                                <option value="3">Applied for</option>
+                                {GetTinTypesData?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ? 
+                                  // (
+                                    <option
+                                      key={ele?.taxpayerIdTypeID}
+                                      value={ele?.taxpayerIdTypeID}
+                                    >
+                                      {ele?.taxpayerIdTypeName}
+                                    </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                               </select>
                             </FormControl>
                           </div>
@@ -1741,7 +1759,7 @@ export default function IndividualUs() {
                                 id="outlined"
                                 name="usTin"
                                 placeholder="Enter U.S. TIN"
-                                onKeyDown={(e)=>formatTin(e,values)}
+                                onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
                                 inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
@@ -2136,7 +2154,7 @@ export default function IndividualUs() {
                         </div>
                       </div>
                       {values.permanentResidentialCountryId == 45 ? (
-                        <div >
+                        <div>
                           <Typography style={{ marginTop: "20px" }}>
                             Is this address a rural route number?
                             <span style={{ color: "red" }}>*</span>
@@ -2187,7 +2205,7 @@ export default function IndividualUs() {
                       )}
                       <div className="d-flex">
                         {values.isUSIndividual == "yes" ? (
-                          <div >
+                          <div>
                             <Typography
                               align="left"
                               style={{ marginTop: "20px" }}
@@ -2337,62 +2355,64 @@ export default function IndividualUs() {
                           </div>
                         ) : (
                           <div className="col-12">
-                            <div className=" d-lg-flex justify-content-between" style={{justifyContent:"between"}}>
-
-                           <>
-                           <div >
-                            <Typography
-                              align="left"
-                              style={{ marginTop: "20px" }}
+                            <div
+                              className=" d-lg-flex justify-content-between"
+                              style={{ justifyContent: "between" }}
                             >
-                              Is this address a PO Box?
-                              <span style={{ color: "red" }}>*</span>
-                              <Info
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  marginBottom: "12px",
-                                }}
-                              />
-                            </Typography>
-                              <FormControl
-                                error={Boolean(
-                                  touched.isAddressPostOfficeBox &&
-                                    errors.isAddressPostOfficeBox
-                                )}
-                              >
-                                <RadioGroup
-                                  id="isAddressPostOfficeBox"
-                                  row
-                                  aria-labelledby="demo-row-radio-buttons-group-label"
-                                  value={values.isAddressPostOfficeBox}
-                                  onChange={handleChange}
-                                >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="yes"
-                                    name="isAddressPostOfficeBox"
-                                    label="Yes"
-                                  />
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="no"
-                                    name="isAddressPostOfficeBox"
-                                    label="No"
-                                  />
-                                </RadioGroup>
-                                {errors.isAddressPostOfficeBox &&
-                                touched.isAddressPostOfficeBox ? (
-                                  <div>
-                                    <Typography color="error">
-                                      {errors.isAddressPostOfficeBox}
-                                    </Typography>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </FormControl>
-                              {/* <RadioGroup
+                              <>
+                                <div>
+                                  <Typography
+                                    align="left"
+                                    style={{ marginTop: "20px" }}
+                                  >
+                                    Is this address a PO Box?
+                                    <span style={{ color: "red" }}>*</span>
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "15px",
+                                        marginBottom: "12px",
+                                      }}
+                                    />
+                                  </Typography>
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isAddressPostOfficeBox &&
+                                        errors.isAddressPostOfficeBox
+                                    )}
+                                  >
+                                    <RadioGroup
+                                      id="isAddressPostOfficeBox"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={values.isAddressPostOfficeBox}
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isAddressPostOfficeBox"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isAddressPostOfficeBox"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isAddressPostOfficeBox &&
+                                    touched.isAddressPostOfficeBox ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isAddressPostOfficeBox}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <RadioGroup
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 name="row-radio-buttons-group"
@@ -2415,61 +2435,61 @@ export default function IndividualUs() {
                               <p className="error">
                                 {errors.isAddressPostOfficeBox}
                               </p> */}
-                            </div>
-                           </>
-                            {/* </div> */}
-                            <div className="">
-                              <Typography style={{ marginTop: "20px" }}>
-                                Is this an In Care Of address?
-                                <span style={{ color: "red" }}>*</span>
-                                <Info
-                                  style={{
-                                    color: "#ffc107",
-                                    fontSize: "15px",
-                                    marginBottom: "12px",
-                                  }}
-                                />
-                              </Typography>
+                                </div>
+                              </>
+                              {/* </div> */}
+                              <div className="">
+                                <Typography style={{ marginTop: "20px" }}>
+                                  Is this an In Care Of address?
+                                  <span style={{ color: "red" }}>*</span>
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "15px",
+                                      marginBottom: "12px",
+                                    }}
+                                  />
+                                </Typography>
 
-                              <div className="d-flex">
-                                <FormControl
-                                  error={Boolean(
-                                    touched.isCareOfAddress &&
-                                      errors.isCareOfAddress
-                                  )}
-                                >
-                                  <RadioGroup
-                                    id="isCareOfAddress"
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    value={values.isCareOfAddress}
-                                    onChange={handleChange}
+                                <div className="d-flex">
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isCareOfAddress &&
+                                        errors.isCareOfAddress
+                                    )}
                                   >
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="yes"
-                                      name="isCareOfAddress"
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="no"
-                                      name="isCareOfAddress"
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                  {errors.isCareOfAddress &&
-                                  touched.isCareOfAddress ? (
-                                    <div>
-                                      <Typography color="error">
-                                        {errors.isCareOfAddress}
-                                      </Typography>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </FormControl>
-                                {/* <RadioGroup
+                                    <RadioGroup
+                                      id="isCareOfAddress"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={values.isCareOfAddress}
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isCareOfAddress"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isCareOfAddress"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isCareOfAddress &&
+                                    touched.isCareOfAddress ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isCareOfAddress}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <RadioGroup
                                   row
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   name="row-radio-buttons-group"
@@ -2492,130 +2512,134 @@ export default function IndividualUs() {
                                 <p className="error">
                                   {errors.isCareOfAddress}
                                 </p> */}
+                                </div>
                               </div>
-                            </div>
-                            <div >
-                              <Typography style={{ marginTop: "20px" }}>
-                                Is there an alternative mailing or business
-                                address in the U.S.?
-                                <span style={{ color: "red" }}>*</span>
-                                <span>
-                                  <Tooltip
-                                    style={{
-                                      backgroundColor: "black",
-                                      color: "white",
-                                    }}
-                                    title={
-                                      <>
-                                        <Typography color="inherit">
-                                          Alternate Mailing Address
-                                        </Typography>
-                                        <a onClick={() => setToolInfo("mail")}>
-                                          <Typography
-                                            style={{
-                                              cursor: "pointer",
-                                              textDecorationLine: "underline",
-                                            }}
-                                            align="center"
-                                          >
-                                            {" "}
-                                            View More...
+                              <div>
+                                <Typography style={{ marginTop: "20px" }}>
+                                  Is there an alternative mailing or business
+                                  address in the U.S.?
+                                  <span style={{ color: "red" }}>*</span>
+                                  <span>
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <Typography color="inherit">
+                                            Alternate Mailing Address
                                           </Typography>
-                                        </a>
-                                      </>
-                                    }
-                                  >
-                                    <Info
+                                          <a
+                                            onClick={() => setToolInfo("mail")}
+                                          >
+                                            <Typography
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecorationLine: "underline",
+                                              }}
+                                              align="center"
+                                            >
+                                              {" "}
+                                              View More...
+                                            </Typography>
+                                          </a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "15px",
+                                          marginLeft: "5px",
+                                          cursor: "pointer",
+                                        }}
+                                        // onClick={clickInfo}
+                                      />
+                                    </Tooltip>
+                                  </span>
+                                </Typography>
+                                {toolInfo === "mail" ? (
+                                  <div>
+                                    <Paper
                                       style={{
-                                        color: "#ffc107",
-                                        fontSize: "15px",
-                                        marginLeft: "5px",
-                                        cursor: "pointer",
-                                      }}
-                                      // onClick={clickInfo}
-                                    />
-                                  </Tooltip>
-                                </span>
-                              </Typography>
-                              {toolInfo === "mail" ? (
-                                <div>
-                                  <Paper
-                                    style={{
-                                      backgroundColor: "#dedcb1",
-                                      padding: "15px",
-                                    }}
-                                  >
-                                    <Typography>
-                                      Please check this box if you have an
-                                      alternative mailing address away from the
-                                      permanent residential address entered
-                                      here.
-                                    </Typography>
-                                    <Typography style={{ marginTop: "10px" }}>
-                                      You will be asked to enter the alternative
-                                      address later in the process and in some
-                                      circumstances you may need to provide
-                                      additional information.
-                                    </Typography>
-
-                                    <Link
-                                      href="#"
-                                      underline="none"
-                                      style={{
-                                        marginTop: "10px",
-                                        fontSize: "16px",
-                                      }}
-                                      onClick={() => {
-                                        setToolInfo("");
+                                        backgroundColor: "#dedcb1",
+                                        padding: "15px",
                                       }}
                                     >
-                                      --Show Less--
-                                    </Link>
-                                  </Paper>
-                                </div>
-                              ) : (
-                                ""
-                              )}
-
-                              <div className="d-flex">
-                                <FormControl
-                                  error={Boolean(
-                                    touched.isalternativebusinessaddress &&
-                                      errors.isalternativebusinessaddress
-                                  )}
-                                >
-                                  <RadioGroup
-                                    id="isalternativebusinessaddress"
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    value={values.isalternativebusinessaddress}
-                                    onChange={handleChange}
-                                  >
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="yes"
-                                      name="isalternativebusinessaddress"
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="no"
-                                      name="isalternativebusinessaddress"
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                  {errors.isalternativebusinessaddress &&
-                                  touched.isalternativebusinessaddress ? (
-                                    <div>
-                                      <Typography color="error">
-                                        {errors.isalternativebusinessaddress}
+                                      <Typography>
+                                        Please check this box if you have an
+                                        alternative mailing address away from
+                                        the permanent residential address
+                                        entered here.
                                       </Typography>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </FormControl>
-                                {/* <Typography className="my-auto">Yes</Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        You will be asked to enter the
+                                        alternative address later in the process
+                                        and in some circumstances you may need
+                                        to provide additional information.
+                                      </Typography>
+
+                                      <Link
+                                        href="#"
+                                        underline="none"
+                                        style={{
+                                          marginTop: "10px",
+                                          fontSize: "16px",
+                                        }}
+                                        onClick={() => {
+                                          setToolInfo("");
+                                        }}
+                                      >
+                                        --Show Less--
+                                      </Link>
+                                    </Paper>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+
+                                <div className="d-flex">
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isalternativebusinessaddress &&
+                                        errors.isalternativebusinessaddress
+                                    )}
+                                  >
+                                    <RadioGroup
+                                      id="isalternativebusinessaddress"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={
+                                        values.isalternativebusinessaddress
+                                      }
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isalternativebusinessaddress"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isalternativebusinessaddress"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isalternativebusinessaddress &&
+                                    touched.isalternativebusinessaddress ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isalternativebusinessaddress}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <Typography className="my-auto">Yes</Typography>
                                 <Radio
                                   checked={values.isalternativebusinessaddress}
                                   onChange={() =>
@@ -2644,10 +2668,10 @@ export default function IndividualUs() {
                                 <p className="error">
                                   {errors.isalternativebusinessaddress}
                                 </p> */}
+                                </div>
                               </div>
                             </div>
                           </div>
-                            </div>
                         )}
                       </div>
                       {values.isalternativebusinessaddress == "yes" ? (
@@ -3244,86 +3268,89 @@ export default function IndividualUs() {
                             />
                           </FormControl>
                           <div>
-                          {alternateNo ? (
-                            <div className="mt-3">
-                              <FormControl className="w-100">
-                               
-                                <span className="w-100 d-flex">
-                                  <select
-                                    className="w-100"
+                            {alternateNo ? (
+                              <div className="mt-3">
+                                <FormControl className="w-100">
+                                  <span className="w-100 d-flex">
+                                    <select
+                                      className="w-100"
+                                      style={{
+                                        padding: " 0 10px",
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "36px",
+                                      }}
+                                      name="alternativeNumberId1"
+                                      id="Income"
+                                      onChange={handleChange}
+                                      value={values.alternativeNumberId1}
+                                    >
+                                      <option value={0}>--Select--</option>
+                                      {/* <option value={1}>--Select1--</option> */}
+                                      {getCountriesCodeReducer.allCountriesCodeData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
+                                    </select>
+                                    <Delete
+                                      style={{
+                                        color: "red",
+                                        fontSize: "20px",
+                                        marginTop: "5px",
+                                        position: "absolute",
+                                      }}
+                                      sx={{
+                                        right: {
+                                          xs: "-10%",
+                                          md: "-10%",
+                                          lg: "-8%",
+                                          xl: "-5%",
+                                        },
+                                      }}
+                                      onClick={() => {
+                                        setAlternateNo(false);
+                                      }}
+                                    />
+                                  </span>
+                                  <Input
+                                    disabled={values.alternativeNumberId1 == 0}
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
-                                      fontStyle: "italic",
-                                      height: "36px",
+                                      border: " 1px solid #d9d9d9 ",
+                                      height: " 36px",
+                                      lineHeight: "36px ",
+                                      background: "#fff ",
+                                      fontSize: "13px",
+                                      color: " #000 ",
+                                      fontStyle: "normal",
+                                      borderRadius: "1px",
+                                      padding: " 0 10px ",
                                     }}
-                                    name="alternativeNumberId1"
-                                    id="Income"
+                                    id="outlined"
+                                    name="alternativeNumber1"
+                                    placeholder="Enter Alternate Mobile No"
                                     onChange={handleChange}
-                                    value={values.alternativeNumberId1}
-                                  >
-                                    <option value={0}>--Select--</option>
-                                    {/* <option value={1}>--Select1--</option> */}
-                                    {getCountriesCodeReducer.allCountriesCodeData?.map(
-                                      (ele: any) => (
-                                        <option key={ele?.id} value={ele?.id}>
-                                          {ele?.name}
-                                        </option>
-                                      )
-                                    )}
-                                  </select>
-                                  <Delete
-                                    style={{
-                                      color: "red",
-                                      fontSize: "20px",
-                                      marginTop: "5px",
-                                      position:"absolute"
-                                    }}
-                                    sx={{ right: { xs: "-10%", md: "-10%", lg: "-8%", xl: "-5%", }, }}
-                                    onClick={() => {
-                                      setAlternateNo(false);
-                                    }}
+                                    value={values.alternativeNumber1}
                                   />
-                                </span>
-                                <Input
-                                  disabled={values.alternativeNumberId1 == 0}
-                                  style={{
-                                    border: " 1px solid #d9d9d9 ",
-                                    height: " 36px",
-                                    lineHeight: "36px ",
-                                    background: "#fff ",
-                                    fontSize: "13px",
-                                    color: " #000 ",
-                                    fontStyle: "normal",
-                                    borderRadius: "1px",
-                                    padding: " 0 10px ",
-                                  }}
-                                  id="outlined"
-                                  name="alternativeNumber1"
-                                  placeholder="Enter Alternate Mobile No"
-                                  onChange={handleChange}
-                                  value={values.alternativeNumber1}
-                                />
-                              </FormControl>
-                            </div>
-                          ) : (
-                            <Typography
-                              style={{
-                                color: "#007bff",
-                                cursor: "pointer",
-                                fontSize: "12px",
-                                marginTop: "8px",
-                              }}
-                              onClick={() => setAlternateNo(true)}
-                            >
-                              <a>Add Alternative Number</a>
-                            </Typography>
-                          )}
+                                </FormControl>
+                              </div>
+                            ) : (
+                              <Typography
+                                style={{
+                                  color: "#007bff",
+                                  cursor: "pointer",
+                                  fontSize: "12px",
+                                  marginTop: "8px",
+                                }}
+                                onClick={() => setAlternateNo(true)}
+                              >
+                                <a>Add Alternative Number</a>
+                              </Typography>
+                            )}
+                          </div>
                         </div>
-                        </div>
-                       
-
-                       
                       </div>
                     </Collapse>
 
@@ -3842,9 +3869,13 @@ export default function IndividualUs() {
                               value={values.paymentTypeId}
                             >
                               <option value="">Select</option>
-                              <option value={1}>ACH</option>
-                              <option value={2}>Check</option>
-                              <option value={3}>Wire</option>
+                              {GetAgentPaymentTypeData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.paymentTypeId} value={ele?.paymentTypeId}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                             </select>
                             {/* <p className="error">{errors.paymentTypeId}</p> */}
                             {/* <Delete
@@ -4097,7 +4128,13 @@ export default function IndividualUs() {
                                         touched.accountHolderName &&
                                           errors.accountHolderName
                                       )}
-                                      value={values.accountHolderName === "" ? values.firstName+ " "+values.lastName :values.accountHolderName}
+                                      value={
+                                        values.accountHolderName === ""
+                                          ? values.firstName +
+                                            " " +
+                                            values.lastName
+                                          : values.accountHolderName
+                                      }
                                     />
                                     <p className="error">
                                       {errors.accountHolderName}
@@ -4845,62 +4882,60 @@ export default function IndividualUs() {
                               I confirm the information above is correct
                             </Typography>
                           </div>
-                         
                         </div>
-                       
                       </div>
                       <p className="error">{errors.isConfirmed}</p>
 
                       {values.isConfirmed ? (
-                    <div className="text-center">
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        // onClick={() => history("/Term")}
-                        style={{
-                          border: "1px solid #0095dd",
-                          background: "#0095dd",
-                          height: "45px",
-                          lineHeight: "normal",
-                          textAlign: "center",
-                          fontSize: "16px",
-                          textTransform: "uppercase",
-                          borderRadius: "0px",
-                          color: "#fff",
-                          padding: "0 35px",
-                          letterSpacing: "1px",
-                        }}
-                        className="btn btn_submit  btn-primary-agent"
-                      >
-                        Continue
-                      </Button>
-                    </div>
-                    ) : (
-                  <div className="text-center">
-                    <Button
-                      type="submit"
-                      disabled
-                      style={{
-                        border: '1px solid #0095dd',
-                        backgroundColor: '#D2D2D4',
-                        borderColor: '#d2d2d2',
-                        color: '#4a4a4a',
-                        height: '45px',
-                        lineHeight: 'normal',
-                        textAlign: 'center',
-                        fontSize: '16px',
-                        textTransform: 'uppercase',
-                        borderRadius: '0px',
+                        <div className="text-center">
+                          <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            // onClick={() => history("/Term")}
+                            style={{
+                              border: "1px solid #0095dd",
+                              background: "#0095dd",
+                              height: "45px",
+                              lineHeight: "normal",
+                              textAlign: "center",
+                              fontSize: "16px",
+                              textTransform: "uppercase",
+                              borderRadius: "0px",
+                              color: "#fff",
+                              padding: "0 35px",
+                              letterSpacing: "1px",
+                            }}
+                            className="btn btn_submit  btn-primary-agent"
+                          >
+                            Continue
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="text-center">
+                          <Button
+                            type="submit"
+                            disabled
+                            style={{
+                              border: "1px solid #0095dd",
+                              backgroundColor: "#D2D2D4",
+                              borderColor: "#d2d2d2",
+                              color: "#4a4a4a",
+                              height: "45px",
+                              lineHeight: "normal",
+                              textAlign: "center",
+                              fontSize: "16px",
+                              textTransform: "uppercase",
+                              borderRadius: "0px",
 
-                        padding: '0 35px',
-                        letterSpacing: '1px',
-                      }}
-                      className="btn btn_submit  btn-primary-agent"
-                    >
-                      Continue
-                    </Button>
-                  </div>
-                )}
+                              padding: "0 35px",
+                              letterSpacing: "1px",
+                            }}
+                            className="btn btn_submit  btn-primary-agent"
+                          >
+                            Continue
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Form>
