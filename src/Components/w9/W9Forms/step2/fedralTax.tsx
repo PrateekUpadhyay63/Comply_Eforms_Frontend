@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -39,15 +39,15 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const [toolInfo, setToolInfo] = useState("");
+  const [onboardingValues,SetOnboardingValues]=useState({firstName:""});  
+  
   const initialValue = {
-    firstName: "",
+    firstName: onboardingValues?.firstName ? onboardingValues.firstName :"" ,
     lastName: "",
     businessName: "",
     federalTaxClassificationId: 0,
   };
-  const [toolInfo, setToolInfo] = useState("");
-  
-
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -68,6 +68,10 @@ export default function Fedral_tax(props: any) {
   ];
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  useEffect(() => {
+    SetOnboardingValues(JSON.parse(localStorage.getItem("agentDetails") || '{}'))
+  },[])
 
   const handleChangeAccodion =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -102,17 +106,6 @@ export default function Fedral_tax(props: any) {
           } // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log(values, ":STEP1 VALUES");
-            setselectedContinue({
-              step1: false,
-              step2: true,
-              step3: false,
-              step4: false,
-              step5: false,
-              step6: false,
-              step7: false,
-              step8: false,
-            });
             dispatch(
               W9_state(values, () => {
                 console.log(W9Data, "Done");
@@ -699,7 +692,7 @@ export default function Fedral_tax(props: any) {
                               )}
                               name="firstName"
                               className="inputClass"
-                              value={values.firstName}
+                              value={onboardingValues?.firstName ? onboardingValues?.firstName :values.firstName}
                              
                             />
                           </FormControl>

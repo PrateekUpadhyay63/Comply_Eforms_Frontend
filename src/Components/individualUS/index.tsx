@@ -267,10 +267,6 @@ export default function IndividualUs() {
         history("/Term");
       };
       
-      
-        useEffect(()=>{
-          
-        },[GetTinTypesData])
       // const history = useNavigate();
 
   const handleOpen = (val: any) => {
@@ -295,7 +291,6 @@ export default function IndividualUs() {
   };
 
   const handleSubmit = (e: any, values: any) => {
-    console.log("b dzsfdvcyghgc", values);
     e.preventDefault();
     dispatch(postOnboarding(values, redirectFunc));
     redirectFunc();
@@ -333,7 +328,8 @@ export default function IndividualUs() {
               name="abaRouting"
               placeholder="Enter ABA / Routing"
               onChange={handleChange}
-              onBlur={handleBlur}
+              // onBlur={handleBlur}
+
               error={Boolean(touched.abaRouting && errors.abaRouting)}
               value={values.abaRouting}
             />
@@ -366,7 +362,7 @@ export default function IndividualUs() {
               name="sortCode"
               placeholder="Sort Code"
               onChange={handleChange}
-              onBlur={handleBlur}
+              // onBlur={handleBlur}
               error={Boolean(touched.sortCode && errors.sortCode)}
               value={values.sortCode}
             />
@@ -400,7 +396,7 @@ export default function IndividualUs() {
               name="bsb"
               placeholder="Enter Bank Code"
               onChange={handleChange}
-              onBlur={handleBlur}
+              // onBlur={handleBlur}
               error={Boolean(touched.bsb && errors.bsb)}
               value={values.bsb}
             />
@@ -432,7 +428,7 @@ export default function IndividualUs() {
               name="bankCode"
               placeholder=" Enter Bank Code"
               onChange={handleChange}
-              onBlur={handleBlur}
+              // onBlur={handleBlur}
               error={Boolean(touched.bankCode && errors.bankCode)}
               value={values.bankCode}
             />
@@ -541,6 +537,8 @@ export default function IndividualUs() {
             <Formik
               initialValues={initialValues}
               enableReinitialize
+              validateOnChange={false}
+              validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
                 const payload = {
@@ -790,7 +788,7 @@ export default function IndividualUs() {
                           <div className="d-flex">
                             <FormControl
                               error={Boolean(
-                                touched.isUSIndividual && errors.isUSIndividual
+                               errors.isUSIndividual
                               )}
                             >
                               <RadioGroup
@@ -798,6 +796,7 @@ export default function IndividualUs() {
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.isUSIndividual}
+
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
@@ -813,8 +812,7 @@ export default function IndividualUs() {
                                   label="No"
                                 />
                               </RadioGroup>
-                              {errors.isUSIndividual &&
-                              touched.isUSIndividual ? (
+                              {errors.isUSIndividual ? (
                                 <div>
                                   <Typography color="error">
                                     {errors.isUSIndividual}
@@ -869,9 +867,8 @@ export default function IndividualUs() {
                             id="outlined"
                             placeholder="Enter Instructor Identifier"
                             onChange={handleChange}
-                            onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             error={Boolean(
-                              touched.uniqueIdentifier &&
                                 errors.uniqueIdentifier
                             )}
                             value={values.uniqueIdentifier}
@@ -903,9 +900,9 @@ export default function IndividualUs() {
                               id="outlined"
                               name="firstName"
                               placeholder="Enter First Name"
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
-                                touched.firstName && errors.firstName
+                                errors.firstName
                               )}
                               onChange={handleChange}
                               value={values.firstName}
@@ -934,7 +931,7 @@ export default function IndividualUs() {
                               name="lastName"
                               placeholder="Enter Last Name"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.lastName && errors.lastName
                               )}
@@ -962,7 +959,7 @@ export default function IndividualUs() {
                               onChange={(e) => {
                                 handleChange(e); //condition
                               }}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               // error={Boolean(touched.countryOfCitizenshipId && errors.countryOfCitizenshipId)}
                               value={values.countryOfCitizenshipId}
                             >
@@ -1005,7 +1002,7 @@ export default function IndividualUs() {
                               id="outlined"
                               name="dob"
                               // onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(touched.dob && errors.dob)}
                               value={values.dob}
                               onChange={(e) => { handleChange(e)
@@ -1022,7 +1019,7 @@ export default function IndividualUs() {
                               }}
                               maxDate={moment().toDate()}
                               value={value}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               clearIcon={null}
                               format="MM-dd-yy"
                               dayPlaceholder="DD"
@@ -1086,7 +1083,7 @@ export default function IndividualUs() {
                               id="outlined"
                               name="firstName"
                               placeholder="Enter First Name"
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.firstName && errors.firstName
                               )}
@@ -1117,7 +1114,7 @@ export default function IndividualUs() {
                               name="lastName"
                               placeholder="Enter Last Name"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.lastName && errors.lastName
                               )}
@@ -1927,7 +1924,7 @@ export default function IndividualUs() {
                             id="Income"
                             defaultValue={1}
                             onChange={handleChange}
-                            onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             value={values.permanentResidentialCountryId}
                           >
                             <option value={0}>-Select-</option>
@@ -1971,7 +1968,7 @@ export default function IndividualUs() {
                               name="permanentResidentialStreetNumberandName"
                               placeholder="Enter Street Number and Name"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.permanentResidentialStreetNumberandName &&
                                   errors.permanentResidentialStreetNumberandName
@@ -2033,7 +2030,7 @@ export default function IndividualUs() {
                               name="permanentResidentialCityorTown"
                               placeholder="Enter City or Town"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.permanentResidentialCityorTown &&
                                   errors.permanentResidentialCityorTown
@@ -2140,7 +2137,7 @@ export default function IndividualUs() {
                               name="permanentResidentialZipPostalCode"
                               placeholder="Enter Zip or Postal Code"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.permanentResidentialZipPostalCode &&
                                   errors.permanentResidentialZipPostalCode
@@ -2694,7 +2691,7 @@ export default function IndividualUs() {
                                 // id="Income"
                                 defaultValue={0}
                                 onChange={handleChange}
-                                onBlur={handleBlur}
+                                // onBlur={handleBlur}
                                 value={values.permanentResidentialCountryId1}
                               >
                                 <option value={0}>-Select-</option>
@@ -2736,7 +2733,7 @@ export default function IndividualUs() {
                                   name="permanentResidentialStreetNumberandName1"
                                   placeholder="Enter Street Number and Name"
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  // onBlur={handleBlur}
                                   error={Boolean(
                                     touched.permanentResidentialStreetNumberandName1 &&
                                       errors.permanentResidentialStreetNumberandName1
@@ -2797,7 +2794,7 @@ export default function IndividualUs() {
                                   name="permanentResidentialCityorTown1"
                                   placeholder="Enter City or Town"
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  // onBlur={handleBlur}
                                   error={Boolean(
                                     touched.permanentResidentialCityorTown1 &&
                                       errors.permanentResidentialCityorTown1
@@ -2902,7 +2899,7 @@ export default function IndividualUs() {
                                   name="permanentResidentialZipPostalCode1"
                                   placeholder="Enter Zip or Postal Code"
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  // onBlur={handleBlur}
                                   error={Boolean(
                                     touched.permanentResidentialZipPostalCode1 &&
                                       errors.permanentResidentialZipPostalCode1
@@ -3092,7 +3089,7 @@ export default function IndividualUs() {
                               name="contactFirstName"
                               placeholder="Enter First Name"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.contactFirstName &&
                                   errors.contactFirstName
@@ -3123,7 +3120,7 @@ export default function IndividualUs() {
                               name="contactLastName"
                               placeholder="Enter Last Name"
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               error={Boolean(
                                 touched.contactLastName &&
                                   errors.contactLastName
@@ -3157,7 +3154,7 @@ export default function IndividualUs() {
                                   type="email"
                                   placeholder="example@domain.com"
                                   onChange={handleChange}
-                                  onBlur={handleBlur}
+                                  // onBlur={handleBlur}
                                   error={Boolean(
                                     touched.contactEmail && errors.contactEmail
                                   )}
@@ -4123,7 +4120,7 @@ export default function IndividualUs() {
                                       name="accountHolderName"
                                       placeholder="Enter  Account holder name"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountHolderName &&
                                           errors.accountHolderName
@@ -4163,7 +4160,7 @@ export default function IndividualUs() {
                                       name="accountBankName"
                                       placeholder="Enter Bank name"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountBankName &&
                                           errors.accountBankName
@@ -4191,7 +4188,7 @@ export default function IndividualUs() {
                                       id="demo-simple-select-standard"
                                       name="accountBankBranchLocationId"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       value={values.accountBankBranchLocationId}
                                     >
                                       <option value={0}>-Select-</option>
@@ -4237,7 +4234,7 @@ export default function IndividualUs() {
                                       name="accountNumber"
                                       placeholder="Enter Account Number"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountNumber &&
                                           errors.accountNumber
@@ -4295,7 +4292,7 @@ export default function IndividualUs() {
                                       name="makePayable"
                                       placeholder="Enter Make Payable To"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.makePayable &&
                                           errors.makePayable
@@ -4326,7 +4323,7 @@ export default function IndividualUs() {
                                       defaultValue={0}
                                       placeholder="Enter Residential Country"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       value={values.payResidentalCountryId}
                                     >
                                       <p className="error">
@@ -4373,7 +4370,7 @@ export default function IndividualUs() {
                                       name="payStreetNumberAndName"
                                       placeholder="Enter Street Number And Name"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.payStreetNumberAndName &&
                                           errors.payStreetNumberAndName
@@ -4434,7 +4431,7 @@ export default function IndividualUs() {
                                       name="payCityorTown"
                                       placeholder="Enter  City OR Town"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.payCityorTown &&
                                           errors.payCityorTown
@@ -4467,7 +4464,7 @@ export default function IndividualUs() {
                                         name="payStateOrProvince"
                                         // id="Income"
                                         onChange={handleChange}
-                                        onBlur={handleBlur}
+                                        // onBlur={handleBlur}
                                         value={values.payStateOrProvince}
                                       >
                                         <option value="0">
@@ -4512,7 +4509,7 @@ export default function IndividualUs() {
                                         name="payStateOrProvince"
                                         placeholder="Enter  State OR Provience"
                                         onChange={handleChange}
-                                        onBlur={handleBlur}
+                                        // onBlur={handleBlur}
                                         error={Boolean(
                                           touched.payStateOrProvince &&
                                             errors.payStateOrProvince
@@ -4548,7 +4545,7 @@ export default function IndividualUs() {
                                       name="payZipPostalCode"
                                       placeholder="Enter Zip/Postal Code"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.payZipPostalCode &&
                                           errors.payZipPostalCode
@@ -4612,7 +4609,7 @@ export default function IndividualUs() {
                                       name="accountHolderName"
                                       placeholder="Enter Account holder name"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountHolderName &&
                                           errors.accountHolderName
@@ -4646,7 +4643,7 @@ export default function IndividualUs() {
                                       name="accountBankName"
                                       placeholder="Enter Bank name"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountBankName &&
                                           errors.accountBankName
@@ -4674,7 +4671,7 @@ export default function IndividualUs() {
                                       id="demo-simple-select-standard"
                                       name="accountBankBranchLocationId"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       value={values.accountBankBranchLocationId}
                                     >
                                       <option
@@ -4737,7 +4734,7 @@ export default function IndividualUs() {
                                       name="accountNumber"
                                       placeholder="Enter Account Number"
                                       onChange={handleChange}
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountNumber &&
                                           errors.accountNumber
@@ -4773,7 +4770,7 @@ export default function IndividualUs() {
                                         name="abaRouting"
                                         placeholder="Enter ABA / Routing"
                                         onChange={handleChange}
-                                        onBlur={handleBlur}
+                                        // onBlur={handleBlur}
                                         error={Boolean(
                                           touched.abaRouting &&
                                             errors.abaRouting
@@ -4873,7 +4870,7 @@ export default function IndividualUs() {
                               //   })
                               // }
                               onChange={handleChange}
-                              onBlur={handleBlur}
+                              // onBlur={handleBlur}
                               value={values.isConfirmed}
                             />
                           </div>
