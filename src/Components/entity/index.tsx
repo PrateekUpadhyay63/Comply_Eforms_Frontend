@@ -457,6 +457,12 @@ export default function Entity() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
+  const wipeVat = (e:any , values:any)=>{
+    if(e.target.value == 0 || e.target.value == 2){
+      values.vat = ""
+    }
+
+  }
 
   const handleIcome = (e:any, i : number)=>{
     const newValue = e.target.value;
@@ -1421,8 +1427,14 @@ export default function Entity() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                      handleChange(e);
+                                      wipeVat(e , values);
+                                    }}
                                     value={values.vatId}
+                                    onClick={(e)=>{
+                                      wipeVat(e , values);
+                                    }}
                                   >
                                     <option value={0}>-Select-</option>
                                     <option value={1}>My VAT Number is</option>
