@@ -153,8 +153,8 @@ export default function Entity() {
     permanentResidentialStateorProvince: "",
     permanentResidentialZipPostalCode: "",
     isAddressRuralRoute: "yes",
-    isAddressPostOfficeBox: "yes",
-    isCareOfAddress: "yes",
+    isAddressPostOfficeBox: "no",
+    isCareOfAddress: "no",
     isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
@@ -263,11 +263,15 @@ export default function Entity() {
     history("/Term");
   };
 
-  const formatTin = (e: any,values:any):any => {
+  const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 12) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
     }
   };
 
@@ -453,6 +457,12 @@ export default function Entity() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
+  const wipeVat = (e:any , values:any)=>{
+    if(e.target.value == 0 || e.target.value == 2){
+      values.vat = ""
+    }
+
+  }
 
   const handleIcome = (e:any, i : number)=>{
     const newValue = e.target.value;
@@ -631,6 +641,7 @@ export default function Entity() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                                
                                 }}
                                 onClick={() => handleOpen("basics")}
@@ -977,6 +988,7 @@ export default function Entity() {
                                style={{
                                 display: "flex",
                                 alignItems: "left",
+                                cursor:"pointer"
                           
                               }}
                               onClick={() => handleOpen("tax")}
@@ -1220,7 +1232,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1415,8 +1427,14 @@ export default function Entity() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                      handleChange(e);
+                                      wipeVat(e , values);
+                                    }}
                                     value={values.vatId}
+                                    onClick={(e)=>{
+                                      wipeVat(e , values);
+                                    }}
                                   >
                                     <option value={0}>-Select-</option>
                                     <option value={1}>My VAT Number is</option>
@@ -1511,7 +1529,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1536,6 +1554,7 @@ export default function Entity() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                      
                                 }}
 
@@ -2681,6 +2700,7 @@ export default function Entity() {
                               style={{
                                 display: "flex",
                                 alignItems: "left",
+                                cursor:"pointer"
                 
                               }}
                               onClick={() => handleOpen("cd")}
@@ -3097,6 +3117,7 @@ export default function Entity() {
                             display: "flex",
                             alignItems: "left",
                             marginLeft: "13px",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("it")}
                         >
@@ -3446,6 +3467,7 @@ export default function Entity() {
                           display: "flex",
                           alignItems: "left",
                           marginLeft: "13px",
+                          cursor:"pointer"
                         }}
 
                         onClick={() => handleOpen("pt")}
@@ -3607,6 +3629,7 @@ export default function Entity() {
                                        style={{
                                         display: "flex",
                                         alignItems: "left",
+                                        cursor:"pointer"
                              
                                       }}
                                       onClick={() => handleOpen("ai")}

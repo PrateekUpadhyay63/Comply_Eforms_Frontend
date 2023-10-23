@@ -166,8 +166,8 @@ export default function IndividualUs() {
     permanentResidentialStateorProvince: "",
     permanentResidentialZipPostalCode: "",
     isAddressRuralRoute: "yes",
-    isAddressPostOfficeBox: "yes",
-    isCareOfAddress: "yes",
+    isAddressPostOfficeBox: "no",
+    isCareOfAddress: "no",
     isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
@@ -441,11 +441,11 @@ export default function IndividualUs() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
+    if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 6) {
+    if (e.target.value.length === 12) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
@@ -663,6 +663,7 @@ export default function IndividualUs() {
                           style={{
                             display: "flex",
                             alignItems: "left",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("basics")}
                         >
@@ -1141,6 +1142,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("tax")}
                           >
@@ -1412,7 +1414,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 10 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1758,7 +1760,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 10 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1782,6 +1784,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("pra")}
                           >
@@ -2934,6 +2937,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("cd")}
                           >
@@ -3364,6 +3368,7 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
                               onClick={() => handleOpen("it")}
                             >
@@ -3733,6 +3738,7 @@ export default function IndividualUs() {
                             display: "flex",
                             alignItems: "left",
                             marginLeft: "13px",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("pt")}
                         >
@@ -3907,6 +3913,7 @@ export default function IndividualUs() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                                 }}
                                 onClick={() => handleOpen("ai")}
                               >
