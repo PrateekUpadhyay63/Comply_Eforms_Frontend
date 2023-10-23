@@ -10,6 +10,7 @@ import {
   Radio,
   FormControlLabel,
   Input,
+  TextField,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./index.scss";
@@ -77,9 +78,9 @@ export default function Factors() {
           <BreadCrumbComponent breadCrumbCode={1256} formName={2}/>
       </div>
       </div>
-      <div className="col-8">
+      <div className="col-8 mt-5">
 
-      <div style={{ padding: "20px" }}>
+      <div style={{ padding: "30px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
             initialValues={initialValue}
@@ -369,8 +370,8 @@ export default function Factors() {
                                 style={{ color: "red", fontSize: "30px" }}
                               />
                             </Typography>
-                            <div className="col-12 d-flex">
-                              <div className="col-6">
+                            <div className="col-12 d-flex" style={{justifyContent:"space-between"}}>
+                              <div className="col-5">
                                 <Typography
                                   align="left"
                                   style={{
@@ -387,7 +388,7 @@ export default function Factors() {
                                   </span>
                                   <span></span>
                                 </Typography>
-                                <FormControl className="w-50">
+                                <FormControl className="w-100">
                                   <select
                                     style={{
                                       padding: " 0 10px",
@@ -414,7 +415,7 @@ export default function Factors() {
                                   </p>
                                 </FormControl>
                               </div>
-                              <div className="col-6">
+                              <div className="col-5">
                                 <Typography
                                   align="left"
                                   style={{
@@ -431,7 +432,7 @@ export default function Factors() {
                                   </span>
                                   <span></span>
                                 </Typography>
-                                <FormControl className="w-50">
+                                <FormControl className="w-100">
                                   <select
                                     style={{
                                       padding: " 0 10px",
@@ -460,6 +461,7 @@ export default function Factors() {
                               </div>
                             </div>
 
+                            <div className="col-10">
                             <Typography
                               align="left"
                               style={{ fontSize: "22px", marginTop: "10px" }}
@@ -470,14 +472,15 @@ export default function Factors() {
                                 *
                               </span>
                             </Typography>
-                            <FormControl className="w-50">
-                              <Input
+                            <FormControl className="w-100">
+                              <TextField
                                 className="col-md-6 col-12"
                                 style={{
-                                  padding: " 0 10px",
-                                  color: "#7e7e7e",
+                                  backgroundColor:"#fff",
+                                 
+                                  // color: "#7e7e7e",
                                   fontStyle: "italic",
-                                  height: "3rem",
+                                 
                                 }}
                                 name="subParagraphArticle"
                                 value={values.subParagraphArticle}
@@ -492,9 +495,10 @@ export default function Factors() {
                                 {errors.subParagraphArticle}
                               </p>
                             </FormControl>
+                            </div>
 
-                            <div className="col-12 d-flex">
-                              <div className="col-6">
+                            <div className="col-12 d-flex"style={{justifyContent:"space-between"}}>
+                              <div className="col-5">
                                 <Typography
                                   align="left"
                                   style={{
@@ -510,7 +514,7 @@ export default function Factors() {
                                   </span>
                                   <span></span>
                                 </Typography>
-                                <FormControl className="w-50">
+                                <FormControl className="w-100">
                                   <select
                                     style={{
                                       padding: " 0 10px",
@@ -537,7 +541,7 @@ export default function Factors() {
                                   </p>
                                 </FormControl>
                               </div>
-                              <div className="col-6">
+                              <div className="col-5">
                                 <Typography
                                   align="left"
                                   style={{
@@ -553,7 +557,7 @@ export default function Factors() {
                                   </span>
                                   <span></span>
                                 </Typography>
-                                <FormControl className="w-50">
+                                <FormControl className="w-100">
                                   <select
                                     style={{
                                       padding: " 0 10px",
@@ -609,15 +613,10 @@ export default function Factors() {
                           <span></span>
                         </Typography>
                         <FormControl className="w-100">
-                          <Input
+                          <TextField
                             // multiple
                             className="col-md-10 col-12"
-                            style={{
-                              padding: " 0 10px",
-                              color: "#7e7e7e",
-                              fontStyle: "italic",
-                              height: "10rem",
-                            }}
+                           
                             name="articleExplanation"
                             value={values.articleExplanation}
                             onBlur={handleBlur}

@@ -142,7 +142,7 @@ export const individualSchema = () => {
       is: (paymentTypeId:any) => paymentTypeId === 1 || paymentTypeId === 3,
       then: () =>
         Yup.string()
-          .matches(/^\d{10}$/, "Account number must be exactly 10 digits")
+          // .matches(/^\d{10}$/, "Account number must be exactly 10 digits")
           .required("Account Number is required"),
     }),
 
