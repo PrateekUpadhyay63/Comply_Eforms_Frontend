@@ -153,8 +153,8 @@ export default function Entity() {
     permanentResidentialStateorProvince: "",
     permanentResidentialZipPostalCode: "",
     isAddressRuralRoute: "yes",
-    isAddressPostOfficeBox: "yes",
-    isCareOfAddress: "yes",
+    isAddressPostOfficeBox: "no",
+    isCareOfAddress: "no",
     isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
@@ -263,11 +263,15 @@ export default function Entity() {
     history("/Term");
   };
 
-  const formatTin = (e: any,values:any):any => {
+  const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin= values.usTin+"-"
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 12) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
     }
   };
 
@@ -631,6 +635,7 @@ export default function Entity() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                                
                                 }}
                                 onClick={() => handleOpen("basics")}
@@ -977,6 +982,7 @@ export default function Entity() {
                                style={{
                                 display: "flex",
                                 alignItems: "left",
+                                cursor:"pointer"
                           
                               }}
                               onClick={() => handleOpen("tax")}
@@ -1220,7 +1226,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1511,7 +1517,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e)=>formatTin(e,values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 9 }}
+                                inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1536,6 +1542,7 @@ export default function Entity() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                      
                                 }}
 
@@ -2681,6 +2688,7 @@ export default function Entity() {
                               style={{
                                 display: "flex",
                                 alignItems: "left",
+                                cursor:"pointer"
                 
                               }}
                               onClick={() => handleOpen("cd")}
@@ -3097,6 +3105,7 @@ export default function Entity() {
                             display: "flex",
                             alignItems: "left",
                             marginLeft: "13px",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("it")}
                         >
@@ -3446,6 +3455,7 @@ export default function Entity() {
                           display: "flex",
                           alignItems: "left",
                           marginLeft: "13px",
+                          cursor:"pointer"
                         }}
 
                         onClick={() => handleOpen("pt")}
@@ -3607,6 +3617,7 @@ export default function Entity() {
                                        style={{
                                         display: "flex",
                                         alignItems: "left",
+                                        cursor:"pointer"
                              
                                       }}
                                       onClick={() => handleOpen("ai")}
