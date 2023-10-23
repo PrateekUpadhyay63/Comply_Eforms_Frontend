@@ -386,7 +386,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                               If you need further guidance you may wish to
                               contact your local tax advisers.
                             </Typography>
-                            <Typography
+                            {/* <Typography
                               align="center"
                               style={{ marginTop: "20px" }}
                             >
@@ -399,9 +399,9 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                 }}
                                 variant="contained"
                               >
-                                Close
+                                Close1
                               </Button>
-                            </Typography>
+                            </Typography> */}
                           </>
                         ) : Reverse === "No" ? (
                           <>
@@ -468,7 +468,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                               If you need further guidance you may wish to
                               contact your local tax advisers.
                             </Typography>
-                            <Typography
+                            {/* <Typography
                               align="center"
                               style={{ marginTop: "20px" }}
                             >
@@ -484,7 +484,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                               >
                                 Confirm
                               </Button>
-                            </Typography>
+                            </Typography> */}
                           </>
                         ) : (
                           ""
@@ -1816,6 +1816,16 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 >
                   Form Selection Guide Result
                 </Typography>
+                <Typography
+                  align="left"
+                  className="mt-3"
+                  style={{
+                    fontSize: "16px",
+                    color: "#383a3b",
+                  }}
+                >
+You have stated that the Foreign Person you are making this submission on behalf of is a Disregarded Entity for U.S. tax purposes.
+                </Typography>
 
               
                 <Typography
@@ -1827,9 +1837,11 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                     fontWeight: "bold",
                   }}
                 >
-                  We are not authorized to provide tax advice through this process, but the answers provided suggest you may need to provide a Form W-8IMY. "Certificate of Foreign Intermediary, Foreign Flow-through Entity, or Certain U.S. Branches for United States Tax Withholding".
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may need to have the owner of the Disregarded Entity submit a U.S. tax certificate on their own behalf.
 
                 </Typography>
+
+               
 
                 <Typography
                   align="left"
@@ -1839,53 +1851,13 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                     color: "#383a3b",
                   }}
                 >
-                A valid Form W-IMY and any associated documentation must be provided by:
+                 If you have the required authority or appropriate power of attorney to make a submission on their behalf go back and make a selection that describes the disregarded entity's classification for U.S. tax purposes.
+
                 </Typography>
 
+                
 
-                <Typography
-                  align="left"
-                  className="mt-3"
-                  style={{
-                    fontSize: "16px",
-                    color: "#383a3b",
-                  }}
-                >
-                 Qualified Intermediaries not acting on their own account representing they will provide withholding statements as required
-                </Typography>
-
-                <Typography
-                  align="left"
-                  className="mt-3"
-                  style={{
-                    fontSize: "16px",
-                    color: "#383a3b",
-                  }}
-                >
-Nonqualified intermediaries not acting on their own account and if applicable transmit withholding statements, associated certificates or other documentary evidence as required
-                </Typography>
-
-                <Typography
-                  align="left"
-                  className="mt-3"
-                  style={{
-                    fontSize: "16px",
-                    color: "#383a3b",
-                  }}
-                >
-Foreign Partnerships, Foreign Simple or Grantor Trusts to establish that they are non-withholding for purposes of section 1441 and 1442 and to represent that the income is not effectively connected with a U.S. trade or business; and that the form is being used to transmit withholding certificates and associated documentation as required
-                </Typography>
-
-                <Typography
-                  align="left"
-                  className="mt-3"
-                  style={{
-                    fontSize: "16px",
-                    color: "#383a3b",
-                  }}
-                >
-For a detailed explanation of who should submit a form W-8IMY please see the IRS instructions.
-                </Typography>
+               
 
 
 
@@ -1922,98 +1894,123 @@ For a detailed explanation of who should submit a form W-8IMY please see the IRS
                  </>
 
                 ) :
-                Disregarded === "No" ?(<>
+                Disregarded === "No" ?(
+                  <>
                   <Typography
-                    align="center"
-                    className="mt-3"
-                    style={{
-                      fontSize: "26px",
-                      color: "#383a3b",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Form Selection Guide Result
-                  </Typography>
+                   align="center"
+                   className="mt-3"
+                   style={{
+                     fontSize: "26px",
+                     color: "#383a3b",
+                     fontWeight: "bold",
+                   }}
+                 >
+                   Form Selection Guide Result
+                 </Typography>
  
-                  <Typography
-                    align="left"
-                    className="mt-3"
-                    style={{
-                      fontSize: "16px",
-                      color: "#383a3b",
-                    }}
-                  >
-                    We are not authorized to provide tax
-                    advice through this process, but the
-                    answers provided suggest that you may
-                    need to provide a Form W-8BEN-E. A
-                    Form W-8BEN-E is "A Certificate of
-                    Foreign Status of Beneficial Owner for
-                    United States Tax Withholding".
-                  </Typography>
+               
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                     fontWeight: "bold",
+                   }}
+                 >
+                   We are not authorized to provide tax advice through this process, but the answers provided suggest you may need to provide a Form W-8IMY. "Certificate of Foreign Intermediary, Foreign Flow-through Entity, or Certain U.S. Branches for United States Tax Withholding"....
  
-                  <Typography
-                    align="left"
-                    className="mt-3"
-                    style={{
-                      fontSize: "16px",
-                      color: "#383a3b",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Who should submit a Form W-8BEN-E?
-                  </Typography>
+                 </Typography>
  
-                  <Typography
-                    align="left"
-                    className="mt-3"
-                    style={{
-                      fontSize: "16px",
-                      color: "#383a3b",
-                    }}
-                  >
-                    You must provide a valid Form W-8BEN-E
-                    to the withholding agent or payer if
-                    submitting a U.S. tax certificate on
-                    behalf of a Foreign Person who is the
-                    beneficial owner of an amount subject
-                    to U.S. tax withholding. Form W-8BEN-E
-                    should be provided whether or not you
-                    are claiming a reduced rate of, or
-                    exemption from withholding.
-                  </Typography>
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                   }}
+                 >
+                 A valid Form W-IMY and any associated documentation must be provided by:
+                 </Typography>
  
-                  <Typography
-                    align="center"
-                    className="mt-3"
-                    style={{
-                      fontSize: "16px",
-                      color: "#383a3b",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    If you need further guidance you may
-                    wish to contact your local tax
-                    advisers.
-                  </Typography>
-                  <Typography
-                    align="center"
-                    style={{ marginTop: "20px" }}
-                  >
-                    <Button
-                      style={{ fontSize: "16px" }}
-                      size="small"
-                      type="submit"
-                      onClick={() => {
-                        history("/Certificates");
-                      }}
-                      //   onClick={handleClose}
-                      variant="contained"
-                    >
-                      Close
-                    </Button>
-                  </Typography>
-                </> ):""}
+ 
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                   }}
+                 >
+                  Qualified Intermediaries not acting on their own account representing they will provide withholding statements as required
+                 </Typography>
+ 
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                   }}
+                 >
+ Nonqualified intermediaries not acting on their own account and if applicable transmit withholding statements, associated certificates or other documentary evidence as required
+                 </Typography>
+ 
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                   }}
+                 >
+ Foreign Partnerships, Foreign Simple or Grantor Trusts to establish that they are non-withholding for purposes of section 1441 and 1442 and to represent that the income is not effectively connected with a U.S. trade or business; and that the form is being used to transmit withholding certificates and associated documentation as required
+                 </Typography>
+ 
+                 <Typography
+                   align="left"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                   }}
+                 >
+ For a detailed explanation of who should submit a form W-8IMY please see the IRS instructions.
+                 </Typography>
+ 
+ 
+ 
+                 <Typography
+                   align="center"
+                   className="mt-3"
+                   style={{
+                     fontSize: "16px",
+                     color: "#383a3b",
+                     fontWeight: "bold",
+                   }}
+                 >
+                   If you need further guidance you may
+                   wish to contact your local tax
+                   advisers.
+                 </Typography>
+                 <Typography
+                   align="center"
+                   style={{ marginTop: "20px" }}
+                 >
+                   <Button
+                     style={{ fontSize: "16px" }}
+                     size="small"
+                     type="submit"
+                     onClick={() => {
+                       history("/Certificates");
+                     }}
+                     //   onClick={handleClose}
+                     variant="contained"
+                   >
+                     Close
+                   </Button>
+                 </Typography>
+                  </> ):""}
 
 
               </Paper>
