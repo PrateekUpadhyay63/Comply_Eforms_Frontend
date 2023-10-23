@@ -169,7 +169,6 @@ export default function IndividualUs() {
     isAddressPostOfficeBox: "no",
     isCareOfAddress: "no",
     isalternativebusinessaddress: "no",
-    
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
