@@ -86,8 +86,8 @@ export default function IndividualUs() {
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
-    foreignTINNotAvailable: true,
-    alternativeTINFormat: true,
+    foreignTINNotAvailable: false,
+    alternativeTINFormat: false,
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -98,7 +98,7 @@ export default function IndividualUs() {
     isAddressRuralRoute: true,
     isAddressPostOfficeBox: true,
     isCareOfAddress: true,
-    isalternativebusinessaddress: "No",
+    isalternativebusinessaddress: false,
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
     permanentResidentialAptSuite1: "",
@@ -157,7 +157,7 @@ export default function IndividualUs() {
     foreignTINCountryId: 0,
     foreignTIN: "",
     foreignTINNotAvailable: false, //
-    alternativeTINFormat: true, //
+    alternativeTINFormat: false, //
     giin: "",
     permanentResidentialCountryId: 0,
     permanentResidentialStreetNumberandName: "",
@@ -166,8 +166,8 @@ export default function IndividualUs() {
     permanentResidentialStateorProvince: "",
     permanentResidentialZipPostalCode: "",
     isAddressRuralRoute: "yes",
-    isAddressPostOfficeBox: "yes",
-    isCareOfAddress: "yes",
+    isAddressPostOfficeBox: "no",
+    isCareOfAddress: "no",
     isalternativebusinessaddress: "no",
     permanentResidentialCountryId1: 0,
     permanentResidentialStreetNumberandName1: "",
@@ -440,11 +440,11 @@ export default function IndividualUs() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
+    if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 6) {
+    if (e.target.value.length === 12) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
@@ -662,6 +662,7 @@ export default function IndividualUs() {
                           style={{
                             display: "flex",
                             alignItems: "left",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("basics")}
                         >
@@ -1140,6 +1141,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("tax")}
                           >
@@ -1411,7 +1413,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 10 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1549,7 +1551,7 @@ export default function IndividualUs() {
                                   id="foreignTINNotAvailable"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.foreignTINNotAvailable}
-                                  disabled={values.foreignTINCountryId == 0}
+                                  // disabled={values.foreignTINCountryId == 0}
                                   checked={values.foreignTINNotAvailable}
                                   onChange={(e) => {
                                     handleChange(e);
@@ -1587,10 +1589,10 @@ export default function IndividualUs() {
                                   id="alternativeTINFormat"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.alternativeTINFormat}
-                                  disabled={
-                                    values.foreignTINCountryId == 0 ||
-                                    values.foreignTINCountryId != 257
-                                  }
+                                  // disabled={
+                                  //   values.foreignTINCountryId == 0 ||
+                                  //   values.foreignTINCountryId != 257
+                                  // }
                                   checked={values.alternativeTINFormat}
                                   onChange={(e) => {
                                     handleChange(e);
@@ -1757,7 +1759,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 10 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1781,6 +1783,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("pra")}
                           >
@@ -2496,7 +2499,7 @@ export default function IndividualUs() {
                                     label="No"
                                     checked={!values.isCareOfAddress}
                                     onChange={handleChange}
-                                  />
+                                  />foreignTINNotAvailable
                                   <FormControlLabel
                                     value={true}
                                     control={<Radio />}
@@ -2933,6 +2936,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
+                              cursor:"pointer"
                             }}
                             onClick={() => handleOpen("cd")}
                           >
@@ -3363,6 +3367,7 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
                               onClick={() => handleOpen("it")}
                             >
@@ -3732,6 +3737,7 @@ export default function IndividualUs() {
                             display: "flex",
                             alignItems: "left",
                             marginLeft: "13px",
+                            cursor:"pointer"
                           }}
                           onClick={() => handleOpen("pt")}
                         >
@@ -3906,6 +3912,7 @@ export default function IndividualUs() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
+                                  cursor:"pointer"
                                 }}
                                 onClick={() => handleOpen("ai")}
                               >

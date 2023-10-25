@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,ChangeEvent } from "react";
 import { FormControl, Typography, Button, Paper, Tooltip ,Link} from "@mui/material";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -6,20 +6,44 @@ import { useNavigate } from "react-router-dom";
 import checksolid from "../../../../assets/img/check-solid.png";
 // import check from "../../../assets/img/check.png";
 import Accordion from "@mui/material/Accordion";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Factors() {
   const history= useNavigate()
+
+  const [allocation, setAllocation] = useState(''); // State to track allocation input
+
+  const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    setAllocation(inputValue);
+
+  const mirroredText = document.getElementById('mirroredText');
+  if (mirroredText) {
+    mirroredText.innerText = inputValue;
+  }
+};
+
   const [toolInfo, setToolInfo] = useState("");
-
+  const [numPapers, setNumPapers] = useState(1);
+  const addIncomeTypePaper = () => {
+    setNumPapers(numPapers + 1);
+  };
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const deleteIncomeTypePaper = () => {
+    setNumPapers(numPapers - 1);
+  };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+    const [selectedOption, setSelectedOption] = useState('');
 
+    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedValue = event.target.value;
+      setSelectedOption(selectedValue);
+    };
     
   return (
     <section
@@ -176,6 +200,7 @@ export default function Factors() {
       </div>
         <div className="col-8">
       <div style={{ padding: "20px" }}>
+      
         <Paper style={{ padding: "18px" }}>
           <div style={{ margin: "10px" }}>
             <Typography
@@ -264,16 +289,22 @@ If the entity is engaged in a trade or business in the United States during its 
                         ) : (
                           ""
                         )}
-
+{Array.from({ length: numPapers }).map((_, index) => (
             <Paper
               className="paper"
               elevation={3}
               style={{ backgroundColor: "#e8e1e1", marginTop: "10px" }}
             >
-              <div style={{ padding: "20px" }}>
+              <div style={{ padding: "15px" }}>
+              <Typography align="right">
+                              <DeleteIcon
+                                onClick={deleteIncomeTypePaper}
+                                style={{ color: "red", fontSize: "30px" ,cursor:"pointer"}}
+                              />
+                            </Typography>
                 <Typography
                   align="left"
-                  style={{ fontSize: "22px", marginTop: "10px" }}
+                  style={{ fontSize: "22px",  }}
                 >
                   Please select income type{" "}
                   <span style={{ color: "red", fontSize: "30px" }}>*</span>
@@ -311,6 +342,7 @@ If the entity is engaged in a trade or business in the United States during its 
                     </Tooltip>
                   </span>
                 </Typography>
+               
                 {toolInfo === "basic" ? (
                           <div>
                             <Paper
@@ -525,6 +557,8 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     }}
                     name="interestDividendPaymentId"
                     id="Income"
+                    onChange={handleSelectChange}
+                 
                   >
                     <option value={0}>-Select-</option>
                     <option value={1}>Other</option>
@@ -533,7 +567,9 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                   </select>
                 </FormControl>
 
-                {/* step1    <Typography align="left"
+               {selectedOption === "1" &&( 
+              <>
+               <Typography align="left"
                 style={{ fontSize: "22px", marginTop: "10px" }}>
               Please provide an explanation
               <span style={{ color: "red",fontSize:"30px" }}>*</span>
@@ -557,6 +593,8 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               </Typography>
               <FormControl className="w-50">
                 <input
+                 onChange={handleAllocationChange} 
+                 value={allocation}
                 className="col-md-6 col-12"
                   style={{
                     padding: " 0 10px",
@@ -567,8 +605,10 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                   
                   
                 />
-              </FormControl>  */}
+              </FormControl>
+              </>)}
 
+               {selectedOption === "2" &&( <>
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
@@ -602,6 +642,8 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                 </Typography>
                 <FormControl className="w-50">
                   <input
+                   onChange={handleAllocationChange} 
+                   value={allocation}
                     className="col-md-6 col-12"
                     style={{
                       padding: " 0 10px",
@@ -611,25 +653,88 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     }}
                   />
                 </FormControl>
+                </>)}
+
+                {selectedOption ==="3" &&( <>
+                <Typography
+                  align="left"
+                  style={{ fontSize: "22px", marginTop: "10px" }}
+                >
+                  Select where goods are used{" "}
+                  <span style={{ color: "red", fontSize: "30px" }}>*</span>
+                </Typography>
+                <FormControl className="w-100">
+                  <select
+                    className="col-md-6 col-12"
+                    style={{
+                      padding: " 0 10px",
+                      color: "#7e7e7e",
+                      fontStyle: "italic",
+                      height: "50px",
+                      marginBottom: "20px",
+                    }}
+                    name="interestDividendPaymentId"
+                    id="Income"
+                  >
+                    <option value={0}>-Select-</option>
+                  </select>
+                </FormControl>
+
+                <Typography
+                  align="left"
+                  style={{ fontSize: "22px", marginTop: "10px" }}
+                >
+                  Allocation %{" "}
+                  <span style={{ color: "red", fontSize: "30px" }}>*</span>
+                </Typography>
+                <FormControl className="w-50">
+                  <input
+                   onChange={handleAllocationChange} 
+                   value={allocation}
+                    className="col-md-6 col-12"
+                    style={{
+                      padding: " 0 10px",
+                      color: "#7e7e7e",
+                      fontStyle: "italic",
+                      height: "3rem",
+                    }}
+                  />
+                </FormControl>
+                </>)}
               </div>
             </Paper>
+            ))}
             <div style={{ marginTop: "20px", display: "flex" }}>
               <Button
+               onClick={addIncomeTypePaper}
                 variant="contained"
                 size="large"
                 style={{ backgroundColor: "black", color: "white" }}
               >
                 Add Income Type
               </Button>
+              <div className="d-flex">
               <Typography
+             
                 style={{
                   fontWeight: "bold",
                   marginTop: "10px",
                   marginLeft: "10px",
                 }}
               >
-                Total Allocation: 22%
+                Total Allocation:
               </Typography>
+              <Typography
+              id="mirroredText"
+                style={{
+                  fontWeight: "bold",
+                  marginTop: "10px",
+                  marginLeft: "10px",
+                }}
+              >
+               {allocation}
+              </Typography>
+              </div>
             </div>
           </div>
           <div
@@ -639,7 +744,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               marginTop: "80px",
             }}
           >
-            <Button variant="contained" style={{ color: "white" }}>
+            <Button  disabled={allocation !== '100'} variant="contained" style={{ color: "white" }}>
               SAVE & EXIT
             </Button>
             <Button
@@ -649,6 +754,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               View form
             </Button>
             <Button
+             disabled={allocation !== '100'}
             onClick={()=>{
               history("/W-8BEN/Declaration/Non_US_Sorced/Status")
             }}
@@ -688,6 +794,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
             </Button>
           </Typography>
         </Paper>
+   
       </div>
       </div>
 </div>

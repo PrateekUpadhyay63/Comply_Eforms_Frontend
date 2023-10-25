@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {jsPDF} from "jspdf"
+import html2canvas from "html2canvas";
+import Form2 from '../../form2';
+import form1 from "../../../src/form1";
+
 import {
 
     Typography,
@@ -9,6 +14,7 @@ import {
 import Paper from '@mui/material/Paper';
 import DoneIcon from '@mui/icons-material/Done';
 
+import { useRef } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +23,86 @@ import { useNavigate } from 'react-router-dom';
 export default function Term() {
     //States
     const history=useNavigate()
+    const pdfRef = useRef(null);
+    const pdfRefnew = useRef(null);
+    const [notView , setNotView] = useState(false);
+    const exportPDF = () => {
+        // const id = formData.id;
+        
+        // var name = document.getElementById('name');
+        // console.log("Abhay",name)
+        // const element = document.getElementById(id);
+        // console.log(element)
+        // const input = pdfRef.current;
+        let htmlString = form1;
+        // let htmlString =  "<!DOCTYPE html><html><body><p><b>This text is bold</b></p><p><i>This text is italic</i></p><p>This is<sub> subscript</sub> and <sup>superscript</sup></p></body></html>";
 
+    let iframe = document.createElement("iframe");
+    iframe.style.visibility = "hidden";
+    document.body.appendChild(iframe);
+    let iframedoc = iframe.contentDocument ;
+    if(iframedoc){
+        iframedoc.body.innerHTML = htmlString;
+        html2canvas(iframedoc.body, {}).then((canvas) => {
+            const imgWidth = 208;
+            const pageHeight = 295;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+            heightLeft -= pageHeight;
+            const doc = new jsPDF("p", "mm");
+            doc.addImage(canvas, "PNG", 0, position, imgWidth, imgHeight, "", "FAST");
+            while (heightLeft >= 0) {
+              position = heightLeft - imgHeight;
+              doc.addPage();
+              doc.addImage(
+                canvas,
+                "PNG",
+                0,
+                position,
+                imgWidth,
+                imgHeight,
+                "",
+                "FAST"
+              );
+              heightLeft -= pageHeight;
+            }
+            doc.save("Downld.pdf");
+          });
+    }else{
+        console.log("not Found")
+      }
+    
+        // if (input) {
+          // Use html2canvas to capture the content as an image
+          
+        // } else {
+        //   console.error("Element with id 'WECI' not found.");
+        // }
+      }; 
+
+    // const exportPDF = () => {
+    //     const content = pdfRef.current;
+    
+    //     if (content !== null) {
+    //         const doc = new jsPDF();
+    //         doc.html(content, {
+    //             callback: function (pdf) {
+    //                 pdf.save('sample.pdf');
+    //             }
+    //         });
+    //     } else {
+    //         console.error("pdfRef.current is null. Ensure it points to the content you want to export to a PDF.");
+    //     }
+    // };
+    
     return (
-        <section className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+        <section  className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
+            {/* <iframe src={form1}></iframe> */}
+            
+        {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
 
-
+            <Form2 pdfRef={pdfRef}/>
 
             <div className="container-fluid">
 
@@ -60,7 +141,9 @@ export default function Term() {
 
 <Button
     type="submit"
-    
+    onClick={()=>{
+        exportPDF()
+    }}
     style={{
         border: '1px solid #0095dd',
         background: '#0095dd',
