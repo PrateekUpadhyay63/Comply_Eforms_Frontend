@@ -1342,7 +1342,7 @@ export default function IndividualUs() {
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
                               U.S. TIN Type
-                              {/* <span style={{ color: 'red' }}>*</span> */}
+                              <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
                             </Typography>
 
                             <FormControl className="w-100">
@@ -1391,7 +1391,8 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 U.S. TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
+                                <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
+
                               </Typography>
                               <Input
                                 disabled={
@@ -1441,6 +1442,7 @@ export default function IndividualUs() {
                                 onChange={(e) => {
                                   handleChange(e);
                                 }}
+                                
                                 value={values.foreignTINCountryId}
                               >
                                 <option value={0}>-Select-</option>
@@ -1483,6 +1485,8 @@ export default function IndividualUs() {
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
+                                onKeyDown={(e) => formatTin(e, values)}
+                                inputProps={{ maxLength: 10 }}
                                 value={values.foreignTIN}
                               />
                             </FormControl>
@@ -1694,7 +1698,7 @@ export default function IndividualUs() {
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
                               U.S. TIN Type
-                              {/* <span style={{ color: 'red' }}>*</span> */}
+                              <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
                             </Typography>
 
                             <FormControl className="w-100">
@@ -1737,7 +1741,8 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 U.S. TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
+                                <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
+
                               </Typography>
                               <Input
                                 disabled={
@@ -4241,6 +4246,7 @@ export default function IndividualUs() {
                                       name="accountNumber"
                                       placeholder="Enter Account Number"
                                       onChange={handleChange}
+                                      inputProps={{ maxLength: 10 }}
                                       // onBlur={handleBlur}
                                       error={Boolean(
                                         touched.accountNumber &&
