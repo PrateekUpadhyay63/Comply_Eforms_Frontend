@@ -55,6 +55,8 @@ export default function Entity() {
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
+
+  const [values , setValues] = useState({vat: '',vatId: 0,});
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
     agentId: 3,
@@ -139,7 +141,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 0,
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -457,12 +459,16 @@ export default function Entity() {
       "Instructor Identifier Format is ?*********************** \n 9- Numeric Value Only \n A - Alphabetical Character Only \n* = Alphanumeric Character only \n ? - Characters optional after this"
     );
   };
-  const wipeVat = (e:any , values:any)=>{
-    if(e.target.value == 0 || e.target.value == 2){
-      values.vat = ""
-    }
 
-  }
+  
+  const wipeVat = (e:any) => {
+    console.log('wipeVat called');
+    if (e.target.value == 0 || e.target.value == 2) {
+      setTimeout(() => {
+        setValues({ ...values, vat: '' });
+      }, 0);
+    }
+  };
 
   const handleIcome = (e:any, i : number)=>{
     const newValue = e.target.value;
@@ -536,7 +542,9 @@ export default function Entity() {
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
+                console.log("e",values?.usTinTypeId)
                 setSubmitting(true);
+                
                const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
@@ -1181,6 +1189,7 @@ export default function Entity() {
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
                             U.S. TIN Type
+                            <span style={{color:"red" ,verticalAlign:"super"}}>*</span>
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1192,8 +1201,8 @@ export default function Entity() {
                                 height: "36px",
                               }}
                               name="usTinTypeId"
-                              id="Income"
-                              defaultValue={1}
+                              id="usTinTypeId"
+                              
                               onChange={handleChange}
                               value={values.usTinTypeId}
                             >
@@ -1205,16 +1214,20 @@ export default function Entity() {
                               <option value="6">U.S. TIN not applicable</option>
                               <option value="7">U.S. TIN not available</option>
                             </select>
+                           
                           </FormControl>
+                          <p className="error">{errors.usTinTypeId}</p>
+                          
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
-                            <Typography align="left">U.S. TIN</Typography>
+                            <Typography align="left">U.S.TIN</Typography>
                             <Input
                               disabled={
                                 values.usTinTypeId == 6 ||
-                                values.usTinTypeId == 7
+                                values.usTinTypeId == 7 ||
+                                values.usTinTypeId == 1
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -1236,6 +1249,7 @@ export default function Entity() {
                               value={values.usTin}
                             />
                           </FormControl>
+                          <p className="error">{errors.usTin}</p>
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
@@ -1427,14 +1441,16 @@ export default function Entity() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={(e)=>{
+                                    onChange={(e) => {
                                       handleChange(e);
-                                      wipeVat(e , values);
+                                      wipeVat(e);
                                     }}
                                     value={values.vatId}
-                                    onClick={(e)=>{
-                                      wipeVat(e , values);
+                                    onClick={(e) => {
+                                      wipeVat(e);
                                     }}
+                                   
+                                    
                                   >
                                     <option value={0}>-Select-</option>
                                     <option value={1}>My VAT Number is</option>
@@ -1487,6 +1503,7 @@ export default function Entity() {
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
                             U.S. TIN Type
+                            <span style={{color:"red" , verticalAlign:"super"}}>*</span>  
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1506,13 +1523,20 @@ export default function Entity() {
                               <option value="1">-Select-</option>
                               <option value="2">EIN</option>
                             </select>
+                            <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
-                            <Typography align="left">U.S. TIN</Typography>
+                            <Typography align="left">U.S. TIN
+                            <span style={{color:"red" , verticalAlign:"super"}}>*</span>  
+                            </Typography>
                             <Input
+                             disabled={
+                             
+                              values.usTinTypeId == 1
+                            }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -3951,6 +3975,7 @@ export default function Entity() {
                                       touched.accountNumber &&
                                         errors.accountNumber
                                     )}
+                                    inputProps={{ maxLength: 10 }}
                                     value={values.accountNumber}
                                   />
                                   <p
@@ -4493,6 +4518,7 @@ export default function Entity() {
                                       touched.accountNumber &&
                                         errors.accountNumber
                                     )}
+                                    inputProps={{ maxLength: 10 }}
                                     value={values.accountNumber}
                                   />
                                   <p
