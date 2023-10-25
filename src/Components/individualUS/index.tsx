@@ -329,7 +329,6 @@ export default function IndividualUs() {
               placeholder="Enter ABA / Routing"
               onChange={handleChange}
               // onBlur={handleBlur}
-
               error={Boolean(touched.abaRouting && errors.abaRouting)}
               value={values.abaRouting}
             />
