@@ -47,6 +47,7 @@ import "react-calendar/dist/Calendar.css";
 // import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
+import { log } from "console";
 // import { CheckBox } from '@mui/icons-material';
 type ValuePiece = Date | null;
 console.log(Date, "date");
@@ -238,9 +239,8 @@ export default function IndividualUs() {
         console.log("Data");
       })
     );
-    
   }, []);
-  
+
   const GetTinTypesData = useSelector(
     (state: any) => state.GetTinTypesReducer.GetTinTypesData
   );
@@ -249,7 +249,6 @@ export default function IndividualUs() {
     (state: any) => state.GetAgentPaymentTypeReducer.GetAgentPaymentTypeData
   );
 
-  
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -258,16 +257,16 @@ export default function IndividualUs() {
   );
   const GetAllIncomeCodesReducer = useSelector(
     (state: any) => state.GetAllIncomeCodesReducer
-    );
-    const GetStateByCountryIdReducer = useSelector(
-      (state: any) => state.GetStateByCountryIdReducer
-      );
-      
-      const redirectFunc = () => {
-        history("/Term");
-      };
-      
-      // const history = useNavigate();
+  );
+  const GetStateByCountryIdReducer = useSelector(
+    (state: any) => state.GetStateByCountryIdReducer
+  );
+
+  const redirectFunc = () => {
+    history("/Term");
+  };
+
+  // const history = useNavigate();
 
   const handleOpen = (val: any) => {
     if (open === val) {
@@ -465,12 +464,46 @@ export default function IndividualUs() {
 
   // }
 
+  function returnTinValues(value: any) {
+    if (value?.isUSIndividual === "yes") {
+      return selectUSCitizenOptions?.map((ele: any) => (
+        <option key={ele?.taxpayerIdTypeID} value={ele?.taxpayerIdTypeID}>
+          {ele?.taxpayerIdTypeName}
+        </option>
+      ));
+    }
+    if (value?.isUSIndividual === "no") {
+      return selectNON_USCitizenOptions?.map((ele: any) => (
+        <option key={ele?.taxpayerIdTypeID} value={ele?.taxpayerIdTypeID}>
+          {ele?.taxpayerIdTypeName}
+        </option>
+      ));
+    }
+    return null; 
+  }
+  
+
   const handleIcome = (e: any, i: number) => {
     const newValue = e.target.value;
     const updatedIncomeArr = [...incomeArr];
     updatedIncomeArr[i] = newValue;
     setIncomeArr(updatedIncomeArr);
   };
+  let selectCitizenOptions: Array<string> = [];
+  let selectUSCitizenOptions: Array<string> = [];
+  let selectNON_USCitizenOptions: Array<string> = [];
+
+  selectCitizenOptions = GetTinTypesData?.map((ele: any) => {
+    if (ele.nonUSIndividual == true) {
+      selectNON_USCitizenOptions.push(ele);
+    }
+    if (ele.usIndividual == true) {
+      selectUSCitizenOptions.push(ele);
+    }
+  });
+  console.log(selectNON_USCitizenOptions, "selectNON_USCitizenOptions");
+  console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
+
   return (
     <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
       <Typography
@@ -649,7 +682,7 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                  <>{console.log(values, "hbd", errors)}</>
+                  <>{console.log(values, "hbd")}</>
                   <CardHeader
                     className="flex-row-reverse"
                     title={
@@ -662,7 +695,7 @@ export default function IndividualUs() {
                           style={{
                             display: "flex",
                             alignItems: "left",
-                            cursor:"pointer"
+                            cursor: "pointer",
                           }}
                           onClick={() => handleOpen("basics")}
                         >
@@ -786,17 +819,12 @@ export default function IndividualUs() {
                           </Typography>
 
                           <div className="d-flex">
-                            <FormControl
-                              error={Boolean(
-                               errors.isUSIndividual
-                              )}
-                            >
+                            <FormControl error={Boolean(errors.isUSIndividual)}>
                               <RadioGroup
                                 id="isUSIndividual"
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.isUSIndividual}
-
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
@@ -868,9 +896,7 @@ export default function IndividualUs() {
                             placeholder="Enter Instructor Identifier"
                             onChange={handleChange}
                             // onBlur={handleBlur}
-                            error={Boolean(
-                                errors.uniqueIdentifier
-                            )}
+                            error={Boolean(errors.uniqueIdentifier)}
                             value={values.uniqueIdentifier}
                           />
                           <p className="error">{errors.uniqueIdentifier}</p>
@@ -901,9 +927,7 @@ export default function IndividualUs() {
                               name="firstName"
                               placeholder="Enter First Name"
                               // onBlur={handleBlur}
-                              error={Boolean(
-                                errors.firstName
-                              )}
+                              error={Boolean(errors.firstName)}
                               onChange={handleChange}
                               value={values.firstName}
                             />
@@ -1141,7 +1165,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
-                              cursor:"pointer"
+                              cursor: "pointer",
                             }}
                             onClick={() => handleOpen("tax")}
                           >
@@ -1343,7 +1367,6 @@ export default function IndividualUs() {
                               U.S. TIN Type
                               {/* <span style={{ color: 'red' }}>*</span> */}
                             </Typography>
-
                             <FormControl className="w-100">
                               <select
                                 style={{
@@ -1358,34 +1381,13 @@ export default function IndividualUs() {
                                 onChange={handleChange}
                                 value={values.usTinTypeId}
                               >
-                                <option value="1">-Select-</option>
-                                {/* {GetTinTypesData?.map(
-                                (ele: object) => (
-                                  {ele?.nonUSIndividual && values?.isUSIndividual=="no" || ele?.usIndividual && values?.isUSIndividual=="Yes" ? (<option key={ele?.taxpayerIdTypeID} value={ele?.taxpayerIdTypeID}>
-                                    {ele?.taxpayerIdTypeName}
-                                  </option>
-                                ):null}))} */}
+                                <option value={0}>-Select-</option>
+                                {returnTinValues(values)}
                               </select>
                             </FormControl>
-                                {GetTinTypesData?.map((ele: any) => {
-                                  // ele?.nonUSIndividual &&
-                                  //   values?.isUSIndividual == "no" ||
-                                  // ele?.usIndividual &&
-                                  //   values?.isUSIndividual == "Yes" ? 
-                                  // (
-                                    <option
-                                      key={ele?.taxpayerIdTypeID}
-                                      value={ele?.taxpayerIdTypeID}
-                                    >
-                                      {ele?.taxpayerIdTypeName}
-                                    </option>
-                                  // ) : (
-                                  //   ""
-                                  // );
-                                })}
                           </div>
 
-                         <>{console.log(values,"values")}</>
+                          <>{console.log(values, "values")}</>
                           <div className="col-lg-3 col-6 col-md-3">
                             <FormControl className="w-100">
                               <Typography align="left">
@@ -1709,22 +1711,24 @@ export default function IndividualUs() {
                                 defaultValue={1}
                                 onChange={handleChange}
                                 value={values.usTinTypeId}
-                              >{
-                                console.log(GetTinTypesData,"GetTinTypesData")
-                              }
+                              >
+                                {console.log(
+                                  GetTinTypesData,
+                                  "GetTinTypesData"
+                                )}
                                 <option value="1">-Select-</option>
                                 {GetTinTypesData?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
-                                  //   values?.isUSIndividual == "Yes" ? 
+                                  //   values?.isUSIndividual == "Yes" ?
                                   // (
-                                    <option
-                                      key={ele?.taxpayerIdTypeID}
-                                      value={ele?.taxpayerIdTypeID}
-                                    >
-                                      {ele?.taxpayerIdTypeName}
-                                    </option>
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
                                   // ) : (
                                   //   ""
                                   // );
@@ -1783,7 +1787,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
-                              cursor:"pointer"
+                              cursor: "pointer",
                             }}
                             onClick={() => handleOpen("pra")}
                           >
@@ -2936,7 +2940,7 @@ export default function IndividualUs() {
                             style={{
                               display: "flex",
                               alignItems: "left",
-                              cursor:"pointer"
+                              cursor: "pointer",
                             }}
                             onClick={() => handleOpen("cd")}
                           >
@@ -3367,7 +3371,7 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
-                                cursor:"pointer"
+                                cursor: "pointer",
                               }}
                               onClick={() => handleOpen("it")}
                             >
@@ -3737,7 +3741,7 @@ export default function IndividualUs() {
                             display: "flex",
                             alignItems: "left",
                             marginLeft: "13px",
-                            cursor:"pointer"
+                            cursor: "pointer",
                           }}
                           onClick={() => handleOpen("pt")}
                         >
@@ -3871,13 +3875,14 @@ export default function IndividualUs() {
                               value={values.paymentTypeId}
                             >
                               <option value="">Select</option>
-                              {GetAgentPaymentTypeData?.map(
-                                        (ele: any) => (
-                                          <option key={ele?.paymentTypeId} value={ele?.paymentTypeId}>
-                                            {ele?.name}
-                                          </option>
-                                        )
-                                      )}
+                              {GetAgentPaymentTypeData?.map((ele: any) => (
+                                <option
+                                  key={ele?.paymentTypeId}
+                                  value={ele?.paymentTypeId}
+                                >
+                                  {ele?.name}
+                                </option>
+                              ))}
                             </select>
                             {/* <p className="error">{errors.paymentTypeId}</p> */}
                             {/* <Delete
@@ -3912,7 +3917,7 @@ export default function IndividualUs() {
                                 style={{
                                   display: "flex",
                                   alignItems: "left",
-                                  cursor:"pointer"
+                                  cursor: "pointer",
                                 }}
                                 onClick={() => handleOpen("ai")}
                               >
