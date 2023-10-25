@@ -1395,7 +1395,8 @@ export default function IndividualUs() {
                               <Input
                                 disabled={
                                   values.usTinTypeId == 3 ||
-                                  values.usTinTypeId == 4
+                                  values.usTinTypeId == 4 ||
+                                  values.usTinTypeId == 1
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -1741,7 +1742,8 @@ export default function IndividualUs() {
                               <Input
                                 disabled={
                                   values.usTinTypeId == 3 ||
-                                  values.usTinTypeId == 4
+                                  values.usTinTypeId == 4 ||
+                                  values.usTinTypeId == 1
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
