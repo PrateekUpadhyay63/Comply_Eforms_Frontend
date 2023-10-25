@@ -1,23 +1,39 @@
 import Utils from "../../Utils";
 // import { postSecurityCode } from "../Actions";
 
-const {LOGIN,GetCountries,getBreadCrums,GetAgentPaymentType,GetTinTypes,GetSecurityQuestions,GetCountriesCode,GetAllIncomeCodes,GetStateByCountryId,W9PDF,postSecurutyCode}= Utils.actionName
+const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, GetSecurityQuestions, GetCountriesCode, GetAllIncomeCodes, GetStateByCountryId, W9PDF, postSecurutyCode,
+  GetAgentCapacityHiddenForEform,
+  GetAgentChapter4EntityTypeHiddenForEform,
+  GetAgentChapter3EntityTypeHiddenForEform,
+  GetAgentChapter4EntityTypeImportantForEform,
+  GetAgentDocumentationMandatoryForEform,
+  GetAgentExemptionCodeDisabledForEform,
+  GetAgentIncomeCodeHiddenForEform,
+  GetAgentUSVisaTypeHiddenForEform,
+  GetAgentFATCAExemptionCodeHiddenForEform,
+  GetAgentFATCAEntityGIINChallengeDisabledForEform,
+  GetAgentSPTQuestionHiddenForEform,
+  GetAgentWrittenStatementSelectionByAgentIdForEform,
+  GetAgentTINTypeSelectionByIdForEform
 
 
-  let initialState:any = [];
+} = Utils.actionName
 
-  
 
-  export const loginReducer = (state = initialState, action:any) => {
-    switch (action.type) {
-      case LOGIN:
-        return { ...state, ...action.payload };
-      default:
-        return state;
-    }
+let initialState: any = [];
+
+
+
+export const loginReducer = (state = initialState, action: any) => {
+  switch (action.type) {
+    case LOGIN:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
 }
 
-export const getCountriesReducer = (state = initialState, action:any) => {
+export const getCountriesReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case GetCountries:
       return { ...state, ...action.payload };
@@ -26,7 +42,7 @@ export const getCountriesReducer = (state = initialState, action:any) => {
   }
 };
 
-export const getCountriesCodeReducer = (state = initialState, action:any) => {
+export const getCountriesCodeReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case GetCountriesCode:
       return { ...state, ...action.payload };
@@ -35,7 +51,7 @@ export const getCountriesCodeReducer = (state = initialState, action:any) => {
   }
 };
 
-export const GetAllIncomeCodesReducer = (state = initialState, action:any) => {
+export const GetAllIncomeCodesReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case GetAllIncomeCodes:
       return { ...state, ...action.payload };
@@ -44,7 +60,7 @@ export const GetAllIncomeCodesReducer = (state = initialState, action:any) => {
   }
 };
 
-export const GetStateByCountryIdReducer = (state = initialState, action:any):any => {
+export const GetStateByCountryIdReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetStateByCountryId:
       return { ...state, ...action.payload };
@@ -55,7 +71,7 @@ export const GetStateByCountryIdReducer = (state = initialState, action:any):any
 
 
 //PDF Reducers
-export const W9PDFReducer = (state = initialState, action:any):any => {
+export const W9PDFReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case W9PDF:
       return { ...state, ...action.payload };
@@ -64,7 +80,7 @@ export const W9PDFReducer = (state = initialState, action:any):any => {
   }
 };
 
-export const postSecurityCodeReducer= (state = initialState, action:any):any => {
+export const postSecurityCodeReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case postSecurutyCode:
       return { ...state, ...action.payload };
@@ -73,7 +89,7 @@ export const postSecurityCodeReducer= (state = initialState, action:any):any => 
   }
 };
 
-export const getSecurityQuestionsReducer= (state = initialState, action:any):any => {
+export const getSecurityQuestionsReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetSecurityQuestions:
       return { ...state, ...action.payload };
@@ -82,7 +98,7 @@ export const getSecurityQuestionsReducer= (state = initialState, action:any):any
   }
 };
 
-export const getBreadCrumsReducer= (state = initialState, action:any):any => {
+export const getBreadCrumsReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case getBreadCrums:
       return { ...state, ...action.payload };
@@ -92,7 +108,7 @@ export const getBreadCrumsReducer= (state = initialState, action:any):any => {
 };
 
 
-export const GetTinTypesReducer= (state = initialState, action:any):any => {
+export const GetTinTypesReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetTinTypes:
       return { ...state, ...action.payload };
@@ -101,7 +117,7 @@ export const GetTinTypesReducer= (state = initialState, action:any):any => {
   }
 };
 
-export const GetAgentPaymentTypeReducer= (state = initialState, action:any):any => {
+export const GetAgentPaymentTypeReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetAgentPaymentType:
       return { ...state, ...action.payload };
@@ -110,7 +126,119 @@ export const GetAgentPaymentTypeReducer= (state = initialState, action:any):any 
   }
 };
 
+export const GetAgentCapacityHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentCapacityHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
+export const GetAgentChapter4EntityTypeHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentChapter4EntityTypeHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
+export const GetAgentChapter3EntityTypeHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentChapter3EntityTypeHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
+export const GetAgentChapter4EntityTypeImportantForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentChapter4EntityTypeImportantForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
+export const GetAgentDocumentationMandatoryForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentDocumentationMandatoryForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentExemptionCodeDisabledForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentExemptionCodeDisabledForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentIncomeCodeHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentIncomeCodeHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentUSVisaTypeHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentUSVisaTypeHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentFATCAExemptionCodeHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentFATCAExemptionCodeHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentFATCAEntityGIINChallengeDisabledForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentFATCAEntityGIINChallengeDisabledForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentSPTQuestionHiddenForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentSPTQuestionHiddenForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentWrittenStatementSelectionByAgentIdForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentWrittenStatementSelectionByAgentIdForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetAgentTINTypeSelectionByIdForEformReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentTINTypeSelectionByIdForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};

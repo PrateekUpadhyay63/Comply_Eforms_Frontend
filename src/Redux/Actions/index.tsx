@@ -375,3 +375,305 @@ export const postFormSelection = (value: any, callback: Function): any => {
     );
   };
 };
+
+
+////
+
+export const GetAgentCapacityHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentCapacityHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentCapacityHiddenForEform,
+            payload: {
+              GetAgentCapacityHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentChapter4EntityTypeHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentChapter4EntityTypeHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentChapter4EntityTypeHiddenForEform,
+            payload: {
+              GetAgentChapter4EntityTypeHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentChapter3EntityTypeHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentChapter3EntityTypeHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentChapter3EntityTypeHiddenForEform,
+            payload: {
+              GetAgentChapter3EntityTypeHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentChapter4EntityTypeImportantForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentChapter4EntityTypeImportantForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentChapter4EntityTypeImportantForEform,
+            payload: {
+              GetAgentChapter4EntityTypeImportantForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentDocumentationMandatoryForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentDocumentationMandatoryForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentDocumentationMandatoryForEform,
+            payload: {
+              GetAgentDocumentationMandatoryForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentExemptionCodeDisabledForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentExemptionCodeDisabledForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentExemptionCodeDisabledForEform,
+            payload: {
+              GetAgentExemptionCodeDisabledForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentIncomeCodeHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentIncomeCodeHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentIncomeCodeHiddenForEform,
+            payload: {
+              GetAgentIncomeCodeHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentUSVisaTypeHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentUSVisaTypeHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentUSVisaTypeHiddenForEform,
+            payload: {
+              GetAgentUSVisaTypeHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentFATCAExemptionCodeHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentFATCAExemptionCodeHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentFATCAExemptionCodeHiddenForEform,
+            payload: {
+              GetAgentFATCAExemptionCodeHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentFATCAEntityGIINChallengeDisabledForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentFATCAEntityGIINChallengeDisabledForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentFATCAEntityGIINChallengeDisabledForEform,
+            payload: {
+              GetAgentFATCAEntityGIINChallengeDisabledForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+export const GetAgentSPTQuestionHiddenForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentSPTQuestionHiddenForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentSPTQuestionHiddenForEform,
+            payload: {
+              GetAgentSPTQuestionHiddenForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+export const GetAgentWrittenStatementSelectionByAgentIdForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentWrittenStatementSelectionByAgentIdForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentWrittenStatementSelectionByAgentIdForEform,
+            payload: {
+              GetAgentWrittenStatementSelectionByAgentIdForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};
+
+
+export const GetAgentTINTypeSelectionByIdForEformAction = (): any => {
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentTINTypeSelectionByIdForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentTINTypeSelectionByIdForEform,
+            payload: {
+              GetAgentTINTypeSelectionByIdForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+};

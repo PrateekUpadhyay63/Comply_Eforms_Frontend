@@ -141,7 +141,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 0,
+    usTinTypeId: 1,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -1223,7 +1223,8 @@ export default function Entity() {
                             <Input
                               disabled={
                                 values.usTinTypeId == 6 ||
-                                values.usTinTypeId == 7
+                                values.usTinTypeId == 7 ||
+                                values.usTinTypeId == 1
                               }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -1527,6 +1528,10 @@ export default function Entity() {
                             <span style={{color:"red" , verticalAlign:"super"}}>*</span>  
                             </Typography>
                             <Input
+                             disabled={
+                             
+                              values.usTinTypeId == 1
+                            }
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",

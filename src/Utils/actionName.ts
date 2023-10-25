@@ -21,7 +21,20 @@ const ActionName = {
     GetAgentPaymentType:"GetAgentPaymentType",
     //PDFs
     W9PDF:"W9PDF",
-  
+    //
+    GetAgentCapacityHiddenForEform: "GetAgentCapacityHiddenForEform",
+    GetAgentChapter4EntityTypeHiddenForEform: "GetAgentChapter4EntityTypeHiddenForEform",
+    GetAgentChapter3EntityTypeHiddenForEform: "GetAgentChapter3EntityTypeHiddenForEform",
+    GetAgentChapter4EntityTypeImportantForEform: "GetAgentChapter4EntityTypeImportantForEform",
+    GetAgentDocumentationMandatoryForEform: "GetAgentDocumentationMandatoryForEform",
+    GetAgentExemptionCodeDisabledForEform: "GetAgentExemptionCodeDisabledForEform",
+    GetAgentIncomeCodeHiddenForEform: "GetAgentIncomeCodeHiddenForEform",
+    GetAgentUSVisaTypeHiddenForEform: "GetAgentUSVisaTypeHiddenForEform",
+    GetAgentFATCAExemptionCodeHiddenForEform: "GetAgentFATCAExemptionCodeHiddenForEform",
+    GetAgentFATCAEntityGIINChallengeDisabledForEform: "GetAgentFATCAEntityGIINChallengeDisabledForEform",
+    GetAgentSPTQuestionHiddenForEform: "GetAgentSPTQuestionHiddenForEform",
+    GetAgentWrittenStatementSelectionByAgentIdForEform: "GetAgentWrittenStatementSelectionByAgentIdForEform",
+    GetAgentTINTypeSelectionByIdForEform: "GetAgentTINTypeSelectionByIdForEform",
   };
 
   export default ActionName;
