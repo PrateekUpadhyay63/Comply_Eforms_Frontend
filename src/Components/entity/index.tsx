@@ -536,7 +536,9 @@ export default function Entity() {
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
+                console.log("e",values?.usTinTypeId)
                 setSubmitting(true);
+                
                const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
@@ -1192,8 +1194,8 @@ export default function Entity() {
                                 height: "36px",
                               }}
                               name="usTinTypeId"
-                              id="Income"
-                              defaultValue={1}
+                              id="usTinTypeId"
+                              
                               onChange={handleChange}
                               value={values.usTinTypeId}
                             >
@@ -1205,12 +1207,15 @@ export default function Entity() {
                               <option value="6">U.S. TIN not applicable</option>
                               <option value="7">U.S. TIN not available</option>
                             </select>
+                           
                           </FormControl>
+                          <p className="error">{errors.usTinTypeId}</p>
+                          
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
-                            <Typography align="left">U.S. TIN</Typography>
+                            <Typography align="left">U.S.TIN</Typography>
                             <Input
                               disabled={
                                 values.usTinTypeId == 6 ||
@@ -1237,6 +1242,7 @@ export default function Entity() {
                               value={values.usTin}
                             />
                           </FormControl>
+                          <p className="error">{errors.usTin}</p>
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
@@ -1507,6 +1513,7 @@ export default function Entity() {
                               <option value="1">-Select-</option>
                               <option value="2">EIN</option>
                             </select>
+                            <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>
                         </div>
 

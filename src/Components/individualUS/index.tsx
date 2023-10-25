@@ -1366,6 +1366,7 @@ export default function IndividualUs() {
                                   </option>
                                 ):null}))} */}
                               </select>
+                              <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
                                 {GetTinTypesData?.map((ele: any) => {
                                   // ele?.nonUSIndividual &&
@@ -1731,6 +1732,7 @@ export default function IndividualUs() {
                                   // );
                                 ))}
                               </select>
+                               <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mx-2">

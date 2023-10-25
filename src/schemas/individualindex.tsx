@@ -23,6 +23,7 @@ export const individualSchema = () => {
           .required("Please select a country")
           .notOneOf([0], "Please select a valid country"),
     }),
+    usTinTypeId: Yup.number().notOneOf([1], "Please select a valid option"),
     dob: Yup.date().when("isUSIndividual", {
       is: "no",
       then: () => Yup.date().required("Please Enter DOB"),
