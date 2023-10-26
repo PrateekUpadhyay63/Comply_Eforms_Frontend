@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {jsPDF} from "jspdf"
 import html2canvas from "html2canvas";
-import Form2 from '../../form2';
+// import Form2 from '../../form2';
 import form1 from "../../../src/form1";
 
 import {
@@ -26,14 +26,9 @@ export default function Term() {
     const pdfRef = useRef(null);
     const pdfRefnew = useRef(null);
     const [notView , setNotView] = useState(false);
+
     const exportPDF = () => {
-        // const id = formData.id;
-        
-        // var name = document.getElementById('name');
-        // console.log("Abhay",name)
-        // const element = document.getElementById(id);
-        // console.log(element)
-        // const input = pdfRef.current;
+
         let htmlString = form1;
         // let htmlString =  "<!DOCTYPE html><html><body><p><b>This text is bold</b></p><p><i>This text is italic</i></p><p>This is<sub> subscript</sub> and <sup>superscript</sup></p></body></html>";
 
@@ -44,8 +39,8 @@ export default function Term() {
     if(iframedoc){
         iframedoc.body.innerHTML = htmlString;
         html2canvas(iframedoc.body, {}).then((canvas) => {
-            const imgWidth = 208;
-            const pageHeight = 295;
+            const imgWidth = 100;
+            const pageHeight = 100;
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             let heightLeft = imgHeight;
             let position = 0;
@@ -72,38 +67,15 @@ export default function Term() {
     }else{
         console.log("not Found")
       }
-    
-        // if (input) {
-          // Use html2canvas to capture the content as an image
-          
-        // } else {
-        //   console.error("Element with id 'WECI' not found.");
-        // }
       }; 
 
-    // const exportPDF = () => {
-    //     const content = pdfRef.current;
-    
-    //     if (content !== null) {
-    //         const doc = new jsPDF();
-    //         doc.html(content, {
-    //             callback: function (pdf) {
-    //                 pdf.save('sample.pdf');
-    //             }
-    //         });
-    //     } else {
-    //         console.error("pdfRef.current is null. Ensure it points to the content you want to export to a PDF.");
-    //     }
-    // };
-    
     return (
         <section  className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
             {/* <iframe src={form1}></iframe> */}
             
         {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
 
-            <Form2 pdfRef={pdfRef}/>
-
+          
             <div className="container-fluid">
 
 

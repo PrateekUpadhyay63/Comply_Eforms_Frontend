@@ -1205,9 +1205,10 @@ export default function IndividualUs() {
                               />
                             </Tooltip>
                           </div>
-                          <p className="error">
-                            {errors?.vatId
-                              ? "Mandatory information Required"
+                          <p className="error mb-0">
+                            {errors?.usTinTypeId ||
+                            errors?.usTin 
+                              ? "Mandatory information required"
                               : ""}
                           </p>
                         </div>
@@ -1378,7 +1379,12 @@ export default function IndividualUs() {
                                 name="usTinTypeId"
                                 id="Income"
                                 defaultValue={"1"}
-                                onChange={handleChange}
+                                onChange={(e:any) => {
+                                  handleChange(e);
+
+                                  if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
+                                  
+                                }}
                                 value={values.usTinTypeId}
                               >
                                 <option value={0}>-Select-</option>
@@ -1400,7 +1406,7 @@ export default function IndividualUs() {
                                 disabled={
                                   values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
-                                  values.usTinTypeId == 1
+                                  values.usTinTypeId == 0
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -1647,7 +1653,12 @@ export default function IndividualUs() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={handleChange}
+                                    onChange={(e:any) => {
+                                      handleChange(e);
+
+                                      if(e.target.value == 2 || e.target.value == 0) setFieldValue("vat" , "")
+                                      
+                                    }}
                                     value={values.vatId}
                                   >
                                     <option value={0}>-Select-</option>
@@ -1715,7 +1726,12 @@ export default function IndividualUs() {
                                 name="usTinTypeId"
                                 id="Income"
                                 defaultValue={1}
-                                onChange={handleChange}
+                                onChange={(e:any) => {
+                                  handleChange(e);
+
+                                  if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
+                                  
+                                }}
                                 value={values.usTinTypeId}
                               >
                                 {console.log(
@@ -1751,7 +1767,7 @@ export default function IndividualUs() {
 
                               </Typography>
                               <Input
-                                disabled={
+                                  disabled={
                                   values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
                                   values.usTinTypeId == 1

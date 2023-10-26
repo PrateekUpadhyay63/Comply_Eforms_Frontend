@@ -25,7 +25,8 @@ const dynamicData = {
   };
 
 
-const form1 =  `
+const form1 =  
+`
 <!DOCTYPE html>
 <html lang="en">
 <head>

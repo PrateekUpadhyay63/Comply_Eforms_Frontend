@@ -461,14 +461,6 @@ export default function Entity() {
   };
 
   
-  const wipeVat = (e:any) => {
-    console.log('wipeVat called');
-    if (e.target.value == 0 || e.target.value == 2) {
-      setTimeout(() => {
-        setValues({ ...values, vat: '' });
-      }, 0);
-    }
-  };
 
   const handleIcome = (e:any, i : number)=>{
     const newValue = e.target.value;
@@ -1036,8 +1028,11 @@ export default function Entity() {
                           />
                         </Tooltip>
                         </div>
-                        <p className="error">
-                            {errors?.vatId ? "Mandatory information required" : ""}
+                        <p className="error mb-0">
+                            {errors?.usTinTypeId ||
+                            errors?.usTin 
+                              ? "Mandatory information required"
+                              : ""}
                           </p>
                       </div>
                     }
@@ -1203,7 +1198,12 @@ export default function Entity() {
                               name="usTinTypeId"
                               id="usTinTypeId"
                               
-                              onChange={handleChange}
+                              onChange={(e:any) => {
+                                handleChange(e);
+
+                                if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
+                                
+                              }}
                               value={values.usTinTypeId}
                             >
                               <option value="1">-Select-</option>
@@ -1441,15 +1441,14 @@ export default function Entity() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={(e) => {
+                                    onChange={(e:any) => {
                                       handleChange(e);
-                                      wipeVat(e);
+
+                                      if(e.target.value == 2 || e.target.value == 0) setFieldValue("vat" , "")
+                                      
                                     }}
                                     value={values.vatId}
-                                    onClick={(e) => {
-                                      wipeVat(e);
-                                    }}
-                                   
+                                    
                                     
                                   >
                                     <option value={0}>-Select-</option>
@@ -1517,7 +1516,12 @@ export default function Entity() {
                               name="usTinTypeId"
                               id="Income"
                               defaultValue={1}
-                              onChange={handleChange}
+                              onChange={(e:any) => {
+                                handleChange(e);
+
+                                if(e.target.value == 0) setFieldValue("usTin" , "")
+                                
+                              }}
                               value={values.usTinTypeId}
                             >
                               <option value="1">-Select-</option>
