@@ -39,8 +39,8 @@ export default function Term() {
     if(iframedoc){
         iframedoc.body.innerHTML = htmlString;
         html2canvas(iframedoc.body, {}).then((canvas) => {
-            const imgWidth = 100;
-            const pageHeight = 100;
+            const imgWidth = 10  ;
+            const pageHeight = 10;
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             let heightLeft = imgHeight;
             let position = 0;

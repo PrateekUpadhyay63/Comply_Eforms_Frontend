@@ -18,6 +18,7 @@ import {
   ControlPointOutlined,
   Info,
   Delete,
+  DisabledByDefault,
 } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +36,7 @@ import {
   getAllCountriesCode,
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
+  GetAgentUSVisaTypeHiddenForEformAction,
   getTinTypes,
   GetAgentPaymentType,
 } from "../../Redux/Actions";
@@ -54,6 +56,7 @@ console.log(Date, "date");
 type Value2 = ValuePiece | [ValuePiece, ValuePiece];
 export default function IndividualUs() {
   //States
+  const [vatdata , setVatData] = useState("");
   const [incomeData, setIncomeData] = useState<any>([]);
   const [value, onChange] = useState<Value2>(null);
   const history = useNavigate();
@@ -226,6 +229,7 @@ export default function IndividualUs() {
 
   useEffect(() => {
     dispatch(getAllCountries());
+    dispatch(GetAgentUSVisaTypeHiddenForEformAction());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
@@ -256,11 +260,22 @@ export default function IndividualUs() {
     (state: any) => state.getCountriesCodeReducer
   );
   const GetAllIncomeCodesReducer = useSelector(
+    
     (state: any) => state.GetAllIncomeCodesReducer
   );
+  // console.log("GetAllIncomeCodesReducer" , GetAllIncomeCodesReducer)
+
+  
   const GetStateByCountryIdReducer = useSelector(
     (state: any) => state.GetStateByCountryIdReducer
   );
+
+  const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+    state.GetAgentUSVisaTypeHiddenForEformReducer.GetAgentUSVisaTypeHiddenForEform
+
+  )
+  console.log("eghjkl;",GetAgentUSVisaTypeHiddenForEform)
+
 
   const redirectFunc = () => {
     history("/Term");
@@ -1565,8 +1580,10 @@ export default function IndividualUs() {
                                   id="foreignTINNotAvailable"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.foreignTINNotAvailable}
-                                  // disabled={values.foreignTINCountryId == 0}
+                                
                                   checked={values.foreignTINNotAvailable}
+                                 disabled={values.foreignTINCountryId == 0}
+                                  
                                   onChange={(e) => {
                                     handleChange(e);
                                     if (e.target.value)
@@ -1607,7 +1624,9 @@ export default function IndividualUs() {
                                   //   values.foreignTINCountryId == 0 ||
                                   //   values.foreignTINCountryId != 257
                                   // }
+                                 
                                   checked={values.alternativeTINFormat}
+                                 disabled={values.foreignTINCountryId == 0}
                                   onChange={(e) => {
                                     handleChange(e);
                                     if (e.target.value)
@@ -1657,6 +1676,7 @@ export default function IndividualUs() {
                                       handleChange(e);
 
                                       if(e.target.value == 2 || e.target.value == 0) setFieldValue("vat" , "")
+                                      if(e.target.value == 1 )setFieldValue("vat" , vatdata )
                                       
                                     }}
                                     value={values.vatId}
@@ -1696,7 +1716,12 @@ export default function IndividualUs() {
                                     name="vat"
                                     placeholder="Enter Value Added Tax Number"
                                     // onKeyDown={formatTin}
-                                    onChange={handleChange}
+                                    onChange={(e:any) => {
+                                      handleChange(e);
+                                      setVatData(e.target.value)
+                                
+                                      
+                                    }}
                                     // inputProps={{ maxLength: 9 }}
                                     // onBlur={handleBlur}
                                     //   error={Boolean(touched.usTin && errors.vat)}
@@ -3531,7 +3556,7 @@ export default function IndividualUs() {
                                         value={incomeArr[i]}
                                       >
                                         <option value="0">-Select-</option>
-                                        {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map(
+                                        {GetAgentUSVisaTypeHiddenForEform?.map(
                                           (ele: any) => (
                                             <option
                                               key={ele?.id}

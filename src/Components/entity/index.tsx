@@ -1201,7 +1201,7 @@ export default function Entity() {
                               onChange={(e:any) => {
                                 handleChange(e);
 
-                                if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
+                                if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4 ||  e.target.value == 5) setFieldValue("usTin" , "")
                                 
                               }}
                               value={values.usTinTypeId}
