@@ -461,12 +461,17 @@ export default function Entity() {
   };
 
   
+  // const wipeVat = (e:any) => {
+  //   console.log('wipeVat called');
+  //   if (e.target.value == 0 || e.target.value == 2) {
+  //     setTimeout(() => {
+  //       setValues({ ...values, vat: '' });
+  //     }, 0);
+  //   }
+  // };
   const wipeVat = (e:any) => {
-    console.log('wipeVat called');
     if (e.target.value == 0 || e.target.value == 2) {
-      setTimeout(() => {
-        setValues({ ...values, vat: '' });
-      }, 0);
+      setValues({ ...values, vat: '' }); // Clear the vat field
     }
   };
 
@@ -1487,11 +1492,19 @@ export default function Entity() {
                                     name="vat"
                                     placeholder="Enter Value Added Tax Number"
                                     // onKeyDown={formatTin}
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
                                     inputProps={{ maxLength: 9 }}
                                     // onBlur={handleBlur}
                                     //   error={Boolean(touched.usTin && errors.vat)}
                                     value={values.vat}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                      wipeVat(e);
+                                    }}
+                                    // value={values.vatId}
+                                    onClick={(e) => {
+                                      wipeVat(e);
+                                    }}
                                   />
                                 </FormControl>
                               </div>
