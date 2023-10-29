@@ -540,18 +540,44 @@ export const GetAgentIncomeCodeHiddenForEformAction = (): any => {
   };
 };
 
+// export const GetAgentUSVisaTypeHiddenForEformAction = (): any => {
+//   return (dispatch: any) => {
+//     Utils.api.getApiCall(
+//       Utils.EndPoint.GetAgentUSVisaTypeHiddenForEform,
+//       "",
+//       (resData) => {
+//         const { data } = resData;
+//         if (resData.status === 200) {
+          
+//           dispatch({
+//             type: Utils.actionName.GetAgentUSVisaTypeHiddenForEform,
+//             payload: {
+//               GetAgentUSVisaTypeHiddenForEformData: resData.data,
+//             },
+//           });
+//         } else {
+//         }
+//       },
+//       (error: any) => {
+        
+//       }
+//     );
+//   };
+// };
+
+
 export const GetAgentUSVisaTypeHiddenForEformAction = (): any => {
   return (dispatch: any) => {
     Utils.api.getApiCall(
       Utils.EndPoint.GetAgentUSVisaTypeHiddenForEform,
-      "",
+      `?agentId=3`,
       (resData) => {
         const { data } = resData;
         if (resData.status === 200) {
           dispatch({
             type: Utils.actionName.GetAgentUSVisaTypeHiddenForEform,
             payload: {
-              GetAgentUSVisaTypeHiddenForEformData: resData.data,
+              GetAgentUSVisaTypeHiddenForEform: resData.data,
             },
           });
         } else {

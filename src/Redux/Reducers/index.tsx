@@ -189,7 +189,17 @@ export const GetAgentIncomeCodeHiddenForEformReducer = (state = initialState, ac
   }
 };
 
+// export const GetAgentUSVisaTypeHiddenForEformReducer = (state = initialState, action: any): any => {
+//   console.log("dhskdjlwjdlsjldjksl;jkdl;sjdl;jsl;jd;lsjd;lsjkd;lsjd;lk",action.payload)
+//   switch (action.type) {
+//     case GetAgentUSVisaTypeHiddenForEform:
+//       return { ...state, ...action.payload };
+//     default:
+//       return state;
+//   }
+// };
 export const GetAgentUSVisaTypeHiddenForEformReducer = (state = initialState, action: any): any => {
+  console.log("Subham",action)
   switch (action.type) {
     case GetAgentUSVisaTypeHiddenForEform:
       return { ...state, ...action.payload };

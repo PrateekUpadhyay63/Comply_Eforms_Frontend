@@ -122,7 +122,7 @@ export default function Factors() {
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
-                validationSchema={StatusSchema}
+                // validationSchema={StatusSchema}
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
                   console.log(values, ":STEP1 VALUES");
