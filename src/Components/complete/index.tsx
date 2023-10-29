@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {jsPDF} from "jspdf"
 import html2canvas from "html2canvas";
-// import Form2 from '../../form2';
+import Form2 from '../../form2';
 import form1 from "../../../src/form1";
+import { saveAs } from 'file-saver';
 
 import {
 
@@ -26,56 +27,73 @@ export default function Term() {
     const pdfRef = useRef(null);
     const pdfRefnew = useRef(null);
     const [notView , setNotView] = useState(false);
+    const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-    const exportPDF = () => {
 
-        let htmlString = form1;
-        // let htmlString =  "<!DOCTYPE html><html><body><p><b>This text is bold</b></p><p><i>This text is italic</i></p><p>This is<sub> subscript</sub> and <sup>superscript</sup></p></body></html>";
+      const handleDownload = () => {
+        if (pdfUrl) {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.setAttribute('download', 'generatedPDF.pdf'); // Change the filename if needed
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        } else {
+      console.error('PDF URL not available');
+        }
+      };
 
-    let iframe = document.createElement("iframe");
-    iframe.style.visibility = "hidden";
-    document.body.appendChild(iframe);
-    let iframedoc = iframe.contentDocument ;
-    if(iframedoc){
-        iframedoc.body.innerHTML = htmlString;
-        html2canvas(iframedoc.body, {}).then((canvas) => {
-            const imgWidth = 10  ;
-            const pageHeight = 10;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
-            heightLeft -= pageHeight;
-            const doc = new jsPDF("p", "mm");
-            doc.addImage(canvas, "PNG", 0, position, imgWidth, imgHeight, "", "FAST");
-            while (heightLeft >= 0) {
-              position = heightLeft - imgHeight;
-              doc.addPage();
-              doc.addImage(
-                canvas,
-                "PNG",
-                0,
-                position,
-                imgWidth,
-                imgHeight,
-                "",
-                "FAST"
-              );
-              heightLeft -= pageHeight;
-            }
-            doc.save("Downld.pdf");
-          });
-    }else{
-        console.log("not Found")
-      }
-      }; 
+    // const exportPDF = () => {
+
+    //     let htmlString = form1;
+    //     // let htmlString =  "<!DOCTYPE html><html><body><p><b>This text is bold</b></p><p><i>This text is italic</i></p><p>This is<sub> subscript</sub> and <sup>superscript</sup></p></body></html>";
+
+    // let iframe = document.createElement("iframe");
+    // iframe.style.visibility = "hidden";
+    // document.body.appendChild(iframe);
+    // let iframedoc = iframe.contentDocument ;
+    // if(iframedoc){
+    //     iframedoc.body.innerHTML = htmlString;
+    //     html2canvas(iframedoc.body, {}).then((canvas) => {
+    //         const imgWidth = 10  ;
+    //         const pageHeight = 10;
+    //         const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    //         let heightLeft = imgHeight;
+    //         let position = 0;
+    //         heightLeft -= pageHeight;
+    //         const doc = new jsPDF("p", "mm");
+    //         doc.addImage(canvas, "PNG", 0, position, imgWidth, imgHeight, "", "FAST");
+    //         while (heightLeft >= 0) {
+    //           position = heightLeft - imgHeight;
+    //           doc.addPage();
+    //           doc.addImage(
+    //             canvas,
+    //             "PNG",
+    //             0,
+    //             position,
+    //             imgWidth,
+    //             imgHeight,
+    //             "",
+    //             "FAST"
+    //           );
+    //           heightLeft -= pageHeight;
+    //         }
+    //         doc.save("Downld.pdf");
+    //       });
+    // }else{
+    //     console.log("not Found")
+    //   }
+    //   }; 
 
     return (
         <section  className="inner_content" style={{ backgroundColor: '#0c3d69', marginBottom: '10px' }}>
             {/* <iframe src={form1}></iframe> */}
             
         {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
+        <Form2 onGeneratePDF={setPdfUrl} /> {/* Pass setPdfUrl to Form2 */}
+      {/* <button onClick={handleDownload}>Download PDF</button> */}
 
-          
+
             <div className="container-fluid">
 
 
@@ -112,10 +130,11 @@ export default function Term() {
                     <div className="mt-5" style={{ justifyContent: "center" }}>
 
 <Button
-    type="submit"
-    onClick={()=>{
-        exportPDF()
-    }}
+    // type="submit"
+    // onClick={()=>{
+    //     exportPDF()
+    // }}
+    onClick={handleDownload}
     style={{
         border: '1px solid #0095dd',
         background: '#0095dd',
