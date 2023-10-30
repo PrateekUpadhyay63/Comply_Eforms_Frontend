@@ -365,10 +365,10 @@ export default function Factors() {
                         >
                           <div style={{ padding: "20px" }}>
                             <Typography align="right">
-                              <DeleteIcon
+                              {numPapers > 1 ?(<DeleteIcon
                                 onClick={deleteIncomeTypePaper}
                                 style={{ color: "red", fontSize: "30px" }}
-                              />
+                              />):""}
                             </Typography>
                             <div className="col-12 d-flex" style={{justifyContent:"space-between"}}>
                               <div className="col-5">

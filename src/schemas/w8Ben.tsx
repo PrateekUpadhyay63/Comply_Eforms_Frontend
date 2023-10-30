@@ -12,20 +12,19 @@ export const StatusSchema = () => {
     dob: Yup.date(),
     // dob: Yup.date().required("Please Enter DOB"),
 
-    isTaxationUSCitizenOrResident: Yup.string().required(
+    isTaxationUSCitizenOrResident: Yup.string()
+    .required(
       "Please select one of the options"
     ),
-    isPermamnentResidentCardHolder: Yup.string().required(
-      "Please select one of the options"
-    ),
-    isHoldDualCitizenshipStatus: Yup.string().required(
-      "Please select one of the options"
-    ),
+    
+    isPermamnentResidentCardHolder: Yup.string()
+    ,
+    isHoldDualCitizenshipStatus: Yup.string(),
     isHoldDualCitizenshipIncludeUSCitizenship: Yup.string().when(
       "isHoldDualCitizenshipStatus",
       {
         is: "yes",
-        then: () => Yup.string().required("Please select one of the options"),
+        then: () => Yup.string(),
       }
     ),
     //Keyy Missing from UI
@@ -34,9 +33,7 @@ export const StatusSchema = () => {
     // ),
     // dateRenouncedUSCitizenship: Yup.date().required("Please Enter DOB"),
     // // renouncementProof: "",
-    isTaxLiabilityJurisdictions: Yup.string().required(
-      "Please select one of the options"
-    ),
+    isTaxLiabilityJurisdictions: Yup.string(),
     countryTaxLiability: Yup.number().when("isTaxLiabilityJurisdictions", {
       is: "yes",
       then: () =>
@@ -48,16 +45,16 @@ export const StatusSchema = () => {
       is: "yes",
       then: () =>
         Yup.number()
-          .required("Please select a country")
+          // .required("Please select a country")
           .notOneOf([0], "Please select a valid country"),
     }),
     isTINFormatNotAvailable: Yup.boolean().when("isTaxLiabilityJurisdictions", {
       is: "yes",
       then: () => Yup.boolean().oneOf([true], "Message"),
     }),
-    isPresentAtleast31Days: Yup.boolean().required(
-      "Please select one of the options"
-    ),
+    // isPresentAtleast31Days: Yup.boolean().required(
+    //   "Please select one of the options"
+    // ),
   });
 };
 export const US_TINSchema = () => {
