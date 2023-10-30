@@ -40,7 +40,11 @@ export default function Backup_witholding(props: any) {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleRadioChange = (value: string) => {
-    setSelectedValue(value);
+    if (selectedValue === value) {
+      setSelectedValue("");
+    } else {
+      setSelectedValue(value);
+    }
   };
   const isRadioSelected = selectedValue !== "";
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -718,62 +722,72 @@ export default function Backup_witholding(props: any) {
                           <AccordionDetails>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }} >
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "14"}
+                                  onChange={() => handleRadioChange("14")}/>
                               </span>
                               1.  An organization exempt from tax under section 501(a), any IRA, or a custodial account under section 403(b)(7) if the account satisfies the requirements of section 401(f)(2)
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "15"}
+                                  onChange={() => handleRadioChange("15")}/>
                               </span>
                               2.  The United States or any of its agencies or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }} >
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "16"}
+                                  onChange={() => handleRadioChange("16")}/>
                               </span>
                               3.  A state, the District of Columbia, a possession of the United States, or any of their political subdivisions or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "17"}
+                                  onChange={() => handleRadioChange("17")} />
                               </span>
                               4.  A foreign government or any of its political subdivisions, agencies, or instrumentalities
                             </Typography>
 
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "18"}
+                                  onChange={() => handleRadioChange("18")}/>
                               </span>
                               6.  	A dealer in securities or commodities required to register in the United States, the District of Columbia, or a possession of the United States
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "19"}
+                                  onChange={() => handleRadioChange("19")}/>
                               </span>
                               7. A futures commission merchant registered with the Commodity Futures Trading Commission
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "20"}
+                                  onChange={() => handleRadioChange("20")} />
                               </span>
                               8.  A real estate investment trust
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "21"}
+                                  onChange={() => handleRadioChange("21")} />
                               </span>
                               9.  An entity registered at all times during the tax year under the Investment Company Act of 1940
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "22"}
+                                  onChange={() => handleRadioChange("22")}/>
                               </span>
                               10.  A common trust fund operated by a bank under section 584(a)
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "23"}
+                                  onChange={() => handleRadioChange("23")}/>
                               </span>
                               11.  A financial institution
                             </Typography>

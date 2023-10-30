@@ -80,8 +80,8 @@ export default function Tin(props: any) {
       </div>
 
       <div className="col-8 mt-5">
-      <div style={{ padding: "20px" }}>
-        <Paper style={{ padding: "18px" }}>
+      <div style={{ padding: "13px" }}>
+        <Paper style={{ padding: "13px" }}>
           <Formik
             initialValues={initialValue}
             enableReinitialize
@@ -316,7 +316,7 @@ export default function Tin(props: any) {
                           size="medium"
                           name="isFTINNotLegallyRequired"
                         />
-                        <span style={{ fontSize: "20px" }}>
+                        <span style={{ fontSize: "17px" }}>
                           Check if FTIN not legally required
                           {errors.isFTINNotLegallyRequired &&
                           touched.isFTINNotLegallyRequired ? (
@@ -426,14 +426,14 @@ export default function Tin(props: any) {
                       value="Yes"
                       disabled={values.isFTINNotLegallyRequired}
                       control={<Radio />}
-                      label="Yes"
+                      label="Not Available"
                       name="tinisFTINNotLegallyRequired"
                     />
                     <FormControlLabel
                       className="label"
                       value="No"
                       control={<Radio />}
-                      label="No"
+                      label="Alternative Tin Format"
                       disabled={values.isFTINNotLegallyRequired}
                       name="tinisFTINNotLegallyRequired"
                     />
@@ -556,7 +556,7 @@ export default function Tin(props: any) {
                {values.tinisFTINNotLegallyRequired === "Yes" ? (
                 <div className="my-3">
 <Typography align="left" style={{fontWeight:"bold"}}>
-Please specify the reason for non-availability of Foreign TIN  
+Please specify the reason for non-availability of Foreign TIN <span style={{color:"red",verticalAlign:"super"}}>*</span>
 <br/>
 </Typography>
 <Typography align="left" style={{fontWeight:"bold",marginTop:"2rem"}}>
