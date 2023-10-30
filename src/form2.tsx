@@ -1,9 +1,36 @@
+
 import React, { useEffect } from 'react';
 import { pdf , Font,Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 type FormProps = {
   onGeneratePDF: (url: string) => void;
 };
+
+var data = localStorage.getItem("agentDetails"); // data may be a string or null
+
+if (data !== null) {
+  try {
+    var parsedData = JSON.parse(data);
+
+    if (typeof parsedData === 'object') {
+      console.log("Priyu",parsedData);
+    } else {
+      console.error("Data in localStorage is not a valid JavaScript object.");
+    }
+  } catch (error) {
+    console.error("Error parsing data from localStorage:", error);
+  }
+} else {
+  console.error("No data with the key 'agentDetails' found in localStorage.");
+}
+
+const dynamicData = {
+    parsedData: {
+      contactEmail: parsedData.contactEmail,
+      // Add other dynamic data properties here
+    },
+    // Add other dynamic data properties if needed
+  };
 
 
 const Form2: React.FC<{ onGeneratePDF: (pdfUrl: string) => void }> = ({ onGeneratePDF }) => {
@@ -77,6 +104,10 @@ useEffect(()=>{
           <Text style={styles.subtitle}>
             Capítulo I: Que trata de la condición y ejercicio del famoso hidalgo D.
             Quijote de la Mancha
+          </Text>
+        
+          <Text style={styles.subtitle}>
+          {dynamicData.parsedData.contactEmail}
           </Text>
           <Text style={styles.text}>
             En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha
