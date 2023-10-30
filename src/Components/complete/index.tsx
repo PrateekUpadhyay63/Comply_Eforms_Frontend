@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {jsPDF} from "jspdf"
-import html2canvas from "html2canvas";
+
 import Form2 from '../../form2';
 import form1 from "../../../src/form1";
 import { saveAs } from 'file-saver';
