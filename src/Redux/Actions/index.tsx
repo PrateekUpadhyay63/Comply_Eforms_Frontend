@@ -703,3 +703,26 @@ export const GetAgentTINTypeSelectionByIdForEformAction = (): any => {
     );
   };
 };
+
+export const GetAgentCountriesImportantForEform = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentCountriesImportantForEform,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentCountriesImportantForEform,
+            payload: {
+              GetAgentCountriesImportantForEformData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}

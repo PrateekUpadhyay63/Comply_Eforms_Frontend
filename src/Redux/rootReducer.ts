@@ -11,7 +11,8 @@ import {
   getBreadCrumsReducer,
   GetTinTypesReducer,
   GetAgentPaymentTypeReducer,
-  GetAgentUSVisaTypeHiddenForEformReducer
+  GetAgentUSVisaTypeHiddenForEformReducer,
+  GetAgentCountriesImportantForEformReducer
 
 } from "./Reducers";
 import w9Reducer from "./Reducers/w9Reducer";
@@ -31,6 +32,7 @@ let reducers = {
   GetTinTypesReducer,
   GetAgentPaymentTypeReducer,
   GetAgentUSVisaTypeHiddenForEformReducer,
+  GetAgentCountriesImportantForEformReducer
 };
 const rootReducer = combineReducers({
   ...reducers,

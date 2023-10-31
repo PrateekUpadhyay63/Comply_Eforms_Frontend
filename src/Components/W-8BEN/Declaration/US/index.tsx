@@ -660,7 +660,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
                 >
-                  Select where goods are used{" "}
+                  Select where services are used{" "}
                   <span style={{ color: "red", fontSize: "30px" }}>*</span>
                 </Typography>
                 <FormControl className="w-100">
@@ -761,7 +761,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}
             >
-              Continue
+              Confirm
             </Button>
           </div>
           <Typography
