@@ -297,10 +297,10 @@ If the entity is engaged in a trade or business in the United States during its 
             >
               <div style={{ padding: "15px" }}>
               <Typography align="right">
-                              <DeleteIcon
+                             {numPapers > 1 ?( <DeleteIcon
                                 onClick={deleteIncomeTypePaper}
                                 style={{ color: "red", fontSize: "30px" ,cursor:"pointer"}}
-                              />
+                              />):""}
                             </Typography>
                 <Typography
                   align="left"
