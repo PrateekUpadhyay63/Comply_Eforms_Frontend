@@ -72,6 +72,9 @@ const Documentaion= React.lazy(() => import("../Components/Form8233/Documentatio
 const Certi_8233= React.lazy(() => import("../Components/Form8233/Certi"));
 const Submission= React.lazy(() => import("../Components/Form8233/submission"));
 
+//
+const Tax_Purpose_BenE= React.lazy(() => import("../Components/W8BEN-E/Tax-Purposes"));
+
 const ROUTES: Array<RouteType> = [
   {
     name: "Login",
@@ -402,6 +405,13 @@ isPrivate: true,
     path: "US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9",
     id: 7,
     Component: Penlities_W9,
+    isPrivate: true,
+  },
+  {
+    name:"Tax_Purpose_BenE",
+    path: "BenE/Tax_Purpose_BenE",
+    id: 7,
+    Component: Tax_Purpose_BenE,
     isPrivate: true,
   }
   
