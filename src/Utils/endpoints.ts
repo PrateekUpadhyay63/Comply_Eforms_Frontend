@@ -29,6 +29,6 @@ const EndPoint = {
   GetAgentSPTQuestionHiddenForEform: "/WebAppBasic/GetAgentSPTQuestionHiddenForEform",
   GetAgentWrittenStatementSelectionByAgentIdForEform: "/WebAppBasic/GetAgentWrittenStatementSelectionByAgentIdForEform",
   GetAgentTINTypeSelectionByIdForEform: "/WebAppBasic/GetAgentTINTypeSelectionByIdForEform",
-
+  GetAgentCountriesImportantForEform:"/WebAppBasic/GetAgentCountriesImportantForEform",
 };
 export default EndPoint;

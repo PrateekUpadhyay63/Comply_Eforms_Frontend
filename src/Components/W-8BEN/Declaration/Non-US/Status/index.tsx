@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -27,7 +27,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
-
+import {GetAgentCountriesImportantForEform} from "../../../../../Redux/Actions"
 export default function Factors() {
   const initialValue = {
     isHeldUSCitizenship: "",
@@ -39,6 +39,7 @@ export default function Factors() {
     isHoldDualCitizenshipIncludeUSCitizenship: "",
     isRenouncedCitizenship: "",
     dateRenouncedUSCitizenship: "",
+    permanentResidentialCountryId: 0,
     renouncementProof: "",
     isTaxLiabilityJurisdictions: "",
     countryTaxLiability: "",
@@ -92,6 +93,14 @@ export default function Factors() {
   };
 
   const [toolInfo, setToolInfo] = useState("");
+  useEffect(()=>{
+    dispatch(GetAgentCountriesImportantForEform())
+    },[])
+
+    const GetAgentCountriesImportantForEformData = useSelector(
+      (state:any)=>state.GetAgentCountriesImportantForEformReducer.GetAgentCountriesImportantForEformData
+    )
+ 
   return (
     <section
       className="inner_content"
@@ -389,6 +398,7 @@ export default function Factors() {
                             name="individual"
                           />
                         </RadioGroup>
+                        
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
@@ -571,9 +581,33 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <FormControl className="form">
-                            <select>
-
-                            </select>
+                          <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            defaultValue={1}
+                            onChange={handleChange}
+                            // onBlur={handleBlur}
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {GetAgentCountriesImportantForEformData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
                           </FormControl>
                           <Divider className="dividr" />
 
@@ -990,24 +1024,128 @@ export default function Factors() {
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
                             <FormControl className="form">
-                              <select></select>
+                            <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            defaultValue={1}
+                            onChange={handleChange}
+                            // onBlur={handleBlur}
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {GetAgentCountriesImportantForEformData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
                             </FormControl>
                             <Divider className="dividr" />
-
+                              
                             <Typography>
                               Please enter the tax reference number:
+                             {values.permanentResidentialCountryId == 257?(<span>
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                 
+                                </Typography>
+                                <a onClick={() => setToolInfo("refrence")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "16px",
+                                cursor: "pointer",
+                                verticalAlign: "super",
+                              }}
+                            />
+                          </Tooltip>
+                        </span>):""}
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
+                            {toolInfo === "refrence" ? (
+                        <div>
+                          <Paper
+                            style={{
+                              backgroundColor: "#dedcb1",
+                              padding: "15px",
+                              marginBottom: "10px",
+                            }}
+                          >
+                            <Typography>
+                            United Kingdom TIN Format is 9999999999
+                            <br />
+                            9- Numeric value only
+                            <br />
+
+                            A- Alphabetic character only
+                            <br />
+
+                            *- Alphanumeric character only ?- Characters optional after this
+                            <br />
+
+                            IF TIN format is not available, please check the below box and continue
+                            </Typography>
+                           
+
+                            <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+                          </Paper>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <input disabled className="input" />
+                                <input disabled = {values.permanentResidentialCountryId == 0} className="input" />
                               </FormControl>
-                              <div className="d-flex">
+                             {values.permanentResidentialCountryId == 257?(<div className="d-flex">
                                 <Checkbox required />
                                 <div className="mt-2">
                                   TIN format not available
                                 </div>
-                              </div>
+                              </div>):<div className="d-flex">
+                                <Checkbox disabled required />
+                                <div className="mt-2" style={{color:"grey"}}>
+                                  TIN format not available
+                                </div>
+                              </div>}
                             </div>
                             <Typography
                           style={{ fontSize: "19px", marginTop: "10px" }}
