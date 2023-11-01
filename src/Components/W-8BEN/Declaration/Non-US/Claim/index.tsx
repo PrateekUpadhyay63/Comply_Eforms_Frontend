@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -18,7 +18,7 @@ import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import { claimSchema } from "../../../../../schemas/w8Ben";
 import { W8_state } from "../../../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -26,6 +26,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import check from "../../../../../assets/img/check.png";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
+import {GetAgentCountriesImportantForEform} from "../../../../../Redux/Actions"
 export default function FCTA_Reporting(props: any) {
   const history = useNavigate();
   const [report, setReport] = useState<string>("");
@@ -40,6 +41,12 @@ export default function FCTA_Reporting(props: any) {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+    useEffect(()=>{
+      dispatch(GetAgentCountriesImportantForEform())
+      },[])
+    const GetAgentCountriesImportantForEformData = useSelector(
+      (state:any)=>state.GetAgentCountriesImportantForEformReducer.GetAgentCountriesImportantForEformData
+    )
   return (
     <section
       className="inner_content"
@@ -71,6 +78,7 @@ export default function FCTA_Reporting(props: any) {
             initialValues={{
               isSubmissionClaimTreaty: "No",
               ownerResidentId: "",
+              permanentResidentialCountryId: 0,
             }}
             enableReinitialize
             validationSchema={claimSchema}
@@ -345,27 +353,33 @@ export default function FCTA_Reporting(props: any) {
                               <FormControl className="w-100">
                                 <div className="row">
                                   <div    className="col-md-6 col-12 d-flex" >
-                                    <select
-                                      style={{
-                                        color: "#7e7e7e",
-                                        fontStyle: "italic",
-                                        height: "50px",
-                          
-                                        width: "98%",
-                                      }}
-                                      name="ownerResidentId"
-                                      id="ownerResidentId"
-                                      onBlur={handleBlur}
-                                      value={values.ownerResidentId}
-                                      onChange={(e) => {
-                                        handleChange(e);
-                                      }}
-                                    >
-                                      <option value={0}>-Select-</option>
-                                      <option value={1}>Individual</option>
-                                      <option value={2}>Individual/sole Propritor</option>
-                                      <option value={3}>Limited Liability Company</option>
-                                    </select>
+                                  <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            defaultValue={1}
+                            onChange={handleChange}
+                            // onBlur={handleBlur}
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {GetAgentCountriesImportantForEformData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
 
                                   </div>
                                 </div>
