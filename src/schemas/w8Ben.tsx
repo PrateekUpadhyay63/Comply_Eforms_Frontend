@@ -81,6 +81,9 @@ export const claimSchema = () => {
       is: "yes",
       then: () => Yup.string().required("Please select owner"),
     }),
+    permanentResidentialCountryId: Yup.string().required(
+      "Please select one of the options"
+    ),
   });
 };
 export const rateSchema = () => {
