@@ -74,6 +74,11 @@ const Submission= React.lazy(() => import("../Components/Form8233/submission"));
 
 //
 const Tax_Purpose_BenE= React.lazy(() => import("../Components/W8BEN-E/Tax-Purposes"));
+const Declaration_BenE= React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE"));
+const Status_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Status"));
+const US_Tin_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/US_Tin"));
+
+
 
 const ROUTES: Array<RouteType> = [
   {
@@ -413,6 +418,29 @@ isPrivate: true,
     id: 7,
     Component: Tax_Purpose_BenE,
     isPrivate: true,
+  },
+  {
+    name:"Declaration_BenE",
+    path: "BenE/Tax_Purpose_BenE/Declaration_BenE",
+    id: 7,
+    Component: Declaration_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"Status_BenE",
+    path: "BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Status_BenE",
+    id: 7,
+    Component: Status_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"US_Tin_BenE",
+    path: "BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE",
+    id: 7,
+    Component: US_Tin_BenE,
+    isPrivate: true,
+
+
   }
   
 ];

@@ -58,8 +58,8 @@ export default function Certificates(props: any) {
       "W-8BEN": "/W-8BEN/Declaration",
       "W-8ECI": "/W-8ECI/Info",
       "form 8233": "/Form8233/SubstantialPresence",
-    };
-
+   "W-8BEN-E":"/BenE/Tax_Purpose_BenE"
+  };
     dispatch(
       postFormSelection(submitData, () => {
         if (componentPaths.hasOwnProperty(cardId)) {

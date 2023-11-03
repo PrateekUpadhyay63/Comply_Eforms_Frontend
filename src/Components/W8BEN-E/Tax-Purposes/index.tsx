@@ -107,7 +107,7 @@ export default function Fedral_tax(props: any) {
               validationSchema={TaxPurposeSchema}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                // history("/W-8ECI/Tax_Payer");
+                 history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
               }}
             >
               {({
