@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -19,7 +19,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import checksolid from "../../../../../assets/img/check-solid.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { W8_state } from "../../../../../Redux/Actions";
 import { rateSchema } from "../../../../../schemas/w8Ben";
 import Accordion from "@mui/material/Accordion";
@@ -27,6 +27,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
+import { getAllCountriesIncomeCode } from "../../../../../Redux/Actions";
 export default function Factors() {
   const history = useNavigate();
   const [numPapers, setNumPapers] = useState(1);
@@ -48,6 +49,17 @@ export default function Factors() {
     setStatus(event.target.value);
   };
   const dispatch = useDispatch();
+ 
+ 
+  useEffect(()=>{
+    dispatch(getAllCountriesIncomeCode());
+
+  },[])
+const GetAllIncomeCodesReducer = useSelector(
+    
+    (state: any) => state.GetAllIncomeCodesReducer
+  );
+  console.log("GetAllIncomeCodesReducer" , GetAllIncomeCodesReducer)
   const initialValue = {
     isSubmissionSpecialRates: "No",
     articleBeneficalOwner: "",
@@ -575,9 +587,17 @@ export default function Factors() {
                                       handleChange(e);
                                     }}
                                   >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
+                                    <option value="0">-Select-</option>
+                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map(
+                                          (ele: any) => (
+                                            <option
+                                              key={ele?.id}
+                                              value={ele?.id}
+                                            >
+                                              {ele?.name}
+                                            </option>
+                                          )
+                                        )}
                                   </select>
                                   <p className="error">
                                     {errors.incomeExpected}
