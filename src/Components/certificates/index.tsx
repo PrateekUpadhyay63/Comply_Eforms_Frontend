@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./index.scss";
 import Card from "@mui/material/Card";
@@ -35,6 +35,28 @@ export default function Certificates(props: any) {
   };
   const [toolInfo, setToolInfo] = useState("");
   const [InfoMore, setInfoMore] = useState("");
+  const [diableForm, setDisableForm] = useState("usIndividual");
+
+  useEffect(() => {
+    let onboardingStingifiedData = localStorage.getItem("agentDetails");
+    let onboardingData;
+    if (onboardingStingifiedData !== null) {
+      onboardingData = JSON.parse(onboardingStingifiedData);
+    }
+    if (onboardingData !== "" && onboardingData !== null) {
+      if (onboardingData.isUSIndividual === "yes") {
+        setDisableForm("usIndividual");
+      } else if (onboardingData.isUSIndividual === "no") {
+        setDisableForm("usNonIndividual");
+      } else if (onboardingData.isUSEntity === "yes") {
+        setDisableForm("usEntity");
+      } else if (onboardingData.isUSEntity === "no") {
+        setDisableForm("usNonEntity");
+      } else {
+        setDisableForm("usIndividual");
+      }
+    }
+  }, []);
   const redirectToComponent = (cardId: string) => {
     let formSelection = JSON.parse(
       localStorage.getItem("formSelection") || "{}"
@@ -45,21 +67,21 @@ export default function Certificates(props: any) {
       securityAnswer: formSelection.securityAnswer,
       formSelection: cardId,
     };
-//Id	FormName
-// 1	W-9
-// 2	W-8BEN
-// 3	W-8BEN-E
-// 4	W-8ECI
-// 6	W-8EXP
-// 7	W-8IMY
-// 8	Form 8233
+    //Id	FormName
+    // 1	W-9
+    // 2	W-8BEN
+    // 3	W-8BEN-E
+    // 4	W-8ECI
+    // 6	W-8EXP
+    // 7	W-8IMY
+    // 8	Form 8233
     const componentPaths: ComponentPaths = {
       "W-9": "/W9/purposes",
       "W-8BEN": "/W-8BEN/Declaration",
       "W-8ECI": "/W-8ECI/Info",
       "form 8233": "/Form8233/SubstantialPresence",
-   "W-8BEN-E":"/BenE/Tax_Purpose_BenE"
-  };
+      "W-8BEN-E": "/BenE/Tax_Purpose_BenE",
+    };
     dispatch(
       postFormSelection(submitData, () => {
         if (componentPaths.hasOwnProperty(cardId)) {
@@ -77,42 +99,49 @@ export default function Certificates(props: any) {
     {
       id: "W-9",
       title: "W-9",
+      enabled:"usIndividual",
       description:
         "Used by individuals and entities to certify US Tax ID number",
     },
     {
       id: "W-8BEN",
       title: "W-8BEN",
+      enabled:"usNonIndividual",
       description:
         "Used by individuals to certify beneficial owner, or account holder of financial institution, and claim treaty benefits",
     },
     {
       id: "W-8BEN-E",
       title: "W-8BEN-E",
+      enabled:"usNonEntity",
       description:
         "Used by entities to certify beneficial owner, or account holder of financial institution, and claim treaty benefits",
     },
     {
       id: "W-8ECI",
       title: "W-8ECI",
+      enabled:"usNonIndividual",
       description:
         "Used by individuals, or entities, to certify beneficial owner receiving U.S. sourced income that is effectively connected with a U.S. trade or business ",
     },
     {
       id: "W-8EXP",
       title: "W-8EXP",
+      enabled:"usNonEntity",
       description:
         "Used by governments, or other tax exempt entities, to certify beneficial owner, or account holder of financial institution",
     },
     {
       id: "W-8IMY",
       title: "W-8IMY",
+      enabled:"usNonEntity",
       description:
         "Used by entities to certify intermediary, or flow through entity, receiving payments on behalf of another person",
     },
     {
       id: "form 8233",
       title: "Form 8233",
+      enabled:"usNonIndividual",
       description:
         "Used by individuals to certify beneficial owner claiming treaty exemption on compensation for personal services",
     },
@@ -590,17 +619,18 @@ export default function Certificates(props: any) {
         <div className="d-flex row">
           {cards.map((card) => (
             <Card
-              key={card?.id}
-              className="mx-3 mt-3"
-              sx={{
-                width: "310px",
-                border:
-                  selectedCard === card.id
-                    ? "7px solid #ffc107"
-                    : "2px solid transparent",
-              }}
-              onClick={() => handleCardSelect(card?.id)}
+            key={card?.id}
+            className={diableForm===card.enabled ? "mx-3 mt-3" : "mx-3 mt-3 disabled"}
+            sx={{
+              width: "310px",
+              border:
+              selectedCard === card.id
+              ? "7px solid #ffc107"
+              : "2px solid transparent",
+            }}
+            onClick={() => handleCardSelect(card?.id)}
             >
+            <>  {console.log(diableForm===card.enabled)}</>
               <CardContent>
                 <Typography align="center" variant="h5" component="div">
                   {card?.title}
