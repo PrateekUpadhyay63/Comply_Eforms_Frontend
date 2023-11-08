@@ -15,7 +15,9 @@ const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, Ge
   GetAgentSPTQuestionHiddenForEform,
   GetAgentWrittenStatementSelectionByAgentIdForEform,
   GetAgentTINTypeSelectionByIdForEform,
-  GetAgentCountriesImportantForEform
+  GetAgentCountriesImportantForEform,
+  GetChapter3Status,
+  GetChapter4Statuses
 
 } = Utils.actionName
 
@@ -256,6 +258,24 @@ export const GetAgentTINTypeSelectionByIdForEformReducer = (state = initialState
 export const GetAgentCountriesImportantForEformReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetAgentCountriesImportantForEform:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetChapter3StatusReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetChapter3Status:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetChapter4StatusesReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetChapter4Statuses:
       return { ...state, ...action.payload };
     default:
       return state;

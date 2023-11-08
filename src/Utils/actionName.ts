@@ -35,7 +35,10 @@ const ActionName = {
     GetAgentSPTQuestionHiddenForEform: "GetAgentSPTQuestionHiddenForEform",
     GetAgentWrittenStatementSelectionByAgentIdForEform: "GetAgentWrittenStatementSelectionByAgentIdForEform",
     GetAgentTINTypeSelectionByIdForEform: "GetAgentTINTypeSelectionByIdForEform",
-    GetAgentCountriesImportantForEform:"GetAgentCountriesImportantForEform"
+    GetAgentCountriesImportantForEform:"GetAgentCountriesImportantForEform",
+    GetChapter3Status:"GetChapter3Status",
+    GetChapter4Statuses:"GetChapter4Statuses",
+
   };
 
   export default ActionName;

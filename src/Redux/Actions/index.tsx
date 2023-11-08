@@ -726,3 +726,49 @@ export const GetAgentCountriesImportantForEform = ():any =>{
     );
   };
 }
+
+export const GetChapter3Status = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetChapter3Status,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetChapter3Status,
+            payload: {
+              GetChapter3StatusData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}
+
+export const GetChapter4Statuses = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetChapter4Statuses,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetChapter4Statuses,
+            payload: {
+              GetChapter4StatusesData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}

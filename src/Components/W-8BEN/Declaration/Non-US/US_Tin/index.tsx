@@ -41,12 +41,16 @@ export default function Tin(props: any) {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
+ const onBoardingFormValues = JSON.parse(localStorage.getItem("agentDetails") ?? "null");
+ console.log("first", onBoardingFormValues)
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
   const initialValue = {
-    usTinTypeId: 0,
-    usTin: "",
+    usTinTypeId: onBoardingFormValues.usTinTypeId ? onBoardingFormValues.usTinTypeId : 0,
+    
+    usTin: onBoardingFormValues.usTin ? onBoardingFormValues.usTin:"",
+    // usTinTypeId:0,
+    // usTin:"",
     notAvailable: false,
     foreignTINCountry: "",
     foreignTIN: "",
@@ -55,7 +59,7 @@ export default function Tin(props: any) {
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
-
+ ;
   return (
     <section
       className="inner_content"
@@ -232,7 +236,7 @@ export default function Tin(props: any) {
                             }}
                             name="usTinTypeId"
                             id="Income"
-                            defaultValue={1}
+                            
                             onBlur={handleBlur}
                             value={values.usTinTypeId}
                             onChange={(e) => {
@@ -240,14 +244,14 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="">-Select-</option>
-                            <option value={257}>United Kingdom</option>
-                            <option value={258}>United States</option>
+                            <option value={2}>United Kingdom</option>
+                            <option value={5}>United States</option>
                           </select>
-                          <p className="error">{errors.usTinTypeId}</p>
+                          {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
 
                         <div className="col-lg-4 col-12 mt-1">
-                          <Typography>U.S. TIN</Typography>
+                          <Typography>U.S. TIN...........</Typography>
                           <Input
                             disabled={values.notAvailable}
                             fullWidth
@@ -269,7 +273,8 @@ export default function Tin(props: any) {
                           {values.notAvailable ? (
                             ""
                           ) : (
-                            <p className="error">{errors.usTin}</p>
+                            ""
+                            //  <p className="error">{errors.usTin}</p>
                           )}
                         </div>
                         <div className="col-lg-4 col-12">
