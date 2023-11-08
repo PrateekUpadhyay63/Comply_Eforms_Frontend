@@ -71,6 +71,8 @@ export default function IndividualUs() {
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
   const [toolInfo, setToolInfo] = useState("");
+  const [ustinArray , setUStinArray] = useState([]);
+  const [ustinValue , setUStinvalue] = useState([]);
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -147,7 +149,7 @@ export default function IndividualUs() {
   var initialValues = {
     agentId: 3,
     businessTypeId: 1,
-    isUSEntity: "yes",
+    isUSEntity: "no",
     isUSIndividual: "yes",
     uniqueIdentifier: "",
     firstName: "",
@@ -234,8 +236,10 @@ export default function IndividualUs() {
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
     dispatch(
-      getTinTypes(3, () => {
-        console.log("Data");
+      getTinTypes(3, (data:any) => {
+        setUStinArray(data)
+        let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
+        setUStinvalue(datas)
       })
     );
     dispatch(
@@ -243,7 +247,37 @@ export default function IndividualUs() {
         console.log("Data");
       })
     );
+
   }, []);
+
+  const onChangeUsInit = (values: any) => {
+    let data 
+    console.log("here")
+    if (values.isUSIndividual == "no") {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is true
+        return ele?.usIndividual === false;
+      });
+      console.log("yes",data)
+      // Do something with the filtered data...
+    } else {
+      
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is false
+        return ele?.usIndividual === true;
+      });
+      console.log("no")
+      // Do something with the filtered data...
+    }
+    console.log(data,"data")
+    setUStinvalue(data)
+  };
+  // useEffect(()=>{
+  //   if(values.isUSIndividual==="yes"){
+  //   let data = ustinArray.filter((ele)=>{ele.usIndividual==true})}
+  // },[ustinArray])
+
+  // isUSIndividual
 
   const GetTinTypesData = useSelector(
     (state: any) => state.GetTinTypesReducer.GetTinTypesData
@@ -840,7 +874,7 @@ export default function IndividualUs() {
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.isUSIndividual}
-                                onChange={handleChange}
+                                onChange={(e)=>{handleChange(e);onChangeUsInit(values)}}
                               >
                                 <FormControlLabel
                                   control={<Radio />}
@@ -1380,7 +1414,7 @@ export default function IndividualUs() {
                         <div className="row d-flex mt-3">
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
-                              U.S. TIN Type
+                              U.S. TIN Type...
                               <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
                             </Typography>
                             <FormControl className="w-100">
@@ -1403,7 +1437,24 @@ export default function IndividualUs() {
                                 value={values.usTinTypeId}
                               >
                                 <option value={0}>-Select-</option>
-                                {returnTinValues(values)}
+                                <>{console.log(ustinValue,"")}</>
+                                {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
+                                
                               </select>
                               <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
@@ -1758,13 +1809,9 @@ export default function IndividualUs() {
                                   
                                 }}
                                 value={values.usTinTypeId}
-                              >
-                                {console.log(
-                                  GetTinTypesData,
-                                  "GetTinTypesData"
-                                )}
+                              >                               
                                 <option value="1">-Select-</option>
-                                {GetTinTypesData?.map((ele: any) => (
+                                {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&

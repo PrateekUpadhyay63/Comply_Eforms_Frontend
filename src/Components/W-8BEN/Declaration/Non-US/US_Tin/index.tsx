@@ -52,8 +52,8 @@ export default function Tin(props: any) {
     // usTinTypeId:0,
     // usTin:"",
     notAvailable: false,
-    foreignTINCountry: "",
-    foreignTIN: "",
+    foreignTINCountry: onBoardingFormValues.foreignTINCountryId ? onBoardingFormValues.foreignTINCountryId:"",
+    foreignTIN: onBoardingFormValues.foreignTIN ? onBoardingFormValues.foreignTIN:"",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
@@ -332,10 +332,10 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="1">-Select-</option>
-                            <option value={"US"}>United Kingdom</option>
+                            <option value= "257">United Kingdom</option>
                             <option value={"UK"}>United States</option>
                           </select>
-                          <p className="error">{errors.foreignTINCountry}</p>
+                          {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
                           <div style={{ marginTop: "27px" }}>
                             <Checkbox
@@ -529,7 +529,8 @@ export default function Tin(props: any) {
                           {values.isFTINNotLegallyRequired ? (
                             ""
                           ) : (
-                            <p className="error">{errors.foreignTIN}</p>
+                            ""
+                            // <p className="error">{errors.foreignTIN}</p>
                           )}
 
                           <FormControl >
