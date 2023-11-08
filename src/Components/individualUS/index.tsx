@@ -147,7 +147,7 @@ export default function IndividualUs() {
   var initialValues = {
     agentId: 3,
     businessTypeId: 1,
-    isUSEntity: "yes",
+    isUSEntity: "no",
     isUSIndividual: "yes",
     uniqueIdentifier: "",
     firstName: "",
