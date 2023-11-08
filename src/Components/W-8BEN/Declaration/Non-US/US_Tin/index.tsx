@@ -44,6 +44,10 @@ export default function Tin(props: any) {
 
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
+
+  // const onBoardingFormValues=localStorage.getItem(JSON.parse("agentDetails"));
+  // console.log("first",onBoardingFormValues );
+
   const initialValue = {
     usTinTypeId: 0,
     usTin: "",
@@ -84,6 +88,7 @@ export default function Tin(props: any) {
         </div>
       </div>
       <div className="row w-100 h-100">
+        
         <div className="col-4">
           <div
             style={{ padding: "10px 0px", height: "100%", marginTop: "20px" }}
@@ -141,7 +146,7 @@ export default function Tin(props: any) {
                         }}
                         className="row"
                       >
-                        <div className="col-lg-4 col-12">
+                        <div className="col-lg-5 col-12">
                           <Typography>
                             U.S. TIN Type<span style={{ color: "red" }}>*</span>
                             <span>
@@ -246,7 +251,7 @@ export default function Tin(props: any) {
                           <p className="error">{errors.usTinTypeId}</p>
                         </div>
 
-                        <div className="col-lg-4 col-12 mt-1">
+                        <div className="col-lg-5 col-12">
                           <Typography>U.S. TIN</Typography>
                           <Input
                             disabled={values.notAvailable}
@@ -272,7 +277,7 @@ export default function Tin(props: any) {
                             <p className="error">{errors.usTin}</p>
                           )}
                         </div>
-                        <div className="col-lg-4 col-12">
+                        <div className="col-lg-2 col-12">
                           <div style={{ marginTop: "27px" }}>
                             <Checkbox
                               value={values.notAvailable}
@@ -281,7 +286,7 @@ export default function Tin(props: any) {
                               size="medium"
                               name="notAvailable"
                             />
-                            <span style={{ fontSize: "18px" }}>
+                            <span style={{ fontSize: "12px" }}>
                               Not Available
                               {errors.notAvailable && touched.notAvailable ? (
                                 <div>
@@ -304,7 +309,7 @@ export default function Tin(props: any) {
                         }}
                         className="row"
                       >
-                        <div className="col-lg-4">
+                        <div className="col-lg-5">
                           <Typography>
                             Foreign TIN Country
                             <span style={{ color: "red" }}>*</span>
@@ -332,7 +337,7 @@ export default function Tin(props: any) {
                           </select>
                           <p className="error">{errors.foreignTINCountry}</p>
 
-                          <div style={{ marginTop: "27px" }}>
+                          <div style={{ marginTop: "12px" }}>
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
@@ -433,7 +438,7 @@ export default function Tin(props: any) {
                             ""
                           )}
                         </div>
-                        <div className="col-lg-4 col-12">
+                        <div className="col-lg-5 col-12">
                           <Typography>
                             Foreign TIN{" "}
                             <span>
@@ -462,7 +467,7 @@ export default function Tin(props: any) {
                                 <Info
                                   style={{
                                     color: "#ffc107",
-                                    fontSize: "16px",
+                                    fontSize: "11px",
                                     cursor: "pointer",
                                     verticalAlign: "super",
                                   }}
@@ -831,6 +836,7 @@ export default function Tin(props: any) {
             </Paper>
           </div>
         </div>
+
       </div>
     </section>
   );

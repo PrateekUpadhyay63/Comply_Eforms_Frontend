@@ -5,6 +5,7 @@ import {
   Button,
   Input,
   Paper,
+  Checkbox,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -15,10 +16,11 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
 import Tooltip from "@mui/material/Tooltip";
-import { ExpandMore, Info } from "@mui/icons-material";
+import { CheckBox, ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
 import checksolid from "../../../assets/img/check-solid.png";
@@ -43,7 +45,10 @@ export default function Fedral_tax(props: any) {
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [numPapers, setNumPapers] = useState(1);
+  const addIncomeTypePaper = () => {
+    setNumPapers(numPapers + 1);
+  };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -54,7 +59,23 @@ export default function Fedral_tax(props: any) {
     dispatch(getAllCountriesIncomeCode())   
     dispatch(getAllStateByCountryId())   
    }, []);
+
+   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
+   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
  
+   const handleCheckbox1Change = () => {
+     setCheckbox1Checked(true);
+     setCheckbox2Checked(false);
+   };
+ 
+   const handleCheckbox2Change = () => {
+     setCheckbox1Checked(false);
+     setCheckbox2Checked(true);
+   };
+
+   const deleteIncomeTypePaper = () => {
+    setNumPapers(numPapers - 1);
+  };
    const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
    const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
    const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
@@ -270,13 +291,461 @@ export default function Fedral_tax(props: any) {
                           </div>
                         </div>
 
-                      
+                      <div>
+                        <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+                        Part XXVI  <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Passive NFFE </span>
 
-                       
+                        </Typography>
+                      </div>
+                      <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"5px"}}>
+                        40a
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I 
+                        </Typography>
+                      </div>
+                      <div>
+                        <Paper style={{padding:"10px",backgroundColor:"#dbd7d7",fontSize:"13px"}}>
+                        is a foreign entity that is not a financial institution (other than an investment entity organized in a possession of the United States) and is not certifying its status as a publicly traded NFFE (or affiliate), excepted territory NFFE, active NFFE, direct reporting NFFE, or sponsored direct reporting NFFE.
+                          </Paper>
+                        </div>
+                        <div className="mt-3">
+                          <Typography style={{color:"grey",fontSize:"19px"}}>
+                          Check box 40b or 40c, whichever applies:
+                          </Typography>
+                        </div>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"13px"}}>
+                        b
+                        </Typography>
+                        <Typography>
+                       <Checkbox checked={checkbox2Checked}
+            onChange={handleCheckbox2Change}/>
+                        </Typography>
+                        <Typography className="mt-2">
+                        I further certify that 
+                        </Typography>
+                      </div>
+<div>
+  <Paper style={{padding:"10px",backgroundColor:"#dbd7d7",fontSize:"13px"}}>
+  the entity identified in Part I has no substantial U.S. owners (or, if applicable, no controlling U.S. persons), or
+  </Paper>
+  </div>
+  <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"5px"}}>
+                        c
+                        </Typography>
+                        <Typography>
+                       <Checkbox  checked={checkbox1Checked}
+            onChange={handleCheckbox1Change} />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I 
+                        </Typography>
+                      </div>            
 
-                      
+                      <Paper style={{padding:"10px",backgroundColor:"#dbd7d7",fontSize:"13px"}}>
+                      has provided the name, address, and TIN of each substantial U.S. owner (or, if applicable, controlling U.S. person) of the NFFE in Part XXIX.
+                      </Paper>
 
-                      
+                     {checkbox1Checked ?( <>
+                      <div className="mt-3">
+                        <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+                        Part XXIX  <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Substantial U.S. Owners of Passive NFFE </span>
+
+                        </Typography>
+                      </div>
+                      <Typography className="mt-2" style={{fontSize:"13px"}}>
+                      As required by Part XXVI, provide the name, address and TIN of each substantial U.S. owner of the NFFE. Please see instructions for definition of substantial U.S. owner.
+                      </Typography>
+                      {Array.from({ length: numPapers }).map((_, index) => (
+                        <Paper
+                          className="paper"
+                          elevation={3}
+                          style={{
+                            backgroundColor: "#e8e1e1",
+                            marginTop: "10px",
+                          }}
+                        >
+                          <div style={{ padding: "20px" }}>
+                            <Typography align="right">
+                              {numPapers > 1 ?(<DeleteIcon
+                                onClick={deleteIncomeTypePaper}
+                                style={{ color: "red", fontSize: "30px" }}
+                              />):""}
+                            </Typography>
+                            <div className="col-12 d-flex" style={{justifyContent:"space-between"}}>
+                              <div className="col-5">
+                              
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                   Name:{" "}
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="withHoldingClaim"
+                                    // value={values.withHoldingClaim}
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    {/* {errors.withHoldingClaim} */}
+                                  </p>
+                                </FormControl>
+                              </div>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                TIN:
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="paragraphArticleClaimed"
+                                    // value={values.paragraphArticleClaimed}
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    {""}
+                                    {/* {errors.incomeExpected} */}
+                                  </p>
+                                </FormControl>
+                              </div>
+                            </div>
+                            <Typography style={{fontWeight:"bold"}}>
+                            Address:
+                            </Typography>
+                            <div className="col-12 d-flex" style={{justifyContent:"space-between"}}>
+                           
+                              <div className="col-5">
+                             
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  House Number or Name:{" "}
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="withHoldingClaim"
+                                    // value={values.withHoldingClaim}
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    {/* {errors.withHoldingClaim} */}
+                                  </p>
+                                </FormControl>
+                              </div>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  Road Name:
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="paragraphArticleClaimed"
+                                    // value={values.paragraphArticleClaimed}
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    {""}
+                                    {/* {errors.incomeExpected} */}
+                                  </p>
+                                </FormControl>
+                              </div>
+                            </div>
+                            <div className="col-12 d-flex"style={{justifyContent:"space-between"}}>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  City or Town:{" "}
+                                
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="articleBeneficalOwner"
+                                
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    
+                                  </p>
+                                </FormControl>
+                              </div>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  State or Province:
+                                  
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="incomeExpected"
+                                 
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="0">-Select-</option>
+                                   
+                                  </select>
+                                  {/* <p className="error">
+                                    {errors.incomeExpected}
+                                  </p> */}
+                                </FormControl>
+                              </div>
+                            </div>
+                            <div className="col-12 d-flex"style={{justifyContent:"space-between"}}>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  Zip or Postal Code:
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="articleBeneficalOwner"
+                                
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="">-Select-</option>
+                                    <option value="US">United Kingdom</option>
+                                    <option value="UK">United States</option>
+                                  </select>
+                                  <p className="error">
+                                    
+                                  </p>
+                                </FormControl>
+                              </div>
+                              <div className="col-5">
+                                <Typography
+                                  align="left"
+                                  style={{
+                                    fontSize: "17px",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  Residential Country:
+                                 
+                                </Typography>
+                                <FormControl className="w-100">
+                                  <select
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "50px",
+                                      marginBottom: "20px",
+                                    }}
+                                    name="incomeExpected"
+                                 
+                                    id="Income"
+                                    defaultValue={1}
+                                    onBlur={handleBlur}
+                                    onChange={(e) => {
+                                      handleChange(e);
+                                    }}
+                                  >
+                                    <option value="0">-Select-</option>
+                                   
+                                  </select>
+                                  {/* <p className="error">
+                                    {errors.incomeExpected}
+                                  </p> */}
+                                </FormControl>
+                              </div>
+                            </div>
+                           
+
+                            <div className="col-10">
+                            <Typography
+                              align="left"
+                              style={{ fontSize: "17px", marginTop: "10px" }}
+                            >
+                              Other (not available in the drop down):
+                              
+                            </Typography>
+                            <FormControl className="w-100">
+                              <TextField
+                                className="col-md-6 col-12"
+                                style={{
+                                  backgroundColor:"#fff",
+                                 
+                                  // color: "#7e7e7e",
+                                  fontStyle: "italic",
+                                 
+                                }}
+                                name="subParagraphArticle"
+                                // value={values.subParagraphArticle}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                // error={Boolean(
+                                //   touched.subParagraphArticle &&
+                                //     errors.subParagraphArticle
+                                // )}
+                              />
+                              {/* <p className="error">
+                                {errors.subParagraphArticle}
+                              </p> */}
+                            </FormControl>
+                            </div>
+
+                           
+                          </div>
+                        </Paper>
+                      ))}
+                       <div style={{ marginTop: "20px" }}>
+                        <Button
+                          onClick={addIncomeTypePaper}
+                          variant="contained"
+                          size="large"
+                          style={{ backgroundColor: "black", color: "white" }}
+                        >
+                          Add Substantial U.S. Owner
+              </Button>
+                      </div>
+                      </>):""}
                       </Typography>
                     </div>
 
@@ -302,7 +771,7 @@ export default function Fedral_tax(props: any) {
                       >
                         View Form
                       </Button>
-                      <Button
+                     {checkbox1Checked  || checkbox2Checked ?( <Button
                         // type="submit"
                         onClick={()=>{
                           history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
@@ -311,7 +780,18 @@ export default function Fedral_tax(props: any) {
                         style={{ color: "white", marginLeft: "15px" }}
                       >
                         Continue
-                      </Button>
+                      </Button>):
+                      <Button
+                     disabled
+                      onClick={()=>{
+                        history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
+                      }}
+                      variant="contained"
+                      style={{ color: "white", marginLeft: "15px" }}
+                    >
+                      Continue
+                    </Button>
+                      }
                     </div>
                     <Typography
                       align="center"

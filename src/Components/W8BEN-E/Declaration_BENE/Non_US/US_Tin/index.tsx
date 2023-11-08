@@ -246,7 +246,7 @@ export default function Tin(props: any) {
                           <p className="error">{errors.usTinTypeId}</p>
                         </div>
 
-                        <div className="col-lg-5 col-12 mt-1">
+                        <div className="col-lg-5 col-12">
                           <Typography>U.S. TIN</Typography>
                           <Input
                             disabled={values.notAvailable}
