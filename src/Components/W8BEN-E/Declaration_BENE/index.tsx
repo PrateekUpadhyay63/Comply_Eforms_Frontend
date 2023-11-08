@@ -158,7 +158,7 @@ export default function Term() {
                 variant="contained"
                 style={{ color: "white" }}
                 onClick={() => {
-                  history("/W-8BEN/Declaration/US_Sourced");
+                  history("/BenE/Tax_Purpose_BenE/Declaration_BenE/US/Factors_BenE");
                 }}
               >
                 U.S. Sourced Income
