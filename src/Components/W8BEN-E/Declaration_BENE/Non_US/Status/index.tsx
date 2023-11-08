@@ -5,6 +5,7 @@ import {
   Button,
   Input,
   Paper,
+  Checkbox,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -12,15 +13,16 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
-  Checkbox,
+
   Select,
   MenuItem,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import Tooltip from "@mui/material/Tooltip";
-import { ExpandMore, Info } from "@mui/icons-material";
+import { CheckBox, ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
 import checksolid from "../../../assets/img/check-solid.png";

@@ -17,8 +17,8 @@ const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, Ge
   GetAgentTINTypeSelectionByIdForEform,
   GetAgentCountriesImportantForEform,
   GetChapter3Status,
-  GetChapter4Statuses
-
+  GetChapter4Statuses,
+  GetLimitationBenefits,
 } = Utils.actionName
 
 
@@ -276,6 +276,15 @@ export const GetChapter3StatusReducer = (state = initialState, action: any): any
 export const GetChapter4StatusesReducer = (state = initialState, action: any): any => {
   switch (action.type) {
     case GetChapter4Statuses:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+export const GetLimitationBenefitsReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetLimitationBenefits:
       return { ...state, ...action.payload };
     default:
       return state;

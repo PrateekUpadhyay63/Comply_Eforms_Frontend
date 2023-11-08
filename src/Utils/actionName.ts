@@ -38,7 +38,7 @@ const ActionName = {
     GetAgentCountriesImportantForEform:"GetAgentCountriesImportantForEform",
     GetChapter3Status:"GetChapter3Status",
     GetChapter4Statuses:"GetChapter4Statuses",
-
+    GetLimitationBenefits:"GetLimitationBenefits",
   };
 
   export default ActionName;

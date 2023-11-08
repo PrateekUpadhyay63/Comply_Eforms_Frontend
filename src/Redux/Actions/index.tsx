@@ -772,3 +772,26 @@ export const GetChapter4Statuses = ():any =>{
     );
   };
 }
+
+export const GetLimitationBenefits = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetLimitationBenefits,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetLimitationBenefits,
+            payload: {
+              GetLimitationBenefitsData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}

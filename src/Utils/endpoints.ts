@@ -13,7 +13,7 @@ const EndPoint = {
   PostFormSelection: "/AccountHolderDetail/InsertConfirmationCode",
   getBreadCrums: "/Form/GetBreadCrumbs",
   GetAgentPaymentType: "/WebAppBasic/GetAgentPaymentTypeForEform",
-
+  GetLimitationBenefits:"/W9Common/GetLimitationBenefits",
 
   //
   GetAgentCapacityHiddenForEform: "/WebAppBasic/GetAgentCapacityHiddenForEform",

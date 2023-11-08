@@ -326,8 +326,10 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                             </div>
+{values.federalTaxClassificationId == 1 ||values.federalTaxClassificationId == 6 ||values.federalTaxClassificationId == 7 || values.federalTaxClassificationId == 8 ||values.federalTaxClassificationId == 9 || values.federalTaxClassificationId == 10 ||values.federalTaxClassificationId == 11 || values.federalTaxClassificationId == 12 ||values.federalTaxClassificationId == 13 ?(
+<>
 
-                            <div
+<div
                               style={{ marginTop: "20px", display: "flex" }}
                               className="col-12"
                             >
@@ -557,6 +559,243 @@ export default function Fedral_tax(props: any) {
                                 </div>
                               </div>
                             </>
+</>):""}
+
+
+{values.federalTaxClassificationId == 2 ||values.federalTaxClassificationId == 3 || values.federalTaxClassificationId == 4 ||values.federalTaxClassificationId == 5 ?(<>
+<>
+
+<div
+                              style={{ marginTop: "20px", display: "flex" }}
+                              className="col-12"
+                            >
+                              <div className="col-6">
+                                <Typography
+                                  align="left"
+                                  className="d-flex w-60 "
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  Business Name:
+                                  <span style={{ color: "red" }}>*</span>
+                                  <span>
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <Typography color="inherit">
+                                            Name details
+                                          </Typography>
+                                          <a
+                                            onClick={() => setToolInfo("name")}
+                                          >
+                                            <Typography
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecorationLine: "underline",
+                                              }}
+                                              align="center"
+                                            >
+                                              {" "}
+                                              View More...
+                                            </Typography>
+                                          </a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "10px",
+                                          cursor: "pointer",
+                                          verticalAlign: "super",
+                                        }}
+                                      />
+                                    </Tooltip>
+                                  </span>
+                                </Typography>
+                                {toolInfo === "name" ? (
+                                  <div>
+                                    <Paper
+                                      style={{
+                                        backgroundColor: "#dedcb1",
+                                        padding: "15px",
+                                        marginBottom: "10px",
+                                      }}
+                                    >
+                                      <Typography>
+                                        Please enter the first and last name of
+                                        the person who is required or has been
+                                        requested to submit an information
+                                        return.
+                                      </Typography>
+                                      <Typography
+                                        style={{
+                                          marginTop: "10px",
+                                          fontWeight: "550",
+                                        }}
+                                      >
+                                        Specific instructions for U.S.
+                                        individuals and sole proprietors: U.S.
+                                        individuals:
+                                      </Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        If you are an{" "}
+                                        <span style={{ fontWeight: "550" }}>
+                                          individual
+                                        </span>
+                                        , you must enter the name shown on your
+                                        income tax return. However, if you have
+                                        changed your last name, for instance,
+                                        due to marriage without informing the
+                                        Social Security Administration of the
+                                        name change, enter your first name, the
+                                        last name shown on your social security
+                                        card, and your new last name. In certain
+                                        situations we may need to contact you
+                                        for further verification.
+                                      </Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        <span style={{ fontWeight: "550" }}>
+                                          Joint names:
+                                        </span>
+                                        If the account is in joint names, both
+                                        parties will need to submit separate
+                                        submissions.
+                                      </Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        <span style={{ fontWeight: "550" }}>
+                                          {" "}
+                                          Sole proprietor:
+                                        </span>
+                                        Enter your individual name as shown on
+                                        your income tax return on the 'Name'
+                                        line. You may enter your business,
+                                        trade, or 'doing business as (DBA)' name
+                                        on the 'Business name' line.
+                                      </Typography>
+
+                                      <Link
+                                        href="#"
+                                        underline="none"
+                                        style={{
+                                          marginTop: "10px",
+                                          fontSize: "16px",
+                                        }}
+                                        onClick={() => {
+                                          setToolInfo("");
+                                        }}
+                                      >
+                                        --Show Less--
+                                      </Link>
+                                    </Paper>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+
+                                <FormControl className="w-100">
+                                  <TextField
+                                    autoComplete="firstName"
+                                    type="text"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    helperText={
+                                      touched.firstName && errors.firstName
+                                    }
+                                    error={Boolean(
+                                      touched.firstName && errors.firstName
+                                    )}
+                                    name="firstName"
+                                    className="inputClassFull"
+                                    value={values.firstName}
+                                  />
+                                </FormControl>
+                              </div>
+                              <div
+                                className="col-6  "
+                                style={{ marginLeft: "10px" }}
+                              >
+                                <Typography
+                                  align="left"
+                                  className="d-flex w-60 "
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  Business Name or disregarded entity name if
+                                  different:
+                                </Typography>
+
+                                <FormControl className="w-100">
+                                  <TextField
+                                    autoComplete="lastName"
+                                    type="text"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    helperText={
+                                      touched.lastName && errors.lastName
+                                    }
+                                    error={Boolean(
+                                      touched.lastName && errors.lastName
+                                    )}
+                                    name="lastName"
+                                    value={values.lastName}
+                                    className="inputClass"
+                                  />
+                                </FormControl>
+                              </div>
+                            </div>
+
+                            <>
+                              <div className="row">
+                                <div className=" col-12">
+                                  <Typography
+                                    align="left"
+                                    className="d-flex w-60 "
+                                    style={{
+                                      fontSize: "13px",
+                                      marginTop: "15px",
+                                    }}
+                                  >
+                                    Country of incorporation / organization:
+                                    <span style={{ color: "red" }}>*</span>
+                                  </Typography>
+
+                                  <FormControl className="w-50">
+                                    <select
+                                      name="businessName"
+                                      value={values.businessName}
+                                      onChange={handleChange}
+                                      autoComplete="businessName"
+                                      placeholder="Business Name"
+                                      onBlur={handleBlur}
+                                      style={{
+                                        padding: " 0 10px",
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "36px",
+                                      }}
+                                    >
+                                      <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
+                                    </select>
+                                  </FormControl>
+                                </div>
+                              </div>
+                            </>
+</>
 
                             <div>
                               <Typography
@@ -706,6 +945,9 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                             </div>
+</>):""}
+
+
                           </Typography>
                         </div>
 
