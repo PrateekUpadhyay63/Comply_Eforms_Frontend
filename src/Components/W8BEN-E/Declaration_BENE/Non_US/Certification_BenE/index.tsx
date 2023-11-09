@@ -47,13 +47,13 @@ export default function Certifications(props: any) {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "20px 0px",height:"100%",marginTop:"10px" }}>
             <BreadCrumbComponent breadCrumbCode={1288} formName={2}/>
       </div>
       </div>
-      <div className="col-8">
-      <div style={{ padding: "20px" }}>
-        <Paper style={{ padding: "18px" }}>
+      <div className="col-8 mt-5">
+      <div style={{ padding: "16px" }}>
+        <Paper style={{ padding: "14px" }}>
           <Typography
             align="left"
             style={{
