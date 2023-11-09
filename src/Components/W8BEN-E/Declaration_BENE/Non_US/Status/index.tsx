@@ -189,7 +189,7 @@ export default function Fedral_tax(props: any) {
                                   fontWeight: "550",
                                 }}
                               >
-                                Select Chapter 4 Status:{" "}
+                                 Chapter 4 Status:{" "}
                                 <span>
                                   <Tooltip
                                     style={{
@@ -348,8 +348,8 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                             </div>
-
-
+{values.federalTaxClassificationId == 2 ?(
+                            <>
   <div>
                         <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
                         Part XXVI  <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Passive NFFE </span>
@@ -394,7 +394,8 @@ export default function Fedral_tax(props: any) {
   the entity identified in Part I has no substantial U.S. owners (or, if applicable, no controlling U.S. persons), or
   </Paper>
   </div>
-  <div className="d-flex mt-3">
+
+<div className="d-flex mt-3">
                         <Typography className="mt-2" style={{marginTop:"5px"}}>
                         c
                         </Typography>
@@ -805,6 +806,7 @@ export default function Fedral_tax(props: any) {
               </Button>
                       </div>
                       </>):""}
+</>):""}
 
                           </Typography>
                         </div>
