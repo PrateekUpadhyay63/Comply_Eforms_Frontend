@@ -1830,7 +1830,7 @@ export default function Fedral_tax(props: any) {
                         <Typography align="center">
                           <Button
                             onClick={() => {
-                              history("/W-8ECI/Info");
+                              history("/Certificates");
                             }}
                             variant="contained"
                             style={{

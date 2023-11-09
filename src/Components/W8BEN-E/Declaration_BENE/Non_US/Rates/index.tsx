@@ -692,7 +692,7 @@ const GetAllIncomeCodesReducer = useSelector(
                 <Typography align="center">
                   <Button
                   onClick={()=>{
-                    history('/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE')
+                    history('/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E')
                   }}
                     variant="contained"
                     size="large"
