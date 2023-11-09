@@ -868,7 +868,7 @@ export default function Fedral_tax(props: any) {
                         <Typography align="center">
                           <Button
                             onClick={() => {
-                              history("/W-8ECI/Info");
+                              history("/BenE/Tax_Purpose_BenE/Declaration_BenE/US/Factors_BenE");
                             }}
                             variant="contained"
                             style={{

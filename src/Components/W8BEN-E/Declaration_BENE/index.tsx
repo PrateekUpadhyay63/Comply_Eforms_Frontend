@@ -195,6 +195,9 @@ export default function Term() {
                   marginTop: "10px",
                   marginBottom: "20px",
                 }}
+                onClick={() => {
+                  history("/BenE/Tax_Purpose_BenE");
+                }}
               >
                 <span style={{ marginRight: "5px" }}>
                   {" "}

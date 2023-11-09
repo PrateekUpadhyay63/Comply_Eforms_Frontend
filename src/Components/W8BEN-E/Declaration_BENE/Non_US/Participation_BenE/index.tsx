@@ -612,7 +612,7 @@ export default function Penalties() {
                   <Typography align="center">
                     <Button
                     onClick={()=>{
-                      history('/W-8BEN/Declaration/US_Tin/Certificates')
+                      history('/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE')
                     }}
                       variant="contained"
                       style={{

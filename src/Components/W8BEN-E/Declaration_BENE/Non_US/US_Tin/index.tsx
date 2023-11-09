@@ -812,7 +812,7 @@ export default function Tin(props: any) {
                     <Typography align="center">
                       <Button
                         onClick={() => {
-                          history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+                          history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Status_BenE");
                         }}
                         variant="contained"
                         style={{

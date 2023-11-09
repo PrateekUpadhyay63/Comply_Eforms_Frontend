@@ -527,7 +527,7 @@ export default function FCTA_Reporting(props: any) {
                 <Typography align="center">
                   <Button
                   onClick={()=>{
-                    history("/W-8BEN/Declaration/US_Tin")
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
                   }}
                     variant="contained"
                     style={{
