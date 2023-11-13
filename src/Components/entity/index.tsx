@@ -1249,7 +1249,11 @@ export default function Entity() {
                               value={values.usTin}
                             />
                           </FormControl>
-                          <p className="error">{errors.usTin}</p>
+                         {values.usTinTypeId == 6 ||
+                                values.usTinTypeId == 7 ||
+                                values.usTinTypeId == 1 ? (""):
+                                <p className="error">{errors.usTin}</p>
+                                }
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
