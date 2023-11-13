@@ -685,7 +685,7 @@ export default function Entity() {
                         </Tooltip>
                         </div>
                         <p className="error mb-0">
-                            {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory information Required" : ""}
+                            {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory Information Required!" : ""}
                           </p>
                       </div>
                     }
@@ -1031,7 +1031,7 @@ export default function Entity() {
                         <p className="error mb-0">
                             {errors?.usTinTypeId ||
                             errors?.usTin 
-                              ? "Mandatory information required"
+                              ? "Mandatory Information Required!"
                               : ""}
                           </p>
                       </div>
@@ -1639,7 +1639,7 @@ export default function Entity() {
                              errors?.permanentResidentialCountryId1 ||
                              errors?.permanentResidentialStreetNumberandName1 ||
                              errors?.permanentResidentialCityorTown1 ||
-                             errors?.permanentResidentialZipPostalCode1 ? "Mandatory information required" : ""}
+                             errors?.permanentResidentialZipPostalCode1 ? "Mandatory Information Required!" : ""}
                           </p>
                       </div>
                     }
@@ -2776,7 +2776,7 @@ export default function Entity() {
                         <p className="error mb-0">
                             {errors?.contactFirstName ||
                              errors?.contactLastName ||
-                             errors?.contactEmail ? "Mandatory information required" : ""}
+                             errors?.contactEmail ? "Mandatory Information Required!" : ""}
                           </p>
                       </div>
                     }
@@ -3552,7 +3552,7 @@ export default function Entity() {
                           />
                         </Tooltip>
                         <p className="error">
-                          {errors?.paymentTypeId ? "Mandatory information required" : ""}
+                          {errors?.paymentTypeId ? "Mandatory Information Required!" : ""}
                         </p>
                       </div>
                     }
@@ -3732,7 +3732,7 @@ export default function Entity() {
                              errors?.sortCode ||
                              errors?.bsb ||
                              errors?.bankCode ||
-                             errors?.abaRouting ? "Mandatory information required" : ""}
+                             errors?.abaRouting ? "Mandatory Information Required!" : ""}
                           </p>
                           </div>
                         }

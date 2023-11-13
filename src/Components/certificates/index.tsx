@@ -630,7 +630,6 @@ export default function Certificates(props: any) {
             }}
             onClick={() => handleCardSelect(card?.id)}
             >
-            <>  {console.log(diableForm===card.enabled)}</>
               <CardContent>
                 <Typography align="center" variant="h5" component="div">
                   {card?.title}

@@ -136,7 +136,7 @@ export const individualSchema = () => {
       then: () =>
         Yup.number()
           .required("Please select branch location")
-          .notOneOf([0], "Please select a valid country"),
+          .notOneOf([0], "Please select a Branch Location"),
     }),
 
     accountNumber: Yup.string().when("paymentTypeId", {
@@ -174,7 +174,7 @@ export const individualSchema = () => {
       then: () =>
         Yup.number()
           .required("Please select country")
-          .notOneOf([0], "Please select a valid country"),
+          .notOneOf([0], "Please select a Branch Location"),
     }),
     makePayable: Yup.string().when("paymentTypeId", {
       is: 2,
