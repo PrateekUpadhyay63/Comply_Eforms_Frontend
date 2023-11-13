@@ -832,7 +832,7 @@ export default function Fedral_tax(props: any) {
                           >
                             View Form
                           </Button>
-                          {checkbox1Checked  || checkbox2Checked ?( <Button
+                          { checkbox1Checked  || checkbox2Checked || values.federalTaxClassificationId ?( <Button
                         // type="submit"
                         onClick={()=>{
                           history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
