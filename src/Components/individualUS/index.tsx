@@ -62,7 +62,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([""]);
+  const [incomeArr, setIncomeArr] = useState([6]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -291,7 +291,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, ""]);
+    setIncomeArr((incomeArr) => [...incomeArr, 6]);
   };
 
   const handleDelete = (i: any) => {
@@ -500,7 +500,7 @@ export default function IndividualUs() {
 
   const handleIcome = (e: any, i: number) => {
     const newValue = e.target.value;
-    const updatedIncomeArr = [...incomeArr];
+    const updatedIncomeArr = [...incomeArr , 6];
     updatedIncomeArr[i] = newValue;
     setIncomeArr(updatedIncomeArr);
   };
@@ -1793,7 +1793,7 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                   disabled={
-                                  values.usTinTypeId == 3 ||
+                                  // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
                                   values.usTinTypeId == 1
                                 }
@@ -3584,7 +3584,7 @@ export default function IndividualUs() {
                               );
                             })}
 
-                          <Typography
+                         {incomeArr.length<=4 ?( <Typography
                             style={{
                               color: "#007bff",
                               cursor: "pointer",
@@ -3593,7 +3593,7 @@ export default function IndividualUs() {
                             onClick={addIncomeType}
                           >
                             <a>Add Income Type</a>
-                          </Typography>
+                          </Typography>):""}
                         </Collapse>
                       </>
                     ) : (

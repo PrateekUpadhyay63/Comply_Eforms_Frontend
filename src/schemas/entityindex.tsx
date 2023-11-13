@@ -8,7 +8,11 @@ export const EntitySchema = () => {
     //     .max(50, 'First Name should be maximum of 50 characters'),
     isUSEntity: Yup.string(),
     entityName: Yup.string().required("Please Enter Entity name"),
-    usTin : Yup.string().required("Please Enter TIN name"),
+    usTin : Yup.string().when("usTinTypeId", {
+      is: (usTinTypeId: any) =>
+      usTinTypeId == 6 || usTinTypeId == 7||usTinTypeId == 1,
+      then: () => Yup.string()
+    .required("Please Enter TIN name") }),
     usTinTypeId: Yup.number().notOneOf([1], "Please select a valid option"),
     uniqueIdentifier: Yup.string()
       .required("Please Enter unique Identifier")
