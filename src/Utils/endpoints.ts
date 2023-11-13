@@ -13,7 +13,7 @@ const EndPoint = {
   PostFormSelection: "/AccountHolderDetail/InsertConfirmationCode",
   getBreadCrums: "/Form/GetBreadCrumbs",
   GetAgentPaymentType: "/WebAppBasic/GetAgentPaymentTypeForEform",
-
+  GetLimitationBenefits:"/W9Common/GetLimitationBenefits",
 
   //
   GetAgentCapacityHiddenForEform: "/WebAppBasic/GetAgentCapacityHiddenForEform",
@@ -30,5 +30,7 @@ const EndPoint = {
   GetAgentWrittenStatementSelectionByAgentIdForEform: "/WebAppBasic/GetAgentWrittenStatementSelectionByAgentIdForEform",
   GetAgentTINTypeSelectionByIdForEform: "/WebAppBasic/GetAgentTINTypeSelectionByIdForEform",
   GetAgentCountriesImportantForEform:"/WebAppBasic/GetAgentCountriesImportantForEform",
+  GetChapter3Status:"/W9Common/GetChapter3Status",
+  GetChapter4Statuses:"/W9Common/GetChapter4Statuses",
 };
 export default EndPoint;

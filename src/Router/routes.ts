@@ -74,10 +74,14 @@ const Submission= React.lazy(() => import("../Components/Form8233/submission"));
 
 //
 const Tax_Purpose_BenE= React.lazy(() => import("../Components/W8BEN-E/Tax-Purposes"));
+const Factors_BenE= React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/US/Factors"));
 const Declaration_BenE= React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE"));
 const Status_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Status"));
 const US_Tin_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/US_Tin"));
 const Claim_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Claim_Non_US"));
+const Rates_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Rates"));
+const Certi_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Certification_BenE"));
+const Participation_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Participation_BenE"));
 
 
 const ROUTES: Array<RouteType> = [
@@ -448,7 +452,36 @@ isPrivate: true,
     id: 7,
     Component: Claim_BenE,
     isPrivate: true,
+  },
+  {
+    name:"Rates_BenE",
+    path:"BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE",
+    id: 7,
+    Component: Rates_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"Certi_BenE",
+    path:"BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE",
+    id: 7,
+    Component: Certi_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"Participation_BenE",
+    path:"BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE",
+    id: 7,
+    Component: Participation_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"Factors_BenE",
+    path:"BenE/Tax_Purpose_BenE/Declaration_BenE/US/Factors_BenE",
+    id: 7,
+    Component: Factors_BenE,
+    isPrivate: true,
   }
+
   
 ];
 

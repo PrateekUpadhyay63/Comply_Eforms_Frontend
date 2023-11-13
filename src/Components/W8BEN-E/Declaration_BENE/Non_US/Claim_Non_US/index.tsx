@@ -26,7 +26,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import check from "../../../../../assets/img/check.png";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
-import {GetAgentCountriesImportantForEform} from "../../../../../Redux/Actions"
+import {GetAgentCountriesImportantForEform , GetLimitationBenefits} from "../../../../../Redux/Actions"
 export default function FCTA_Reporting(props: any) {
   const history = useNavigate();
   const [report, setReport] = useState<string>("");
@@ -43,10 +43,15 @@ export default function FCTA_Reporting(props: any) {
     };
     useEffect(()=>{
       dispatch(GetAgentCountriesImportantForEform())
+      dispatch(GetLimitationBenefits())
       },[])
     const GetAgentCountriesImportantForEformData = useSelector(
       (state:any)=>state.GetAgentCountriesImportantForEformReducer.GetAgentCountriesImportantForEformData
     )
+    const GetLimitationBenefitsData = useSelector(
+      (state:any)=>state.GetLimitationBenefitsReducer.GetLimitationBenefitsData
+    )
+  
   return (
     <section
       className="inner_content"
@@ -79,6 +84,7 @@ export default function FCTA_Reporting(props: any) {
               isSubmissionClaimTreaty: "No",
               ownerResidentId: "",
               permanentResidentialCountryId: 0,
+              submission:""
             }}
             enableReinitialize
             validationSchema={claimSchema}
@@ -270,7 +276,7 @@ export default function FCTA_Reporting(props: any) {
                       <>
                         <Typography
                           align="left"
-                          style={{ fontSize: "22px", marginTop: "20px" }}
+                          style={{ fontSize: "18px", marginTop: "20px" }}
                         >
                           I certify the beneficial owner is a resident of:{" "}
                           <span style={{ color: "red" }}>*</span>
@@ -390,8 +396,93 @@ export default function FCTA_Reporting(props: any) {
                               </FormControl>
                             </div>
                         </div>
+
+                        <div className="col-12" style={{padding:"0px"}}>
+                          <Typography style={{fontWeight:"bold"}}>
+                          Please select type of limitations of benefits provisions that may be include in an applicable tax treaty (see instructions):
+                          </Typography>
+                              <FormControl className="w-100">
+                                <div className="row">
+                                  <div  className="col-md-6 col-12 d-flex" >
+                                  <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                         
+                            onChange={(e) => {
+                                handleChange(e);
+                              }}
+                            onBlur={handleBlur}
+                            value={values.permanentResidentialCountryId}
+                          >
+                              <option value={0}>-Select-</option>
+                            {GetLimitationBenefitsData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
+
+                                  </div>
+                                </div>
+                                
+                                <p className="error">{errors.permanentResidentialCountryId}</p>
+                              </FormControl>
+                            </div>
+                            <div>
+                              <Typography style={{fontWeight:"bold"}}>
+                              Are you claiming treaty benefits on:
+                              </Typography>
+
+                              <Typography
+                      align="left"
+                      style={{ fontSize: "18px", marginTop: "10px" }}
+                    >
+                     U.S. source dividends paid to you by another foreign corporation? <span style={{color:"red"}}>
+                      *
+                     </span>
+                    </Typography>
+
+                    <div
+                      style={{ marginTop: "10px", justifyContent: "center" }}
+                    >
+                      <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        value={values.submission}
+                        onChange={handleChange}
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="Yes"
+                          name="submission"
+                          
+                        />
+                        <FormControlLabel
+                          value="No"
+                          control={<Radio />}
+                          label="No"
+                          name="submission"
+                          
+                        />
+                      </RadioGroup>
+                     
+                    </div>
+                            </div>
+
                       </>
                     ) : null}
+
+
+                    
                   </div>
                 </div>
               
@@ -407,9 +498,13 @@ export default function FCTA_Reporting(props: any) {
                   <Button variant="contained" style={{ color: "white" }}>
                     SAVE & EXIT
                   </Button>
+
+                  <Button style={{ color: "white", marginLeft: "15px" }} variant="contained" >
+                   VIEW FORM
+                  </Button>
                   <Button
                   onClick={()=>{
-                    history("/W-8BEN/Declaration/US_Tin/Rates");
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE");
                   }}
                     type="submit"
                     variant="contained"
@@ -432,7 +527,7 @@ export default function FCTA_Reporting(props: any) {
                 <Typography align="center">
                   <Button
                   onClick={()=>{
-                    history("/W-8BEN/Declaration/US_Tin")
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
                   }}
                     variant="contained"
                     style={{

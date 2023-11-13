@@ -246,7 +246,7 @@ export default function Tin(props: any) {
                           <p className="error">{errors.usTinTypeId}</p>
                         </div>
 
-                        <div className="col-lg-5 col-12 mt-1">
+                        <div className="col-lg-5 col-12">
                           <Typography>U.S. TIN</Typography>
                           <Input
                             disabled={values.notAvailable}
@@ -812,7 +812,7 @@ export default function Tin(props: any) {
                     <Typography align="center">
                       <Button
                         onClick={() => {
-                          history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+                          history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Status_BenE");
                         }}
                         variant="contained"
                         style={{
