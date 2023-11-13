@@ -47,6 +47,7 @@ export default function Fedral_tax(props: any) {
     lastName: "",
     businessName: "",
     federalTaxClassificationId: 0,
+    federal:""
   };
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
@@ -809,7 +810,7 @@ export default function Fedral_tax(props: any) {
                               <FormControl>
                                 <RadioGroup
                                   row
-                                  defaultValue="No"
+                                  defaultValue="Not"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   name="row-radio-buttons-group"
                                   //   value={values.isHeldUSCitizenship}
@@ -885,20 +886,20 @@ export default function Fedral_tax(props: any) {
                                     defaultValue="No"
                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                     name="row-radio-buttons-group"
-                                    //   value={values.isHeldUSCitizenship}
+                                    value={values.federal}
                                     onChange={handleChange}
-                                    id="isHeldUSCitizenship"
+                                    
                                   >
                                     <FormControlLabel
                                       control={<Radio />}
                                       value="Yes"
-                                      name="isHeldUSCitizenship"
+                                      name="federal"
                                       label="Yes"
                                     />
                                     <FormControlLabel
                                       control={<Radio />}
                                       value="No"
-                                      name="isHeldUSCitizenship"
+                                      name="federal"
                                       label="No"
                                     />
                                   </RadioGroup>
@@ -907,7 +908,8 @@ export default function Fedral_tax(props: any) {
                                   </p>
                                 </FormControl>
                               </div>
-                              <div>
+                             {values.federal == "Yes" ?( 
+                             <div>
                                 <Typography
                                   style={{
                                     fontSize: "15px",
@@ -943,7 +945,9 @@ export default function Fedral_tax(props: any) {
                                     {/* {errors.isHeldUSCitizenship} */}
                                   </p>
                                 </FormControl>
-                              </div>
+                              </div>):values.federal == "No" ?(
+                                ""
+                              ):""}
                             </div>
 </>):""}
 
