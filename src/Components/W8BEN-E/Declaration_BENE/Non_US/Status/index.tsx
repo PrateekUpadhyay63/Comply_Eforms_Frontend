@@ -1046,6 +1046,541 @@ and</span>
   </>
 
 ):""}
+{values.federalTaxClassificationId == 13 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XVI <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Entity Wholly Owned by Exempt Beneficial Owners</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      30
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is an FFI solely because it is an investment entity; 
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Each direct holder of an equity interest in the investment entity is an exempt beneficial owner described in  <Link style={{textDecorationLine:"none"}}>
+Regulations section 1.1471-6
+</Link>
+<span style={{marginLeft : "5px"}}>
+or in an applicable Model 1 or Model 2 IGA;
+</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Each direct holder of a debt interest in the investment entity is either a depository institution (with respect to a loan made to such entity) or an exempt beneficial owner described in  
+
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-6
+
+</Link>
+<span style={{marginLeft : "5px"}} >
+or an applicable Model 1 or Model 2 IGA.
+
+</span>
+</Typography>
+
+
+
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has provided an owner reporting statement that contains the name, address, TIN (if any), chapter 4 status, and a description of the type of documentation provided to the withholding agent for every person that owns a debt interest constituting a financial account or direct equity interest in the entity;<span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has provided documentation establishing that every owner of the entity is an entity described in 
+
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-6(b), (c), (d), (e), (f), 
+
+</Link>
+
+and/or
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+(g) 
+
+</Link>
+,
+
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+without regard to whether such owners are beneficial owners.
+</Typography>
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 14 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXVII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Excepted Inter-Affiliate FFI</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      41
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is a member of an expanded affiliated group;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not maintain financial accounts (other than accounts maintained for members of its expanded affiliated group);
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not make withholdable payments to any person other than to members of its expanded affiliated group that are not limited FFIs or limited branches;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not hold an account (other than a depository accounts in the country in which the entity is operating to pay for expenses) with or receive payments from any withholding agent other than a member of its expanded affiliated group; <span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has not agreed to report under
+
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-4(d)(2)(ii)(C) 
+
+</Link>
+
+<span  style={{ marginLeft : "5px"}}>
+or otherwise act as an agent for chapter 4 purposes on behalf of any financial institution, including a member of its expanded affiliated group.
+</span>
+
+
+
+</Typography>
+
+
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 15 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XX <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Excepted Nonfinancial Entity in Liquidation or Bankruptcy</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      34
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Filed a plan of liquidation, filed a plan of reorganization, or filed for bankruptcy on: 
+</Typography>
+<Input className="mb-4 date" type="date"/>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+During the past 5 years has not been engaged in business as a financial institution or acted as a passive NFFE;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is either liquidating or emerging from a reorganization or bankruptcy with the intent to continue or recommence operations as a nonfinancial entity;<span style={{fontWeight:"bold"}}>
+and</span>
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has, or will provide, documentary evidence such as a bankruptcy filing or other public documentation that supports its claim if it remains in bankruptcy or liquidation for more than three years.
+</Typography>
+
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 16 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XVIII <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Excepted Nonfinancial Group Entity</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      32
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is a holding company, treasury center, or captive finance company and substantially all of the entity's activities are functions described in 
+
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-5(e)(5)(i)(C)  
+</Link>
+<span style={{marginLeft : "5px"}}>
+through
+</span>
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+(E);
+</Link>
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is a member of a nonfinancial group described in 
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-5(e)(5)(i)(B);
+</Link>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is not a depository or custodial institution (other than for members of the entity's expanded affiliated group);<span style={{fontWeight:"bold"}}>
+and</span>
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not function (or hold itself out) as an investment fund, such as a private equity fund, venture capital fund, leveraged buyout fund, or any investment vehicle with an investment strategy to acquire or fund companies and then hold interests in those companies as capital assets for investment purposes.
+</Typography>
+
+
+                      </Paper>
+  </>
+
+):""}
+
+{values.federalTaxClassificationId == 17 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XIX <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Excepted Nonfinancial Start-Up Company</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      33
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+Was formed on (or, in the case of a new line of business, the date of board resolution approving the new line of business):
+</>
+</Typography>
+
+<Typography className="my-2">
+<Input className="mb-4 date" type="date"/>
+<span>(date must be less than 24 months prior to date of payment);</span>
+
+
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is not yet operating a business and has no prior operating history or is investing capital in assets with the intent to operate a new line of business other than that of a financial institution or passive NFFE;
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is investing capital into assets with the intent to operate a business other than that of a financial institution;<span style={{fontWeight:"bold"}}>
+and</span>
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+
+Does not function (or hold itself out) as an investment fund, such as a private equity fund, venture capital fund, leveraged buyout fund, or any investment vehicle whose purpose is to acquire or fund companies and then hold interests in those companies as capital assets for investment purposes.
+</Typography>
+
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 18 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXIV <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Excepted Territory NFFE</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      38
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+The entity identified in Part I is an entity that is organized in a possession of the United States;
+
+</>
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+The entity identified in Part I:
+
+</Typography>
+<Typography>
+(i) Does not accept deposits in the ordinary course of a banking or similar business;
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+(iI) Does not hold, as a substantial portion of its business, financial assets for the account of others; or;
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+
+(iii) Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account; and
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+
+All of the owners of the entity identified in Part I are bona fide residents of the possession in which the NFFE was organized or incorporated.
+</Typography> 
+
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 20 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XIII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Foreign Government, Government of a U.S. Possession, or Foreign Central Bank of Issue</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      27
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+the entity identified in Part I is the beneficial owner of the payment, and is not engaged in commercial financial activities of a type engaged in by an insurance company, custodial institution, or depository institution with respect to the payments, accounts, or obligations for which this form is submitted (except as permitted in
+</>
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-6(h)(2)
+
+</Link>
+)
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Less than 50% of such entity's gross income for the preceding calendar year is passive income; <span style={{fontWeight:"bold"}}>
+and</span>
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Less than 50% of the assets held by such entity are assets that produce or are held for the production of passive income (calculated as a weighted average of the percentage of passive assets measured quarterly) (see instructions for the definition of passive income)
+
+</Typography>
+
+
+
+                      </Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 21 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XIII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Foreign Government, Government of a U.S. Possession, or Foreign Central Bank of Issue</span>
+
+                        </Typography>
+                        <span>
+                        Check box 28a or 28b, whichever applies:
+                        </span>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      28 a
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+the entity identified in Part I is an international organization described in section 7701(a)(18).
+</>
+
+</Typography>
+</Paper>
+<div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      b
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I :
+                        </Typography>
+                      </div>
+<Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is comprised primarily of foreign governments;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is recognized as an intergovernmental or supranational organization under a foreign law similar to the International Organizations Immunities Act or that has in effect a headquarters agreement with a foreign government;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+The benefit of the entity's income does not inure to any private person;<span style={{fontWeight:"bold"}}>
+and</span>
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is the beneficial owner of the payment and is not engaged in commercial financial activities of a type engaged in by an insurance company, custodial institution, or depository institution with respect to the payments, accounts, or obligations for which this form is submitted (except as permitted in
+</Typography>
+<Link style={{textDecorationLine:"none" , marginLeft : "5px"}}>
+Regulations section 1.1471-6(h)(2)
+
+</Link>
+
+).
+
+
+</Paper>
+  </>
+
+):""}
+{values.federalTaxClassificationId == 23 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Non-profit Organization</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      36
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+is a non-profit organization that meets the following requirements:
+
+</>
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+The entity is established and maintained in its country of residence exclusively for religious, charitable, scientific, artistic, cultural or educational purposes;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+The entity is exempt from income tax in its country of residence;
+
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+The entity has no shareholders or members who have a proprietary or beneficial interest in its income or assets;
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+</Typography>
+<Typography className="my-2">
+Neither the applicable laws of the entity's country of residence nor the entity's formation documents permit any income or assets of the entity to be distributed to, or applied for the benefit of, a private person or non-charitable entity other than pursuant to the conduct of the entity's charitable activities or as payment of reasonable compensation for services rendered or payment representing the fair market value of property which the entity has purchased; <span style={{fontWeight:"bold"}}>
+and</span>
+
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+The applicable laws of the entity's country of residence or the entity's formation documents require that, upon the entity's liquidation or dissolution, all of its assets be distributed to an entity that is a foreign government, an integral part of a foreign government, a controlled entity of a foreign government, or another organization that is described in this Part XXII or escheats to the government of the entity's country of residence or any political subdivision thereof.
+
+
+</Typography>
+
+
+
+
+
+                      </Paper>
+  </>
+
+):""}
+
+
 
                           </Typography>
                         </div>
