@@ -16,6 +16,7 @@ import {
 
   Select,
   MenuItem,
+  Divider,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
@@ -807,6 +808,244 @@ export default function Fedral_tax(props: any) {
                       </div>
                       </>):""}
 </>):""}
+
+
+{values.federalTaxClassificationId == 6 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+                        Part XXV <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Active NFFE </span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      39
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+The entity identified in Part I is a foreign entity that is not a financial institution;
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Less than 50% of such entity's gross income for the preceding calendar year is passive income; <span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Less than 50% of the assets held by such entity are assets that produce or are held for the production of passive income (calculated as a weighted average of the percentage of passive assets measured quarterly) (see instructions for the definition of passive income)
+</Typography>
+                      </Paper>
+  </>
+
+):""}
+
+
+{values.federalTaxClassificationId == 7 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part IX  <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Certain Investment Entities that Do Not Maintain Financial Accounts </span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      39
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is a financial institution solely because it is an investment entity described in <Link style={{textDecorationLine:"none"}}>
+1.1471-5(e)(4)(i)(A);</Link>,
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2" >
+
+<span style={{fontWeight:"bold"}}>
+and</span> Does not maintain financial accounts.
+</Typography>
+
+                      </Paper>
+  </>
+
+):""}
+
+
+{values.federalTaxClassificationId == 8 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part VI <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Certified Deemed-Compliant FFI with Only Low-Value Accounts</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      39
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the FFI identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is not engaged primarily in the business of investing, reinvesting, or trading in securities, partnership interests, commodities, notional principal contracts, insurance or annuity contracts, or any interest (including a futures or forward contract or option) in such security, partnership interest, commodity, notional principal contract, insurance contract or annuity contract;
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+No financial account maintained by the FFI or any member of its expanded affiliated group, if any, has a balance or value in excess of $50,000 (as determined after applying applicable account aggregation rules); <span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Neither the FFI nor the entire expanded affiliated group, if any, of the FFI, have more than $50 million in assets on its consolidated or combined balance sheet as of the end of its most recent accounting year.
+</Typography>
+                      </Paper>
+  </>
+
+):""}
+
+{values.federalTaxClassificationId == 9 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part VIII  <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Certified Deemed-Compliant Limited Life Debt Investment Entity</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      22
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Was in existence as of January 17, 2013;
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Issued all classes of its debt or equity interests to investors on or before January 17, 2013, pursuant to a trust indenture or similar agreement; <span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is certified deemed-compliant because it satisfies the requirements to be treated as a limited life debt investment entity (such as the restrictions with respect to its assets and other requirements under
+Regulations section 1.1471-5(f)(2)(iv)
+</Typography>
+                      </Paper>
+  </>
+
+):""}
+
+{values.federalTaxClassificationId == 10 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part V<span  style={{fontWeight:"bold",marginLeft:"10px"}}>Certified Deemed-Compliant Nonregistering Local Bank</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      18
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the FFI identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Operates and is licensed solely as a bank or credit union (or similar cooperative credit organization operated without profit) in its country of incorporation or organization;
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Engages primarily in the business of receiving deposits from and making loans to, with respect to a bank, retail customers unrelated to such bank and, with respect to a credit union or similar cooperative credit organization, members, provided that no member has a greater than five percent interest in such credit union or cooperative credit organization;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not solicit account holders outside its country of organization;
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has no fixed place of business outside such country (for this purpose, a fixed place of business does not include a location that is not advertised to the public and from which the FFI performs solely administrative support functions);
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has no more than $175 million in assets on its balance sheet and, if it is a member of an expanded affiliated group, the group has no more than $500 million in total assets on its consolidated or combined balance sheets; <span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Does not have any member of its expanded affiliated group that is a foreign financial institution, other than a foreign financial institution that is incorporated or organized in the same country as the FFI identified in Part I and that meets the requirements set forth in this Part V.
+</Typography>
+                      </Paper>
+  </>
+
+):""}
+
+{values.federalTaxClassificationId == 11 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part VII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>Certified Deemed-Compliant Sponsored, Closely Held Investment Vehicle</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      21
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+Is an FFI solely because it is an investment entity described in <Link style={{textDecorationLine:"none"}}>
+Regulations section 1.1471-5(e)(4)
+</Link>
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Is not a QI, WP, or WT;
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Will have all of its due diligence, withholding, and reporting responsibilities (determined as if the FFI were a participating FFI) fulfilled by the sponsoring entity on line 20;<span style={{fontWeight:"bold"}}>
+and</span>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+20 or fewer individuals own all of the debt and equity interests in the entity (disregarding debt interests owned by U.S. financial institutions, participating FFIs, registered deemed-compliant FFIs, and certified deemed-compliant FFIs and equity interests owned by an entity if that entity owns 100% of the equity interests in the FFI and is itself a sponsored FFI).
+</Typography>
+                      </Paper>
+  </>
+
+):""}
 
                           </Typography>
                         </div>
