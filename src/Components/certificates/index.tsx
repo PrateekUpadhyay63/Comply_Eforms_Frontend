@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../Redux/store";
 import { postFormSelection } from "../../Redux/Actions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import checksolid from "../../assets/img/check-solid.png";
+
 export default function Certificates(props: any) {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -616,7 +618,7 @@ export default function Certificates(props: any) {
           ""
         )}
 
-        <div className="d-flex row">
+        <div className="d-flex row forms-card-data">
           {cards.map((card) => (
             <Card
             key={card?.id}
@@ -626,11 +628,14 @@ export default function Certificates(props: any) {
               border:
               selectedCard === card.id
               ? "7px solid #ffc107"
-              : "2px solid transparent",
+              : "7px solid transparent",
             }}
             onClick={() => handleCardSelect(card?.id)}
             >
               <CardContent>
+                <div className="check-div">
+                  <img src={checksolid}/>
+                </div>
                 <Typography align="center" variant="h5" component="div">
                   {card?.title}
                 </Typography>
