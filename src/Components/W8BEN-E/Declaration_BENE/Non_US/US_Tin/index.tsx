@@ -88,7 +88,7 @@ export default function Tin(props: any) {
           <div
             style={{ padding: "10px 0px", height: "100%", marginTop: "20px" }}
           >
-            <BreadCrumbComponent breadCrumbCode={1249} formName={2} />
+            <BreadCrumbComponent breadCrumbCode={1249} formName={3} />
           </div>
         </div>
 
