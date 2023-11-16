@@ -347,7 +347,8 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                             </div>
-{values.federalTaxClassificationId == 2 ?(
+{values.federalTaxClassificationId == 2 || values.federalTaxClassificationId == 27 
+?(
                             <>
   <div>
                         <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
@@ -1764,35 +1765,49 @@ The applicable laws of the entity's country of residence or the entity's formati
                       <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
 <Typography className="my-2">
 <>
-is a non-profit organization that meets the following requirements:
-
+Operates as a distributor with respect to debt or equity interests of the restricted fund with respect to which this form is furnished;
 </>
 </Typography>
 
 <Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
 <Typography className="my-2">
 <>
-The entity is established and maintained in its country of residence exclusively for religious, charitable, scientific, artistic, cultural or educational purposes;
+Provides investment services to at least 30 customers unrelated to each other and less than half of its customers are related to each other;
+
 
 </>
 </Typography>
 <Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
 
 <Typography className="my-2">
-The entity is exempt from income tax in its country of residence;
-
+Is required to perform AML due diligence procedures under the anti-money laundering laws of its country of organization (which is an FATF-compliant jurisdiction);
 
 </Typography>
 
 <Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
 <Typography className="my-2">
-The entity has no shareholders or members who have a proprietary or beneficial interest in its income or assets;
+Operates solely in its country of incorporation or organization, has no fixed place of business outside of that country, and has the same country of incorporation or organization as all members of its affiliated group, if any;
 
-<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
 
 </Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
 <Typography className="my-2">
-Neither the applicable laws of the entity's country of residence nor the entity's formation documents permit any income or assets of the entity to be distributed to, or applied for the benefit of, a private person or non-charitable entity other than pursuant to the conduct of the entity's charitable activities or as payment of reasonable compensation for services rendered or payment representing the fair market value of property which the entity has purchased; <span style={{fontWeight:"bold"}}>
+Does not solicit customers outside its country of incorporation or organization;
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Has no more than $175 million in total assets under management and no more than $7 million in gross revenue on its income statement for the most recent accounting year;
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+Is not a member of an expanded affiliated group that has more than $500 million in total assets under management or more than $20 million in gross revenue for its most recent accounting year on a combined or consolidated income statement;<span style={{fontWeight:"bold"}}>
 and</span>
 
 
@@ -1801,7 +1816,7 @@ and</span>
 <Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
 
 <Typography className="my-2">
-The applicable laws of the entity's country of residence or the entity's formation documents require that, upon the entity's liquidation or dissolution, all of its assets be distributed to an entity that is a foreign government, an integral part of a foreign government, a controlled entity of a foreign government, or another organization that is described in this Part XXII or escheats to the government of the entity's country of residence or any political subdivision thereof.
+Does not distribute any debt or securities of the restricted fund to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs.
 
 
 </Typography>
@@ -1810,8 +1825,770 @@ The applicable laws of the entity's country of residence or the entity's formati
 
 
 
-                      </Paper>
+  </Paper>
+  <Typography className="my-2">
+  Check box 25b or 25c, whichever applies:
+  <br/>
+I further certify that with respect to all sales of debt or equity interests in the restricted fund with respect to which this form is furnished that are made after December 31, 2011, the entity identified in Part I:
+    </Typography>   
+
+     <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                       b
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        Has been bound by
+                        </Typography>
+                      </div>   
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                      <Typography className="my-2">
+  a distribution agreement that contained a general prohibition on the sale of debt or securities to U.S. entities and U.S. resident individuals and is currently bound by a distribution agreement that contains a prohibition of the sale of debt or securities to any specified U.S. person, passive NFFE with one or more substantial U.S. owners, or nonparticipating FFI.
+    </Typography>  
+                        </Paper>           
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                       c
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        Is currently bound by
+                        </Typography>
+                      </div>   
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                      <Typography className="my-2">
+                      a distribution agreement that contains a prohibition on the sale of debt or securities to any specified U.S. person, passive NFFE with one or more substantial U.S. owners, or nonparticipating FFI and, for all sales made prior to the time that such a restriction was included in its distribution agreement, has reviewed all accounts related to such sales in accordance with the procedures identified in
+                      <br/>
+                      <Link style={{textDecorationLine:"none"}}>
+                      Regulations section 1.1471-4(c)</Link>
+                      <br/>
+                      applicable to preexisting accounts and has redeemed or retired any, or caused the restricted fund to transfer the securities to a distributor that is a participating FFI or reporting Model 1 FFI securities which were sold to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs.
+    </Typography>  
+                        </Paper>     
   </>
+  
+
+):""}
+{values.federalTaxClassificationId == 33 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXVIII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Sponsored Direct Reporting NFFE</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      42
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        Name of sponsoring entity:
+                        <span className="mx-2">
+                        <FormControl>
+                              <TextField
+                                
+                                style={{
+                                  backgroundColor:"#fff",
+
+                                 
+                                  fontStyle: "italic",
+
+                                }}
+                                name="subParagraphArticle"
+                                // value={values.subParagraphArticle}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                // error={Boolean(
+                                //   touched.subParagraphArticle &&
+                                //     errors.subParagraphArticle
+                                // )}
+                              />
+                              {/* <p className="error">
+                                {errors.subParagraphArticle}
+                              </p> */}
+                            </FormControl>
+                        </span>
+                        </Typography>
+                      </div>
+                      <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      43
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that:
+                        
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+The entity identified in Part I is a direct reporting NFFE that is sponsored by the entity identified in line 42.
+</>
+</Typography>
+
+
+
+
+
+
+
+
+
+  </Paper>
+  
+   
+  </>
+  
+
+):""}
+{values.federalTaxClassificationId == 34 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part IV <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Sponsored FFI</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      16
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        Name of sponsoring entity:
+                        <span className="mx-2">
+                        <FormControl>
+                              <TextField
+                                
+                                style={{
+                                  backgroundColor:"#fff",
+
+                                 
+                                  fontStyle: "italic",
+
+                                }}
+                                name="subParagraphArticle"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                
+                              />
+                             
+                            </FormControl>
+                        </span>
+                        </Typography>
+                      </div>
+                      <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      17
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+Is an investment entity:
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Is not a QI, WP(except to the extent permitted in the withholding foreign partnership agreement), or WT; <span style={{fontWeight:"bold"}}>
+and</span>
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity.
+</>
+</Typography>
+
+</Paper>
+  
+<div className="d-flex mt-3">
+                       
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I:
+                        
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+Is a controlled foreign corporation as defined in section 957(a);
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+Is not a QI, WP, or WT;
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Is wholly owned, directly or indirectly,by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity;<span style={{fontWeight:"bold"}}>
+and</span>
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.
+</>
+</Typography>
+
+</Paper>
+  </>
+  
+
+):""}
+{values.federalTaxClassificationId == 35 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XVII <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Territory Financial Institution</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      39
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that:
+                       
+                        </Typography>
+                      </div>
+                     
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+I certify that the entity identified in Part I is a financial institution (other than an investment entity) that is incorporated or organized under the laws of a possession of the United States.
+</>
+</Typography>
+
+
+
+
+
+
+
+
+
+  </Paper>
+  
+   
+  </>
+  
+
+):""}
+{values.federalTaxClassificationId == 36 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXI <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  501(c) Organization</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      35
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in part I is a 501(c) organization that :
+                       
+                        </Typography>
+                      </div>
+                     
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+Has been issued a determination letter from the IRS that is currently in effect concluding that the payee is a section 501(c) organization that is dated:
+<br/>
+<Input className="mb-4 date" type="date"/>
+<Typography className="my-2">
+<>
+<span style={{fontWeight:"bold"}}>
+; or</span>
+</>
+</Typography>
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+Has provided a copy of an opinion from U.S. counsel certifying that the payee is a section 501(c) organization (without regard to whether the payee is a foreign private foundation).
+</>
+</Typography>
+
+
+
+
+
+
+
+
+  </Paper>
+  
+   
+  </>
+  
+
+):""}
+{values.federalTaxClassificationId == 25 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part X <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Owner-Documented FFI</span>
+   
+
+                        </Typography>
+                       <Typography className="mt-2">
+                        Note: This status only applies if the U.S. financial institution or participating FFI to which this form is given has agreed that it will treat the FFI as an owner-documented FFI (see instructions for eligibility requirements). In addition, the FFI must make the certifications below.
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                        24a
+                        <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                        TT-196 W-8BEN-E-Q24a
+                                        </Typography>
+                                        
+                                       </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "16px",
+                                        cursor: "pointer",
+                                        verticalAlign: "super",
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </span>
+
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        (All owner Documented FFIs check here) I certify that the FFI identified in Part I: 
+                        </Typography>
+                      </div>
+                     
+<Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+Does not act as an intermediary;
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+Does not accept deposits in the ordinary course of a banking or similar business;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Does not hold, as a substantial portion of its business, financial assets for the account of others;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account;
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Is not owned by or in an expanded affiliated group with an entity that accepts deposits in the ordinary course of a banking or similar business, holds, as a substantial portion of its business, financial assets for the account of others, or is an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account;
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Does not maintain a financial account for any nonparticipating FFI. <span style={{fontWeight:"bold"}}>
+and</span>
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Does not have any specified U.S. persons that own an equity inerest or debt interest (other than a debt interest that is not a financial account or that has a balance or value not exceeding $50,000) in lthe FFI other than those identified on the FFI owner reporting statement.
+
+</>
+</Typography>
+</Paper>
+Check box 24b or 24c, whichever applies:
+
+<div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                       b
+                       <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                        TT-197 W-8BEN-E-Q24b
+                                        </Typography>
+                                        
+                                       </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "16px",
+                                        cursor: "pointer",
+                                        verticalAlign: "super",
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </span>
+
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                       I certify that the FFI indentified in Part I: 
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+Has provided, or will provide, an FFI owner reporting statement that contains:
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified U.S. person that owns a direct or indirect equity interest in the owner-documented FFI (looking through all entities other than specified U.S. persons);
+
+</>
+</Typography>
+
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified U.S. person that owns a debt interest in the owner-documented FFI (including any indirect debt interest, which includes debt interests in any entity that directly or indirectly owns the payee or any direct or indirect equity interest in a debt holder of the payee) that constitutes a financial account in excess of $50,000 (disregarding all such debt interests owned by participating FFIs, registered deemed-compliant FFIs, certified deemed-compliant FFIs, excepted NFFEs, exempt beneficial owners, or U.S. persons other than specified U.S. persons); <span style={{fontWeight:"bold"}}>
+and</span>
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+Any additional information the withholding agent requests in order to fulfill its obligations with respect to the entity.
+
+</>
+</Typography>
+</Paper>
+<div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                       c
+                       <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                        TT-198 W-8BEN-E-Q24c
+                                        </Typography>
+                                        
+                                       </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "16px",
+                                        cursor: "pointer",
+                                        verticalAlign: "super",
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </span>
+
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                       I certify that the FFI indentified in Part I: 
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+has provided, or will provide, an auditor's letter, signed within 4 years of the date of payment, from an independent accounting firm or legal representative with a location in the United States stating that the firm or representative has reviewed the FFI's documentation with respect to all of its owners and debt holders identified in 
+<br/>
+<Link style={{textDecorationLine:"none"}}>
+Regulations section 1.1471-3(d)(6)(iv)(A)(2) </Link>
+<br/>
+,
+ and that the FFI meets all the requirements to be an owner-documented FFI. The FFI identified in Part I has also provided, or will provide, an FFI owner reporting statement of its owners that are specified U.S. persons and Form(s) W-9, with applicable waivers.
+</>
+</Typography>
+
+</Paper>
+<span>
+Check box 24d if applicable(optional, see instructions):
+</span>
+<div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                       d
+                       <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                        TT-199 W-8BEN-E-Q24d                                        </Typography>
+                                        
+                                       </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "16px",
+                                        cursor: "pointer",
+                                        verticalAlign: "super",
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </span>
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                       I certify that : 
+                        </Typography>
+                      </div>
+                      <Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+                        
+<Typography className="my-2">
+<>
+the entity identified in line 1 is a trust that does not have any contingent beneficiaries or designated classes with unidentified beneficiaries.
+</>
+</Typography>
+
+</Paper>
+   
+  </>
+  
+
+):""}
+{values.federalTaxClassificationId == 28 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XXIII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>   Publicly Traded NFFE or NFFE Affiliate of a Publicly Traded Corporation</span>
+   
+
+                        </Typography>
+                       <Typography className="mt-2">
+                       Check box 37a or 37b, whichever applies:
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                        37a
+                       </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                       I certify that: 
+                        </Typography>
+                      </div>
+                     
+<Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+The entity identified in Part I is a foreign corporation that is not a financial institution;<span style={{fontWeight:"bold"}}>
+and</span>
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+The stock of such corporation is regularly traded on one or more established securities markets, including
+<FormControl className="w-100">
+                              <TextField
+                                className="col-md-6 col-12"
+                                style={{
+                                  backgroundColor:"#fff",
+
+                                  
+                                  fontStyle: "italic",
+
+                                }}
+                                name="subParagraphArticle"
+                                
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                               
+                              />
+                            
+                            </FormControl>
+                            (name one securities exchange upon which the stock is regularly traded)
+
+</>
+</Typography>
+</Paper>
+<div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                        b
+                       </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                       I certify that: 
+                        </Typography>
+                      </div>
+                     
+<Paper className = "my-2" style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+
+<Typography className="my-2">
+<>
+The entity identified in Part I is a foreign corporation that is not a financial institution;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+The entity identified in Part I is a member of the same expanded affiliated group as an entity the stock of which is regularly traded on an established securities market;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+<Typography className="my-2">
+<>
+The name of the entity, the stock of which is regularly traded on an established securities market, is
+<FormControl className="w-100">
+                              <TextField
+                                className="col-md-6 col-12"
+                                style={{
+                                  backgroundColor:"#fff",
+
+                                  
+                                  fontStyle: "italic",
+
+                                }}
+                                name="subParagraphArticle"
+                                
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                               
+                              />
+                            
+                            </FormControl>
+                          
+
+</>
+</Typography><span style={{fontWeight:"bold"}}>
+;and</span>
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+<>
+The name of the securities market on which the stock is regularly traded is
+<FormControl className="w-100">
+                              <TextField
+                                className="col-md-12 col-12"
+                                style={{
+                                  backgroundColor:"#fff",
+
+                                  
+                                  fontStyle: "italic",
+
+                                }}
+                                name="subParagraphArticle"
+                                
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                               
+                              />
+                            
+                            </FormControl>
+                            
+</>
+</Typography>
+</Paper>
+
+
+  </>
+  
 
 ):""}
                           </Typography>
