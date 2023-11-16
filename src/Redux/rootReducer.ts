@@ -15,7 +15,9 @@ import {
   GetAgentCountriesImportantForEformReducer,
   GetChapter3StatusReducer,
   GetChapter4StatusesReducer,
-  GetLimitationBenefitsReducer
+  GetLimitationBenefitsReducer,
+  GetIncomeTypesReducer
+
 
 } from "./Reducers";
 import w9Reducer from "./Reducers/w9Reducer";
@@ -38,7 +40,8 @@ let reducers = {
   GetAgentCountriesImportantForEformReducer,
   GetChapter3StatusReducer,
   GetChapter4StatusesReducer,
-  GetLimitationBenefitsReducer
+  GetLimitationBenefitsReducer,
+  GetIncomeTypesReducer
 };
 const rootReducer = combineReducers({
   ...reducers,

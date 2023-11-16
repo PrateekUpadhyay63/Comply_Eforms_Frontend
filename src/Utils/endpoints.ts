@@ -14,6 +14,7 @@ const EndPoint = {
   getBreadCrums: "/Form/GetBreadCrumbs",
   GetAgentPaymentType: "/WebAppBasic/GetAgentPaymentTypeForEform",
   GetLimitationBenefits:"/W9Common/GetLimitationBenefits",
+  GetIncomeTypes:"/W9Common/GetIncomeTypeDefaults",
 
   //
   GetAgentCapacityHiddenForEform: "/WebAppBasic/GetAgentCapacityHiddenForEform",

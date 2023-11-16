@@ -795,3 +795,27 @@ export const GetLimitationBenefits = ():any =>{
     );
   };
 }
+
+export const GetIncomeTypes = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetIncomeTypes,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetIncomeTypes,
+            payload: {
+              GetIncomeTypesData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}
+//

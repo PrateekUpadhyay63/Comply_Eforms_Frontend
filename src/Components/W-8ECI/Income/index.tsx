@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   FormControl,
   Typography,
@@ -15,6 +15,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./index.scss";
+import { useSelector , useDispatch } from "react-redux";
 import checksolid from "../../../assets/img/check-solid.png";
 import { Formik, Form } from "formik";
 import { Info } from "@mui/icons-material";
@@ -22,8 +23,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 import { IncomeSchema } from "../../../schemas/w8ECI";
-import { useDispatch } from "react-redux";
-import { W8_state_ECI } from "../../../Redux/Actions";
+
+import { W8_state_ECI,GetIncomeTypes } from "../../../Redux/Actions";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 
 export default function Factors() {
@@ -34,7 +35,10 @@ export default function Factors() {
   };
   const history = useNavigate();
   const dispatch = useDispatch();
+  useEffect(()=>{
 
+    dispatch(GetIncomeTypes())
+    },[])
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {
     setNumPapers(numPapers + 1);
@@ -45,7 +49,9 @@ export default function Factors() {
   };
   const [toolInfo, setToolInfo] = useState("");
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const GetIncomeTypesData = useSelector(
+    (state:any)=>state.GetIncomeTypesReducer.GetIncomeTypesData
+  )
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -242,7 +248,7 @@ export default function Factors() {
                                     *
                                   </span>
                                 </Typography>
-                                <FormControl className="w-50">
+                                <FormControl className="w-100">
                                   <select
                                     name="itemIncomeType"
                                     id="Income"
@@ -260,9 +266,14 @@ export default function Factors() {
                                       marginBottom: "20px",
                                     }}
                                   >
-                                    <option value="">-Select-</option>
-                                    <option value={257}>United Kingdom</option>
-                                    <option value={258}>United States</option>
+                                     <option value={0}>-Select-</option>
+                            {GetIncomeTypesData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                                   )
+                                   )}
                                   </select>
                                   <p className="error">
                                     {errors.itemIncomeType}
@@ -280,14 +291,14 @@ export default function Factors() {
                                 *
                               </span>
                             </Typography>
-                            <FormControl className="w-50">
+                            <FormControl className="w-100">
                               <input
                                 name="incomeDescription"
                                 type="text"
                                 value={values.incomeDescription}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                className="col-md-12col-12"
+                                className="col-md-12 col-12"
                                 style={{
                                   padding: " 0 10px",
                                   color: "#7e7e7e",
