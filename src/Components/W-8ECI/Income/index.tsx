@@ -266,7 +266,7 @@ export default function Factors() {
                                       marginBottom: "20px",
                                     }}
                                   >
-                                     <option value={0}>-Select-</option>
+                                     <option value={0}>--Please Select the income types--</option>
                             {GetIncomeTypesData?.map(
                               (ele: any) => (
                                 <option key={ele?.id} value={ele?.id}>
@@ -370,7 +370,12 @@ export default function Factors() {
                             </Tooltip>
                           </span>
                         </Typography>
+                       
                       </div>
+                      <p className="error">
+                                {errors.isAppplicationCheck
+}
+                              </p>
                       {toolInfo === "details" ? (
                         <div>
                           <Paper
