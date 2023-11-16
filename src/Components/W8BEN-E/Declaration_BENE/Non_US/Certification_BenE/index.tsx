@@ -22,7 +22,7 @@ export default function Certifications(props: any) {
   const history = useNavigate();
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
+  const handleClose2 = () => setOpen2(false);                               
   const [toolInfo, setToolInfo] = useState("");
   const [expanded, setExpanded] = React.useState<string | false>("");
 
