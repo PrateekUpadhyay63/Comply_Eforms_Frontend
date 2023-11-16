@@ -19,6 +19,7 @@ const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, Ge
   GetChapter3Status,
   GetChapter4Statuses,
   GetLimitationBenefits,
+  GetIncomeTypes
 } = Utils.actionName
 
 
@@ -290,3 +291,13 @@ export const GetLimitationBenefitsReducer = (state = initialState, action: any):
       return state;
   }
 };
+
+export const GetIncomeTypesReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetIncomeTypes:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+// 

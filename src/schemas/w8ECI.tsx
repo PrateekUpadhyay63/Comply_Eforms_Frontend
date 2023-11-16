@@ -45,7 +45,7 @@ export const IncomeSchema = () => {
     itemIncomeType: Yup.number().required("Field Cannot be Empty"),
     incomeDescription: Yup.string().required("Field Cannot be Empty"),
     isAppplicationCheck: Yup.string().required(
-      "Please select one of the options"
+      "Please select"
     ),
   });
 };

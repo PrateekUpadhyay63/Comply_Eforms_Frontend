@@ -127,7 +127,7 @@ export default function Certifications(props: any) {
                       <InfoIcon
                         style={{
                           color: "#ffc107",
-                          fontSize: "20px",
+                          fontSize: "15px",
                           cursor: "pointer",
                           verticalAlign: "super",
                         }}
@@ -183,7 +183,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "20px",
+                    fontSize: "15px",
                     color: "grey",
                     marginLeft: "20px",
                   }}
@@ -197,7 +197,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "20px",
+                    fontSize: "15px",
                     color: "grey",
                     marginLeft: "20px",
                   }}
@@ -211,7 +211,7 @@ export default function Certifications(props: any) {
                 <Paper
                   style={{
                     marginLeft: "20px",
-                    width: "80%",
+                    width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
                 >
@@ -233,7 +233,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "10px",
                         }}
@@ -260,7 +260,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -287,7 +287,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -314,7 +314,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -339,7 +339,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -368,7 +368,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -388,7 +388,7 @@ export default function Certifications(props: any) {
                     />
                     <Typography
                       style={{
-                        fontSize: "20px",
+                        fontSize: "15px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
@@ -405,7 +405,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "15px",
                           color: "black",
                           marginTop: "7px",
                         }}

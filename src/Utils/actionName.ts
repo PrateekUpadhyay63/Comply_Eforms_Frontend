@@ -39,6 +39,7 @@ const ActionName = {
     GetChapter3Status:"GetChapter3Status",
     GetChapter4Statuses:"GetChapter4Statuses",
     GetLimitationBenefits:"GetLimitationBenefits",
+    GetIncomeTypes:"GetIncomeTypes",
   };
 
   export default ActionName;

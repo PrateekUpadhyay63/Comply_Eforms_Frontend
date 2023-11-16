@@ -353,13 +353,13 @@ export default function Penalties() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           error={Boolean(touched.date && errors.date)}
-                          // value={values.date}
+                          value={values.date}
                           type="date"
                           name="date"
-                          value={new Date().toISOString().split('T')[0]}
+                          // value={new Date().toISOString().split('T')[0]}
                         />
                         
-                        <p className="error">{errors.date}</p>
+                      {values.date ?(""):<p className="error">{errors.date}</p>}
                       </Typography>
                     </div>
                   </div>
@@ -380,16 +380,7 @@ export default function Penalties() {
                     >
                       Please "check" box to confirm your acceptance with the
                       above declarations{" "}
-                      {errors.isAgreeWithDeclaration &&
-                      touched.isAgreeWithDeclaration ? (
-                        <div>
-                          <Typography color="error">
-                            {errors.isAgreeWithDeclaration}
-                          </Typography>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                     
                       <span>
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -423,6 +414,16 @@ export default function Penalties() {
                           />
                         </Tooltip>
                       </span>
+                      {errors.isAgreeWithDeclaration &&
+                      touched.isAgreeWithDeclaration ? (
+                        <div>
+                          <Typography color="error">
+                            {errors.isAgreeWithDeclaration}
+                          </Typography>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </Typography>
                   </Typography>
                   {toolInfo === "check" ? (
