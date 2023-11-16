@@ -1743,6 +1743,77 @@ The applicable laws of the entity's country of residence or the entity's formati
 
 ):""}
 
+
+{values.federalTaxClassificationId == 32 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XI <span  style={{fontWeight:"bold",marginLeft:"10px"}}> Restricted Distributor</span>
+
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                     25a
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        (All restricted distributors check here) I certify that: entity identified in Part I:
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+is a non-profit organization that meets the following requirements:
+
+</>
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+The entity is established and maintained in its country of residence exclusively for religious, charitable, scientific, artistic, cultural or educational purposes;
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+The entity is exempt from income tax in its country of residence;
+
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+The entity has no shareholders or members who have a proprietary or beneficial interest in its income or assets;
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+</Typography>
+<Typography className="my-2">
+Neither the applicable laws of the entity's country of residence nor the entity's formation documents permit any income or assets of the entity to be distributed to, or applied for the benefit of, a private person or non-charitable entity other than pursuant to the conduct of the entity's charitable activities or as payment of reasonable compensation for services rendered or payment representing the fair market value of property which the entity has purchased; <span style={{fontWeight:"bold"}}>
+and</span>
+
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+The applicable laws of the entity's country of residence or the entity's formation documents require that, upon the entity's liquidation or dissolution, all of its assets be distributed to an entity that is a foreign government, an integral part of a foreign government, a controlled entity of a foreign government, or another organization that is described in this Part XXII or escheats to the government of the entity's country of residence or any political subdivision thereof.
+
+
+</Typography>
+
+
+
+
+
+                      </Paper>
+  </>
+
+):""}
                           </Typography>
                         </div>
 
