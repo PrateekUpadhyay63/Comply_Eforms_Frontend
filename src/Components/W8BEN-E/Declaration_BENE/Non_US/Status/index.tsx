@@ -143,10 +143,8 @@ export default function Fedral_tax(props: any) {
         </div>
         <div className="row w-100 h-100">
           <div className="col-4">
-            {/* <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
-       
-      </div> */}
-            <BreadCrumbComponent breadCrumbCode={1204} formName={2} />
+           
+            <BreadCrumbComponent breadCrumbCode={1210} formName={3} />
           </div>
           <div className="col-8 mt-3">
             <div style={{ padding: "20px" }}>
@@ -1580,7 +1578,170 @@ The applicable laws of the entity's country of residence or the entity's formati
 
 ):""}
 
+{values.federalTaxClassificationId == 24 ?(
+  <>
+   <Typography style={{border:"2px solid black",color:"white",backgroundColor:"black"}}>
+   Part XII <span  style={{fontWeight:"bold",marginLeft:"10px"}}>  Nonreporting IGA FFI</span>
 
+                        </Typography>
+                        <div className="d-flex mt-3">
+                        <Typography className="mt-2" style={{marginTop:"10px"}}>
+                      26
+                        </Typography>
+                        <Typography>
+                       <Checkbox />
+                        </Typography>
+                        <Typography className="mt-2">
+                        I certify that the entity identified in Part I :
+                        </Typography>
+                      </div>
+                      <Paper style={{backgroundColor:"#e3e3e3",padding:"10px"}}>
+<Typography className="my-2">
+<>
+Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and
+
+</>
+</Typography>
+<FormControl className="my-2">
+<select
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                          defaultValue={1}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                        >
+                            <option value={1}>-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                            </select>
+</FormControl>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+<>
+The applicable IGA is a <span>
+<select
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "40%",
+                          }}
+                          defaultValue={1}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                        >
+                            <option value={1}>-Select-</option>
+                              <option value={257}>Model 1 IGA</option>
+                              <option value={258}>Model 2 IGA</option>
+                           
+                              
+                            </select>
+
+
+</span>
+<span>; and <span style={{color:'red'}}>
+  *</span></span>
+
+</>
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+Is treated as a <span style={{color:'red'}}> *
+  </span>
+  <span>
+  <select
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "40%",
+                          }}
+                          defaultValue={24}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                        >
+                            <option value={1}>-Select-</option>
+                              <option value={257}>Deemed Compliant FFI</option>
+                              <option value={258}>Exempt Beneficial Owner</option>
+                              <option value={25}>Exempt Product</option>
+                              <option value={24}>Other</option>
+                              
+                            </select>
+  </span>
+  <span style={{marginLeft:"6px"}}>
+  <TextField
+                          style={{
+                            backgroundColor:"#fff",
+                          
+                         
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "40%",
+                          }}
+                        placeholder="---Enter the specific entity type---"                     
+                          onChange={handleChange}
+                        
+                           
+                              
+                            />
+                            <span style={{color:"red",verticalAlign:"super"}}>
+    *
+  </span>
+  </span>
+  <Typography>
+  under the provisions of the applicable IGA or Treasury regulations (if applicable, see instructions);
+  </Typography>
+  
+
+
+</Typography>
+
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+<Typography className="my-2">
+Are you a trustee or a sponsored entity? 
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+</Typography>
+<Typography className="my-2">
+Neither the applicable laws of the entity's country of residence nor the entity's formation documents permit any income or assets of the entity to be distributed to, or applied for the benefit of, a private person or non-charitable entity other than pursuant to the conduct of the entity's charitable activities or as payment of reasonable compensation for services rendered or payment representing the fair market value of property which the entity has purchased; <span style={{fontWeight:"bold"}}>
+and</span>
+
+
+
+</Typography>
+<Divider style={{backgroundColor:"black",marginBottom:"10px"}}/>
+
+<Typography className="my-2">
+The applicable laws of the entity's country of residence or the entity's formation documents require that, upon the entity's liquidation or dissolution, all of its assets be distributed to an entity that is a foreign government, an integral part of a foreign government, a controlled entity of a foreign government, or another organization that is described in this Part XXII or escheats to the government of the entity's country of residence or any political subdivision thereof.
+
+
+</Typography>
+
+
+
+
+
+                      </Paper>
+  </>
+
+):""}
 
                           </Typography>
                         </div>
