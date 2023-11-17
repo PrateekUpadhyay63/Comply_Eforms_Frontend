@@ -462,3 +462,28 @@ transition: all 1.5s ease;
     text-align: left;
 
 }
+
+.forms-card-data {
+  .check-div{
+    display: none;
+  }
+  .active .check-div{
+    display: block !important;
+  }
+  .MuiPaper-rounded{
+    position: relative;
+  }
+  .check-div{
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    img{
+      height: 40px;
+    }
+  }
+.disabled{
+  opacity:0.8;
+  background: #dddddd;
+
+}
+}
