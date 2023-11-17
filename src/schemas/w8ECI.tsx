@@ -7,7 +7,7 @@ export const TinSchema = () => {
       .min(1, "Field Cannot be Empty")
       .required("Field Cannot be Empty"),
     eciUsTin: Yup.string().required("Field Cannot be Empty"),
-    aptSuite: Yup.string().required("Field Cannot be Empty"),
+    // aptSuite: Yup.string().required("Field Cannot be Empty"),
     cityTown: Yup.string().required("Field Cannot be Empty"),
     stateProvinceId: Yup.string().required("Field Cannot be Empty"),
     zipPostalCode: Yup.string().required("Field Cannot be Empty"),

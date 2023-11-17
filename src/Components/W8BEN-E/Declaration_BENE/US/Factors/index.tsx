@@ -1,6 +1,8 @@
 import React, { useState,ChangeEvent,useEffect } from "react";
 import { FormControl, Typography, Button, Paper, Tooltip ,Link} from "@mui/material";
 import { Info } from "@mui/icons-material";
+import { Formik, Form } from "formik";
+import { validationUS } from "../../../../../schemas/w8BenE";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import {
@@ -18,7 +20,19 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Factors() {
   const history= useNavigate()
   const dispatch = useDispatch();
-  const [allocation, setAllocation] = useState(''); // State to track allocation input
+  const [allocation, setAllocation] = useState('');
+  const initialValue = {
+    interestDividendPaymentId : "",
+    explaination:"",
+    allocation :""
+  };
+  
+  const [factor , setFactor] = useState({
+    interestDividendPaymentId : "",
+    explaination:"",
+    allocation :""
+ });
+ const [array , SetArray] = useState([]);
 
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -37,13 +51,20 @@ const getCountriesReducer = useSelector(
   );
   const [toolInfo, setToolInfo] = useState("");
   const [numPapers, setNumPapers] = useState(1);
-  const addIncomeTypePaper = () => {
-    setNumPapers(numPapers + 1);
+  const addIncomeTypePaper = (arry:any) => {
+    // setNumPapers(numPapers + 1);
+    console.log(array)
+    if(array.length <= 0){
+      return
+    }
+    const arr:any = [...array, arry]
+    SetArray(arr)
+
   };
   const [expanded, setExpanded] = React.useState<string | false>("");
-  const deleteIncomeTypePaper = () => {
-    setNumPapers(numPapers - 1);
-  };
+  const deleteIncomeTypePaper = (index:any) => {
+    const newArray:any= array.splice(index,1)
+    SetArray(newArray)  };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -212,7 +233,26 @@ const getCountriesReducer = useSelector(
       <div style={{ padding: "20px" }}>
       
         <Paper style={{ padding: "18px" }}>
-          <div style={{ margin: "10px" }}>
+        <Formik
+                  initialValues={initialValue}
+                  validationSchema={validationUS}
+                  onSubmit={(values, { setSubmitting }) => {
+                    setSubmitting(true);
+                    // history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
+                  }}
+                >
+                  {({
+                    errors,
+                    touched,
+                    handleBlur,
+                    values,
+                    handleSubmit,
+                    handleChange,
+                    isSubmitting,
+                  }) => (
+                    <Form onSubmit={handleSubmit}>
+         <>
+         <div style={{ margin: "10px" }}>
             <Typography
               align="left"
               style={{ marginTop: "10px", fontSize: "38px" }}
@@ -299,7 +339,7 @@ If the entity is engaged in a trade or business in the United States during its 
                         ) : (
                           ""
                         )}
-{Array.from({ length: numPapers }).map((_, index) => (
+{array.map((i, index) => (
             <Paper
               className="paper"
               elevation={3}
@@ -307,8 +347,8 @@ If the entity is engaged in a trade or business in the United States during its 
             >
               <div style={{ padding: "15px" }}>
               <Typography align="right">
-                             {numPapers > 1 ?( <DeleteIcon
-                                onClick={deleteIncomeTypePaper}
+                             {index > 0 ?( <DeleteIcon
+                                onClick={()=>deleteIncomeTypePaper(index)}
                                 style={{ color: "red", fontSize: "30px" ,cursor:"pointer"}}
                               />):""}
                             </Typography>
@@ -577,7 +617,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                   </select>
                 </FormControl>
 
-               {selectedOption === "1" &&( 
+               {values.interestDividendPaymentId === "1" &&( 
               <>
                <Typography align="left"
                 style={{ fontSize: "22px", marginTop: "10px" }}>
@@ -586,6 +626,9 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               </Typography>
               <FormControl className="w-100">
                 <input
+                name="explaination"
+                value={values.explaination}
+                id="explaination"
                 className="col-md-12 col-12"
                   style={{
                     padding: " 0 10px",
@@ -604,7 +647,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               <FormControl className="w-50">
                 <input
                  onChange={handleAllocationChange} 
-                 value={allocation}
+                 value={values.allocation}
                 className="col-md-6 col-12"
                   style={{
                     padding: " 0 10px",
@@ -618,7 +661,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               </FormControl>
               </>)}
 
-               {selectedOption === "2" &&( <>
+               {values.interestDividendPaymentId === "2" &&( <>
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
@@ -655,13 +698,13 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                   </select>
                 </FormControl>
 
-                <Typography
+                {/* <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
                 >
                   Allocation %{" "}
                   <span style={{ color: "red", fontSize: "30px" }}>*</span>
-                </Typography>
+                </Typography> */}
                 <FormControl className="w-50">
                   <input
                    onChange={handleAllocationChange} 
@@ -677,7 +720,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                 </FormControl>
                 </>)}
 
-                {selectedOption ==="3" &&( <>
+                {values.interestDividendPaymentId ==="3" &&( <>
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
@@ -698,17 +741,29 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     name="interestDividendPaymentId"
                     id="Income"
                   >
-                    <option value={0}>-Select-</option>
+                    <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                   </select>
                 </FormControl>
 
-                <Typography
+                {/* <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
                 >
                   Allocation %{" "}
                   <span style={{ color: "red", fontSize: "30px" }}>*</span>
-                </Typography>
+                </Typography> */}
                 <FormControl className="w-50">
                   <input
                    onChange={handleAllocationChange} 
@@ -728,7 +783,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
             ))}
             <div style={{ marginTop: "20px", display: "flex" }}>
               <Button
-               onClick={addIncomeTypePaper}
+               onClick={()=>addIncomeTypePaper(values)}
                 variant="contained"
                 size="large"
                 style={{ backgroundColor: "black", color: "white" }}
@@ -818,6 +873,10 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               Back
             </Button>
           </Typography>
+         </>
+         </Form>
+                  )}
+                </Formik>
         </Paper>
    
       </div>

@@ -10,3 +10,12 @@ export const TaxPurposeSchema = () => {
       businessName: Yup.string().required("Field Cannot be Empty"),
     });
   };
+
+
+  export const validationUS = () => {
+    return Yup.object().shape({
+    interestDividendPaymentId : Yup.string().required("Field Cannot be Empty"),
+    explaination:Yup.string().required("Field Cannot be Empty"),
+    allocation :Yup.string().required("Field Cannot be Empty")
+    });
+  };

@@ -2565,7 +2565,7 @@ The name of the securities market on which the stock is regularly traded is
                           <Typography>
                             <Button onClick={()=>{
                               history("/Chapter4")
-                            }} variant="contained" style={{backgroundColor:"#e1c653",color:"black",fontSize:"8px",fontWeight:"bold"}}>
+                            }} variant="contained" style={{backgroundColor:"#d3ae33",color:"black",fontSize:"10px",fontWeight:"bold"}}>
                             Chapter 4 Status Guide
                             </Button>
                             </Typography>
