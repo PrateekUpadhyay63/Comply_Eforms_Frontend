@@ -49,6 +49,7 @@ export default function Fedral_tax(props: any) {
   } = props;
   const initialValue = {
     federalTaxClassificationId: 0,
+    foreginTIN_CountryId:0
   };
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
@@ -170,7 +171,7 @@ export default function Fedral_tax(props: any) {
                   }) => (
                     <Form onSubmit={handleSubmit}>
                       <div style={{ width: "100%" }}>
-                        <div>
+                        <div className="d-flex" style={{justifyContent:"space-between"}}>
                           <Typography align="left" style={{ margin: "10px" }}>
                             <div
                               className="row"
@@ -452,30 +453,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="withHoldingClaim"
-                                    // value={values.withHoldingClaim}
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-                                    {/* {errors.withHoldingClaim} */}
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                               <div className="col-5">
@@ -490,31 +486,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="paragraphArticleClaimed"
-                                    // value={values.paragraphArticleClaimed}
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-                                    {""}
-                                    {/* {errors.incomeExpected} */}
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                             </div>
@@ -536,30 +526,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="withHoldingClaim"
-                                    // value={values.withHoldingClaim}
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-                                    {/* {errors.withHoldingClaim} */}
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                               <div className="col-5">
@@ -574,31 +559,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="paragraphArticleClaimed"
-                                    // value={values.paragraphArticleClaimed}
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-                                    {""}
-                                    {/* {errors.incomeExpected} */}
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                             </div>
@@ -615,30 +594,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="articleBeneficalOwner"
-
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                               <div className="col-5">
@@ -653,29 +627,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="incomeExpected"
-
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="0">-Select-</option>
-
-                                  </select>
-                                  {/* <p className="error">
-                                    {errors.incomeExpected}
-                                  </p> */}
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                             </div>
@@ -692,30 +662,25 @@ export default function Fedral_tax(props: any) {
 
                                 </Typography>
                                 <FormControl className="w-100">
-                                  <select
+                                  <TextField
                                     style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
+                                     
+                                     
                                       fontStyle: "italic",
                                       height: "50px",
                                       marginBottom: "20px",
+                                      backgroundColor:"#fff"
                                     }}
-                                    name="articleBeneficalOwner"
-
-                                    id="Income"
-                                    defaultValue={1}
-                                    onBlur={handleBlur}
+                                   
+                                  
+                                   
                                     onChange={(e) => {
                                       handleChange(e);
                                     }}
-                                  >
-                                    <option value="">-Select-</option>
-                                    <option value="US">United Kingdom</option>
-                                    <option value="UK">United States</option>
-                                  </select>
-                                  <p className="error">
-
-                                  </p>
+                               
+                                    
+                                  />
+                                 
                                 </FormControl>
                               </div>
                               <div className="col-5">
@@ -738,7 +703,7 @@ export default function Fedral_tax(props: any) {
                                       height: "50px",
                                       marginBottom: "20px",
                                     }}
-                                    name="incomeExpected"
+                                    name="foreginTIN_CountryId"
 
                                     id="Income"
                                     defaultValue={1}
@@ -747,12 +712,17 @@ export default function Fedral_tax(props: any) {
                                       handleChange(e);
                                     }}
                                   >
-                                    <option value="0">-Select-</option>
-
-                                  </select>
-                                  {/* <p className="error">
-                                    {errors.incomeExpected}
-                                  </p> */}
+                                     <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                                    {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                            </select>
+                        <p className="error">{errors.foreginTIN_CountryId}</p>
+                                
+                                
                                 </FormControl>
                               </div>
                             </div>
@@ -2592,6 +2562,13 @@ The name of the securities market on which the stock is regularly traded is
 
 ):""}
                           </Typography>
+                          <Typography>
+                            <Button onClick={()=>{
+                              history("/Chapter4")
+                            }} variant="contained" style={{backgroundColor:"#e1c653",color:"black",fontSize:"8px",fontWeight:"bold"}}>
+                            Chapter 4 Status Guide
+                            </Button>
+                            </Typography>
                         </div>
 
                         <div

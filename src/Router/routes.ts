@@ -14,6 +14,7 @@ const Complete = React.lazy(() => import("../Components/complete"));
 const Security = React.lazy(() => import("../Components/Security"));
 const Submit = React.lazy(() => import("../Components/Submit"));
 const PDFViewer=React.lazy(() => import("../Components/reusables/PdfViewer"));
+const Chapter4=React.lazy(() => import("../Components/Chapter4Guide/index"));
 //
 const Declaration = React.lazy(
   () => import("../Components/W-8BEN/Declaration")
@@ -479,6 +480,13 @@ isPrivate: true,
     path:"BenE/Tax_Purpose_BenE/Declaration_BenE/US/Factors_BenE",
     id: 7,
     Component: Factors_BenE,
+    isPrivate: true,
+  },
+  {
+    name:"Chapter4",
+    path:"/Chapter4",
+    id: 7,
+    Component: Chapter4,
     isPrivate: true,
   }
 

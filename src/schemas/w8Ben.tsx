@@ -84,6 +84,9 @@ export const claimSchema = () => {
     permanentResidentialCountryId: Yup.string().required(
       "Please select one of the options"
     ),
+    benefitId: Yup.string().required(
+      "Please select one of the options"
+    ),
   });
 };
 export const rateSchema = () => {

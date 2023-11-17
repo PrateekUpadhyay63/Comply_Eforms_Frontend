@@ -84,6 +84,7 @@ export default function FCTA_Reporting(props: any) {
               isSubmissionClaimTreaty: "No",
               ownerResidentId: "",
               permanentResidentialCountryId: 0,
+              benefitId:0,
               submission:""
             }}
             enableReinitialize
@@ -411,14 +412,14 @@ export default function FCTA_Reporting(props: any) {
                               fontStyle: "italic",
                               height: "36px",
                             }}
-                            name="permanentResidentialCountryId"
+                            name="benefitId"
                             id="Income"
                          
                             onChange={(e) => {
                                 handleChange(e);
                               }}
                             onBlur={handleBlur}
-                            value={values.permanentResidentialCountryId}
+                            value={values.benefitId}
                           >
                               <option value={0}>-Select-</option>
                             {GetLimitationBenefitsData?.map(
@@ -433,7 +434,7 @@ export default function FCTA_Reporting(props: any) {
                                   </div>
                                 </div>
                                 
-                                <p className="error">{errors.permanentResidentialCountryId}</p>
+                                <p className="error">{errors.benefitId}</p>
                               </FormControl>
                             </div>
                             <div>

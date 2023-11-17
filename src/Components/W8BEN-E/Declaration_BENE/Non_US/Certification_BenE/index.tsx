@@ -427,7 +427,7 @@ export default function Certifications(props: any) {
           <Typography align="center">
             <Button
             onClick={()=>{
-              history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE")
+              history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE")
             }}
               variant="contained"
               style={{
