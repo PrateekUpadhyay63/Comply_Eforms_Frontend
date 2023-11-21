@@ -14,7 +14,8 @@ const Complete = React.lazy(() => import("../Components/complete"));
 const Security = React.lazy(() => import("../Components/Security"));
 const Submit = React.lazy(() => import("../Components/Submit"));
 const PDFViewer=React.lazy(() => import("../Components/reusables/PdfViewer"));
-const Chapter4=React.lazy(() => import("../Components/Chapter4Guide/index"));
+const Chapter4Guide_Exp = React.lazy(() => import("../Components/Chapter4GuideEXP/index"));
+const Chapter4 = React.lazy(() => import("../Components/Chapter4Guide/index"));
 //
 const Declaration = React.lazy(
   () => import("../Components/W-8BEN/Declaration")
@@ -83,8 +84,12 @@ const Claim_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BE
 const Rates_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Rates"));
 const Certi_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Certification_BenE"));
 const Participation_BenE = React.lazy(() => import("../Components/W8BEN-E/Declaration_BENE/Non_US/Participation_BenE"));
-
-
+//
+const Tax_Purpose_Exp = React.lazy(() => import("../Components/W-8EXP/US Status"));
+const Chapter4_Exp = React.lazy(() => import("../Components/W-8EXP/Chapter4"));
+const Tin_Exp = React.lazy(() => import("../Components/W-8EXP/Tin"));
+const Certificate_Exp = React.lazy(() => import("../Components/W-8EXP/Certificates"));
+const Participation_Exp = React.lazy(() => import("../Components/W-8EXP/Participation"));
 const ROUTES: Array<RouteType> = [
   {
     name: "Login",
@@ -488,7 +493,54 @@ isPrivate: true,
     id: 7,
     Component: Chapter4,
     isPrivate: true,
+  },
+
+
+  {
+name:"Chapter4Guide_Exp",
+path:"/Chapter4Guide_Exp",
+id: 7,
+Component: Chapter4Guide_Exp,
+isPrivate: true,
+  },
+  {
+name:"Tax_Purpose_Exp",
+path:"/Exp/Tax_Purpose_Exp",
+id: 7,
+Component: Tax_Purpose_Exp,
+isPrivate: true,
+  },
+  {
+    name:"Chapter4_Exp",
+    path:"/Exp/Tax_Purpose_Exp/Chapter4_Exp",
+id: 7,
+Component: Chapter4_Exp,
+isPrivate: true,
+
+  },
+  {
+    name:"Tin_Exp",
+    path:"/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp",
+    id: 7,
+    Component: Tin_Exp,
+    isPrivate: true,
+
+  },
+  {
+    name:"Certificate_Exp",
+    path:"/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp",
+    id: 7,
+    Component: Certificate_Exp,
+    isPrivate: true,
+  },
+  {
+    name:"Participation_Exp",
+    path:"/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp",
+    id: 7,
+    Component: Participation_Exp,
+    isPrivate: true,
   }
+
 
   
 ];

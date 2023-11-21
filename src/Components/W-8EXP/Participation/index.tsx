@@ -15,18 +15,18 @@ import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import InfoIcon from "@mui/icons-material/Info";
-import Declaration from "../../../../reusables/Declaration";
+import Declaration from "../../reusables/Declaration";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
-import { W8_state } from "../../../../../Redux/Actions";
+import { W8_state } from "../../../Redux/Actions";
 import { useNavigate } from "react-router";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { partCertiSchema } from "../../../../../schemas/w8Ben";
-import BreadCrumbComponent from "../../../../reusables/breadCrumb";
+import { partCertiSchema } from "../../../schemas/w8Ben";
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
@@ -93,7 +93,7 @@ export default function Penalties() {
         <div className="row w-100 h-100">
         <div className="col-4">
           <div style={{ height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1285} formName={3}/>
+            <BreadCrumbComponent breadCrumbCode={1296} formName={6}/>
           
       </div>
       </div>
@@ -119,7 +119,7 @@ export default function Penalties() {
                       fontWeight: "550",
                     }}
                   >
-                    W-8BEN-E Electronic Substitute Form Statement
+                    W-8EXP Electronic Substitute Form Statement
                   </Typography>
                   <Typography
                     align="left"
@@ -378,7 +378,7 @@ export default function Penalties() {
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.5rem",
+                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -396,7 +396,7 @@ export default function Penalties() {
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.5rem",
+                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}

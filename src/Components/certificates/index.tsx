@@ -81,6 +81,7 @@ export default function Certificates(props: any) {
       "W-8ECI": "/W-8ECI/Info",
       "form 8233": "/Form8233/SubstantialPresence",
       "W-8BEN-E": "/BenE/Tax_Purpose_BenE",
+      "W-8EXP":"/Exp/Tax_Purpose_Exp"
     };
     dispatch(
       postFormSelection(submitData, () => {
