@@ -29,7 +29,7 @@ const DialogEdit = (props: any) => {
   const getSecurityQuestionsReducer = useSelector(
     (state: any) => state.getSecurityQuestionsReducer.getSecurityQuestionsData
   );
-
+  var QuestionObject;
   const [payload, setPayload] = useState({
     confirmationCode: "",
     securityQuestion: "",
@@ -74,13 +74,16 @@ const DialogEdit = (props: any) => {
               enableReinitialize
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
+                
+                QuestionObject = getSecurityQuestionsReducer.find((item: any) => item.id == values.securityQuestion);
+                console.log(QuestionObject,"gdsvgh",values.securityQuestion)
                 let submitData = {
                   agentId: 3,
                   confirmationCode: values.confirmationCode,
                   securityAnswer: values.securityAnswer,
                   formSelection: "",
-                  securityQuestionId: 0,
-                  securityQuestion: values.securityQuestion,
+                  securityQuestionId: values.securityQuestion,
+                  securityQuestion: QuestionObject,
                   
                 };
                 history("/Certificates");
