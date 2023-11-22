@@ -2631,7 +2631,9 @@ The name of the securities market on which the stock is regularly traded is
                         <Typography align="center">
                           <Button
                           type="submit"
-                           
+                           onClick={()=>{
+                            history("/Exp/Tax_Purpose_Exp")
+                           }}
                             variant="contained"
                             style={{
                               color: "white",
