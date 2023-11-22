@@ -7,7 +7,7 @@ export const EntitySchema = () => {
     //     .min(3, 'First Name should be minimum of 3 characters')
     //     .max(50, 'First Name should be maximum of 50 characters'),
     isUSEntity: Yup.string(),
-    entityName: Yup.string().required("Please Enter Entity name"),
+    entityName: Yup.string().trim().required("Please Enter Entity name"),
     usTin : Yup.string().when("usTinTypeId", {
       is: (usTinTypeId: any) =>
       usTinTypeId == 6 || usTinTypeId == 7||usTinTypeId == 1,
@@ -103,7 +103,7 @@ export const EntitySchema = () => {
       .required("Please enter Last name")
       .min(3, "Last Name should be minimum of 3 characters")
       .max(50, "Last Name should be maximum of 50 characters"),
-    contactEmail: Yup.string()
+    contactEmail: Yup.string().trim()
       .email("Invalid Email address")
       .required("Please enter Email"),
     paymentTypeId: Yup.number(),

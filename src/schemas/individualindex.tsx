@@ -4,11 +4,11 @@ export const individualSchema = () => {
   return Yup.object().shape({
     isUSEntity: Yup.string(),
     isUSIndividual: Yup.string(),
-    firstName: Yup.string()
+    firstName: Yup.string().trim()
       .required("Please Enter First Name")
       .min(3, "First Name should be minimum of 3 characters")
       .max(50, "First Name should be maximum of 50 characters"),
-    lastName: Yup.string()
+    lastName: Yup.string().trim()
       .required("Please Enter Last Name")
       .min(3, "Last Name should be minimum of 3 characters")
       .max(50, "Last Name should be maximum of 50 characters"),
@@ -38,13 +38,13 @@ export const individualSchema = () => {
     permanentResidentialCountryId: Yup.number()
       .required("Please select country")
       .notOneOf([0], "Please select a valid country"),
-    permanentResidentialStreetNumberandName: Yup.string().required(
+    permanentResidentialStreetNumberandName: Yup.string().trim().required(
       "Please enter Street number and name"
     ),
-    permanentResidentialCityorTown: Yup.string().required(
+    permanentResidentialCityorTown: Yup.string().trim().required(
       "Please enter City or Town"
     ),
-    permanentResidentialZipPostalCode: Yup.string().required(
+    permanentResidentialZipPostalCode: Yup.string().trim().required(
       "Zip/Postal code is required"
     ),
     isAddressPostOfficeBox: Yup.string().when("isUSIndividual", {
@@ -108,7 +108,7 @@ export const individualSchema = () => {
       .required("Please enter Last name")
       .min(3, "Last Name should be minimum of 3 characters")
       .max(50, "Last Name should be maximum of 50 characters"),
-    contactEmail: Yup.string()
+    contactEmail: Yup.string().trim()
       .email("Invalid Email address")
       .required("Please enter Email"),
 

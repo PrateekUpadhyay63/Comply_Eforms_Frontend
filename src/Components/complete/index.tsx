@@ -166,7 +166,6 @@ export default function Term() {
               >
                 Download PDF
               </Button>
-
               <div style={{ marginTop: "25px" }}>
                 <Button
                   type="submit"

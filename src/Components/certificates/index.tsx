@@ -32,8 +32,10 @@ export default function Certificates(props: any) {
   type ComponentPaths = {
     [key: string]: string;
   };
-  const handleCardSelect = (cardId: any) => {
-    setSelectedCard(cardId);
+  const handleCardSelect = (card: any) => {
+    if(card.enabled===diableForm){
+      setSelectedCard(card.id);
+    }
   };
   const [toolInfo, setToolInfo] = useState("");
   const [InfoMore, setInfoMore] = useState("");
@@ -42,21 +44,26 @@ export default function Certificates(props: any) {
   useEffect(() => {
     let onboardingStingifiedData = localStorage.getItem("agentDetails");
     let onboardingData;
+    let isDisabledFormed;
     if (onboardingStingifiedData !== null) {
       onboardingData = JSON.parse(onboardingStingifiedData);
     }
+    console.log("DATA",onboardingData)
     if (onboardingData !== "" && onboardingData !== null) {
-      if (onboardingData.isUSIndividual === "yes") {
-        setDisableForm("usIndividual");
-      } else if (onboardingData.isUSIndividual === "no") {
-        setDisableForm("usNonIndividual");
-      } else if (onboardingData.isUSEntity === "yes") {
-        setDisableForm("usEntity");
-      } else if (onboardingData.isUSEntity === "no") {
-        setDisableForm("usNonEntity");
+      if (onboardingData.isUSIndividual == true) {
+        isDisabledFormed="usIndividual"
+      } else if (onboardingData.isUSIndividual == false) {
+        isDisabledFormed="usNonIndividual"
+      } else if (onboardingData.isUSEntity == true) {
+        isDisabledFormed="usEntity"
+      } else if (onboardingData.isUSEntity == false) {
+        isDisabledFormed="usNonEntity"
       } else {
-        setDisableForm("usIndividual");
+        isDisabledFormed="usIndividual"
       }
+      console.log(isDisabledFormed,"isDisabledFormed")
+      setDisableForm(isDisabledFormed);
+
     }
   }, []);
   const redirectToComponent = (cardId: string) => {
@@ -622,7 +629,7 @@ export default function Certificates(props: any) {
           {cards.map((card) => (
             <Card
             key={card?.id}
-            className={diableForm===card.enabled ? "mx-3 mt-3" : "mx-3 mt-3 disabled"}
+            className={diableForm == card.enabled ? "mx-3 mt-3" : "mx-3 mt-3 disabled"}
             sx={{
               width: "310px",
               border:
@@ -630,11 +637,11 @@ export default function Certificates(props: any) {
               ? "7px solid #ffc107"
               : "7px solid transparent",
             }}
-            onClick={() => handleCardSelect(card?.id)}
+            onClick={() => handleCardSelect(card)}
             >
               <CardContent>
                 <div className="check-div">
-                  <img src={checksolid}/>
+                 {diableForm == card.enabled ?  (<img src={checksolid}/>) : ""}
                 </div>
                 <Typography align="center" variant="h5" component="div">
                   {card?.title}
