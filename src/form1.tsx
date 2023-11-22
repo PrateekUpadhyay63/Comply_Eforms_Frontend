@@ -202,7 +202,8 @@
 import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import { Button } from "@mui/material";
+import { Padding } from "@mui/icons-material";
 const Form1: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -213,12 +214,12 @@ const Form1: React.FC = () => {
       content.style.fontSize = "16px";
       content.style.color = "black";
       const scale = 5; // You can adjust the scale as needed
-      const canvasWidth = 3000; // Set your desired canvas width
-      const canvasHeight = 1200; // Set your desired canvas height
+      const canvasWidth = 4800; // Set your desired canvas width
+      const canvasHeight =4800; // Set your desired canvas height
 
       html2canvas(contentRef.current, {
         width: 900,
-        height: 600,
+        height: 900,
         // scale: 1,
       }).then((canvas) => {
         const pdf = new jsPDF();
@@ -246,9 +247,9 @@ const Form1: React.FC = () => {
   };
 
   return (
-    <div  style={{margin: "0 auto",maxWidth:"900px", paddingLeft:"20px"}}>
-      <h1 style={{ color: "red"}}>Heading 1</h1>
-      <div ref={contentRef}>
+    <div  style={{margin: "0 auto",width:"900px", padding:"0px", display:"table" }}>
+      <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1>
+      <div ref={contentRef} style={{ paddingLeft:"20px"}}>
         {/* {/ Your content goes here /} */}
         <p style={{ color: "yelow" }}>
           This is the content that will be in the PDF.
@@ -256,8 +257,8 @@ const Form1: React.FC = () => {
         <table
           style={{
             borderCollapse: "collapse",
-            width: "900px",
-            margin: "0 auto",
+            width: "800px", 
+            marginBottom:"20px"
           }}
         >
           <thead>
@@ -290,7 +291,9 @@ const Form1: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <button onClick={downloadPDF}>Download PDF</button>
+      <div style={{ paddingLeft: "20px" }}>
+        <Button onClick={downloadPDF} variant="contained">Download PDF</Button>
+      </div>
     </div>
   );
 };
