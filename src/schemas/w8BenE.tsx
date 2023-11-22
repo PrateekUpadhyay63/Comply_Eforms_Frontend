@@ -6,7 +6,7 @@ export const TaxPurposeSchema = () => {
       federalTaxClassificationId: Yup.number()
         .min(1, "Field Cannot be Empty")
         .required("Field Cannot be Empty"),
-      lastName: Yup.string().required("Field Cannot be Empty"),
+      lastName: Yup.string(),
       businessName: Yup.string().required("Field Cannot be Empty"),
     });
   };

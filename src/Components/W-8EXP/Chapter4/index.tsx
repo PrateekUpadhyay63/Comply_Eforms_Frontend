@@ -35,9 +35,9 @@ import {
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
   GetChapter4Statuses,
-} from "../../../../../Redux/Actions";
-import { TaxPurposeSchema } from "../../../../../schemas/w8BenE";
-import BreadCrumbComponent from "../../../../reusables/breadCrumb";
+} from "../../../Redux/Actions";
+import { TaxPurposeSchema } from "../../../schemas/w8Exp";
+import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Fedral_tax(props: any) {
   const dispatch = useDispatch();
   const {
@@ -145,7 +145,7 @@ export default function Fedral_tax(props: any) {
         <div className="row w-100 h-100">
           <div className="col-4">
            
-            <BreadCrumbComponent breadCrumbCode={1210} formName={3} />
+            <BreadCrumbComponent breadCrumbCode={1210} formName={6} />
           </div>
           <div className="col-8 mt-3">
             <div style={{ padding: "20px" }}>
@@ -156,7 +156,7 @@ export default function Fedral_tax(props: any) {
                   onSubmit={(values, { setSubmitting }) => {
                     setSubmitting(true);
                     history(
-                      "/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE"
+                      "/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp"
                     );
                   }}
                 >
@@ -229,7 +229,7 @@ export default function Fedral_tax(props: any) {
                               </Typography>
                               <Typography >
                             <Button onClick={()=>{
-                              history("/Chapter4")
+                              history("/Chapter4Guide_Exp")
                             }} variant="contained" style={{backgroundColor:"#d3ae33",color:"black",fontSize:"10px",fontWeight:"bold"}}>
                             Chapter 4 Status Guide
                             </Button>
@@ -2596,9 +2596,10 @@ The name of the securities market on which the stock is regularly traded is
                           </Button>
                           { checkbox1Checked  || checkbox2Checked || values.federalTaxClassificationId ?( <Button
                         // type="submit"
-                        onClick={()=>{
-                          history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
-                        }}
+                        // onClick={()=>{
+                        //   history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
+                        // }}
+                        type="submit"
                         variant="contained"
                         style={{ color: "white", marginLeft: "15px" }}
                       >
@@ -2606,9 +2607,9 @@ The name of the securities market on which the stock is regularly traded is
                       </Button>):
                       <Button
                      disabled
-                      onClick={()=>{
-                        history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
-                      }}
+                    //   onClick={()=>{
+                    //     history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/US_Tin_BenE")
+                    //   }}
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >
@@ -2629,9 +2630,10 @@ The name of the securities market on which the stock is regularly traded is
                         </Typography>
                         <Typography align="center">
                           <Button
-                            onClick={() => {
-                              history("/BenE/Tax_Purpose_BenE/Declaration_BenE/US/Factors_BenE");
-                            }}
+                          type="submit"
+                           onClick={()=>{
+                            history("/Exp/Tax_Purpose_Exp")
+                           }}
                             variant="contained"
                             style={{
                               color: "white",
