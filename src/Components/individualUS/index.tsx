@@ -4456,7 +4456,9 @@ export default function IndividualUs() {
                                       {errors.payResidentalCountryId}
                                     </p>
                                   </FormControl>
+                                </div> 
                                 </div>
+                                <div className="row">
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">

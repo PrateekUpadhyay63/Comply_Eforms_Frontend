@@ -38,6 +38,7 @@ const DialogEdit = (props: any) => {
   var initialValues = {
     confirmationCode: payload.confirmationCode,
     securityQuestion: "",
+    securityQuestionId: 0,
     securityAnswer: "",
   };
 
@@ -78,6 +79,9 @@ const DialogEdit = (props: any) => {
                   confirmationCode: values.confirmationCode,
                   securityAnswer: values.securityAnswer,
                   formSelection: "",
+                  securityQuestionId: 0,
+                  securityQuestion: values.securityQuestion,
+                  
                 };
                 history("/Certificates");
                 localStorage.setItem("formSelection", JSON.stringify(submitData));
