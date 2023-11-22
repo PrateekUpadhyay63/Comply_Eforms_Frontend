@@ -149,7 +149,7 @@ export default function Fedral_tax(props: any) {
                               fontSize: "20px",
                             }}
                           >
-                            Step I<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
+                            Step I234<img className="steper-check-icon-solid my-auto mx-2"  src={checksolid}/>
                           </Typography>
                         </AccordionSummary>
 

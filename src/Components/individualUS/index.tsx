@@ -788,7 +788,7 @@ export default function IndividualUs() {
                           errors?.countryOfCitizenshipId ||
                           errors?.dob ||
                           errors?.uniqueIdentifier
-                            ? "Mandatory information Required"
+                            ? "Mandatory Information Required"
                             : ""}
                         </p>
                       </div>
@@ -1257,7 +1257,7 @@ export default function IndividualUs() {
                           <p className="error mb-0">
                             {errors?.usTinTypeId ||
                             errors?.usTin 
-                              ? "Mandatory information required"
+                              ? "Mandatory Information Required"
                               : ""}
                           </p>
                         </div>
@@ -1937,7 +1937,7 @@ export default function IndividualUs() {
                             errors?.permanentResidentialStreetNumberandName1 ||
                             errors?.permanentResidentialCityorTown1 ||
                             errors?.permanentResidentialZipPostalCode1
-                              ? "Mandatory information required"
+                              ? "Mandatory Information Required"
                               : ""}
                           </p>
                         </div>
@@ -3081,7 +3081,7 @@ export default function IndividualUs() {
                             {errors?.contactFirstName ||
                             errors?.contactLastName ||
                             errors?.contactEmail
-                              ? "Mandatory information required"
+                              ? "Mandatory Information Required"
                               : ""}
                           </p>
                         </div>
@@ -3890,7 +3890,7 @@ export default function IndividualUs() {
                           </Tooltip>
                           <p className="error">
                             {errors?.paymentTypeId
-                              ? "Mandatory information required"
+                              ? "Mandatory Information Required"
                               : ""}
                           </p>
                         </div>
@@ -4083,7 +4083,7 @@ export default function IndividualUs() {
                                 errors?.bsb ||
                                 errors?.bankCode ||
                                 errors?.abaRouting
-                                  ? "Mandatory information required"
+                                  ? "Mandatory Information Required"
                                   : ""}
                               </p>
                             </div>

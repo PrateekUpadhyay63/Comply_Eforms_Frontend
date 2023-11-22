@@ -43,9 +43,10 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
   const initialValue = {
-    firstName: "",
-    lastName: "",
+    firstName: obValues.firstName ,
+    lastName: obValues.lastName,
     businessName: "",
     federalTaxClassificationId: 0,
   };
@@ -694,7 +695,7 @@ export default function Fedral_tax(props: any) {
                               placeholder="First Name"
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              helperText={touched.firstName && errors.firstName}
+                              // helperText={touched.firstName && errors.firstName}
                               error={Boolean(
                                 touched.firstName && errors.firstName
                               )}
@@ -722,7 +723,7 @@ export default function Fedral_tax(props: any) {
                               placeholder="Last Name"
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              helperText={touched.lastName && errors.lastName}
+                              // helperText={touched.lastName && errors.lastName}
                               error={Boolean(
                                 touched.lastName && errors.lastName
                               )}
@@ -762,9 +763,9 @@ export default function Fedral_tax(props: any) {
                                 type="text"
                                 placeholder="Business Name"
                                 onBlur={handleBlur}
-                                helperText={
-                                  touched.businessName && errors.businessName
-                                }
+                                // helperText={
+                                //   touched.businessName && errors.businessName
+                                // }
                                 error={Boolean(
                                   touched.businessName && errors.businessName
                                 )}
