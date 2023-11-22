@@ -480,7 +480,7 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                               <div
-                                className="col-6  "
+                                className="col-6"
                                 style={{ marginLeft: "10px" }}
                               >
                                 <Typography
@@ -556,6 +556,9 @@ export default function Fedral_tax(props: any) {
                                         )
                                       )}
                                     </select>
+                                    <p className="error">
+                                      {errors.businessName}
+                                    </p>
                                   </FormControl>
                                 </div>
                               </div>
@@ -792,6 +795,9 @@ export default function Fedral_tax(props: any) {
                                         )
                                       )}
                                     </select>
+                                    <p className="error">
+                                      {errors.businessName}
+                                    </p>
                                   </FormControl>
                                 </div>
                               </div>
