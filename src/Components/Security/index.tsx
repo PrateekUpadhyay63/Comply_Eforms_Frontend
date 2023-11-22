@@ -83,7 +83,8 @@ const DialogEdit = (props: any) => {
                   securityAnswer: values.securityAnswer,
                   formSelection: "",
                   securityQuestionId: values.securityQuestion,
-                  securityQuestion: QuestionObject.question,
+                  securityQuestion: QuestionObject,
+                  
                 };
                 history("/Certificates");
                 localStorage.setItem("formSelection", JSON.stringify(submitData));
