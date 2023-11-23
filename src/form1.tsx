@@ -204,6 +204,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { Button } from "@mui/material";
 import { Padding } from "@mui/icons-material";
+import { blue } from "@mui/material/colors";
 const Form1: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -218,8 +219,8 @@ const Form1: React.FC = () => {
       const canvasHeight =4800; // Set your desired canvas height
 
       html2canvas(contentRef.current, {
-        width: 900,
-        height: 900,
+        width: 960,
+        height: 960,
         // scale: 1,
       }).then((canvas) => {
         const pdf = new jsPDF();
@@ -247,14 +248,143 @@ const Form1: React.FC = () => {
   };
 
   return (
-    <div  style={{margin: "0 auto",width:"900px", padding:"0px", display:"table" }}>
+    <div  style={{margin: "0 auto",maxWidth:"860px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
       <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1>
-      <div ref={contentRef} style={{ paddingLeft:"20px"}}>
+      <div ref={contentRef} style={{ background:"#fff", padding:"30px 20px", boxSizing:"border-box"}}>
         {/* {/ Your content goes here /} */}
-        <p style={{ color: "yelow" }}>
+        {/* <p style={{ color: "yelow" }}>
           This is the content that will be in the PDF.
-        </p>
-        <table
+        </p> */}
+        <table style={{ width: "100%", maxWidth: "800px", color:"#000", borderCollapse:"collapse", margin:"10px 0 30px"}}>
+          <thead>
+            <tr>
+              <th style={{ width: "24%", boxSizing:"border-box", fontSize:"14px", lineHeight:"1.3", borderRight:"2px solid #000", borderBottom:"2px solid #000" }}>
+                <p>Form <strong style={{ fontSize: "30px", fontWeight: "700" }}>W-8BEN</strong></p>
+                <p style={{ margin: "15px 0" }}>(Rev. October 2021)</p>
+                <p>Department of the Treasury Internal Revenue Service</p>
+              </th>
+              <th style={{padding:"0 15px", boxSizing:"border-box", textAlign:"center" ,width: "52%", fontSize: "14px", lineHeight: "1.3", borderRight: "2px solid #000", borderBottom: "2px solid #000" }}>
+                <h1 style={{fontSize:"16px", fontWeight:"bolder"}}>Certificate of Foreign Status of Beneficial Owner for United
+                  States Tax Withholding and Reporting (Individuals)</h1>
+                <ul style={{ listStyle:"none", fontSize:"12px", lineHeight:"1.5"}}>
+                  <li>&#9658; For use by individuals. Entities must use Form W-8BEN-E.</li>
+                  <li>&#9658; Go to www.irs.gov/FormW8BEN for instructions and the latest information.</li>
+                  <li>&#9658; Give this form to the withholding agent or payer. Do not send to the IRS.</li>
+                </ul>
+              </th>
+              <th style={{ width: "24%", boxSizing:"border-box", fontSize: "18px", fontWeight:"bolder", lineHeight: "1.3", borderBottom: "2px solid #000", padding:"0 0 0 10px"  }}>
+                <p style={{fontSize: "14px", textAlign: "right", color: "blue", fontWeight:"400", marginBottom:"15px" }}>UID : 6utykj</p>
+                <h3 style={{ fontSize: "20px", fontWeight:"bolder", lineHeight: "1",}}>Electronic </h3>
+                <h3 style={{ fontSize: "20px", fontWeight:"bolder", lineHeight: "1",}}>Substitute  </h3>
+                <h5>Form W-8BEN</h5>
+              </th>
+             </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colSpan={3}>
+                <table style={{ width: "100%", borderCollapse:"collapse", margin:"10px 0"}}>
+                  <tbody>
+                    <tr>
+                        <td style={{textAlign:"start", padding:"0", fontWeight:"bold"}}>Do NOT use this form if: </td>
+                        <td style={{textAlign:"end", padding:"0", fontWeight:"bold"}}>Instead, use Form: </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2}>
+                        <ul style={{ width:"100%", padding:"0 0 0 16px", marginTop:"15px"}}>
+                          <li style={{marginBottom:"6px"}}>You are NOT an individual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .W-8BEN-E </li>
+                          <li style={{marginBottom:"6px"}}>You are a U.S. citizen or other U.S. person, including a resident alien individual . . . . . . . . . . . . . . . . . . . . . . . .W-9</li>
+                          <li style={{marginBottom:"6px"}}>You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States
+                            (other than personal services) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span style={{ textAlign: "end" }}>W-8ECI</span></li>
+                          <li>You are a beneficial owner who is receiving compensation for personal services performed in the United States . . . . . . . 8233 or W-4</li>
+                          <li>You are a person acting as an intermediary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . W-8IMY </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} style={{ borderTop:"1px solid #000", padding:"10px 0"}}> <strong>Note:</strong> If you are resident in a FATCA partner jurisdiction (that is, a Model 1 IGA jurisdiction with reciprocity), certain tax account information may be
+provided to your jurisdiction of residence.</td>
+                    </tr>
+                    
+                  </tbody>
+                  
+                </table>
+                <table style={{ width:"100%", borderCollapse:"collapse"}}>
+                  <thead>
+                    <tr>
+                      <td style={{background:"#000", color:"#fff", fontWeight:"bold", width:"120px", border: "1px solid #000", padding:"5px 10px", textAlign:"center"}}>Part I </td>
+                      <td style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", padding: "5px 10px" }}>
+                        <strong>Identification of Beneficial Owner</strong>(see instructions) </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colSpan={2}>
+                        <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                          <tbody>
+                            <tr>
+                              <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "50%", borderRight:"1px solid #000" }}>
+                                1. Name of individual who is the beneficial owner
+                                <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                              </td>
+                              <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "50%" }}>
+                                2. Country of citizenship
+                                <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={2}>
+                                <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
+                                        3. City or town, state or province. Include postal code where appropriate. 
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                                      </td>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "30%" }}>
+                                        Country
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={2}  style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
+                                4 Mailing address (if different from above) 
+                                <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={2}>
+                                <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
+                                        3. City or town, state or province. Include postal code where appropriate. 
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                                      </td>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "30%" }}>
+                                        Country
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {/* <table
           style={{
             borderCollapse: "collapse",
             width: "800px", 
@@ -289,9 +419,9 @@ const Form1: React.FC = () => {
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
-      <div style={{ paddingLeft: "20px" }}>
+      <div style={{ paddingTop: "20px" }}>
         <Button onClick={downloadPDF} variant="contained">Download PDF</Button>
       </div>
     </div>
