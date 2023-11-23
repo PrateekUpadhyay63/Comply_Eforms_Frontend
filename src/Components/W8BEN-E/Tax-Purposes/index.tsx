@@ -42,10 +42,11 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     firstName: "",
     lastName: "",
-    businessName: "",
+    businessName: obValues.entityName,
     federalTaxClassificationId: 0,
     federal:""
   };

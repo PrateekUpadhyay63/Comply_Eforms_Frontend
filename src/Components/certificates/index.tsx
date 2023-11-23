@@ -33,9 +33,9 @@ export default function Certificates(props: any) {
     [key: string]: string;
   };
   const handleCardSelect = (card: any) => {
-    if(card.enabled===diableForm){
-      setSelectedCard(card.id);
-    }
+    // if(card.enabled===diableForm){
+       setSelectedCard(card.id);
+    // }
   };
   const [toolInfo, setToolInfo] = useState("");
   const [InfoMore, setInfoMore] = useState("");
