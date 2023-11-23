@@ -31,17 +31,24 @@ export default function Penalties() {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-  const [toolInfo, setToolInfo] = useState("");
+    const [showRecoverSection, setShowRecoverSection] = useState(false);
 
+    const toggleRecoverSection = () => {
+      setShowRecoverSection(true);
+    };
+  const [toolInfo, setToolInfo] = useState("");
+  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
-    signedBy: "",
-    confirmationCode: "",
-    date: "",
+    signedBy: obValues.signedBy,
+    question:obValues?.securityQuestion?.question,
+    confirmationCode: obValues?.confirmationCode,
+    date: obValues.date,
     isAgreeWithDeclaration: false,
   };
+  
   const dispatch = useDispatch();
   const history = useNavigate();
-
+   
   return (
     <>
       <Formik
@@ -229,7 +236,7 @@ export default function Penalties() {
                         onChange={handleChange}
                         error={Boolean(touched.signedBy && errors.signedBy)}
                       />
-                      <p className="error">{errors.signedBy}</p>
+                      {/* <p className="error">{errors.signedBy}</p> */}
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -323,6 +330,7 @@ export default function Penalties() {
                           style={{ width: "100%" }}
                         />
                         <span
+                         onClick={toggleRecoverSection}
                           style={{
                             fontSize: "16px",
                             color: "blue",
@@ -331,10 +339,71 @@ export default function Penalties() {
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.confirmationCode}</p>
+                        {/* <p className="error">{errors.confirmationCode}</p> */}
                       </div>
                     </div>
                   </div>
+                  {showRecoverSection &&(<div style={{margin:"10px"}}>
+  <Typography align="left" style={{fontWeight:"bold"}}>
+  Electronic Signature Confirmation Code Recovery
+  </Typography>
+  <Typography style={{fontSize:"14px"}}>
+  To recover your Confirmation Code, please type in your security word below. Select the 'Hint?' if you need a reminder of your security word.
+  </Typography>
+
+  <div className="d-flex my-3 col-8">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.5rem",
+                          width: "50%",
+                        }}
+                        fullWidth
+                        type="text"
+                        name="signedBy"
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8">
+    <Link className="my-2 col-4" >Hint?</Link>
+    <TextField className=" col-4"
+                        style={{
+                         
+                          height: "3.47rem",
+                          width: "50%",
+                          backgroundColor:"#e3e6e4"
+                        }}
+                        fullWidth
+                        type="text"
+                        disabled
+                        value={values.question}
+                        
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8 ">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.47rem",
+                          width: "50%",
+                          backgroundColor:"#e3e6e4"
+                        }}
+                        fullWidth
+                        disabled
+                        type="text"
+                       
+                        value={values.confirmationCode}
+                      />
+
+  </div>
+</div>)}
                   <div
                     className="row"
                     style={{
@@ -359,7 +428,7 @@ export default function Penalties() {
                           // value={new Date().toISOString().split('T')[0]}
                         />
                         
-                      {values.date ?(""):<p className="error">{errors.date}</p>}
+                      {/* {values.date ?(""):<p className="error">{errors.date}</p>} */}
                       </Typography>
                     </div>
                   </div>

@@ -808,7 +808,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                 marginBottom: "20px",
               }}
               onClick={() => {
-                history("/BenE/Tax_Purpose_BenE/Declaration_BenE/US");
+                history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
               }}
             >
               <span style={{ marginRight: "5px" }}>

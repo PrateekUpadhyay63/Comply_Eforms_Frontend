@@ -3302,7 +3302,7 @@ export default function Entity() {
                           );
                         })}
 
-                      <Typography
+                     {incomeArr.length<=4 ?( <Typography
                         style={{
                           color: "#007bff",
                           cursor: "pointer",
@@ -3311,7 +3311,7 @@ export default function Entity() {
                         onClick={() => addIncomeType()}
                       >
                         <a>Add Income Type</a>
-                      </Typography>
+                      </Typography>):""}
                     </Collapse>
                     </>
                     ):(
