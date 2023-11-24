@@ -208,44 +208,103 @@ import { blue } from "@mui/material/colors";
 const Form1: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const downloadPDF = () => {
+  // const downloadPDF = () => {
+  //   if (contentRef.current) {
+  //     const content = contentRef.current.cloneNode(true) as HTMLDivElement;
+  //     console.log("contentRef.current", content);
+  //     content.style.fontSize = "16px";
+  //     content.style.color = "black";
+  //     const imgWidth = 188;
+  //     const scale = 5; // You can adjust the scale as needed
+  //     const canvasWidth = 4800; // Set your desired canvas width
+  //     // const canvasHeight =10000; // Set your desired canvas height
+  //     // const imgHeight = (canvasHeight * imgWidth) / canvasWidth;
+  //     // let heightLeft = imgHeight;
+  //     let position = 0;
+  //     // heightLeft -= pageHeight;
+  //     const doc = new jsPDF('p', 'mm');
+  //     // doc.addImage(canvas, 'PNG', 10, position, imgWidth, imgHeight, '', 'FAST');
+  //     doc.addImage(canvas, 'PNG');
+
+
+  //     html2canvas(contentRef.current, {
+  //       width: 960,
+  //       height: 960,
+  //       // scale: 1,
+  //     }).then((canvas) => {
+  //       console.log("canvas----------->",canvas)
+  //       // const content = contentRef.current.cloneNode(true) as HTMLDivElement;
+  //       console.log("contentRef.current", content);
+  //       content.style.fontSize = "16px";
+  //       content.style.color = "black";
+  //       const imgWidth = 188;
+  //       const pageHeight = 295;
+  //       const scale = 5; // You can adjust the scale as needed
+  //       const canvasWidth = 4800; // Set your desired canvas width
+  //       const canvasHeight =4800; // Set your desired canvas height
+  //       const imgHeight = (canvasHeight * imgWidth) / canvasWidth;
+  //       let heightLeft = imgHeight;
+  //       let position = 0;
+  //       heightLeft -= pageHeight;
+  //       const doc = new jsPDF('p', 'mm');
+  //       doc.addImage(canvas, 'PNG', 10, position, imgWidth, imgHeight, '', 'FAST');
+        
+  //       const pdf = new jsPDF();
+  //       const imgData = canvas.toDataURL("image/png", 1.0); // Use original image quality
+  //       pdf.addImage(
+  //         imgData,
+  //         "PNG",
+  //         0,
+  //         0,
+  //         canvas.width / scale,
+  //         canvas.height / scale
+  //       );
+
+  //       // pdf.addImage(
+  //       //   imgData,
+  //       //   "PNG",
+  //       //   10,
+  //       //   10,
+  //       //   canvasWidth / scale,
+  //       //     canvasHeight / scale
+  //       // );
+  //       while (heightLeft >= 0) {
+  //         position = heightLeft - imgHeight;
+  //         doc.addPage();
+  //         doc.addImage(canvas, 'PNG', 10, position, imgWidth, imgHeight, '', 'FAST');
+  //         heightLeft -= pageHeight;
+  //       }
+
+  //       pdf.save("example.pdf");
+  //     });
+  //   }
+  // };
+
+
+  const downloadPDF=()=> {
+    const doc = new jsPDF('p', 'mm');
     if (contentRef.current) {
-      const content = contentRef.current.cloneNode(true) as HTMLDivElement;
-      console.log("contentRef.current", content);
-      content.style.fontSize = "16px";
-      content.style.color = "black";
-      const scale = 5; // You can adjust the scale as needed
-      const canvasWidth = 4800; // Set your desired canvas width
-      const canvasHeight =4800; // Set your desired canvas height
-
-      html2canvas(contentRef.current, {
-        width: 960,
-        height: 960,
-        // scale: 1,
-      }).then((canvas) => {
-        const pdf = new jsPDF();
-        const imgData = canvas.toDataURL("image/png", 1.0); // Use original image quality
-        pdf.addImage(
-          imgData,
-          "PNG",
-          0,
-          0,
-          canvas.width / scale,
-          canvas.height / scale
-        );
-        // pdf.addImage(
-        //   imgData,
-        //   "PNG",
-        //   10,
-        //   10,
-        //   canvasWidth / scale,
-        //     canvasHeight / scale
-        // );
-
-        pdf.save("example.pdf");
+      html2canvas(contentRef.current).then((canvas: any) => {
+        const imgWidth = 188;
+        const pageHeight = 295;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+        heightLeft -= pageHeight;
+        doc.addImage(canvas, 'PNG', 10, position, imgWidth, doc.internal.pageSize.height, '', 'FAST');
+        while (heightLeft >= 0) {
+          position = heightLeft - doc.internal.pageSize.height;
+          doc.addPage();
+          doc.addImage(canvas, 'PNG', 10, position, imgWidth, doc.internal.pageSize.height, '', 'FAST');
+          heightLeft -= pageHeight;
+        }
+        console.log(doc,")))))DOC")
+        doc.save('Downld.pdf');
       });
     }
-  };
+  }
+
+  
 
   return (
     <div  style={{margin: "0 auto",maxWidth:"860px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
