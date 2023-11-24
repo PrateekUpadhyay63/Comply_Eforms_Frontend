@@ -50,13 +50,13 @@ export default function Certificates(props: any) {
     }
     console.log("DATA",onboardingData)
     if (onboardingData !== "" && onboardingData !== null) {
-      if (onboardingData.isUSIndividual == true) {
+      if (onboardingData.isUSIndividual == true && onboardingData.selectedEntity ==false) {
         isDisabledFormed="usIndividual"
-      } else if (onboardingData.isUSIndividual == false) {
+      } else if (onboardingData.isUSIndividual == false && onboardingData.selectedEntity ==false) {
         isDisabledFormed="usNonIndividual"
-      } else if (onboardingData.isUSEntity == true) {
+      } else if (onboardingData.isUSEntity == true && onboardingData.selectedEntity ==true) {
         isDisabledFormed="usEntity"
-      } else if (onboardingData.isUSEntity == false) {
+      } else if (onboardingData.isUSEntity == false && onboardingData.selectedEntity ==true) {
         isDisabledFormed="usNonEntity"
       } else {
         isDisabledFormed="usIndividual"
