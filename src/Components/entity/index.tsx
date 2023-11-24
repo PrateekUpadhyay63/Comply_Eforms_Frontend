@@ -540,6 +540,7 @@ export default function Entity() {
                const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
+                  selectedEntity:true,
                   isUSEntity: values?.isUSEntity == "yes" ? true : false,
                   isUSIndividual: values?.isUSIndividual == "yes" ? true : false,
                   uniqueIdentifier: values?.uniqueIdentifier,
@@ -607,7 +608,7 @@ export default function Entity() {
                   isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
                   isConfirmed: values?.isConfirmed,
                 };
-                console.log(values,"values");
+                localStorage.setItem("agentDetails", JSON.stringify(payload));
                 dispatch(postOnboarding(payload, redirectFunc));
               }}
               validationSchema={EntitySchema}
