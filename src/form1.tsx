@@ -106,6 +106,7 @@ const Form1: React.FC = () => {
   
 
   return (
+    <>
     <div  style={{margin: "0 auto",maxWidth:"960px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
       <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1>
       <View wrap={false}>
@@ -617,6 +618,7 @@ during the current calendar year?</td>
         <Button onClick={downloadPDF} variant="contained">Download PDF</Button>
       </div>
     </div>
+    </>
   );
 };
 
