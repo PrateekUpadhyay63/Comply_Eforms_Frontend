@@ -27,13 +27,18 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { partCertiSchema } from "../../../../../schemas/w8Ben";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
+import moment from "moment";
+type ValuePiece = Date | null;
+console.log(Date, "date");
+type Value2 = ValuePiece | [ValuePiece, ValuePiece];
 export default function Penalties() {
+  
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
   const [expanded, setExpanded] = React.useState<string | false>("");
   const [showRecoverSection, setShowRecoverSection] = useState(false);
-
+  const [value, onChange] = useState<Value2>(null);
     const toggleRecoverSection = () => {
       setShowRecoverSection(true);
     };
@@ -46,7 +51,7 @@ export default function Penalties() {
   const initialValue = {
     signedBy: "",
     confirmationCode: "",
-    date: "",
+    date: Date(),
     isAgreeWithDeclaration: false,
   };
   const dispatch = useDispatch();
@@ -74,6 +79,7 @@ export default function Penalties() {
           handleSubmit,
           handleChange,
           isSubmitting,
+          setFieldValue
         }) => (
           <Form onSubmit={handleSubmit}>
             <section
@@ -428,9 +434,12 @@ export default function Penalties() {
                           <FormControl style={{ width: "100%" }}>
                           <DatePicker
                           name="dob"
-                          
-                         
-                         
+                          defaultValue={moment().toDate()}
+                          onChange={(date) => {
+                            onChange(date);
+                            setFieldValue("dob", date);
+                          }}
+                          maxDate={moment().toDate()}
                           onBlur={handleBlur}
                           clearIcon={null}
                           format="MM/dd/yy"

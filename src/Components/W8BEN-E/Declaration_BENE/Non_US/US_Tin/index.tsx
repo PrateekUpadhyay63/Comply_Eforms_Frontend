@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -18,8 +18,8 @@ import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import { useNavigate } from "react-router-dom";
 import { US_TINSchema } from "../../../../../schemas/w8Ben";
-import { W8_state } from "../../../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { W8_state , getTinTypes ,  getAllCountries} from "../../../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -36,20 +36,40 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [ustinValue , setUStinvalue] = useState([]);
+  const [ustinArray , setUStinArray] = useState([]);
+  const allCountriesData = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
+  const getCountriesReducer = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
+    useEffect(() => {
+      dispatch(getAllCountries());
+      dispatch(
+        getTinTypes(3, (data:any) => {
+          setUStinArray(data)
+          let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
+          setUStinvalue(datas)
+        })
+      );
+      
+  
+    }, []);
   const [toolInfo, setToolInfo] = useState("");
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+
   const dispatch = useDispatch();
   const initialValue = {
-    usTinTypeId: 0,
-    usTin: "",
+    usTinTypeId: obValues.usTinTypeId,
+    usTin: obValues.usTin,
     notAvailable: false,
-    foreignTINCountry: "",
-    foreignTIN: "",
+    foreignTINCountry: obValues.foreignTINCountryId,
+    foreignTIN: obValues.foreignTIN,
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
@@ -239,11 +259,25 @@ export default function Tin(props: any) {
                               handleChange(e);
                             }}
                           >
-                            <option value="">-Select-</option>
-                            <option value={257}>United Kingdom</option>
-                            <option value={258}>United States</option>
+                            <option value="1">-Select-</option>
+                                {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                           </select>
-                          <p className="error">{errors.usTinTypeId}</p>
+                          {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
 
                         <div className="col-lg-5 col-12">
@@ -268,9 +302,10 @@ export default function Tin(props: any) {
                           />
                           {values.notAvailable ? (
                             ""
-                          ) : (
-                            <p className="error">{errors.usTin}</p>
-                          )}
+                          ) : 
+                            // <p className="error">{errors.usTin}</p>
+                            " "
+                          }
                         </div>
                         <div className="col-lg-2 col-12">
                           <div style={{ marginTop: "27px" }}>
@@ -326,11 +361,17 @@ export default function Tin(props: any) {
                               handleChange(e);
                             }}
                           >
-                            <option value="1">-Select-</option>
-                            <option value={"US"}>United Kingdom</option>
-                            <option value={"UK"}>United States</option>
+                            <option value={0}>-Select-</option>
+                                <option value={257}>-United Kingdom-</option>
+                                {getCountriesReducer.allCountriesData?.map(
+                                  (ele: any) => (
+                                    <option key={ele?.id} value={ele?.id}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
                           </select>
-                          <p className="error">{errors.foreignTINCountry}</p>
+                          {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
                           <div style={{ marginTop: "27px" }}>
                             <Checkbox
@@ -523,9 +564,10 @@ export default function Tin(props: any) {
                           )}
                           {values.isFTINNotLegallyRequired ? (
                             ""
-                          ) : (
-                            <p className="error">{errors.foreignTIN}</p>
-                          )}
+                          ) : 
+                            // <p className="error">{errors.foreignTIN}</p>
+                            " "
+                          }
 
                           <FormControl >
                             <RadioGroup
