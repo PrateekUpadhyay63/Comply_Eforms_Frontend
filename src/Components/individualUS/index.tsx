@@ -625,6 +625,7 @@ export default function IndividualUs() {
                 const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
+                  selectedEntity:false,
                   isUSEntity: values?.isUSEntity == "yes" ? true : false,
                   isUSIndividual:
                     values?.isUSIndividual == "yes" ? true : false,
