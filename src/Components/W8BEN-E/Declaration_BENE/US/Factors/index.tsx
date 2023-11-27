@@ -73,7 +73,7 @@ const getCountriesReducer = useSelector(
         </div>
 
         <div className="row w-100 h-100">
-        <div className="col-4">
+        <div className="col-4" >
           <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
         <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
          
@@ -208,8 +208,8 @@ const getCountriesReducer = useSelector(
         </Paper>
       </div>
       </div>
-        <div className="col-8">
-      <div style={{ padding: "20px" }}>
+        <div className="col-8 mt-4" >
+      <div style={{ padding: "10px" }}>
       
         <Paper style={{ padding: "18px" }}>
           <div style={{ margin: "10px" }}>
@@ -808,7 +808,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                 marginBottom: "20px",
               }}
               onClick={() => {
-                history("/BenE/Tax_Purpose_BenE/Declaration_BenE/US");
+                history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
               }}
             >
               <span style={{ marginRight: "5px" }}>

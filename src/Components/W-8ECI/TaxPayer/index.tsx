@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -22,15 +22,17 @@ import checksolid from "../../../assets/img/check-solid.png";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import { TaxPayerSchema } from "../../../schemas/w8ECI";
-import { W8_state_ECI } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { W8_state_ECI  , getAllCountries , getTinTypes} from "../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Tin(props: any) {
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+
   const initialValue = {
-    usTin: "",
-    usTinTypeId: "",
-    foreignTINCountry: "",
-    foreignTIN: "",
+    usTin:  obValues.usTin,
+    usTinTypeId: obValues.usTinTypeId,
+    foreignTINCountry: obValues.foreignTINCountryId,
+    foreignTIN: obValues.foreignTIN,
     isFTINLegally: true,
     notAvailable: false,
     isNotAvailable: true,
@@ -51,13 +53,28 @@ export default function Tin(props: any) {
     setTax(event.target.value);
   };
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [ustinValue , setUStinvalue] = useState([]);
+  const [ustinArray , setUStinArray] = useState([]);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
 
-
+    const getCountriesReducer = useSelector(
+      (state: any) => state.getCountriesReducer
+    );
+    useEffect(() => {
+      dispatch(getAllCountries());
+      dispatch(
+        getTinTypes(3, (data:any) => {
+          setUStinArray(data)
+          let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
+          setUStinvalue(datas)
+        })
+      );
+      
+  
+    }, []);
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
@@ -92,7 +109,7 @@ export default function Tin(props: any) {
           <div
             style={{ padding: "10px 0px", height: "100%", marginTop: "20px" }}
           >
-            <BreadCrumbComponent breadCrumbCode={1249} formName={2} />
+            <BreadCrumbComponent breadCrumbCode={1249} formName={4} />
           </div>
         </div>
       <div className="col-8 mt-5">
@@ -251,11 +268,25 @@ export default function Tin(props: any) {
                     handleChange(e);
                   }}
                 >
-                  <option value="">-Select-</option>
-                  <option value={257}>United Kingdom</option>
-                  <option value={258}>United States</option>
+                  <option value="1">-Select-</option>
+                                {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                 </select>
-                <p className="error">{errors.usTinTypeId}</p>
+                {/* <p className="error">{errors.usTinTypeId}</p> */}
               </div>
 
               <div className="col-lg-5 col-12">
@@ -281,7 +312,8 @@ export default function Tin(props: any) {
                 {values.notAvailable ? (
                   ""
                 ) : (
-                  <p className="error">{errors.usTin}</p>
+                  // <p className="error">{errors.usTin}</p>
+                  ""
                 )}
               </div>
               <div className="col-lg-2 col-12">
@@ -338,11 +370,17 @@ export default function Tin(props: any) {
                     handleChange(e);
                   }}
                 >
-                  <option value="1">-Select-</option>
-                  <option value={"US"}>United Kingdom</option>
-                  <option value={"UK"}>United States</option>
+                  <option value={0}>-Select-</option>
+                                <option value={257}>-United Kingdom-</option>
+                                {getCountriesReducer.allCountriesData?.map(
+                                  (ele: any) => (
+                                    <option key={ele?.id} value={ele?.id}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
                 </select>
-                <p className="error">{errors.foreignTINCountry}</p>
+                {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
                 <div style={{ marginTop: "27px" }}>
                   <Checkbox
@@ -536,7 +574,8 @@ export default function Tin(props: any) {
                 {values.isFTINNotLegallyRequired ? (
                   ""
                 ) : (
-                  <p className="error">{errors.foreignTIN}</p>
+                  // <p className="error">{errors.foreignTIN}</p>
+                  ""
                 )}
 
                 <FormControl >
@@ -824,7 +863,7 @@ export default function Tin(props: any) {
           <Typography align="center">
             <Button
               onClick={() => {
-                history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Status_BenE");
+                history("/W-8ECI/Tax_Purpose");
               }}
               variant="contained"
               style={{

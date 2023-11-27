@@ -25,10 +25,11 @@ import { useNavigate } from "react-router-dom";
 import { TinSchema } from "../../../schemas/w8ECI";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Tin(props: any) {
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
   const initialValue = {
     streetNumberName: "",
-    eciUsTinTypeId: 0,
-    eciUsTin: "",
+    eciUsTinTypeId: obValues.usTinTypeId,
+    eciUsTin: obValues.usTin,
     aptSuite: "",
     cityTown: "",
     stateProvinceId: "",
@@ -42,6 +43,8 @@ export default function Tin(props: any) {
       setExpanded(isExpanded ? panel : false);
     };
   const [toolInfo, setToolInfo] = useState("");
+  
+
   return (
     <>
       <Formik
@@ -80,7 +83,7 @@ export default function Tin(props: any) {
         <div className="row w-100 h-100">
         <div className="col-4">
           <div style={{ padding: "0px 0px",height:"100%" }}>
-          <BreadCrumbComponent breadCrumbCode={1202} formName={2}/>
+          <BreadCrumbComponent breadCrumbCode={1202} formName={4}/>
       </div>
       </div>
       <div className="col-8 mt-3">
@@ -138,7 +141,7 @@ export default function Tin(props: any) {
                           <option value={3}>U.S. TIN not applicable</option>
                           <option value={4}>U.S. TIN not available</option>
                         </select>
-                        <p className="error">{errors.eciUsTinTypeId}</p>
+                        {/* <p className="error">{errors.eciUsTinTypeId}</p> */}
                       </div>
 
                       <div className="col-4">
@@ -168,7 +171,7 @@ export default function Tin(props: any) {
                           error={Boolean(touched.eciUsTin && errors.eciUsTin)}
                           value={values.eciUsTin}
                         />
-                        <p className="error">{errors.eciUsTin}</p>
+                        {/* <p className="error">{errors.eciUsTin}</p> */}
                       </div>
                       <div className="col-4"></div>
                     </div>
@@ -367,6 +370,9 @@ export default function Tin(props: any) {
                   </Typography>
                   <Typography align="center">
                     <Button
+                     onClick={() => {
+                      history("/Certificates");
+                    }}
                       variant="contained"
                       style={{
                         color: "white",

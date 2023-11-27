@@ -34,8 +34,15 @@ import entity from "../../../src/assets/img/entity.png";
 import individual from "../../../src/assets/img/individual.png";
 import Checkbox from "@mui/material/Checkbox";
 // import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
-import { useDispatch,useSelector  } from "react-redux";
-import { postOnboarding,getAllCountries,getAllCountriesCode,getAllCountriesIncomeCode,GetAgentPaymentType,getAllStateByCountryId } from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  postOnboarding,
+  getAllCountries,
+  getAllCountriesCode,
+  getAllCountriesIncomeCode,
+  GetAgentPaymentType,
+  getAllStateByCountryId,
+} from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
 export default function Entity() {
@@ -56,7 +63,7 @@ export default function Entity() {
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
 
-  const [values , setValues] = useState({vat: '',vatId: 0,});
+  const [values, setValues] = useState({ vat: "", vatId: 0 });
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
     agentId: 3,
@@ -229,25 +236,32 @@ export default function Entity() {
   //     });
   // }, []);
   useEffect(() => {
-    dispatch(getAllCountries())   
-    dispatch(getAllCountriesCode())   
-    dispatch(getAllCountriesIncomeCode())   
-    dispatch(getAllStateByCountryId())  
+    dispatch(getAllCountries());
+    dispatch(getAllCountriesCode());
+    dispatch(getAllCountriesIncomeCode());
+    dispatch(getAllStateByCountryId());
     dispatch(
       GetAgentPaymentType(3, () => {
         console.log("Data");
       })
-    ); 
-   }, []);
- 
-   const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
-   const getCountriesCodeReducer = useSelector((state:any) => state.getCountriesCodeReducer);
-   const GetAllIncomeCodesReducer = useSelector((state:any) => state.GetAllIncomeCodesReducer);
-   const GetStateByCountryIdReducer = useSelector((state:any) => state.GetStateByCountryIdReducer);
-   const GetAgentPaymentTypeData = useSelector(
+    );
+  }, []);
+
+  const getCountriesReducer = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
+  const getCountriesCodeReducer = useSelector(
+    (state: any) => state.getCountriesCodeReducer
+  );
+  const GetAllIncomeCodesReducer = useSelector(
+    (state: any) => state.GetAllIncomeCodesReducer
+  );
+  const GetStateByCountryIdReducer = useSelector(
+    (state: any) => state.GetStateByCountryIdReducer
+  );
+  const GetAgentPaymentTypeData = useSelector(
     (state: any) => state.GetAgentPaymentTypeReducer.GetAgentPaymentTypeData
   );
-
 
   // useEffect(() => {
   //   if (payload.permanentResidentialCountryId == 258) {
@@ -297,9 +311,9 @@ export default function Entity() {
   const handleDelete = (i: any) => {
     const updatedIncomeCodes = [...incomeArr];
     updatedIncomeCodes.splice(i, 1);
-    incomeData.splice(i,1);
+    incomeData.splice(i, 1);
     setIncomeArr(updatedIncomeCodes);
-    setIncomeData(incomeData)
+    setIncomeData(incomeData);
   };
   const handleSubmit = (e: any, values: any) => {
     console.log("entity form", values);
@@ -310,11 +324,11 @@ export default function Entity() {
 
   const returnFieldName = (
     handleBlur: any,
-     touched: any,
-      errors: any,
-      values: any,
+    touched: any,
+    errors: any,
+    values: any,
     handleChange: any
-    ) => {
+  ) => {
     if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -324,7 +338,6 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -344,9 +357,7 @@ export default function Entity() {
               error={Boolean(touched.abaRouting && errors.abaRouting)}
               value={values.abaRouting}
             />
-            <p className="error">
-              {errors.abaRouting}
-            </p>
+            <p className="error">{errors.abaRouting}</p>
           </FormControl>
         </div>
       );
@@ -360,7 +371,6 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -394,7 +404,6 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -427,7 +436,6 @@ export default function Entity() {
               <span style={{ color: "red" }}>*</span>
             </Typography>
             <Input
-              
               style={{
                 border: " 1px solid #d9d9d9 ",
                 height: " 36px",
@@ -460,14 +468,12 @@ export default function Entity() {
     );
   };
 
-  
-
-  const handleIcome = (e:any, i : number)=>{
+  const handleIcome = (e: any, i: number) => {
     const newValue = e.target.value;
     const updatedIncomeArr = [...incomeArr];
     updatedIncomeArr[i] = newValue;
     setIncomeArr(updatedIncomeArr);
-  }
+  };
   // console.log(errors,"error")
   return (
     <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
@@ -534,44 +540,63 @@ export default function Entity() {
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
-                console.log("e",values?.usTinTypeId)
+                console.log("e", values?.usTinTypeId);
                 setSubmitting(true);
-                
-               const payload = {
+                const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
+                  selectedEntity: true,
                   isUSEntity: values?.isUSEntity == "yes" ? true : false,
-                  isUSIndividual: values?.isUSIndividual == "yes" ? true : false,
+                  isUSIndividual:
+                    values?.isUSIndividual == "yes" ? true : false,
                   uniqueIdentifier: values?.uniqueIdentifier,
                   firstName: values?.firstName,
                   lastName: values?.lastName,
-                  countryOfCitizenshipId:values?.countryOfCitizenshipId,
+                  countryOfCitizenshipId: values?.countryOfCitizenshipId,
                   dob: values?.dob,
                   nameOfDisregarded: values?.nameOfDisregarded,
                   entityName: values?.entityName,
                   usTinTypeId: values?.usTinTypeId,
                   usTin: values?.usTin,
-                  foreignTINCountryId:values?.foreignTINCountryId,
+                  foreignTINCountryId: values?.foreignTINCountryId,
                   foreignTIN: values?.foreignTIN,
-                  foreignTINNotAvailable: values?.foreignTINNotAvailable,//
-                  alternativeTINFormat: values?.alternativeTINFormat,//
+                  foreignTINNotAvailable: values?.foreignTINNotAvailable, //
+                  alternativeTINFormat: values?.alternativeTINFormat, //
                   giin: values?.giin,
-                  permanentResidentialCountryId: values?.permanentResidentialCountryId,
-                  permanentResidentialStreetNumberandName: values?.permanentResidentialStreetNumberandName,
-                  permanentResidentialAptSuite: values?.permanentResidentialAptSuite,
-                  permanentResidentialCityorTown: values?.permanentResidentialCityorTown,
-                  permanentResidentialStateorProvince: values?.permanentResidentialStateorProvince,
-                  permanentResidentialZipPostalCode: values?.permanentResidentialZipPostalCode,
-                  isAddressRuralRoute: values?.isAddressRuralRoute == "yes" ? true : false,
-                  isAddressPostOfficeBox: values?.isAddressPostOfficeBox == "yes" ? true : false,
-                  isCareOfAddress: values?.isCareOfAddress == "yes" ? true : false,
-                  isalternativebusinessaddress: values?.isalternativebusinessaddress == "yes" ? true : false,
-                  permanentResidentialCountryId1: values?.permanentResidentialCountryId1,
-                  permanentResidentialStreetNumberandName1: values?.permanentResidentialStreetNumberandName1,
-                  permanentResidentialAptSuite1: values?.permanentResidentialAptSuite1,
-                  permanentResidentialCityorTown1: values?.permanentResidentialCityorTown1,
-                  permanentResidentialStateorProvince1: values?.permanentResidentialStateorProvince1,
-                  permanentResidentialZipPostalCode1: values?.permanentResidentialZipPostalCode1,
+                  permanentResidentialCountryId:
+                    values?.permanentResidentialCountryId,
+                  permanentResidentialStreetNumberandName:
+                    values?.permanentResidentialStreetNumberandName,
+                  permanentResidentialAptSuite:
+                    values?.permanentResidentialAptSuite,
+                  permanentResidentialCityorTown:
+                    values?.permanentResidentialCityorTown,
+                  permanentResidentialStateorProvince:
+                    values?.permanentResidentialStateorProvince,
+                  permanentResidentialZipPostalCode:
+                    values?.permanentResidentialZipPostalCode,
+                  isAddressRuralRoute:
+                    values?.isAddressRuralRoute == "yes" ? true : false,
+                  isAddressPostOfficeBox:
+                    values?.isAddressPostOfficeBox == "yes" ? true : false,
+                  isCareOfAddress:
+                    values?.isCareOfAddress == "yes" ? true : false,
+                  isalternativebusinessaddress:
+                    values?.isalternativebusinessaddress == "yes"
+                      ? true
+                      : false,
+                  permanentResidentialCountryId1:
+                    values?.permanentResidentialCountryId1,
+                  permanentResidentialStreetNumberandName1:
+                    values?.permanentResidentialStreetNumberandName1,
+                  permanentResidentialAptSuite1:
+                    values?.permanentResidentialAptSuite1,
+                  permanentResidentialCityorTown1:
+                    values?.permanentResidentialCityorTown1,
+                  permanentResidentialStateorProvince1:
+                    values?.permanentResidentialStateorProvince1,
+                  permanentResidentialZipPostalCode1:
+                    values?.permanentResidentialZipPostalCode1,
                   contactFirstName: values?.contactFirstName,
                   contactLastName: values?.contactLastName,
                   contactEmail: values?.contactEmail,
@@ -585,7 +610,8 @@ export default function Entity() {
                   paymentTypeId: values?.paymentTypeId,
                   accountHolderName: values?.accountHolderName,
                   accountBankName: values?.accountBankName,
-                  accountBankBranchLocationId: values?.accountBankBranchLocationId,
+                  accountBankBranchLocationId:
+                    values?.accountBankBranchLocationId,
                   accountNumber: values?.accountNumber,
                   abaRouting: values?.abaRouting,
                   iban: values?.iban,
@@ -607,7 +633,7 @@ export default function Entity() {
                   isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
                   isConfirmed: values?.isConfirmed,
                 };
-                console.log(values,"values");
+                localStorage.setItem("agentDetails", JSON.stringify(payload));
                 dispatch(postOnboarding(payload, redirectFunc));
               }}
               validationSchema={EntitySchema}
@@ -623,70 +649,63 @@ export default function Entity() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                  <>
-                  {console.log(values ,"entity",errors)
-                  }
-                  </>
+                  <>{console.log(values, "entity", errors)}</>
                   <CardHeader
                     style={{ textAlign: "left" }}
                     className="flex-row-reverse"
                     title={
                       <div
                         style={{
-                  
                           marginLeft: "13px",
                         }}
                       >
-                        <div 
-                                style={{
-                                  display: "flex",
-                                  alignItems: "left",
-                                  cursor:"pointer"
-                               
-                                }}
-                                onClick={() => handleOpen("basics")}
-                                
-                                >
-                                  
-
-                        Basic Details
-                        
-                        <Tooltip
-                          style={{ backgroundColor: "black", color: "white" }}
-                          title={
-                            <>
-                              <Typography color="inherit">
-                                Basic details - Entity
-                              </Typography>
-                              <a onClick={() => setToolInfo("basic")}>
-                                <Typography
-                                  style={{
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline",
-                                  }}
-                                  align="center"
-                                >
-                                  {" "}
-                                  View More...
-                                </Typography>
-                              </a>
-                            </>
-                          }
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => handleOpen("basics")}
                         >
-                          <Info
-                            style={{
-                              color: "#ffc107",
-                              fontSize: "15px",
-                              marginLeft: "5px",
-                              cursor: "pointer",
-                            }}
-                            // onClick={clickInfo}
-                          />
-                        </Tooltip>
+                          Basic Details
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Basic details - Entity
+                                </Typography>
+                                <a onClick={() => setToolInfo("basic")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                              // onClick={clickInfo}
+                            />
+                          </Tooltip>
                         </div>
                         <p className="error mb-0">
-                            {errors?.uniqueIdentifier || errors?.entityName ? "Mandatory Information Required!" : ""}
-                          </p>
+                          {errors?.uniqueIdentifier || errors?.entityName
+                            ? "Mandatory Information Required!"
+                            : ""}
+                        </p>
                       </div>
                     }
                     action={
@@ -737,8 +756,8 @@ export default function Entity() {
                         <Typography>
                           For additional clarification, follow the following
                           link:{" "}
-                          <Link href= "https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes">
-                          https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes                          
+                          <Link href="https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes">
+                            https://www.irs.gov/individuals/international-taxpayers/classification-of-taxpayers-for-us-tax-purposes
                           </Link>
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
@@ -778,20 +797,18 @@ export default function Entity() {
                           <div className="d-flex">
                             <FormControl
                               error={Boolean(
-                                touched.isUSEntity &&
-                                  errors.isUSEntity
+                                touched.isUSEntity && errors.isUSEntity
                               )}
                             >
                               <RadioGroup
                                 id="isUSEntity"
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
-                                value={values.isUSEntity} 
+                                value={values.isUSEntity}
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
                                   control={<Radio />}
-                                  
                                   value="yes"
                                   name="isUSEntity"
                                   label="Yes"
@@ -803,8 +820,7 @@ export default function Entity() {
                                   label="No"
                                 />
                               </RadioGroup>
-                              {errors.isUSEntity &&
-                              touched.isUSEntity ? (
+                              {errors.isUSEntity && touched.isUSEntity ? (
                                 <div>
                                   <Typography color="error">
                                     {errors.isUSEntity}
@@ -882,23 +898,22 @@ export default function Entity() {
                             }}
                             className="w-100 input"
                             // id="outlined"
-                              name="uniqueIdentifier"
-                              placeholder="Enter Instructor Identifier"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={Boolean(
-                                touched.uniqueIdentifier && errors.uniqueIdentifier
-                              )}
-                              value={values?.uniqueIdentifier}
+                            name="uniqueIdentifier"
+                            placeholder="Enter Instructor Identifier"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={Boolean(
+                              touched.uniqueIdentifier &&
+                                errors.uniqueIdentifier
+                            )}
+                            value={values?.uniqueIdentifier}
                           />
-                          <p className="error">
-                            {errors.uniqueIdentifier}
-                          </p>
+                          <p className="error">{errors.uniqueIdentifier}</p>
                         </div>
                       </div>
                     </FormControl>
 
-                    {values.isUSEntity === 'no' ? (
+                    {values.isUSEntity === "no" ? (
                       <div className="row">
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">
@@ -928,9 +943,7 @@ export default function Entity() {
                               )}
                               value={values.entityName}
                             />
-                            <p className="error">
-                              {errors.entityName}
-                            </p>
+                            <p className="error">{errors.entityName}</p>
                           </FormControl>
                         </div>
                       </div>
@@ -953,7 +966,6 @@ export default function Entity() {
                                 borderRadius: "1px",
                                 padding: " 0 10px ",
                               }}
-                              
                               id="outlined"
                               name="entityName"
                               placeholder="Enter Business Name"
@@ -964,9 +976,7 @@ export default function Entity() {
                               )}
                               value={values.entityName}
                             />
-                            <p className="error">
-                              {errors.entityName}
-                            </p>
+                            <p className="error">{errors.entityName}</p>
                           </FormControl>
                         </div>
                       </div>
@@ -980,60 +990,56 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                 
                           marginLeft: "13px",
                         }}
                       >
                         <div
-                               style={{
-                                display: "flex",
-                                alignItems: "left",
-                                cursor:"pointer"
-                          
-                              }}
-                              onClick={() => handleOpen("tax")}
-                              >
-
-                        Tax Identification Numbers
-                        <Tooltip
-                          style={{ backgroundColor: "black", color: "white" }}
-                          title={
-                            <>
-                              <Typography color="inherit">
-                                Taxpayer information
-                              </Typography>
-                              <a onClick={() => setToolInfo("tin")}>
-                                <Typography
-                                  style={{
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline",
-                                  }}
-                                  align="center"
-                                >
-                                  {" "}
-                                  View More...
-                                </Typography>
-                              </a>
-                            </>
-                          }
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => handleOpen("tax")}
                         >
-                          <Info
-                            style={{
-                              color: "#ffc107",
-                              fontSize: "15px",
-                              marginLeft: "5px",
-                              cursor: "pointer",
-                            }}
-                            // onClick={clickInfo}
-                          />
-                        </Tooltip>
+                          Tax Identification Numbers
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Taxpayer information
+                                </Typography>
+                                <a onClick={() => setToolInfo("tin")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                              // onClick={clickInfo}
+                            />
+                          </Tooltip>
                         </div>
                         <p className="error mb-0">
-                            {errors?.usTinTypeId ||
-                            errors?.usTin 
-                              ? "Mandatory Information Required!"
-                              : ""}
-                          </p>
+                          {errors?.usTinTypeId || errors?.usTin
+                            ? "Mandatory Information Required!"
+                            : ""}
+                        </p>
                       </div>
                     }
                     action={
@@ -1080,7 +1086,7 @@ export default function Entity() {
                           formatting so that any format may be input.
                         </Typography>
                         <Typography>
-                        An individual’s US TIN type is generally a Social
+                          An individual’s US TIN type is generally a Social
                           Security Number (SSN) or an Individual Tax
                           Identification Number (ITIN).?
                         </Typography>
@@ -1179,12 +1185,16 @@ export default function Entity() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    {values.isUSEntity === 'no' ? (
+                    {values.isUSEntity === "no" ? (
                       <div className="row d-flex mt-3">
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
                             U.S. TIN Type
-                            <span style={{color:"red" ,verticalAlign:"super"}}>*</span>
+                            <span
+                              style={{ color: "red", verticalAlign: "super" }}
+                            >
+                              *
+                            </span>
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1197,12 +1207,17 @@ export default function Entity() {
                               }}
                               name="usTinTypeId"
                               id="usTinTypeId"
-                              
-                              onChange={(e:any) => {
+                              onChange={(e: any) => {
                                 handleChange(e);
 
-                                if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4 ||  e.target.value == 5) setFieldValue("usTin" , "")
-                                
+                                if (
+                                  e.target.value == 0 ||
+                                  e.target.value == 1 ||
+                                  e.target.value == 3 ||
+                                  e.target.value == 4 ||
+                                  e.target.value == 5
+                                )
+                                  setFieldValue("usTin", "");
                               }}
                               value={values.usTinTypeId}
                             >
@@ -1214,10 +1229,8 @@ export default function Entity() {
                               <option value="6">U.S. TIN not applicable</option>
                               <option value="7">U.S. TIN not available</option>
                             </select>
-                           
                           </FormControl>
                           <p className="error">{errors.usTinTypeId}</p>
-                          
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3">
@@ -1243,17 +1256,19 @@ export default function Entity() {
                               id="outlined"
                               name="usTin"
                               placeholder="Enter U.S. TIN"
-                              onKeyDown={(e)=>formatTin(e,values)}
-                                onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                              onKeyDown={(e) => formatTin(e, values)}
+                              onChange={handleChange}
+                              inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
-                         {values.usTinTypeId == 6 ||
-                                values.usTinTypeId == 7 ||
-                                values.usTinTypeId == 1 ? (""):
-                                <p className="error">{errors.usTin}</p>
-                                }
+                          {values.usTinTypeId == 6 ||
+                          values.usTinTypeId == 7 ||
+                          values.usTinTypeId == 1 ? (
+                            ""
+                          ) : (
+                            <p className="error">{errors.usTin}</p>
+                          )}
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
@@ -1262,26 +1277,32 @@ export default function Entity() {
                           </Typography>
 
                           <FormControl className="w-100">
-                              <select
-                                style={{
-                                  padding: " 0 10px",
-                                  color: "#7e7e7e",
-                                  fontStyle: "italic",
-                                  height: "36px",
-                                }}
-                                name="foreignTINCountryId"
-                                id="Income"
-                                defaultValue={0}
-                                onChange={(e)=>{handleChange(e)}}
-                                value={values.foreignTINCountryId}
-                              >
-                                <option value={0}>-Select-</option>
-                                <option value={257}>-uk-</option>
-                                {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
-                              </select>
-                            </FormControl>
+                            <select
+                              style={{
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "36px",
+                              }}
+                              name="foreignTINCountryId"
+                              id="Income"
+                              defaultValue={0}
+                              onChange={(e) => {
+                                handleChange(e);
+                              }}
+                              value={values.foreignTINCountryId}
+                            >
+                              <option value={0}>-Select-</option>
+                              <option value={257}>-uk-</option>
+                              {getCountriesReducer.allCountriesData?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.id}>
+                                    {ele?.name}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </FormControl>
                         </div>
 
                         <div className="col-lg-3 col-6 col-md-3">
@@ -1329,11 +1350,16 @@ export default function Entity() {
                                 value={values.foreignTINNotAvailable}
                                 // disabled={values.foreignTINCountryId == 0}
                                 checked={values.foreignTINNotAvailable}
-                                onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('alternativeTINFormat', false)
-                                } }
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  if (e.target.value)
+                                    setFieldValue(
+                                      "alternativeTINFormat",
+                                      false
+                                    );
+                                }}
                               />
-                              
+
                               {errors.foreignTINNotAvailable &&
                               touched.foreignTINNotAvailable ? (
                                 <div>
@@ -1362,14 +1388,19 @@ export default function Entity() {
                                 value={values.alternativeTINFormat}
                                 // disabled={
                                 //   values.foreignTINCountryId == 0 ||
-                                //   values.foreignTINCountryId != 257 
+                                //   values.foreignTINCountryId != 257
                                 // }
                                 checked={values.alternativeTINFormat}
-                                onChange={(e) => {handleChange(e)
-                                if(e.target.value) setFieldValue('foreignTINNotAvailable', false)
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  if (e.target.value)
+                                    setFieldValue(
+                                      "foreignTINNotAvailable",
+                                      false
+                                    );
                                 }}
                               />
-                              
+
                               {errors.alternativeTINFormat &&
                               touched.alternativeTINFormat ? (
                                 <div>
@@ -1422,91 +1453,92 @@ export default function Entity() {
                               />
                             </FormControl>
                           </div> */}
-                       
                         </div>
                         <div className="col-12">
-                            <div className="row">
-                              <div className="col-lg-3 col-6 col-md-3 ">
-                                <Typography
-                                  align="left"
-                                  className="d-flex w-100"
+                          <div className="row">
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              <Typography align="left" className="d-flex w-100">
+                                Value Added Tax Number (VAT)
+                                <span style={{ color: "red" }}>*</span>
+                              </Typography>
+
+                              <FormControl className="w-100">
+                                <select
+                                  style={{
+                                    padding: " 0 10px",
+                                    color: "#7e7e7e",
+                                    fontStyle: "italic",
+                                    height: "36px",
+                                  }}
+                                  name="vatId"
+                                  defaultValue={0}
+                                  onChange={(e: any) => {
+                                    handleChange(e);
+
+                                    if (
+                                      e.target.value == 2 ||
+                                      e.target.value == 0
+                                    )
+                                      setFieldValue("vat", "");
+                                  }}
+                                  value={values.vatId}
                                 >
-                                  Value Added Tax Number (VAT)
-                                  <span style={{ color: "red" }}>*</span>
-                                </Typography>
-
-                                <FormControl className="w-100">
-                                  <select
-                                    style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
-                                      fontStyle: "italic",
-                                      height: "36px",
-                                    }}
-                                    name="vatId"
-                                    defaultValue={0}
-                                    onChange={(e:any) => {
-                                      handleChange(e);
-
-                                      if(e.target.value == 2 || e.target.value == 0) setFieldValue("vat" , "")
-                                      
-                                    }}
-                                    value={values.vatId}
-                                    
-                                    
-                                  >
-                                    <option value={0}>-Select-</option>
-                                    <option value={1}>My VAT Number is</option>
-                                    <option value={2}>
-                                      I Do Not Have A VAT Number
-                                    </option>
-                                  </select>
-                                  <p className="error">{errors.vatId}</p>
-                                </FormControl>
-                              </div>
-
-                              <div className="col-lg-3 col-6 col-md-3 ">
-                                <FormControl className="w-100">
-                                  <Typography align="left">
-                                    Value Added Tax Number (VAT)
-                                    {/* <span style={{ color: 'red' }}>*</span> */}
-                                  </Typography>
-                                  <Input
-                                    disabled={
-                                      values.vatId == 0 || values.vatId == 2
-                                    }
-                                    style={{
-                                      border: " 1px solid #d9d9d9 ",
-                                      height: " 36px",
-                                      lineHeight: "36px ",
-                                      background: "#fff ",
-                                      fontSize: "13px",
-                                      color: " #000 ",
-                                      fontStyle: "normal",
-                                      borderRadius: "1px",
-                                      padding: " 0 10px ",
-                                    }}
-                                    id="outlined"
-                                    name="vat"
-                                    placeholder="Enter Value Added Tax Number"
-                                    // onKeyDown={formatTin}
-                                    onChange={handleChange}
-                                    inputProps={{ maxLength: 9 }}
-                                    // onBlur={handleBlur}
-                                    //   error={Boolean(touched.usTin && errors.vat)}
-                                    value={values.vat}
-                                  />
-                                </FormControl>
-                              </div>
+                                  <option value={0}>-Select-</option>
+                                  <option value={1}>My VAT Number is</option>
+                                  <option value={2}>
+                                    I Do Not Have A VAT Number
+                                  </option>
+                                </select>
+                                <p className="error">{errors.vatId}</p>
+                              </FormControl>
                             </div>
-                          </div> 
+
+                            <div className="col-lg-3 col-6 col-md-3 ">
+                              <FormControl className="w-100">
+                                <Typography align="left">
+                                  Value Added Tax Number (VAT)
+                                  {/* <span style={{ color: 'red' }}>*</span> */}
+                                </Typography>
+                                <Input
+                                  disabled={
+                                    values.vatId == 0 || values.vatId == 2
+                                  }
+                                  style={{
+                                    border: " 1px solid #d9d9d9 ",
+                                    height: " 36px",
+                                    lineHeight: "36px ",
+                                    background: "#fff ",
+                                    fontSize: "13px",
+                                    color: " #000 ",
+                                    fontStyle: "normal",
+                                    borderRadius: "1px",
+                                    padding: " 0 10px ",
+                                  }}
+                                  id="outlined"
+                                  name="vat"
+                                  placeholder="Enter Value Added Tax Number"
+                                  // onKeyDown={formatTin}
+                                  onChange={handleChange}
+                                  inputProps={{ maxLength: 9 }}
+                                  // onBlur={handleBlur}
+                                  //   error={Boolean(touched.usTin && errors.vat)}
+                                  value={values.vat}
+                                />
+                              </FormControl>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     ) : (
                       <div className="col-12 d-flex">
                         <div className="col-lg-3 col-6 col-md-3 ">
                           <Typography align="left" className="d-flex w-100 ">
                             U.S. TIN Type
-                            <span style={{color:"red" , verticalAlign:"super"}}>*</span>  
+                            <span
+                              style={{ color: "red", verticalAlign: "super" }}
+                            >
+                              *
+                            </span>
                           </Typography>
 
                           <FormControl className="w-100">
@@ -1520,11 +1552,11 @@ export default function Entity() {
                               name="usTinTypeId"
                               id="Income"
                               defaultValue={1}
-                              onChange={(e:any) => {
+                              onChange={(e: any) => {
                                 handleChange(e);
 
-                                if(e.target.value == 0) setFieldValue("usTin" , "")
-                                
+                                if (e.target.value == 0)
+                                  setFieldValue("usTin", "");
                               }}
                               value={values.usTinTypeId}
                             >
@@ -1537,14 +1569,16 @@ export default function Entity() {
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
-                            <Typography align="left">U.S. TIN
-                            <span style={{color:"red" , verticalAlign:"super"}}>*</span>  
+                            <Typography align="left">
+                              U.S. TIN
+                              <span
+                                style={{ color: "red", verticalAlign: "super" }}
+                              >
+                                *
+                              </span>
                             </Typography>
                             <Input
-                             disabled={
-                             
-                              values.usTinTypeId == 1
-                            }
+                              disabled={values.usTinTypeId == 1}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -1559,9 +1593,9 @@ export default function Entity() {
                               id="outlined"
                               name="usTin"
                               placeholder="Enter U.S. TIN"
-                              onKeyDown={(e)=>formatTin(e,values)}
-                                onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                              onKeyDown={(e) => formatTin(e, values)}
+                              onChange={handleChange}
+                              inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1578,69 +1612,67 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-           
                           marginLeft: "13px",
                         }}
                       >
                         <div
-                                style={{
-                                  display: "flex",
-                                  alignItems: "left",
-                                  cursor:"pointer"
-                     
-                                }}
-
-                                onClick={() => handleOpen("pra")}
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => handleOpen("pra")}
                         >
-
-                        Permanent Residence Address
-                        <Tooltip
-                          style={{ backgroundColor: "black", color: "white" }}
-                          title={
-                            <>
-                              <Typography color="inherit">
-                                Address Details
-                              </Typography>
-                              <a onClick={() => setToolInfo("Address")}>
-                                <Typography
-                                  style={{
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline",
-                                  }}
-                                  align="center"
-                                >
-                                  {" "}
-                                  View More...
+                          Permanent Residence Address
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Address Details
                                 </Typography>
-                              </a>
-                            </>
-                          }
-                        >
-                          <Info
-                            style={{
-                              color: "#ffc107",
-                              fontSize: "15px",
-                              marginLeft: "5px",
-                              cursor: "pointer",
-                            }}
-                            // onClick={clickInfo}
-                          />
-                        </Tooltip>
+                                <a onClick={() => setToolInfo("Address")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                              // onClick={clickInfo}
+                            />
+                          </Tooltip>
                         </div>
                         <p className="error mb-0">
-                            {errors?.permanentResidentialCountryId ||
-                             errors?.permanentResidentialStreetNumberandName ||
-                             errors?.permanentResidentialCityorTown || 
-                             errors?.permanentResidentialZipPostalCode ||
-                             errors?.isAddressRuralRoute || 
-                             errors?.isalternativebusinessaddress ||
-                             errors?.isAddressPostOfficeBox ||
-                             errors?.isCareOfAddress ||
-                             errors?.permanentResidentialCountryId1 ||
-                             errors?.permanentResidentialStreetNumberandName1 ||
-                             errors?.permanentResidentialCityorTown1 ||
-                             errors?.permanentResidentialZipPostalCode1 ? "Mandatory Information Required!" : ""}
-                          </p>
+                          {errors?.permanentResidentialCountryId ||
+                          errors?.permanentResidentialStreetNumberandName ||
+                          errors?.permanentResidentialCityorTown ||
+                          errors?.permanentResidentialZipPostalCode ||
+                          errors?.isAddressRuralRoute ||
+                          errors?.isalternativebusinessaddress ||
+                          errors?.isAddressPostOfficeBox ||
+                          errors?.isCareOfAddress ||
+                          errors?.permanentResidentialCountryId1 ||
+                          errors?.permanentResidentialStreetNumberandName1 ||
+                          errors?.permanentResidentialCityorTown1 ||
+                          errors?.permanentResidentialZipPostalCode1
+                            ? "Mandatory Information Required!"
+                            : ""}
+                        </p>
                       </div>
                     }
                     action={
@@ -1664,10 +1696,14 @@ export default function Entity() {
                         style={{ backgroundColor: "#dedcb1", padding: "15px" }}
                       >
                         <Typography>
-                        Please enter the permanent residence address of the individual, business or organization the submission represents. This should be in the country where that payee’s income tax submission is made.
+                          Please enter the permanent residence address of the
+                          individual, business or organization the submission
+                          represents. This should be in the country where that
+                          payee’s income tax submission is made.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
-                        If there is a mailing address that differs from the permanent address, then please enter that as well.
+                          If there is a mailing address that differs from the
+                          permanent address, then please enter that as well.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
                           IRS Guidance:
@@ -1728,9 +1764,13 @@ export default function Entity() {
                             <option value={45}>-canada-</option>
                             <option value={257}>United Kingdom</option>
                             <option value={258}>United States</option>
-                            {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
+                            {getCountriesReducer.allCountriesData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
                           </select>
                           <p className="error">
                             {errors.permanentResidentialCountryId}
@@ -1746,7 +1786,6 @@ export default function Entity() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -1805,7 +1844,6 @@ export default function Entity() {
                             City or Town:<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -1856,67 +1894,69 @@ export default function Entity() {
                       </FormControl>
                     </div>
                   ) : ( */}
-                  {values?.permanentResidentialCountryId == 258 ? (
-                          <div className="col-lg-3 col-6 col-md-3 mt-2">
-                            <Typography align="left" className="d-flex w-100 ">
-                              State or Province:
-                              {/* <span style={{ color: 'red' }}>*</span> */}
-                            </Typography>
-
-                            <FormControl className="w-100">
-                              <select
-                                 style={{
-                                  padding: " 0 10px",
-                                  color: "#7e7e7e",
-                                  fontStyle: "italic",
-                                  height: "36px",
-                                }}
-                                name="permanentResidentialStateorProvince"
-                                // id="Income"
-                                onChange={handleChange}
-                                value={
-                                  values.permanentResidentialStateorProvince
-                                }
-                              >
-                                <option value="0">
-                                  <em>--Select--</em>
-                                </option>
-                                {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
-                                 <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
-                                 ))}
-                              </select>
-                            </FormControl>
-                          </div>
-                        ) : (
-                      <div className="col-lg-3 col-6 col-md-3 mt-2">
-                        <FormControl className="w-100">
-                          <Typography align="left">
+                      {values?.permanentResidentialCountryId == 258 ? (
+                        <div className="col-lg-3 col-6 col-md-3 mt-2">
+                          <Typography align="left" className="d-flex w-100 ">
                             State or Province:
+                            {/* <span style={{ color: 'red' }}>*</span> */}
                           </Typography>
-                          <Input
-                            disabled={
-                              values.permanentResidentialCountryId == 0
-                            }
-                            style={{
-                              border: " 1px solid #d9d9d9 ",
-                              height: " 36px",
-                              lineHeight: "36px ",
-                              background: "#fff ",
-                              fontSize: "13px",
-                              color: " #000 ",
-                              fontStyle: "normal",
-                              borderRadius: "1px",
-                              padding: " 0 10px ",
-                            }}
-                            id="outlined"
-                            name="permanentResidentialStateorProvince"
-                            placeholder="Enter State or Province"
-                            onChange={handleChange}
-                            value={values.permanentResidentialStateorProvince}
-                          />
-                        </FormControl>
-                      </div>
-                        )}
+
+                          <FormControl className="w-100">
+                            <select
+                              style={{
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "36px",
+                              }}
+                              name="permanentResidentialStateorProvince"
+                              // id="Income"
+                              onChange={handleChange}
+                              value={values.permanentResidentialStateorProvince}
+                            >
+                              <option value="0">
+                                <em>--Select--</em>
+                              </option>
+                              {GetStateByCountryIdReducer?.allCountriesStateIdData?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.name}>
+                                    {ele?.name}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </FormControl>
+                        </div>
+                      ) : (
+                        <div className="col-lg-3 col-6 col-md-3 mt-2">
+                          <FormControl className="w-100">
+                            <Typography align="left">
+                              State or Province:
+                            </Typography>
+                            <Input
+                              disabled={
+                                values.permanentResidentialCountryId == 0
+                              }
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                height: " 36px",
+                                lineHeight: "36px ",
+                                background: "#fff ",
+                                fontSize: "13px",
+                                color: " #000 ",
+                                fontStyle: "normal",
+                                borderRadius: "1px",
+                                padding: " 0 10px ",
+                              }}
+                              id="outlined"
+                              name="permanentResidentialStateorProvince"
+                              placeholder="Enter State or Province"
+                              onChange={handleChange}
+                              value={values.permanentResidentialStateorProvince}
+                            />
+                          </FormControl>
+                        </div>
+                      )}
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
                           <Typography align="left">
@@ -1924,7 +1964,6 @@ export default function Entity() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -1960,33 +1999,33 @@ export default function Entity() {
                           </Typography>
 
                           <div className="d-flex">
-                          <FormControl
+                            <FormControl
                               error={Boolean(
                                 touched.isAddressRuralRoute &&
                                   errors.isAddressRuralRoute
                               )}
                             >
-                            <RadioGroup
-                              row
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                              name="row-radio-buttons-group"
-                              value= {values.isAddressRuralRoute}
-                              onChange={handleChange}
-                            >
-                              <FormControlLabel
-                                value="no"
-                                control={<Radio />}
-                                label="No"
-                                name= "isAddressRuralRoute"
-                              />
-                              <FormControlLabel
-                                value="yes"
-                                control={<Radio />}
-                                label="Yes"
-                                name= "isAddressRuralRoute"
-                              />
-                            </RadioGroup>
-                            {errors.isAddressRuralRoute &&
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                                value={values.isAddressRuralRoute}
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  value="no"
+                                  control={<Radio />}
+                                  label="No"
+                                  name="isAddressRuralRoute"
+                                />
+                                <FormControlLabel
+                                  value="yes"
+                                  control={<Radio />}
+                                  label="Yes"
+                                  name="isAddressRuralRoute"
+                                />
+                              </RadioGroup>
+                              {errors.isAddressRuralRoute &&
                               touched.isAddressRuralRoute ? (
                                 <div>
                                   <Typography color="error">
@@ -2004,7 +2043,7 @@ export default function Entity() {
                       )}
                     </div>
                     <div className="d-flex">
-                      {values.isUSEntity == 'yes' ? (
+                      {values.isUSEntity == "yes" ? (
                         <div className="">
                           <Typography style={{ marginTop: "20px" }}>
                             Is there an alternative mailing or business address
@@ -2088,7 +2127,7 @@ export default function Entity() {
                           )}
 
                           <div className="d-flex">
-                          <FormControl
+                            <FormControl
                               error={Boolean(
                                 touched.isalternativebusinessaddress &&
                                   errors.isalternativebusinessaddress
@@ -2098,12 +2137,11 @@ export default function Entity() {
                                 id="isalternativebusinessaddress"
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
-                                value={values.isalternativebusinessaddress} 
+                                value={values.isalternativebusinessaddress}
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
                                   control={<Radio />}
-                                  
                                   value="yes"
                                   name="isalternativebusinessaddress"
                                   label="Yes"
@@ -2148,64 +2186,64 @@ export default function Entity() {
                         </div>
                       ) : (
                         <div className="col-12">
-                        <div
-                          className=" d-lg-flex justify-content-between"
-                          style={{ justifyContent: "between" }}
-                        >
-                          <>
-                            <div>
-                              <Typography
-                                align="left"
-                                style={{ marginTop: "20px" }}
-                              >
-                                Is this address a PO Box?
-                                <span style={{ color: "red" }}>*</span>
-                                <Info
-                                  style={{
-                                    color: "#ffc107",
-                                    fontSize: "15px",
-                                    marginBottom: "12px",
-                                  }}
-                                />
-                              </Typography>
-                              <FormControl
-                                error={Boolean(
-                                  touched.isAddressPostOfficeBox &&
-                                    errors.isAddressPostOfficeBox
-                                )}
-                              >
-                                <RadioGroup
-                                  id="isAddressPostOfficeBox"
-                                  row
-                                  aria-labelledby="demo-row-radio-buttons-group-label"
-                                  value={values.isAddressPostOfficeBox}
-                                  onChange={handleChange}
+                          <div
+                            className=" d-lg-flex justify-content-between"
+                            style={{ justifyContent: "between" }}
+                          >
+                            <>
+                              <div>
+                                <Typography
+                                  align="left"
+                                  style={{ marginTop: "20px" }}
                                 >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="yes"
-                                    name="isAddressPostOfficeBox"
-                                    label="Yes"
+                                  Is this address a PO Box?
+                                  <span style={{ color: "red" }}>*</span>
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "15px",
+                                      marginBottom: "12px",
+                                    }}
                                   />
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="no"
-                                    name="isAddressPostOfficeBox"
-                                    label="No"
-                                  />
-                                </RadioGroup>
-                                {errors.isAddressPostOfficeBox &&
-                                touched.isAddressPostOfficeBox ? (
-                                  <div>
-                                    <Typography color="error">
-                                      {errors.isAddressPostOfficeBox}
-                                    </Typography>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </FormControl>
-                              {/* <RadioGroup
+                                </Typography>
+                                <FormControl
+                                  error={Boolean(
+                                    touched.isAddressPostOfficeBox &&
+                                      errors.isAddressPostOfficeBox
+                                  )}
+                                >
+                                  <RadioGroup
+                                    id="isAddressPostOfficeBox"
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    value={values.isAddressPostOfficeBox}
+                                    onChange={handleChange}
+                                  >
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="yes"
+                                      name="isAddressPostOfficeBox"
+                                      label="Yes"
+                                    />
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="no"
+                                      name="isAddressPostOfficeBox"
+                                      label="No"
+                                    />
+                                  </RadioGroup>
+                                  {errors.isAddressPostOfficeBox &&
+                                  touched.isAddressPostOfficeBox ? (
+                                    <div>
+                                      <Typography color="error">
+                                        {errors.isAddressPostOfficeBox}
+                                      </Typography>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </FormControl>
+                                {/* <RadioGroup
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
@@ -2228,61 +2266,61 @@ export default function Entity() {
                           <p className="error">
                             {errors.isAddressPostOfficeBox}
                           </p> */}
-                            </div>
-                          </>
-                          {/* </div> */}
-                          <div className="">
-                            <Typography style={{ marginTop: "20px" }}>
-                              Is this an In Care Of address?
-                              <span style={{ color: "red" }}>*</span>
-                              <Info
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  marginBottom: "12px",
-                                }}
-                              />
-                            </Typography>
+                              </div>
+                            </>
+                            {/* </div> */}
+                            <div className="">
+                              <Typography style={{ marginTop: "20px" }}>
+                                Is this an In Care Of address?
+                                <span style={{ color: "red" }}>*</span>
+                                <Info
+                                  style={{
+                                    color: "#ffc107",
+                                    fontSize: "15px",
+                                    marginBottom: "12px",
+                                  }}
+                                />
+                              </Typography>
 
-                            <div className="d-flex">
-                              <FormControl
-                                error={Boolean(
-                                  touched.isCareOfAddress &&
-                                    errors.isCareOfAddress
-                                )}
-                              >
-                                <RadioGroup
-                                  id="isCareOfAddress"
-                                  row
-                                  aria-labelledby="demo-row-radio-buttons-group-label"
-                                  value={values.isCareOfAddress}
-                                  onChange={handleChange}
+                              <div className="d-flex">
+                                <FormControl
+                                  error={Boolean(
+                                    touched.isCareOfAddress &&
+                                      errors.isCareOfAddress
+                                  )}
                                 >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="yes"
-                                    name="isCareOfAddress"
-                                    label="Yes"
-                                  />
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="no"
-                                    name="isCareOfAddress"
-                                    label="No"
-                                  />
-                                </RadioGroup>
-                                {errors.isCareOfAddress &&
-                                touched.isCareOfAddress ? (
-                                  <div>
-                                    <Typography color="error">
-                                      {errors.isCareOfAddress}
-                                    </Typography>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </FormControl>
-                              {/* <RadioGroup
+                                  <RadioGroup
+                                    id="isCareOfAddress"
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    value={values.isCareOfAddress}
+                                    onChange={handleChange}
+                                  >
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="yes"
+                                      name="isCareOfAddress"
+                                      label="Yes"
+                                    />
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="no"
+                                      name="isCareOfAddress"
+                                      label="No"
+                                    />
+                                  </RadioGroup>
+                                  {errors.isCareOfAddress &&
+                                  touched.isCareOfAddress ? (
+                                    <div>
+                                      <Typography color="error">
+                                        {errors.isCareOfAddress}
+                                      </Typography>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </FormControl>
+                                {/* <RadioGroup
                               row
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               name="row-radio-buttons-group"
@@ -2305,134 +2343,130 @@ export default function Entity() {
                             <p className="error">
                               {errors.isCareOfAddress}
                             </p> */}
+                              </div>
                             </div>
-                          </div>
-                          <div>
-                            <Typography style={{ marginTop: "20px" }}>
-                              Is there an alternative mailing or business
-                              address in the U.S.?
-                              <span style={{ color: "red" }}>*</span>
-                              <span>
-                                <Tooltip
-                                  style={{
-                                    backgroundColor: "black",
-                                    color: "white",
-                                  }}
-                                  title={
-                                    <>
-                                      <Typography color="inherit">
-                                        Alternate Mailing Address
-                                      </Typography>
-                                      <a
-                                        onClick={() => setToolInfo("mail")}
-                                      >
-                                        <Typography
-                                          style={{
-                                            cursor: "pointer",
-                                            textDecorationLine: "underline",
-                                          }}
-                                          align="center"
-                                        >
-                                          {" "}
-                                          View More...
+                            <div>
+                              <Typography style={{ marginTop: "20px" }}>
+                                Is there an alternative mailing or business
+                                address in the U.S.?
+                                <span style={{ color: "red" }}>*</span>
+                                <span>
+                                  <Tooltip
+                                    style={{
+                                      backgroundColor: "black",
+                                      color: "white",
+                                    }}
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                          Alternate Mailing Address
                                         </Typography>
-                                      </a>
-                                    </>
-                                  }
-                                >
-                                  <Info
+                                        <a onClick={() => setToolInfo("mail")}>
+                                          <Typography
+                                            style={{
+                                              cursor: "pointer",
+                                              textDecorationLine: "underline",
+                                            }}
+                                            align="center"
+                                          >
+                                            {" "}
+                                            View More...
+                                          </Typography>
+                                        </a>
+                                      </>
+                                    }
+                                  >
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "15px",
+                                        marginLeft: "5px",
+                                        cursor: "pointer",
+                                      }}
+                                      // onClick={clickInfo}
+                                    />
+                                  </Tooltip>
+                                </span>
+                              </Typography>
+                              {toolInfo === "mail" ? (
+                                <div>
+                                  <Paper
                                     style={{
-                                      color: "#ffc107",
-                                      fontSize: "15px",
-                                      marginLeft: "5px",
-                                      cursor: "pointer",
-                                    }}
-                                    // onClick={clickInfo}
-                                  />
-                                </Tooltip>
-                              </span>
-                            </Typography>
-                            {toolInfo === "mail" ? (
-                              <div>
-                                <Paper
-                                  style={{
-                                    backgroundColor: "#dedcb1",
-                                    padding: "15px",
-                                  }}
-                                >
-                                  <Typography>
-                                    Please check this box if you have an
-                                    alternative mailing address away from
-                                    the permanent residential address
-                                    entered here.
-                                  </Typography>
-                                  <Typography style={{ marginTop: "10px" }}>
-                                    You will be asked to enter the
-                                    alternative address later in the process
-                                    and in some circumstances you may need
-                                    to provide additional information.
-                                  </Typography>
-
-                                  <Link
-                                    href="#"
-                                    underline="none"
-                                    style={{
-                                      marginTop: "10px",
-                                      fontSize: "16px",
-                                    }}
-                                    onClick={() => {
-                                      setToolInfo("");
+                                      backgroundColor: "#dedcb1",
+                                      padding: "15px",
                                     }}
                                   >
-                                    --Show Less--
-                                  </Link>
-                                </Paper>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-
-                            <div className="d-flex">
-                              <FormControl
-                                error={Boolean(
-                                  touched.isalternativebusinessaddress &&
-                                    errors.isalternativebusinessaddress
-                                )}
-                              >
-                                <RadioGroup
-                                  id="isalternativebusinessaddress"
-                                  row
-                                  aria-labelledby="demo-row-radio-buttons-group-label"
-                                  value={
-                                    values.isalternativebusinessaddress
-                                  }
-                                  onChange={handleChange}
-                                >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="yes"
-                                    name="isalternativebusinessaddress"
-                                    label="Yes"
-                                  />
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    value="no"
-                                    name="isalternativebusinessaddress"
-                                    label="No"
-                                  />
-                                </RadioGroup>
-                                {errors.isalternativebusinessaddress &&
-                                touched.isalternativebusinessaddress ? (
-                                  <div>
-                                    <Typography color="error">
-                                      {errors.isalternativebusinessaddress}
+                                    <Typography>
+                                      Please check this box if you have an
+                                      alternative mailing address away from the
+                                      permanent residential address entered
+                                      here.
                                     </Typography>
-                                  </div>
-                                ) : (
-                                  ""
-                                )}
-                              </FormControl>
-                              {/* <Typography className="my-auto">Yes</Typography>
+                                    <Typography style={{ marginTop: "10px" }}>
+                                      You will be asked to enter the alternative
+                                      address later in the process and in some
+                                      circumstances you may need to provide
+                                      additional information.
+                                    </Typography>
+
+                                    <Link
+                                      href="#"
+                                      underline="none"
+                                      style={{
+                                        marginTop: "10px",
+                                        fontSize: "16px",
+                                      }}
+                                      onClick={() => {
+                                        setToolInfo("");
+                                      }}
+                                    >
+                                      --Show Less--
+                                    </Link>
+                                  </Paper>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+
+                              <div className="d-flex">
+                                <FormControl
+                                  error={Boolean(
+                                    touched.isalternativebusinessaddress &&
+                                      errors.isalternativebusinessaddress
+                                  )}
+                                >
+                                  <RadioGroup
+                                    id="isalternativebusinessaddress"
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    value={values.isalternativebusinessaddress}
+                                    onChange={handleChange}
+                                  >
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="yes"
+                                      name="isalternativebusinessaddress"
+                                      label="Yes"
+                                    />
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      value="no"
+                                      name="isalternativebusinessaddress"
+                                      label="No"
+                                    />
+                                  </RadioGroup>
+                                  {errors.isalternativebusinessaddress &&
+                                  touched.isalternativebusinessaddress ? (
+                                    <div>
+                                      <Typography color="error">
+                                        {errors.isalternativebusinessaddress}
+                                      </Typography>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </FormControl>
+                                {/* <Typography className="my-auto">Yes</Typography>
                             <Radio
                               checked={values.isalternativebusinessaddress}
                               onChange={() =>
@@ -2461,14 +2495,14 @@ export default function Entity() {
                             <p className="error">
                               {errors.isalternativebusinessaddress}
                             </p> */}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
                       )}
                     </div>
 
-                    {values.isalternativebusinessaddress == 'yes' ? (
+                    {values.isalternativebusinessaddress == "yes" ? (
                       <>
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3">
@@ -2496,9 +2530,13 @@ export default function Entity() {
                                 <option value={257}>United Kingdom</option>
                                 <option value={258}>United States</option>
                                 <option value="">---</option>
-                                {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
+                                {getCountriesReducer.allCountriesData?.map(
+                                  (ele: any) => (
+                                    <option key={ele?.id} value={ele?.id}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
                               </select>
                               <p className="error">
                                 {errors.permanentResidentialCountryId1}
@@ -2514,7 +2552,6 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2576,7 +2613,6 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2632,9 +2668,13 @@ export default function Entity() {
                                   <option value="0">
                                     <em>--Select--</em>
                                   </option>
-                                  {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
-                                          <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
-                                  ))}
+                                  {GetStateByCountryIdReducer?.allCountriesStateIdData?.map(
+                                    (ele: any) => (
+                                      <option key={ele?.id} value={ele?.name}>
+                                        {ele?.name}
+                                      </option>
+                                    )
+                                  )}
                                 </select>
                               </FormControl>
                             </div>
@@ -2678,7 +2718,6 @@ export default function Entity() {
                                 <span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2724,60 +2763,58 @@ export default function Entity() {
                     title={
                       <div
                         style={{
-                    
                           marginLeft: "13px",
                         }}
                       >
                         <div
-                              style={{
-                                display: "flex",
-                                alignItems: "left",
-                                cursor:"pointer"
-                
-                              }}
-                              onClick={() => handleOpen("cd")}
-                              
-                              >
-
-                        Contact Details
-                        <Tooltip
-                          style={{ backgroundColor: "black", color: "white" }}
-                          title={
-                            <>
-                              <Typography color="inherit">
-                                Contact Details
-                              </Typography>
-                              <a onClick={() => setToolInfo("Contact")}>
-                                <Typography
-                                  style={{
-                                    cursor: "pointer",
-                                    textDecorationLine: "underline",
-                                  }}
-                                  align="center"
-                                >
-                                  {" "}
-                                  View More...
-                                </Typography>
-                              </a>
-                            </>
-                          }
+                          style={{
+                            display: "flex",
+                            alignItems: "left",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => handleOpen("cd")}
                         >
-                          <Info
-                            style={{
-                              color: "#ffc107",
-                              fontSize: "15px",
-                              marginLeft: "5px",
-                              cursor: "pointer",
-                            }}
-                            // onClick={clickInfo}
-                          />
-                        </Tooltip>
+                          Contact Details
+                          <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                  Contact Details
+                                </Typography>
+                                <a onClick={() => setToolInfo("Contact")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                              }}
+                              // onClick={clickInfo}
+                            />
+                          </Tooltip>
                         </div>
                         <p className="error mb-0">
-                            {errors?.contactFirstName ||
-                             errors?.contactLastName ||
-                             errors?.contactEmail ? "Mandatory Information Required!" : ""}
-                          </p>
+                          {errors?.contactFirstName ||
+                          errors?.contactLastName ||
+                          errors?.contactEmail
+                            ? "Mandatory Information Required!"
+                            : ""}
+                        </p>
                       </div>
                     }
                     action={
@@ -2801,10 +2838,13 @@ export default function Entity() {
                         style={{ backgroundColor: "#dedcb1", padding: "15px" }}
                       >
                         <Typography>
-                        Please enter your contact details here and the capacity in which you will be signing the submission.
+                          Please enter your contact details here and the
+                          capacity in which you will be signing the submission.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
-                        On confirmation an email will be sent to the address entered and contain a PIN that must be entered at the point of signature.
+                          On confirmation an email will be sent to the address
+                          entered and contain a PIN that must be entered at the
+                          point of signature.
                         </Typography>
                         <Typography style={{ marginTop: "10px" }}>
                           If you have not received the email within a few
@@ -2865,7 +2905,6 @@ export default function Entity() {
                             First Name<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2888,9 +2927,7 @@ export default function Entity() {
                             )}
                             value={values.contactFirstName}
                           />
-                          <p className="error">
-                            {errors.contactFirstName}
-                          </p>
+                          <p className="error">{errors.contactFirstName}</p>
                         </FormControl>
                       </div>
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -2899,7 +2936,6 @@ export default function Entity() {
                             Last Name<span style={{ color: "red" }}>*</span>
                           </Typography>
                           <Input
-                            
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               height: " 36px",
@@ -2921,9 +2957,7 @@ export default function Entity() {
                             )}
                             value={values.contactLastName}
                           />
-                          <p className="error">
-                            {errors.contactLastName}
-                          </p>
+                          <p className="error">{errors.contactLastName}</p>
                         </FormControl>
                       </div>
                       <div className="row">
@@ -2937,7 +2971,6 @@ export default function Entity() {
                                 Email<span style={{ color: "red" }}>*</span>
                               </Typography>
                               <Input
-                                
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
                                   height: " 36px",
@@ -2960,9 +2993,7 @@ export default function Entity() {
                                 )}
                                 value={values.contactEmail}
                               />
-                              <p className="error">
-                                {errors.contactEmail}
-                              </p>
+                              <p className="error">{errors.contactEmail}</p>
                             </FormControl>
                           </FormControl>
                         </div>
@@ -2987,9 +3018,13 @@ export default function Entity() {
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
-                            {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
-                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                              ))}
+                            {getCountriesCodeReducer.allCountriesCodeData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
                             <option></option>
                           </select>
                           <Input
@@ -3016,7 +3051,7 @@ export default function Entity() {
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
                         <FormControl className="w-100">
                           <Typography align="left">
-                           Alternative Number
+                            Alternative Number
                           </Typography>
                           <select
                             style={{
@@ -3032,9 +3067,13 @@ export default function Entity() {
                           >
                             <option value={0}>-Select-</option>
                             {/* <option value={1}>--Select1--</option> */}
-                            {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
-                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                              ))}
+                            {getCountriesCodeReducer.allCountriesCodeData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
                             <option></option>
                           </select>
                           <Input
@@ -3057,436 +3096,465 @@ export default function Entity() {
                             value={values.alternativeNumber}
                           />
                         </FormControl>
-                      <div>
-                        {alternateNo ? (
-                          <div className="mt-2">
-                            <FormControl className="w-100">
-                              {/* <Typography align="left">
+                        <div>
+                          {alternateNo ? (
+                            <div className="mt-2">
+                              <FormControl className="w-100">
+                                {/* <Typography align="left">
                                 Secondary Contact Number
                               </Typography> */}
-                              <span className="w-100 d-flex">
-                                <select
-                                  className="w-100"
+                                <span className="w-100 d-flex">
+                                  <select
+                                    className="w-100"
+                                    style={{
+                                      padding: " 0 10px",
+                                      color: "#7e7e7e",
+                                      fontStyle: "italic",
+                                      height: "36px",
+                                    }}
+                                    name="alternativeNumberId1"
+                                    id="Income"
+                                    onChange={handleChange}
+                                    value={values.alternativeNumberId1}
+                                  >
+                                    <option value={0}>--Select--</option>
+                                    {/* <option value={1}>--Select1--</option> */}
+                                    {getCountriesCodeReducer.allCountriesCodeData?.map(
+                                      (ele: any) => (
+                                        <option key={ele?.id} value={ele?.id}>
+                                          {ele?.name}
+                                        </option>
+                                      )
+                                    )}
+                                  </select>
+                                  <Delete
+                                    sx={{
+                                      right: {
+                                        xs: "-10%",
+                                        md: "-10%",
+                                        lg: "-8%",
+                                        xl: "-5%",
+                                      },
+                                    }}
+                                    style={{
+                                      color: "red",
+                                      fontSize: "20px",
+                                      marginTop: "5px",
+                                      position: "absolute",
+                                    }}
+                                    onClick={() => {
+                                      setAlternateNo(false);
+                                    }}
+                                  />
+                                </span>
+                                <Input
+                                  disabled={values.alternativeNumberId1 == 0}
                                   style={{
-                                    padding: " 0 10px",
-                                    color: "#7e7e7e",
-                                    fontStyle: "italic",
-                                    height: "36px",
+                                    border: " 1px solid #d9d9d9 ",
+                                    height: " 36px",
+                                    lineHeight: "36px ",
+                                    background: "#fff ",
+                                    fontSize: "13px",
+                                    color: " #000 ",
+                                    fontStyle: "normal",
+                                    borderRadius: "1px",
+                                    padding: " 0 10px ",
                                   }}
-                                  name="alternativeNumberId1"
-                                  id="Income"
+                                  id="outlined"
+                                  name="alternativeNumber1"
+                                  placeholder="Enter Alternate Mobile No"
                                   onChange={handleChange}
-                                  value={values.alternativeNumberId1}
-                                >
-                                  <option value={0}>--Select--</option>
-                                  {/* <option value={1}>--Select1--</option> */}
-                                  {getCountriesCodeReducer.allCountriesCodeData?.map((ele:any) => (
-                                <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                              ))}
-                                </select>
-                                <Delete
-                                sx={{ right: { xs: "-10%", md: "-10%", lg: "-8%", xl: "-5%", }, }}
-                                  style={{
-                                    color: "red",
-                                    fontSize: "20px",
-                                    marginTop: "5px",
-                                    position:"absolute"
-                                  }}
-                                  onClick={() => {
-                                    setAlternateNo(false);
-                                  }}
+                                  value={values.alternativeNumber1}
                                 />
-                              </span>
-                              <Input
-                                disabled={values.alternativeNumberId1 == 0}
-                                style={{
-                                  border: " 1px solid #d9d9d9 ",
-                                  height: " 36px",
-                                  lineHeight: "36px ",
-                                  background: "#fff ",
-                                  fontSize: "13px",
-                                  color: " #000 ",
-                                  fontStyle: "normal",
-                                  borderRadius: "1px",
-                                  padding: " 0 10px ",
-                                }}
-                                id="outlined"
-                                name="alternativeNumber1"
-                                placeholder="Enter Alternate Mobile No"
-                                onChange={handleChange}
-                                value={values.alternativeNumber1}
-                              />
-                            </FormControl>
-                          </div>
-                        ) : (
-                          <Typography
-                            style={{
-                              color: "#007bff",
-                              cursor: "pointer",
-                              fontSize: "12px",
-                              marginTop: "8px",
-                            }}
-                            onClick={() => setAlternateNo(true)}
-                          >
-                            <a>Add Alternative Number</a>
-                          </Typography>
-                        )}
+                              </FormControl>
+                            </div>
+                          ) : (
+                            <Typography
+                              style={{
+                                color: "#007bff",
+                                cursor: "pointer",
+                                fontSize: "12px",
+                                marginTop: "8px",
+                              }}
+                              onClick={() => setAlternateNo(true)}
+                            >
+                              <a>Add Alternative Number</a>
+                            </Typography>
+                          )}
+                        </div>
                       </div>
-                      </div>
-
                     </div>
                   </Collapse>
 
                   <hr className="w-100 "></hr>
 
                   {values.isUSEntity == "yes" ? (
-                      <>
+                    <>
                       <CardHeader
-                      className="flex-row-reverse"
-                      title={
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "left",
-                            marginLeft: "13px",
-                            cursor:"pointer"
-                          }}
-                          onClick={() => handleOpen("it")}
-                        >
+                        className="flex-row-reverse"
+                        title={
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "left",
+                              marginLeft: "13px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => handleOpen("it")}
+                          >
+                            Income Type
+                            <span
+                              style={{
+                                fontSize: "13px",
+                                color: "grey",
+                                marginLeft: "4px",
+                                marginTop: "11px",
+                              }}
+                            >
+                              (Optional)
+                            </span>
+                            <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                              }}
+                              title={
+                                <>
+                                  <Typography color="inherit">
+                                    Q&A, Income Type
+                                  </Typography>
+                                  <a onClick={() => setToolInfo("income")}>
+                                    <Typography
+                                      style={{
+                                        cursor: "pointer",
+                                        textDecorationLine: "underline",
+                                      }}
+                                      align="center"
+                                    >
+                                      {" "}
+                                      View More...
+                                    </Typography>
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </Tooltip>
+                          </div>
+                        }
+                        action={
+                          <IconButton
+                            onClick={() => handleOpen("it")}
+                            aria-label="expand"
+                            size="small"
+                            style={{ marginTop: "3px" }}
+                          >
+                            {open === "it" ? (
+                              <RemoveCircleOutlineOutlined />
+                            ) : (
+                              <ControlPointOutlined />
+                            )}
+                          </IconButton>
+                        }
+                      ></CardHeader>
+
+                      {toolInfo === "income" ? (
+                        <div>
+                          <Paper
+                            style={{
+                              backgroundColor: "#dedcb1",
+                              padding: "15px",
+                            }}
+                          >
+                            <Typography>
+                              Income type or code is requested as part of the
+                              tax form completion process for purposes of
+                              calculating withholding rates, where applicable,
+                              and to further determine how you should be
+                              reported on. You should select the type of code
+                              that best defines the payments that you expect to
+                              receive. Income Types, associated with Form 1099
+                              reporting, can include things like: Interest,
+                              Dividends, Rents, Royalties, Prizes and Awards.
+                              Income Codes, associated with Form 1042-S
+                              reporting, can be found here:
+                              https://www.irs.gov/pub/irs-pdf/p515.pdf
+                            </Typography>
+
+                            <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+                          </Paper>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+
+                      <Collapse
+                        className="px-5"
+                        in={open === "it"}
+                        timeout="auto"
+                        unmountOnExit
+                      >
+                        <Typography className="d-flex w-100 pb-2">
                           Income Type
-                          <span
+                        </Typography>
+                        {incomeArr.length &&
+                          incomeArr.map((ind, i) => {
+                            return (
+                              <div className="col-lg-3 col-6 col-md-3 ">
+                                <FormControl className="w-100 d-flex" key={i}>
+                                  <span className="w-100 d-flex pb-2">
+                                    <select
+                                      className="w-100"
+                                      style={{
+                                        padding: " 0 10px",
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "36px",
+                                      }}
+                                      name="incomeTypeId"
+                                      id="Income"
+                                      onChange={(e: any) => handleIcome(e, i)}
+                                      value={incomeArr[i]}
+                                    >
+                                      <option value="0">-Select-</option>
+                                      {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
+                                    </select>
+                                    {incomeArr.length > 1 && (
+                                      <Delete
+                                        onClick={() => handleDelete(i)}
+                                        style={{
+                                          color: "red",
+                                          fontSize: "20px",
+                                          marginTop: "8px",
+                                          marginLeft: "4px",
+                                        }}
+                                      />
+                                    )}
+                                  </span>
+                                </FormControl>
+                              </div>
+                            );
+                          })}
+
+                        {incomeArr.length <= 4 ? (
+                          <Typography
                             style={{
-                              fontSize: "13px",
-                              color: "grey",
-                              marginLeft: "4px",
-                              marginTop: "11px",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "12px",
                             }}
+                            onClick={() => addIncomeType()}
                           >
-                            (Optional)
-                          </span>
-                          <Tooltip
-                            style={{ backgroundColor: "black", color: "white" }}
-                            title={
-                              <>
-                                <Typography color="inherit">
-                                  Q&A, Income Type
-                                </Typography>
-                                <a onClick={() => setToolInfo("income")}>
-                                  <Typography
-                                    style={{
-                                      cursor: "pointer",
-                                      textDecorationLine: "underline",
-                                    }}
-                                    align="center"
-                                  >
-                                    {" "}
-                                    View More...
-                                  </Typography>
-                                </a>
-                              </>
-                            }
-                          >
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginLeft: "5px",
-                                cursor: "pointer",
-                              }}
-                            />
-                          </Tooltip>
-                        </div>
-                      }
-                      action={
-                        <IconButton
-                          onClick={() => handleOpen("it")}
-                          aria-label="expand"
-                          size="small"
-                          style={{ marginTop: "3px" }}
-                        >
-                          {open === "it" ? (
-                            <RemoveCircleOutlineOutlined />
-                          ) : (
-                            <ControlPointOutlined />
-                          )}
-                        </IconButton>
-                      }
-                    ></CardHeader>
-
-                    {toolInfo === "income" ? (
-                      <div>
-                        <Paper
-                          style={{
-                            backgroundColor: "#dedcb1",
-                            padding: "15px",
-                          }}
-                        >
-                          <Typography>
-                            Income type or code is requested as part of the tax
-                            form completion process for purposes of calculating
-                            withholding rates, where applicable, and to further
-                            determine how you should be reported on. You should
-                            select the type of code that best defines the
-                            payments that you expect to receive. Income Types,
-                            associated with Form 1099 reporting, can include
-                            things like: Interest, Dividends, Rents, Royalties,
-                            Prizes and Awards. Income Codes, associated with
-                            Form 1042-S reporting, can be found here:
-                            https://www.irs.gov/pub/irs-pdf/p515.pdf
+                            <a>Add Income Type</a>
                           </Typography>
-
-                          <Link
-                            href="#"
-                            underline="none"
-                            style={{ marginTop: "10px", fontSize: "16px" }}
-                            onClick={() => {
-                              setToolInfo("");
-                            }}
-                          >
-                            --Show Less--
-                          </Link>
-                        </Paper>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    
-                    <Collapse
-                      className="px-5"
-                      in={open === "it"}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      <Typography className="d-flex w-100 pb-2">
-                                Income Type
-                              </Typography>
-                      {incomeArr.length &&
-                        incomeArr.map((ind, i) => {
-                          return (
-                            <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={i}>
-                                <span className="w-100 d-flex pb-2">
-                                  <select
-                                    className="w-100"
-                                    style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
-                                      fontStyle: "italic",
-                                      height: "36px",
-                                    }}
-                                    name="incomeTypeId"
-                                    id="Income"
-                                    onChange={(e:any) => handleIcome(e, i)}
-                                    value={incomeArr[i]}
-                                  >
-                                    <option value="0">-Select-</option>
-                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
-                                       <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                    ))}
-                                  </select>
-                                  {incomeArr.length > 1 && (
-                                  <Delete
-                                  onClick={() => handleDelete(i)}
-                                  style={{
-                                    color: "red",
-                                    fontSize: "20px",
-                                    marginTop: "8px",
-                                    marginLeft: "4px",
-                                  }}
-                                />
-                                )}
-                                  
-                                </span>
-                              </FormControl>
-                            </div>
-                          );
-                        })}
-
-                      <Typography
-                        style={{
-                          color: "#007bff",
-                          cursor: "pointer",
-                          fontSize: "12px",
-                        }}
-                        onClick={() => addIncomeType()}
-                      >
-                        <a>Add Income Type</a>
-                      </Typography>
-                    </Collapse>
+                        ) : (
+                          ""
+                        )}
+                      </Collapse>
                     </>
-                    ):(
-                      <>
+                  ) : (
+                    <>
                       <CardHeader
-                      className="flex-row-reverse"
-                      title={
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "left",
-                            marginLeft: "13px",
-                          }}
-                        >
-                          Income Code
-                          <span
+                        className="flex-row-reverse"
+                        title={
+                          <div
                             style={{
-                              fontSize: "13px",
-                              color: "grey",
-                              marginLeft: "4px",
-                              marginTop: "11px",
+                              display: "flex",
+                              alignItems: "left",
+                              marginLeft: "13px",
                             }}
                           >
-                            (Optional)
-                          </span>
-                          <Tooltip
-                            style={{ backgroundColor: "black", color: "white" }}
-                            title={
-                              <>
-                                <Typography color="inherit">
-                                  Q&A, Income Type
-                                </Typography>
-                                <a onClick={() => setToolInfo("income")}>
-                                  <Typography
-                                    style={{
-                                      cursor: "pointer",
-                                      textDecorationLine: "underline",
-                                    }}
-                                    align="center"
-                                  >
-                                    {" "}
-                                    View More...
-                                  </Typography>
-                                </a>
-                              </>
-                            }
-                          >
-                            <Info
+                            Income Code
+                            <span
                               style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginLeft: "5px",
-                                cursor: "pointer",
+                                fontSize: "13px",
+                                color: "grey",
+                                marginLeft: "4px",
+                                marginTop: "11px",
                               }}
-                            />
-                          </Tooltip>
-                        </div>
-                      }
-                      action={
-                        <IconButton
-                          onClick={() => handleOpen("it")}
-                          aria-label="expand"
-                          size="small"
-                          style={{ marginTop: "3px" }}
-                        >
-                          {open === "it" ? (
-                            <RemoveCircleOutlineOutlined />
-                          ) : (
-                            <ControlPointOutlined />
-                          )}
-                        </IconButton>
-                      }
-                    ></CardHeader>
+                            >
+                              (Optional)
+                            </span>
+                            <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                              }}
+                              title={
+                                <>
+                                  <Typography color="inherit">
+                                    Q&A, Income Type
+                                  </Typography>
+                                  <a onClick={() => setToolInfo("income")}>
+                                    <Typography
+                                      style={{
+                                        cursor: "pointer",
+                                        textDecorationLine: "underline",
+                                      }}
+                                      align="center"
+                                    >
+                                      {" "}
+                                      View More...
+                                    </Typography>
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </Tooltip>
+                          </div>
+                        }
+                        action={
+                          <IconButton
+                            onClick={() => handleOpen("it")}
+                            aria-label="expand"
+                            size="small"
+                            style={{ marginTop: "3px" }}
+                          >
+                            {open === "it" ? (
+                              <RemoveCircleOutlineOutlined />
+                            ) : (
+                              <ControlPointOutlined />
+                            )}
+                          </IconButton>
+                        }
+                      ></CardHeader>
 
-                    {toolInfo === "income" ? (
-                      <div>
-                        <Paper
-                          style={{
-                            backgroundColor: "#dedcb1",
-                            padding: "15px",
-                          }}
-                        >
-                          <Typography>
-                            Income type or code is requested as part of the tax
-                            form completion process for purposes of calculating
-                            withholding rates, where applicable, and to further
-                            determine how you should be reported on. You should
-                            select the type of code that best defines the
-                            payments that you expect to receive. Income Types,
-                            associated with Form 1099 reporting, can include
-                            things like: Interest, Dividends, Rents, Royalties,
-                            Prizes and Awards. Income Codes, associated with
-                            Form 1042-S reporting, can be found here:
-                            https://www.irs.gov/pub/irs-pdf/p515.pdf
-                          </Typography>
-
-                          <Link
-                            href="#"
-                            underline="none"
-                            style={{ marginTop: "10px", fontSize: "16px" }}
-                            onClick={() => {
-                              setToolInfo("");
+                      {toolInfo === "income" ? (
+                        <div>
+                          <Paper
+                            style={{
+                              backgroundColor: "#dedcb1",
+                              padding: "15px",
                             }}
                           >
-                            --Show Less--
-                          </Link>
-                        </Paper>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    <Collapse
-                      className="px-5"
-                      in={open === "it"}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      <Typography className="d-flex w-100 pb-2">
-                                Income Code
-                              </Typography>
-                      {incomeArr.length &&
-                        incomeArr.map((ind, i) => {
-                          return (
-                            <div className="col-lg-3 col-6 col-md-3 ">
-                              <FormControl className="w-100 d-flex" key={i}>
-                                <span className="w-100 d-flex pb-2">
-                                  <select
-                                    className="w-100"
-                                    style={{
-                                      padding: " 0 10px",
-                                      color: "#7e7e7e",
-                                      fontStyle: "italic",
-                                      height: "36px",
-                                    }}
-                                    name="incomeTypeId"
-                                    // id="Income"
-                                    onChange={(e:any) => handleIcome(e, i)}
-                                    value={incomeArr[i]}
-                                  >
-                                    <option value="0">-Select-</option>
-                                    {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map((ele:any) => (
-                                       <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                    ))}
-                                  </select>
-                                  {incomeArr.length > 1 && (
-                                  <Delete
-                                  onClick={() => handleDelete(i)}
-                                  style={{
-                                    color: "red",
-                                    fontSize: "20px",
-                                    marginTop: "8px",
-                                    marginLeft: "4px",
-                                  }}
-                                />
-                                )}
-                                </span>
-                              </FormControl>
-                            </div>
-                          );
-                        })}
+                            <Typography>
+                              Income type or code is requested as part of the
+                              tax form completion process for purposes of
+                              calculating withholding rates, where applicable,
+                              and to further determine how you should be
+                              reported on. You should select the type of code
+                              that best defines the payments that you expect to
+                              receive. Income Types, associated with Form 1099
+                              reporting, can include things like: Interest,
+                              Dividends, Rents, Royalties, Prizes and Awards.
+                              Income Codes, associated with Form 1042-S
+                              reporting, can be found here:
+                              https://www.irs.gov/pub/irs-pdf/p515.pdf
+                            </Typography>
 
-                      <Typography
-                        style={{
-                          color: "#007bff",
-                          cursor: "pointer",
-                          fontSize: "12px",
-                        }}
-                        onClick={() => addIncomeType()}
+                            <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link>
+                          </Paper>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      <Collapse
+                        className="px-5"
+                        in={open === "it"}
+                        timeout="auto"
+                        unmountOnExit
                       >
-                        {/* //changs */}
-                        <a>Add Income Code</a>
-                      </Typography>
-                    </Collapse>
+                        <Typography className="d-flex w-100 pb-2">
+                          Income Code
+                        </Typography>
+                        {incomeArr.length &&
+                          incomeArr.map((ind, i) => {
+                            return (
+                              <div className="col-lg-3 col-6 col-md-3 ">
+                                <FormControl className="w-100 d-flex" key={i}>
+                                  <span className="w-100 d-flex pb-2">
+                                    <select
+                                      className="w-100"
+                                      style={{
+                                        padding: " 0 10px",
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "36px",
+                                      }}
+                                      name="incomeTypeId"
+                                      // id="Income"
+                                      onChange={(e: any) => handleIcome(e, i)}
+                                      value={incomeArr[i]}
+                                    >
+                                      <option value="0">-Select-</option>
+                                      {GetAllIncomeCodesReducer.allCountriesIncomeCodeData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
+                                    </select>
+                                    {incomeArr.length > 1 && (
+                                      <Delete
+                                        onClick={() => handleDelete(i)}
+                                        style={{
+                                          color: "red",
+                                          fontSize: "20px",
+                                          marginTop: "8px",
+                                          marginLeft: "4px",
+                                        }}
+                                      />
+                                    )}
+                                  </span>
+                                </FormControl>
+                              </div>
+                            );
+                          })}
+
+                        <Typography
+                          style={{
+                            color: "#007bff",
+                            cursor: "pointer",
+                            fontSize: "12px",
+                          }}
+                          onClick={() => addIncomeType()}
+                        >
+                          {/* //changs */}
+                          <a>Add Income Code</a>
+                        </Typography>
+                      </Collapse>
                     </>
-                    )}
+                  )}
                   <hr className="w-100"></hr>
 
                   {/* Payment Type   */}
@@ -3499,9 +3567,8 @@ export default function Entity() {
                           display: "flex",
                           alignItems: "left",
                           marginLeft: "13px",
-                          cursor:"pointer"
+                          cursor: "pointer",
                         }}
-
                         onClick={() => handleOpen("pt")}
                       >
                         Payment Type
@@ -3552,7 +3619,9 @@ export default function Entity() {
                           />
                         </Tooltip>
                         <p className="error">
-                          {errors?.paymentTypeId ? "Mandatory Information Required!" : ""}
+                          {errors?.paymentTypeId
+                            ? "Mandatory Information Required!"
+                            : ""}
                         </p>
                       </div>
                     }
@@ -3629,19 +3698,19 @@ export default function Entity() {
                             value={values.paymentTypeId}
                           >
                             <option value="">Select</option>
-                            {GetAgentPaymentTypeData?.map(
-                                        (ele: any) => (
-                                          <option key={ele?.paymentTypeId} value={ele?.paymentTypeId}>
-                                            {ele?.name}
-                                          </option>
-                                        )
-                                      )}
+                            {GetAgentPaymentTypeData?.map((ele: any) => (
+                              <option
+                                key={ele?.paymentTypeId}
+                                value={ele?.paymentTypeId}
+                              >
+                                {ele?.name}
+                              </option>
+                            ))}
                           </select>
                           {/* <p className="error">{errors.paymentTypeId}</p> */}
                         </span>
                       </FormControl>
                     </div>
-                    
                   </Collapse>
                   <hr className="w-100"></hr>
 
@@ -3653,87 +3722,86 @@ export default function Entity() {
                         title={
                           <div
                             style={{
-                       
                               marginLeft: "13px",
                             }}
                           >
                             <div
-                                       style={{
-                                        display: "flex",
-                                        alignItems: "left",
-                                        cursor:"pointer"
-                             
-                                      }}
-                                      onClick={() => handleOpen("ai")}
-                            >
-
-                            Account Information
-                            <span
                               style={{
-                                fontSize: "13px",
-                                color: "grey",
-                                marginLeft: "4px",
-                                marginTop: "11px",
+                                display: "flex",
+                                alignItems: "left",
+                                cursor: "pointer",
                               }}
+                              onClick={() => handleOpen("ai")}
                             >
-                              (Mandatory)
-                            </span>
-                            <Tooltip
-                              style={{
-                                backgroundColor: "black",
-                                color: "white",
-                              }}
-                              title={
-                                <>
-                                  <Typography color="inherit">
-                                    TT-126 Q&A,Account
-                                  </Typography>
-                                  <Typography color="inherit">
-                                    {" "}
-                                    information
-                                  </Typography>
-                                  <a onClick={() => setToolInfo("Account1")}>
-                                    <Typography
-                                      style={{
-                                        cursor: "pointer",
-                                        textDecorationLine: "underline",
-                                      }}
-                                      align="center"
-                                    >
-                                      {" "}
-                                      View More...
-                                    </Typography>
-                                  </a>
-                                </>
-                              }
-                            >
-                              <Info
+                              Account Information
+                              <span
                                 style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  marginLeft: "5px",
-                                  cursor: "pointer",
+                                  fontSize: "13px",
+                                  color: "grey",
+                                  marginLeft: "4px",
+                                  marginTop: "11px",
                                 }}
-                                // onClick={clickInfo}
-                              />
-                            </Tooltip>
+                              >
+                                (Mandatory)
+                              </span>
+                              <Tooltip
+                                style={{
+                                  backgroundColor: "black",
+                                  color: "white",
+                                }}
+                                title={
+                                  <>
+                                    <Typography color="inherit">
+                                      TT-126 Q&A,Account
+                                    </Typography>
+                                    <Typography color="inherit">
+                                      {" "}
+                                      information
+                                    </Typography>
+                                    <a onClick={() => setToolInfo("Account1")}>
+                                      <Typography
+                                        style={{
+                                          cursor: "pointer",
+                                          textDecorationLine: "underline",
+                                        }}
+                                        align="center"
+                                      >
+                                        {" "}
+                                        View More...
+                                      </Typography>
+                                    </a>
+                                  </>
+                                }
+                              >
+                                <Info
+                                  style={{
+                                    color: "#ffc107",
+                                    fontSize: "15px",
+                                    marginLeft: "5px",
+                                    cursor: "pointer",
+                                  }}
+                                  // onClick={clickInfo}
+                                />
+                              </Tooltip>
                             </div>
                             <p className="error mb-0">
-                            {errors?.accountHolderName ||
-                             errors?.accountBankName ||
-                             errors?.accountBankBranchLocationId || 
-                             errors?.accountNumber ||
-                             errors?.makePayable || 
-                             errors?.payResidentalCountryId ||
-                             errors?.payStreetNumberAndName ||
-                             errors?.payCityorTown ||
-                             errors?.payStateOrProvince ||
-                             errors?.payZipPostalCode ||
-                             errors?.sortCode ||
-                             errors?.bsb ||
-                             errors?.bankCode ||
-                             errors?.abaRouting ? "Mandatory Information Required!" : ""}
-                          </p>
+                              {errors?.accountHolderName ||
+                              errors?.accountBankName ||
+                              errors?.accountBankBranchLocationId ||
+                              errors?.accountNumber ||
+                              errors?.makePayable ||
+                              errors?.payResidentalCountryId ||
+                              errors?.payStreetNumberAndName ||
+                              errors?.payCityorTown ||
+                              errors?.payStateOrProvince ||
+                              errors?.payZipPostalCode ||
+                              errors?.sortCode ||
+                              errors?.bsb ||
+                              errors?.bankCode ||
+                              errors?.abaRouting
+                                ? "Mandatory Information Required!"
+                                : ""}
+                            </p>
                           </div>
                         }
                         action={
@@ -3762,21 +3830,29 @@ export default function Entity() {
                             <Typography>
                               If you have an account number, or several account
                               numbers relating to the certificate submission
-                              please identify here. 
+                              please identify here.
                               <Typography>
-                              The account details provided
-                              will be used to:
+                                The account details provided will be used to:
                               </Typography>
                             </Typography>
                             <Typography>
                               <ul>
-                                <li>Make payments to you if you are entitled to any</li>
-                                <li>Ensure your form is correctly matched to your
-                              account</li>
-                                <li>for further validation of new and existing
-                              information</li>
-                                <li>In some circumstance will allow us to document
-                              multiple accounts with the same certificate</li>
+                                <li>
+                                  Make payments to you if you are entitled to
+                                  any
+                                </li>
+                                <li>
+                                  Ensure your form is correctly matched to your
+                                  account
+                                </li>
+                                <li>
+                                  for further validation of new and existing
+                                  information
+                                </li>
+                                <li>
+                                  In some circumstance will allow us to document
+                                  multiple accounts with the same certificate
+                                </li>
                               </ul>
                             </Typography>
                             <Typography style={{ marginTop: "10px" }}>
@@ -3836,22 +3912,22 @@ export default function Entity() {
                         {values.paymentTypeId == 1 ? (
                           <>
                             <div className="row">
-                            <Typography style={{
-                                fontSize: "20px",
-                                color: "grey",
-                                marginBottom:"20px"
-                              }}>
-                                  Banking Information
-                                </Typography>
+                              <Typography
+                                style={{
+                                  fontSize: "20px",
+                                  color: "grey",
+                                  marginBottom: "20px",
+                                }}
+                              >
+                                Banking Information
+                              </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
-                                
                                 <FormControl className="w-100">
                                   <Typography align="left">
                                     Account holder name
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3874,9 +3950,7 @@ export default function Entity() {
                                     )}
                                     value={values.accountHolderName}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountHolderName}
                                   </p>
                                 </FormControl>
@@ -3888,7 +3962,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3911,9 +3984,7 @@ export default function Entity() {
                                     )}
                                     value={values.accountBankName}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountBankName}
                                   </p>
                                 </FormControl>
@@ -3943,13 +4014,15 @@ export default function Entity() {
                                     <option value={257}>United Kingdom</option>
                                     <option value={258}>United States</option>
                                     <option value="">---</option>
-                                    {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
+                                    {getCountriesReducer.allCountriesData?.map(
+                                      (ele: any) => (
+                                        <option key={ele?.id} value={ele?.id}>
+                                          {ele?.name}
+                                        </option>
+                                      )
+                                    )}
                                   </select>
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountBankBranchLocationId}
                                   </p>
                                 </FormControl>
@@ -3962,7 +4035,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -3986,20 +4058,18 @@ export default function Entity() {
                                     inputProps={{ maxLength: 10 }}
                                     value={values.accountNumber}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountNumber}
                                   </p>
                                 </FormControl>
                               </div>
                               {returnFieldName(
                                 handleBlur,
-                                 touched,
-                                  errors,
-                                  values,
-                                  handleChange
-                                  )}
+                                touched,
+                                errors,
+                                values,
+                                handleChange
+                              )}
                             </div>
                           </>
                         ) : (
@@ -4009,13 +4079,15 @@ export default function Entity() {
                         {values.paymentTypeId == 2 ? (
                           <>
                             <div className="row">
-                            <Typography style={{
-                                fontSize: "20px",
-                                color: "grey",
-                                marginBottom:"20px"
-                              }}>
-                                  Payment Information
-                                </Typography>
+                              <Typography
+                                style={{
+                                  fontSize: "20px",
+                                  color: "grey",
+                                  marginBottom: "20px",
+                                }}
+                              >
+                                Payment Information
+                              </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <FormControl className="w-100">
                                   <Typography align="left">
@@ -4023,7 +4095,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4045,11 +4116,7 @@ export default function Entity() {
                                     )}
                                     value={values.makePayable}
                                   />
-                                  <p
-                                    className="error"
-                                  >
-                                    {errors.makePayable}
-                                  </p>
+                                  <p className="error">{errors.makePayable}</p>
                                 </FormControl>
                               </div>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -4060,7 +4127,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <select
-                                    
                                     style={{
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
@@ -4075,17 +4141,17 @@ export default function Entity() {
                                     value={values.payResidentalCountryId}
                                   >
                                     <option value={0}>-Select-</option>
-                                    <option value={257}>
-                                        United Kingdom
-                                      </option>
-                                      <option value={258}>United States</option>
-                                      {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
+                                    <option value={257}>United Kingdom</option>
+                                    <option value={258}>United States</option>
+                                    {getCountriesReducer.allCountriesData?.map(
+                                      (ele: any) => (
+                                        <option key={ele?.id} value={ele?.id}>
+                                          {ele?.name}
+                                        </option>
+                                      )
+                                    )}
                                   </select>
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.payResidentalCountryId}
                                   </p>
                                 </FormControl>
@@ -4128,7 +4194,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4151,9 +4216,7 @@ export default function Entity() {
                                     )}
                                     value={values.payStreetNumberAndName}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.payStreetNumberAndName}
                                   </p>
                                 </FormControl>
@@ -4192,7 +4255,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4215,9 +4277,7 @@ export default function Entity() {
                                     )}
                                     value={values.payCityorTown}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.payCityorTown}
                                   </p>
                                 </FormControl>
@@ -4247,9 +4307,16 @@ export default function Entity() {
                                       <option value="0">
                                         <em>--Select--</em>
                                       </option>
-                                      {GetStateByCountryIdReducer?.allCountriesStateIdData?.map((ele:any) => (
-                                          <option key={ele?.id} value={ele?.name}>{ele?.name}</option>
-                                      ))}
+                                      {GetStateByCountryIdReducer?.allCountriesStateIdData?.map(
+                                        (ele: any) => (
+                                          <option
+                                            key={ele?.id}
+                                            value={ele?.name}
+                                          >
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                                     </select>
                                   </FormControl>
                                 </div>
@@ -4304,7 +4371,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4327,9 +4393,7 @@ export default function Entity() {
                                     )}
                                     value={values.payZipPostalCode}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.payZipPostalCode}
                                   </p>
                                 </FormControl>
@@ -4365,13 +4429,15 @@ export default function Entity() {
                         {values.paymentTypeId == 3 ? (
                           <>
                             <div className="row">
-                            <Typography style={{
-                                fontSize: "20px",
-                                color: "grey",
-                                marginBottom:"20px"
-                              }}>
-                                  Banking Information
-                                </Typography>
+                              <Typography
+                                style={{
+                                  fontSize: "20px",
+                                  color: "grey",
+                                  marginBottom: "20px",
+                                }}
+                              >
+                                Banking Information
+                              </Typography>
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <FormControl className="w-100">
                                   <Typography>
@@ -4379,7 +4445,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4402,9 +4467,7 @@ export default function Entity() {
                                     )}
                                     value={values.accountHolderName}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountHolderName}
                                   </p>
                                 </FormControl>
@@ -4435,9 +4498,7 @@ export default function Entity() {
                                     )}
                                     value={values.accountBankName}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountBankName}
                                   </p>
                                 </FormControl>
@@ -4486,13 +4547,15 @@ export default function Entity() {
                                     >
                                       ---
                                     </option>
-                                    {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
+                                    {getCountriesReducer.allCountriesData?.map(
+                                      (ele: any) => (
+                                        <option key={ele?.id} value={ele?.id}>
+                                          {ele?.name}
+                                        </option>
+                                      )
+                                    )}
                                   </select>
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountBankBranchLocationId}
                                   </p>
                                 </FormControl>
@@ -4505,7 +4568,6 @@ export default function Entity() {
                                     <span style={{ color: "red" }}>*</span>
                                   </Typography>
                                   <Input
-                                    
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
                                       height: " 36px",
@@ -4529,9 +4591,7 @@ export default function Entity() {
                                     inputProps={{ maxLength: 10 }}
                                     value={values.accountNumber}
                                   />
-                                  <p
-                                    className="error"
-                                  >
+                                  <p className="error">
                                     {errors.accountNumber}
                                   </p>
                                 </FormControl>
@@ -4545,7 +4605,6 @@ export default function Entity() {
                                       <span style={{ color: "red" }}>*</span>
                                     </Typography>
                                     <Input
-                                      
                                       style={{
                                         border: " 1px solid #d9d9d9 ",
                                         height: " 36px",
@@ -4872,65 +4931,66 @@ export default function Entity() {
                           // value={payload.isConfirmed}
                         />
                       </div>
-                     
+
                       <div className="w-auto d-flex p-0">
                         <Typography className="my-auto">
                           I confirm the information above is correct
                         </Typography>
                       </div>
-                     
                     </div>
-                    <p style={{color: "red",textAlign:"left"}}>{errors.isConfirmed}</p>
+                    <p style={{ color: "red", textAlign: "left" }}>
+                      {errors.isConfirmed}
+                    </p>
                     {values.isConfirmed ? (
-                    <div className="text-center">
-                      <Button
-                        type="submit"
-                        disabled={!values.isConfirmed}
-                        // onClick={() => history("/Term")}
-                        style={{
-                          border: "1px solid #0095dd",
-                          background: "#0095dd",
-                          height: "45px",
-                          lineHeight: "normal",
-                          textAlign: "center",
-                          fontSize: "16px",
-                          textTransform: "uppercase",
-                          borderRadius: "0px",
-                          color: "#fff",
-                          padding: "0 35px",
-                          letterSpacing: "1px",
-                        }}
-                        className="btn btn_submit  btn-primary-agent"
-                      >
-                        Continue
-                      </Button>
-                    </div>
+                      <div className="text-center">
+                        <Button
+                          type="submit"
+                          disabled={!values.isConfirmed}
+                          // onClick={() => history("/Term")}
+                          style={{
+                            border: "1px solid #0095dd",
+                            background: "#0095dd",
+                            height: "45px",
+                            lineHeight: "normal",
+                            textAlign: "center",
+                            fontSize: "16px",
+                            textTransform: "uppercase",
+                            borderRadius: "0px",
+                            color: "#fff",
+                            padding: "0 35px",
+                            letterSpacing: "1px",
+                          }}
+                          className="btn btn_submit  btn-primary-agent"
+                        >
+                          Continue
+                        </Button>
+                      </div>
                     ) : (
-                  <div className="text-center">
-                    <Button
-                      type="submit"
-                      disabled
-                      style={{
-                        border: '1px solid #0095dd',
-                        backgroundColor: '#D2D2D4',
-                        borderColor: '#d2d2d2',
-                        color: '#4a4a4a',
-                        height: '45px',
-                        lineHeight: 'normal',
-                        textAlign: 'center',
-                        fontSize: '16px',
-                        textTransform: 'uppercase',
-                        borderRadius: '0px',
+                      <div className="text-center">
+                        <Button
+                          type="submit"
+                          disabled
+                          style={{
+                            border: "1px solid #0095dd",
+                            backgroundColor: "#D2D2D4",
+                            borderColor: "#d2d2d2",
+                            color: "#4a4a4a",
+                            height: "45px",
+                            lineHeight: "normal",
+                            textAlign: "center",
+                            fontSize: "16px",
+                            textTransform: "uppercase",
+                            borderRadius: "0px",
 
-                        padding: '0 35px',
-                        letterSpacing: '1px',
-                      }}
-                      className="btn btn_submit  btn-primary-agent"
-                    >
-                      Continue
-                    </Button>
-                  </div>
-                )}
+                            padding: "0 35px",
+                            letterSpacing: "1px",
+                          }}
+                          className="btn btn_submit  btn-primary-agent"
+                        >
+                          Continue
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </Form>
               )}

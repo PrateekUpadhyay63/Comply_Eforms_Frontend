@@ -93,10 +93,12 @@ export default function FCTA_Reporting(props: any) {
               setSubmitting(true);
               dispatch(
                 W8_state(values, () => {
-                  history("/W-8BEN/Declaration/US_Tin/Rates");
+                                      history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE");
+
                 })
               );
-              history("/W-8BEN/Declaration/US_Tin/Rates");
+                                  history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE");
+
             }}
           >
             {({

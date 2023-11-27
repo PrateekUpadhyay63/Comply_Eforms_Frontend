@@ -35,10 +35,12 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+
   const initialValue = {
-    firstName: "",
-    lastName: "",
-    businessName: "",
+    firstName: obValues.firstName,
+    lastName: obValues.lastName,
+    businessName: obValues.foreignTINCountryId,
     federalTaxClassificationId: 0,
     federal:""
   };
@@ -100,7 +102,7 @@ export default function Fedral_tax(props: any) {
           {/* <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
        
       </div> */}
-       <BreadCrumbComponent breadCrumbCode={1204} formName={2}/>
+       <BreadCrumbComponent breadCrumbCode={1204} formName={4}/>
       </div> 
       <div className="col-8 mt-3">
         <div style={{ padding: "20px" }}>
@@ -312,7 +314,7 @@ export default function Fedral_tax(props: any) {
                                   className="d-flex w-60 "
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Business Name:
+                                 First name:
                                   <span style={{ color: "red" }}>*</span>
                                   <span>
                                     <Tooltip
@@ -439,9 +441,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
@@ -460,8 +462,7 @@ export default function Fedral_tax(props: any) {
                                   className="d-flex w-60 "
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Business Name or disregarded entity name if
-                                  different:
+                                  Last name:
                                 </Typography>
 
                                 <FormControl className="w-100">
@@ -470,9 +471,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.lastName && errors.lastName
-                                    }
+                                    // helperText={
+                                    //   touched.lastName && errors.lastName
+                                    // }
                                     error={Boolean(
                                       touched.lastName && errors.lastName
                                     )}
@@ -675,9 +676,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
@@ -706,9 +707,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.lastName && errors.lastName
-                                    }
+                                    // helperText={
+                                    //   touched.lastName && errors.lastName
+                                    // }
                                     error={Boolean(
                                       touched.lastName && errors.lastName
                                     )}
@@ -1806,7 +1807,7 @@ export default function Fedral_tax(props: any) {
                         <Typography align="center">
                           <Button
                             onClick={() => {
-                              history("/Certificates");
+                              history("/W-8ECI/Info");
                             }}
                             variant="contained"
                             style={{
