@@ -46,7 +46,7 @@ export default function Fedral_tax(props: any) {
   const initialValue = {
     firstName: obValues.entityName,
     lastName: "",
-    businessName: "",
+    businessName: obValues.entityName,
     federalTaxClassificationId: 0,
     federal:""
   };
