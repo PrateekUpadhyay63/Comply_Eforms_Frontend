@@ -42,10 +42,9 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
-  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
   const initialValue = {
-    firstName: "",
-    lastName: "",
+    lastName:"",
     businessName: obValues.entityName,
     federalTaxClassificationId: 0,
     federal:""
@@ -464,19 +463,19 @@ export default function Fedral_tax(props: any) {
 
                                 <FormControl className="w-100">
                                   <TextField
-                                    autoComplete="firstName"
+                                    autoComplete="businessName"
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.businessName && errors.businessName
+                                    // }
                                     error={Boolean(
-                                      touched.firstName && errors.firstName
+                                      touched.businessName && errors.businessName
                                     )}
-                                    name="firstName"
+                                    name="businessName"
                                     className="inputClassFull"
-                                    value={values.firstName}
+                                    value={values.businessName}
                                   />
                                 </FormControl>
                               </div>
@@ -700,19 +699,19 @@ export default function Fedral_tax(props: any) {
 
                                 <FormControl className="w-100">
                                   <TextField
-                                    autoComplete="firstName"
+                                    autoComplete="businessName"
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.businessName && errors.businessName
+                                    // }
                                     error={Boolean(
-                                      touched.firstName && errors.firstName
+                                      touched.businessName && errors.businessName
                                     )}
-                                    name="firstName"
+                                    name="businessName"
                                     className="inputClassFull"
-                                    value={values.firstName}
+                                    value={values.businessName}
                                   />
                                 </FormControl>
                               </div>
