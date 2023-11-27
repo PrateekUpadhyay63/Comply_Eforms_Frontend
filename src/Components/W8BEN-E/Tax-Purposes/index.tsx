@@ -302,8 +302,7 @@ export default function Fedral_tax(props: any) {
                                     name="federalTaxClassificationId"
                                     value={values.federalTaxClassificationId}
                                     onChange={handleChange}
-                                    autoComplete="businessName"
-                                    placeholder="Business Name"
+                                   
                                     onBlur={handleBlur}
                                     style={{
                                       padding: " 0 10px",
@@ -474,9 +473,9 @@ export default function Fedral_tax(props: any) {
                                     error={Boolean(
                                       touched.businessName && errors.businessName
                                     )}
-                                    name="businessName"
+                                    name="firstName"
                                     className="inputClassFull"
-                                    value={values.businessName}
+                                    value={values.firstName}
                                   />
                                 </FormControl>
                               </div>
