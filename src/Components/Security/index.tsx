@@ -220,9 +220,9 @@ const DialogEdit = (props: any) => {
                         value={values.securityAnswer}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        error={Boolean(
-                          touched.securityAnswer && errors.securityAnswer
-                        )}
+                        // error={Boolean(
+                        //   touched.securityAnswer && errors.securityAnswer
+                        // )}
                         style={{
                           border: " 1px solid #d9d9d9 ",
                           padding: " 0 10px",
@@ -232,6 +232,8 @@ const DialogEdit = (props: any) => {
                           width: "100%",
                         }}
                       />
+ <p className="error">{errors.securityAnswer}</p>
+                     
                       <Typography
                         className=" mt-2"
                         style={{
@@ -240,7 +242,7 @@ const DialogEdit = (props: any) => {
                           fontWeight: "550",
                         }}
                       >
-                        <p className="error">{errors.securityAnswer}</p>
+                       
                         Please note: This word is case sensitive
                       </Typography>
                     </Typography>
