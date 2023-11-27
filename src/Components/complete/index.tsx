@@ -81,7 +81,7 @@ export default function Term() {
     >
       {/* <iframe src={form1}></iframe> */}
       {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
-      {/* <Form1 />  */}
+      <Form1 /> 
       {/* Pass setPdfUrl to Form2 */}
       {/* <button onClick={handleDownload}>Download PDF</button> */}
       <div className="container-fluid">
