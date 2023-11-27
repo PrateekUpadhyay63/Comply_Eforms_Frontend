@@ -159,20 +159,7 @@ export default function Certifications(props: any) {
             ""
           )}
 
-          <Typography
-            style={{
-              margin: "10px",
-              fontSize: "17px",
-              color: "grey",
-              marginLeft: "20px",
-            }}
-          >
-            I certify that (Check All).{" "}
-            <span style={{ fontWeight: "550" }}>
-              Checking the box signifies you have read the statement, even if it
-              does not directly apply.
-            </span>
-          </Typography>
+        
           <Typography
             style={{
               margin: "10px",
@@ -181,10 +168,7 @@ export default function Certifications(props: any) {
               marginLeft: "20px",
             }}
           >
-            Under penalties of perjury, I declare that I have examined the
-            information on this form and to the best of my knowledge and belief
-            it is true, correct, and complete. I further certify under penalties
-            of perjury that:
+            Under penalties of perjury, I declare that 
           </Typography>
 
           <Paper
@@ -211,11 +195,7 @@ export default function Certifications(props: any) {
                     marginTop: "10px",
                   }}
                 >
-                  1. I am the individual that is the beneficial owner (or am
-                  authorized to sign for the individual that is the beneficial
-                  owner) of all the income to which this form relates or am
-                  using this form to document myself as an individual that is an
-                  owner or account holder of a foreign financial institution
+                 I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete.
                 </Typography>
               </Typography>
               <Divider
@@ -230,8 +210,8 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
-                  2. The person named on line 1 of this form is not a U.S.
-                  person,
+                 Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for 
+which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form
                 </Typography>
               </Typography>
               <Divider
@@ -241,124 +221,27 @@ export default function Certifications(props: any) {
                   backgroundColor: "black",
                 }}
               />
+              
               <Typography style={{ display: "flex" }}>
                 <Checkbox className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,fontWeight:"bold"}}
                 >
-                  3. The income to which this form relates is:
+                 I agree that I will submit a new form within 30 days if any certification on this form becomes incorrect.
                 </Typography>
               </Typography>
+              <Divider
+                style={{
+                  marginTop: "1rem",
+                  marginBottom: "1rem",
+                  backgroundColor: "black",
+                }}
+              />
+          
+             
+              
 
-              <div style={{ marginLeft: "60px", fontSize: "15px" }}>
-                <li>
-                  (a) not effectively connected with the conduct of a trade or
-                  business in the United States,
-                </li>
-                <li>
-                  (b) effectively connected but is not subject to tax under an
-                  applicable income tax treaty, or
-                </li>
-                <li>
-                  (c) the partner's share of a partnership's effectively
-                  connected income or,
-                </li>
-                <li>
-                  (d) the partner’s amount realized from the transfer of a
-                  partnership interest subject to withholding under section
-                  1446(f)
-                </li>
-              </div>
-              <Divider
-                style={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "black",
-                }}
-              />
-              <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
-                <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
-                >
-                  4. The person named on line 1 of this form is a resident of
-                  the treaty country listed on line 9 of the form (if any)
-                  within the meaning of the income tax treaty between the United
-                  States and that country, and
-                </Typography>
-              </Typography>
-              <Divider
-                style={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "black",
-                }}
-              />
-              <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
-                <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
-                >
-                  5. For broker transactions or barter exchanges, the beneficial
-                  owner is an exempt foreign person as defined in the
-                  instructions.
-                </Typography>
-              </Typography>
-              <Divider
-                style={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "black",
-                }}
-              />
-              <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
-                <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
-                >
-                  Furthermore, I authorize this form to be provided to any
-                  withholding agent that has control, receipt, or custody of the
-                  income of which I am the beneficial owner or any withholding
-                  agent that can disburse or make payments of the income of
-                  which I am the beneficial owner.
-                  <span style={{ fontWeight: "bold" }}>
-                    I agree that I will submit a new form within 30 days if any
-                    certification made on this form becomes incorrect.
-                  </span>
-                </Typography>
-              </Typography>
-              <Divider
-                style={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "black",
-                }}
-              />
-
-              <Typography
-                style={{
-                  fontSize: "15px",
-                  color: "black",
-                  marginTop: "10px",
-                  marginBottom: "20px",
-                }}
-              ></Typography>
-              <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
-                <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
-                >
-                  I have been notified by IRS that I am currently subject to
-                  backup withholding.
-                </Typography>
-              </Typography>
-              <Divider
-                style={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "black",
-                }}
-              />
+              
               <Typography style={{ display: "flex" }}>
                 <Checkbox className="mx-2" />
                 <Typography
