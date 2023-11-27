@@ -90,6 +90,15 @@ const Chapter4_Exp = React.lazy(() => import("../Components/W-8EXP/Chapter4"));
 const Tin_Exp = React.lazy(() => import("../Components/W-8EXP/Tin"));
 const Certificate_Exp = React.lazy(() => import("../Components/W-8EXP/Certificates"));
 const Participation_Exp = React.lazy(() => import("../Components/W-8EXP/Participation"));
+
+//
+const Purpose_IMY = React.lazy(() => import("../Components/W-8IMY/Status"));
+const Chapter4_IMY= React.lazy(() => import("../Components/W-8IMY/Chapter4_IMY"));
+const TaxPayer_IMY= React.lazy(() => import("../Components/W-8IMY/TaxPayer"));
+const Certificates_IMY= React.lazy(() => import("../Components/W-8IMY/Certificates"));
+const Participation_IMY= React.lazy(() => import("../Components/W-8IMY/Participation"));
+
+
 const ROUTES: Array<RouteType> = [
   {
     name: "Login",
@@ -538,6 +547,41 @@ isPrivate: true,
     path:"/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp",
     id: 7,
     Component: Participation_Exp,
+    isPrivate: true,
+  },
+  {
+    name:"Purpose_IMY",
+    path:"/IMY/Tax_Purpose_Exp",
+    id: 7,
+    Component: Purpose_IMY,
+    isPrivate: true,
+  },
+  {
+    name:"Chapter4_IMY",
+    path:"/IMY/Tax_Purpose_Exp/Chapter4_IMY",
+    id: 7,
+    Component: Chapter4_IMY,
+    isPrivate: true,
+  },
+  {
+    name:"TaxPayer_IMY",
+    path:"/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY",
+    id: 7,
+    Component: TaxPayer_IMY,
+    isPrivate: true,
+  },
+  {
+    name:"Certificates_IMY",
+    path:"/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY",
+    id: 7,
+    Component: Certificates_IMY,
+    isPrivate: true,
+  },
+  {
+    name:"Participation_IMY",
+    path:"/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY",
+    id: 7,
+    Component: Participation_IMY,
     isPrivate: true,
   }
 

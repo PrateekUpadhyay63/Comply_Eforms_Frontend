@@ -138,7 +138,7 @@ export default function Fedral_tax(props: any) {
                   validationSchema={TaxPurposeSchema}
                   onSubmit={(values, { setSubmitting }) => {
                     setSubmitting(true);
-                    history("/Exp/Tax_Purpose_Exp/Chapter4_Exp");
+                    history("/IMY/Tax_Purpose_Exp/Chapter4_IMY");
                   }}
                 >
                   {({
