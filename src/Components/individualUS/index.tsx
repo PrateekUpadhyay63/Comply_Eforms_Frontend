@@ -1415,7 +1415,7 @@ export default function IndividualUs() {
                         <div className="row d-flex mt-3">
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
-                              U.S. TIN Type...
+                              U.S. TIN Type
                               <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
                             </Typography>
                             <FormControl className="w-100">

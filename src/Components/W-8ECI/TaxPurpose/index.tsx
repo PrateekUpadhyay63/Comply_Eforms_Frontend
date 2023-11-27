@@ -38,7 +38,7 @@ export default function Fedral_tax(props: any) {
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
 
   const initialValue = {
-    firstName: obValues.firstName,
+    firstName: obValues.entityName,
     lastName: obValues.lastName,
     businessName: obValues.foreignTINCountryId,
     federalTaxClassificationId: 0,

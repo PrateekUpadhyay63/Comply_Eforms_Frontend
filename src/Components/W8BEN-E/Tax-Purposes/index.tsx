@@ -42,11 +42,11 @@ export default function Fedral_tax(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
-  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
   const initialValue = {
-    firstName: "",
+    firstName: obValues.entityName,
     lastName: "",
-    businessName: obValues.entityName,
+    businessName: "",
     federalTaxClassificationId: 0,
     federal:""
   };
@@ -468,9 +468,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
@@ -704,9 +704,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}

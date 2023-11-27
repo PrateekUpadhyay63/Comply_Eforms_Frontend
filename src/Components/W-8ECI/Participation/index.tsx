@@ -417,15 +417,22 @@ export default function Penalties() {
                         <Typography style={{ fontSize: "15px" }}>
                           Date
                         </Typography>
-                        <TextField
-                          style={{ width: "100%" }}
-                          onChange={handleChange}
+                        <TextField 
+                         className="date"
+                          name="dob"
+                          
+                         
+                          value={
+                            new Date().toLocaleDateString('en-US', {
+                              month: '2-digit',
+                              day: '2-digit',
+                              year: 'numeric',
+                            })
+                          }
                           onBlur={handleBlur}
-                          error={Boolean(touched.date && errors.date)}
-                          value={values.date}
-                          type="date"
-                          name="date"
-                          // value={new Date().toISOString().split('T')[0]}
+                          
+                          
+                          disabled
                         />
                         
                       {/* {values.date ?(""):<p className="error">{errors.date}</p>} */}
