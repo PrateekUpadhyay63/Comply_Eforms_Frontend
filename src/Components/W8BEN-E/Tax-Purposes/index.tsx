@@ -469,11 +469,7 @@ export default function Fedral_tax(props: any) {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     // helperText={
-<<<<<<< HEAD
                                     //   touched.firstName && errors.firstName
-=======
-                                    //   touched.businessName && errors.businessName
->>>>>>> e6a3f8c7ad7eadd22eb601d2e8ffb216c0994791
                                     // }
                                     error={Boolean(
                                       touched.businessName && errors.businessName
@@ -709,11 +705,7 @@ export default function Fedral_tax(props: any) {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     // helperText={
-<<<<<<< HEAD
                                     //   touched.firstName && errors.firstName
-=======
-                                    //   touched.businessName && errors.businessName
->>>>>>> e6a3f8c7ad7eadd22eb601d2e8ffb216c0994791
                                     // }
                                     error={Boolean(
                                       touched.businessName && errors.businessName
