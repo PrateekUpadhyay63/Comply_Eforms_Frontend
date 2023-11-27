@@ -477,16 +477,24 @@ export default function Penalties(props: any) {
                     <div className="col-12 col-md-6 p-0">
         <Typography align="left" style={{ margin: "10px" }}>
           <Typography style={{ fontSize: "15px" }}>Date</Typography>
-          <TextField
-            type="date"
-            required
-            style={{
-              width: "100%",
-             
-            }}
-            value={new Date().toISOString().split('T')[0]}
-          />
-
+          <TextField 
+                         className="date"
+                          name="dob"
+                          
+                         
+                          value={
+                            new Date().toLocaleDateString('en-US', {
+                              month: '2-digit',
+                              day: '2-digit',
+                              year: 'numeric',
+                            })
+                          }
+                         
+                          
+                          
+                          disabled
+                        />
+                        
         </Typography>
 </div>
 </div>

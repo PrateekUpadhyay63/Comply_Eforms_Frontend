@@ -41,9 +41,12 @@ export default function Fedral_tax(props: any) {
     data,
     handleChange,
     setselectedContinue,
-  } = props;
+  } = props; 
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+
+
   const initialValue = {
-    firstName: "",
+    firstName: obValues.entityName,
     lastName: "",
     businessName: "",
     federalTaxClassificationId: 0,
@@ -341,6 +344,7 @@ export default function Fedral_tax(props: any) {
                                   style={{ fontSize: "13px" }}
                                 >
                                   Business Name:
+
                                   <span style={{ color: "red" }}>*</span>
                                   <span>
                                     <Tooltip
@@ -467,9 +471,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
@@ -556,9 +560,9 @@ export default function Fedral_tax(props: any) {
                                         )
                                       )}
                                     </select>
-                                    <p className="error">
+                                    {/* <p className="error">
                                       {errors.businessName}
-                                    </p>
+                                    </p> */}
                                   </FormControl>
                                 </div>
                               </div>
@@ -706,9 +710,9 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    helperText={
-                                      touched.firstName && errors.firstName
-                                    }
+                                    // helperText={
+                                    //   touched.firstName && errors.firstName
+                                    // }
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
@@ -795,9 +799,9 @@ export default function Fedral_tax(props: any) {
                                         )
                                       )}
                                     </select>
-                                    <p className="error">
+                                    {/* <p className="error">
                                       {errors.businessName}
-                                    </p>
+                                    </p> */}
                                   </FormControl>
                                 </div>
                               </div>

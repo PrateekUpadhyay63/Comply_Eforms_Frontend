@@ -432,21 +432,24 @@ export default function Penalties() {
                         </Typography>
                         {/* <TextField */}
                           <FormControl style={{ width: "100%" }}>
-                          <DatePicker
+                          <TextField 
+                         className="date"
                           name="dob"
-                          defaultValue={moment().toDate()}
-                          onChange={(date) => {
-                            onChange(date);
-                            setFieldValue("dob", date);
-                          }}
-                          maxDate={moment().toDate()}
+                          
+                         
+                          value={
+                            new Date().toLocaleDateString('en-US', {
+                              month: '2-digit',
+                              day: '2-digit',
+                              year: 'numeric',
+                            })
+                          }
                           onBlur={handleBlur}
-                          clearIcon={null}
-                          format="MM/dd/yy"
-                          dayPlaceholder="DD"
-                          monthPlaceholder="MM"
-                          yearPlaceholder="YYYY"
+                          
+                          
+                          disabled
                         />
+                        
                           </FormControl>
                          
                         {/* /> */}
