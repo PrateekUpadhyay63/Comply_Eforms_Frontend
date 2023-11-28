@@ -956,8 +956,32 @@ export default function Tin(props: any) {
                       </>
                     )}
 
+
+                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
+                      <Typography>
+                        Please specify the reason for non-availability of US TIN{" "}
+                        <span style={{ color: "red" }}>*</span>
+                      </Typography>
+
+                      <Input
+                        fullWidth
+                        type="text"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        style={{
+                          border: " 1px solid #d9d9d9 ",
+                          padding: " 0 10px",
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "6rem",
+                          width: "100%",
+                        }}
+                      />
+                    </div>):""}
+
+
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div className="my-3">
+                      <div style={{ marginLeft: "20px" }}className="my-3">
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}
@@ -998,27 +1022,6 @@ export default function Tin(props: any) {
                       ""
                     )}
 
-                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
-                      <Typography>
-                        Please specify the reason for non-availability of US TIN{" "}
-                        <span style={{ color: "red" }}>*</span>
-                      </Typography>
-
-                      <Input
-                        fullWidth
-                        type="text"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        style={{
-                          border: " 1px solid #d9d9d9 ",
-                          padding: " 0 10px",
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "6rem",
-                          width: "100%",
-                        }}
-                      />
-                    </div>):""}
                     <div
                       style={{
                         display: "flex",
