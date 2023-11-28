@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form2 from "../../form2";
-import Form1 from "../../../src/form1";
-
+import Form1 from "../../formPDF/form1";
+import Formw9 from "../../formPDF/formw9";
 import { Typography, Button } from "@mui/material";
 
 import Paper from "@mui/material/Paper";

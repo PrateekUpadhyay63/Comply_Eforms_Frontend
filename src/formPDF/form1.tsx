@@ -86,7 +86,7 @@ const Form1: React.FC = () => {
       html2canvas(contentRef.current).then((canvas: any) => {
         const imgWidth = 188;
         const pageHeight = 295;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        const imgHeight = 295;
         let heightLeft = imgHeight;
         let position = 0;
         heightLeft -= pageHeight;
@@ -94,7 +94,7 @@ const Form1: React.FC = () => {
         while (heightLeft >= 0) {
           position = heightLeft - doc.internal.pageSize.height;
           doc.addPage();
-          doc.addImage(canvas, 'PNG', 10, position, imgWidth, doc.internal.pageSize.height, '', 'FAST');
+          // doc.addImage(canvas, 'PNG', 10, position, imgWidth, doc.internal.pageSize.height, '', 'FAST');
           heightLeft -= pageHeight;
         }
         console.log(doc,")))))DOC")
@@ -442,6 +442,7 @@ a reduced rate of withholding.
                   <table style={{borderCollapse:"collapse", width:"100%", fontSize:"18px"}} cellPadding={10}>
                     <thead>
                       <tr>
+                        
                         <td style={{border:"2px solid #000", textAlign:"center", fontWeight:"bold"}}>Country</td>
                         <td style={{border:"2px solid #000", textAlign:"center", fontWeight:"bold"}}>TIN Type </td>
                         <td style={{border:"2px solid #000", textAlign:"center", fontWeight:"bold"}}>Tax Identification</td>
