@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Form2 from "../../form2";
 import Form1 from "../../formPDF/form1";
 import Formw9 from "../../formPDF/formw9";
+import FormEXP from "../../formPDF/formEXP";
+
 import { Typography, Button } from "@mui/material";
 
 import Paper from "@mui/material/Paper";
@@ -81,7 +83,8 @@ export default function Term() {
     >
       {/* <iframe src={form1}></iframe> */}
       {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
-      <Form1 /> 
+      {/* <Form1 />  */}
+      <FormEXP/>
       {/* Pass setPdfUrl to Form2 */}
       {/* <button onClick={handleDownload}>Download PDF</button> */}
       <div className="container-fluid">
