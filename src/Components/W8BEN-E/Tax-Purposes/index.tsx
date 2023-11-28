@@ -464,7 +464,7 @@ export default function Fedral_tax(props: any) {
 
                                 <FormControl className="w-100">
                                   <TextField
-                                    autoComplete="businessName"
+                                    autoComplete="firstName"
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -472,11 +472,11 @@ export default function Fedral_tax(props: any) {
                                     //   touched.firstName && errors.firstName
                                     // }
                                     error={Boolean(
-                                      touched.businessName && errors.businessName
+                                      touched.firstName && errors.firstName
                                     )}
-                                    name="businessName"
+                                    name="firstName"
                                     className="inputClassFull"
-                                    value={values.businessName}
+                                    value={values.firstName}
                                   />
                                 </FormControl>
                               </div>
@@ -700,7 +700,7 @@ export default function Fedral_tax(props: any) {
 
                                 <FormControl className="w-100">
                                   <TextField
-                                    autoComplete="businessName"
+                                    autoComplete="firstName"
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -708,11 +708,11 @@ export default function Fedral_tax(props: any) {
                                     //   touched.firstName && errors.firstName
                                     // }
                                     error={Boolean(
-                                      touched.businessName && errors.businessName
+                                      touched.firstName && errors.firstName
                                     )}
-                                    name="businessName"
+                                    name="firstName"
                                     className="inputClassFull"
-                                    value={values.businessName}
+                                    value={values.firstName}
                                   />
                                 </FormControl>
                               </div>

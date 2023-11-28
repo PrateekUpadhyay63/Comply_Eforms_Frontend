@@ -69,7 +69,7 @@ export const US_TINSchema = () => {
     isFTINNotLegallyRequired: Yup.boolean(),
     // tinisFTINNotLegallyRequired: true,
     // tinAlternativeFormate: true,
-    isNotLegallyFTIN: Yup.string().required("Please select one of the options"),
+    isNotLegallyFTIN: Yup.string(),
   });
 };
 export const claimSchema = () => {
