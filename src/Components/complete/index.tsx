@@ -84,7 +84,6 @@ export default function Term() {
       {/* <iframe src={form1}></iframe> */}
       {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
       {/* <Form1 />  */}
-      <FormEXP/>
       {/* Pass setPdfUrl to Form2 */}
       {/* <button onClick={handleDownload}>Download PDF</button> */}
       <div className="container-fluid">
@@ -147,7 +146,7 @@ export default function Term() {
           </Paper>
           <Typography align="center">
             <div className="mt-5" style={{ justifyContent: "center" }}>
-              <Button
+              {/* <Button
                 // type="submit"
                 // onClick={()=>{
                 //     exportPDF()
@@ -169,7 +168,9 @@ export default function Term() {
                 className="btn btn_submit  btn-primary-agent"
               >
                 Download PDF
-              </Button>
+              </Button> */}
+      {/* <Form1/> */}
+
               <div style={{ marginTop: "25px" }}>
                 <Button
                   type="submit"
