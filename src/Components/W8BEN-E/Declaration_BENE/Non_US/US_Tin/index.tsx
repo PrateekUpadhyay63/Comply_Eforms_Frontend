@@ -72,7 +72,7 @@ export default function Tin(props: any) {
     foreignTINCountry: obValues.foreignTINCountryId,
     foreignTIN: "",
     isFTINNotLegallyRequired: false,
-    tinisFTINNotLegallyRequired: "",
+    tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -775,6 +775,7 @@ export default function Tin(props: any) {
                           <FormControl >
                             <RadioGroup
                               row
+                              
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
