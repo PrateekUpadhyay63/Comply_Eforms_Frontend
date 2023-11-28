@@ -107,8 +107,8 @@ const Form1: React.FC = () => {
 
   return (
     <>
-    <div  style={{margin: "0 auto",maxWidth:"960px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
-      <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1>
+    <div  style={{contentVisibility:"hidden" ,margin: "0 auto",maxWidth:"960px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
+      {/* <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1> */}
       <View wrap={false}>
       <div  ref={contentRef} style={{ background:"#fff", color:
       
@@ -614,9 +614,22 @@ during the current calendar year?</td>
           </table>
         </div>
       </div> 
-      </View>
+      </View> 
       <div style={{ paddingTop: "20px" }}>
-        <Button onClick={downloadPDF} variant="contained">Download PDF</Button>
+        <Button onClick={downloadPDF} variant="contained" style={{
+                  border: "1px solid #0095dd",
+                  background: "#0095dd",
+                  height: "45px",
+                  lineHeight: "normal",
+                  textAlign: "center",
+                  fontSize: "16px",
+                  textTransform: "uppercase",
+                  borderRadius: "0px",
+                  color: "#fff",
+                  padding: "0 35px",
+                  letterSpacing: "1px",
+                }}
+                className="btn btn_submit  btn-primary-agent">Download PDF</Button>
       </div>
     </div>
     </>
