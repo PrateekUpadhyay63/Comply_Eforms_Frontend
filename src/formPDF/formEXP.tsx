@@ -108,7 +108,7 @@ const FormEXP: React.FC = () => {
   return (
     <>
     <div  style={{margin: "0 auto",maxWidth:"960px",width:"100%", padding:"0px", display:"table", boxSizing:"border-box" }}>
-      <h1 style={{ color: "red", paddingLeft:"20px"}} >Heading 1</h1>
+      <h1 style={{ color: "red", paddingLeft:"20px"}} >W-8EXP</h1>
       <View wrap={false}>
       <div  ref={contentRef} style={{ background:"#fff", color:
       
@@ -118,24 +118,26 @@ const FormEXP: React.FC = () => {
           <thead>
             <tr>
               <th style={{ width: "24%", boxSizing:"border-box", fontSize:"14px", lineHeight:"1.3", borderRight:"2px solid #000", borderBottom:"2px solid #000" }}>
-                <p>Form <strong style={{ fontSize: "30px", fontWeight: "700" }}>W-8BEN</strong></p>
-                <p style={{ margin: "15px 0" }}>(Rev. October 2021)</p>
+                <p>Form <strong style={{ fontSize: "30px", fontWeight: "900" }}>W-8EXP</strong></p>
+                <p style={{ margin: "15px 0" }}>(Rev. July 2017)</p>
                 <p>Department of the Treasury Internal Revenue Service</p>
               </th>
               <th style={{padding:"0 15px", boxSizing:"border-box", textAlign:"center" ,width: "52%", fontSize: "14px", lineHeight: "1.3", borderRight: "2px solid #000", borderBottom: "2px solid #000" }}>
-                <h1 style={{fontSize:"16px", fontWeight:"bolder"}}>Certificate of Foreign Status of Beneficial Owner for United
-                  States Tax Withholding and Reporting (Individuals)</h1>
-                <ul style={{ listStyle:"none", fontSize:"12px", lineHeight:"1.5"}}>
-                  <li>&#9658; For use by individuals. Entities must use Form W-8BEN-E.</li>
-                  <li>&#9658; Go to www.irs.gov/FormW8BEN for instructions and the latest information.</li>
+                <h1 style={{fontSize:"16px", fontWeight:"bolder"}}>Certificate of Foreign Government or Other Foreign Organization for United States Tax Withholding and Reporting</h1>
+                <p style={{fontSize:"12px", lineHeight:"1",fontWeight:"700"}}>
+                (For use by foreign governments, international organizations, foreign central banks of issue, foreign tax-exempt organizations, foreign private foundations, and governments of U.S. possessions.)
+                </p>
+                <ul style={{ listStyle:"none", fontSize:"11px", lineHeight:"1.5"}}>
+                  <li>&#9658; Go to www.irs.gov/FormW8EXP for instructions and the latest information.</li>
+                  <li>&#9658; Section references are to the Internal Revenue Code.</li>
                   <li>&#9658; Give this form to the withholding agent or payer. Do not send to the IRS.</li>
                 </ul>
               </th>
-              <th style={{ width: "24%", boxSizing:"border-box", fontSize: "18px", fontWeight:"bolder", lineHeight: "1.3", borderBottom: "2px solid #000", padding:"0 0 0 10px"  }}>
-                <p style={{fontSize: "14px", textAlign: "right", color: "blue", fontWeight:"400", marginBottom:"15px" }}>UID : 6utykj</p>
-                <h3 style={{ fontSize: "20px", fontWeight:"bolder", lineHeight: "1",}}>Electronic </h3>
+              <th style={{ width: "24%", boxSizing:"border-box", fontSize: "18px", fontWeight:"bolder", lineHeight: "1.3", borderBottom: "2px solid #000", padding:"0 0 0 10px", position:"relative"  }}>
+                <p style={{fontSize: "14px", textAlign: "right", color: "blue", fontWeight:"400", marginBottom:"15px",position:"absolute", top:"0px", right:"0px" }}>UID : 6utykj</p>
+                <h3 style={{ fontSize: "20px", fontWeight:"bolder", lineHeight: "1",marginTop:"15px"}}>Electronic </h3>
                 <h3 style={{ fontSize: "20px", fontWeight:"bolder", lineHeight: "1",}}>Substitute  </h3>
-                <h5>Form W-8BEN</h5>
+                <h5 style={{fontSize:"15px"}}>Form <span style={{fontWeight:"600"}}>W-8EXP</span> </h5>
               </th>
              </tr>
           </thead>
@@ -151,19 +153,17 @@ const FormEXP: React.FC = () => {
                     <tr>
                       <td colSpan={2}>
                         <ul style={{ width:"100%", padding:"0 0 0 16px", marginTop:"15px"}}>
-                          <li style={{marginBottom:"6px"}}>You are NOT an individual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .W-8BEN-E </li>
-                          <li style={{marginBottom:"6px"}}>You are a U.S. citizen or other U.S. person, including a resident alien individual . . . . . . . . . . . . . . . . . . . . . . . .W-9</li>
-                          <li style={{marginBottom:"6px"}}>You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States
-                            (other than personal services) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span style={{ textAlign: "end" }}>W-8ECI</span></li>
-                          <li>You are a beneficial owner who is receiving compensation for personal services performed in the United States . . . . . . . 8233 or W-4</li>
-                          <li>You are a person acting as an intermediary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . W-8IMY </li>
+                          <li style={{marginBottom:"6px"}}>A foreign government or other foreign organization that is not claiming the applicability of section(s) 115(2), 501(c), 892, 895, or 1443(b) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . W-8BEN-E or W-8ECI</li>
+                          <li style={{marginBottom:"6px"}}>A beneficial owner solely claiming foreign status or treaty benefits . . . . . . . . . . . . . . . . . . . . . . . .W-8BEN or W-8BEN-E</li>
+                          <li style={{marginBottom:"6px"}}>A foreign partnership or a foreign trust . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span style={{ textAlign: "end" }}>W-8BEN-E or W-8IMY</span></li>
+                          <li>A person claiming that income is effectively connected with the conduct of a trade or business in the United States . . . . . . . W-8ECI</li>
+                          <li>A person acting as an intermediary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . W-8IMY </li>
                         </ul>
                       </td>
                     </tr>
-                    <tr>
-                      <td colSpan={2} style={{ borderTop:"1px solid #000", padding:"10px 0"}}> <strong>Note:</strong> If you are resident in a FATCA partner jurisdiction (that is, a Model 1 IGA jurisdiction with reciprocity), certain tax account information may be
-provided to your jurisdiction of residence.</td>
-                    </tr>
+                    {/* <tr>
+                      <td colSpan={2} style={{ borderTop:"1px solid #000", padding:"10px 0"}}> <strong>Note:</strong> If you are resident in a FATCA partner jurisdiction (that is, a Model 1 IGA jurisdiction with reciprocity), certain tax account information may be provided to your jurisdiction of residence.</td>
+                    </tr> */}
                     
                   </tbody>
                   
@@ -173,7 +173,7 @@ provided to your jurisdiction of residence.</td>
                     <tr>
                       <td style={{background:"#000", color:"#fff", fontWeight:"bold", width:"120px", border: "1px solid #000", padding:"5px 10px", textAlign:"center"}}>Part I </td>
                       <td style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                        <strong>Identification of Beneficial Owner</strong>(see instructions) </td>
+                        <strong>Identification of Beneficial Owner</strong> </td>
                     </tr>
                   </thead>
                   <tbody>
@@ -183,17 +183,35 @@ provided to your jurisdiction of residence.</td>
                           <tbody>
                             <tr>
                               <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "50%", borderRight:"1px solid #000" }}>
-                                1. Name of individual who is the beneficial owner
+                                <p style={{fontSize:"12px",marginBottom:"1px"}}>
+                                  1. Name of organization
+                                </p>
                                 <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
                               </td>
                               <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "50%" }}>
-                                2. Country of citizenship
+                                <p style={{fontSize:"12px" ,marginBottom:"1px"}}>
+                                  2. Country of citizenship
+                                </p>
                                 <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
                               </td>
                             </tr>
                             <tr>
                               <td colSpan={2}>
-                                <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
+                                <div style={{width:"100%",padding:"0px 10px",display:"flex",borderBottom: "1px solid #000"}}>
+                                  <div style={{width:"7.5%",display:"flex"}}><strong>3</strong> <div style={{marginLeft:"2px"}}>Type of entity</div> </div>
+                                  <div style={{width:"42.5%",borderLeft:"1px solid #000"}}>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Foreign government</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>International organization</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Foreign central bank of issue (not wholly owned by the foreign sovereign)</span> </p>
+                                  </div>
+                                  <div style={{width:"50%"}}>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Foreign tax-exempt organization</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Foreign private foundatio</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Government of a U.S. possession</span> </p>
+                                    
+                                  </div>
+                                </div>
+                                {/* <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
                                   <tbody>
                                     <tr>
                                       <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
@@ -206,12 +224,57 @@ provided to your jurisdiction of residence.</td>
                                       </td>
                                     </tr>
                                   </tbody>
-                                </table>
+                                </table> */}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={2}>
+                                <div style={{width:"100%",padding:"0px 10px",borderBottom: "1px solid #000"}}>
+                                  <div style={{width:"100%",display:"flex"}}><strong>4</strong> <div style={{marginLeft:"2px"}}>Chapter 4 Status (FATCA status):</div> </div>
+                                  <div style={{display:"flex"}}>
+
+                                  <div style={{width:"50%"}}>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Participating FFI.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Reporting Model 1 FFI.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Reporting Model 2 FFI.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Registered deemed-compliant FFI (other than a Reporting Model 1 FFI).</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Nonreporting IGA FFI. Complete Part III</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Territory financial institution. Complete Part III.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"30px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>International organization.</span> </p>
+                                  </div>
+                                  <div style={{width:"50%"}}>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Foreign government (including a political subdivision), government of a U.S. possession, or foreign central bank of issue. Complete Part III.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Exempt retirement plan of foreign government. Complete Part III.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>501(c) organization. Complete Part III.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Passive NFFE. Complete Part III.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Direct reporting NFFE.</span> </p>
+                                  <p style={{display:"flex",marginBottom:"0px"}}><div><input type="checkbox" style={{marginLeft:"10px"}}></input></div> <span style={{marginLeft:"8px",fontSize:"14px"}}>Sponsored direct reporting NFFE. Complete Part III.</span> </p>
+                                  </div>
+                                    
+                                  </div>
+                                </div>
+                                {/* <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
+                                        3. City or town, state or province. Include postal code where appropriate. 
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                                      </td>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "30%" }}>
+                                        Country
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table> */}
                               </td>
                             </tr>
                             <tr>
                               <td colSpan={2}  style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                                4 Mailing address (if different from above) 
+                                <p style={{fontSize:"12px"}}>
+
+                                5 Permanent address (street, apt. or suite no., or rural route). <strong> Do not use a P.O. box or in-care-of address (other than a registered address).</strong>
+                                </p>
                                 <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
                               </td>
                             </tr>
@@ -221,11 +284,15 @@ provided to your jurisdiction of residence.</td>
                                   <tbody>
                                     <tr>
                                       <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
+                                        <p style={{fontSize:"12px"}}>
                                         City or town, state or province. Include postal code where appropriate. 
+                                        </p>
                                         <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
                                       </td>
                                       <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "30%" }}>
+                                        <p style={{fontSize:"12px"}}>
                                         Country
+                                        </p>
                                         <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
                                       </td>
                                     </tr>
@@ -233,13 +300,41 @@ provided to your jurisdiction of residence.</td>
                                 </table>
                               </td>
                             </tr>
+
                             <tr>
                               <td colSpan={2}  style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                                5 Mailing address (if different from above) 
+                              <p style={{fontSize:"12px"}}>
+
+                              6 Mailing address (if different from above) 
+                              </p>
+                                
                                 <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
                               </td>
                             </tr>
+                            
                             <tr>
+                              <td colSpan={2}>
+                                <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "70%", borderRight:"1px solid #000" }}>
+                                      <p style={{fontSize:"12px"}}>
+                                        City or town, state or province. Include postal code where appropriate. 
+                                        </p>
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> Lorem Ipsum Text</p>
+                                      </td>
+                                      <td style={{ borderBottom: "1px solid #000", padding: "5px 10px", width: "30%" }}>
+                                        <p style={{fontSize:"12px"}}>
+                                        Country
+                                        </p>
+                                        <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            {/* <tr>
                               <td colSpan={2}>
                                 <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
                                   <tbody>
@@ -256,7 +351,7 @@ provided to your jurisdiction of residence.</td>
                                   </tbody>
                                 </table>
                               </td>
-                            </tr>
+                            </tr> */}
                             <tr>
                               <td colSpan={2}>
                                 <table style={{ borderCollapse: "collapse", width: "100%" }} cellPadding={0}>
@@ -273,6 +368,16 @@ provided to your jurisdiction of residence.</td>
                                     </tr>
                                   </tbody>
                                 </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan={2}  style={{ padding: "5px 10px 0px 10px" }}>
+                              <p style={{fontSize:"12px"}}>
+
+                              9 Reference number(s) (see instructions)
+                              </p>
+                                
+                                <p style={{color:"#82b1ff", width:"100%", margin:"6px 0 0", lineHeight:"1.4"}}> United States</p>
                               </td>
                             </tr>
                           </tbody>
