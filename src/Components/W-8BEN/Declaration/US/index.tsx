@@ -1,8 +1,13 @@
-import React, { useState,ChangeEvent } from "react";
+import React, { useState,ChangeEvent, useEffect } from "react";
 import { FormControl, Typography, Button, Paper, Tooltip ,Link} from "@mui/material";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import {
+  getAllCountries,
+  
+} from "../../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import checksolid from "../../../../assets/img/check-solid.png";
 // import check from "../../../assets/img/check.png";
 import Accordion from "@mui/material/Accordion";
@@ -12,19 +17,26 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Factors() {
   const history= useNavigate()
-
+  const dispatch = useDispatch();
   const [allocation, setAllocation] = useState(''); // State to track allocation input
 
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setAllocation(inputValue);
 
+   
   const mirroredText = document.getElementById('mirroredText');
   if (mirroredText) {
     mirroredText.innerText = inputValue;
   }
 };
 
+useEffect(()=>{
+  dispatch(getAllCountries());
+})
+const getCountriesReducer = useSelector(
+  (state: any) => state.getCountriesReducer
+);
   const [toolInfo, setToolInfo] = useState("");
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {
@@ -629,7 +641,19 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     name="interestDividendPaymentId"
                     id="Income"
                   >
-                    <option value={0}>-Select-</option>
+                     <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                   </select>
                 </FormControl>
 
@@ -676,10 +700,21 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     name="interestDividendPaymentId"
                     id="Income"
                   >
-                    <option value={0}>-Select-</option>
+                     <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                   </select>
                 </FormControl>
-
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}

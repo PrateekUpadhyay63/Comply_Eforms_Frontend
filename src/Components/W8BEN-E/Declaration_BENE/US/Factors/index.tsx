@@ -698,7 +698,19 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     name="interestDividendPaymentId"
                     id="Income"
                   >
-                    <option value={0}>-Select-</option>
+                     <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                   </select>
                 </FormControl>
 
