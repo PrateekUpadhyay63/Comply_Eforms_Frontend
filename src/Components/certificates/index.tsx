@@ -33,9 +33,9 @@ export default function Certificates(props: any) {
     [key: string]: string;
   };
   const handleCardSelect = (card: any) => {
-    // if(card.enabled===diableForm){
+    if(card.enabled===diableForm){
        setSelectedCard(card.id);
-    // }
+    }
   };
   const [toolInfo, setToolInfo] = useState("");
   const [InfoMore, setInfoMore] = useState("");
@@ -131,7 +131,7 @@ export default function Certificates(props: any) {
     {
       id: "W-8ECI",
       title: "W-8ECI",
-      enabled:"usNonIndividual",
+      enabled:"usNonEntity",
       description:
         "Used by individuals, or entities, to certify beneficial owner receiving U.S. sourced income that is effectively connected with a U.S. trade or business ",
     },

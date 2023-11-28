@@ -302,8 +302,7 @@ export default function Fedral_tax(props: any) {
                                     name="federalTaxClassificationId"
                                     value={values.federalTaxClassificationId}
                                     onChange={handleChange}
-                                    autoComplete="businessName"
-                                    placeholder="Business Name"
+                                   
                                     onBlur={handleBlur}
                                     style={{
                                       padding: " 0 10px",

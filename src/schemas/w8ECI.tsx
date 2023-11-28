@@ -31,7 +31,7 @@ export const TaxPayerSchema = () => {
     isNotAvailable: Yup.string().required("Please select one of the options"),
     // notAvailable: Yup.string().required("Please select one of the options"),
     foreignTINCountry: Yup.string().required("Field Cannot be Empty"),
-    foreignTIN: Yup.string().required("Field Cannot be Empty"),
+    foreignTIN: Yup.string(),
     // isFTINLegally: Yup.boolean(),
     // isExplanationNotLegallyFTIN: Yup.string().required("Field Cannot be Empty"),
     // nonAvailabilityReason: Yup.boolean().when("isExplanationNotLegallyFTIN", {

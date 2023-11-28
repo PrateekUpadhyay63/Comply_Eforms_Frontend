@@ -65,7 +65,7 @@ export const US_TINSchema = () => {
     foreignTINCountry: Yup.string().required(
       "Please select Foriegn Tin Country"
     ),
-    foreignTIN: Yup.string().required("Please enter Foriegn Tin "),
+    // foreignTIN: Yup.string().required("Please enter Foriegn Tin "),
     isFTINNotLegallyRequired: Yup.boolean(),
     // tinisFTINNotLegallyRequired: true,
     // tinAlternativeFormate: true,

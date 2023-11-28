@@ -15,11 +15,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCountries} from "../../../../Redux/Actions"
 export default function Factors() {
   const history= useNavigate()
   const dispatch = useDispatch();
   const [allocation, setAllocation] = useState(''); // State to track allocation input
-
+  const dispatch = useDispatch();
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setAllocation(inputValue);
@@ -56,7 +58,12 @@ const getCountriesReducer = useSelector(
       const selectedValue = event.target.value;
       setSelectedOption(selectedValue);
     };
-    
+    useEffect(()=>{
+      dispatch(getAllCountries());
+  })
+    const getCountriesReducer = useSelector(
+      (state: any) => state.getCountriesReducer
+    );
   return (
     <section
       className="inner_content"
