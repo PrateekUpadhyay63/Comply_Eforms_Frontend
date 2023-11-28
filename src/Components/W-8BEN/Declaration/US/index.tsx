@@ -1,4 +1,4 @@
-import React, { useState,ChangeEvent } from "react";
+import React, { useState,ChangeEvent, useEffect } from "react";
 import { FormControl, Typography, Button, Paper, Tooltip ,Link} from "@mui/material";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -10,11 +10,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCountries} from "../../../../Redux/Actions"
 export default function Factors() {
   const history= useNavigate()
 
   const [allocation, setAllocation] = useState(''); // State to track allocation input
-
+  const dispatch = useDispatch();
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setAllocation(inputValue);
@@ -44,7 +46,12 @@ export default function Factors() {
       const selectedValue = event.target.value;
       setSelectedOption(selectedValue);
     };
-    
+    useEffect(()=>{
+      dispatch(getAllCountries());
+  })
+    const getCountriesReducer = useSelector(
+      (state: any) => state.getCountriesReducer
+    );
   return (
     <section
       className="inner_content"
@@ -629,7 +636,19 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                     name="interestDividendPaymentId"
                     id="Income"
                   >
-                    <option value={0}>-Select-</option>
+                     <option value="">-Select-</option>
+                                      <option value={257}>
+                                        United Kingdom
+                                      </option>
+                                      <option value={258}>United States</option>
+                                      <option value="">---</option>
+                                      {getCountriesReducer.allCountriesData?.map(
+                                        (ele: any) => (
+                                          <option key={ele?.id} value={ele?.id}>
+                                            {ele?.name}
+                                          </option>
+                                        )
+                                      )}
                   </select>
                 </FormControl>
 
