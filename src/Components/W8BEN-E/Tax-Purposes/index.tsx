@@ -311,7 +311,7 @@ export default function Fedral_tax(props: any) {
                                       height: "36px",
                                     }}
                                   >
-                                    <option> -----select---</option>
+                                    <option value={0}> -----select---</option>
 
                                     {GetChapter3StatusReducer.GetChapter3StatusData?.map(
                                       (ele: any) => (
