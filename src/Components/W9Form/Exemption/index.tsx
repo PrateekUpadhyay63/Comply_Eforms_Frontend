@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useEffect, useState} from "react";
 import {
   FormControl,
   Typography,
@@ -18,7 +18,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { fctaSchema } from "../../../schemas";
-import { W9_state } from "../../../Redux/Actions";
+import { W9_state , GetAgentFATCAEntityGIINChallengeDisabledForEformAction } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -34,10 +34,19 @@ export default function FCTA_Reporting(props: any) {
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
   };
+  const GetAgentFATCAEntityGIINChallengeDisabledForEformReducer = useSelector(
+    (state: any) => state.GetAgentFATCAEntityGIINChallengeDisabledForEformReducer
+  );
  
   const initialValue = {
     isExemptionFATCAReportings: "",
   };
+
+  useEffect(() => {
+    dispatch(GetAgentFATCAEntityGIINChallengeDisabledForEformAction());
+    
+
+  }, []);
   return (  
 
     <section
@@ -278,9 +287,13 @@ export default function FCTA_Reporting(props: any) {
              onChange={handleChange}
           >
             <option value={0}>-Select-</option>
-            <option value={1}>Individual</option>
-            <option value={2}>Individual/sole Propritor</option>
-            <option value={3}>Limited Liability Company</option>
+            {GetAgentFATCAEntityGIINChallengeDisabledForEformReducer.GetAgentFATCAEntityGIINChallengeDisabledForEformData?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.id}>
+                                    {ele?.name}
+                                  </option>
+                                )
+                              )}
           </select>
         </FormControl>
       </>
