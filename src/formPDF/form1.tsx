@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
 export default function Form1() {
@@ -586,10 +587,6 @@ export default function Form1() {
                   <td style={{ width: "50%" }}>&nbsp;</td>
                 </tr>
                 <tr>
-                  <td style={{ width: "50%" }}>&nbsp;</td>
-                  <td style={{ width: "50%" }}>&nbsp;</td>
-                </tr>
-                <tr>
                   <td style={{ width: "50%" }}>Entity type:</td>
                   <td style={{ width: "50%" }}>&nbsp;</td>
                 </tr>
@@ -600,14 +597,14 @@ export default function Form1() {
             <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "40px auto 0px", fontSize: "20px" }} cellPadding={10}>
               <thead>
                 <tr>
-                  <th colSpan={2} style={{ fontSize: "22px", fontWeight: "500", paddingBottom: "20px" }}>Further Information:</th>
+                  <th colSpan={2} style={{ fontSize: "24px", fontWeight: "600", paddingBottom: "20px", textAlign: "left", paddingLeft: "0" }}>Further Information:</th>
                 </tr>
               </thead>
             </table>
-            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "0px auto", fontSize: "20px" }} cellPadding={10}>
+            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "20px auto", fontSize: "20px" }} cellPadding={10}>
               <tbody>
                 <tr>
-                  <td colSpan={2} >
+                  <td colSpan={2} style={{ padding: "0" }} >
                     <div style={{ border: "2px solid #000", padding: "10px 20px", margin: "5px 0" }}>
                       <h5>Form vs Country Conflict Additional Information:</h5>
                       <p style={{ marginBottom: "0" }}>We have appointed a different country of residency based Power of Attorney who manages our
@@ -618,7 +615,7 @@ export default function Form1() {
 
               </tbody>
             </table>
-            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "900px", margin: "0px auto", fontSize: "20px", border: "2px solid #000" }} cellPadding={10}>
+            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "0px auto", fontSize: "20px", border: "2px solid #000" }} cellPadding={10}>
               <tbody>
                 <tr>
                   <td style={{ borderRight: "2px solid #000", borderBottom: "2px solid #000", fontSize: "20px", color: "#000" }}>
@@ -642,7 +639,7 @@ export default function Form1() {
                 </tr>
               </tbody>
             </table>
-            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "900px", margin: "20px auto 20px", fontSize: "20px", border: "2px solid #000" }} cellPadding={10}>
+            <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "20px auto 20px", fontSize: "20px", border: "2px solid #000" }} cellPadding={10}>
               <tbody>
                 <tr>
                   <td style={{ borderRight: "2px solid #000", borderBottom: "2px solid #000", fontSize: "20px", color: "#000", width: "50%" }}>
@@ -674,7 +671,7 @@ export default function Form1() {
             <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: "920px", margin: "0px auto", fontSize: "20px" }} cellPadding={10}>
               <tbody>
                 <tr>
-                  <td colSpan={2} >
+                  <td colSpan={2} style={{ padding: "0" }} >
                     <div style={{ border: "2px solid #000", padding: "10px 20px", margin: "5px 0" }}>
                       <h5>Warning Notification Override issue Number and type:</h5>
                       <ol start={1}>
@@ -699,7 +696,9 @@ export default function Form1() {
           </section>
         </div>
       </section>
-      <button onClick={downloadPDF}>click me</button>
+      <section style={{ maxWidth: "960px", width: "100%", textAlign: "start", margin: "20px auto" }}>
+        <Button variant="contained" onClick={downloadPDF}>click me</Button>
+      </section>
     </>
   )
 }
