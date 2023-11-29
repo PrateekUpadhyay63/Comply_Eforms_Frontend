@@ -92,8 +92,7 @@ export default function Term() {
                   fontWeight: "bold",
                   justifyContent: "center",
                 }}
-              />
-            </Typography>
+              />            </Typography>
             <Typography
               style={{ fontSize: "20px", color: "grey" }}
               align="center"

@@ -28,6 +28,7 @@ export default function Term() {
               color: "white",
               marginTop: "10px",
               marginBottom: "15px",
+              textAlign:"center"
             }}
           >
             Terms & Conditions
@@ -167,7 +168,9 @@ export default function Term() {
               only to certain countries or regions. Although Comply Exchange
               tries to mark all country- and region-specific.
             </Typography>
-            <div
+           
+          </Paper>
+          <div
               className="d-flex mx-5 mt-5"
               style={{ justifyContent: "center" }}
             >
@@ -217,7 +220,6 @@ export default function Term() {
                 Accept
               </Button>
             </div>
-          </Paper>
         </div>
       </div>
       <div className="container-fluid">
