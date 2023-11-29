@@ -81,6 +81,13 @@ export default function Term() {
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
     >
+      {/* <iframe src={form1}></iframe> */}
+      {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
+      <div style={{ paddingBlockStart: "30px" }}>
+        <Form1 />
+      </div>
+      {/* Pass setPdfUrl to Form2 */}
+      {/* <button onClick={handleDownload}>Download PDF</button> */}
       <div className="container-fluid">
         <div className="col-lg-12 mt-20" style={{ padding: "18px" }}>
           <Paper elevation={6} style={{ padding: "17px", marginTop: "20px" }}>
@@ -164,7 +171,7 @@ export default function Term() {
               >
                 Download PDF
               </Button> */}
-     <Form1/>
+              {/* <Form1/> */}
 
               <div style={{ marginTop: "25px" }}>
                 <Button
