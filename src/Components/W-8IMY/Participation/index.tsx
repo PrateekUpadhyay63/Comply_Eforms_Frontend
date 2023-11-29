@@ -592,9 +592,7 @@ export default function Penalties() {
                     <Button
                       type="submit"
                      
-                      // onClick={() => {
-                      //   setOpen2(true);
-                      // }}
+                     
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >
