@@ -86,7 +86,7 @@ const Form1: React.FC = () => {
       html2canvas(contentRef.current).then((canvas: any) => {
         const imgWidth = 188;
         const pageHeight = 295;
-        const imgHeight = 295;
+        const imgHeight = (canvas.height * imgWidth);
         let heightLeft = imgHeight;
         let position = 0;
         heightLeft -= pageHeight;
@@ -97,7 +97,6 @@ const Form1: React.FC = () => {
           // doc.addImage(canvas, 'PNG', 10, position, imgWidth, doc.internal.pageSize.height, '', 'FAST');
           heightLeft -= pageHeight;
         }
-        console.log(doc,")))))DOC")
         doc.save('Downld.pdf');
       });
     }
