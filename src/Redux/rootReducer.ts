@@ -16,7 +16,8 @@ import {
   GetChapter3StatusReducer,
   GetChapter4StatusesReducer,
   GetLimitationBenefitsReducer,
-  GetIncomeTypesReducer
+  GetIncomeTypesReducer,
+  GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
 
 
 } from "./Reducers";
@@ -41,7 +42,8 @@ let reducers = {
   GetChapter3StatusReducer,
   GetChapter4StatusesReducer,
   GetLimitationBenefitsReducer,
-  GetIncomeTypesReducer
+  GetIncomeTypesReducer,
+  GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
 };
 const rootReducer = combineReducers({
   ...reducers,
