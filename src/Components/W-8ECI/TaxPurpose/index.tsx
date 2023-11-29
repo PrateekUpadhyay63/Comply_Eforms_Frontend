@@ -305,10 +305,10 @@ export default function Fedral_tax(props: any) {
 <>
 
 <div
-                              style={{ marginTop: "20px", display: "flex" }}
-                              className="col-12"
+                              style={{ alignItems:"center" }}
+                              className="row"
                             >
-                              <div className="col-6">
+                              <div className="col-lg-6 col-md-6 col-sm-12">
                                 <Typography
                                   align="left"
                                   className="d-flex w-60 "
@@ -454,8 +454,8 @@ export default function Fedral_tax(props: any) {
                                 </FormControl>
                               </div>
                               <div
-                                className="col-6  "
-                                style={{ marginLeft: "10px" }}
+                                className="col-lg-6 col-md-6 col-sm-12"
+                                // style={{ marginLeft: "10px" }}
                               >
                                 <Typography
                                   align="left"
@@ -515,7 +515,7 @@ export default function Fedral_tax(props: any) {
                                         height: "36px",
                                       }}
                                     >
-                                      <option value="">-Select-</option>
+                                      <option value={0}>-Select-</option>
                                       <option value={257}>
                                         United Kingdom
                                       </option>

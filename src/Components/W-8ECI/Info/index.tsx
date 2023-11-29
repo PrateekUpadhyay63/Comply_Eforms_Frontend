@@ -131,17 +131,17 @@ export default function Tin(props: any) {
                           }}
                           name="eciUsTinTypeId"
                           id="Income"
-                          defaultValue={1}
+                          defaultValue={0}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.eciUsTinTypeId}
                         >
-                          <option value={1}>-Select-</option>
+                          <option value={0}>-Select-</option>
                           <option value={2}>SSN/ITIN</option>
                           <option value={3}>U.S. TIN not applicable</option>
                           <option value={4}>U.S. TIN not available</option>
                         </select>
-                        {/* <p className="error">{errors.eciUsTinTypeId}</p> */}
+                        <p className="error">{errors.eciUsTinTypeId?.toString()}</p>
                       </div>
 
                       <div className="col-4">
@@ -210,6 +210,7 @@ export default function Tin(props: any) {
                           }}
                           id="outlined"
                           name="streetNumberName"
+                          placeholder="Enter Street Number and Name"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           error={Boolean(

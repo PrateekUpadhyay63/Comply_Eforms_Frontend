@@ -101,9 +101,9 @@ export default function Certificates(props: any) {
       })
     );
 
-    if (componentPaths.hasOwnProperty(cardId)) {
+    // if (componentPaths.hasOwnProperty(cardId)) {
       history(componentPaths[cardId]);
-    }
+    // }
   };
 
   const cards = [
