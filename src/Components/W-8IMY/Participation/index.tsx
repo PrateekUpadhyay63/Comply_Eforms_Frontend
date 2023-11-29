@@ -613,7 +613,7 @@ export default function Penalties() {
                   <Typography align="center">
                     <Button
                     onClick={()=>{
-                      history('/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp')
+                      history('/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY')
                     }}
                       variant="contained"
                       style={{

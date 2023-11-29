@@ -883,7 +883,7 @@ export default function Tin(props: any) {
                     <Typography align="center">
                       <Button
                         onClick={() => {
-                          history("/Exp/Tax_Purpose_Exp/Chapter4_Exp");
+                          history("/IMY/Tax_Purpose_Exp/Chapter4_IMY");
                         }}
                         variant="contained"
                         style={{
