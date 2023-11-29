@@ -489,3 +489,13 @@ transition: all 1.5s ease;
 }
 
 .html2canvas-container { width: 3000px !important; height: 3000px !important; }
+
+@media print {
+  .pagebreak {
+    page-break-before: always !important;
+    page-break-after: always !important;
+    clear: both;
+  }
+
+  /* page-break-after works, as well */
+}
