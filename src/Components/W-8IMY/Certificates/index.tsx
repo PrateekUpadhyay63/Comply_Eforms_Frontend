@@ -10,6 +10,9 @@ import {
   Paper,
   Checkbox,
 } from "@mui/material";
+import { Form, Formik } from "formik";
+import { W8_state_ECI } from "../../../Redux/Actions";
+import { certificateSchema } from "../../../schemas/w8Exp";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +21,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import { useDispatch } from "react-redux";
 export default function Certifications(props: any) {
   const history = useNavigate();
   const [open2, setOpen2] = useState(false);
@@ -25,7 +29,14 @@ export default function Certifications(props: any) {
   const handleClose2 = () => setOpen2(false);                               
   const [toolInfo, setToolInfo] = useState("");
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const initialValue = {
+    isBeneficialOwnerIncome: false,
+    isAmountCertificationUS: false,
+    isBeneficialOwnerGrossIncome: false,
+    isBeneficialOwnerNotUSPerson: false,
+   
+  };
+  const dispatch = useDispatch();
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -53,6 +64,31 @@ export default function Certifications(props: any) {
       </div>
       <div className="col-8 mt-5">
       <div style={{ padding: "16px" }}>
+      <Formik
+            initialValues={initialValue}
+            enableReinitialize
+            validationSchema={certificateSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(true);
+              console.log(values, "vallllll");
+              dispatch(
+                W8_state_ECI(values, () => {
+                 history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY");
+                })
+              );
+             history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY");
+            }}
+          >
+            {({
+              errors,
+              touched,
+              handleBlur,
+              values,
+              handleSubmit,
+              handleChange,
+              setFieldValue,
+            }) => (
+              <Form onSubmit={handleSubmit}>
         <Paper style={{ padding: "14px" }}>
           <Typography
             align="left"
@@ -163,7 +199,7 @@ export default function Certifications(props: any) {
           <Typography
             style={{
               margin: "10px",
-              fontSize: "15px",
+              fontSize: "17px",
               color: "grey",
               marginLeft: "20px",
             }}
@@ -187,10 +223,14 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerIncome"
+                        value={values.isBeneficialOwnerIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{
-                    fontSize: "15px",
+                    fontSize: "17px",
                     color: "black",
                     marginTop: "10px",
                   }}
@@ -198,6 +238,7 @@ export default function Certifications(props: any) {
                  I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -206,14 +247,19 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerNotUSPerson"
+                        value={values.isBeneficialOwnerNotUSPerson}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
                 >
                  Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for 
 which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerNotUSPerson}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -223,13 +269,18 @@ which I am providing this form or any withholding agent that can disburse or mak
               />
               
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isAmountCertificationUS"
+                        value={values.isAmountCertificationUS}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,fontWeight:"bold"}}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,fontWeight:"bold"}}
                 >
                  I agree that I will submit a new form within 30 days if any certification on this form becomes incorrect.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isAmountCertificationUS}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -243,9 +294,13 @@ which I am providing this form or any withholding agent that can disburse or mak
 
               
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isBeneficialOwnerGrossIncome"
+                        value={values.isBeneficialOwnerGrossIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
                 >
                   Check to confirm you have reviewed the Electronic Form
                   <span
@@ -259,6 +314,7 @@ which I am providing this form or any withholding agent that can disburse or mak
                   </span>
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -287,9 +343,7 @@ which I am providing this form or any withholding agent that can disburse or mak
             </Button>
             <Button
               type="submit"
-              onClick={() => {
-                history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY");
-              }}
+            
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}
             >
@@ -324,6 +378,9 @@ which I am providing this form or any withholding agent that can disburse or mak
             </Button>
           </Typography>
         </Paper>
+        </Form>
+            )}
+          </Formik>
       </div>
       </div>
       </div>
