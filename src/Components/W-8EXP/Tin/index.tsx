@@ -52,13 +52,24 @@ export default function Tin(props: any) {
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
   const initialValue = {
+    // usTinTypeId: obValues.usTinTypeId,
+    // usTin: obValues.usTin,
+    // notAvailable: false,
+    // foreignTINCountry: obValues.foreignTINCountryId,
+    // foreignTIN:  obValues.foreignTIN,
+    // isFTINNotLegallyRequired: false,
+    // tinisFTINNotLegallyRequired: "Yes",
+    // // tinAlternativeFormate: true,
+    // isNotLegallyFTIN: "",
+    // tinValue:"",
     usTinTypeId: obValues.usTinTypeId,
     usTin: obValues.usTin,
+    tinValue:"",
     notAvailable: false,
     foreignTINCountry: obValues.foreignTINCountryId,
-    foreignTIN:  obValues.foreignTIN,
+    foreignTIN: "",
     isFTINNotLegallyRequired: false,
-    tinisFTINNotLegallyRequired: "",
+    tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -278,17 +289,24 @@ export default function Tin(props: any) {
                           {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
 
+                       
                         <div className="col-lg-5 col-12">
                           <Typography>U.S. TIN</Typography>
                           <Input
-                            disabled={values.notAvailable}
+                            disabled
                             fullWidth
-                            type="text"
-                            name="usTin"
-                            value={values.usTin}
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            error={Boolean(touched.usTin && errors.usTin)}
+                            
+                            placeholder="ENTER US TIN"
+                            defaultValue="ENTER US TIN"
+                            value={values.tinValue}
+                            // onBlur={handleBlur}
+                            onChange={(e: any) => {
+                              handleChange(e);
+
+                              
+                                setFieldValue("","");
+                            }}
+                           
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -296,14 +314,15 @@ export default function Tin(props: any) {
                               fontStyle: "italic",
                               height: "50px",
                               width: "100%",
+
                             }}
                           />
                           {values.notAvailable ? (
                             ""
-                          ) : (
+                          ) : 
                             // <p className="error">{errors.usTin}</p>
-                            ""
-                          )}
+                            " "
+                          }
                         </div>
                         <div className="col-lg-2 col-12">
                           <div style={{ marginTop: "27px" }}>
@@ -517,13 +536,19 @@ export default function Tin(props: any) {
                               type="text"
                               disabled={
                                 values.isFTINNotLegallyRequired ||
-                                values.foreignTINCountry == "1"
+                                values.foreignTINCountry == "1" 
+                               
+                                
+                                
                               }
                               name="foreignTIN"
                               value={values.foreignTIN}
                               onBlur={handleBlur}
                               onChange={handleChange}
                               inputProps={{ maxLength: 10 }}
+                              placeholder="ENTER FOREIGN TIN"
+
+                             
                               error={Boolean(
                                 touched.foreignTIN && errors.foreignTIN
                               )}
@@ -542,8 +567,10 @@ export default function Tin(props: any) {
                               type="text"
                               disabled={
                                 values.isFTINNotLegallyRequired ||
-                                values.foreignTINCountry == "1"
+                                values.foreignTINCountry == "1" ||
+                                values.tinisFTINNotLegallyRequired ==="Yes"
                               }
+                              placeholder="ENTER FOREIGN TIN"
                               name="foreignTIN"
                               value={values.foreignTIN}
                               onBlur={handleBlur}
@@ -563,10 +590,11 @@ export default function Tin(props: any) {
                           )}
                           {values.isFTINNotLegallyRequired ? (
                             ""
-                          ) : (
+                          ) : 
                             // <p className="error">{errors.foreignTIN}</p>
-                            ""
-                          )}
+                            " "
+                          }
+
 
                           <FormControl >
                             <RadioGroup
@@ -752,8 +780,32 @@ export default function Tin(props: any) {
                       </>
                     )}
 
+               
+
+                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
+                      <Typography>
+                        Please specify the reason for non-availability of US TIN{" "}
+                        <span style={{ color: "red" }}>*</span>
+                      </Typography>
+
+                      <Input
+                        fullWidth
+                        type="text"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        style={{
+                          border: " 1px solid #d9d9d9 ",
+                          padding: " 0 10px",
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "6rem",
+                          width: "100%",
+                        }}
+                      />
+                    </div>):""}
+
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div className="my-3">
+                      <div className="my-3" style={{ marginLeft: "20px" }}>
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}
@@ -793,28 +845,6 @@ export default function Tin(props: any) {
                     ) : (
                       ""
                     )}
-
-                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
-                      <Typography>
-                        Please specify the reason for non-availability of US TIN{" "}
-                        <span style={{ color: "red" }}>*</span>
-                      </Typography>
-
-                      <Input
-                        fullWidth
-                        type="text"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        style={{
-                          border: " 1px solid #d9d9d9 ",
-                          padding: " 0 10px",
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "6rem",
-                          width: "100%",
-                        }}
-                      />
-                    </div>):""}
                     <div
                       style={{
                         display: "flex",

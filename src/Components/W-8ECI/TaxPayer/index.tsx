@@ -29,19 +29,16 @@ export default function Tin(props: any) {
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
 
   const initialValue = {
-    usTin:  obValues.usTin,
     usTinTypeId: obValues.usTinTypeId,
-    foreignTINCountry: obValues.foreignTINCountryId,
-    foreignTIN: obValues.foreignTIN,
-    isFTINLegally: true,
+    usTin: obValues.usTin,
+    tinValue:"",
     notAvailable: false,
-    isNotAvailable: true,
-    isExplanationNotLegallyFTIN: "No",
+    foreignTINCountry: obValues.foreignTINCountryId,
+    foreignTIN: "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "Yes",
-    nonAvailabilityReason: "",
+    // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
-    tinValue:""
   };
 
  
@@ -121,19 +118,9 @@ export default function Tin(props: any) {
         validationSchema={TaxPayerSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
-          let payload = {
-            usTin: values.usTin,
-            usTinTypeId: values.usTinTypeId,
-            foreignTINCountry: values.foreignTINCountry,
-            foreignTIN: values.foreignTIN,
-            isFTINLegally: values.isFTINLegally,
-            notAvailable: values.notAvailable,
-            isNotAvailable: values.isNotAvailable,
-            isExplanationNotLegallyFTIN: values.isExplanationNotLegallyFTIN,
-            nonAvailabilityReason: values.nonAvailabilityReason,
-          };
+          
           dispatch(
-            W8_state_ECI(payload, () => {
+            W8_state_ECI(values, () => {
               history("/W-8ECI/Income");
             })
           );
