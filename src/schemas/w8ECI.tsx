@@ -27,7 +27,7 @@ export const TaxPurposeSchema = () => {
 export const TaxPayerSchema = () => {
   return Yup.object().shape({
     usTinTypeId: Yup.number().required("Field Cannot be Empty"),
-    usTin: Yup.string(),
+    usTin: Yup.string().required("Field Cannot be Empty"),
     isNotAvailable: Yup.string(),
     // notAvailable: Yup.string().required("Please select one of the options"),
     foreignTINCountry: Yup.string().required("Field Cannot be Empty"),

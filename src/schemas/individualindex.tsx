@@ -5,16 +5,16 @@ export const individualSchema = () => {
     isUSEntity: Yup.string(),
     isUSIndividual: Yup.string(),
     firstName: Yup.string().trim()
-      .required("Please Enter First Name")
-      .min(3, "First Name should be minimum of 3 characters")
-      .max(50, "First Name should be maximum of 50 characters"),
+      .required("Please Enter First Name"),
+      // .min(3, "First Name should be minimum of 3 characters")
+      // .max(50, "First Name should be maximum of 50 characters"),
     lastName: Yup.string().trim()
-      .required("Please Enter Last Name")
-      .min(3, "Last Name should be minimum of 3 characters")
-      .max(50, "Last Name should be maximum of 50 characters"),
+      .required("Please Enter Last Name"),
+      // .min(3, "Last Name should be minimum of 3 characters")
+      // .max(50, "Last Name should be maximum of 50 characters"),
     uniqueIdentifier: Yup.string()
       .required("Please Enter unique Identifier")
-      .min(3, "Too short")
+      // .min(3, "Too short")
       .max(50, "Too long"),
     countryOfCitizenshipId: Yup.number().when("isUSIndividual", {
       is: "no",
@@ -102,11 +102,11 @@ export const individualSchema = () => {
 
     contactFirstName: Yup.string()
       .required("Please enter First name")
-      .min(3, "First Name should be minimum of 3 characters")
+      // .min(3, "First Name should be minimum of 3 characters")
       .max(50, "First Name should be maximum of 50 characters"),
     contactLastName: Yup.string()
       .required("Please enter Last name")
-      .min(3, "Last Name should be minimum of 3 characters")
+      // .min(3, "Last Name should be minimum of 3 characters")
       .max(50, "Last Name should be maximum of 50 characters"),
     contactEmail: Yup.string().trim()
       .email("Invalid Email address")
@@ -153,14 +153,14 @@ export const individualSchema = () => {
       then: () =>
         Yup.string()
         .required("Please enter Bank code")
-        .min(5, "Bank code should be minimum of 5 characters"),
+        // .min(5, "Bank code should be minimum of 5 characters"),
     }),
       
     sortCode: Yup.string().when(["paymentTypeId", "accountBankBranchLocationId"], {
       is: (paymentTypeId:any, accountBankBranchLocationId:any) => 
       (paymentTypeId == 1) && accountBankBranchLocationId == 257,
       then:() => Yup.string().required("Please enter sort code")
-      .min(10, "sort code should be minimum of 10 characters"),
+      // .min(10, "sort code should be minimum of 10 characters"),
     }),
 
     abaRouting: Yup.string().when(["paymentTypeId", "accountBankBranchLocationId"], {

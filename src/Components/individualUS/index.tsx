@@ -1139,6 +1139,7 @@ export default function IndividualUs() {
                               }}
                             /> */}
                             <DatePicker
+                            className="dateclass"
                               name="dob"
                               onChange={(date) => {
                                 onChange(date);
@@ -1855,7 +1856,7 @@ export default function IndividualUs() {
                                 }}
                                 name="usTinTypeId"
                                 id="Income"
-                                defaultValue={1}
+                                defaultValue={3}
                                 onChange={(e:any) => {
                                   handleChange(e);
 
@@ -1864,7 +1865,7 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >                               
-                                <option value="1">-Select-</option>
+                                {/* <option value="1">-Select-</option> */}
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||

@@ -65,7 +65,7 @@
 //       },
 //       text: {
 //         margin: 12,
-          
+
 //         textAlign: 'justify',
 //         fontFamily: 'Times-Roman'
 //       },
@@ -94,18 +94,18 @@
 //       const pdfContent = (
 //         <Document>
 //         <Page style={styles.body}>
-          
+
 //           <Text style={styles.header} fixed>
 //             ~ Created with react-pdf ~
 //           </Text>
 //           <Text style={styles.title}>Don Quijote de la Mancha</Text>
 //           <Text style={styles.author}>Miguel de Cervantes</Text>
-  
+
 //           <Text style={styles.subtitle}>
 //             Capítulo I: Que trata de la condición y ejercicio del famoso hidalgo D.
 //             Quijote de la Mancha
 //           </Text>
-        
+
 //           <Text style={styles.subtitle}>
 //           {dynamicData.parsedData.contactEmail}
 //           </Text>
@@ -183,7 +183,7 @@
 //             Capítulo II: Que trata de la primera salida que de su tierra hizo el
 //             ingenioso Don Quijote
 //           </Text>
-         
+
 //           <Text style={styles.text}>
 //             Hechas, pues, estas prevenciones, no quiso aguardar más tiempo a poner
 //             en efeto su pensamiento, apretándole a ello la falta que él pensaba que
@@ -269,7 +269,7 @@
 //         </Page>
 //       </Document>
 //       );
-  
+
 //       const blob = await pdf(pdfContent).toBlob();
 //       const pdfUrl = URL.createObjectURL(blob);
 //       onGeneratePDF(pdfUrl);
@@ -278,14 +278,14 @@
 //   },[onGeneratePDF])
 
 
- 
+
 //   return <></>;
 
- 
 
 
- 
-  
+
+
+
 
 //  }
 
