@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-
+const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
 export const SubstantialSchema = () => {
   return Yup.object().shape({
     daysAvailableInThisYear: Yup.number().min(1).required(),
@@ -130,14 +130,23 @@ export const certificateSchema = () => {
 
 export const partCertiSchema = () => {
   return Yup.object().shape({
-    signBy: Yup.string().required("Please enter "),
-    enterConfirmationCode: Yup.string().required("Please enter code"),
-    signDate: Yup.date().required("Please enter date"),
-    confirmationOfAcceptanceWithTheAboveDeclarations: Yup.boolean().oneOf(
-      [true],
-      "Please mark the checkbox"
+    signedBy: Yup.string().required("Please enter "),
+    confirmationCode: Yup.string()
+    .required("Please enter code")
+    .test(
+      'match',
+      'Confirmation code does not match',
+      function (value) {
+        const storedConfirmationCode = obValues?.confirmationCode;
+        return !storedConfirmationCode || value === storedConfirmationCode;
+      }
     ),
-  });
+  date: Yup.date(),
+  isAgreeWithDeclaration: Yup.boolean().oneOf(
+    [true],
+    "Please mark the checkbox"
+  ),
+});
 };
 
 export const declarationsSchema = () => {

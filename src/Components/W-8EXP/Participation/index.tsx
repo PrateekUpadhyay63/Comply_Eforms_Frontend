@@ -44,9 +44,9 @@ export default function Penalties() {
   const [toolInfo, setToolInfo] = useState("");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
-    signedBy: obValues.signedBy,
+    signedBy: "",
     question:obValues?.securityQuestion?.question,
-    confirmationCode: obValues?.confirmationCode,
+    confirmationCode: "",
     date: obValues.date,
     isAgreeWithDeclaration: false,
   };
@@ -225,7 +225,7 @@ export default function Penalties() {
                         ""
                       )}
 
-                      <TextField
+<TextField
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
@@ -233,14 +233,14 @@ export default function Penalties() {
                           width: "100%",
                         }}
                         fullWidth
-                        type="text"
+                      
                         name="signedBy"
                         value={values.signedBy}
                         onBlur={handleBlur}
                         onChange={handleChange}
                         error={Boolean(touched.signedBy && errors.signedBy)}
                       />
-                      {/* <p className="error">{errors.signedBy}</p> */}
+                      <p className="error">{errors.signedBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -322,18 +322,18 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                        <TextField
-                          name="confirmationCode"
-                          value={values.confirmationCode}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
-                          )}
-                          type="password"
-                          required
-                          style={{ width: "100%" }}
-                        />
+                      <TextField
+    name="confirmationCode"
+    value={values.confirmationCode}
+    onBlur={handleBlur}
+    onChange={handleChange}
+    error={Boolean(touched.confirmationCode && errors.confirmationCode)}
+    type="password"
+    style={{ width: "100%" }}
+  />
+  {touched.confirmationCode && typeof errors.confirmationCode === 'string' && (
+    <p className="error">{errors.confirmationCode}</p>
+  )}
                         <span
                         onClick={toggleRecoverSection}
                           style={{
@@ -591,10 +591,10 @@ export default function Penalties() {
                     </Button>
                     <Button
                       type="submit"
-                      onClick={() => {
-                        history("/Submit");
-                        //  setOpen2(true)
-                      }}
+                      // onClick={() => {
+                      //   history("/Submit");
+                      //   //  setOpen2(true)
+                      // }}
                       // onClick={() => {
                       //   setOpen2(true);
                       // }}

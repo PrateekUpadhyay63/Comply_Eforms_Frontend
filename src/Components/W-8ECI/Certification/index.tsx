@@ -183,7 +183,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "13px",
+                    fontSize: "17px",
                     color: "grey",
                     marginLeft: "20px",
                   }}
@@ -197,7 +197,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "13px",
+                    fontSize: "17px",
                     color: "grey",
                     marginLeft: "20px",
                   }}
@@ -233,7 +233,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "10px",
                         }}
@@ -243,6 +243,7 @@ export default function Certifications(props: any) {
                         this form relates,
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isBeneficialOwnerIncome}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -260,7 +261,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -270,6 +271,7 @@ export default function Certifications(props: any) {
                         business in the United States,
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isAmountCertificationUS}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -287,7 +289,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -297,6 +299,7 @@ export default function Certifications(props: any) {
                         gross income) for the taxable year,
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -314,7 +317,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -322,6 +325,7 @@ export default function Certifications(props: any) {
                         The beneficial owner is not a U.S. person.
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isBeneficialOwnerNotUSPerson}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -339,7 +343,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -351,6 +355,7 @@ export default function Certifications(props: any) {
                         of the amounts of which I am the beneficial owner
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isAuthorizeWithHoldingAgent}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -368,7 +373,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -379,6 +384,7 @@ export default function Certifications(props: any) {
                         </span>
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isCapacityForm}</p>
                     <Divider
                       style={{
                         marginTop: "1rem",
@@ -388,13 +394,13 @@ export default function Certifications(props: any) {
                     />
                     <Typography
                       style={{
-                        fontSize: "13px",
+                        fontSize: "17px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
                       }}
                     ></Typography>
-
+                    
                     <Typography style={{ display: "flex" }}>
                       <Checkbox
                         name="isElectronicForm"
@@ -405,7 +411,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "13px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -422,6 +428,8 @@ export default function Certifications(props: any) {
                         </span>
                       </Typography>
                     </Typography>
+                    <p className="error">{errors.isElectronicForm}</p>
+
                     <Divider
                       style={{
                         marginTop: "1rem",

@@ -2632,7 +2632,7 @@ The name of the securities market on which the stock is regularly traded is
                           <Button
                           type="submit"
                            onClick={()=>{
-                            history("/Exp/Tax_Purpose_Exp")
+                            history("/IMY/Tax_Purpose_Exp")
                            }}
                             variant="contained"
                             style={{
