@@ -203,7 +203,7 @@ export default function Tin(props: any) {
                   <Typography
                     style={{
                       margin: "10px",
-                      fontSize: "33px",
+                      fontSize: "26px",
                       fontWeight: "550",
                     }}
                   >
@@ -233,7 +233,7 @@ export default function Tin(props: any) {
                       ></select>
                     </div>
 
-                    <div className="col-4">
+                    <div className="col-8">
                       <Select
                         value={submit}
                         name="taxTreaty_TreatyId"
@@ -288,11 +288,11 @@ export default function Tin(props: any) {
 
                       <div className="col-4">
                         <Input
-                          style={{ fontSize: "19px", border: "none" }}
+                          style={{ fontSize: "14px", border: "none" }}
                           type="file"
                         />
                       </div>
-                      <div className="col-3">
+                      <div className="col-4">
                         <DeleteOutline
                           onClick={() => handleDelete(index)}
                           style={{ color: "red", fontSize: "30px" }}

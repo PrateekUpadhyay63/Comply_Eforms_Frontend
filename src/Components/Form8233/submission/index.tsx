@@ -22,16 +22,22 @@ export default function Penalties() {
   const handleClickOpen2 = () => setOpen2(true);
 
   const [toolInfo, setToolInfo] = useState("");
-
+  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
-    signBy: "",
-    enterConfirmationCode: "",
-    signDate: "",
-    confirmationOfAcceptanceWithTheAboveDeclarations: false,
+    signaturedBy: "" ,
+    question:obValues?.securityQuestion?.question,
+    confirmationCode: "",
+    date: obValues.date,
+    isAgreeWithDeclaration: false,
   };
+  
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [showRecoverSection, setShowRecoverSection] = useState(false);
 
+  const toggleRecoverSection = () => {
+    setShowRecoverSection(true);
+  };
   return (
     <>
       <Formik
@@ -92,7 +98,7 @@ export default function Penalties() {
                   </Typography>
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "20px", color: "grey" }}
+                    style={{ margin: "10px", fontSize: "17px", color: "grey" }}
                   >
                     The Internal Revenue Service does not require your consent
                     to any provisions of this document other than the
@@ -195,7 +201,7 @@ export default function Penalties() {
                         ""
                       )}
 
-                      <TextField
+<TextField
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
@@ -203,14 +209,14 @@ export default function Penalties() {
                           width: "100%",
                         }}
                         fullWidth
-                        type="text"
-                        name="signBy"
-                        value={values.signBy}
+                      
+                        name="signaturedBy"
+                        value={values.signaturedBy}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        error={Boolean(touched.signBy && errors.signBy)}
+                        error={Boolean(touched.signaturedBy && errors.signaturedBy)}
                       />
-                      <p className="error">{errors.signBy}</p>
+                      <p className="error">{errors.signaturedBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -292,31 +298,94 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                        <TextField
-                          name="enterConfirmationCode"
-                          value={values.enterConfirmationCode}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          error={Boolean(
-                            touched.enterConfirmationCode &&
-                              errors.enterConfirmationCode
-                          )}
-                          type="password"
-                          style={{ width: "100%" }}
-                        />
+                      <TextField
+    name="confirmationCode"
+    value={values.confirmationCode}
+    onBlur={handleBlur}
+    onChange={handleChange}
+    error={Boolean(touched.confirmationCode && errors.confirmationCode)}
+    type="password"
+    style={{ width: "100%" }}
+  />
+  {touched.confirmationCode && typeof errors.confirmationCode === 'string' && (
+    <p className="error">{errors.confirmationCode}</p>
+  )}
                         <span
+                         onClick={toggleRecoverSection}
                           style={{
                             fontSize: "16px",
                             color: "blue",
                             marginLeft: "10px",
+                            cursor:"pointer"
                           }}
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.enterConfirmationCode}</p>
+                        {/* <p className="error">{errors.confirmationCode}</p> */}
                       </div>
                     </div>
                   </div>
+                  {showRecoverSection &&(<div style={{margin:"10px"}}>
+  <Typography align="left" style={{fontWeight:"bold"}}>
+  Electronic Signature Confirmation Code Recovery
+  </Typography>
+  <Typography style={{fontSize:"14px"}}>
+  To recover your Confirmation Code, please type in your security word below. Select the 'Hint?' if you need a reminder of your security word.
+  </Typography>
+
+  <div className="d-flex my-3 col-8">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.5rem",
+                          width: "50%",
+                        }}
+                        fullWidth
+                        type="text"
+                        name="signaturedBy"
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8">
+    <Link className="my-2 col-4" >Hint?</Link>
+    <TextField className=" col-4"
+                        style={{
+                         
+                          height: "3.47rem",
+                          width: "50%",
+                          backgroundColor:"#e3e6e4"
+                        }}
+                        fullWidth
+                        type="text"
+                        disabled
+                        value={values.question}
+                        
+                        
+                      />
+
+  </div>
+  <div className="d-flex my-3 col-8 ">
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
+    <TextField className="col-4"
+                        style={{
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "3.47rem",
+                          width: "50%",
+                          backgroundColor:"#e3e6e4"
+                        }}
+                        fullWidth
+                        disabled
+                        type="text"
+                       
+                        value={values.confirmationCode}
+                      />
+
+  </div>
+</div>)}
                   <div
                     className="row"
                     style={{
@@ -325,34 +394,39 @@ export default function Penalties() {
                       marginTop: "20px",
                     }}
                   >
-                    <div className="col-12 col-md-6 p-0">
+                    <div className="col-6 col-md-12 p-0">
                       <Typography align="left" style={{ padding: "0px" }}>
                         <Typography style={{ fontSize: "15px" }}>
                           Date
                         </Typography>
-                        <TextField
-                          style={{ width: "100%" }}
-                          onChange={handleChange}
+                        <TextField 
+                         className="date"
+                          name="dob"
+                          
+                         
+                          value={
+                            new Date().toLocaleDateString('en-US', {
+                              month: '2-digit',
+                              day: '2-digit',
+                              year: 'numeric',
+                            })
+                          }
                           onBlur={handleBlur}
-                          error={Boolean(touched.signDate && errors.signDate)}
-                          value={values.signDate}
-                          type="date"
-                          name="signDate"
+                          
+                          
+                          disabled
                         />
-                        <p className="error">{errors.signDate}</p>
+                        
+                      {/* {values.date ?(""):<p className="error">{errors.date}</p>} */}
                       </Typography>
                     </div>
                   </div>
 
                   <Typography style={{ display: "flex", marginLeft: "10px" }}>
                     <Checkbox
-                      name="confirmationOfAcceptanceWithTheAboveDeclarations"
-                      value={
-                        values.confirmationOfAcceptanceWithTheAboveDeclarations
-                      }
-                      checked={
-                        values.confirmationOfAcceptanceWithTheAboveDeclarations
-                      }
+                      name="isAgreeWithDeclaration"
+                      value={values.isAgreeWithDeclaration}
+                      checked={values.isAgreeWithDeclaration}
                       onChange={handleChange}
                     />
                     <Typography
@@ -364,11 +438,7 @@ export default function Penalties() {
                     >
                       Please "check" box to confirm your acceptance with the
                       above declarations{" "}
-                      <Typography color="error">
-                        {
-                          errors.confirmationOfAcceptanceWithTheAboveDeclarations
-                        }
-                      </Typography>
+                     
                       <span>
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -402,6 +472,16 @@ export default function Penalties() {
                           />
                         </Tooltip>
                       </span>
+                      {errors.isAgreeWithDeclaration &&
+                      touched.isAgreeWithDeclaration ? (
+                        <div>
+                          <Typography color="error">
+                            {errors.isAgreeWithDeclaration}
+                          </Typography>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </Typography>
                   </Typography>
                   {toolInfo === "check" ? (

@@ -120,7 +120,7 @@ export default function Penalties() {
                   </Typography>
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px", color: "grey" }}
+                    style={{ margin: "10px", fontSize: "17px", color: "grey" }}
                   >
                     The Internal Revenue Service does not require your consent
                     to any provisions of this document other than the
@@ -336,6 +336,7 @@ export default function Penalties() {
                             fontSize: "16px",
                             color: "blue",
                             marginLeft: "10px",
+                            cursor:"pointer"
                           }}
                         >
                           Recover Password

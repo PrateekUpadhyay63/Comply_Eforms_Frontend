@@ -202,7 +202,7 @@ export default function Penalties(props: any) {
         </Typography>
         <Typography
           align="left"
-          style={{ margin: "10px", fontSize: "12px", color: "grey" }}
+          style={{ margin: "10px", fontSize: "17px", color: "grey" }}
         >
           The Internal Revenue Service does not require your consent to any
           provisions of this document other than the certifications required to
