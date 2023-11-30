@@ -85,7 +85,7 @@ export default function Backup_witholding(props: any) {
           }) => (
             <Form onSubmit={handleSubmit}>
               <div className="row w-100 h-100">
-                <div className="col-4 mt-3" >
+                <div className="col-4 mt-3" style={{backgroundColor:"#0C3D69"}} >
                   <div className="bg-none" style={{ padding: "10px 0px", height: "100%", }}>
                     <Paper style={{ padding: "0px 0px 0px 0px", height: "100%", backgroundColor: "#ffffff33" }} >
 
@@ -218,7 +218,7 @@ export default function Backup_witholding(props: any) {
                     </Paper>
                   </div>
                 </div>
-                <div className="col-8" style={{}}>
+                <div className="col-8" style={{backgroundColor:"#0C3D69"}}>
                   <div style={{ margin: "25px", padding: "10px", backgroundColor: "#ffff", }}>
                     <Typography
                       align="left"
@@ -808,25 +808,29 @@ export default function Backup_witholding(props: any) {
                             <Typography>Exemption Codes – Select from the list below only when it applies</Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "24"}
+                                  onChange={() => handleRadioChange("24")} />
                               </span>
                               1.	An organization exempt from tax under section 501(a), any IRA, or a custodial account under section 403(b)(7) if the account satisfies the requirements of section 401(f)(2)
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "25"}
+                                  onChange={() => handleRadioChange("25")} />
                               </span>
                               2.	The United States or any of its agencies or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "26"}
+                                  onChange={() => handleRadioChange("26")}/>
                               </span>
                               3.	A state, the District of Columbia, a possession of the United States, or any of their political subdivisions or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "27"}
+                                  onChange={() => handleRadioChange("27")}/>
                               </span>
                               4.	A foreign government or any of its political subdivisions, agencies, or instrumentalities
                             </Typography>
@@ -850,25 +854,29 @@ export default function Backup_witholding(props: any) {
                             <Typography>Exemption Codes – Select from the list below only when it applies</Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "28"}
+                                  onChange={() => handleRadioChange("28")}/>
                               </span>
                               1.	An organization exempt from tax under section 501(a), any IRA, or a custodial account under section 403(b)(7) if the account satisfies the requirements of section 401(f)(2)
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "29"}
+                                  onChange={() => handleRadioChange("29")}/>
                               </span>
                               2.	The United States or any of its agencies or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "30"}
+                                  onChange={() => handleRadioChange("30")}/>
                               </span>
                               3.	A state, the District of Columbia, a possession of the United States, or any of their political subdivisions or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "31"}
+                                  onChange={() => handleRadioChange("31")}/>
                               </span>
                               4.	A foreign government or any of its political subdivisions, agencies, or instrumentalities
                             </Typography>
@@ -892,25 +900,29 @@ export default function Backup_witholding(props: any) {
                             <Typography>Exemption Codes – Select from the list below only when it applies</Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "310"}
+                                  onChange={() => handleRadioChange("310")}/>
                               </span>
                               1.	An organization exempt from tax under section 501(a), any IRA, or a custodial account under section 403(b)(7) if the account satisfies the requirements of section 401(f)(2)
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "32"}
+                                  onChange={() => handleRadioChange("32")}/>
                               </span>
                               2.	The United States or any of its agencies or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "33"}
+                                  onChange={() => handleRadioChange("33")}/>
                               </span>
                               3.	A state, the District of Columbia, a possession of the United States, or any of their political subdivisions or instrumentalities
                             </Typography>
                             <Typography style={{ fontSize: "12px", marginTop: "10px" }}>
                               <span>
-                                <Checkbox />
+                                <Checkbox checked={selectedValue === "34"}
+                                  onChange={() => handleRadioChange("34")}/>
                               </span>
                               4.	A foreign government or any of its political subdivisions, agencies, or instrumentalities
                             </Typography>

@@ -16,7 +16,7 @@ export const EntitySchema = () => {
     usTinTypeId: Yup.number().notOneOf([1], "Please select a valid option"),
     uniqueIdentifier: Yup.string()
       .required("Please Enter unique Identifier")
-      .min(3, "Too short")
+      // .min(3, "Too short")
       .max(50, "Too long"),
     vatId: Yup.number().when("isUSEntity", {
       is: "no",
@@ -97,11 +97,11 @@ export const EntitySchema = () => {
     ),
     contactFirstName: Yup.string()
       .required("Please enter First name")
-      .min(3, "First Name should be minimum of 3 characters")
+      // .min(3, "First Name should be minimum of 3 characters")
       .max(50, "First Name should be maximum of 50 characters"),
     contactLastName: Yup.string()
       .required("Please enter Last name")
-      .min(3, "Last Name should be minimum of 3 characters")
+      // .min(3, "Last Name should be minimum of 3 characters")
       .max(50, "Last Name should be maximum of 50 characters"),
     contactEmail: Yup.string().trim()
       .email("Invalid Email address")
@@ -114,7 +114,7 @@ export const EntitySchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter Account Holder Name")
-          .min(3, "Name should be minimum of 3 characters")
+          // .min(3, "Name should be minimum of 3 characters")
           .max(50, "Name should be maximum of 50 characters"),
     }),
 
@@ -148,7 +148,7 @@ export const EntitySchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter Bank code")
-          .min(5, "Bank code should be minimum of 5 characters"),
+          // .min(5, "Bank code should be minimum of 5 characters"),
     }),
 
     sortCode: Yup.string().when(
@@ -159,7 +159,7 @@ export const EntitySchema = () => {
         then: () =>
           Yup.string()
             .required("Please enter sort code")
-            .min(10, "sort code should be minimum of 10 characters"),
+            // .min(10, "sort code should be minimum of 10 characters"),
       }
     ),
 
@@ -184,7 +184,7 @@ export const EntitySchema = () => {
       then: () =>
         Yup.string()
           .required("Please enter payable name")
-          .min(3, "Name should be minimum of 3 characters")
+          // .min(3, "Name should be minimum of 3 characters")
           .max(50, "Name should be maximum of 50 characters"),
     }),
 
