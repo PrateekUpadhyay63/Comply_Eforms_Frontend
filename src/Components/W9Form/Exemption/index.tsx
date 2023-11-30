@@ -39,7 +39,7 @@ export default function FCTA_Reporting(props: any) {
   );
  
   const initialValue = {
-    isExemptionFATCAReportings: "",
+    isExemptionFATCAReportings: "No",
     ReportingId:""
   };
 

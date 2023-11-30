@@ -78,7 +78,7 @@ export const tinSchema = () => {
     tiN_USTINId: Yup.number()
       .required("This Field is Required.")
       .notOneOf([0], "Required Field"),
-      Tin: Yup.number().required(
+      Tin: Yup.string().required(
         "Please enter TIN"
       ),
   });
