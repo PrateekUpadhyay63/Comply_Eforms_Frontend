@@ -20,6 +20,7 @@ import {
   Delete,
   DisabledByDefault,
 } from "@mui/icons-material";
+import CloseIcon from '@mui/icons-material/Close';
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { individualSchema } from "../../schemas/individualindex";
@@ -46,6 +47,7 @@ import { AppDispatch } from "../../Redux/store";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
+import "./index.scss"
 // import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
@@ -732,6 +734,36 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+
+                   {toolInfo === "identity" ? (
+                    <div className="mt-5">
+                      <Paper
+                      
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                      >
+                       <div className="d-flex" style={{justifyContent:"space-between"}}>
+                       <Typography style={{color: "#0c5460"}}>
+                        Instructor Identifier Format is ?********** 9- Numeric value only A- Alphabetic character only *- Alphanumeric character only ?- Characters optional after this
+                        </Typography>
+
+
+                        <Typography>
+                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
+                            setToolInfo("");
+                          }}/>
+                        </Typography>
+                       </div>
+                       
+                      
+                        
+                        
+                       
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
                   <>{console.log(values, "hbd")}</>
                   <CardHeader
                     className="flex-row-reverse"
@@ -924,9 +956,30 @@ export default function IndividualUs() {
                           <Typography className="d-flex w-100">
                             Unique Identifier
                             <span style={{ color: "red" }}>*</span>
-                            <Info
-                              style={{ color: "#ffc107", fontSize: "15px" }}
-                            />
+                            <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                              }}
+                              title={
+                                <>
+                                 
+                                  <a onClick={() => setToolInfo("identity")}>
+                                   
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                               onClick={() => setToolInfo("identity")}
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </Tooltip>
                           </Typography>
                           <Input
                             style={{

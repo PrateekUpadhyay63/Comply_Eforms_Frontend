@@ -772,7 +772,7 @@ export default function Certificates(props: any) {
           {selectedCard ? (
             <div style={{ marginTop: "20px" }} className="text-center">
               <Button
-                style={{ fontSize: "16px", marginTop: "35px" }}
+                style={{ fontSize: "25px", marginTop: "35px" }}
                 size="medium"
                 type="submit"
                 onClick={() => redirectToComponent(selectedCard)}
