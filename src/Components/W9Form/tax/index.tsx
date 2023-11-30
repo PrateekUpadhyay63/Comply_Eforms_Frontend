@@ -43,7 +43,20 @@ export default function Tin(props: any) {
     },
   ];
   const initialValue = {
-    tiN_USTINId:0
+    tiN_USTINId:0,
+    Tin :""
+  };
+  
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 2) {
+      
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 9) {
+      
+      values.usTin = values.usTin + "-";
+    }
   };
   const [selectedTaxClassification, setSelectedTaxClassification] =
   useState(0);
@@ -256,7 +269,7 @@ export default function Tin(props: any) {
                             <Info
                               style={{
                                 color: '#ffc107',
-                                fontSize: '16px',
+                                fontSize: '10px',
                                 cursor: 'pointer',
                                 verticalAlign: "super"
                               }}
@@ -307,9 +320,9 @@ export default function Tin(props: any) {
                           {errors.tiN_USTINId &&
                           touched.tiN_USTINId ? (
                             <div>
-                              <Typography color="error">
+                              <p className="error">
                                 {errors.tiN_USTINId}
-                              </Typography>
+                              </p>
                             </div>
                           ) : (
                             ""
@@ -318,11 +331,20 @@ export default function Tin(props: any) {
     </div>
 
     <div className="col-md-6  col-12">
+      
       <Typography>U.S. TIN</Typography>
       <Input
+      name = "Tin"
+      value={values.Tin}
+      id = "Tin"
+      onChange={
+        handleChange
+      }
       className="input-w9-cstm"
+      inputProps={{ maxLength: 9 }}
+      // onKeyDown={(e) => formatTin(e, values)}
       fullWidth
-        required
+       
         style={{
           width: "100%",
           border: " 1px solid #d9d9d9 ",
@@ -336,7 +358,9 @@ export default function Tin(props: any) {
           padding: " 0 10px ",
         }}
       />
+          <p className="error">{errors.Tin}</p>
     </div>
+
   </div>
   </div>
   </div>

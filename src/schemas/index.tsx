@@ -68,6 +68,9 @@ export const fctaSchema = () => {
     isExemptionFATCAReportings: Yup.string().required(
       "Please select one of the options"
     ),
+    ReportingId: Yup.string().required(
+      "Please select options"
+    ),
   });
 };
 export const tinSchema = () => {
@@ -75,7 +78,11 @@ export const tinSchema = () => {
     tiN_USTINId: Yup.number()
       .required("This Field is Required.")
       .notOneOf([0], "Required Field"),
+      Tin: Yup.number().required(
+        "Please enter TIN"
+      ),
   });
+  
 };
 
 export const securitySchema = () => {

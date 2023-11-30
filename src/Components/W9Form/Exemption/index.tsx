@@ -40,6 +40,7 @@ export default function FCTA_Reporting(props: any) {
  
   const initialValue = {
     isExemptionFATCAReportings: "",
+    ReportingId:""
   };
 
   useEffect(() => {
@@ -281,7 +282,7 @@ export default function FCTA_Reporting(props: any) {
               fontStyle: "italic",
               height: "30px",
             }}
-            name="interestDividendPaymentId"
+            name="ReportingId"
             id="Income"
             // defaultValue={data.interestDividendPaymentId}
              onChange={handleChange}
@@ -296,6 +297,8 @@ export default function FCTA_Reporting(props: any) {
                               )}
           </select>
         </FormControl>
+        <p className="error">{errors.ReportingId}</p>
+
       </>
     ) : ""}
   </div>
@@ -311,13 +314,20 @@ export default function FCTA_Reporting(props: any) {
     <Button variant="contained" style={{ color: "white" }}>
       SAVE & EXIT
     </Button>
-    <Button
+   {values?.isExemptionFATCAReportings === "Yes" ?( <Button
      type="submit"
       variant="contained"
       style={{ color: "white", marginLeft: "15px" }}
     >
       Continue
-    </Button>
+    </Button>):<Button
+     onClick={()=>{history("/US_Purposes/Back/Exemption/Tax")}}
+      variant="contained"
+      style={{ color: "white", marginLeft: "15px" }}
+    >
+      Continue
+    </Button>}
+
   </div>
   <Typography
     align="center"
