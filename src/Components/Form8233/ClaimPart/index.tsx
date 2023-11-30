@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Button,
@@ -9,8 +9,8 @@ import {
   Checkbox,
 } from "@mui/material";
 import { amountSchema } from "../../../schemas/8233";
-import { CREATE_8233 } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { CREATE_8233,getAllCountries,GetIncomeTypes } from "../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -34,12 +34,21 @@ export default function Tin(props: any) {
   };
   const dispatch = useDispatch();
   const history = useNavigate();
-  const [tax, setTax] = useState<string>("");
+  useEffect(()=>{
 
+    dispatch(GetIncomeTypes())
+    },[])
+  const [tax, setTax] = useState<string>("");
+  const GetIncomeTypesData = useSelector(
+    (state:any)=>state.GetIncomeTypesReducer.GetIncomeTypesData
+  )
   const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTax(event.target.value);
   };
-
+  useEffect(()=>{
+    dispatch(getAllCountries())  
+  },[])
+  const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
@@ -436,14 +445,13 @@ export default function Tin(props: any) {
                           }}
                         >
                           <option value="">-Select-</option>
-                          <option value={257}>33</option>
-                          <option value={258}>United States</option>
-                          <option>Afghanistan</option>
-                        <option>Akrotiri</option>
-                        <option>Aland Islands</option>
-                        <option>Albania</option>
-                        <option>Algeria</option>
-                        <option>American Samoa</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                         
                         </select>
                         <p className="error">{errors.taxTreaty_TreatyId}</p>
                       </div>
@@ -469,21 +477,14 @@ export default function Tin(props: any) {
                             width: "100%",
                           }}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>21 Other Income</option>
-                          <option value={258}>20 Students and Apprentices</option>
-                          <option>
-                          12 Royalties
-                          </option>
-                          <option>
-                          14 Independent Personal Services
-                          </option>
-                          <option>
-                          15 Dependent Personal Services
-                          </option>
-                          <option>
-                          17 Artistes and Athletes
-                          </option>
+                           <option value={0}>--Please Select the income types--</option>
+                            {GetIncomeTypesData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                                   )
+                                   )}
                         </select>
                         <p className="error">
                           {errors.taxTreaty_TreatyArticleId}
@@ -711,7 +712,7 @@ export default function Tin(props: any) {
                       ) : (
                         ""
                       )}
-                      <Input
+                      {/* <Input
                         name="taxTreaty_CountryOfResidenceId"
                         value={values.taxTreaty_CountryOfResidenceId}
                         onBlur={handleBlur}
@@ -728,7 +729,29 @@ export default function Tin(props: any) {
                           height: "50px",
                           width: "100%",
                         }}
-                      />
+                      /> */}
+                       <select
+                          name="taxTreaty_CountryOfResidenceId"
+                          value={values.taxTreaty_CountryOfResidenceId}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          style={{
+                            border: " 1px solid #d9d9d9 ",
+                            padding: " 0 10px",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "50px",
+                            width: "100%",
+                          }}
+                        >
+                          <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
+                        </select>
                       <p className="error">
                         {errors.taxTreaty_CountryOfResidenceId}
                       </p>
@@ -945,20 +968,12 @@ export default function Tin(props: any) {
                           }}
                         >
                          <option value="">-Select-</option>
-                          <option value={257}>21 Other Income</option>
-                          <option value={258}>20 Students and Apprentices</option>
-                          <option>
-                          12 Royalties
-                          </option>
-                          <option>
-                          14 Independent Personal Services
-                          </option>
-                          <option>
-                          15 Dependent Personal Services
-                          </option>
-                          <option>
-                          17 Artistes and Athletes
-                          </option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                         </select>
                         <p className="error">
                           {

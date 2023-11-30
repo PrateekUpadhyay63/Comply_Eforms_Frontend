@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -16,8 +16,8 @@ import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { ownerSchema } from "../../../schemas/8233";
-import { CREATE_8233 } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { CREATE_8233,getAllCountries } from "../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
@@ -50,7 +50,10 @@ export default function Tin(props: any) {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
+useEffect(()=>{
+  dispatch(getAllCountries())  
+},[])
+const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
@@ -136,9 +139,13 @@ export default function Tin(props: any) {
                           onBlur={handleBlur}
                           onChange={handleChange}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                         <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                         </select>
                         <p className="error">
                           {
@@ -171,9 +178,13 @@ export default function Tin(props: any) {
                           onBlur={handleBlur}
                           onChange={handleChange}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                         <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                         </select>
                         <p className="error">{errors.otherTaxBeginingYear}</p>
                       </FormControl>
@@ -198,9 +209,13 @@ export default function Tin(props: any) {
                           onBlur={handleBlur}
                           onChange={handleChange}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                         <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                         </select>
                         <p className="error">{errors.otherTaxEndYear}</p>
                       </FormControl>
@@ -439,15 +454,13 @@ export default function Tin(props: any) {
                         onBlur={handleBlur}
                         onChange={handleChange}
                       >
-                        <option value="">-Select-</option>
-                        <option value={257}>United Kingdom</option>
-                        <option value={258}>United States</option>
-                        <option>Afghanistan</option>
-                        <option>Akrotiri</option>
-                        <option>Aland Islands</option>
-                        <option>Albania</option>
-                        <option>Algeria</option>
-                        <option>American Samoa</option>
+                       <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                       </select>
                       <p className="error">{errors.countryIssuingPassportId}</p>
                     </div>
@@ -752,9 +765,13 @@ export default function Tin(props: any) {
                             width: "100%",
                           }}
                         >
-                          <option value="">-Select-</option>
-                          <option value={257}>United Kingdom</option>
-                          <option value={258}>United States</option>
+                         <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
+                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                                  ))}
                         </select>
                         <p className="error">
                           {errors.currentNonImmigrationStatus}

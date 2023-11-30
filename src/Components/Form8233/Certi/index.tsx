@@ -1,6 +1,7 @@
 import { useState } from "react";
+import InfoIcon from "@mui/icons-material/Info";
 import Divider from "@mui/material/Divider";
-import { Typography, Button, Paper, Checkbox } from "@mui/material";
+import { Typography, Button, Paper, Checkbox,Tooltip,Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { certificateSchema } from "../../../schemas/8233";
@@ -11,7 +12,7 @@ import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Certifications(props: any) {
   const history = useNavigate();
   const dispatch = useDispatch();
-
+  const [toolInfo, setToolInfo] = useState("");
   const initialValue = {
     i_Certify_BeneficialOwnerOrAuthorisedToSignForAllMentionIncome: false,
     i_Certify_BeneficialOwnerIsNotUSPerson: false,
@@ -70,7 +71,85 @@ export default function Certifications(props: any) {
                     marginLeft: "20px",
                   }}
                 >
-                  Certification
+                  Certification   <span style={{ color: "red" }}>*</span>
+                  <span>
+                    <Tooltip
+                      style={{ backgroundColor: "black", color: "white" }}
+                      title={
+                        <>
+                          <Typography color="inherit">
+                            TT-282 W-8ECI-General
+                          </Typography>
+                          <a onClick={() => setToolInfo("basic")}>
+                            <Typography
+                              style={{
+                                cursor: "pointer",
+                                textDecorationLine: "underline",
+                              }}
+                              align="center"
+                            >
+                              {" "}
+                              View More...
+                            </Typography>
+                          </a>
+                        </>
+                      }
+                    >
+                      <InfoIcon
+                        style={{
+                          color: "#ffc107",
+                          fontSize: "13px",
+                          cursor: "pointer",
+                          verticalAlign: "super",
+                        }}
+                      />
+                    </Tooltip>
+                  </span>{" "}
+              
+                {toolInfo === "basic" ? (
+                  <div>
+                    <Paper
+                      style={{
+                        backgroundColor: "#dedcb1",
+                        padding: "15px",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <Typography>
+                        EH049: You have selected to submit a form W-8ECI to
+                        claim that the person, business or organization
+                        represented by the form is a foreign person and the
+                        beneficial owner of U.S. sourced income that is (or is
+                        deemed to be) effectively connected with the conduct of
+                        a trade or business within the United States.
+                      </Typography>
+
+                      <Typography style={{ marginTop: "10px" }}>
+                        If this is not correct you must go back and change your
+                        selection.
+                      </Typography>
+                      <Typography style={{ marginTop: "10px" }}>
+                        Please check the information and change where
+                        appropriate. On completion this information will be
+                        presented as a pdf image, which you can save locally or
+                        print off.
+                      </Typography>
+
+                      <Link
+                        href="#"
+                        underline="none"
+                        style={{ marginTop: "10px", fontSize: "16px" }}
+                        onClick={() => {
+                          setToolInfo("");
+                        }}
+                      >
+                        --Show Less--
+                      </Link>
+                    </Paper>
+                  </div>
+                ) : (
+                  ""
+                )}
                 </Typography>
                 <Paper
                   style={{

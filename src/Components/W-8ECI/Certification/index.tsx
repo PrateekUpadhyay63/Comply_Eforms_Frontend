@@ -100,7 +100,8 @@ export default function Certifications(props: any) {
                     marginLeft: "20px",
                   }}
                 >
-                  Certification <span style={{ color: "red" }}>*</span>
+                  Certification 
+                  <span style={{ color: "red" }}>*</span>
                   <span>
                     <Tooltip
                       style={{ backgroundColor: "black", color: "white" }}
