@@ -124,7 +124,7 @@ export default function Penalties() {
                   </Typography>
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px", color: "grey" }}
+                    style={{ margin: "10px", fontSize: "17px", color: "grey" }}
                   >
                     The Internal Revenue Service does not require your consent
                     to any provisions of this document other than the
@@ -463,7 +463,7 @@ export default function Penalties() {
                       style={{
                         fontSize: "15px",
                         color: "black",
-                        marginTop: "5px",
+                        
                       }}
                     >
                       Please "check" box to confirm your acceptance with the

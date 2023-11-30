@@ -129,7 +129,7 @@ export default function Tin(props: any) {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "33px",
+                      fontSize: "28px",
                       fontWeight: "550",
                     }}
                   >
@@ -203,7 +203,7 @@ export default function Tin(props: any) {
 
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "20px" }}
+                    style={{ margin: "10px", fontSize: "15px" }}
                   >
                     There are no mandatory documents required for this
                     submission
@@ -212,7 +212,7 @@ export default function Tin(props: any) {
                   <Typography
                     style={{
                       margin: "10px",
-                      fontSize: "26px",
+                      fontSize: "21px",
                       fontWeight: "550",
                     }}
                   >
@@ -236,7 +236,7 @@ export default function Tin(props: any) {
                           padding: " 0 10px",
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "50px",
+                          height: "38px",
                           width: "100%",
                         }}
                       >
@@ -261,8 +261,9 @@ export default function Tin(props: any) {
                        
                         style={{
                           minWidth: "140px",
-                          height: "45px",
+                          height: "37px",
                           marginRight: "10px",
+                          fontSize:"12px"
                         }}
                       >
                         <MenuItem value="1">Keep Existing</MenuItem>
@@ -271,7 +272,7 @@ export default function Tin(props: any) {
                       </Select>
 
                       {submit === "2" && (
-                        <Input style={{ fontSize: "13px" }} type="file" />
+                        <Input style={{ fontSize: "12px" }} type="file" />
                       )}
                       <span className="my-auto text mx-2">
                         <a>View..</a>
@@ -298,7 +299,7 @@ export default function Tin(props: any) {
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height: "37px",
                             width: "100%",
                           }}
                         ></select>
@@ -306,7 +307,7 @@ export default function Tin(props: any) {
 
                       <div className="col-4">
                         <Input
-                          style={{ fontSize: "14px", border: "none" }}
+                          style={{ fontSize: "12px", border: "none" }}
                           type="file"
                         />
                       </div>

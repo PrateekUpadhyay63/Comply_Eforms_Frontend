@@ -202,7 +202,7 @@ export default function Penalties(props: any) {
         </Typography>
         <Typography
           align="left"
-          style={{ margin: "10px", fontSize: "12px", color: "grey" }}
+          style={{ margin: "10px", fontSize: "17px", color: "grey" }}
         >
           The Internal Revenue Service does not require your consent to any
           provisions of this document other than the certifications required to
@@ -480,8 +480,6 @@ export default function Penalties(props: any) {
           <TextField 
                          className="date"
                           name="dob"
-                          
-                         
                           value={
                             new Date().toLocaleDateString('en-US', {
                               month: '2-digit',
@@ -490,8 +488,6 @@ export default function Penalties(props: any) {
                             })
                           }
                          
-                          
-                          
                           disabled
                         />
                         
@@ -501,7 +497,7 @@ export default function Penalties(props: any) {
         <Typography style={{ display: "flex", marginLeft: "10px" }}>
           <Checkbox />
           <Typography
-            style={{ fontSize: "13px", color: "black", marginTop: "7px" }}
+            style={{ fontSize: "13px", color: "black" }}
           >
             Please "check" box to confirm your acceptance with the above
             declarations{" "}

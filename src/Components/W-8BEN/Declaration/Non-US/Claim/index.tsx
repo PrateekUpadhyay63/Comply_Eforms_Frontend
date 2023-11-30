@@ -16,7 +16,7 @@ import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
-import { claimSchema } from "../../../../../schemas/w8Ben";
+import { claimSchemaaa } from "../../../../../schemas/w8Ben";
 import { W8_state } from "../../../../../Redux/Actions";
 import { useSelector , useDispatch } from "react-redux";
 import Accordion from "@mui/material/Accordion";
@@ -65,23 +65,23 @@ export default function FCTA_Reporting(props: any) {
         
         <div className="row w-100 h-100">
           <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
+          <div style={{ padding: "16px 0px",height:"100%" }}>
             <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
           
       </div>
           </div>
-          <div className="col-8">
+          <div className="col-8 mt-5">
 
-      <div style={{ padding: "20px 0px" }}>
-        <Paper style={{ padding: "18px" }}>
+      <div style={{ padding: "10px 0px" }}>
+        <Paper style={{ padding: "16px" }}>
           <Formik
             initialValues={{
               isSubmissionClaimTreaty: "No",
-              ownerResidentId: "",
-              permanentResidentialCountryId: 0,
+             
+              permanentResidentialCountryId: "",
             }}
             enableReinitialize
-            validationSchema={claimSchema}
+            validationSchema={claimSchemaaa}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               dispatch(
@@ -361,7 +361,7 @@ export default function FCTA_Reporting(props: any) {
                               height: "36px",
                             }}
                             name="permanentResidentialCountryId"
-                            id="Income"
+                            id="permanentResidentialCountryId"
                             defaultValue={1}
                             onChange={handleChange}
                             // onBlur={handleBlur}
@@ -384,7 +384,7 @@ export default function FCTA_Reporting(props: any) {
                                   </div>
                                 </div>
                                 
-                                {/* <p className="error">{errors.ownerResidentId}</p> */}
+                                <p className="error">{errors.permanentResidentialCountryId}</p>
                               </FormControl>
                             </div>
                         </div>

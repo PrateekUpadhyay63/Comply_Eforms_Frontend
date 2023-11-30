@@ -57,28 +57,26 @@ export const ownerSchema = () => {
 };
 export const amountSchema = () => {
   return Yup.object().shape({
-    taxTreaty_DescriptionOfPersonalServiceYouProvide: Yup.string().required(),
+    taxTreaty_DescriptionOfPersonalServiceYouProvide: Yup.string(),
     taxTreaty_TotalCompensationYouExpectForThisCalenderYear: Yup.number()
       .min(1)
       .required(),
-    taxTreaty_TreatyId: Yup.number().min(1).required(),
-    taxTreaty_TreatyArticleId: Yup.number().min(1).required(),
+    taxTreaty_TreatyId: Yup.number(),
+    taxTreaty_TreatyArticleId: Yup.number(),
     taxTreaty_TotalCompensationListedon11bExemptFromTax: Yup.number()
       .min(1)
       .required(),
     taxTreaty_CheckAll: Yup.boolean().oneOf([true], "Please mark the checkbox"),
-    taxTreaty_CountryOfResidenceId: Yup.number().min(1).required(),
+    taxTreaty_CountryOfResidenceId: Yup.number(),
     taxTreaty_NoncompensatoryScholarshiporFellowshipIncome: Yup.number()
-      .min(1)
-      .required(),
+      ,
     taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID:
-      Yup.number().min(1).required(),
+      Yup.number(),
     taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID:
-      Yup.number().min(1).required(),
+      Yup.number(),
     totalIncomeListedIncomeonLine13ATaxExemptAmount: Yup.number()
-      .min(1)
-      .required(),
-    sufficientFactToJustfyExemptionForClaim12A_13: Yup.string().required(),
+      ,
+    sufficientFactToJustfyExemptionForClaim12A_13: Yup.string(),
   });
 };
 
