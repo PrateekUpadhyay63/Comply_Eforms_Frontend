@@ -59,6 +59,7 @@ type Value2 = ValuePiece | [ValuePiece, ValuePiece];
 export default function IndividualUs() {
   //States
   const [vatdata , setVatData] = useState("");
+  const [tinData , SetTinData] = useState()
   const [incomeData, setIncomeData] = useState<any>([]);
   const [value, onChange] = useState<Value2>(null);
   const history = useNavigate();
