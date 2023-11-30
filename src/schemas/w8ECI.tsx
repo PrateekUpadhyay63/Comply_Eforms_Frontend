@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-
+const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
 export const TinSchema = () => {
   return Yup.object().shape({
     streetNumberName: Yup.string().required("Field Cannot be Empty"),
@@ -7,7 +7,7 @@ export const TinSchema = () => {
       .min(1, "Field Cannot be Empty")
       .required("Field Cannot be Empty"),
     eciUsTin: Yup.string().required("Field Cannot be Empty"),
-    // aptSuite: Yup.string().required("Field Cannot be Empty"),
+    
     cityTown: Yup.string().required("Field Cannot be Empty"),
     stateProvinceId: Yup.string().required("Field Cannot be Empty"),
     zipPostalCode: Yup.string().required("Field Cannot be Empty"),
@@ -75,14 +75,34 @@ export const certificateSchema = () => {
     isElectronicForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
   });
 };
+// export const partCertiSchema = () => {
+//   return Yup.object().shape({
+//     signedBy: Yup.string().required("Please enter "),
+//     confirmationCode: Yup.string().required("Please enter code"),
+//     date: Yup.date(),
+//     isAgreeWithDeclaration: Yup.boolean().oneOf(
+//       [true],
+//       "Please mark the checkbox"
+//     ),
+//   });
+// };
 export const partCertiSchema = () => {
   return Yup.object().shape({
     signedBy: Yup.string().required("Please enter "),
-    confirmationCode: Yup.string().required("Please enter code"),
-    date: Yup.date().required("Please enter date"),
-    isAgreeWithDeclaration: Yup.boolean().oneOf(
-      [true],
-      "Please mark the checkbox"
+    confirmationCode: Yup.string()
+    .required("Please enter code")
+    .test(
+      'match',
+      'Confirmation code does not match',
+      function (value) {
+        const storedConfirmationCode = obValues?.confirmationCode;
+        return !storedConfirmationCode || value === storedConfirmationCode;
+      }
     ),
-  });
+  date: Yup.date(),
+  isAgreeWithDeclaration: Yup.boolean().oneOf(
+    [true],
+    "Please mark the checkbox"
+  ),
+});
 };

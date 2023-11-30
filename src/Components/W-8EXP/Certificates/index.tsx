@@ -10,6 +10,10 @@ import {
   Paper,
   Checkbox,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { Form, Formik } from "formik";
+import { W8_state_ECI } from "../../../Redux/Actions";
+import { certificateSchema } from "../../../schemas/w8Exp";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +29,17 @@ export default function Certifications(props: any) {
   const handleClose2 = () => setOpen2(false);                               
   const [toolInfo, setToolInfo] = useState("");
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const initialValue = {
+    isBeneficialOwnerIncome: false,
+    isAmountCertificationUS: false,
+    isBeneficialOwnerGrossIncome: false,
+    isBeneficialOwnerNotUSPerson: false,
+    isAuthorizeWithHoldingAgent: false,
+    isCapacityForm: false,
+    isBackup:false,
+    isElectronicForm: false,
+  };
+  const dispatch = useDispatch();
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -53,6 +67,31 @@ export default function Certifications(props: any) {
       </div>
       <div className="col-8 mt-5">
       <div style={{ padding: "16px" }}>
+      <Formik
+            initialValues={initialValue}
+            enableReinitialize
+            validationSchema={certificateSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(true);
+              console.log(values, "vallllll");
+              dispatch(
+                W8_state_ECI(values, () => {
+                  history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp");
+                })
+              );
+              history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp");
+            }}
+          >
+            {({
+              errors,
+              touched,
+              handleBlur,
+              values,
+              handleSubmit,
+              handleChange,
+              setFieldValue,
+            }) => (
+              <Form onSubmit={handleSubmit}>
         <Paper style={{ padding: "14px" }}>
           <Typography
             align="left"
@@ -203,7 +242,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerIncome"
+                        value={values.isBeneficialOwnerIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{
                     fontSize: "15px",
@@ -218,6 +261,7 @@ export default function Certifications(props: any) {
                   owner or account holder of a foreign financial institution
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -226,7 +270,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isAmountCertificationUS"
+                        value={values.isAmountCertificationUS}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -234,6 +282,7 @@ export default function Certifications(props: any) {
                   person,
                 </Typography>
               </Typography>
+              <p className="error">{errors.isAmountCertificationUS}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -242,7 +291,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerGrossIncome"
+                        value={values.isBeneficialOwnerGrossIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
                 >
@@ -269,6 +322,7 @@ export default function Certifications(props: any) {
                   1446(f)
                 </li>
               </div>
+              <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -277,7 +331,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerNotUSPerson"
+                        value={values.isBeneficialOwnerNotUSPerson}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -287,6 +345,7 @@ export default function Certifications(props: any) {
                   States and that country, and
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerNotUSPerson}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -295,7 +354,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isAuthorizeWithHoldingAgent"
+                        value={values.isAuthorizeWithHoldingAgent}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -304,6 +367,7 @@ export default function Certifications(props: any) {
                   instructions.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isAuthorizeWithHoldingAgent}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -312,7 +376,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isCapacityForm"
+                        value={values.isCapacityForm}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -327,6 +395,7 @@ export default function Certifications(props: any) {
                   </span>
                 </Typography>
               </Typography>
+              <p className="error">{errors.isCapacityForm}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -344,7 +413,11 @@ export default function Certifications(props: any) {
                 }}
               ></Typography>
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBackup"
+                        value={values.isBackup}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -352,6 +425,7 @@ export default function Certifications(props: any) {
                   backup withholding.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBackup}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -360,7 +434,11 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isElectronicForm"
+                        value={values.isElectronicForm}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
                   style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
@@ -376,6 +454,7 @@ export default function Certifications(props: any) {
                   </span>
                 </Typography>
               </Typography>
+              <p className="error">{errors.isElectronicForm}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -404,9 +483,9 @@ export default function Certifications(props: any) {
             </Button>
             <Button
               type="submit"
-              onClick={() => {
-                history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp");
-              }}
+              // onClick={() => {
+              //   history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp");
+              // }}
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}
             >
@@ -440,7 +519,11 @@ export default function Certifications(props: any) {
               Back
             </Button>
           </Typography>
-        </Paper>
+          </Paper>
+          </Form>
+            )}
+          </Formik>
+    
       </div>
       </div>
       </div>

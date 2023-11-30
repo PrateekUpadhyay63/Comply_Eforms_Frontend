@@ -10,6 +10,10 @@ import {
   Paper,
   Checkbox,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { Form, Formik } from "formik";
+import { W8_state_ECI } from "../../../../../Redux/Actions";
+import { certificateSchema } from "../../../../../schemas/w8Exp";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
@@ -20,12 +24,22 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 export default function Certifications(props: any) {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);                               
   const [toolInfo, setToolInfo] = useState("");
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const initialValue = {
+    isBeneficialOwnerIncome: false,
+    isAmountCertificationUS: false,
+    isBeneficialOwnerGrossIncome: false,
+    isBeneficialOwnerNotUSPerson: false,
+    isAuthorizeWithHoldingAgent: false,
+    isCapacityForm: false,
+    isBackup:false,
+    isElectronicForm: false,
+  };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -53,6 +67,31 @@ export default function Certifications(props: any) {
       </div>
       <div className="col-8 mt-5">
       <div style={{ padding: "16px" }}>
+      <Formik
+            initialValues={initialValue}
+            enableReinitialize
+            validationSchema={certificateSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(true);
+              console.log(values, "vallllll");
+              dispatch(
+                W8_state_ECI(values, () => {
+                  history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE");
+                })
+              );
+              history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE");
+            }}
+          >
+            {({
+              errors,
+              touched,
+              handleBlur,
+              values,
+              handleSubmit,
+              handleChange,
+              setFieldValue,
+            }) => (
+              <Form onSubmit={handleSubmit}>
         <Paper style={{ padding: "14px" }}>
           <Typography
             align="left"
@@ -90,7 +129,7 @@ export default function Certifications(props: any) {
                 <InfoIcon
                   style={{
                     color: "#ffc107",
-                    fontSize: "20px",
+                    fontSize: "15px",
                     cursor: "pointer",
                     verticalAlign: "super",
                   }}
@@ -162,7 +201,7 @@ export default function Certifications(props: any) {
           <Typography
             style={{
               margin: "10px",
-              fontSize: "20px",
+              fontSize: "17px",
               color: "grey",
               marginLeft: "20px",
             }}
@@ -176,7 +215,7 @@ export default function Certifications(props: any) {
           <Typography
             style={{
               margin: "10px",
-              fontSize: "20px",
+              fontSize: "15px",
               color: "grey",
               marginLeft: "20px",
             }}
@@ -203,10 +242,14 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerIncome"
+                        value={values.isBeneficialOwnerIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{
-                    fontSize: "20px",
+                    fontSize: "15px",
                     color: "black",
                     marginTop: "10px",
                   }}
@@ -218,6 +261,7 @@ export default function Certifications(props: any) {
                   owner or account holder of a foreign financial institution
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -226,14 +270,19 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isAmountCertificationUS"
+                        value={values.isAmountCertificationUS}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   2. The person named on line 1 of this form is not a U.S.
                   person,
                 </Typography>
               </Typography>
+              <p className="error">{errors.isAmountCertificationUS}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -242,15 +291,19 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerGrossIncome"
+                        value={values.isBeneficialOwnerGrossIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
                 >
                   3. The income to which this form relates is:
                 </Typography>
               </Typography>
 
-              <div style={{ marginLeft: "60px", fontSize: "17px" }}>
+              <div style={{ marginLeft: "60px", fontSize: "15px" }}>
                 <li>
                   (a) not effectively connected with the conduct of a trade or
                   business in the United States,
@@ -269,6 +322,7 @@ export default function Certifications(props: any) {
                   1446(f)
                 </li>
               </div>
+              <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -277,9 +331,13 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBeneficialOwnerNotUSPerson"
+                        value={values.isBeneficialOwnerNotUSPerson}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   4. The person named on line 1 of this form is a resident of
                   the treaty country listed on line 9 of the form (if any)
@@ -287,6 +345,7 @@ export default function Certifications(props: any) {
                   States and that country, and
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBeneficialOwnerNotUSPerson}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -295,15 +354,20 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isAuthorizeWithHoldingAgent"
+                        value={values.isAuthorizeWithHoldingAgent}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   5. For broker transactions or barter exchanges, the beneficial
                   owner is an exempt foreign person as defined in the
                   instructions.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isAuthorizeWithHoldingAgent}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -312,9 +376,13 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox name="isCapacityForm"
+                        value={values.isCapacityForm}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   Furthermore, I authorize this form to be provided to any
                   withholding agent that has control, receipt, or custody of the
@@ -327,6 +395,7 @@ export default function Certifications(props: any) {
                   </span>
                 </Typography>
               </Typography>
+              <p className="error">{errors.isCapacityForm}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -337,21 +406,26 @@ export default function Certifications(props: any) {
 
               <Typography
                 style={{
-                  fontSize: "20px",
+                  fontSize: "15px",
                   color: "black",
                   marginTop: "10px",
                   marginBottom: "20px",
                 }}
               ></Typography>
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isBackup"
+                        value={values.isBackup}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   I have been notified by IRS that I am currently subject to
                   backup withholding.
                 </Typography>
               </Typography>
+              <p className="error">{errors.isBackup}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -360,9 +434,13 @@ export default function Certifications(props: any) {
                 }}
               />
               <Typography style={{ display: "flex" }}>
-                <Checkbox className="mx-2" />
+                <Checkbox  name="isElectronicForm"
+                        value={values.isElectronicForm}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
-                  style={{ fontSize: "20px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
                 >
                   Check to confirm you have reviewed the Electronic Form
                   <span
@@ -376,6 +454,7 @@ export default function Certifications(props: any) {
                   </span>
                 </Typography>
               </Typography>
+              <p className="error">{errors.isElectronicForm}</p>
               <Divider
                 style={{
                   marginTop: "1rem",
@@ -404,9 +483,7 @@ export default function Certifications(props: any) {
             </Button>
             <Button
               type="submit"
-              onClick={() => {
-                history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE");
-              }}
+              
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}
             >
@@ -440,7 +517,10 @@ export default function Certifications(props: any) {
               Back
             </Button>
           </Typography>
-        </Paper>
+          </Paper>
+          </Form>
+            )}
+          </Formik>
       </div>
       </div>
       </div>
