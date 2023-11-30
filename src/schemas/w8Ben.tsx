@@ -72,6 +72,22 @@ export const US_TINSchema = () => {
     isNotLegallyFTIN: Yup.string(),
   });
 };
+export const claimSchemaaa = () => {
+  return Yup.object().shape({
+    isSubmissionClaimTreaty: Yup.string().required(
+      "Please select one of the options"
+    ),
+    permanentResidentialCountryId: Yup.string().when("isSubmissionClaimTreaty", {
+      is: "yes",
+      then: () => Yup.string().required("Please select owner"),
+    }),
+    // permanentResidentialCountryId: Yup.string().required(
+    //   "Please select one of the options"
+    // ),
+   
+  });
+};
+
 export const claimSchema = () => {
   return Yup.object().shape({
     isSubmissionClaimTreaty: Yup.string().required(
@@ -90,7 +106,9 @@ export const claimSchema = () => {
   });
 };
 export const rateSchema = () => {
+
   return Yup.object().shape({
+    
     isSubmissionSpecialRates: Yup.string().required(
       "Please select one of the options"
     ),
