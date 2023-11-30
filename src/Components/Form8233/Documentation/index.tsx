@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Button,
@@ -13,7 +13,7 @@ import {
 import { Info, DeleteOutline } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
-import { CREATE_8233 } from "../../../Redux/Actions";
+import { CREATE_8233 , GetAgentDocumentationMandatoryForEformAction} from "../../../Redux/Actions";
 import { useDispatch,useSelector } from "react-redux";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 
@@ -52,11 +52,20 @@ export default function Tin(props: any) {
       
     }
   };
+
+  useEffect(() => {
+    dispatch(GetAgentDocumentationMandatoryForEformAction());
+   
+  }, []);
+
   const handleDelete = (indexToDelete: number) => {
     const updatedIncomeArr = [...incomeArr];
     updatedIncomeArr.splice(indexToDelete, 1);
     setIncomeArr(updatedIncomeArr);
   };
+  const GetAgentDocumentationMandatoryForEformReducer = useSelector(
+    (state: any) => state.GetAgentDocumentationMandatoryForEformReducer
+  );
 
   const history = useNavigate();
   const dispatch = useDispatch();
@@ -230,7 +239,16 @@ export default function Tin(props: any) {
                           height: "50px",
                           width: "100%",
                         }}
-                      ></select>
+                      >
+                        <option value="">---Select---</option>
+                        {GetAgentDocumentationMandatoryForEformReducer.GetAgentDocumentationMandatoryForEformData?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.id}>
+                                    {ele?.name}
+                                  </option>
+                                )
+                              )}
+                      </select>
                     </div>
 
                     <div className="col-8">
