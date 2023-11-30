@@ -99,6 +99,7 @@ const GetAllIncomeCodesReducer = useSelector(
             enableReinitialize
             validationSchema={rateSchema}
             onSubmit={(values, { setSubmitting }) => {
+              console.log("hhh",values)
               setSubmitting(true);
                 dispatch(
                   W8_state(values, () => {
@@ -422,9 +423,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                     <option value="US">United Kingdom</option>
                                     <option value="UK">United States</option>
                                   </select>
-                                  <p className="error">
-                                    {errors.articleBeneficalOwner}
-                                  </p>
+                                 
                                 </FormControl>
                                 <p className="error">{errors.articleBeneficalOwner}</p>
                               </div>
@@ -467,10 +466,11 @@ const GetAllIncomeCodesReducer = useSelector(
                                     <option value="US">United Kingdom</option>
                                     <option value="UK">United States</option>
                                   </select>
-                                  <p className="error">
+                                 
+                                </FormControl>
+                                <p className="error">
                                     {errors.paragraphArticleClaimed}
                                   </p>
-                                </FormControl>
                               </div>
                             </div>
 
@@ -668,13 +668,25 @@ const GetAllIncomeCodesReducer = useSelector(
                   >
                     View form
                   </Button>
-                  <Button
+                 {values.isSubmissionSpecialRates == "Yes" ?( <Button
                     type="submit"
                     variant="contained"
                     style={{ color: "white", marginLeft: "15px" }}
                   >
                     Continue
+                  </Button>):<>
+                  <Button 
+                   onClick={()=>
+                    history("/W-8BEN/Declaration/US_Tin/Certificates")
+                   }
+                   variant="contained"
+                   style={{ color: "white", marginLeft: "15px" }}
+                 >
+                   Continue
+                 
+
                   </Button>
+                  </>}
                 </div>
                 <Typography
                   align="center"

@@ -100,11 +100,11 @@ const GetAllIncomeCodesReducer = useSelector(
             validationSchema={rateSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              //   dispatch(
-              //     W8_state(values, () => {
-              //       history("/W-8BEN/Declaration/US_Tin/Certificates");
-              //     })
-              //   );
+                dispatch(
+                  W8_state(values, () => {
+                    history("/W-8BEN/Declaration/US_Tin/Certificates");
+                  })
+                );
               history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE");
             }}
           >
@@ -409,8 +409,8 @@ const GetAllIncomeCodesReducer = useSelector(
                                       height: "50px",
                                       marginBottom: "20px",
                                     }}
-                                    name="withHoldingClaim"
-                                    value={values.withHoldingClaim}
+                                    name="articleBeneficalOwner"
+                                    value={values.articleBeneficalOwner}
                                     id="Income"
                                     defaultValue={1}
                                     onBlur={handleBlur}
@@ -422,10 +422,9 @@ const GetAllIncomeCodesReducer = useSelector(
                                     <option value="US">United Kingdom</option>
                                     <option value="UK">United States</option>
                                   </select>
-                                  <p className="error">
-                                    {errors.withHoldingClaim}
-                                  </p>
+                                 
                                 </FormControl>
+                                <p className="error">{errors.articleBeneficalOwner}</p>
                               </div>
                               <div className="col-5">
                                 <Typography
@@ -466,10 +465,11 @@ const GetAllIncomeCodesReducer = useSelector(
                                     <option value="US">United Kingdom</option>
                                     <option value="UK">United States</option>
                                   </select>
-                                  <p className="error">
-                                    {errors.incomeExpected}
-                                  </p>
+                                 
                                 </FormControl>
+                                <p className="error">
+                                    {errors.paragraphArticleClaimed}
+                                  </p>
                               </div>
                             </div>
 
@@ -535,8 +535,8 @@ const GetAllIncomeCodesReducer = useSelector(
                                       height: "50px",
                                       marginBottom: "20px",
                                     }}
-                                    name="articleBeneficalOwner"
-                                    value={values.articleBeneficalOwner}
+                                    name="withHoldingClaim"
+                                    value={values.withHoldingClaim}
                                     id="Income"
                                     defaultValue={1}
                                     onBlur={handleBlur}
@@ -549,7 +549,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                     <option value="UK">United States</option>
                                   </select>
                                   <p className="error">
-                                    {errors.articleBeneficalOwner}
+                                    {errors.withHoldingClaim}
                                   </p>
                                 </FormControl>
                               </div>
@@ -634,17 +634,14 @@ const GetAllIncomeCodesReducer = useSelector(
                         </Typography>
                         <FormControl className="w-100">
                           <TextField
-                            // multiple
+                          
                             className="col-md-10 col-12"
                            
                             name="articleExplanation"
                             value={values.articleExplanation}
                             onBlur={handleBlur}
                             onChange={handleChange}
-                            // error={Boolean(
-                            //   touched.articleExplanation &&
-                            //     errors.articleExplanation
-                            // )}
+                           
                           />
                           <p className="error">{errors.articleExplanation}</p>
                         </FormControl>
@@ -670,13 +667,25 @@ const GetAllIncomeCodesReducer = useSelector(
                   >
                     View form
                   </Button>
-                  <Button
+                  {values.isSubmissionSpecialRates == "Yes" ?( <Button
                     type="submit"
                     variant="contained"
                     style={{ color: "white", marginLeft: "15px" }}
                   >
                     Continue
+                  </Button>):<>
+                  <Button 
+                   onClick={()=>
+                    history("/W-8BEN/Declaration/US_Tin/Certificates")
+                   }
+                   variant="contained"
+                   style={{ color: "white", marginLeft: "15px" }}
+                 >
+                   Continue
+                 
+
                   </Button>
+                  </>}
                 </div>
                 <Typography
                   align="center"
