@@ -44,9 +44,9 @@ export default function Penalties() {
   const [toolInfo, setToolInfo] = useState("");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
-    signedBy: obValues.signedBy,
+    signedBy: "",
     question:obValues?.securityQuestion?.question,
-    confirmationCode: obValues?.confirmationCode,
+    confirmationCode: "",
     date: obValues.date,
     isAgreeWithDeclaration: false,
   };
@@ -322,19 +322,19 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                        <TextField
-                          name="confirmationCode"
-                          value={values.confirmationCode}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
-                          )}
-                          type="password"
-                          required
-                          style={{ width: "100%" }}
-                        />
-                        <span
+                      <TextField
+    name="confirmationCode"
+    value={values.confirmationCode}
+    onBlur={handleBlur}
+    onChange={handleChange}
+    error={Boolean(touched.confirmationCode && errors.confirmationCode)}
+    type="password"
+    style={{ width: "100%" }}
+  />
+  {touched.confirmationCode && typeof errors.confirmationCode === 'string' && (
+    <p className="error">{errors.confirmationCode}</p>
+  )}                     
+   <span
                         onClick={toggleRecoverSection}
                           style={{
                             fontSize: "16px",
@@ -591,13 +591,8 @@ export default function Penalties() {
                     </Button>
                     <Button
                       type="submit"
-                      onClick={() => {
-                        history("/Submit");
-                        //  setOpen2(true)
-                      }}
-                      // onClick={() => {
-                      //   setOpen2(true);
-                      // }}
+                     
+                     
                       variant="contained"
                       style={{ color: "white", marginLeft: "15px" }}
                     >
@@ -618,7 +613,7 @@ export default function Penalties() {
                   <Typography align="center">
                     <Button
                     onClick={()=>{
-                      history('/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp')
+                      history('/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY')
                     }}
                       variant="contained"
                       style={{

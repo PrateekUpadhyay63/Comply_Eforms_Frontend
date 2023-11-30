@@ -102,7 +102,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "20px",
+                    fontSize: "17px",
                     color: "grey",
                     marginLeft: "20px",
                   }}
@@ -116,7 +116,7 @@ export default function Certifications(props: any) {
                 <Paper
                   style={{
                     marginLeft: "20px",
-                    width: "80%",
+                    width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
                 >
@@ -139,14 +139,15 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }}
                       />
+                     
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "10px",
                         }}
                       >
-                        1 I am the beneficial owner (or am authorized to sign
+                        1. I am the beneficial owner (or am authorized to sign
                         for the beneficial owner) of all the income to which
                         this form relates.
                         <p className="error">
@@ -174,12 +175,12 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
                       >
-                        2 The beneficial owner is not a U.S. person.
+                        2.The beneficial owner is not a U.S. person.
                         <p className="error">
                           {errors.i_Certify_BeneficialOwnerIsNotUSPerson}
                         </p>
@@ -205,12 +206,12 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
                       >
-                        3 The beneficial owner is a resident of the treaty
+                        3.The beneficial owner is a resident of the treaty
                         country listed on line 12a and/or 13b above within the
                         meaning of the income tax treaty between the United
                         States and that country, or was a resident of the treaty
@@ -242,7 +243,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -268,7 +269,7 @@ export default function Certifications(props: any) {
 
                     <Typography
                       style={{
-                        fontSize: "20px",
+                        fontSize: "17px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
@@ -288,7 +289,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "20px",
+                          fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
                         }}

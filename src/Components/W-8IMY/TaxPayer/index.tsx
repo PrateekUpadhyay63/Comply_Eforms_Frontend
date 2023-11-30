@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -18,8 +18,8 @@ import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import { useNavigate } from "react-router-dom";
 import { US_TINSchema } from "../../../schemas/w8Ben";
-import { W8_state } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { W8_state,getTinTypes,getAllCountries } from "../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -36,26 +36,55 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [ustinArray , setUStinArray] = useState([]);
+  const [ustinValue , setUStinvalue] = useState([]);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+  const allCountriesData = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
+  const getCountriesReducer = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
   const initialValue = {
-    usTinTypeId: 0,
-    usTin: "",
+    // usTinTypeId: obValues.usTinTypeId,
+    // usTin: obValues.usTin,
+    // notAvailable: false,
+    // foreignTINCountry: obValues.foreignTINCountryId,
+    // foreignTIN:  obValues.foreignTIN,
+    // isFTINNotLegallyRequired: false,
+    // tinisFTINNotLegallyRequired: "Yes",
+    // // tinAlternativeFormate: true,
+    // isNotLegallyFTIN: "",
+    // tinValue:"",
+    usTinTypeId: obValues.usTinTypeId,
+    usTin: obValues.usTin,
+    tinValue:"",
     notAvailable: false,
-    foreignTINCountry: "",
+    foreignTINCountry: obValues.foreignTINCountryId,
     foreignTIN: "",
     isFTINNotLegallyRequired: false,
-    tinisFTINNotLegallyRequired: "",
+    tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
+  useEffect(() => {
+    dispatch(getAllCountries());
+    dispatch(
+      getTinTypes(3, (data:any) => {
+        setUStinArray(data)
+        let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
+        setUStinvalue(datas)
+      })
+    );
+    
 
+  }, []);
   return (
     <section
       className="inner_content"
@@ -104,10 +133,10 @@ export default function Tin(props: any) {
                   console.log(values, "vallllll");
                   dispatch(
                     W8_state(values, () => {
-                      history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY");
+                      history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY")
                     })
                   );
-                  history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY");
+                  history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY")
                 }}
               >
                 {({
@@ -240,23 +269,44 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="">-Select-</option>
-                            <option value={257}>United Kingdom</option>
-                            <option value={258}>United States</option>
+                            {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                           </select>
-                          <p className="error">{errors.usTinTypeId}</p>
+                          {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
 
+                       
                         <div className="col-lg-5 col-12">
                           <Typography>U.S. TIN</Typography>
                           <Input
-                            disabled={values.notAvailable}
+                            disabled
                             fullWidth
-                            type="text"
-                            name="usTin"
-                            value={values.usTin}
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            error={Boolean(touched.usTin && errors.usTin)}
+                            
+                            placeholder="ENTER US TIN"
+                            defaultValue="ENTER US TIN"
+                            value={values.tinValue}
+                            // onBlur={handleBlur}
+                            onChange={(e: any) => {
+                              handleChange(e);
+
+                              
+                                setFieldValue("","");
+                            }}
+                           
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -264,13 +314,15 @@ export default function Tin(props: any) {
                               fontStyle: "italic",
                               height: "50px",
                               width: "100%",
+
                             }}
                           />
                           {values.notAvailable ? (
                             ""
-                          ) : (
-                            <p className="error">{errors.usTin}</p>
-                          )}
+                          ) : 
+                            // <p className="error">{errors.usTin}</p>
+                            " "
+                          }
                         </div>
                         <div className="col-lg-2 col-12">
                           <div style={{ marginTop: "27px" }}>
@@ -327,10 +379,17 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="1">-Select-</option>
-                            <option value={"US"}>United Kingdom</option>
                             <option value={"UK"}>United States</option>
+                            <option value={257}>-United Kingdom-</option>
+                                {getCountriesReducer.allCountriesData?.map(
+                                  (ele: any) => (
+                                    <option key={ele?.id} value={ele?.id}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
                           </select>
-                          <p className="error">{errors.foreignTINCountry}</p>
+                          {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
                           <div style={{ marginTop: "27px" }}>
                             <Checkbox
@@ -477,13 +536,19 @@ export default function Tin(props: any) {
                               type="text"
                               disabled={
                                 values.isFTINNotLegallyRequired ||
-                                values.foreignTINCountry == "1"
+                                values.foreignTINCountry == "1" 
+                               
+                                
+                                
                               }
                               name="foreignTIN"
                               value={values.foreignTIN}
                               onBlur={handleBlur}
                               onChange={handleChange}
                               inputProps={{ maxLength: 10 }}
+                              placeholder="ENTER FOREIGN TIN"
+
+                             
                               error={Boolean(
                                 touched.foreignTIN && errors.foreignTIN
                               )}
@@ -502,8 +567,10 @@ export default function Tin(props: any) {
                               type="text"
                               disabled={
                                 values.isFTINNotLegallyRequired ||
-                                values.foreignTINCountry == "1"
+                                values.foreignTINCountry == "1" ||
+                                values.tinisFTINNotLegallyRequired ==="Yes"
                               }
+                              placeholder="ENTER FOREIGN TIN"
                               name="foreignTIN"
                               value={values.foreignTIN}
                               onBlur={handleBlur}
@@ -523,9 +590,11 @@ export default function Tin(props: any) {
                           )}
                           {values.isFTINNotLegallyRequired ? (
                             ""
-                          ) : (
-                            <p className="error">{errors.foreignTIN}</p>
-                          )}
+                          ) : 
+                            // <p className="error">{errors.foreignTIN}</p>
+                            " "
+                          }
+
 
                           <FormControl >
                             <RadioGroup
@@ -711,8 +780,32 @@ export default function Tin(props: any) {
                       </>
                     )}
 
+               
+
+                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
+                      <Typography>
+                        Please specify the reason for non-availability of US TIN{" "}
+                        <span style={{ color: "red" }}>*</span>
+                      </Typography>
+
+                      <Input
+                        fullWidth
+                        type="text"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        style={{
+                          border: " 1px solid #d9d9d9 ",
+                          padding: " 0 10px",
+                          color: "#7e7e7e",
+                          fontStyle: "italic",
+                          height: "6rem",
+                          width: "100%",
+                        }}
+                      />
+                    </div>):""}
+
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div className="my-3">
+                      <div className="my-3" style={{ marginLeft: "20px" }}>
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}
@@ -752,28 +845,6 @@ export default function Tin(props: any) {
                     ) : (
                       ""
                     )}
-
-                  {values.notAvailable ? (  <div style={{ marginLeft: "20px" }}>
-                      <Typography>
-                        Please specify the reason for non-availability of US TIN{" "}
-                        <span style={{ color: "red" }}>*</span>
-                      </Typography>
-
-                      <Input
-                        fullWidth
-                        type="text"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        style={{
-                          border: " 1px solid #d9d9d9 ",
-                          padding: " 0 10px",
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "6rem",
-                          width: "100%",
-                        }}
-                      />
-                    </div>):""}
                     <div
                       style={{
                         display: "flex",
@@ -812,7 +883,7 @@ export default function Tin(props: any) {
                     <Typography align="center">
                       <Button
                         onClick={() => {
-                          history("/Exp/Tax_Purpose_Exp/Chapter4_Exp");
+                          history("/IMY/Tax_Purpose_Exp/Chapter4_IMY");
                         }}
                         variant="contained"
                         style={{
