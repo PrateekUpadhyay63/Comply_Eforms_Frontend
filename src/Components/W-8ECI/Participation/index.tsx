@@ -453,7 +453,7 @@ export default function Penalties() {
                       style={{
                         fontSize: "15px",
                         color: "black",
-                        marginTop: "5px",
+                        
                       }}
                     >
                       Please "check" box to confirm your acceptance with the
