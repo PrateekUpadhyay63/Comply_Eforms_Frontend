@@ -35,3 +35,27 @@ export const TaxPurposeSchema = () => {
       isElectronicForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
     });
   };
+
+  export const certificateSchema_w9 = () => {
+    return Yup.object().shape({
+      isBeneficialOwnerIncome: Yup.boolean().oneOf(
+        [true],
+        "Please mark the checkbox"
+      ),
+      isAmountCertificationUS: Yup.boolean(),
+        
+      
+      isBeneficialOwnerGrossIncome: Yup.boolean().oneOf(
+        [true],
+        "Please mark the checkbox"
+      ),
+      isBeneficialOwnerNotUSPerson: Yup.boolean(),
+      isAuthorizeWithHoldingAgent: Yup.boolean().oneOf(
+        [true],
+        "Please mark the checkbox"
+      ),
+      isBackup: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+      isCapacityForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+      isElectronicForm: Yup.boolean().oneOf([true], "Please mark the checkbox"),
+    });
+  };

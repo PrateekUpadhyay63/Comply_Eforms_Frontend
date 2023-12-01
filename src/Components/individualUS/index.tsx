@@ -2087,7 +2087,7 @@ export default function IndividualUs() {
                             value={values.permanentResidentialCountryId}
                           >
                             <option value={0}>-Select-</option>
-                            <option value={45}>-canada-</option>
+                           
                             <option value={257}>United Kingdom</option>
                             <option value={258}>United States</option>
                             <option value="">-----</option>
@@ -3311,7 +3311,7 @@ export default function IndividualUs() {
                                   }}
                                   name="contactEmail"
                                   id="outlined"
-                                  type="email"
+                                  
                                   placeholder="example@domain.com"
                                   onChange={handleChange}
                                   // onBlur={handleBlur}
