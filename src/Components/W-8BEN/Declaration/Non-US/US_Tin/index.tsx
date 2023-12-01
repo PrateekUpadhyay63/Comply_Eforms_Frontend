@@ -110,7 +110,6 @@ export default function Tin(props: any) {
                 validationSchema={US_TINSchema}
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
-                  console.log(values, "vallllll");
                   dispatch(
                     W8_state(values, () => {
                       history("/W-8BEN/Declaration/US_Tin/Claim");

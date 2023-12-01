@@ -60,7 +60,12 @@ export const StatusSchema = () => {
 export const US_TINSchema = () => {
   return Yup.object().shape({
     usTinTypeId: Yup.number().required("Please select"),
-    usTin: Yup.string().required("Please enter US Tin"),
+    usTin: Yup.string().when("notAvailable", {
+      is: "false",
+      then: () =>
+        Yup.string()
+        .required("Please enter US Tin"),
+    }),
     notAvailable: Yup.boolean(),
     foreignTINCountry: Yup.string().required(
       "Please select Foriegn Tin Country"

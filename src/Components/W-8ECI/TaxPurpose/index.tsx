@@ -277,7 +277,7 @@ export default function Fedral_tax(props: any) {
                                     onChange={handleChange}
                                     autoComplete="businessName"
                                     placeholder="Business Name"
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     style={{
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
@@ -285,7 +285,7 @@ export default function Fedral_tax(props: any) {
                                       height: "36px",
                                     }}
                                   >
-                                    <option> -----select---</option>
+                                    <option value={0}> -----select---</option>
 
                                     {GetChapter3StatusReducer.GetChapter3StatusData?.map(
                                       (ele: any) => (
@@ -440,7 +440,7 @@ export default function Fedral_tax(props: any) {
                                     autoComplete="firstName"
                                     type="text"
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     // helperText={
                                     //   touched.firstName && errors.firstName
                                     // }
@@ -463,6 +463,7 @@ export default function Fedral_tax(props: any) {
                                   style={{ fontSize: "13px" }}
                                 >
                                   Last name:
+                                  <span style={{ color: "red" }}>*</span>
                                 </Typography>
 
                                 <FormControl className="w-100">
@@ -470,7 +471,7 @@ export default function Fedral_tax(props: any) {
                                     autoComplete="lastName"
                                     type="text"
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     // helperText={
                                     //   touched.lastName && errors.lastName
                                     // }
@@ -507,7 +508,7 @@ export default function Fedral_tax(props: any) {
                                       onChange={handleChange}
                                       autoComplete="businessName"
                                       placeholder="Business Name"
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       style={{
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
@@ -675,7 +676,7 @@ export default function Fedral_tax(props: any) {
                                     autoComplete="firstName"
                                     type="text"
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     // helperText={
                                     //   touched.firstName && errors.firstName
                                     // }
@@ -706,7 +707,7 @@ export default function Fedral_tax(props: any) {
                                     autoComplete="lastName"
                                     type="text"
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     // helperText={
                                     //   touched.lastName && errors.lastName
                                     // }
@@ -743,7 +744,7 @@ export default function Fedral_tax(props: any) {
                                       onChange={handleChange}
                                       autoComplete="businessName"
                                       placeholder="Business Name"
-                                      onBlur={handleBlur}
+                                      // onBlur={handleBlur}
                                       style={{
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
@@ -941,7 +942,7 @@ export default function Fedral_tax(props: any) {
                               <Typography
                                 style={{ fontSize: "14px", color: "blue" }}
                               >
-                                Chapter 3 Status Guide Test
+                                Chapter 3 Status Guide
                               </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
