@@ -729,7 +729,9 @@ export default function Penalties(props: any) {
               marginTop: "10px",
               marginBottom: "20px",
             }}
-           
+           onClick={()=>{
+            history("/US_Purposes/Back/Exemption/Tax/Certificates")
+           }}
             
           >
             Back

@@ -746,7 +746,7 @@ export default function Fedral_tax(props: any) {
                               align="left"
                               className="d-flex w-60 "
                               style={{
-                                fontSize: "13px",
+                               
                                 marginTop: "15px",
                               }}
                             >
@@ -1152,18 +1152,10 @@ export default function Fedral_tax(props: any) {
                 <Typography align="center">
                   <Button
                     onClick={() => {
-                      setselectedContinue({
-                        step1: true,
-                        step2: false,
-                        step3: false,
-                        step4: false,
-                        step5: false,
-                        step6: false,
-                        step7: false,
-                        step8: false,
-                      });
+                     history("/Certificates")
+                      }}
                       // setOpen(true);
-                    }}
+                 
                     variant="contained"
                     style={{
                       color: "white",

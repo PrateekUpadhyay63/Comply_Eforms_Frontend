@@ -407,7 +407,9 @@ export default function Tin(props: any) {
   </Typography>
   <Typography align="center">
     <Button
-   
+   onClick={()=>{
+    history("/US_Purposes/Back/Exemption")
+   }}
       variant="contained"
       style={{
         color: "white",
