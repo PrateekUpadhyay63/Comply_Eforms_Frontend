@@ -20,7 +20,7 @@ import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import { Formik, Form } from "formik";
 import { useSelector, useDispatch } from "react-redux";
-import { W8_state } from "../../../../../Redux/Actions";
+import { W8_state  ,  getAllCountries} from "../../../../../Redux/Actions";
 import { StatusSchema } from "../../../../../schemas/w8Ben";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -28,11 +28,22 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 import {GetAgentCountriesImportantForEform} from "../../../../../Redux/Actions"
+import moment from "moment";
+
 export default function Factors() {
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
+  const convertToStandardFormat = (customDateString:any) => {
+    const dateObject = new Date(customDateString);
+      const year = dateObject.getUTCFullYear();
+      const month = String(dateObject.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(dateObject.getUTCDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+  };
+  console.log("sjhsjhdhjjhjhj",obValues.countryOfCitizenshipId);
   const initialValue = {
     isHeldUSCitizenship: "",
-    countryOfCitizenship: "",
-    dob: "",
+    countryOfCitizenship: obValues.countryOfCitizenshipId,
+    
     isTaxationUSCitizenOrResident: "",
     isPermamnentResidentCardHolder: "",
     isHoldDualCitizenshipStatus: "",
@@ -51,7 +62,9 @@ export default function Factors() {
   const dispatch = useDispatch();
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  useEffect(() => {
+    dispatch(getAllCountries());
+    }, []);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -70,7 +83,12 @@ export default function Factors() {
     setTax1(event.target.value);
   };
   const [renounced, setRenounced] = useState<string>("");
-
+  const allCountriesData = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
+  const getCountriesReducer = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
   const handleRenouncedChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -317,7 +335,34 @@ export default function Factors() {
                         <span style={{ color: "red" }}>*</span>
                       </Typography>
                       <FormControl className="form">
-                        <select disabled></select>
+                        <select
+                          style={{
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "36px",
+                              }}
+                              name="countryOfCitizenship"
+                              id="countryId"
+                              onChange={(e) => {
+                                handleChange(e); //condition
+                              }}
+                              disabled
+                              value={values.countryOfCitizenship}
+                        >
+                        <option value="">-Select-</option>
+                              <option value={257}>United Kingdom</option>
+                              <option value={258}>United States</option>
+                              <option value="">---</option>
+                              {getCountriesReducer.allCountriesData?.map(
+                                (ele: any) => (
+                                  <option key={ele?.id} value={ele?.id}>
+                                    {ele?.name}
+                                  </option>
+                                )
+                              )}
+                        </select>
+                      
                       </FormControl>
 
                       <Divider className="dividr" />
@@ -331,7 +376,8 @@ export default function Factors() {
                         Date of Birth (mm/dd/yyyy)
                       </Typography>
                       <FormControl className="form">
-                        <input disabled className="input" type="date" />
+                      <input className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
+      disabled />
                       </FormControl>
 
                       <Divider className="dividr" />
@@ -739,7 +785,8 @@ export default function Factors() {
                           Date of Birth (mm/dd/yyyy)
                         </Typography>
                         <FormControl className="form">
-                          <input className="input" type="date" />
+                          <input className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
+      disabled />
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography

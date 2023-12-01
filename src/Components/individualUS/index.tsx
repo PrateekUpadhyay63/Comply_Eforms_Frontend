@@ -39,7 +39,7 @@ import {
   getAllStateByCountryId,
   GetAgentUSVisaTypeHiddenForEformAction,
   getTinTypes,
-  GetAgentPaymentType,
+  GetAgentPaymentType
 } from "../../Redux/Actions";
 import moment from "moment";
 import { AppDispatch } from "../../Redux/store";
