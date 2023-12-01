@@ -43,6 +43,8 @@ export default function Presence(props: any) {
     <Formik
       initialValues={initialValue}
       enableReinitialize
+      validateOnChange={false}
+        validateOnBlur={false}
       validationSchema={SubstantialSchema}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
@@ -57,8 +59,8 @@ export default function Presence(props: any) {
     >
       {({
         errors,
-        touched,
-        handleBlur,
+        // touched,
+        // handleBlur,
         values,
         handleSubmit,
         handleChange,
@@ -276,10 +278,10 @@ export default function Presence(props: any) {
                         type="number"
                         name="daysAvailableInThisYear"
                         value={values.daysAvailableInThisYear}
-                        onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         onChange={handleChange}
                         error={Boolean(
-                          touched.daysAvailableInThisYear &&
+                          // touched.daysAvailableInThisYear &&
                             errors.daysAvailableInThisYear
                         )}
                         style={{
@@ -291,6 +293,7 @@ export default function Presence(props: any) {
                           width: "30%",
                         }}
                       />
+                      
                       <p className="error">{errors.daysAvailableInThisYear}</p>
                     </FormControl>
                   </div>
@@ -309,10 +312,10 @@ export default function Presence(props: any) {
                         type="text"
                         name="daysAvailableIn_OneYearbefore"
                         value={values.daysAvailableIn_OneYearbefore}
-                        onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         onChange={handleChange}
                         error={Boolean(
-                          touched.daysAvailableIn_OneYearbefore &&
+                          // touched.daysAvailableIn_OneYearbefore &&
                             errors.daysAvailableIn_OneYearbefore
                         )}
                         style={{
@@ -344,10 +347,10 @@ export default function Presence(props: any) {
                         type="number"
                         name="daysAvailableIn_TwoYearbefore"
                         value={values.daysAvailableIn_TwoYearbefore}
-                        onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         onChange={handleChange}
                         error={Boolean(
-                          touched.daysAvailableIn_TwoYearbefore &&
+                          // touched.daysAvailableIn_TwoYearbefore &&
                             errors.daysAvailableIn_TwoYearbefore
                         )}
                         style={{
@@ -378,10 +381,10 @@ export default function Presence(props: any) {
                         type="text"
                         name="totalQualifyingDays"
                         // value={values.totalQualifyingDays}
-                        onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         onChange={handleChange}
                         error={Boolean(
-                          touched.totalQualifyingDays &&
+                          // touched.totalQualifyingDays &&
                             errors.totalQualifyingDays
                         )}
                         style={{

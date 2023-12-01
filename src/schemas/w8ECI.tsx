@@ -4,9 +4,12 @@ export const TinSchema = () => {
   return Yup.object().shape({
     streetNumberName: Yup.string().required("Field Cannot be Empty"),
     eciUsTinTypeId: Yup.number()
-      .min(1, "Field Cannot be Empty")
       .required("Field Cannot be Empty"),
-    eciUsTin: Yup.string().required("Field Cannot be Empty"),
+    eciUsTin: Yup.string().when("eciUsTinTypeId", {
+        is: "2",
+        then: () => Yup.string().required("Field Cannot be Empty"),
+      }),
+      // .required("Field Cannot be Empty"),
     
     cityTown: Yup.string().required("Field Cannot be Empty"),
     stateProvinceId: Yup.string().required("Field Cannot be Empty"),
@@ -18,7 +21,6 @@ export const TaxPurposeSchema = () => {
   return Yup.object().shape({
     firstName: Yup.string().required("Field Cannot be Empty"),
     federalTaxClassificationId: Yup.number()
-      .min(1, "Field Cannot be Empty")
       .required("Field Cannot be Empty"),
     lastName: Yup.string(),
     businessName: Yup.string().required("Field Cannot be Empty"),

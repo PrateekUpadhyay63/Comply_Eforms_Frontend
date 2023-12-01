@@ -2,9 +2,9 @@ import * as Yup from "yup";
 const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
 export const SubstantialSchema = () => {
   return Yup.object().shape({
-    daysAvailableInThisYear: Yup.number().min(1).required(),
-    daysAvailableIn_OneYearbefore: Yup.number().min(1).required(),
-    daysAvailableIn_TwoYearbefore: Yup.number().min(1).required(),
+    daysAvailableInThisYear: Yup.number().min(1).required("Field Cannot be Empty"),
+    daysAvailableIn_OneYearbefore: Yup.number().min(1).required("Field Cannot be Empty"),
+    daysAvailableIn_TwoYearbefore: Yup.number().min(1).required("Field Cannot be Empty"),
     totalQualifyingDays: Yup.number(),
   });
 };
@@ -32,17 +32,17 @@ export const ownerSchema = () => {
     exemptionApplicableForCompensationForCalnderYear: Yup.number()
       .min(1)
       .required(),
-    otherTaxBeginingYear: Yup.number().min(1).required(),
-    otherTaxEndYear: Yup.number().min(1).required(),
-    usVisaTypeID: Yup.string().required(),
-    countryIssuingPassportId: Yup.string().required(),
-    countryIssuingPassportNumber: Yup.string().required(),
+    otherTaxBeginingYear: Yup.number().min(1).required("Field Cannot be Empty"),
+    otherTaxEndYear: Yup.number().min(1).required("Field Cannot be Empty"),
+    usVisaTypeID: Yup.string().required("Field Cannot be Empty"),
+    countryIssuingPassportId: Yup.string().required("Field Cannot be Empty"),
+    countryIssuingPassportNumber: Yup.string().required("Field Cannot be Empty"),
     dateOfEntryIntoUS: Yup.date().required("Please enter date"),
     nonImmigrationStatus: Yup.boolean().oneOf(
       [true],
       "Please mark the checkbox"
     ),
-    currentNonImmigrationStatus: Yup.string().required(),
+    currentNonImmigrationStatus: Yup.string().required("Field Cannot be Empty"),
     dateNonImmigrationStatusExpire: Yup.date().required("Please enter date"),
     declarationOfDurationStayStatus: Yup.boolean().oneOf(
       [true],

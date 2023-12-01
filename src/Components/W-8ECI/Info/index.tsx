@@ -27,13 +27,13 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Tin(props: any) {
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || "{}");
   const initialValue = {
-    streetNumberName: "",
+    streetNumberName: obValues.permanentResidentialStreetNumberandName,
     eciUsTinTypeId: obValues.usTinTypeId,
     eciUsTin: obValues.usTin,
-    aptSuite: "",
-    cityTown: "",
-    stateProvinceId: "",
-    zipPostalCode: "",
+    aptSuite: obValues.permanentResidentialAptSuite,
+    cityTown: obValues.permanentResidentialCityorTown,
+    stateProvinceId: obValues.permanentResidentialStateorProvince,
+    zipPostalCode: obValues.permanentresidentialzippostalcode,
   };
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
@@ -44,8 +44,14 @@ export default function Tin(props: any) {
     };
   const [toolInfo, setToolInfo] = useState("");
 
-  const onChangeSingle = (values:any) => {
-    values.eciUsTin=""
+  const onChangeSingle = (e:any,setFieldValue:any) => {
+    console.log(e.target.value)
+    if(e.target.value==2){
+      setFieldValue('eciUsTin', obValues.usTin)
+    }
+    else {
+      setFieldValue('eciUsTin', "")
+    }
   };
 
   return (
@@ -53,6 +59,8 @@ export default function Tin(props: any) {
       <Formik
         initialValues={initialValue}
         validationSchema={TinSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           history("/W-8ECI/Tax_Purpose");
@@ -61,12 +69,13 @@ export default function Tin(props: any) {
       >
         {({
           errors,
-          touched,
-          handleBlur,
+          // touched,
+          // handleBlur,
           values,
           handleSubmit,
           handleChange,
           isSubmitting,
+          setFieldValue,
         }) => (
           <Form onSubmit={handleSubmit}>
             <section
@@ -148,7 +157,8 @@ export default function Tin(props: any) {
                               name="eciUsTinTypeId"
                               id="Income"
                               defaultValue={0}
-                              onChange={(e)=>{handleChange(e);onChangeSingle(values)}}
+                              
+                              onChange={(e)=>{handleChange(e);onChangeSingle(e,setFieldValue)}}
                               // onBlur={handleBlur}
                               value={values.eciUsTinTypeId}
                             >
@@ -235,8 +245,7 @@ export default function Tin(props: any) {
                               error={Boolean(errors.streetNumberName)}
                               value={values.streetNumberName}
                             />
-
-                            <p className="error">{errors.streetNumberName}</p>
+{errors.streetNumberName ? <p className="error">{errors.streetNumberName as string}</p> : null}
                           </div>
 
                           <div className="col-4">
@@ -279,7 +288,7 @@ export default function Tin(props: any) {
                               error={Boolean(errors.cityTown)}
                               value={values.cityTown}
                             />
-                            <p className="error">{errors.cityTown}</p>
+                            {errors.cityTown ? <p className="error">{errors.cityTown as string}</p> : null}
                           </div>
                         </div>
                         <div
@@ -317,7 +326,7 @@ export default function Tin(props: any) {
                               onChange={handleChange}
                               error={Boolean(errors.stateProvinceId)}
                             />
-                            <p className="error">{errors.stateProvinceId}</p>
+                            {errors.stateProvinceId ? <p className="error">{errors.stateProvinceId as string}</p> : null}
                           </div>
 
                           <div className="col-4">
@@ -342,7 +351,7 @@ export default function Tin(props: any) {
                               error={Boolean(errors.zipPostalCode)}
                               value={values.zipPostalCode}
                             />
-                            <p className="error">{errors.zipPostalCode}</p>
+                            {errors.zipPostalCode ? <p className="error">{errors.zipPostalCode as string}</p> : null}
                           </div>
                           <div className="col-4"></div>
                         </div>
