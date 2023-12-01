@@ -224,7 +224,7 @@ export default function Backup_witholding(props: any) {
                       align="left"
                       style={{
                         color: "black",
-                        fontSize: "20px",
+                        fontSize: "24px",
                         fontWeight: "550",
                       }}
                     >
@@ -316,7 +316,7 @@ export default function Backup_witholding(props: any) {
                     )}
                     <Typography
                       align="left"
-                      style={{ fontSize: "13px", marginTop: "10px" }}
+                      style={{ fontSize: "17px", marginTop: "10px" }}
                     >
                       Generally, individuals (including sole proprietors) are not
                       exempt from backup withholding.
@@ -324,7 +324,7 @@ export default function Backup_witholding(props: any) {
                     <Typography
                       align="left"
                       style={{
-                        fontSize: "13px",
+                        fontSize: "17px",
                         fontWeight: "550",
                         marginTop: "20px",
                       }}
@@ -1024,7 +1024,9 @@ export default function Backup_witholding(props: any) {
               </Typography>
               <Typography align="center">
                 <Button
-                  
+                  onClick={()=>{
+                    history("/W9/purposes")
+                  }}
                  
                   variant="contained"
                   style={{
