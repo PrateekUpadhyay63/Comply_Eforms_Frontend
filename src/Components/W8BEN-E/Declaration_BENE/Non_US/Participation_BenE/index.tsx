@@ -48,10 +48,12 @@ export default function Penalties() {
     };
   const [toolInfo, setToolInfo] = useState("");
 
+  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
+    question:obValues?.securityQuestion?.question,
     confirmationCode: "",
-    date: Date(),
+    date: obValues.date,
     isAgreeWithDeclaration: false,
   };
   const dispatch = useDispatch();
@@ -382,15 +384,15 @@ export default function Penalties() {
     <Link className="my-2 col-4" >Hint?</Link>
     <TextField className=" col-4"
                         style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
+                         
+                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         type="text"
                         disabled
+                        value={values.question}
                         
                         
                       />
@@ -402,7 +404,7 @@ export default function Penalties() {
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.5rem",
+                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -410,11 +412,12 @@ export default function Penalties() {
                         disabled
                         type="text"
                        
-                        
+                        value={values.confirmationCode}
                       />
 
   </div>
 </div>)}
+
 
 
                   <div
