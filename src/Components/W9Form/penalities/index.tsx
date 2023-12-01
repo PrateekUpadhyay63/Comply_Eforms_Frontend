@@ -438,7 +438,7 @@ export default function Penalties(props: any) {
                             touched.confirmationCode && errors.confirmationCode
                           )}
                           type="password"
-                          required
+                          
                           style={{ width: "100%" }}
                         />
                         <span

@@ -472,7 +472,7 @@ const history = useNavigate()
             >
               Check to confirm you have reviewed the Electronic Form
               <span
-                style={{ color: "blue", fontSize: "13px", marginLeft: "5px" }}
+                style={{ color: "blue", fontSize: "17px", marginLeft: "5px" }}
               >
                 (view Electronic Form)
               </span>
