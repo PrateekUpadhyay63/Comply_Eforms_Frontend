@@ -216,7 +216,7 @@ export default function FCTA_Reporting(props: any) {
   <div style={{ margin: "10px", padding: "10px", backgroundColor: "#ffff", }}>
     <Typography
       align="left"
-      style={{ margin: "10px", fontSize: "20px" }}
+      style={{ margin: "10px", fontSize: "27px" }}
     >
       Exemption from FATCA reporting
       <span style={{ color: "red" }}>*</span>
@@ -224,7 +224,7 @@ export default function FCTA_Reporting(props: any) {
     </Typography>
     <Typography
       align="left"
-      style={{ fontSize: "12px", marginTop: "10px" }}
+      style={{ fontSize: "17px", marginTop: "10px" }}
     >
       Will payments be made into an account held outside of the United
       States by a foreign institution?
@@ -342,7 +342,9 @@ export default function FCTA_Reporting(props: any) {
   </Typography>
   <Typography align="center">
     <Button
-    type="submit"
+   onClick={()=>{
+    history("/US_Purposes/Back")
+   }}
       variant="contained"
       style={{
         color: "white",

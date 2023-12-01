@@ -526,7 +526,9 @@ const history = useNavigate()
       </Typography>
       <Typography align="center">
         <Button
-        
+        onClick={()=>{
+          history("/US_Purposes/Back/Exemption/Tax")
+        }}
           variant="contained"
           style={{
             color: "white",
