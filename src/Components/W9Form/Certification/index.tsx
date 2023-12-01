@@ -12,33 +12,41 @@ import {
   Paper,
   Checkbox,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { Form, Formik } from "formik";
+import { W8_state_ECI } from "../../../Redux/Actions";
+import { certificateSchema } from "../../../schemas/w8Exp";
 import InfoIcon from "@mui/icons-material/Info";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
 export default function Certifications(props: any) {
-  // const {
-  //   handleTaxClassificationChange,
-  //   selectedTaxClassification,
-  //   data,
-  //   handleChange,
-  //   setselectedContinue,
-  // } = props;
+  const initialValue = {
+    isBeneficialOwnerIncome: false,
+    isAmountCertificationUS: false,
+    isBeneficialOwnerGrossIncome: false,
+    isBeneficialOwnerNotUSPerson: false,
+    isAuthorizeWithHoldingAgent: false,
+    isCapacityForm: false,
+    
+  };
+
+  const dispatch = useDispatch();
   const [checkbox2, setCheckbox2] = useState(false);
   const [checkbox5, setCheckbox5] = useState(false);
   const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false);
 const history = useNavigate()
-  const handleCheckbox2Change = () => {
-    setCheckbox2(!checkbox2);
-    setCheckbox5(false);
-    setIsSaveButtonEnabled(!isSaveButtonEnabled);
-  }
+  // const handleCheckbox2Change = () => {
+  //   setCheckbox2(!checkbox2);
+  //   setCheckbox5(false);
+  //   setIsSaveButtonEnabled(!isSaveButtonEnabled);
+  // }
 
-  const handleCheckbox5Change = () => {
-    setCheckbox5(!checkbox5);
-    setCheckbox2(false);
-    setIsSaveButtonEnabled(!isSaveButtonEnabled);
-  }
+  // const handleCheckbox5Change = () => {
+  //   setCheckbox5(!checkbox5);
+  //   setCheckbox2(false);
+  //   setIsSaveButtonEnabled(!isSaveButtonEnabled);
+  // }
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -52,12 +60,12 @@ const history = useNavigate()
   return (
     <section
     className="inner_content"
-    style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
+    style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
   >
-    <div className="row w-100 h-100">
-              <div className="col-4"  >
-          <div className="bg-none" style={{ padding: "10px 0px",height:"100%", }}>
-        <Paper style={{ padding: "0px 0px 0px 0px", height:"100%" ,backgroundColor:"#ffffff33"}} >
+    <div className="row w-100 " style={{backgroundColor: "#0c3d69"}}>
+              <div className="col-4 mt-2"  >
+          <div className="bg-none" style={{ padding: "10px 0px"}}>
+        <Paper style={{ padding: "0px 0px 0px 0px",backgroundColor:"#ffffff33"}} >
         
              
                 <div className="stepper" >
@@ -188,14 +196,41 @@ const history = useNavigate()
         </Paper>
       </div>
           </div>
-          <div className="col-8" > 
-    <div style={{ width: "100%" ,backgroundColor:"#fff",marginBottom:"3rem"}}>
+
+           <div className="col-8">
+      <div style={{ padding: "16px" ,backgroundColor: "#0c3d69"}}>
+      <Formik
+            initialValues={initialValue}
+            enableReinitialize
+            validationSchema={certificateSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(true);
+              console.log(values, "vallllll");
+              dispatch(
+                W8_state_ECI(values, () => {
+                  history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
+                })
+              );
+              history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
+            }}
+          >
+            {({
+              errors,
+              touched,
+              handleBlur,
+              values,
+              handleSubmit,
+              handleChange,
+              setFieldValue,
+            }) => (
+              <Form onSubmit={handleSubmit}>
+        <Paper style={{ padding: "14px" }}>
       
     <Typography
         align="left"
         style={{
           margin: "10px",
-          fontSize: "20px",
+          fontSize: "27px",
           fontWeight: "550",
           marginLeft: "20px",
         }}
@@ -330,7 +365,11 @@ const history = useNavigate()
       >
         <div style={{ margin: "10px" }}>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox name="isBeneficialOwnerIncome"
+                        value={values.isBeneficialOwnerIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -339,8 +378,13 @@ const history = useNavigate()
               to me), and
             </Typography>
           </Typography>
+          <p className="error">{errors.isBeneficialOwnerIncome}</p>
           <Typography style={{ display: "flex" }}>
-            <Checkbox checked={checkbox2} onChange={handleCheckbox2Change}  />
+            <Checkbox name="isAmountCertificationUS"
+                        value={values.isAmountCertificationUS}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }}   />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -352,8 +396,13 @@ const history = useNavigate()
               subject to backup withholding
             </Typography>
           </Typography>
+          <p className="error">{errors.isAmountCertificationUS}</p>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox name="isCapacityForm"
+                        value={values.isCapacityForm}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} />
             <Typography
               style={{ fontSize: "13px", color: "black", marginTop: "11px" }}
             >
@@ -361,8 +410,13 @@ const history = useNavigate()
               for a definition of a U.S. person), and
             </Typography>
           </Typography>
+          <p className="error">{errors.isCapacityForm}</p>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox  name="isBeneficialOwnerGrossIncome"
+                        value={values.isBeneficialOwnerGrossIncome}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -370,7 +424,7 @@ const history = useNavigate()
               am exempt from FATCA reporting is correct.
             </Typography>
           </Typography>
-
+          <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
           <Typography
             style={{
               fontSize: "13px",
@@ -394,7 +448,11 @@ const history = useNavigate()
             </span>
           </Typography>
           <Typography style={{ display: "flex" }}>
-            <Checkbox checked={checkbox5} onChange={handleCheckbox5Change}  />
+            <Checkbox  name="isBeneficialOwnerNotUSPerson"
+                        value={values.isBeneficialOwnerNotUSPerson}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }}  />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -402,8 +460,13 @@ const history = useNavigate()
               withholding.
             </Typography>
           </Typography>
+          <p className="error">{errors.isBeneficialOwnerNotUSPerson}</p>
           <Typography style={{ display: "flex" }}>
-            <Checkbox />
+            <Checkbox name="isAuthorizeWithHoldingAgent"
+                        value={values.isAuthorizeWithHoldingAgent}
+                        onChange={handleChange}
+                        size="medium"
+                        style={{ fontSize: "2rem" }} />
             <Typography
               style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
             >
@@ -415,15 +478,16 @@ const history = useNavigate()
               </span>
             </Typography>
           </Typography>
+          <p className="error">{errors.isAuthorizeWithHoldingAgent}</p>
         </div>
       </Paper>
-    </div>
+   
 
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}
       >
         <Button
-         disabled={!isSaveButtonEnabled}
+        
           onClick={() => {
             setOpen2(true);
           }}
@@ -441,10 +505,8 @@ const history = useNavigate()
         </Button>
         <Button
           type="submit"
-          disabled={!isSaveButtonEnabled}
-         onClick={()=>{
-          history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
-         }}
+         
+        
           variant="contained"
           style={{ color: "white", marginLeft: "15px" }}
         >
@@ -478,7 +540,12 @@ const history = useNavigate()
           Back
         </Button>
       </Typography>
+      </Paper>
+          </Form>
+            )}
+          </Formik>
  
+    </div>
     </div>
     </div>
     </section>
