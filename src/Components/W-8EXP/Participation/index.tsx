@@ -9,6 +9,7 @@ import {
   Tooltip,
   Link,
   FormControl,
+  Input,
 } from "@mui/material";
 import "./index.scss"
 import DatePicker from "react-date-picker";
@@ -225,15 +226,10 @@ export default function Penalties() {
                         ""
                       )}
 
-<TextField
-                        style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
-                          width: "100%",
-                        }}
+<Input
+                        className="inputTextField"
+                        id="outlined"
                         fullWidth
-                      
                         name="signedBy"
                         value={values.signedBy}
                         onBlur={handleBlur}
@@ -322,7 +318,10 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                      <TextField
+                      <Input
+                        className="inputTextField"
+                        id="outlined"
+                        fullWidth
     name="confirmationCode"
     value={values.confirmationCode}
     onBlur={handleBlur}
@@ -427,8 +426,10 @@ export default function Penalties() {
                         </Typography>
                         {/* <TextField */}
                           <FormControl style={{ width: "100%" }}>
-                          <TextField 
-                         className="date"
+                          <Input
+                        className="inputTextField"
+                        id="outlined"
+                        fullWidth
                           name="dob"
                           
                          
