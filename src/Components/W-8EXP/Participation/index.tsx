@@ -9,6 +9,7 @@ import {
   Tooltip,
   Link,
   FormControl,
+  Input,
 } from "@mui/material";
 import "./index.scss"
 import DatePicker from "react-date-picker";
@@ -45,7 +46,7 @@ export default function Penalties() {
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
-    question:obValues?.securityQuestion?.question,
+    question:"",
     confirmationCode: "",
     date: obValues.date,
     isAgreeWithDeclaration: false,
@@ -56,6 +57,8 @@ export default function Penalties() {
   return (
     <>
       <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -75,6 +78,7 @@ export default function Penalties() {
           handleSubmit,
           handleChange,
           isSubmitting,
+          setFieldValue
         }) => (
           <Form onSubmit={handleSubmit}>
             <section
@@ -225,15 +229,10 @@ export default function Penalties() {
                         ""
                       )}
 
-<TextField
-                        style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
-                          width: "100%",
-                        }}
+<Input
+                        className="inputTextField"
+                        id="outlined"
                         fullWidth
-                      
                         name="signedBy"
                         value={values.signedBy}
                         onBlur={handleBlur}
@@ -322,7 +321,10 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                      <TextField
+                      <Input
+                        className="inputTextField"
+                        id="outlined"
+                        fullWidth
     name="confirmationCode"
     value={values.confirmationCode}
     onBlur={handleBlur}
@@ -374,7 +376,7 @@ export default function Penalties() {
 
   </div>
   <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" >Hint?</Link>
+  <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
     <TextField className=" col-4"
                         style={{
                          
@@ -427,8 +429,10 @@ export default function Penalties() {
                         </Typography>
                         {/* <TextField */}
                           <FormControl style={{ width: "100%" }}>
-                          <TextField 
-                         className="date"
+                          <Input
+                        className="inputTextField"
+                        id="outlined"
+                        fullWidth
                           name="dob"
                           
                          

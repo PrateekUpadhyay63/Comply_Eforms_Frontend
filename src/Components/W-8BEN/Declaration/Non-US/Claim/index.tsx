@@ -75,6 +75,8 @@ export default function FCTA_Reporting(props: any) {
       <div style={{ padding: "10px 0px" }}>
         <Paper style={{ padding: "16px" }}>
           <Formik
+            validateOnChange={false}
+            validateOnBlur={false}
             initialValues={{
               isSubmissionClaimTreaty: "No",
              

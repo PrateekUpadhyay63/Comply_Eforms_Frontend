@@ -102,7 +102,7 @@ const GetAllIncomeCodesReducer = useSelector(
               setSubmitting(true);
                 dispatch(
                   W8_state(values, () => {
-                    history("/W-8BEN/Declaration/US_Tin/Certificates");
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE");
                   })
                 );
               history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE");
@@ -676,7 +676,7 @@ const GetAllIncomeCodesReducer = useSelector(
                   </Button>):<>
                   <Button 
                    onClick={()=>
-                    history("/W-8BEN/Declaration/US_Tin/Certificates")
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE")
                    }
                    variant="contained"
                    style={{ color: "white", marginLeft: "15px" }}

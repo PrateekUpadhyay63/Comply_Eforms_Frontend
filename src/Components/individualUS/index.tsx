@@ -619,12 +619,14 @@ export default function IndividualUs() {
             className="underline-none"
           >
             <Formik
+             
               initialValues={initialValues}
               enableReinitialize
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
+                console.log(values,)
                 const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
@@ -5018,9 +5020,8 @@ export default function IndividualUs() {
                     ) : (
                       ""
                     )}
-                    <div className="row d-flex mx-1 mt-3 mx-3" onClick={()=>{setFieldValue("isConfirmed", !values.isConfirmed)}}>
-                      
-                      <div className="d-flex p-0 flex-column">
+                    <div className="row d-flex mx-1 mt-3 mx-3" >
+                      <div className="d-flex p-0 flex-column" onClick={()=>{setFieldValue("isConfirmed", !values.isConfirmed)}}>
                         <div className="d-flex p-0">
                           <div className="w-auto px-2">
                             <Checkbox
@@ -5081,7 +5082,6 @@ export default function IndividualUs() {
                               fontSize: "16px",
                               textTransform: "uppercase",
                               borderRadius: "0px",
-
                               padding: "0 35px",
                               letterSpacing: "1px",
                             }}

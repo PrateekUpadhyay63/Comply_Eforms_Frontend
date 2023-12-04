@@ -38,6 +38,8 @@ export default function FCTA_Reporting(props: any) {
     
     <Paper className="col-12">
        <Formik
+       validateOnChange={false}
+       validateOnBlur={false}
           initialValues={initialValue}
           enableReinitialize
           validationSchema={fctaSchema} // Uncomment after testing ,this is validation Schema

@@ -66,6 +66,8 @@ export default function Certifications(props: any) {
       <div style={{ padding: "20px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
+           validateOnChange={false}
+           validateOnBlur={false}
             initialValues={initialValue}
             enableReinitialize
             validationSchema={certificateSchema}

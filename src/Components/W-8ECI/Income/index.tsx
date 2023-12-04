@@ -59,6 +59,8 @@ export default function Factors() {
   return (
     <>
       <Formik
+      
+
         initialValues={initialValue}
         validationSchema={IncomeSchema}
         onSubmit={(values, { setSubmitting }) => {

@@ -57,6 +57,7 @@ export default function Tin(props: any) {
   return (
     <>
       <Formik
+      
         initialValues={initialValue}
         validationSchema={TinSchema}
         validateOnChange={false}
