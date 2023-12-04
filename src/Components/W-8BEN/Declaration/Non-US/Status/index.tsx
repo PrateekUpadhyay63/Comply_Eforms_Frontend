@@ -1083,7 +1083,7 @@ export default function Factors() {
                             id="Income"
                             defaultValue={1}
                             onChange={handleChange}
-                            // onBlur={handleBlur}
+                       
                             value={values.permanentResidentialCountryId}
                           >
                             <option value={0}>-Select-</option>
@@ -1181,15 +1181,15 @@ export default function Factors() {
                       )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <input disabled = {values.permanentResidentialCountryId == 0} className="input" />
+                                <input name="taxReferenceNumber" value={values.taxReferenceNumber} disabled = {values.permanentResidentialCountryId == 0} className="input" />
                               </FormControl>
                              {values.permanentResidentialCountryId == 257?(<div className="d-flex">
-                                <Checkbox required />
+                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  required />
                                 <div className="mt-2">
                                   TIN format not available
                                 </div>
                               </div>):<div className="d-flex">
-                                <Checkbox disabled required />
+                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  disabled required />
                                 <div className="mt-2" style={{color:"grey"}}>
                                   TIN format not available
                                 </div>
