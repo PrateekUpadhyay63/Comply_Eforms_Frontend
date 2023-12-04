@@ -3,7 +3,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
-export default function FormW8EXP() {
+export default function FormW8IMY() {
 
   const boxRef: any = useRef()
   //  const boxRef = useRef<HTMLDivElement>(null);
@@ -46,7 +46,7 @@ export default function FormW8EXP() {
               <thead>
                 <tr>
                   <th style={{ width: "22.5%", boxSizing: "border-box", fontSize: "14px", lineHeight: "1.3", borderRight: "2px solid #000", borderBottom: "2px solid #000" }}>
-                    <p>Form <strong style={{ fontSize: "30px", fontWeight: "700" }}>W-8EXP</strong></p>
+                    <p>Form <strong style={{ fontSize: "30px", fontWeight: "700" }}>W-8IMY</strong></p>
                     <p style={{ margin: "15px 0" }}>(Rev. October 2021)</p>
                     <p>Department of the Treasury Internal Revenue Service</p>
                   </th>
@@ -54,8 +54,8 @@ export default function FormW8EXP() {
                     <h1 style={{ fontSize: "13.5px", fontWeight: "700" }}>Certificate of Foreign Intermediary, Foreign Flow-Through Entity, or Certain
                       U.S. Branches for United States Tax Withholding and Reporting</h1>
                     <ul style={{ listStyle: "none", fontSize: "12px", lineHeight: "1.5", paddingLeft: "0" }}>
-                      <li>&#9658; For use by individuals. Entities must use Form W-8BEN-E.</li>
-                      <li>&#9658; Go to www.irs.gov/FormW8BEN for instructions and the latest information.</li>
+                      <li>&#9658; Section references are to the Internal Revenue Code.</li>
+                      <li>&#9658; Go to www.irs.gov/FormW8IMY for instructions and the latest information.</li>
                       <li>&#9658; Give this form to the withholding agent or payer. Do not send to the IRS.</li>
                     </ul>
                   </th>
@@ -63,7 +63,7 @@ export default function FormW8EXP() {
                     <p style={{ fontSize: "14px", textAlign: "right", color: "blue", fontWeight: "400", marginBottom: "15px" }}>UID : 6utykj</p>
                     <h3 style={{ fontSize: "20px", fontWeight: "bolder", lineHeight: "1", }}>Electronic </h3>
                     <h3 style={{ fontSize: "20px", fontWeight: "bolder", lineHeight: "1", }}>Substitute  </h3>
-                    <h5>Form W-8BEN</h5>
+                    <h5>Form W-8IMY</h5>
                   </th>
                 </tr>
               </thead>
@@ -102,10 +102,9 @@ export default function FormW8EXP() {
             </table>
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto 0" }} cellPadding={0}>
               <thead>
-                <tr>
-                  <td style={{ background: "#000", color: "#fff", fontWeight: "bold", width: "120px", border: "1px solid #000", padding: "5px 10px", textAlign: "center" }}>Part I </td>
-                  <td style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                    <strong>Identification of Entity</strong></td>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part I</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900" }}> <strong>Identification of Entity</strong></td>
                 </tr>
               </thead>
             </table>
@@ -199,7 +198,7 @@ export default function FormW8EXP() {
                         <li style={{ display: "flex", gap: "10px" }}>
                           <span style={{ verticalAlign: "top" }}><input type="checkbox" name="" id="" /></span> Participating FFI.</li>
                         <li style={{ display: "flex", gap: "10px" }}>
-                          <span style={{ verticalAlign: "baseline" }}><input type="checkbox" name="" id="" /></span> Reporting Model 1 FFI. </li>
+                          <span style={{ verticalAlign: "top" }}><input type="checkbox" name="" id="" /></span> Reporting Model 1 FFI. </li>
                         <li style={{ display: "flex", gap: "10px" }}>
                           <span style={{ verticalAlign: "middle" }}><input type="checkbox" name="" id="" checked /></span> Reporting Model 2 FFI.</li>
                         <li style={{ display: "flex", gap: "10px" }}>
@@ -285,7 +284,7 @@ export default function FormW8EXP() {
                   <td colSpan={2} style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
                     <div style={{ width: "100%", display: "flex" }}>
                       <div style={{ paddingRight: "10px", width: "20px" }}>8.</div>
-                      <div style={{ width: "40%", }}> U.S. taxpayer identification number, if required ▶ </div>
+                      <div style={{ width: "40%", }}> U.S. taxpayer identification number, if required &#9654; </div>
                       <div style={{ width: "150px", color: "rgb(5, 5, 129)", borderBottom: "1px solid #000" }}>12-3456213</div>
                     </div>
                     <div style={{ display: "flex" }}>
@@ -308,12 +307,12 @@ export default function FormW8EXP() {
                   <td colSpan={2} style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
                     <div style={{ width: "100%", display: "flex" }}>
                       <div style={{ paddingRight: "10px", }}>9a.</div>
-                      <div> GIIN (if applicable) ▶</div>
+                      <div> GIIN (if applicable) &#9654;</div>
                       <div style={{ color: "rgb(5, 5, 129)", borderBottom: "1px solid #000", width: "75%" }}>12-3456213</div>
                     </div>
                     <div style={{ width: "100%", display: "flex" }}>
                       <div style={{ paddingRight: "10px", width: "20px" }}>b.</div>
-                      <div>Foreign taxpayer identification number, if required ▶</div>
+                      <div>Foreign taxpayer identification number, if required &#9654;</div>
                       <div style={{ color: "rgb(5, 5, 129)", borderBottom: "1px solid #000", width: "50%" }}>12-3456213</div>
                     </div>
                   </td>
@@ -324,7 +323,7 @@ export default function FormW8EXP() {
                       <div style={{ paddingRight: "10px" }}>10.</div>
                       <div style={{ width: "40%", }}> Reference number(s) (see instructions) </div>
                     </div>
-                    <p style={{ width: "100%", color: "rgb(5, 5, 129)" }}>12-3456213</p>
+                    <p style={{ width: "100%", color: "rgb(5, 5, 129)" , marginBottom:"0px"}}>12-3456213</p>
                   </td>
                 </tr>
               </tbody>
@@ -344,10 +343,10 @@ export default function FormW8EXP() {
           <section style={{ breakAfter: "page", breakBefore: "page" }}>
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
               <thead>
-                <tr>
-                  <td style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", border: "1px solid #000", padding: "5px 10px", textAlign: "center", maxHeight:"36px" }}>Part II </td>
-                  <td style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                    <strong>I Disregarded Entity or Branch Receiving Payment</strong> (Complete only if a disregarded entity with a GIIN or
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part II</p></div> </td>
+                  <td style={{ padding: "0px 10px", }}>
+                    <strong>Disregarded Entity or Branch Receiving Payment.</strong> (Complete only if a disregarded entity with a GIIN or
                     a branch of an FFI in a country other than the FFI’s country of residence. Do not complete Part II for QDD
                     branches. See instructions.) </td>
                 </tr>
@@ -384,6 +383,7 @@ export default function FormW8EXP() {
                       <div style={{ paddingRight: "10px" }}>12.</div>
                       <div> Address of branch (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address</strong> (other than a registered address).</div>
                     </div>
+                    <p style={{width:"100%",marginLeft:"30.72px",marginBottom:"0px",minHeight:"24px"}}></p>
                   </td>
                 </tr>
                 <tr>
@@ -408,7 +408,7 @@ export default function FormW8EXP() {
                   <td colSpan={2} style={{ borderBottom: "1px solid #000", padding: "5px 10px" }}>
                     <div style={{ width: "100%", display: "flex" }}>
                       <div style={{ paddingRight: "10px" }}>13.</div>
-                      <div>GIIN (if any) ▶</div>
+                      <div>GIIN (if any) &#9654;</div>
                     </div>
                   </td>
                 </tr>
@@ -417,19 +417,209 @@ export default function FormW8EXP() {
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
               <thead>
                 <tr>
-                  <td colSpan={2} style={{ textAlign: "center", fontSize: "20px", fontWeight: "600", paddingBottom: "10px" }}>Chapter 3 Status Certifications</td>
+                  <td colSpan={2} style={{ textAlign: "center", fontSize: "20px", fontWeight: "900", paddingBottom: "10px", }}>Chapter 3 Status Certifications</td>
                 </tr>
-                <tr>
-                  <td style={{ background: "#000", color: "#fff", fontWeight: "bold", width: "120px", border: "1px solid #000", padding: "5px 10px", textAlign: "center" }}>Part III </td>
-                  <td style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", padding: "5px 10px" }}>
-                    <strong>Qualified Intermediary</strong> </td>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part III</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Qualified Intermediary</strong></td>
                 </tr>
               </thead>
+              
             </table>
+            
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
               <tbody>
                 <tr>
                   <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>All Qualified Intermediaries</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px"}}>14</td>
+                  <td style={{ padding: "10px 0" }}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px" }} /> I certify that the entity identified in Part I (or branch, if relevant):
+                  </td>
+                </tr>
+                <tr>
+                    <td colSpan={2}>
+                        <ul style={{marginBottom:"0px"}}>
+                            <li> Is a QI with respect to the accounts identified on line 10 or in a withholding statement associated with this form (as required) that is one or more of the following:</li>
+                        </ul>
+                        <ul style={{listStyleType:"none",paddingLeft:"28px",marginBottom:"0px"}}>
+                            <li>
+                               <strong>(i)</strong> Not acting for its own account;
+                            </li>
+                            <li>
+                                <strong>(ii)</strong> A QDD receiving payments on underlying securities and/or potential section 871(m) transactions;
+                            </li>
+                            <li>
+                            <strong>(iii)</strong> A QI assuming primary withholding responsibility for payments of substitute interest, as permitted by the QI Agreement.
+                            </li>
+                        </ul>
+                        <ul style={{marginBottom:"0px"}}>
+                            <li> Has provided or will provide a withholding statement (as required) for purposes of chapters 3 and 4, and section 1446(a), or section 
+                            1446(f), subject to the certifications made on this form.</li>
+                            <li>
+                            To the extent it acts as a disclosing QI for purposes of section 1446(a) or (f) for payments associated with this form, the QI is to provide 
+the required payee documentation to associate with an amount realized or an amount subject to withholding on a PTP distribution.
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Qualified Intermediaries When Not Acting As Qualified Derivatives Dealers (check all that apply)</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>15a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> I certify that the entity identified in Part I of this form assumes primary withholding responsibility for purposes of chapters 3 and 4 for each 
+                    account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form assumes primary withholding and reporting responsibility for each payment of an amount 
+                    realized from the sale of an interest in a publicly traded partnership under section 1446(f) associated with each account identified on a withholding 
+                    statement attached to this form for receiving such amounts (or, if no withholding statement is attached to this form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form assumes primary withholding as a nominee under Regulations section 1.1446-4(b)(3) 
+                    for each distribution by a publicly traded partnership associated with each account identified on a withholding statement attached to this 
+                    form for receiving such distributions (or, if no withholding statement is attached to this form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>d </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form is a QI acting as a qualified securities lender assuming primary withholding and 
+                    reporting responsibilities with respect to payments that are U.S. source substitute dividends received from the withholding agent 
+                    associated with each account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this 
+                    form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>e </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form assumes primary withholding responsibility for purposes of chapters 3 and 4 and 
+                    primary Form 1099 reporting and backup withholding responsibility for all payments of U.S. source interest and substitute interest 
+                    associated with this form, as permitted by the QI Agreement.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>f </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form assumes primary Form 1099 reporting and backup withholding responsibility or 
+                    reporting responsibility as a participating FFI or registered deemed-compliant FFI with respect to accounts that it maintains that are held by 
+                    specified U.S. persons as permitted under Regulations sections 1.6049-4(c)(4)(i) or (c)(4)(ii) in lieu of Form 1099 reporting for each account 
+                    identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>g </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding responsibility for each 
+                    account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>h </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    (Complete only to the extent the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding 
+                    responsibility.) If the entity identified in Part I of this form has allocated or will allocate a portion of a payment to a chapter 4 withholding rate pool 
+                    of U.S. payees on a withholding statement associated with this form, I certify that the entity meets the requirements of Regulations section 
+                    1.6049-4(c)(4)(iii) with respect to any account holder of an account it maintains that is included in such a withholding rate pool.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>i </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    (Complete only to the extent the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding 
+                    responsibility.) If the entity identified in Part I of this form has allocated or will allocate a portion of a payment to a chapter 4 withholding rate pool 
+                    of U.S. payees on a withholding statement associated with this form, to the extent the U.S. payees are account holders of an intermediary or flowthrough entity receiving a payment from the entity, I certify that the entity has obtained, or will obtain, documentation sufficient to establish each 
+                    such intermediary or flow-through entity status as a participating FFI, registered deemed-compliant FFI, or FFI that is a QI.
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Qualified Derivatives Dealers</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>16a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that each QDD identified in Part I of this form or on a withholding statement associated with this form meets the requirements to 
+                    act as a QDD (including approval by the IRS to so act) and assumes primary withholding and reporting responsibilities under chapters 3, 4, 
+                    and 61 and section 3406 with respect to any payments it makes with respect to potential section 871(m) transactions.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",opacity:"0" }} /> 
+                    Entity classification of QDD:
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
+                    Corporation
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
+                    Partnership
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
+                    Disregarded Entity
+                  </td>
+                </tr>
+                <tr>
+                    <td colSpan={2}>
+                        <ul style={{marginBottom:"0px"}}>
+                            <li> Is a QI with respect to the accounts identified on line 10 or in a withholding statement associated with this form (as required) that is one or more of the following:</li>
+                        </ul>
+                        <ul style={{listStyleType:"none",paddingLeft:"28px",marginBottom:"0px"}}>
+                            <li>
+                               <strong>(i)</strong> Not acting for its own account;
+                            </li>
+                            <li>
+                                <strong>(ii)</strong> A QDD receiving payments on underlying securities and/or potential section 871(m) transactions;
+                            </li>
+                            <li>
+                            <strong>(iii)</strong> A QI assuming primary withholding responsibility for payments of substitute interest, as permitted by the QI Agreement.
+                            </li>
+                        </ul>
+                        <ul style={{marginBottom:"0px"}}>
+                            <li> Has provided or will provide a withholding statement (as required) for purposes of chapters 3 and 4, and section 1446(a), or section 
+                            1446(f), subject to the certifications made on this form.</li>
+                            <li>
+                            To the extent it acts as a disclosing QI for purposes of section 1446(a) or (f) for payments associated with this form, the QI is to provide 
+the required payee documentation to associate with an amount realized or an amount subject to withholding on a PTP distribution.
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+
+
+
+
+
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Qualified Intermediaries When Not Acting As Qualified Derivatives Dealers (check all that apply)</td>
                 </tr>
                 <tr>
                   <td colSpan={2} style={{ padding: "5px 0" }}>Under penalties of perjury, I declare that I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete. I further certify under penalties of perjury that:</td>
