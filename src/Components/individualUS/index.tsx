@@ -557,7 +557,7 @@ export default function IndividualUs() {
   console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
 
   return (
-    <section className="inner_content" style={{ backgroundColor: "#0c3d69" }}>
+    <section className="inner_content backGround_Image" style={{ paddingTop:"25px" }}>
       <Typography
         align="center"
         style={{
