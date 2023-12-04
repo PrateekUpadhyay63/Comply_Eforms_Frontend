@@ -561,3 +561,8 @@
     border-radius: 1px;
     padding: 0 10px;
 }
+
+.backGround_Image {
+  background: #052035 url(http://localhost:3000/static/media/bg_login.e14d433bfa1da61c3007.jpg) 297px -80px fixed no-repeat !important;
+  background-size: cover !important;
+}
