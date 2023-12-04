@@ -682,6 +682,7 @@ export default function Tin(props: any) {
                                   <>
                                     <Typography color="inherit">
                                       9999999999
+                                       {/* this need to be fixed */}
                                     </Typography>
                                     <a onClick={() => setToolInfo("basic")}>
                                       <Typography
@@ -772,7 +773,65 @@ export default function Tin(props: any) {
                             " "
                           }
 
-                          <FormControl >
+                          {/* <FormControl >
+                            <RadioGroup
+                              row
+                              
+                              name="tinisFTINNotLegallyRequired"
+                              aria-labelledby="demo-row-radio-buttons-group-label"
+                              value={values.tinisFTINNotLegallyRequired}
+                              onChange={handleChange}
+                            >
+                              <FormControlLabel
+                                value="Yes"
+                                disabled={values.isFTINNotLegallyRequired}
+                                control={<Radio />}
+                                label="Not Available"
+                                name="tinisFTINNotLegallyRequired"
+                              />
+                              <FormControlLabel
+                                className="label"
+                                value="No"
+                                control={<Radio />}
+                                label="Alternative Tin Format"
+                                disabled={values.isFTINNotLegallyRequired}
+                                name="tinisFTINNotLegallyRequired"
+                              />
+
+                              {values.tinisFTINNotLegallyRequired === "Yes" ||
+                              values.tinisFTINNotLegallyRequired === "No" ? (
+                                <Delete
+                                  onClick={() => {
+                                    handleChange("tinisFTINNotLegallyRequired")(
+                                      ""
+                                    );
+                                  }}
+                                  style={{
+                                    color: "red",
+                                    fontSize: "20px",
+                                    marginTop: "11px",
+                                  
+                                  }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                            </RadioGroup>
+
+                            {errors.tinisFTINNotLegallyRequired &&
+                            touched.tinisFTINNotLegallyRequired ? (
+                              <div>
+                                <Typography color="error">
+                                  {errors.tinisFTINNotLegallyRequired}
+                                </Typography>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </FormControl> */}
+                        </div>
+                        <div  className="col-lg-2 col-12">
+                        <FormControl >
                             <RadioGroup
                               row
                               

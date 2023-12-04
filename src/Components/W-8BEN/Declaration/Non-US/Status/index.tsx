@@ -498,6 +498,7 @@ export default function Factors() {
                             />
                           </RadioGroup>
                         </FormControl>
+                        <Divider className="dividr" />
                       </>
                       ) : ("")}
 

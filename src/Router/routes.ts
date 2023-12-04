@@ -2,10 +2,11 @@ import React from "react";
 import { RouteType } from "./types";
 import Utils from "../Utils";
 
+import EntityUs from "../Components/entity"
 const login = React.lazy(() => import("../Components/login"));
 // const W9 = React.lazy(() => import("../Components/w9"));
 const IndividualUs = React.lazy(() => import("../Components/individualUS"));
-const EntityUs = React.lazy(() => import("../Components/entity"));
+// const EntityUs = React.lazy(() => import("../Components/entity"));
 const Term = React.lazy(() => import("../Components/term"));
 const Certificates = React.lazy(() => import("../Components/certificates"));
 const form = React.lazy(() => import("../FormGuide/form/index"));

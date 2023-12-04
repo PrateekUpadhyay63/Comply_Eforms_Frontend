@@ -615,7 +615,7 @@ export default function IndividualUs() {
         >
           <Paper
             elevation={6}
-            style={{ padding: "17px" }}
+            style={{ padding: "5rem 17px 17px 17px" }}
             className="underline-none"
           >
             <Formik
@@ -4054,10 +4054,6 @@ export default function IndividualUs() {
 
                     {values.paymentTypeId ? (
                       <>
-                        {console.log(
-                          values.paymentTypeId,
-                          "values.paymentTypeId"
-                        )}
                         <CardHeader
                           className="flex-row-reverse"
                           title={
@@ -4423,7 +4419,7 @@ export default function IndividualUs() {
                           ) : (
                             ""
                           )}
-                          {values.paymentTypeId == 2 ? (
+                          {values.paymentTypeId == 3 ? (
                             <>
                               <div className="row">
                                 <Typography
@@ -4742,7 +4738,7 @@ export default function IndividualUs() {
                             ""
                           )}
 
-                          {values.paymentTypeId == 3 ? (
+                          {values.paymentTypeId == 2 ? (
                             <>
                               <div className="row">
                                 <Typography
@@ -5022,7 +5018,8 @@ export default function IndividualUs() {
                     ) : (
                       ""
                     )}
-                    <div className="row d-flex mx-1 mt-3 mx-3">
+                    <div className="row d-flex mx-1 mt-3 mx-3" onClick={()=>{setFieldValue("isConfirmed", !values.isConfirmed)}}>
+                      
                       <div className="d-flex p-0 flex-column">
                         <div className="d-flex p-0">
                           <div className="w-auto px-2">
@@ -5030,24 +5027,18 @@ export default function IndividualUs() {
                               className="pr-0"
                               checked={values.isConfirmed}
                               name="isConfirmed"
-                              // onChange={() =>
-                              //   setPayload({
-                              //     ...payload,
-                              //     isConfirmed: !payload.isConfirmed,
-                              //   })
-                              // }
                               onChange={handleChange}
-                              // onBlur={handleBlur}
                               value={values.isConfirmed}
                             />
                           </div>
-                          <div className="w-auto d-flex p-0">
+                          <div className="w-auto d-flex p-0" >
                             <Typography className="my-auto">
                               I confirm the information above is correct
                             </Typography>
                           </div>
                         </div>
                       </div>
+                      
                       <p className="error">{errors.isConfirmed}</p>
 
                       {values.isConfirmed ? (

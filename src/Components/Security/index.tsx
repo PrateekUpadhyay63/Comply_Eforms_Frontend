@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import { toast,ToastContainer  } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,6 +23,7 @@ const DialogEdit = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const history = useNavigate();
   const { open, setOpen } = props;
+  const textAreaRef = useRef(null);
   const postSecurityCodeData = useSelector(
     (state: any) => state.postSecurityCodeReducer.postSecurutyCodeData
   );
@@ -51,11 +52,13 @@ const DialogEdit = (props: any) => {
     setOpen(false);
   };
 
-  const handleCopyClick = () => {
+  const handleCopyClick = (e:any) => {
     navigator.clipboard.writeText(payload.confirmationCode);
-    toast.success("Code copied to clipboard!",{
-      autoClose: 2000
-    })
+    document.execCommand('copy');
+    e.target.focus();
+    // toast.success("Code copied to clipboard!",{
+    //   autoClose: 2000
+    // })
     
   };
   useEffect(() => {
@@ -149,12 +152,13 @@ const DialogEdit = (props: any) => {
                         size="small"
                         name="code"
                         value={values.confirmationCode}
+                        ref={textAreaRef}
                         disabled
                       />
                     </Typography>
                     <Typography className="col-1">
                       <ContentCopy
-                       onClick={handleCopyClick}
+                       onClick={(e)=>{handleCopyClick(e)}}
                         // onClick={() => {
                         //   navigator.clipboard.writeText(
                         //     payload.confirmationCode

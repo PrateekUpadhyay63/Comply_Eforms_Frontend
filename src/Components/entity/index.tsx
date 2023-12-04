@@ -533,7 +533,7 @@ export default function Entity() {
           className="col-lg-12 mt-3"
           style={{ padding: "1.5rem 8px 8px 8px" }}
         >
-          <Paper elevation={6} style={{ padding: "17px" }}>
+          <Paper elevation={6} style={{ padding: "5rem 17px 17px 17px" }}>
             <Formik
               initialValues={initialValues}
               enableReinitialize

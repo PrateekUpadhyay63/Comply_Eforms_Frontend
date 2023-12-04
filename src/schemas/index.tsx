@@ -88,8 +88,8 @@ export const tinSchema = () => {
 export const securitySchema = () => {
   return Yup.object().shape({
     securityQuestion: Yup.number()
-      .required("This Field is Required.")
+      .required("Please select one of the options")
       .notOneOf([0], "Required Field"),
-    securityAnswer: Yup.string().required("Please select one of the options"),
+    securityAnswer: Yup.string().required("This Field is Required."),
   });
 };
