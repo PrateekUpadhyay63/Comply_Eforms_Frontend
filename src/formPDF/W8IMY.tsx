@@ -54,8 +54,8 @@ export default function FormW8IMY() {
                     <h1 style={{ fontSize: "13.5px", fontWeight: "700" }}>Certificate of Foreign Intermediary, Foreign Flow-Through Entity, or Certain
                       U.S. Branches for United States Tax Withholding and Reporting</h1>
                     <ul style={{ listStyle: "none", fontSize: "12px", lineHeight: "1.5", paddingLeft: "0" }}>
-                      <li>&#9658; For use by individuals. Entities must use Form W-8BEN-E.</li>
-                      <li>&#9658; Go to www.irs.gov/FormW8BEN for instructions and the latest information.</li>
+                      <li>&#9658; Section references are to the Internal Revenue Code.</li>
+                      <li>&#9658; Go to www.irs.gov/FormW8IMY for instructions and the latest information.</li>
                       <li>&#9658; Give this form to the withholding agent or payer. Do not send to the IRS.</li>
                     </ul>
                   </th>
@@ -63,7 +63,7 @@ export default function FormW8IMY() {
                     <p style={{ fontSize: "14px", textAlign: "right", color: "blue", fontWeight: "400", marginBottom: "15px" }}>UID : 6utykj</p>
                     <h3 style={{ fontSize: "20px", fontWeight: "bolder", lineHeight: "1", }}>Electronic </h3>
                     <h3 style={{ fontSize: "20px", fontWeight: "bolder", lineHeight: "1", }}>Substitute  </h3>
-                    <h5>Form W-8BEN</h5>
+                    <h5>Form W-8IMY</h5>
                   </th>
                 </tr>
               </thead>
