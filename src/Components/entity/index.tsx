@@ -4932,7 +4932,7 @@ export default function Entity() {
                         />
                       </div>
 
-                      <div className="w-auto d-flex p-0">
+                      <div className="w-auto d-flex p-0" onClick={()=>{setFieldValue("isConfirmed", !values.isConfirmed)}}>
                         <Typography className="my-auto">
                           I confirm the information above is correct
                         </Typography>
