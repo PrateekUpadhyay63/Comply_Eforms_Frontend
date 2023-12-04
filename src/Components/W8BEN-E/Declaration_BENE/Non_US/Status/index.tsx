@@ -151,6 +151,8 @@ export default function Fedral_tax(props: any) {
             <div style={{ padding: "20px" }}>
               <Paper style={{ padding: "18px" }}>
                 <Formik
+                validateOnChange={false}
+                validateOnBlur={false}
                   initialValues={initialValue}
                   validationSchema={TaxPurposeSchema}
                   onSubmit={(values, { setSubmitting }) => {

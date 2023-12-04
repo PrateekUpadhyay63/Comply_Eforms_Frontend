@@ -55,6 +55,8 @@ export default function FCTA_Reporting(props: any) {
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px", height: "100%" }}
   >
        <Formik
+       validateOnChange={false}
+       validateOnBlur={false}
           initialValues={initialValue}
           enableReinitialize
           validationSchema={fctaSchema} // Uncomment after testing ,this is validation Schema

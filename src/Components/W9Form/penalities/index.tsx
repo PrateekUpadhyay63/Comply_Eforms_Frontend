@@ -44,7 +44,7 @@ export default function Penalties(props: any) {
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
-    question:obValues?.securityQuestion?.question,
+    question:"",
     confirmationCode: "",
     date: obValues.date,
     isAgreeWithDeclaration: false,
@@ -54,6 +54,8 @@ export default function Penalties(props: any) {
   return (
     <>
     <Formik
+        validateOnChange={false}
+        validateOnBlur={false}
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -480,10 +482,10 @@ export default function Penalties(props: any) {
 
   </div>
   <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" >Hint?</Link>
+    <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
     <TextField className=" col-4"
                         style={{
-                         
+                         color:"black !important",
                           height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
@@ -498,7 +500,7 @@ export default function Penalties(props: any) {
 
   </div>
   <div className="d-flex my-3 col-8 ">
-    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Your Confirmation Code</Typography>
     <TextField className="col-4"
                         style={{
                           color: "#7e7e7e",

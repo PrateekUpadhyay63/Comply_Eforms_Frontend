@@ -73,6 +73,8 @@ const DialogEdit = (props: any) => {
         <div style={{ padding: "25px" }}>
           <Paper style={{ padding: "22px" }}>
             <Formik
+              validateOnChange={false}
+              validateOnBlur={false}
               initialValues={initialValues}
               enableReinitialize
               onSubmit={(values, { setSubmitting }) => {

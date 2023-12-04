@@ -58,6 +58,8 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
   return (
     <>
       <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
         initialValues={initialValue}
         enableReinitialize
         validationSchema={ownerSchema}

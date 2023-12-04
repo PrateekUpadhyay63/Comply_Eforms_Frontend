@@ -147,6 +147,8 @@ export default function Factors() {
           <div style={{ padding: "30px" }}>
             <Paper style={{ padding: "18px" }}>
               <Formik
+                validateOnChange={false}
+                validateOnBlur={false}
                 initialValues={initialValue}
                 enableReinitialize
                 validationSchema={StatusSchema}

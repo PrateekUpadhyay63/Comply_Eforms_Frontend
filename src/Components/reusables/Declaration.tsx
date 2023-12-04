@@ -39,6 +39,9 @@ const Declaration = (props: any) => {
       >
         <DialogContent>
           <Formik
+          
+            validateOnChange={false}
+            validateOnBlur={false}
             initialValues={{
               isAgreeWithDeclaration: true,
               isConsentReceipentstatement: true,

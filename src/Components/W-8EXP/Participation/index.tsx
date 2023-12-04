@@ -46,7 +46,7 @@ export default function Penalties() {
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
-    question:obValues?.securityQuestion?.question,
+    question:"",
     confirmationCode: "",
     date: obValues.date,
     isAgreeWithDeclaration: false,
@@ -57,6 +57,8 @@ export default function Penalties() {
   return (
     <>
       <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -76,6 +78,7 @@ export default function Penalties() {
           handleSubmit,
           handleChange,
           isSubmitting,
+          setFieldValue
         }) => (
           <Form onSubmit={handleSubmit}>
             <section
@@ -373,7 +376,7 @@ export default function Penalties() {
 
   </div>
   <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" >Hint?</Link>
+  <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
     <TextField className=" col-4"
                         style={{
                          

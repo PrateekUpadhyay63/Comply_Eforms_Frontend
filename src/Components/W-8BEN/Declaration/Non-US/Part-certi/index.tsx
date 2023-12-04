@@ -43,12 +43,14 @@ export default function Penalties() {
       setExpanded(isExpanded ? panel : false);
     };
   const [toolInfo, setToolInfo] = useState("");
-
+  const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
     confirmationCode: "",
     date: "",
     isAgreeWithDeclaration: false,
+    question:"",
+    word :""
   };
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -56,6 +58,8 @@ export default function Penalties() {
   return (
     <>
       <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -75,6 +79,7 @@ export default function Penalties() {
           handleSubmit,
           handleChange,
           isSubmitting,
+          setFieldValue
         }) => (
           <Form onSubmit={handleSubmit}>
             <section
@@ -358,37 +363,39 @@ export default function Penalties() {
 
   <div className="d-flex my-3 col-8">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
-    <TextField className="col-4"
-                        style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
-                          width: "50%",
-                        }}
-                        fullWidth
-                        type="text"
-                        name="signedBy"
-                        
-                      />
-
-  </div>
-  <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" >Hint?</Link>
     <TextField className=" col-4"
                         style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
+                         color:"black !important",
+                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         type="text"
                         disabled
+                        value={values.word}
                         
                         
                       />
 
+
+  </div>
+  <div className="d-flex my-3 col-8">
+  <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
+    <TextField className=" col-4"
+                        style={{
+                         color:"black !important",
+                          height: "3.47rem",
+                          width: "50%",
+                          backgroundColor:"#e3e6e4"
+                        }}
+                        fullWidth
+                        type="text"
+                        disabled
+                        value={values.question}
+                        
+                        
+                      />
   </div>
   <div className="d-flex my-3 col-8 ">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>

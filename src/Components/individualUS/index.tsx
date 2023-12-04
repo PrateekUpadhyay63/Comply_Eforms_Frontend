@@ -619,6 +619,7 @@ export default function IndividualUs() {
             className="underline-none"
           >
             <Formik
+             
               initialValues={initialValues}
               enableReinitialize
               validateOnChange={false}
