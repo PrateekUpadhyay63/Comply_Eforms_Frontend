@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormW8IMY from "../../formPDF/W8EXP";
+import FormW8IMY from "../../formPDF/W8IMY";
 // import Form1 from "../../formPDF/form1";
 import Formw9 from "../../formPDF/formw9";
 import FormEXP from "../../formPDF/formEXP";
@@ -84,7 +84,7 @@ export default function Term() {
       {/* <iframe src={form1}></iframe> */}
       {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
       <div style={{ paddingBlockStart: "30px" }}>
-        <FormW8IMY />
+        <FormW8IMY/>
       </div>
       {/* Pass setPdfUrl to Form2 */}
       {/* <button onClick={handleDownload}>Download PDF</button> */}
