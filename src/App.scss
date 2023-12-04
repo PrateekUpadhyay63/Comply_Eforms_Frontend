@@ -13,10 +13,13 @@
   }
 }
 
-.loding_spinner{position: absolute;
+.loding_spinner {
+  position: absolute;
   top: 50%;
   left: 50%;
-  margin-right: -50%;}
+  margin-right: -50%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,112 +39,125 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.tabview{
+.tabview {
   height: 0px;
 }
-.tabview ul{
-  list-style-type: none ;
-    margin: 0 auto;
-    z-index: 1;
-    width: fit-content;
-    display: flex;
-    padding: 0px;
+
+.tabview ul {
+  list-style-type: none;
+  margin: 0 auto;
+  z-index: 1;
+  width: fit-content;
+  display: flex;
+  padding: 0px;
 }
 
-.tabview ul li{
+.tabview ul li {
   display: flex;
   border-radius: 5px;
 }
-.tabview li:nth-child(1){  
-background-color: #f3f4f7;
-width: 8rem;
-height: 7rem;
 
-}
-.tabview li:nth-child(2){  
-  vertical-align: middle;
-  display: flex;
-  margin: auto 20px !important;
-  
-  
-  }
-.tabview li:nth-child(3){  
+.tabview li:nth-child(1) {
   background-color: #f3f4f7;
   width: 8rem;
   height: 7rem;
 
-  }
-  .tabview button{
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    border: 5px solid transparent;
-  }
+}
 
-  .tabview button.active{
-    border: 5px solid rgba(0, 149, 221, 0.6) !important;
-    border-radius: 5px;
-  }
+.tabview li:nth-child(2) {
+  vertical-align: middle;
+  display: flex;
+  margin: auto 20px !important;
 
-  .underline-none .MuiInput-underline::after{
-    border-bottom: none !important;
-  }
-  .underline-none .MuiInput-underline::before{
-    border-bottom: none !important;
-  }
-  
-  .error{
-    font-size: 12px;
-    color: red;
-    text-align: left;
-  }
-.tabview img{
+
+}
+
+.tabview li:nth-child(3) {
+  background-color: #f3f4f7;
+  width: 8rem;
+  height: 7rem;
+
+}
+
+.tabview button {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: 5px solid transparent;
+}
+
+.tabview button.active {
+  border: 5px solid rgba(0, 149, 221, 0.6) !important;
+  border-radius: 5px;
+}
+
+.underline-none .MuiInput-underline::after {
+  border-bottom: none !important;
+}
+
+.underline-none .MuiInput-underline::before {
+  border-bottom: none !important;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  text-align: left;
+}
+
+.tabview img {
   height: 3rem;
   width: auto !important;
 }
 
-  @media (min-width:768px) and (max-width:998px){
-    .tabview li:nth-child(1){ 
-      width: 6rem ;
-      height: 4rem ;
+@media (min-width:768px) and (max-width:998px) {
+  .tabview li:nth-child(1) {
+    width: 6rem;
+    height: 4rem;
   }
-  .tabview li:nth-child(3){  
-    width: 6rem ;
-    height: 4rem ;
+
+  .tabview li:nth-child(3) {
+    width: 6rem;
+    height: 4rem;
   }
-  .tabview img{
+
+  .tabview img {
     height: 2rem;
     width: auto !important;
   }
+}
+
+@media (min-width:0px) and (max-width:768px) {
+  .tabview li:nth-child(1) {
+    width: 6rem;
+    height: 4rem;
   }
 
-  @media (min-width:0px) and (max-width:768px){
-    .tabview li:nth-child(1){ 
-      width: 6rem ;
-      height: 4rem ;
+  .tabview li:nth-child(3) {
+    width: 6rem;
+    height: 4rem;
   }
-  .tabview li:nth-child(3){  
-    width: 6rem ;
-    height: 4rem ;
-  }
-  .tabview img{
+
+  .tabview img {
     height: 1.5rem;
     width: auto !important;
   }
-  }
+}
 
 
 
-  // overlay class
-.overlay-div:hover{
+// overlay class
+.overlay-div:hover {
   right: 0.9% !important;
 
 }
+
 .overlay-div {
   position: fixed;
   right: 0.9%;
@@ -151,12 +167,14 @@ height: 7rem;
   transform-origin: right;
   top: 15%;
 }
-.overlay-div .overlay-div-group{
+
+.overlay-div .overlay-div-group {
   display: flex;
   font-weight: 500;
   font-size: 12px;
 }
-.overlay-div .overlay-div-group div{
+
+.overlay-div .overlay-div-group div {
   margin: 0px 7px;
   height: 30px;
   min-width: max-content;
@@ -167,13 +185,15 @@ height: 7rem;
 
 
 // ------------------------------------------------ viewInstructions btn css-----------------------------------------------
-.viewInstructions:hover{
+.viewInstructions:hover {
   transform: scale(1.1);
   z-index: 100;
 }
-.viewInstructions:hover.viewInstructions:before{
+
+.viewInstructions:hover.viewInstructions:before {
   left: -39 !important;
 }
+
 .viewInstructions:before {
   border-left: 20px solid transparent;
   border-right: 20px solid #6b7b88;
@@ -185,6 +205,7 @@ height: 7rem;
   width: 0px;
   height: 0px;
 }
+
 .viewInstructions:after {
   border-left: 20px solid #6b7b88;
   border-right: 20px solid transparent;
@@ -196,6 +217,7 @@ height: 7rem;
   width: 0px;
   height: 0px;
 }
+
 .viewInstructions {
   margin-top: auto !important;
   padding: 3px 20px;
@@ -210,15 +232,17 @@ height: 7rem;
   border: none;
   height: 30px;
 }
+
 // ------------------------------------------------ viewInstructions btn css end-----------------------------------------------
 
 // ------------------------------------------------ viewform btn css ----------------------------------------------------------
 
-.viewform:hover{
+.viewform:hover {
 
   transform: scale(1.1);
   z-index: 100;
 }
+
 .viewform {
   margin-top: auto !important;
   height: 30px;
@@ -257,7 +281,8 @@ height: 7rem;
   width: 0px;
   height: 0px;
 }
-.popup-sidemenu-active{
+
+.popup-sidemenu-active {
   display: block;
   position: absolute;
   right: 0px;
@@ -268,80 +293,88 @@ height: 7rem;
   padding: 0px;
   transition: all 1.5s ease;
 
-  .popup-sidemenu-inner-div{
-      width: 100%;
-      height: 100%;
-      position: relative;
-      padding: 0 10px 10px 10px;
-      .content{
-          background-color: white;
-          margin-top: 10px;
+  .popup-sidemenu-inner-div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 10px 10px 10px;
 
-          h5{
-                  width: 100%;
-                  height: 36px;
-                  text-align: center;
-                  padding-top: 9px;
-                  color: #000;
-                  background-color: #e7e7e7;
-                  font-weight: normal;
-                  margin-bottom: 0;
-                  border-radius: 0px;
-                  font-size: 13px;
-                  font-weight: 500 !important;
+    .content {
+      background-color: white;
+      margin-top: 10px;
 
-          }
-          a:hover{
-              cursor: pointer;
-              text-decoration: underline;
-          }
-              a{
-                  padding-top: 5px;
-                  padding-bottom: 5px;
-                  padding-top: 5px;
-                  width: 100%;
-                  text-align: center;
-                  display: block;
-                  font-size: 11px !important;
-              }
+      h5 {
+        width: 100%;
+        height: 36px;
+        text-align: center;
+        padding-top: 9px;
+        color: #000;
+        background-color: #e7e7e7;
+        font-weight: normal;
+        margin-bottom: 0;
+        border-radius: 0px;
+        font-size: 13px;
+        font-weight: 500 !important;
+
       }
-      button{
-          position: absolute;
-          left: -28px;
-          top: -10px;
-          margin: 0px;
-          width: 30px;
-          height:40px;
-          font-size: 21px;
-          background: #6b7b88;
-          text-align: center;
-          color: #fff;
-          cursor: pointer;
-          padding: 0px;
-          line-height: normal !important;
-          font-family: sans-serif;
-          border: none;
+
+      a:hover {
+        cursor: pointer;
+        text-decoration: underline;
       }
+
+      a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        width: 100%;
+        text-align: center;
+        display: block;
+        font-size: 11px !important;
+      }
+    }
+
+    button {
+      position: absolute;
+      left: -28px;
+      top: -10px;
+      margin: 0px;
+      width: 30px;
+      height: 40px;
+      font-size: 21px;
+      background: #6b7b88;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      padding: 0px;
+      line-height: normal !important;
+      font-family: sans-serif;
+      border: none;
+    }
   }
 }
-.popup-sidemenu-inactive{
-display: none;
-transition: all 1.5s ease;
+
+.popup-sidemenu-inactive {
+  display: none;
+  transition: all 1.5s ease;
 }
+
 // ------------------------------------------------ viewform btn css end-----------------------------------------------
 
 
 // ------------------------------------------------ helpvideo btn css ----------------------------------------------------------
 
-.helpvideo:hover{
+.helpvideo:hover {
 
   transform: scale(1.1);
   z-index: 100;
 }
-.helpvideo a{
- color: #fff;
- text-decoration: none !important;
+
+.helpvideo a {
+  color: #fff;
+  text-decoration: none !important;
 }
+
 .helpvideo {
   margin-top: auto !important;
   height: 30px;
@@ -386,26 +419,29 @@ transition: all 1.5s ease;
 
 
 
-.steper-check-icon{
+.steper-check-icon {
   width: 10px;
- 
+
 }
-.steper-check-icon-solid{
+
+.steper-check-icon-solid {
   width: 18px;
 }
-.stepper{
-  .accordian-header{
-    img{
+
+.stepper {
+  .accordian-header {
+    img {
       opacity: 0;
     }
   }
-  .accordian-header .active{
-    img{
+
+  .accordian-header .active {
+    img {
       opacity: 1;
     }
   }
 
-  ul li::before{
+  ul li::before {
     background: url(assets/img/check.png);
     content: "";
     width: 15px;
@@ -417,30 +453,36 @@ transition: all 1.5s ease;
     margin-top: auto;
     opacity: 0;
   }
-  ul li.active::before{
-  opacity: 1 !important;
+
+  ul li.active::before {
+    opacity: 1 !important;
   }
-  ul{
+
+  ul {
     padding: 0px;
-    li{
+
+    li {
       display: flex !important;
-        color: #535353;
-        font-size: 13px;
-        padding: 6px 0;
-        display: table;
-        list-style: none;
-    
+      color: #535353;
+      font-size: 13px;
+      padding: 6px 0;
+      display: table;
+      list-style: none;
+
     }
   }
-  .MuiAccordionDetails-root{
+
+  .MuiAccordionDetails-root {
     padding: 0px;
-    .MuiPaper-rounded{
+
+    .MuiPaper-rounded {
       background-color: #f0f0f0 !important;
       padding: 15px 20px;
     }
   }
 }
-.bg-none{
+
+.bg-none {
   background-color: none !important;
   background: none !important;
 }
@@ -450,45 +492,53 @@ transition: all 1.5s ease;
   margin-bottom: 2px;
 }
 
-.stepper p{
-  
-    padding: 0px;
-    color: #333333;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    margin-right: 10px;
-    width: 100%;
-    text-align: left;
+.stepper p {
+
+  padding: 0px;
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  width: 100%;
+  text-align: left;
 
 }
 
 .forms-card-data {
-  .check-div{
+  .check-div {
     display: none;
   }
-  .active .check-div{
+
+  .active .check-div {
     display: block !important;
   }
-  .MuiPaper-rounded{
+
+  .MuiPaper-rounded {
     position: relative;
   }
-  .check-div{
+
+  .check-div {
     position: absolute;
     top: 4px;
     left: 4px;
-    img{
+
+    img {
       height: 40px;
     }
   }
-.disabled{
-  opacity:0.8;
-  background: #dddddd;
 
-}
+  .disabled {
+    opacity: 0.8;
+    background: #dddddd;
+
+  }
 }
 
-.html2canvas-container { width: 3000px !important; height: 3000px !important; }
+.html2canvas-container {
+  width: 3000px !important;
+  height: 3000px !important;
+}
 
 @media print {
   .pagebreak {
@@ -498,4 +548,16 @@ transition: all 1.5s ease;
   }
 
   /* page-break-after works, as well */
+}
+
+.inputTextField {
+  border: 1px solid #d9d9d9;
+    height:36px;
+    line-Height: 36px;
+    background-color: #fff;
+    font-size: 13px;
+    color: #000;
+    font-size: normal;
+    border-radius: 1px;
+    padding: 0 10px;
 }

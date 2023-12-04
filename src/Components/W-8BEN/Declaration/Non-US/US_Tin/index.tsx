@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -18,8 +18,8 @@ import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import { useNavigate } from "react-router-dom";
 import { US_TINSchema } from "../../../../../schemas/w8Ben";
-import { W8_state } from "../../../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { W8_state , getTinTypes ,getAllCountries } from "../../../../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -27,6 +27,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 
 export default function Tin(props: any) {
+
   const history = useNavigate();
   const {
     handleTaxClassificationChange,
@@ -36,7 +37,49 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
+  const [ustinArray , setUStinArray] = useState([]);
+  const [ustinValue , setUStinvalue] = useState([]);
+  useEffect(() => {
+    dispatch(getAllCountries());
+    dispatch(
+      getTinTypes(3, (data:any) => {
+        setUStinArray(data)
+        let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
+        setUStinvalue(datas)
+      })
+    );
+   
 
+  }, []);
+  const onChangeUsInit = (values: any) => {
+    let data 
+    console.log("here")
+    if (values.isUSIndividual == "no") {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is true
+        return ele?.usIndividual === false;
+      });
+      console.log("yes",data)
+      // Do something with the filtered data...
+    } else {
+      
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is false
+        return ele?.usIndividual === true;
+      });
+      console.log("no")
+      // Do something with the filtered data...
+    }
+    console.log(data,"data")
+    setUStinvalue(data)
+  };
+  const allCountriesData = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
+  
+  const getCountriesReducer = useSelector(
+    (state: any) => state.getCountriesReducer
+  );
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -242,7 +285,7 @@ export default function Tin(props: any) {
                             ""
                           )}
                           <select
-                            disabled={values.notAvailable}
+                            disabled
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -260,8 +303,22 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="">-Select-</option>
-                            <option value={2}>United Kingdom</option>
-                            <option value={5}>United States</option>
+                            {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                           </select>
                           {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
@@ -338,6 +395,7 @@ export default function Tin(props: any) {
                               height: "50px",
                               width: "100%",
                             }}
+                            disabled
                             name="foreignTINCountry"
                             id="Income"
                             onBlur={handleBlur}
@@ -347,8 +405,14 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="1">-Select-</option>
-                            <option value="257">United Kingdom</option>
-                            <option value={"UK"}>United States</option>
+                            <option value= "257">United Kingdom</option>
+                            {getCountriesReducer.allCountriesData?.map(
+                                  (ele: any) => (
+                                    <option key={ele?.id} value={ele?.id}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
 

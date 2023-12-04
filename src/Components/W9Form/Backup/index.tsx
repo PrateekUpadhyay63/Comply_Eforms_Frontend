@@ -57,7 +57,7 @@ export default function Backup_witholding(props: any) {
     <>
       <section
         className="inner_content"
-        style={{ backgroundColor: "#0c3d69", marginBottom: "10px", height: "100%" }}
+        style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
       >
         <Formik
           initialValues={initialValue}
@@ -1003,7 +1003,7 @@ export default function Backup_witholding(props: any) {
                 >
                   Continue
                 </Button>) : (<Button
-                  disabled={!isRadioSelected}
+                  // disabled={!isRadioSelected}
                   type="submit"
                   variant="contained"
                   style={{ color: "white", marginLeft: "15px" ,marginTop:"20px"}}

@@ -15,7 +15,7 @@ import {
 import { useDispatch } from "react-redux";
 import { Form, Formik } from "formik";
 import { W8_state_ECI } from "../../../Redux/Actions";
-import { certificateSchema } from "../../../schemas/w8Exp";
+import { certificateSchema_w9 } from "../../../schemas/w8Exp";
 import InfoIcon from "@mui/icons-material/Info";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -200,9 +200,11 @@ const history = useNavigate()
            <div className="col-8">
       <div style={{ padding: "16px" ,backgroundColor: "#0c3d69"}}>
       <Formik
+            validateOnChange={false}
+            validateOnBlur={false}
             initialValues={initialValue}
             enableReinitialize
-            validationSchema={certificateSchema}
+            validationSchema={certificateSchema_w9}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               console.log(values, "vallllll");
@@ -472,7 +474,7 @@ const history = useNavigate()
             >
               Check to confirm you have reviewed the Electronic Form
               <span
-                style={{ color: "blue", fontSize: "13px", marginLeft: "5px" }}
+                style={{ color: "blue", fontSize: "17px", marginLeft: "5px" }}
               >
                 (view Electronic Form)
               </span>
