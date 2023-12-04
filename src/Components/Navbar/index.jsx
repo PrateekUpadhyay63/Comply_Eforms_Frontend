@@ -9,7 +9,7 @@ export default function Nav() {
         style={{ display: "flex", justifyContent: "space-between" }}
       >
         <img
-          style={{ width: "50%",maxWidth:"250px" }}
+          style={{ width: "50%",maxWidth:"250px",padding:"20px" }}
           className="navbar"
           src={require("../../assets/img/logo.png")}
         />
