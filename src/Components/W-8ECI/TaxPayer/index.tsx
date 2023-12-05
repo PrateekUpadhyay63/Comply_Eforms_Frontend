@@ -114,6 +114,8 @@ export default function Tin(props: any) {
           <div style={{ padding: "13px" }}>
             <Paper style={{ padding: "13px" }}>
       <Formik
+      validateOnChange={false}
+      validateOnBlur={false}
         initialValues={initialValue}
         validationSchema={TaxPayerSchema}
         onSubmit={(values, { setSubmitting }) => {

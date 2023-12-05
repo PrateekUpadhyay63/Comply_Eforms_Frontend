@@ -147,6 +147,8 @@ export default function Factors() {
           <div style={{ padding: "30px" }}>
             <Paper style={{ padding: "18px" }}>
               <Formik
+                validateOnChange={false}
+                validateOnBlur={false}
                 initialValues={initialValue}
                 enableReinitialize
                 validationSchema={StatusSchema}
@@ -425,7 +427,7 @@ export default function Factors() {
                       <FormControl>
                         <RadioGroup
                           row
-                          value={individual}
+                          value={values.isPermamnentResidentCardHolder}
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
                           onChange={handleIndividualChange}
@@ -434,14 +436,14 @@ export default function Factors() {
                             value="Yes"
                             control={<Radio />}
                             label="Yes"
-                            name="individual"
+                            name="isPermamnentResidentCardHolder"
                           />
                           <FormControlLabel
                             className="label"
                             value="No"
                             control={<Radio />}
                             label="No"
-                            name="individual"
+                            name="isPermamnentResidentCardHolder"
                           />
                         </RadioGroup>
                         
@@ -455,28 +457,32 @@ export default function Factors() {
                       </Typography>
 
                       <FormControl>
-                        <RadioGroup
-                          row
-                          aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
-                          value={citizenship}
-                          onChange={handleCitizenshipChange}
-                        >
-                          <FormControlLabel
-                            value="Yes"
-                            control={<Radio />}
-                            label="Yes"
-                          />
-                          <FormControlLabel
-                            className="label"
-                            value="No"
-                            control={<Radio />}
-                            label="No"
-                          />
-                        </RadioGroup>
+                      <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            id="isHoldDualCitizenshipStatus"
+                            value={values.isHoldDualCitizenshipStatus}
+                            onChange={handleChange}
+                          >
+                            <FormControlLabel
+                              control={<Radio />}
+                              value="Yes"
+                              name="isHoldDualCitizenshipStatus"
+                              label="Yes"
+                            />
+                            <FormControlLabel
+                              control={<Radio />}
+                              value="No"
+                              name="isHoldDualCitizenshipStatus"
+                              label="No"
+                            />
+                          </RadioGroup>
+                          <p className="error">
+                            {errors.isHoldDualCitizenshipStatus}
+                            </p>
                       </FormControl>
                       <Divider className="dividr" />
-                      {citizenship === "Yes" ? (
+                      {values.isHoldDualCitizenshipStatus === "Yes" ? (
                         <>
                           <Typography
                             style={{ fontSize: "19px", marginTop: "10px" }}
@@ -576,7 +582,7 @@ export default function Factors() {
                             value={values.dateRenouncedUSCitizenship}
                           /> */}
                           <FormControl className="form">
-                        <input className="input" type="date" />
+                        <input name="renouncementProof" value={values.renouncementProof} className="input" type="date" />
                    
                         </FormControl>
                         <Divider className="dividr" />
@@ -584,7 +590,7 @@ export default function Factors() {
                           Please attach proof of formal renouncement:
                         </Typography>
                         <div style={{ marginTop: "10px" }}>
-                          <input style={{ fontSize: "22px" }} type="file" />
+                          <input name="renouncementProof" value={values.renouncementProof} style={{ fontSize: "22px" }} type="file" />
                         </div>
                         <Divider className="dividr" />
                       </>) : ("")}
@@ -601,26 +607,28 @@ export default function Factors() {
                         <RadioGroup
                           row
                           aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
-                          value={tax}
+                          name="isTaxLiabilityJurisdictions"
+                          value={values.isTaxLiabilityJurisdictions}
                           onChange={handleTaxChange}
                         >
                           <FormControlLabel
                             value="Yes"
                             control={<Radio />}
                             label="Yes"
+                            name="isTaxLiabilityJurisdictions"
                           />
                           <FormControlLabel
                             className="label"
                             value="No"
                             control={<Radio />}
                             label="No"
+                            name="isTaxLiabilityJurisdictions"
                           />
                         </RadioGroup>
                       </FormControl>
                       <Divider className="dividr" />
 
-                      {tax === "Yes" ? (
+                      {values.isTaxLiabilityJurisdictions === "Yes" ? (
                         <>
                           <Typography>
                             Please select the country where the individual has a
@@ -664,10 +672,10 @@ export default function Factors() {
                           </Typography>
                           <div className="d-flex">
                             <FormControl className="form">
-                              <input className="input" />
+                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
                             </FormControl>
                             <div className="d-flex">
-                              <Checkbox />
+                              <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
                                 TIN format not available
                               </div>
@@ -724,10 +732,10 @@ export default function Factors() {
                           </Typography>
                           <div className="d-flex">
                             <FormControl className="form">
-                              <input className="input" />
+                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
                             </FormControl>
                             <div className="d-flex">
-                              <Checkbox />
+                              <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
                                 TIN format not available
                               </div>
@@ -786,7 +794,7 @@ export default function Factors() {
                           Date of Birth (mm/dd/yyyy)
                         </Typography>
                         <FormControl className="form">
-                          <input className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
+                          <input  className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
       disabled />
                         </FormControl>
                         <Divider className="dividr" />
@@ -836,7 +844,7 @@ export default function Factors() {
                             
                             id="isPermamnentResidentCardHolder"
                             aria-labelledby="demo-row-radio-buttons-group-label"
-                            value={individual}
+                            value={values.isPermamnentResidentCardHolder}
                             onChange={handleIndividualChange}
                           >
                             <FormControlLabel

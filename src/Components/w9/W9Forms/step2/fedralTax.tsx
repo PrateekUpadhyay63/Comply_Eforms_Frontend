@@ -95,6 +95,8 @@ export default function Fedral_tax(props: any) {
     >
         
         <Formik
+        validateOnChange={false}
+        validateOnBlur={false}
           initialValues={initialValue}
           enableReinitialize
           validationSchema={
