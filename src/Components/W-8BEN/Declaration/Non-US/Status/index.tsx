@@ -11,6 +11,7 @@ import {
   Radio,
   Link,
   FormControlLabel,
+  Input,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "@mui/material";
@@ -173,9 +174,9 @@ export default function Factors() {
                   handleSubmit,
                   handleChange,
                   isSubmitting,
+                  setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    <>{console.log(errors, values, "W8")}</>
                     <div style={{ margin: "10px" }}>
                       <Typography
                         align="left"
@@ -674,10 +675,10 @@ export default function Factors() {
                           </Typography>
                           <div className="d-flex">
                             <FormControl className="form">
-                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
+                              <input  name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} />
                             </FormControl>
                             <div className="d-flex">
-                              <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
+                              <Checkbox  name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
                                 TIN format not available
                               </div>
@@ -1193,19 +1194,21 @@ export default function Factors() {
                       )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <input name="taxReferenceNumber" value={values.taxReferenceNumber} disabled = {values.permanentResidentialCountryId == 0} className="input" />
+                                <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled = {values.isTINFormatNotAvailable == false}  className="input"/>
                               </FormControl>
-                             {values.permanentResidentialCountryId == 257?(<div className="d-flex">
-                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  required />
+                             {/* {values.permanentResidentialCountryId == 257?( */}
+                             <div className="d-flex">
+                                <Checkbox name="isTINFormatNotAvailable" onChange={(e)=>{handleChange(e);setFieldValue("taxReferenceNumber" , "")}} value={values.isTINFormatNotAvailable}  required />
                                 <div className="mt-2">
                                   TIN format not available
                                 </div>
-                              </div>):<div className="d-flex">
-                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  disabled required />
-                                <div className="mt-2" style={{color:"grey"}}>
-                                  TIN format not available
-                                </div>
-                              </div>}
+                              </div>
+                              {/* // ):<div className="d-flex">
+                              //   <Checkbox name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  disabled required />
+                              //   <div className="mt-2" style={{color:"grey"}}>
+                              //     TIN format not available
+                              //   </div>
+                              // </div>} */}
                             </div>
                             <Typography
                           style={{ fontSize: "19px", marginTop: "10px" }}
