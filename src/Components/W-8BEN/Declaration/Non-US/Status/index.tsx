@@ -430,7 +430,8 @@ export default function Factors() {
                           value={values.isPermamnentResidentCardHolder}
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
-                          onChange={handleIndividualChange}
+                          onChange={handleChange}
+                          
                         >
                           <FormControlLabel
                             value="Yes"
@@ -453,7 +454,7 @@ export default function Factors() {
                         style={{ fontSize: "19px", marginTop: "10px" }}
                       >
                         Does the individual hold dual citizenship status?
-                        <span style={{ color: "red" }}>*</span>
+                       
                       </Typography>
 
                       <FormControl>
@@ -511,6 +512,7 @@ export default function Factors() {
                                 value="No"
                                 control={<Radio />}
                                 label="No"
+                                name="isHoldDualCitizenshipIncludeUSCitizenship"
                               />
                             </RadioGroup>
                           </FormControl>
@@ -600,7 +602,7 @@ export default function Factors() {
                       >
                         Does the individual the submission represents have tax
                         liability in any other jurisdictions?
-                        <span style={{ color: "red" }}>*</span>
+                       
                       </Typography>
 
                       <FormControl>
@@ -609,7 +611,7 @@ export default function Factors() {
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="isTaxLiabilityJurisdictions"
                           value={values.isTaxLiabilityJurisdictions}
-                          onChange={handleTaxChange}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
                             value="Yes"
@@ -696,19 +698,21 @@ export default function Factors() {
                           row
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
-                          value={tax1}
-                          onChange={handleTaxChange1}
+                          value={values.isTaxLiabilityJurisdictions}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
                             value="Yes"
                             control={<Radio />}
                             label="Yes"
+                            name="isTaxLiabilityJurisdictions"
                           />
                           <FormControlLabel
                             className="label"
                             value="No"
                             control={<Radio />}
                             label="No"
+                              name="isTaxLiabilityJurisdictions"
                           />
                         </RadioGroup>
                       </FormControl>
@@ -757,7 +761,7 @@ export default function Factors() {
                       >
                         Has the individual been physically present in the United
                         States on at least 31 days during the current calendar
-                        year?<span style={{ color: "red" }}>*</span>
+                        year?
                       </Typography>
 
                       <FormControl>
@@ -835,7 +839,7 @@ export default function Factors() {
                           style={{ fontSize: "19px", marginTop: "10px" }}
                         >
                           Is the individual a Permanent Resident Card Holder
-                          (Green Card)?<span style={{ color: "red" }}>*</span>
+                          (Green Card)?
                         </Typography>
 
                         <FormControl>
@@ -845,7 +849,7 @@ export default function Factors() {
                             id="isPermamnentResidentCardHolder"
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             value={values.isPermamnentResidentCardHolder}
-                            onChange={handleIndividualChange}
+                            onChange={handleChange}
                           >
                             <FormControlLabel
                               control={<Radio />}
@@ -869,7 +873,7 @@ export default function Factors() {
                           style={{ fontSize: "19px", marginTop: "10px" }}
                         >
                           Does the individual hold dual citizenship status?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1042,7 +1046,7 @@ export default function Factors() {
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1208,7 +1212,7 @@ export default function Factors() {
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1247,7 +1251,8 @@ export default function Factors() {
                         >
                           Has the individual been physically present in the United
                           States on at least 31 days during the current calendar
-                          year?<span style={{ color: "red" }}>*</span>
+                          year?
+                         
                         </Typography>
 
                         <FormControl>
