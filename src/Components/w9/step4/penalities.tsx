@@ -432,8 +432,8 @@ export default function Penalties(props: any) {
 
   </div>
   <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" >Hint?</Link>
-    <TextField className=" col-4"
+    <Link className="my-2 col-4" >Hint...?</Link>
+    <TextField className=" col-4 blackText"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
