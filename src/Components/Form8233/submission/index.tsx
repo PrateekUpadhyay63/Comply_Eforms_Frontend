@@ -49,10 +49,10 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             CREATE_8233(values, () => {
-              history("/Complete");
+              history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
             })
           );
-          history("/Complete");
+          history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
         }}
       >
         {({

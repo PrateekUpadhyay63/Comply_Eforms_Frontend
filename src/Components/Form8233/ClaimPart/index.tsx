@@ -618,10 +618,10 @@ export default function Tin(props: any) {
                           }
                         </p>
                       </div>
-                      <div className="col-6 my-3 d-flex">
-                        <Checkbox className="mt-2" name="taxTreaty_CheckAll" />
+                      <div className="col-5 d-flex">
+                        <Checkbox className="mt-4" name="taxTreaty_CheckAll" />
                         <Typography
-                          style={{ marginTop: "2.5rem", fontSize: "20px" }}
+                          style={{ marginTop: "4.7rem", fontSize: "17px" }}
                         >
                           Check for All
                         </Typography>

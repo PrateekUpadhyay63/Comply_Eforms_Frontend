@@ -47,10 +47,10 @@ const Declaration = (props: any) => {
                 setSubmitting(true);
                 dispatch(
                   W8_state_ECI(values, () => {
-                    history("/Complete");
+                    history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
                   })
                 );
-                history("/Complete");
+                history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
               }}
             >
               {({
@@ -358,6 +358,9 @@ const Declaration = (props: any) => {
           </Button>
 
           <Button
+          onClick={()=>{
+            history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233")
+          }}
           disabled={!isCheckboxChecked}
              type="submit"
             variant="contained"

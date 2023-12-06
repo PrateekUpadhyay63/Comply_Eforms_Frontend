@@ -541,6 +541,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         ""
                       )}
                       <Input
+                      value={values.countryIssuingPassportNumber}
                         name="countryIssuingPassportNumber"
                         style={{
                           border: " 1px solid #d9d9d9 ",
@@ -550,7 +551,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                           height: "50px",
                           width: "100%",
                         }}
-                       
+                        onChange={handleChange} 
                       />
                       <p className="error">
                         {errors.countryIssuingPassportNumber}
