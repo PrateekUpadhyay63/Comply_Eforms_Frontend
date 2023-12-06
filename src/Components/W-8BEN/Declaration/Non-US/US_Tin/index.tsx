@@ -112,7 +112,7 @@ export default function Tin(props: any) {
       ? onBoardingFormValues.foreignTIN
       : "",
     isFTINNotLegallyRequired: false,
-    tinisFTINNotLegallyRequired: "",
+    tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -610,9 +610,10 @@ export default function Tin(props: any) {
                             // <p className="error">{errors.foreignTIN}</p>
                           }
 
-                          <FormControl>
+<FormControl >
                             <RadioGroup
                               row
+                              
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
@@ -632,7 +633,7 @@ export default function Tin(props: any) {
                                 className="label"
                                 value="No"
                                 control={<Radio />}
-                                label="Alternative Tin Format....."
+                                label="Alternative Tin Format"
                                 disabled={values.isFTINNotLegallyRequired}
                                 name="tinisFTINNotLegallyRequired"
                               />
@@ -649,6 +650,7 @@ export default function Tin(props: any) {
                                     color: "red",
                                     fontSize: "20px",
                                     marginTop: "11px",
+                                  
                                   }}
                                 />
                               ) : (

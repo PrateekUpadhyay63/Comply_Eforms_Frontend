@@ -58,9 +58,7 @@ const getCountriesReducer = useSelector(
       const selectedValue = event.target.value;
       setSelectedOption(selectedValue);
     };
-    useEffect(()=>{
-      dispatch(getAllCountries());
-  })
+   
   
   return (
     <section
@@ -219,7 +217,7 @@ const getCountriesReducer = useSelector(
       <div style={{ padding: "10px" }}>
       
         <Paper style={{ padding: "18px" }}>
-          <div >
+        <div style={{ margin: "10px" }}>
             <Typography
               align="left"
               style={{ marginTop: "10px", fontSize: "38px" }}
@@ -593,12 +591,12 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               </Typography>
               <FormControl className="w-100">
                 <input
-                className="col-md-6 col-12"
+                className="col-md-12 col-12"
                   style={{
                     padding: " 0 10px",
                     color: "#7e7e7e",
                     fontStyle: "italic",
-                    height: "10rem",
+                    height: "7rem",
                   }}
                   
                   
@@ -720,6 +718,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                                       )}
                   </select>
                 </FormControl>
+
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
