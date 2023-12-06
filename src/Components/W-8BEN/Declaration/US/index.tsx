@@ -81,7 +81,7 @@ const getCountriesReducer = useSelector(
 
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "25px 0px",height:"100%",marginTop:"10px" }}>
         <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
          
               <div style={{background:"#ffffff33",height:"100%"}}>
@@ -215,11 +215,11 @@ const getCountriesReducer = useSelector(
         </Paper>
       </div>
       </div>
-        <div className="col-8">
-      <div style={{ padding: "20px" }}>
+        <div className="col-8 mt-4">
+      <div style={{ padding: "10px" }}>
       
         <Paper style={{ padding: "18px" }}>
-          <div style={{ margin: "10px" }}>
+          <div >
             <Typography
               align="left"
               style={{ marginTop: "10px", fontSize: "38px" }}

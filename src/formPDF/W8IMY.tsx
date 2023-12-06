@@ -579,41 +579,369 @@ the required payee documentation to associate with an amount realized or an amou
                     Disregarded Entity
                   </td>
                 </tr>
-                <tr>
-                    <td colSpan={2}>
-                        <ul style={{marginBottom:"0px"}}>
-                            <li> Is a QI with respect to the accounts identified on line 10 or in a withholding statement associated with this form (as required) that is one or more of the following:</li>
-                        </ul>
-                        <ul style={{listStyleType:"none",paddingLeft:"28px",marginBottom:"0px"}}>
-                            <li>
-                               <strong>(i)</strong> Not acting for its own account;
-                            </li>
-                            <li>
-                                <strong>(ii)</strong> A QDD receiving payments on underlying securities and/or potential section 871(m) transactions;
-                            </li>
-                            <li>
-                            <strong>(iii)</strong> A QI assuming primary withholding responsibility for payments of substitute interest, as permitted by the QI Agreement.
-                            </li>
-                        </ul>
-                        <ul style={{marginBottom:"0px"}}>
-                            <li> Has provided or will provide a withholding statement (as required) for purposes of chapters 3 and 4, and section 1446(a), or section 
-                            1446(f), subject to the certifications made on this form.</li>
-                            <li>
-                            To the extent it acts as a disclosing QI for purposes of section 1446(a) or (f) for payments associated with this form, the QI is to provide 
-the required payee documentation to associate with an amount realized or an amount subject to withholding on a PTP distribution.
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
               </tbody>
             </table>
 
 
 
+            {/* ---------------------Part IV----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part IV</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Nonqualified Intermediary</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check all that apply.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>17a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    (All nonqualified intermediaries and QIs that are not acting in their capacity as such check here.) I certify that the entity identified in Part I of this 
+                    form is not acting as a QI with respect to each account(s) for which this form is provided and is not acting for its own account.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p>
+                    I certify that the entity identified in Part I of this form is using this form to transmit withholding certificates and/or other documentation and 
+                    has provided, or will provide, a withholding statement, as required.<strong> Note: </strong>If this form is provided for purposes of the entity’s interest in a 
+                    publicly traded partnership, see the instructions for Part IV before checking this <strong>box.</strong>
+                   </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form meets the requirements of Regulations section 1.6049-4(c)(4)(iii) with respect to any 
+                    account holder of an account it maintains that is included in a withholding rate pool of U.S. payees provided on a withholding statement 
+                    associated with this form (excluding a distribution from a publicly traded partnership).
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>d </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I of this form is acting as a qualified securities lender (other than a QI) assuming primary withholding and reporting 
+                    responsibilities with respect to payments associated with this form that are U.S. source substitute dividends received from the withholding agent.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>e </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    To the extent that the entity identified in Part I of this form is providing an alternative withholding statement described in Regulations 
+                    section 1.1441-1(e)(3)(iv)(C)(3) for any payments associated with the form, the entity represents that the information on all of the 
+                    withholding statements associated with this withholding certificate have been (or will be) verified for inconsistency with any other account 
+                    information the entity has for the beneficial owners for determining the rate of withholding with respect to each payee (applying the 
+                    standards of knowledge under section 1441 or section 1471, as applicable).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
 
+            {/* ---------------------Part IV end----------------------- */}
+
+            {/* ---------------------Part V  ----------------------- */}
 
 
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part V</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Territory Financial Institution</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+              <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>18a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I is a financial institution (other than an investment entity that is not also a depository institution, 
+                    custodial institution, or specified insurance company) that is incorporated or organized under the laws of a territory of the United States.
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the box on line 18b or 18c, whichever applies.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I further certify that the entity identified in Part I is using this form as evidence of its agreement with the withholding agent to be treated as a U.S. person 
+                    for purposes of chapters 3 and 4 with respect to any reportable amounts and withholdable payments associated with this withholding certificate.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                    I further certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is using this form to transmit withholding certificates and/or other documentation for the persons for whom it receives a payment of a 
+                    reportable amount or a withholdable payment; and
+                    </li>
+                    <li>
+                    Has provided or will provide a withholding statement, as required.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the boxes on lines 18d, and 18e or 18f, as applicable.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>d </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I agrees to be treated as a U.S. person under Regulations section 1.1446(f)-4(a)(2)(i)(B) with respect 
+                    to amounts realized on sales of interests in publicly traded partnerships.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>e </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I agrees to be treated as a U.S. person (as described in Regulations section 1.1441-1(b)(2)(iv)(A)) 
+                   and as a nominee under Regulations section 1.1446-4(b)(3) with respect to distributions by publicly traded partnerships, <strong>or</strong>
+                   </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>f </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    <p>
+                    Is not acting as a nominee for distributions from publicly traded partnerships and is providing withholding statements for the distributions. 
+                    <strong>Note:</strong> If this form is provided for an amount realized, see the instructions for Part V before providing a withholding statement for an amount 
+                    realized when the entity does not check the box on line 18d.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part V end----------------------- */}
+
+
+            {/* ---------------------Part VI  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part VI</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Certain U.S. Branches</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+              <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>19a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I is a U.S. branch receiving reportable amounts or withholdable payments that are not income 
+                    effectively connected with the conduct of a trade or business in the United States, distributions from publicly traded partnerships, or 
+                    amounts realized on sales of interests in publicly traded partnerships.
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the box on line 19b or 19c, whichever applies.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I is a U.S. branch of a foreign bank or insurance company described in Regulations section 
+                    1.1441-1(b)(2)(iv)(A) that is using this form as evidence of its agreement with the withholding agent to be treated as a U.S. person with 
+                    respect to any reportable amounts or withholdable payments associated with this withholding certificate.
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is using this form to transmit withholding certificates and/or other documentation for the persons for whom the branch receives a payment of a reportable amount;
+                    </li>
+                    <li>
+                    Has provided or will provide a withholding statement, as required. <strong>and</strong>
+                    </li>
+                    <li>
+                    In the case of a withholdable payment, is applying the rules described in Regulations section 1.1471-4(d)(2)(iii)(C).
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the boxes on lines 19d, and 19e or 19f, as applicable.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>d </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I is a U.S. branch (as described in Regulations section 1.1446(f)-4(a)(2)(i)(B)) that is acting as a U.S. 
+                    person with respect to amounts realized on the sales of interests in publicly traded partnerships,
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>e </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I is a U.S. branch (as described in Regulations section 1.1441-1(b)(2)(iv)(A)) that is treated as a 
+                   U.S. person and as a nominee with respect to distributions by publicly traded partnerships under Regulations section 1.1446-4(b)(3), or
+                   </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>f </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    <p>
+                    Is not acting as a nominee for distributions from publicly traded partnerships and is providing withholding statements for the distributions. 
+                    <strong>Note:</strong>  If this form is provided for an amount realized, see the instructions for Part VI before providing a withholding statement for an amount realized when the U.S. branch does not check the box on line 19d.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part VI end ----------------------- */}
+
+
+            {/* ---------------------Part VII  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part VII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Withholding Foreign Partnership (WP) or Withholding Foreign Trust (WT)</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>20 </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is a withholding foreign partnership or a withholding foreign trust that is compliant with the terms 
+                      of its WP or WT agreement.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {/* ---------------------Part VII end  ----------------------- */}
+
+
+            {/* ---------------------Part VIII   ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part VIII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Nonwithholding Foreign Partnership, Simple Trust, or Grantor Trust</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check all that apply.</td>
+                </tr>
+        
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>21a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is a nonwithholding foreign partnership, a nonwithholding foreign simple trust, or a nonwithholding foreign grantor trust and is providing 
+                    this form for payments that are not effectively connected, or are not treated as effectively connected, with the conduct of a trade or 
+                    business in the United States; <strong> and</strong> 
+                    </li>
+                    <li>
+                    Is using this form to transmit withholding certificates and/or other documentation and has provided or will provide a withholding 
+                    statement, as required for purposes of chapters 3 and 4, that is subject to the certifications made on this form.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is a foreign partnership or foreign grantor trust that is a partner in a lower-tier partnership and is 
+                      providing this Form W-8IMY for purposes of section 1446(a).
+                    </td>
+                </tr>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox"  name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is a foreign partnership receiving an amount realized on the transfer of an interest in a partnership 
+                      for purposes of section 1446(f).
+                    </td>
+                </tr>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>d </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox"  name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is a foreign partnership providing a withholding statement for a modified amount realized from the 
+                      transfer (check, when applicable, only if box 21c is checked).
+                    </td>
+                </tr>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>e </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox"  name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is a foreign grantor trust providing the form on behalf of each grantor or other owner of the trust 
+                      under Regulations section 1.1446(f)-1(c)(2)(vii) that is transmitting withholding certificates and providing a withholding statement to allocate 
+                      the amount realized to each grantor or other owner.
+                    </td>
+                </tr>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>f </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox"  name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      To the extent the entity identified in Part I of this form is providing an alternative withholding statement described in Regulations section 
+                      1.1441-1(e)(3)(iv)(C)(3) for any payments associated with the form, the entity represents that the information on all of the withholding 
+                      certificates associated with the withholding statement may be relied on based on the standards of knowledge under section 1441 or 
+                      section 1471 applicable to the entity.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            {/* ---------------------Part VII end  ----------------------- */}
 
 
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
