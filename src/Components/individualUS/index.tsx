@@ -38,6 +38,7 @@ import {
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
   GetAgentUSVisaTypeHiddenForEformAction,
+  GetAgentIncomeTypeHiddenAllowAnoymo,
   getTinTypes,
   GetAgentPaymentType
 } from "../../Redux/Actions";
@@ -235,6 +236,7 @@ export default function IndividualUs() {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(GetAgentUSVisaTypeHiddenForEformAction());
+    dispatch(GetAgentIncomeTypeHiddenAllowAnoymo());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
@@ -311,8 +313,10 @@ export default function IndividualUs() {
     state.GetAgentUSVisaTypeHiddenForEformReducer.GetAgentUSVisaTypeHiddenForEform
 
   )
-  console.log("eghjkl;",GetAgentUSVisaTypeHiddenForEform)
-
+// FOR ISSUE 108 UNCOMMENT bottom code and comment top code
+//   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+//   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
+// )
 
   const redirectFunc = () => {
     history("/Term");
@@ -579,7 +583,7 @@ export default function IndividualUs() {
             <div className="tabview">
               <ul>
                 <li>
-                  <button className="active">
+                  <button  className="active iconWhite">
                     <div>
                       <div>
                         {" "}
@@ -593,7 +597,7 @@ export default function IndividualUs() {
                 </li>
                 <li style={{ fontSize: "14px", fontWeight: "400" }}>OR</li>
                 <li>
-                  <button onClick={() => history("/EntityUs")}>
+                  <button className="iconWhite" onClick={() => history("/EntityUs")}>
                     <div>
                       <div>
                         {" "}

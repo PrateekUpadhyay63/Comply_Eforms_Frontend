@@ -153,6 +153,7 @@ const DialogEdit = (props: any) => {
                         fullWidth
                         size="small"
                         name="code"
+                        className="blackText"
                         value={values.confirmationCode}
                         ref={textAreaRef}
                         disabled
@@ -226,6 +227,7 @@ const DialogEdit = (props: any) => {
                         value={values.securityAnswer}
                         onBlur={handleBlur}
                         onChange={handleChange}
+                        placeholder="Security Word"
                         // error={Boolean(
                         //   touched.securityAnswer && errors.securityAnswer
                         // )}
