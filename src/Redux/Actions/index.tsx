@@ -773,6 +773,28 @@ export const GetChapter4Statuses = ():any =>{
   };
 }
 
+export const GetAgentIncomeTypeHiddenAllowAnoymo = ():any =>{
+  return (dispatch: any) => {
+    Utils.api.getApiCall(
+      Utils.EndPoint.GetAgentIncomeTypeHiddenAllowAnoymo,
+      "",
+      (resData) => {
+        const { data } = resData;
+        if (resData.status === 200) {
+          dispatch({
+            type: Utils.actionName.GetAgentIncomeTypeHiddenAllowAnoymo,
+            payload: {
+              GetAgentIncomeTypeHiddenAllowAnoymoData: resData.data,
+            },
+          });
+        } else {
+        }
+      },
+      (error: any) => {
+      }
+    );
+  };
+}
 export const GetLimitationBenefits = ():any =>{
   return (dispatch: any) => {
     Utils.api.getApiCall(
