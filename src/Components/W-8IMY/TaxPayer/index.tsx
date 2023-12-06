@@ -372,6 +372,10 @@ export default function Tin(props: any) {
                               height: "50px",
                               width: "100%",
                             }}
+                            disabled={
+                              values.isFTINNotLegallyRequired ||
+                              values.tinisFTINNotLegallyRequired ==="Yes"
+                            }
                             name="foreignTINCountry"
                             id="Income"
                             onBlur={handleBlur}
@@ -604,7 +608,12 @@ export default function Tin(props: any) {
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e) => {
+                                handleChange(e);
+                                setFieldValue("foreignTIN", "");
+                                setFieldValue("foreignTINCountry", "1");
+                                
+                              }}
                             >
                               <FormControlLabel
                                 value="Yes"

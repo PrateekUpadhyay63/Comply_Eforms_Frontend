@@ -28,9 +28,9 @@ export default function FormW8IMY() {
       console.log("html", html.innerHTML)
 
       newWindow.document.write(html.innerHTML);
-      newWindow.document.close();
-      newWindow.print();
-      newWindow.close();
+      // newWindow.document.close();
+      // newWindow.print();
+      // newWindow.close();
 
     }
 

@@ -58,9 +58,7 @@ const getCountriesReducer = useSelector(
       const selectedValue = event.target.value;
       setSelectedOption(selectedValue);
     };
-    useEffect(()=>{
-      dispatch(getAllCountries());
-  })
+   
   
   return (
     <section
@@ -81,7 +79,7 @@ const getCountriesReducer = useSelector(
 
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "25px 0px",height:"100%",marginTop:"10px" }}>
         <Paper style={{ padding: "0px 0px 0px 18px", height:"100%" }} className="bg-none">
          
               <div style={{background:"#ffffff33",height:"100%"}}>
@@ -215,11 +213,11 @@ const getCountriesReducer = useSelector(
         </Paper>
       </div>
       </div>
-        <div className="col-8">
-      <div style={{ padding: "20px" }}>
+        <div className="col-8 mt-4">
+      <div style={{ padding: "10px" }}>
       
         <Paper style={{ padding: "18px" }}>
-          <div style={{ margin: "10px" }}>
+        <div style={{ margin: "10px" }}>
             <Typography
               align="left"
               style={{ marginTop: "10px", fontSize: "38px" }}
@@ -593,12 +591,12 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
               </Typography>
               <FormControl className="w-100">
                 <input
-                className="col-md-6 col-12"
+                className="col-md-12 col-12"
                   style={{
                     padding: " 0 10px",
                     color: "#7e7e7e",
                     fontStyle: "italic",
-                    height: "10rem",
+                    height: "7rem",
                   }}
                   
                   
@@ -720,6 +718,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                                       )}
                   </select>
                 </FormControl>
+
                 <Typography
                   align="left"
                   style={{ fontSize: "22px", marginTop: "10px" }}
