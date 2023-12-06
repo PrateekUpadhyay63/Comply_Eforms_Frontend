@@ -1,6 +1,7 @@
 import { Fragment,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { SubmitSchema } from "../../../../../schemas/submit";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -30,7 +31,11 @@ const Declaration = (props: any) => {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-  const initialValue = {};
+    const initialValue = {
+      declaration:false,
+      IsSubmit:false,
+      IsSubmit_not:false
+    };
   return (
     <Fragment>
       <section
@@ -41,16 +46,16 @@ const Declaration = (props: any) => {
           <Paper style={{ padding: "22px" }}>
             <Formik
               initialValues={initialValue}
-              // validationSchema={}
+             validationSchema={SubmitSchema}
               onSubmit={(values, { setSubmitting }) => {
                 console.log("values" , values)
                 setSubmitting(true);
                 dispatch(
                   W8_state_ECI(values, () => {
-                    history("/Complete");
+                    history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE/Submit_BenE/ThankYou_BenE");
                   })
                 );
-                history("/Complete");
+                history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE/Submit_BenE/ThankYou_BenE");
               }}
             >
               {({
@@ -59,7 +64,7 @@ const Declaration = (props: any) => {
                 handleBlur,
                 values,
                 handleSubmit,
-               
+                handleChange,
                 isSubmitting,
               }) => (
                 <form onSubmit={handleSubmit}>
@@ -237,11 +242,12 @@ const Declaration = (props: any) => {
                             </Typography>
                           </Paper>
                           <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
+                            <Checkbox name="declaration" value={values.declaration} onChange={handleChange} checked={values.declaration}/>
                             <Typography style={{ marginTop: "9px" }}>
                               I agree with the above Declarations
                             </Typography>
                           </div>
+                          <p className="error">{errors.declaration}</p>
                         </AccordionDetails>
                       </Accordion>
                       <Accordion
@@ -306,35 +312,29 @@ const Declaration = (props: any) => {
                             <Divider style={{ marginBottom: "10px" }} />
                           </Paper>
                           <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox    checked={isCheckboxChecked}
-        onChange={handleCheckboxChange}/>
+                            <Checkbox     name="IsSubmit" value={values.IsSubmit} onChange={handleChange} checked={values.IsSubmit}/>
+                         
                             <Typography style={{ marginTop: "9px" }}>
                               I give consent to receiving a recipent statement
                               electronically.
                             </Typography>
+                           
                           </div>
+                          <p className="error">{errors.IsSubmit}</p>
                           <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox />
+                            <Checkbox  name="IsSubmit_not" value={values.IsSubmit_not} onChange={handleChange} checked={values.IsSubmit_not} />
                             <Typography style={{ marginTop: "9px" }}>
                               {" "}
                               I do not give consent to receiving a recipent
                               statement electronically.
                             </Typography>
                           </div>
+                          <p className="error">{errors.IsSubmit_not}</p>
                         </AccordionDetails>
                       </Accordion>
                     </div>
-
-                    {/* <Typography align="center" style={{ marginTop: "20px" }}>
-                      <Button
-                        style={{ fontSize: "12px" }}
-                        size="small"
-                        type="submit"
-                        variant="contained"
-                      >
-                        Submit
-                      </Button>
-                    </Typography> */}
+                  
+                  
                     <div
           style={{
             display: "flex",
@@ -343,7 +343,7 @@ const Declaration = (props: any) => {
           }}
         >
           <Button
-            disabled={!isCheckboxChecked}
+           
             variant="contained"
             style={{ color: "white" }}
           >
@@ -358,7 +358,10 @@ const Declaration = (props: any) => {
           </Button>
 
           <Button
-          disabled={!isCheckboxChecked}
+          // onClick={()=>{
+          //   history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233")
+          // }}
+        
              type="submit"
             variant="contained"
             style={{ color: "white", marginLeft: "15px" }}
@@ -397,6 +400,7 @@ const Declaration = (props: any) => {
               )}
             </Formik>
           </Paper>
+          
         </div>
       </section>
     </Fragment>

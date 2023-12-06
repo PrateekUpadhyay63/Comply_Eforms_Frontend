@@ -451,7 +451,7 @@ const ROUTES: Array<RouteType> = [
   },
   {
     name: "ThankYou_8233",
-    path: "Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233",
+    path: "Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233/ThankYou_8233",
     id: 7,
     Component: ThankYou_8233,
     isPrivate: true,
