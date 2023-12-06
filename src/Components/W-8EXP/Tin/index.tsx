@@ -549,7 +549,11 @@ initialValues={initialValue}
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <select
-                          disabled
+                           disabled={
+                            values.isFTINNotLegallyRequired ||
+                            values.foreignTINCountry == "1" ||
+                            values.tinisFTINNotLegallyRequired ==="Yes"
+                          }
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -724,9 +728,6 @@ initialValues={initialValue}
                               disabled={
                                 values.isFTINNotLegallyRequired ||
                                 values.foreignTINCountry == "1" 
-                               
-                                
-                                
                               }
                               name="foreignTIN"
                               value={values.foreignTIN}
@@ -785,11 +786,14 @@ initialValues={initialValue}
                           <FormControl >
                             <RadioGroup
                               row
-                              
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e) => {
+                                handleChange(e);
+                                setFieldValue("foreignTIN", "");
+                                setFieldValue("foreignTINCountry", "1");
+                              }}
                             >
                               <FormControlLabel
                                 value="Yes"
