@@ -296,8 +296,6 @@ export default function Tin(props: any) {
                             // onBlur={handleBlur}
                             onChange={(e: any) => {
                               handleChange(e);
-
-                              
                                 setFieldValue("","");
                             }}
                            
@@ -838,7 +836,10 @@ export default function Tin(props: any) {
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e) => {
+                                handleChange(e);
+                                setFieldValue("foreignTIN", "");
+                              }}
                             >
                               <FormControlLabel
                                 value="Yes"

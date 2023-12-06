@@ -67,22 +67,18 @@
   background-color: #f3f4f7;
   width: 8rem;
   height: 7rem;
-
 }
 
 .tabview li:nth-child(2) {
   vertical-align: middle;
   display: flex;
   margin: auto 20px !important;
-
-
 }
 
 .tabview li:nth-child(3) {
   background-color: #f3f4f7;
   width: 8rem;
   height: 7rem;
-
 }
 
 .tabview button {
@@ -116,7 +112,7 @@
   width: auto !important;
 }
 
-@media (min-width:768px) and (max-width:998px) {
+@media (min-width: 768px) and (max-width: 998px) {
   .tabview li:nth-child(1) {
     width: 6rem;
     height: 4rem;
@@ -133,7 +129,7 @@
   }
 }
 
-@media (min-width:0px) and (max-width:768px) {
+@media (min-width: 0px) and (max-width: 768px) {
   .tabview li:nth-child(1) {
     width: 6rem;
     height: 4rem;
@@ -150,12 +146,9 @@
   }
 }
 
-
-
 // overlay class
 .overlay-div:hover {
   right: 0.9% !important;
-
 }
 
 .overlay-div {
@@ -181,8 +174,6 @@
 }
 
 // overlay class end
-
-
 
 // ------------------------------------------------ viewInstructions btn css-----------------------------------------------
 .viewInstructions:hover {
@@ -238,7 +229,6 @@
 // ------------------------------------------------ viewform btn css ----------------------------------------------------------
 
 .viewform:hover {
-
   transform: scale(1.1);
   z-index: 100;
 }
@@ -315,7 +305,6 @@
         border-radius: 0px;
         font-size: 13px;
         font-weight: 500 !important;
-
       }
 
       a:hover {
@@ -361,11 +350,9 @@
 
 // ------------------------------------------------ viewform btn css end-----------------------------------------------
 
-
 // ------------------------------------------------ helpvideo btn css ----------------------------------------------------------
 
 .helpvideo:hover {
-
   transform: scale(1.1);
   z-index: 100;
 }
@@ -416,12 +403,8 @@
 
 // ------------------------------------------------ helpvideo btn css end-----------------------------------------------
 
-
-
-
 .steper-check-icon {
   width: 10px;
-
 }
 
 .steper-check-icon-solid {
@@ -468,7 +451,6 @@
       padding: 6px 0;
       display: table;
       list-style: none;
-
     }
   }
 
@@ -493,7 +475,6 @@
 }
 
 .stepper p {
-
   padding: 0px;
   color: #333333;
   text-decoration: none;
@@ -502,7 +483,6 @@
   margin-right: 10px;
   width: 100%;
   text-align: left;
-
 }
 
 .forms-card-data {
@@ -531,7 +511,6 @@
   .disabled {
     opacity: 0.8;
     background: #dddddd;
-
   }
 }
 
@@ -552,17 +531,25 @@
 
 .inputTextField {
   border: 1px solid #d9d9d9;
-    height:36px;
-    line-Height: 36px;
-    background-color: #fff;
-    font-size: 13px;
-    color: #000;
-    font-size: normal;
-    border-radius: 1px;
-    padding: 0 10px;
+  height: 36px;
+  line-height: 36px;
+  background-color: #fff;
+  font-size: 13px;
+  color: #000;
+  font-size: normal;
+  border-radius: 1px;
+  padding: 0 10px;
 }
 
 .backGround_Image {
-  background: #052035 url(http://localhost:3000/static/media/bg_login.e14d433bfa1da61c3007.jpg) 297px -80px fixed no-repeat !important;
+  background: #052035
+    url(http://localhost:3000/static/media/bg_login.e14d433bfa1da61c3007.jpg)
+    297px -80px fixed no-repeat !important;
   background-size: cover !important;
+}
+
+.blackText {
+  input {
+    color: black !important;
+  }
 }

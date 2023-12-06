@@ -11,6 +11,7 @@ import {
   Radio,
   Link,
   FormControlLabel,
+  Input,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "@mui/material";
@@ -173,9 +174,9 @@ export default function Factors() {
                   handleSubmit,
                   handleChange,
                   isSubmitting,
+                  setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    <>{console.log(errors, values, "W8")}</>
                     <div style={{ margin: "10px" }}>
                       <Typography
                         align="left"
@@ -430,7 +431,8 @@ export default function Factors() {
                           value={values.isPermamnentResidentCardHolder}
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
-                          onChange={handleIndividualChange}
+                          onChange={handleChange}
+                          
                         >
                           <FormControlLabel
                             value="Yes"
@@ -453,7 +455,7 @@ export default function Factors() {
                         style={{ fontSize: "19px", marginTop: "10px" }}
                       >
                         Does the individual hold dual citizenship status?
-                        <span style={{ color: "red" }}>*</span>
+                       
                       </Typography>
 
                       <FormControl>
@@ -511,6 +513,7 @@ export default function Factors() {
                                 value="No"
                                 control={<Radio />}
                                 label="No"
+                                name="isHoldDualCitizenshipIncludeUSCitizenship"
                               />
                             </RadioGroup>
                           </FormControl>
@@ -600,7 +603,7 @@ export default function Factors() {
                       >
                         Does the individual the submission represents have tax
                         liability in any other jurisdictions?
-                        <span style={{ color: "red" }}>*</span>
+                       
                       </Typography>
 
                       <FormControl>
@@ -609,7 +612,7 @@ export default function Factors() {
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="isTaxLiabilityJurisdictions"
                           value={values.isTaxLiabilityJurisdictions}
-                          onChange={handleTaxChange}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
                             value="Yes"
@@ -672,10 +675,10 @@ export default function Factors() {
                           </Typography>
                           <div className="d-flex">
                             <FormControl className="form">
-                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
+                              <input  name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} />
                             </FormControl>
                             <div className="d-flex">
-                              <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
+                              <Checkbox  name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
                                 TIN format not available
                               </div>
@@ -696,19 +699,21 @@ export default function Factors() {
                           row
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
-                          value={tax1}
-                          onChange={handleTaxChange1}
+                          value={values.isTaxLiabilityJurisdictions}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
                             value="Yes"
                             control={<Radio />}
                             label="Yes"
+                            name="isTaxLiabilityJurisdictions"
                           />
                           <FormControlLabel
                             className="label"
                             value="No"
                             control={<Radio />}
                             label="No"
+                              name="isTaxLiabilityJurisdictions"
                           />
                         </RadioGroup>
                       </FormControl>
@@ -757,7 +762,7 @@ export default function Factors() {
                       >
                         Has the individual been physically present in the United
                         States on at least 31 days during the current calendar
-                        year?<span style={{ color: "red" }}>*</span>
+                        year?
                       </Typography>
 
                       <FormControl>
@@ -835,7 +840,7 @@ export default function Factors() {
                           style={{ fontSize: "19px", marginTop: "10px" }}
                         >
                           Is the individual a Permanent Resident Card Holder
-                          (Green Card)?<span style={{ color: "red" }}>*</span>
+                          (Green Card)?
                         </Typography>
 
                         <FormControl>
@@ -845,7 +850,7 @@ export default function Factors() {
                             id="isPermamnentResidentCardHolder"
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             value={values.isPermamnentResidentCardHolder}
-                            onChange={handleIndividualChange}
+                            onChange={handleChange}
                           >
                             <FormControlLabel
                               control={<Radio />}
@@ -869,7 +874,7 @@ export default function Factors() {
                           style={{ fontSize: "19px", marginTop: "10px" }}
                         >
                           Does the individual hold dual citizenship status?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1042,7 +1047,7 @@ export default function Factors() {
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1189,26 +1194,28 @@ export default function Factors() {
                       )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <input name="taxReferenceNumber" value={values.taxReferenceNumber} disabled = {values.permanentResidentialCountryId == 0} className="input" />
+                                <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled = {values.isTINFormatNotAvailable == false}  className="input"/>
                               </FormControl>
-                             {values.permanentResidentialCountryId == 257?(<div className="d-flex">
-                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  required />
+                             {/* {values.permanentResidentialCountryId == 257?( */}
+                             <div className="d-flex">
+                                <Checkbox name="isTINFormatNotAvailable" onChange={(e)=>{handleChange(e);setFieldValue("taxReferenceNumber" , "")}} value={values.isTINFormatNotAvailable}  required />
                                 <div className="mt-2">
                                   TIN format not available
                                 </div>
-                              </div>):<div className="d-flex">
-                                <Checkbox name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  disabled required />
-                                <div className="mt-2" style={{color:"grey"}}>
-                                  TIN format not available
-                                </div>
-                              </div>}
+                              </div>
+                              {/* // ):<div className="d-flex">
+                              //   <Checkbox name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  disabled required />
+                              //   <div className="mt-2" style={{color:"grey"}}>
+                              //     TIN format not available
+                              //   </div>
+                              // </div>} */}
                             </div>
                             <Typography
                           style={{ fontSize: "19px", marginTop: "10px" }}
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
-                          <span style={{ color: "red" }}>*</span>
+                         
                         </Typography>
 
                         <FormControl>
@@ -1247,7 +1254,8 @@ export default function Factors() {
                         >
                           Has the individual been physically present in the United
                           States on at least 31 days during the current calendar
-                          year?<span style={{ color: "red" }}>*</span>
+                          year?
+                         
                         </Typography>
 
                         <FormControl>

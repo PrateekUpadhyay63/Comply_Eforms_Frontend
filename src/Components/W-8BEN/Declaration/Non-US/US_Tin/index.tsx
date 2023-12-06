@@ -18,7 +18,11 @@ import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import { useNavigate } from "react-router-dom";
 import { US_TINSchema } from "../../../../../schemas/w8Ben";
-import { W8_state , getTinTypes ,getAllCountries } from "../../../../../Redux/Actions";
+import {
+  W8_state,
+  getTinTypes,
+  getAllCountries,
+} from "../../../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -27,7 +31,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 
 export default function Tin(props: any) {
-
   const history = useNavigate();
   const {
     handleTaxClassificationChange,
@@ -37,46 +40,45 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
-  const [ustinArray , setUStinArray] = useState([]);
-  const [ustinValue , setUStinvalue] = useState([]);
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
-      getTinTypes(3, (data:any) => {
-        setUStinArray(data)
-        let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
-        setUStinvalue(datas)
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.usIndividual === true;
+        });
+        setUStinvalue(datas);
       })
     );
-   
-
   }, []);
   const onChangeUsInit = (values: any) => {
-    let data 
-    console.log("here")
+    let data;
+    console.log("here");
     if (values.isUSIndividual == "no") {
       data = ustinArray.filter((ele: any | undefined) => {
         // Filter out elements where usIndividual is true
         return ele?.usIndividual === false;
       });
-      console.log("yes",data)
+      console.log("yes", data);
       // Do something with the filtered data...
     } else {
-      
       data = ustinArray.filter((ele: any | undefined) => {
         // Filter out elements where usIndividual is false
         return ele?.usIndividual === true;
       });
-      console.log("no")
+      console.log("no");
       // Do something with the filtered data...
     }
-    console.log(data,"data")
-    setUStinvalue(data)
+    console.log(data, "data");
+    setUStinvalue(data);
   };
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
-  
+
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -306,21 +308,21 @@ export default function Tin(props: any) {
                           >
                             <option value="">-Select-</option>
                             {ustinValue?.map((ele: any) => (
-                                  // ele?.nonUSIndividual &&
-                                  //   values?.isUSIndividual == "no" ||
-                                  // ele?.usIndividual &&
-                                  //   values?.isUSIndividual == "Yes" ?
-                                  // (
-                                  <option
-                                    key={ele?.taxpayerIdTypeID}
-                                    value={ele?.taxpayerIdTypeID}
-                                  >
-                                    {ele?.taxpayerIdTypeName}
-                                  </option>
-                                  // ) : (
-                                  //   ""
-                                  // );
-                                ))}
+                              // ele?.nonUSIndividual &&
+                              //   values?.isUSIndividual == "no" ||
+                              // ele?.usIndividual &&
+                              //   values?.isUSIndividual == "Yes" ?
+                              // (
+                              <option
+                                key={ele?.taxpayerIdTypeID}
+                                value={ele?.taxpayerIdTypeID}
+                              >
+                                {ele?.taxpayerIdTypeName}
+                              </option>
+                              // ) : (
+                              //   ""
+                              // );
+                            ))}
                           </select>
                           {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
@@ -345,10 +347,9 @@ export default function Tin(props: any) {
                               width: "100%",
                             }}
                           />
-                          {values.notAvailable
-                            ? ""
-                            : ""
-                              //  <p className="error">{errors.usTin}</p>
+                          {
+                            values.notAvailable ? "" : ""
+                            //  <p className="error">{errors.usTin}</p>
                           }
                         </div>
                         <div className="col-lg-2 col-12">
@@ -407,14 +408,14 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value="1">-Select-</option>
-                            <option value= "257">United Kingdom</option>
+                            <option value="257">United Kingdom</option>
                             {getCountriesReducer.allCountriesData?.map(
-                                  (ele: any) => (
-                                    <option key={ele?.id} value={ele?.id}>
-                                      {ele?.name}
-                                    </option>
-                                  )
-                                )}
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
@@ -604,10 +605,9 @@ export default function Tin(props: any) {
                               }}
                             />
                           )}
-                          {values.isFTINNotLegallyRequired
-                            ? ""
-                            : ""
-                              // <p className="error">{errors.foreignTIN}</p>
+                          {
+                            values.isFTINNotLegallyRequired ? "" : ""
+                            // <p className="error">{errors.foreignTIN}</p>
                           }
 
                           <FormControl>
@@ -616,7 +616,10 @@ export default function Tin(props: any) {
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e) => {
+                                handleChange(e);
+                                setFieldValue("foreignTIN", "");
+                              }}
                             >
                               <FormControlLabel
                                 value="Yes"
@@ -629,7 +632,7 @@ export default function Tin(props: any) {
                                 className="label"
                                 value="No"
                                 control={<Radio />}
-                                label="Alternative Tin Format"
+                                label="Alternative Tin Format....."
                                 disabled={values.isFTINNotLegallyRequired}
                                 name="tinisFTINNotLegallyRequired"
                               />

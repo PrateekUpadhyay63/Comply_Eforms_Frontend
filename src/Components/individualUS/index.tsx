@@ -1471,11 +1471,11 @@ export default function IndividualUs() {
                       {values.isUSIndividual === "no" ? (
                         <div className="row d-flex mt-3">
                           <div className="col-lg-3 col-6 col-md-3 ">
+                          <FormControl className="w-100">
                             <Typography align="left" className="d-flex w-100">
                               U.S. TIN Type
                               <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
                             </Typography>
-                            <FormControl className="w-100">
                               <select
                                 style={{
                                   padding: " 0 10px",
@@ -1518,7 +1518,6 @@ export default function IndividualUs() {
                             </FormControl>
                           </div>
 
-                          <>{console.log(values, "values")}</>
                           <div className="col-lg-3 col-6 col-md-3">
                             <FormControl className="w-100">
                               <Typography align="left">
@@ -2333,15 +2332,15 @@ export default function IndividualUs() {
                                 onChange={handleChange}
                               >
                                 <FormControlLabel
-                                  value="no"
-                                  control={<Radio />}
-                                  label="No"
-                                  name="isAddressRuralRoute"
-                                />
-                                <FormControlLabel
                                   value="yes"
                                   control={<Radio />}
                                   label="Yes"
+                                  name="isAddressRuralRoute"
+                                />
+                                  <FormControlLabel
+                                  value="no"
+                                  control={<Radio />}
+                                  label="No"
                                   name="isAddressRuralRoute"
                                 />
                               </RadioGroup>
@@ -3333,6 +3332,7 @@ export default function IndividualUs() {
                             <Typography align="left">
                               Primary Contact Number
                             </Typography>
+                            <div>
                             <select
                               style={{
                                 padding: " 0 10px",
@@ -3377,6 +3377,7 @@ export default function IndividualUs() {
                               onChange={handleChange}
                               value={values.primaryContactNumber}
                             />
+                            </div>
                           </FormControl>
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
