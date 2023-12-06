@@ -2576,21 +2576,78 @@ export default function IndividualUs() {
                               style={{ justifyContent: "between" }}
                             >
                               <>
-                                <div>
+                                <div className="col-4">
                                   <Typography
                                     align="left"
                                     style={{ marginTop: "20px" }}
                                   >
                                     Is this address a PO Box?
                                     <span style={{ color: "red" }}>*</span>
-                                    <Info
-                                      style={{
-                                        color: "#ffc107",
-                                        fontSize: "15px",
-                                        marginBottom: "12px",
-                                      }}
-                                    />
+                                
+                                      <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                 PO BOX Address
+                                </Typography>
+                                <a onClick={() => setToolInfo("PO")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
                                   </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                                verticalAlign:"super"
+                              }}
+                            />
+                          </Tooltip>
+                                  </Typography>
+                                  {toolInfo === "PO" ? (
+                    <div >
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
+                      >
+                        <Typography>
+                        A Post Office Box is a mail box located at a post office (versus at a permanent residence).
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
+                        </Typography>
+                     
+                        <Typography style={{ marginTop: "10px" }}>
+                        If you reside in a country that does not use street addresses, you may enter a descriptive address.
+                        </Typography>
+                       
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                                   <FormControl
                                     error={Boolean(
                                       touched.isAddressPostOfficeBox &&
@@ -2653,19 +2710,73 @@ export default function IndividualUs() {
                               </p> */}
                                 </div>
                               </>
-                              {/* </div> */}
-                              <div className="">
+                       
+                              <div className="col-4">
                                 <Typography style={{ marginTop: "20px" }}>
                                   Is this an In Care Of address?
                                   <span style={{ color: "red" }}>*</span>
-                                  <Info
-                                    style={{
-                                      color: "#ffc107",
-                                      fontSize: "15px",
-                                      marginBottom: "12px",
-                                    }}
-                                  />
+                                  <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                 In Care Of Address
                                 </Typography>
+                                <a onClick={() => setToolInfo("CareOf")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                                verticalAlign:"super"
+                              }}
+                            />
+                          </Tooltip>
+                                </Typography>
+                                {toolInfo === "CareOf" ? (
+                    <div >
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
+                      >
+                        <Typography>
+                        An In Care Of Address denotes that something is to be delivered to an address where the recipient does not normally receive mail.                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission. 
+                        </Typography>
+                     
+                        <Typography style={{ marginTop: "10px" }}>
+                        If you reside in a country that does not use street addresses, you may enter a descriptive address.                        </Typography>
+                       
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                                 <div className="d-flex">
                                   <FormControl
@@ -2730,7 +2841,7 @@ export default function IndividualUs() {
                                 </p> */}
                                 </div>
                               </div>
-                              <div>
+                              <div className="col-4">
                                 <Typography style={{ marginTop: "20px" }}>
                                   Is there an alternative mailing or business
                                   address in the U.S.?
@@ -2769,6 +2880,7 @@ export default function IndividualUs() {
                                           fontSize: "15px",
                                           marginLeft: "5px",
                                           cursor: "pointer",
+                                          verticalAlign:"super"
                                         }}
                                         // onClick={clickInfo}
                                       />
