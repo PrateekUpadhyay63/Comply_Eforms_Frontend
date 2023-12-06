@@ -19,7 +19,8 @@ const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, Ge
   GetChapter3Status,
   GetChapter4Statuses,
   GetLimitationBenefits,
-  GetIncomeTypes
+  GetIncomeTypes,
+  GetAgentIncomeTypeHiddenAllowAnoymo,
 } = Utils.actionName
 
 
@@ -228,6 +229,17 @@ export const GetAgentFATCAEntityGIINChallengeDisabledForEformReducer = (state = 
       return state;
   }
 };
+
+export const GetAgentIncomeTypeHiddenAllowAnoymoReducer = (state = initialState, action: any): any => {
+  switch (action.type) {
+    case GetAgentIncomeTypeHiddenAllowAnoymo:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+
 
 export const GetAgentSPTQuestionHiddenForEformReducer = (state = initialState, action: any): any => {
   switch (action.type) {

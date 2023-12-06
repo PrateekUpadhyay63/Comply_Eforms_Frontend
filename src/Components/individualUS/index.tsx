@@ -38,6 +38,7 @@ import {
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
   GetAgentUSVisaTypeHiddenForEformAction,
+  GetAgentIncomeTypeHiddenAllowAnoymo,
   getTinTypes,
   GetAgentPaymentType
 } from "../../Redux/Actions";
@@ -235,6 +236,7 @@ export default function IndividualUs() {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(GetAgentUSVisaTypeHiddenForEformAction());
+    dispatch(GetAgentIncomeTypeHiddenAllowAnoymo());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
@@ -311,8 +313,10 @@ export default function IndividualUs() {
     state.GetAgentUSVisaTypeHiddenForEformReducer.GetAgentUSVisaTypeHiddenForEform
 
   )
-  console.log("eghjkl;",GetAgentUSVisaTypeHiddenForEform)
-
+// FOR ISSUE 108 UNCOMMENT bottom code and comment top code
+//   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+//   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
+// )
 
   const redirectFunc = () => {
     history("/Term");
@@ -579,7 +583,7 @@ export default function IndividualUs() {
             <div className="tabview">
               <ul>
                 <li>
-                  <button className="active">
+                  <button  className="active iconWhite">
                     <div>
                       <div>
                         {" "}
@@ -593,7 +597,7 @@ export default function IndividualUs() {
                 </li>
                 <li style={{ fontSize: "14px", fontWeight: "400" }}>OR</li>
                 <li>
-                  <button onClick={() => history("/EntityUs")}>
+                  <button className="iconWhite" onClick={() => history("/EntityUs")}>
                     <div>
                       <div>
                         {" "}
@@ -737,6 +741,34 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+                   {toolInfo === "ForeignTin" ? (
+                    <div className="mt-5">
+                      <Paper
+                      
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                      >
+                       <div className="d-flex" style={{justifyContent:"space-between"}}>
+                       <Typography style={{color: "#0c5460"}}>
+                       United Kingdom TIN Format is 9999999999 false 9- Numeric value only A- Alphabetic character only *- Alphanumeric character only ?- Characters optional after this IF TIN format is not available, please check the below box and continue
+                        </Typography>
+
+
+                        <Typography>
+                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
+                            setToolInfo("");
+                          }}/>
+                        </Typography>
+                       </div>
+                       
+                      
+                        
+                        
+                       
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                    {toolInfo === "identity" ? (
                     <div className="mt-5">
@@ -1578,7 +1610,7 @@ export default function IndividualUs() {
                                 value={values.foreignTINCountryId}
                               >
                                 <option value={0}>-Select-</option>
-                                <option value={257}>-United Kingdom-</option>
+                                <option value={1}>-United Kingdom-</option>
                                 {getCountriesReducer.allCountriesData?.map(
                                   (ele: any) => (
                                     <option key={ele?.id} value={ele?.id}>
@@ -1594,8 +1626,35 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Foreign TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
+                               {values.foreignTINCountryId == 1 ?(  <span>  <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                  
+                              }}
+                              title={
+                                <>
+                                 
+                                  <a onClick={() => setToolInfo("ForeignTin")}>
+                                   
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                               onClick={() => setToolInfo("ForeignTin")}
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  verticalAlign:"super",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </Tooltip></span> ):""}
+                              
                               </Typography>
+
                               <Input
                                 disabled={
                                   values.foreignTINCountryId == 0 ||

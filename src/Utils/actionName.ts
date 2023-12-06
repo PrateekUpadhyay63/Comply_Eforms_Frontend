@@ -40,6 +40,7 @@ const ActionName = {
     GetChapter4Statuses:"GetChapter4Statuses",
     GetLimitationBenefits:"GetLimitationBenefits",
     GetIncomeTypes:"GetIncomeTypes",
+    GetAgentIncomeTypeHiddenAllowAnoymo:"GetAgentIncomeTypeHiddenAllowAnoymo",
   };
 
   export default ActionName;
