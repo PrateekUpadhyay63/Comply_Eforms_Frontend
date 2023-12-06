@@ -941,8 +941,303 @@ the required payee documentation to associate with an amount realized or an amou
                 </tbody>
             </table>
 
-            {/* ---------------------Part VII end  ----------------------- */}
+            {/* ---------------------Part VIII end  ----------------------- */}
 
+
+
+            {/* ---------------------Part IX   ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{borderTop:"1px solid #000000"}}>
+                  <td colSpan={2} style={{ textAlign: "center", fontSize: "20px", fontWeight: "900", paddingBottom: "10px", }}>Chapter 4 Status Certifications</td>
+                </tr>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part IX</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Qualified Intermediary</strong></td>
+                </tr>
+              </thead>
+            </table>
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                    <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>22 </strong></label></td>
+                    <td style={{ padding: "10px 0" ,display:"flex"}}>
+                      <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                      I certify that the entity identified in Part I is using this form to transmit withholding certificates and/or other documentation and has provided 
+                      or will provide a withholding statement that indicates the portion of the payment allocated to one or more exempt beneficial owners
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            {/* ---------------------Part IX end  ----------------------- */}
+
+            {/* ---------------------Part X  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part X</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Sponsored FFI</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+              <tr>
+                  <td colSpan={2} >
+                    <div style={{ width: "100%", display: "flex" }}>
+                      <div style={{ paddingRight: "10px", }}><label><strong>23a </strong></label></div>
+                      <div> Name of sponsoring entity: &#9654;</div>
+                      <div style={{ color: "rgb(5, 5, 129)", borderBottom: "1px solid #000", width: "70%" }}>12-3456213</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the box on line 23b or 23c, whichever applies.</td>
+                </tr>
+        
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is an investment entity;
+                    </li>
+                    <li>
+                    Is not a QI, WP (except to the extent permitted in the withholding foreign partnership agreement), or WT; <strong>and</strong>
+                    </li>
+                    <li>
+                    Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is a controlled foreign corporation as defined in section 957(a);
+                    </li>
+                    <li>
+                    Is not a QI, WP, or WT;
+                    </li>
+                    <li>
+                    Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity;<strong>and</strong>
+                    </li>
+                    <li>
+                    Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all 
+                    account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited 
+                    to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part X end   ----------------------- */}
+
+            
+            {/* ---------------------Part XI      ----------------------- */}
+            
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part XI</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Owner-Documented FFI</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+   
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "" ,padding:"10px 0px" }}><strong>Note:</strong> This status only applies if the U.S. financial institution, participating FFI, reporting Model 1 FFI, or reporting Model 2 FFI to which this form is 
+                  given has agreed that it will treat the FFI as an owner-documented FFI. The owner-documented FFI must make the certifications below</td>
+                </tr>
+        
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>24a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Does not act as an intermediary;
+                    </li>
+                    <li>
+                    Does not accept deposits in the ordinary course of a banking or similar business;
+                    </li>
+                    <li>
+                    Does not hold, as a substantial portion of its business, financial assets for the account of others;
+                    </li>
+                    <li>
+                    Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with 
+                    respect to a financial account;
+                    </li>
+                    <li>
+                    Is not affiliated with an entity (other than an FFI that is also treated as an owner-documented FFI) that accepts deposits in the ordinary 
+                    course of a banking or similar business, holds, as a substantial portion of its business, financial assets for the account of others, or is an 
+                    insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a 
+                    financial account; <strong>and</strong>
+                    </li>
+                    <li>
+                    Does not maintain a financial account for any nonparticipating FFI.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600",padding:"" }}>Check the box on line 24b or 24c, whichever applies.</td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Has provided, or will provide, an FFI owner reporting statement (including any applicable owner documentation) that contains:
+                    <p>
+                        (i) The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified
+                            U.S. person that owns a direct or indirect equity interest in the owner-documented FFI (looking through all entities other than
+                            specified U.S. persons);
+                      </p>
+                      <p>
+                      (ii) The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified
+                      U.S. person that owns a debt interest in the owner-documented FFI (including any indirect debt interest, which includes debt interests
+                      in any entity that directly or indirectly owns the payee or any direct or indirect equity interest in a debt holder of the payee) that
+                      constitutes a financial account in excess of $50,000 (disregarding all such debt interests owned by participating FFIs, registered
+                      deemed-compliant FFIs, certified deemed-compliant FFIs, excepted NFFEs, exempt beneficial owners, or U.S. persons other than
+                      specified U.S. persons); <strong>and</strong> 
+                      </p>
+                      <p>
+                      (iii) Any additional information the withholding agent requests in order to fulfill its obligations with respect to the entity.
+                      </p>
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Has provided, or will provide, an auditor’s letter, signed no more than 4 years prior to the date of payment, from an independent
+                    accounting firm or legal representative with a location in the United States stating that the firm or representative has reviewed the FFI’s
+                    documentation with respect to all of its owners and debt holders identified in Regulations section 1.1471-3(d)(6)(iv)(A)(2) and that the FFI
+                    meets all the requirements to be an owner-documented FFI. The FFI identified in Part I has also provided, or will provide, an FFI owner
+                    reporting statement and Form W-9, with applicable waivers, as described in Regulations section 1.1471-3(d)(6)(iv).
+                    </li>
+                   </ul>
+                   </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part XI end  ----------------------- */}
+
+
+
+            {/* ---------------------Part XII  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part XII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Certified Deemed-Compliant Nonregistering Local Bank</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>25 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Operates and is licensed solely as a bank or credit union (or similar cooperative credit organization operated without profit) in its country of incorporation or organization;
+                    </li>
+                    <li>
+                    Is not a QI, WP (except to the extent permitted in the withholding foreign partnership agreement), or WT; <strong>and</strong>
+                    </li>
+                    <li>
+                    Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is a controlled foreign corporation as defined in section 957(a);
+                    </li>
+                    <li>
+                    Is not a QI, WP, or WT;
+                    </li>
+                    <li>
+                    Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity;<strong>and</strong>
+                    </li>
+                    <li>
+                    Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all 
+                    account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited 
+                    to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part XII end   ----------------------- */}
+
+
+
+
+
+            {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
             <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
               <tbody>
