@@ -38,6 +38,7 @@ import {
   getAllCountriesIncomeCode,
   getAllStateByCountryId,
   GetAgentUSVisaTypeHiddenForEformAction,
+  GetAgentIncomeTypeHiddenAllowAnoymo,
   getTinTypes,
   GetAgentPaymentType
 } from "../../Redux/Actions";
@@ -235,6 +236,7 @@ export default function IndividualUs() {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(GetAgentUSVisaTypeHiddenForEformAction());
+    dispatch(GetAgentIncomeTypeHiddenAllowAnoymo());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
     dispatch(getAllStateByCountryId());
@@ -311,8 +313,10 @@ export default function IndividualUs() {
     state.GetAgentUSVisaTypeHiddenForEformReducer.GetAgentUSVisaTypeHiddenForEform
 
   )
-  console.log("eghjkl;",GetAgentUSVisaTypeHiddenForEform)
-
+// FOR ISSUE 108 UNCOMMENT bottom code and comment top code
+//   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+//   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
+// )
 
   const redirectFunc = () => {
     history("/Term");
@@ -579,7 +583,7 @@ export default function IndividualUs() {
             <div className="tabview">
               <ul>
                 <li>
-                  <button className="active">
+                  <button  className="active iconWhite">
                     <div>
                       <div>
                         {" "}
@@ -593,7 +597,7 @@ export default function IndividualUs() {
                 </li>
                 <li style={{ fontSize: "14px", fontWeight: "400" }}>OR</li>
                 <li>
-                  <button onClick={() => history("/EntityUs")}>
+                  <button className="iconWhite" onClick={() => history("/EntityUs")}>
                     <div>
                       <div>
                         {" "}
@@ -737,6 +741,34 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+                   {toolInfo === "ForeignTin" ? (
+                    <div className="mt-5">
+                      <Paper
+                      
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                      >
+                       <div className="d-flex" style={{justifyContent:"space-between"}}>
+                       <Typography style={{color: "#0c5460"}}>
+                       United Kingdom TIN Format is 9999999999 false 9- Numeric value only A- Alphabetic character only *- Alphanumeric character only ?- Characters optional after this IF TIN format is not available, please check the below box and continue
+                        </Typography>
+
+
+                        <Typography>
+                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
+                            setToolInfo("");
+                          }}/>
+                        </Typography>
+                       </div>
+                       
+                      
+                        
+                        
+                       
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                    {toolInfo === "identity" ? (
                     <div className="mt-5">
@@ -1578,7 +1610,7 @@ export default function IndividualUs() {
                                 value={values.foreignTINCountryId}
                               >
                                 <option value={0}>-Select-</option>
-                                <option value={257}>-United Kingdom-</option>
+                                <option value={1}>-United Kingdom-</option>
                                 {getCountriesReducer.allCountriesData?.map(
                                   (ele: any) => (
                                     <option key={ele?.id} value={ele?.id}>
@@ -1594,8 +1626,35 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Foreign TIN
-                                {/* <span style={{ color: 'red' }}>*</span> */}
+                               {values.foreignTINCountryId == 1 ?(  <span>  <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                  
+                              }}
+                              title={
+                                <>
+                                 
+                                  <a onClick={() => setToolInfo("ForeignTin")}>
+                                   
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                               onClick={() => setToolInfo("ForeignTin")}
+                                style={{
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  verticalAlign:"super",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
+                                }}
+                              />
+                            </Tooltip></span> ):""}
+                              
                               </Typography>
+
                               <Input
                                 disabled={
                                   values.foreignTINCountryId == 0 ||
@@ -2517,21 +2576,78 @@ export default function IndividualUs() {
                               style={{ justifyContent: "between" }}
                             >
                               <>
-                                <div>
+                                <div className="col-4">
                                   <Typography
                                     align="left"
                                     style={{ marginTop: "20px" }}
                                   >
                                     Is this address a PO Box?
                                     <span style={{ color: "red" }}>*</span>
-                                    <Info
-                                      style={{
-                                        color: "#ffc107",
-                                        fontSize: "15px",
-                                        marginBottom: "12px",
-                                      }}
-                                    />
+                                
+                                      <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                 PO BOX Address
+                                </Typography>
+                                <a onClick={() => setToolInfo("PO")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
                                   </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                                verticalAlign:"super"
+                              }}
+                            />
+                          </Tooltip>
+                                  </Typography>
+                                  {toolInfo === "PO" ? (
+                    <div >
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
+                      >
+                        <Typography>
+                        A Post Office Box is a mail box located at a post office (versus at a permanent residence).
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
+                        </Typography>
+                     
+                        <Typography style={{ marginTop: "10px" }}>
+                        If you reside in a country that does not use street addresses, you may enter a descriptive address.
+                        </Typography>
+                       
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                                   <FormControl
                                     error={Boolean(
                                       touched.isAddressPostOfficeBox &&
@@ -2594,19 +2710,73 @@ export default function IndividualUs() {
                               </p> */}
                                 </div>
                               </>
-                              {/* </div> */}
-                              <div className="">
+                       
+                              <div className="col-4">
                                 <Typography style={{ marginTop: "20px" }}>
                                   Is this an In Care Of address?
                                   <span style={{ color: "red" }}>*</span>
-                                  <Info
-                                    style={{
-                                      color: "#ffc107",
-                                      fontSize: "15px",
-                                      marginBottom: "12px",
-                                    }}
-                                  />
+                                  <Tooltip
+                            style={{ backgroundColor: "black", color: "white" }}
+                            title={
+                              <>
+                                <Typography color="inherit">
+                                 In Care Of Address
                                 </Typography>
+                                <a onClick={() => setToolInfo("CareOf")}>
+                                  <Typography
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecorationLine: "underline",
+                                    }}
+                                    align="center"
+                                  >
+                                    {" "}
+                                    View More...
+                                  </Typography>
+                                </a>
+                              </>
+                            }
+                          >
+                            <Info
+                              style={{
+                                color: "#ffc107",
+                                fontSize: "15px",
+                                marginLeft: "5px",
+                                cursor: "pointer",
+                                verticalAlign:"super"
+                              }}
+                            />
+                          </Tooltip>
+                                </Typography>
+                                {toolInfo === "CareOf" ? (
+                    <div >
+                      <Paper
+                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
+                      >
+                        <Typography>
+                        An In Care Of Address denotes that something is to be delivered to an address where the recipient does not normally receive mail.                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission. 
+                        </Typography>
+                     
+                        <Typography style={{ marginTop: "10px" }}>
+                        If you reside in a country that does not use street addresses, you may enter a descriptive address.                        </Typography>
+                       
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
                                 <div className="d-flex">
                                   <FormControl
@@ -2671,7 +2841,7 @@ export default function IndividualUs() {
                                 </p> */}
                                 </div>
                               </div>
-                              <div>
+                              <div className="col-4">
                                 <Typography style={{ marginTop: "20px" }}>
                                   Is there an alternative mailing or business
                                   address in the U.S.?
@@ -2710,6 +2880,7 @@ export default function IndividualUs() {
                                           fontSize: "15px",
                                           marginLeft: "5px",
                                           cursor: "pointer",
+                                          verticalAlign:"super"
                                         }}
                                         // onClick={clickInfo}
                                       />

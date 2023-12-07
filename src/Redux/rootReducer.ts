@@ -18,7 +18,8 @@ import {
   GetLimitationBenefitsReducer,
   GetIncomeTypesReducer,
   GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
-  GetAgentDocumentationMandatoryForEformReducer
+  GetAgentDocumentationMandatoryForEformReducer,
+  GetAgentIncomeTypeHiddenAllowAnoymoReducer,
 
 
 
@@ -48,8 +49,8 @@ let reducers = {
   GetLimitationBenefitsReducer,
   GetIncomeTypesReducer,
   GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
-  GetAgentDocumentationMandatoryForEformReducer
-
+  GetAgentDocumentationMandatoryForEformReducer,
+  GetAgentIncomeTypeHiddenAllowAnoymoReducer,
 
 
 };

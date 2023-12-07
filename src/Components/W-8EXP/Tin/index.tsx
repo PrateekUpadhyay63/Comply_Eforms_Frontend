@@ -13,6 +13,7 @@ import {
   Radio,
 } from "@mui/material";
 import { Info, Delete } from "@mui/icons-material";
+import CloseIcon from '@mui/icons-material/Close';
 import { Formik, Form } from "formik";
 import "./index.scss";
 import checksolid from "../../../../../assets/img/check-solid.png";
@@ -151,6 +152,34 @@ initialValues={initialValue}
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
+                     {toolInfo === "ForeignTin" ? (
+                    <div className="mt-5">
+                      <Paper
+                      
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                      >
+                       <div className="d-flex" style={{justifyContent:"space-between"}}>
+                       <Typography style={{color: "#0c5460"}}>
+                       United Kingdom TIN Format is 9999999999 false <br/> 9- Numeric value only <br/> A- Alphabetic character only <br/> *- Alphanumeric character only <br/> ?- Characters optional after this <br/> IF TIN format is not available, please check the below box and continue
+                        </Typography>
+
+
+                        <Typography>
+                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
+                            setToolInfo("");
+                          }}/>
+                        </Typography>
+                       </div>
+                       
+                      
+                        
+                        
+                       
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                     <>{console.log(errors, values)}</>
                     <Typography
                       align="left"
@@ -686,39 +715,32 @@ initialValues={initialValue}
                         <div className="col-lg-5 col-12">
                           <Typography>
                             Foreign TIN{" "}
-                            <span>
-                              <Tooltip
+                            {values.foreignTINCountry == 257 ?(  <span>  <Tooltip
+                              style={{
+                                backgroundColor: "black",
+                                color: "white",
+                  
+                              }}
+                              title={
+                                <>
+                                 
+                                  <a onClick={() => setToolInfo("ForeignTin")}>
+                                   
+                                  </a>
+                                </>
+                              }
+                            >
+                              <Info
+                               onClick={() => setToolInfo("ForeignTin")}
                                 style={{
-                                  backgroundColor: "black",
-                                  color: "white",
+                                  color: "#ffc107",
+                                  fontSize: "15px",
+                                  verticalAlign:"super",
+                                  marginLeft: "5px",
+                                  cursor: "pointer",
                                 }}
-                                title={
-                                  <>
-                                    <Typography color="inherit">
-                                      9999999999
-                                    </Typography>
-                                    <a onClick={() => setToolInfo("basic")}>
-                                      <Typography
-                                        style={{
-                                          cursor: "pointer",
-                                          textDecorationLine: "underline",
-                                        }}
-                                        align="center"
-                                      ></Typography>
-                                    </a>
-                                  </>
-                                }
-                              >
-                                <Info
-                                  style={{
-                                    color: "#ffc107",
-                                    fontSize: "12px",
-                                    cursor: "pointer",
-                                    verticalAlign: "super",
-                                  }}
-                                />
-                              </Tooltip>
-                            </span>
+                              />
+                            </Tooltip></span> ):""}
                           </Typography>
 
                           {values.tinisFTINNotLegallyRequired === "No" ? (

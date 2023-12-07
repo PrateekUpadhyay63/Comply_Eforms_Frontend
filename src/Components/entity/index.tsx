@@ -1293,7 +1293,7 @@ export default function Entity() {
                               value={values.foreignTINCountryId}
                             >
                               <option value={0}>-Select-</option>
-                              <option value={257}>-uk-</option>
+                              <option value={257}>United Kingdom</option>
                               {getCountriesReducer.allCountriesData?.map(
                                 (ele: any) => (
                                   <option key={ele?.id} value={ele?.id}>
