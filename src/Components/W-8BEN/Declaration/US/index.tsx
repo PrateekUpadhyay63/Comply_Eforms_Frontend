@@ -24,13 +24,13 @@ import DynamicForm from "./text";
 export default function Factors() {
   const history = useNavigate();
 
-  const [allocation, setAllocation] = useState(""); // State to track allocation input
+  const [allocation, setAllocation] = useState(); // State to track allocation input
   const [formList, setFormList] = useState<FormData[]>([]);
 
   const dispatch = useDispatch();
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    setAllocation(inputValue);
+    // setAllocation(inputValue);
 
     const mirroredText = document.getElementById("mirroredText");
     if (mirroredText) {
@@ -372,7 +372,7 @@ export default function Factors() {
                   ""
                 )}
 
-                <DynamicForm formList={formList} setFormList={setFormList} />
+                <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
               </div>
               <div
                 style={{
@@ -382,7 +382,7 @@ export default function Factors() {
                 }}
               >
                 <Button
-                  disabled={allocation !== "100"}
+                  disabled={allocation !== 100}
                   variant="contained"
                   style={{ color: "white" }}
                 >
@@ -395,7 +395,7 @@ export default function Factors() {
                   View form
                 </Button>
                 <Button
-                  disabled={allocation !== "100"}
+                  disabled={allocation !== 100}
                   onClick={handleSubmit}
                   variant="contained"
                   style={{ color: "white", marginLeft: "15px" }}
