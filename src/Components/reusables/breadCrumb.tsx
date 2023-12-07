@@ -51,7 +51,7 @@ export default function BreadCrumbComponent(props:any):any {
     setExpanded(isExpanded ? panel : false);
   };
 return(  <div
-    style={{ padding: "20px 0px", height: "100%", marginTop: "20px" }}
+    style={{ padding: "10px 0px", height: "100%" }}
   >
     <Paper
       style={{ padding: "0px 0px 0px 18px", height: "100%" }}
