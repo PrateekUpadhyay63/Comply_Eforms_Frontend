@@ -86,14 +86,14 @@ const GetAllIncomeCodesReducer = useSelector(
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "20px 0px",height:"100%",}}>
           <BreadCrumbComponent breadCrumbCode={1256} formName={3}/>
       </div>
       </div>
-      <div className="col-8 mt-5">
+      <div className="col-8 mt-3">
 
-      <div style={{ padding: "30px" }}>
-        <Paper style={{ padding: "18px" }}>
+      <div style={{ padding: "18px" }}>
+        <Paper style={{ padding: "10px" }}>
           <Formik
             initialValues={initialValue}
             enableReinitialize

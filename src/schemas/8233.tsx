@@ -11,47 +11,32 @@ export const SubstantialSchema = () => {
 
 export const US_TINSchema = () => {
   return Yup.object().shape({
-    usTINTypeId: Yup.string().required("Please select"),
-    usTIN: Yup.string().required("Please enter US Tin"),
-    notAvailable: Yup.boolean().oneOf([true], "Please mark the checkbox"),
-    foreginTIN_CountryId: Yup.string().required(
-      "Please select Foriegn Tin Country"
-    ),
-    foregionTIN: Yup.string().required("Please enter Foriegn Tin "),
-    isFTINNotLegallyRequired: Yup.boolean(),
-    alternativeTIN_Format: Yup.boolean(),
-    reasionForForegionTIN_NotAvailable: Yup.boolean().when("notAvailable", {
-      is: "yes",
-      then: () => Yup.string().required("Field Cannot be Empty"),
-    }),
+    usTinTypeId: Yup.number().required("Field Cannot be Empty"),
+    usTin: Yup.string().required("Field Cannot be Empty"),
+    isNotAvailable: Yup.string(),
+    // notAvailable: Yup.string().required("Please select one of the options"),
+    foreignTINCountry: Yup.string().required("Field Cannot be Empty"),
+    foreignTIN: Yup.string(),
   });
 };
 
 export const ownerSchema = () => {
   return Yup.object().shape({
     exemptionApplicableForCompensationForCalnderYear: Yup.number()
-      .min(1)
-      .required(),
-    otherTaxBeginingYear: Yup.number().min(1).required("Field Cannot be Empty"),
-    otherTaxEndYear: Yup.number().min(1).required("Field Cannot be Empty"),
+      ,
+    
+    otherTaxBeginingYear: Yup.number(),
+    otherTaxEndYear: Yup.number(),
     usVisaTypeID: Yup.string().required("Field Cannot be Empty"),
     countryIssuingPassportId: Yup.string().required("Field Cannot be Empty"),
     countryIssuingPassportNumber: Yup.string().required("Field Cannot be Empty"),
     dateOfEntryIntoUS: Yup.date().required("Please enter date"),
-    nonImmigrationStatus: Yup.boolean().oneOf(
-      [true],
-      "Please mark the checkbox"
-    ),
-    currentNonImmigrationStatus: Yup.string().required("Field Cannot be Empty"),
-    dateNonImmigrationStatusExpire: Yup.date().required("Please enter date"),
-    declarationOfDurationStayStatus: Yup.boolean().oneOf(
-      [true],
-      "Please mark the checkbox"
-    ),
-    foreignStudent_Teacher_Professor_ResearcherStatus: Yup.boolean().oneOf(
-      [true],
-      "Please mark the checkbox"
-    ),
+    nonImmigrationStatus: Yup.boolean()
+    ,
+    currentNonImmigrationStatus: Yup.string().required(),
+    dateNonImmigrationStatusExpire: Yup.date(),
+    declarationOfDurationStayStatus: Yup.boolean(),
+    foreignStudent_Teacher_Professor_ResearcherStatus: Yup.boolean(),
     statementToForm8233_FileUpoad: Yup.mixed().required("File is required"),
   });
 };
@@ -128,7 +113,7 @@ export const certificateSchema = () => {
 
 export const partCertiSchema = () => {
   return Yup.object().shape({
-    signedBy: Yup.string().required("Please enter "),
+    signaturedBy: Yup.string().required("Please enter "),
     confirmationCode: Yup.string()
     .required("Please enter code")
     .test(

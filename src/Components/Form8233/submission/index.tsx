@@ -46,13 +46,14 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
+          console.log(values,"valuess")
           setSubmitting(true);
           dispatch(
             CREATE_8233(values, () => {
-              history("/Complete");
+              history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
             })
           );
-          history("/Complete");
+          history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
         }}
       >
         {({
@@ -76,6 +77,7 @@ export default function Penalties() {
           <BreadCrumbComponent breadCrumbCode={1450} formName={2}/>
       </div>
       </div>
+      <>{console.log(errors,"errors!!!!!")}</>
       <div className="col-8 mt-3">
               <div style={{ padding: "20px" }}>
                 <Paper style={{ padding: "18px" }}>

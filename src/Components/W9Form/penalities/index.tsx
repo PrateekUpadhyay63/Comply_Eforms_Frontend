@@ -62,8 +62,7 @@ export default function Penalties(props: any) {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
-              //history("/Submit")
+              history("/Submit")
             })
           );
         }}
@@ -84,6 +83,7 @@ export default function Penalties(props: any) {
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
   >
      <div className="row w-100 h-100">
+      <>{console.log(errors,"ERRORS")}</>
               <div className="col-4 mt-4"  >
           <div className="bg-none" style={{ padding: "10px 0px",height:"100%", }}>
         <Paper style={{ padding: "0px 0px 0px 0px", height:"100%" ,backgroundColor:"#ffffff33"}} >
@@ -215,6 +215,7 @@ export default function Penalties(props: any) {
           
           
         </Paper>
+       
       </div>
           </div>
           <div className="col-8 mt-4" style={{marginBottom:"8rem"}}> 
@@ -310,6 +311,7 @@ export default function Penalties(props: any) {
                               submission you will be able to save and print a
                               copy for your own records.
                             </Typography>
+                            <>{console.log(errors,"4454545")}</>
                             <Typography style={{ marginTop: "10px" }}>
                               We will confirm receipt of the electronic form.
                               Please note that acceptance of the confirmation

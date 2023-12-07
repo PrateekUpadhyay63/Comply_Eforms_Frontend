@@ -94,8 +94,8 @@ export default function Tin(props: any) {
                   <Typography
                     align="left"
                     style={{
-                      margin: "10px",
-                      fontSize: "33px",
+                     
+                      fontSize: "26px",
                       fontWeight: "550",
                     }}
                   >
@@ -113,14 +113,14 @@ export default function Tin(props: any) {
                     Exemption Amount
                   </Typography>
 
-                  <Typography style={{ fontSize: "19px", marginLeft: "10px" }}>
+                  <Typography className="mt-4" style={{ fontSize: "14px"}}>
                     <span style={{ fontWeight: "550" }}>11</span> Compensation
                     for independent (and certain dependent) personal services:
                   </Typography>
 
                   <div className="col-12">
-                    <div className="col-12 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                    <div className="col-12 my-1">
+                      <Typography style={{ fontSize: "14px" }}>
                         <span style={{ fontWeight: "550" }}>a</span> Description
                         of personal services you are providing
                         <span>
@@ -243,7 +243,7 @@ export default function Tin(props: any) {
                       </p>
                     </div>
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         <span style={{ fontWeight: "550" }}>b</span>
                         Total compensation you expect to be paid for these
                         services in this calendar or tax year{" "}
@@ -346,13 +346,13 @@ export default function Tin(props: any) {
                       </p>
                     </div>
 
-                    <Typography style={{ fontSize: "20px" }}>
+                    <Typography style={{ fontSize: "14px" }}>
                       <span className="mx-1" style={{ fontWeight: "550" }}>
                         12
                       </span>
                       If compensation is exempt from withholding based on a tax
                       treaty benefit, provide:
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         Tax treaty and treaty article on which you are basing
                         exemption from withholding
                         <span>
@@ -425,7 +425,7 @@ export default function Tin(props: any) {
                     )}
                     <div className="row d-flex col-12">
                       <div className="col-6 my-3">
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "14px" }}>
                           <span className="mx-1" style={{ fontWeight: "550" }}>
                             a
                           </span>
@@ -458,7 +458,7 @@ export default function Tin(props: any) {
                         <p className="error">{errors.taxTreaty_TreatyId}</p>
                       </div>
                       <div className="col-6 my-3">
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "14px" }}>
                           <span className="mx-1" style={{ fontWeight: "550" }}>
                             b
                           </span>
@@ -496,7 +496,7 @@ export default function Tin(props: any) {
 
                     <div className="d-flex col-12">
                       <div className="col-6 my-3">
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "14px" }}>
                           <span style={{ fontWeight: "550" }}> c</span> Total
                           compensation listed on line 11b above that is exempt
                           from tax under this treaty
@@ -618,19 +618,19 @@ export default function Tin(props: any) {
                           }
                         </p>
                       </div>
-                      <div className="col-6 my-3 d-flex">
-                        <Checkbox className="mt-2" name="taxTreaty_CheckAll" />
+                      <div className="col-5 my-3 d-flex" >
+                        <Checkbox className="mt-4" name="taxTreaty_CheckAll" />
                         <Typography
-                          style={{ marginTop: "2.5rem", fontSize: "20px" }}
+                          style={{ marginTop: "3.7rem", fontSize: "14px" }}
                         >
                           Check for All
                         </Typography>
                       </div>
-                      <p className="error">{errors.taxTreaty_CheckAll}</p>
+           
                     </div>
 
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         <span style={{ fontWeight: "550" }}> d</span> Country of
                         residence
                         <span>
@@ -666,7 +666,7 @@ export default function Tin(props: any) {
                           </Tooltip>
                         </span>
                       </Typography>
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         Country:
                       </Typography>
                       {toolInfo === "residence" ? (
@@ -758,7 +758,7 @@ export default function Tin(props: any) {
                         {errors.taxTreaty_CountryOfResidenceId}
                       </p>
                     </div>
-                    <Typography style={{ fontSize: "20px" }}>
+                    <Typography style={{ fontSize: "14px" }}>
                       <span style={{ fontWeight: "550" }}>Note:</span> Do not
                       complete lines 13a through 13c unless you also received
                       compensation for personal services
@@ -768,12 +768,12 @@ export default function Tin(props: any) {
                     </Typography>
 
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         <span style={{ fontWeight: "550" }}>13</span>
                         Noncompensatory scholarship or fellowship income:
                       </Typography>
 
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         <span style={{ fontWeight: "550" }}> a</span> Amount
                         <span>
                           <Tooltip
@@ -875,7 +875,7 @@ export default function Tin(props: any) {
                       </p>
                     </div>
 
-                    <Typography style={{ fontSize: "20px" }}>
+                    <Typography style={{ fontSize: "14px" }}>
                       Tax treaty
                       <span style={{ fontWeight: "550" }}>
                         and treaty article
@@ -949,7 +949,7 @@ export default function Tin(props: any) {
 
                     <div className="row col-12 mt-2">
                       <div className="col-6 ">
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "14px" }}>
                           <span style={{ fontWeight: "550" }}>b </span>Treaty:
                         </Typography>
 
@@ -985,7 +985,7 @@ export default function Tin(props: any) {
                       </div>
 
                       <div className="col-6 ">
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "14px" }}>
                           <span style={{ fontWeight: "550" }}>c </span> Article:
                         </Typography>
 
@@ -1019,7 +1019,7 @@ export default function Tin(props: any) {
                     </div>
 
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                      <Typography style={{ fontSize: "14px" }}>
                         <span className="mx-1" style={{ fontWeight: "550" }}>
                           d
                         </span>
@@ -1115,8 +1115,8 @@ export default function Tin(props: any) {
                       </p>
                     </div>
 
-                    <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "20px" }}>
+                    <div className="col-12 my-3">
+                      <Typography style={{ fontSize: "14px" }}>
                         <span className="mx-1" style={{ fontWeight: "550" }}>
                           14
                         </span>
