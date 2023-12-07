@@ -41,8 +41,8 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
-  const [ustinArray, setUStinArray] = useState([]);
-  const [ustinValue, setUStinvalue] = useState([]);
+    const [ustinArray, setUStinArray] = useState([]);
+    const [ustinValue, setUStinvalue] = useState([]);
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
@@ -453,7 +453,7 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />
