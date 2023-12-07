@@ -239,7 +239,7 @@ export default function Entity() {
     dispatch(getAllCountries());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
-    dispatch(getAllStateByCountryId());
+    dispatch(getAllStateByCountryId(0));
     dispatch(
       GetAgentPaymentType(3, () => {
         console.log("Data");
@@ -1756,7 +1756,10 @@ export default function Entity() {
                             name="permanentResidentialCountryId"
                             id="Income"
                             // defaultValue={1}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                              handleChange(e);
+                              dispatch(getAllStateByCountryId(e.target.value));
+                            }}
                             onBlur={handleBlur}
                             value={values.permanentResidentialCountryId}
                           >
@@ -1894,7 +1897,7 @@ export default function Entity() {
                       </FormControl>
                     </div>
                   ) : ( */}
-                      {values?.permanentResidentialCountryId == 258 ? (
+                      {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <Typography align="left" className="d-flex w-100 ">
                             State or Province:
@@ -2640,7 +2643,7 @@ export default function Entity() {
                               </p>
                             </FormControl>
                           </div>
-                          {values.permanentResidentialCountryId1 == 258 ? (
+                          {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
                             <div className="col-lg-3 col-6 col-md-3 mt-2">
                               <Typography
                                 align="left"

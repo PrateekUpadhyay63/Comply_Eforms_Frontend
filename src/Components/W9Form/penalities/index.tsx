@@ -413,6 +413,22 @@ export default function Penalties(props: any) {
                       />
 
   </div>
+  <div className="d-flex my-3 col-12 " style={{ justifyContent: 'center' }}>
+  <Typography align="center" style={{ marginTop: '20px' }}>
+                <Button
+                  style={{ fontSize: '12px' }}
+                  size="small"
+                  type="submit"
+                  // onClick={()=>(
+                    // history("/Certificates")
+                  // )}
+                  variant="contained"
+                >
+                  OK
+                </Button>
+              </Typography>
+
+  </div>
 </div>)}
 
 

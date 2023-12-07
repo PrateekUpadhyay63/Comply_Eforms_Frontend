@@ -62,7 +62,7 @@ export default function Fedral_tax(props: any) {
     dispatch(getAllCountries());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
-    dispatch(getAllStateByCountryId());
+    // dispatch(getAllStateByCountryId(258));
     dispatch(GetChapter3Status());
   }, []);
 
