@@ -240,7 +240,7 @@ export default function Penalties() {
                         onChange={handleChange}
                         error={Boolean(touched.signedBy && errors.signedBy)}
                       />
-                      {/* <p className="error">{errors.signedBy}</p> */}
+                      <p className="error">{errors.signedBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">

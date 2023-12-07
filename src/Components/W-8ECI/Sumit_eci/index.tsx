@@ -390,7 +390,9 @@ const Declaration = (props: any) => {
               marginBottom: "20px",
             }}
            
-          
+          onClick={()=>{
+            history("/W-8ECI/Certification/Participation")
+          }}
           >
             Back
           </Button>

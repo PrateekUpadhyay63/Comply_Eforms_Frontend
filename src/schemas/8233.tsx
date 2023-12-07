@@ -15,7 +15,7 @@ export const US_TINSchema = () => {
     usTin: Yup.string().required("Field Cannot be Empty"),
     isNotAvailable: Yup.string(),
     // notAvailable: Yup.string().required("Please select one of the options"),
-    foreignTINCountry: Yup.string().required("Field Cannot be Empty"),
+    foreignTINCountry: Yup.string(),
     foreignTIN: Yup.string(),
   });
 };

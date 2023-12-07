@@ -390,7 +390,9 @@ const Declaration = (props: any) => {
               marginBottom: "20px",
             }}
            
-          
+            onClick={()=>{
+              history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission")
+            }}
           >
             Back
           </Button>

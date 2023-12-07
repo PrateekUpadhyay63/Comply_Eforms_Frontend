@@ -389,7 +389,9 @@ const Declaration = (props: any) => {
               marginTop: "10px",
               marginBottom: "20px",
             }}
-           
+           onClick={()=>{
+            history("/W-8BEN/Declaration/US_Tin/Certification_Substitute")
+           }}
           
           >
             Back
