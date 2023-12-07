@@ -1235,7 +1235,7 @@ export default function Entity() {
 
                         <div className="col-lg-3 col-6 col-md-3">
                           <FormControl className="w-100">
-                            <Typography align="left">U.S.TIN</Typography>
+                            <Typography align="left" className="d-flex w-100 ">U.S.TIN</Typography>
                             <Input
                               disabled={
                                 values.usTinTypeId == 6 ||
@@ -2966,7 +2966,7 @@ export default function Entity() {
                           style={{ paddingLeft: "0px" }}
                         >
                           <FormControl className="w-100">
-                            <FormControl className="w-100">
+                           
                               <Typography align="left">
                                 Email<span style={{ color: "red" }}>*</span>
                               </Typography>
@@ -2994,7 +2994,7 @@ export default function Entity() {
                                 value={values.contactEmail}
                               />
                               <p className="error">{errors.contactEmail}</p>
-                            </FormControl>
+                       
                           </FormControl>
                         </div>
                       </div>
@@ -3028,6 +3028,7 @@ export default function Entity() {
                             <option></option>
                           </select>
                           <Input
+                             className="mt-2"
                             disabled={values.primaryContactNumberId == 0}
                             style={{
                               border: " 1px solid #d9d9d9 ",
@@ -3077,6 +3078,7 @@ export default function Entity() {
                             <option></option>
                           </select>
                           <Input
+                             className="mt-2"
                             disabled={values.alternativeNumberId == 0}
                             style={{
                               border: " 1px solid #d9d9d9 ",
@@ -3148,6 +3150,7 @@ export default function Entity() {
                                   />
                                 </span>
                                 <Input
+                                   className="mt-2"
                                   disabled={values.alternativeNumberId1 == 0}
                                   style={{
                                     border: " 1px solid #d9d9d9 ",
