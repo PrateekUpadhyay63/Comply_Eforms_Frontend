@@ -192,6 +192,9 @@ export default function Term() {
               }}
                 variant="contained"
                 size="large"
+                onClick={() => {
+                  history("/Certificates");
+                }}
                 style={{
                   color: "white",
                   backgroundColor: "black",
