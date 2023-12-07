@@ -82,6 +82,27 @@ export default function Tin(props: any) {
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
   >
+    <div className="overlay-div">
+        <div className="overlay-div-group">
+          <div className="viewInstructions">View Instructions</div>
+          <div className="viewform">View Form</div>
+          <div className="helpvideo">
+            <a
+              href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-"
+              target="popup"
+              onClick={() =>
+                window.open(
+                  "https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-",
+                  "name",
+                  "width=600,height=400"
+                )
+              }
+            >
+              Help Video
+            </a>
+          </div>
+        </div>
+      </div>
       <Formik
       validateOnChange={false}
       validateOnBlur={false}
@@ -263,7 +284,9 @@ export default function Tin(props: any) {
   <div style={{ margin: "10px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
     <div className="col-md-6 col-12">
       <Typography>
-        U.S. TIN Type<span style={{ color: "red" }}>*</span>
+        U.S. TIN Type
+        
+        <span style={{ color: "red" }}>*</span>
         <span><Tooltip style={{ backgroundColor: "black", color: "white" }} title={
                             <>
                               <Typography color="inherit">U.S. TIN Type Info</Typography>

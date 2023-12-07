@@ -465,7 +465,7 @@ export default function Fedral_tax(props: any) {
                                   style={{ fontSize: "13px" }}
                                 >
                                   Last name:
-                                  <span style={{ color: "red" }}>*</span>
+                                  {/* <span style={{ color: "red" }}>*</span> */}
                                 </Typography>
 
                                 <FormControl className="w-100">
