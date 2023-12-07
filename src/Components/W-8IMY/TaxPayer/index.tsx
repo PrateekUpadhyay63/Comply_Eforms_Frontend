@@ -185,7 +185,7 @@ export default function Tin(props: any) {
                       align="left"
                       style={{
                         margin: "10px",
-                        fontSize: "23px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >

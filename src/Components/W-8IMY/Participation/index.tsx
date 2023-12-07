@@ -110,7 +110,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -120,7 +120,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -457,7 +457,7 @@ export default function Penalties() {
                     </div>
                   </div>
 
-                  <Typography style={{ display: "flex", marginLeft: "10px" }}>
+                  <Typography style={{ display: "flex"}}>
                     <Checkbox
                       name="isAgreeWithDeclaration"
                       value={values.isAgreeWithDeclaration}
@@ -473,16 +473,7 @@ export default function Penalties() {
                     >
                       Please "check" box to confirm your acceptance with the
                       above declarations{" "}
-                      {errors.isAgreeWithDeclaration &&
-                      touched.isAgreeWithDeclaration ? (
-                        <div>
-                          <Typography color="error">
-                            {errors.isAgreeWithDeclaration}
-                          </Typography>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                     
                       <span>
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -517,7 +508,18 @@ export default function Penalties() {
                         </Tooltip>
                       </span>
                     </Typography>
+                    
                   </Typography>
+                  {errors.isAgreeWithDeclaration &&
+                      touched.isAgreeWithDeclaration ? (
+                        <div>
+                          <Typography color="error">
+                            {errors.isAgreeWithDeclaration}
+                          </Typography>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                   {toolInfo === "check" ? (
                     <div>
                       <Paper

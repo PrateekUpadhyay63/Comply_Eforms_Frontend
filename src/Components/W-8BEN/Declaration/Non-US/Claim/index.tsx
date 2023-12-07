@@ -111,7 +111,7 @@ export default function FCTA_Reporting(props: any) {
                       align="left"
                       style={{
                         marginTop: "10px",
-                        fontSize: "32px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >
@@ -230,7 +230,7 @@ export default function FCTA_Reporting(props: any) {
                     )}
                     <Typography
                       align="left"
-                      style={{ fontSize: "22px", marginTop: "10px" }}
+                      style={{ fontSize: "22px", marginTop: "16px" }}
                     >
                       Is this submission being made to claim treaty benefits?
                     </Typography>

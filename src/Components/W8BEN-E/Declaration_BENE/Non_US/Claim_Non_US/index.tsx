@@ -120,7 +120,7 @@ export default function FCTA_Reporting(props: any) {
                       align="left"
                       style={{
                         marginTop: "10px",
-                        fontSize: "32px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >

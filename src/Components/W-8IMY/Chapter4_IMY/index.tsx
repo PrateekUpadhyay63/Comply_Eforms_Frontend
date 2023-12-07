@@ -188,7 +188,7 @@ export default function Fedral_tax(props: any) {
                                 // align="left"
                                 style={{
                                   color: "black",
-                                  fontSize: "25px",
+                                  fontSize: "27px",
                                   fontWeight: "550",
                                 }}
                               >

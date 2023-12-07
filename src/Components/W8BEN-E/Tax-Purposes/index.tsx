@@ -169,7 +169,7 @@ export default function Fedral_tax(props: any) {
                                 align="left"
                                 style={{
                                   color: "black",
-                                  fontSize: "25px",
+                                  fontSize: "27px",
                                   fontWeight: "550",
                                 }}
                               >
@@ -310,7 +310,7 @@ export default function Fedral_tax(props: any) {
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
                                       fontStyle: "italic",
-                                      height: "36px",
+                                      height: "39px",
                                     }}
                                   >
                                     <option value={0}> -----select---</option>
@@ -469,14 +469,12 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    // helperText={
-                                    //   touched.firstName && errors.firstName
-                                    // }
+                                   
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
                                     name="firstName"
-                                    className="inputClassFull"
+                                    // className="inputClassFull"
                                     value={values.firstName}
                                   />
                                 </FormControl>
@@ -541,7 +539,7 @@ export default function Fedral_tax(props: any) {
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
                                         fontStyle: "italic",
-                                        height: "36px",
+                                        height: "39px",
                                       }}
                                     >
                                       <option value="">-Select-</option>

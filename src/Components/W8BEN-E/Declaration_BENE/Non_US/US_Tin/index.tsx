@@ -170,16 +170,18 @@ export default function Tin(props: any) {
                     ""
                   )}
                     <>{console.log(errors, values)}</>
-                    <Typography
+                   <div style={{ margin: "10px" }}>
+                   <Typography
                       align="left"
                       style={{
-                        margin: "10px",
-                        fontSize: "23px",
+                        marginTop: "10px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >
                       Taxpayer Identification Number
                     </Typography>
+                   </div>
 
                     <div>
                      {values.notAvailable === true ?( 

@@ -266,7 +266,7 @@ export default function Factors() {
               <div style={{ margin: "10px" }}>
                 <Typography
                   align="left"
-                  style={{ marginTop: "10px", fontSize: "38px" }}
+                  style={{ marginTop: "10px", fontSize: "27px",fontWeight:"550" }}
                 >
                   U.S. Source Income and Determining Factors
                   <span>
@@ -372,7 +372,9 @@ export default function Factors() {
                   ""
                 )}
 
-                <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
+               <div className="mt-2">
+               <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
+              </div>
               </div>
               <div
                 style={{
@@ -416,6 +418,9 @@ export default function Factors() {
               </Typography>
               <Typography align="center">
                 <Button
+                onClick={()=>{
+                  history("/W-8BEN/Declaration")
+                }}
                   variant="contained"
                   size="large"
                   style={{
@@ -425,10 +430,7 @@ export default function Factors() {
                     marginBottom: "20px",
                   }}
                 >
-                  <span style={{ marginRight: "5px" }}>
-                    {" "}
-                    <ArrowBackIcon />
-                  </span>{" "}
+                 
                   Back
                 </Button>
               </Typography>

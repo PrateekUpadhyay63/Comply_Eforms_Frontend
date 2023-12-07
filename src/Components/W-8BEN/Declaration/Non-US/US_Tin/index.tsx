@@ -223,7 +223,7 @@ export default function Tin(props: any) {
                       align="left"
                       style={{
                         margin: "10px",
-                        fontSize: "23px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >
@@ -822,7 +822,7 @@ export default function Tin(props: any) {
                     )}
 
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div className="my-3">
+                      <div className="my-3" style={{ marginLeft: "20px" }}>
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}

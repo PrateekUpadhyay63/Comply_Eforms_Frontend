@@ -115,7 +115,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -125,7 +125,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >

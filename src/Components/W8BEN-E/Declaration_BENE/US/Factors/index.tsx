@@ -87,7 +87,7 @@ const getCountriesReducer = useSelector(
           <div style={{ margin: "10px" }}>
             <Typography
               align="left"
-              style={{ marginTop: "10px", fontSize: "38px" }}
+              style={{ marginTop: "5px", fontSize: "27px",  fontWeight: "550", }}
             >
               U.S. Source Income and Determining Factors
               <span>
@@ -695,10 +695,7 @@ For information on how U.S. source transportation income is taxed, see Chapter 4
                 history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
               }}
             >
-              <span style={{ marginRight: "5px" }}>
-                {" "}
-                <ArrowBackIcon />
-              </span>{" "}
+             
               Back
             </Button>
           </Typography>

@@ -51,8 +51,8 @@ export default function Term() {
           </div>
         </div>
         <div className="col-8 mt-4">
-          <div style={{ padding: "10px 0px" }}>
-            <Paper elevation={6} style={{ padding: "18px"}}>
+        <div style={{ padding: "10px 0px" }}>
+            <Paper elevation={6} style={{ padding: "17px",}}>
               <>
                 <Paper
                   elevation={6}
@@ -64,23 +64,23 @@ export default function Term() {
                 >
                   <Typography
                     align="left"
-                    style={{ fontWeight: "550", fontSize: "38px" }}
+                    style={{ fontWeight: "550", fontSize: "30px" }}
                   >
                     Declaration of no U.S. Sourced Income
                   </Typography>
 
                   <Typography
                     align="left"
-                    style={{ fontSize: "23px", marginTop: "20px" }}
+                    style={{ fontSize: "20px", marginTop: "20px" }}
                   >
                     If you are declaring that:
                   </Typography>
-                  <Typography align="left" className="text mt-4">
+                  <Typography   align="left" className="text mt-4">
                     You only provide goods and materials{" "}
                     <span style={{ fontWeight: "bold" }}>and</span>
                   </Typography>
                   <Divider className="divider" />
-                  <Typography align="left" className="text">
+                  <Typography  align="left" className="text">
                     Manufacture or production is undertaken entirely outside of
                     the United States and its territories
                   </Typography>
@@ -91,7 +91,7 @@ export default function Term() {
                     and
                   </Typography>
                   <Divider className="divider" />
-                  <Typography align="left" className="text">
+                  <Typography  align="left" className="text">
                     Invoices submitted do not request payment for dividends,
                     Insurance Premiums or Interest payments.
                   </Typography>
@@ -126,7 +126,7 @@ export default function Term() {
                 >
                   Declaration Statement - Declaration of No U.S. Source Income
                 </Typography>
-                <Typography align="left" className="text mt-2">
+                <Typography  align="left" className="text mt-2">
                   Under penalties of perjury I confirm that the goods or
                   materials provided or manufactured and any and all associated
                   services, including consultancy, implementation, training or
@@ -135,7 +135,7 @@ export default function Term() {
                   that the invoices submitted will not include a request for
                   payment of Dividends, Insurance Premiums or Interest payments.
                 </Typography>
-                <Typography align="left" className="text mt-3">
+                <Typography  align="left" className="text mt-3">
                   I further confirm that should this situation change I will
                   provide adequate notification, clearly identify items that may
                   be considered gained from U.S. sources, identify any
@@ -187,6 +187,9 @@ export default function Term() {
             </Typography>
             <Typography align="center">
               <Button
+              onClick={()=>{
+                history("/Certificates")
+              }}
                 variant="contained"
                 size="large"
                 style={{
@@ -195,14 +198,8 @@ export default function Term() {
                   marginTop: "10px",
                   marginBottom: "20px",
                 }}
-                onClick={() => {
-                  history("/BenE/Tax_Purpose_BenE");
-                }}
               >
-                <span style={{ marginRight: "5px" }}>
-                  {" "}
-                  <ArrowBackIcon />
-                </span>{" "}
+               
                 Back
               </Button>
             </Typography>
