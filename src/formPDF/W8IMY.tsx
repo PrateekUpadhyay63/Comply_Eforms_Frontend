@@ -1235,7 +1235,386 @@ the required payee documentation to associate with an amount realized or an amou
 
 
 
+            {/* ---------------------Part XIII  ----------------------- */}
 
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part XIII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>I certify that the FFI identified in Part I:</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>26 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is not engaged primarily in the business of investing, reinvesting, or trading in securities, partnership interests, commodities, notional
+                    principal contracts, insurance or annuity contracts, or any interest (including a futures or forward contract or option) in such security,
+                    partnership interest, commodity, notional principal contract, insurance contract, or annuity contract;
+                    </li>
+                    <li>
+                    No financial account maintained by the FFI or any member of its expanded affiliated group, if any, has a balance or value in excess of
+                    $50,000 (as determined after applying applicable account aggregation rules); <strong>and</strong>
+                    </li>
+                    <li>
+                    Neither the FFI nor the FFI’s entire expanded affiliated group, if any, has more than $50 million in assets on its consolidated or combined
+                    balance sheet as of the end of its most recent accounting year.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is a controlled foreign corporation as defined in section 957(a);
+                    </li>
+                    <li>
+                    Is not a QI, WP, or WT;
+                    </li>
+                    <li>
+                    Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity;<strong>and</strong>
+                    </li>
+                    <li>
+                    Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all 
+                    account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited 
+                    to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.
+                    </li>
+                   </ul>
+                   </p>
+            
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part XIII end   ----------------------- */}
+
+
+
+            {/* ---------------------Part  XIV  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XIV</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Certified Deemed-Compliant Sponsored, Closely Held Investment Vehicle</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>
+              <tr>
+                  <td colSpan={2} >
+                    <div style={{ width: "100%", display: "flex" }}>
+                      <div style={{ paddingRight: "10px", }}><label><strong>27a </strong></label></div>
+                      <div> Name of sponsoring entity: &#9654;</div>
+                      <div style={{ color: "rgb(5, 5, 129)", borderBottom: "1px solid #000", width: "70%" }}></div>
+                    </div>
+                  </td>
+                </tr>        
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is an FFI solely because it is an investment entity described in Regulations section 1.1471-5(e)(4);
+                    </li>
+                    <li>
+                    Is not a QI, WP, or WT;
+                    </li>
+                    <li>
+                    Will have all of its due diligence, withholding, and reporting responsibilities (determined as if the FFI were a participating FFI) fulfilled by
+                    the sponsoring entity identified on line 27a;<strong>and</strong>
+                    </li>
+                    <li>
+                    20 or fewer individuals own all of the debt and equity interests in the entity (disregarding debt interests owned by U.S. financial
+                    institutions, participating FFIs, registered deemed-compliant FFIs, and certified deemed-compliant FFIs and equity interests owned by an
+                    entity that owns 100% of the equity interests in the FFI identified in Part I and is itself a sponsored FFI).
+                    </li>
+                   </ul>
+                   </p>
+                  </td>
+                </tr>               
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XIV end   ----------------------- */}
+
+
+
+            {/* ---------------------Part  XV  ----------------------- */}
+
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XV</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Certified Deemed-Compliant Limited Life Debt Investment Entity</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>     
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>28 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the FFI identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Was in existence as of January 17, 2013;
+                    </li>
+                    <li>
+                    Issued all classes of its debt or equity interests to investors on or before January 17, 2013, pursuant to a trust indenture or similar
+                    agreement;<strong>and</strong>
+                    </li>
+                    <li>
+                    Is certified deemed-compliant because it satisfies the requirements to be treated as a limited life debt investment entity (such as the
+                    restrictions with respect to its assets and other requirements under Regulations section 1.1471-5(f)(2)(iv)).
+                    </li>
+                   </ul>
+                   </p>
+                  </td>
+                </tr>               
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XV end   ----------------------- */}
+
+
+          {/* ---------------------Part  XVI  ----------------------- */}
+
+          <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XVI</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Certain Investment Entities That Do Not Maintain Financial Accounts</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>     
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>29 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                    <li>
+                    Is a financial institution solely because it is an investment entity described in Regulations section 1.1471-5(e)(4)(i)(A);<strong>and</strong>
+                    </li>
+                    <li>
+                    Does not maintain financial accounts.
+                    </li>
+                   </ul>
+                   </p>
+                  </td>
+                </tr>               
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XVI end   ----------------------- */}
+
+
+      {/* ---------------------Part  XVII  ----------------------- */}
+
+      <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XVII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Restricted Distributor</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>     
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>30a </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   (All restricted distributors check here.) I certify that the entity identified in Part I:
+                    <ul style={{marginBottom:"0px"}}>
+                      <li>
+                      Operates as a distributor with respect to debt or equity interests of the restricted fund with respect to which this form is furnished;
+                      </li>
+                      <li>
+                      Provides investment services to at least 30 customers unrelated to each other and less than half of its customers are related to each other;
+                      </li>
+                      <li>
+                      Is required to perform AML due diligence procedures under the anti-money laundering laws of its country of organization (which is a FATF-compliant jurisdiction);
+                      </li>
+                      <li>
+                      Operates solely in its country of incorporation or organization, has no fixed place of business outside of that country, and has the same country of incorporation or organization as all members of its affiliated group, if any;
+                      </li>
+                      <li>
+                      Does not solicit customers outside its country of incorporation or organization;
+                      </li>
+                      <li>
+                      Has no more than $175 million in total assets under management and no more than $7 million in gross revenue on its income statement for the most recent accounting year;
+                      </li>
+                      <li>
+                      Is not a member of an expanded affiliated group that has more than $500 million in total assets under management or more than $20 million in gross revenue for its most recent accounting year on a combined or consolidated income statement;<strong>and</strong>
+                      </li>
+                      <li>
+                      Does not distribute any debt or securities of the restricted fund to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs.
+                      </li>
+                   </ul>
+                   </p>
+                  </td>
+                </tr>     
+                <tr>
+                  <td colSpan={2} style={{ fontSize: "18px", fontWeight: "600" }}>Check the box on line 30b or 30c, whichever applies.</td>
+                </tr>
+                <tr>
+                  <td style={{ padding: "10px 0"}} colSpan={2}>
+                    I further certify that with respect to all sales of debt or equity interests in the restricted fund with respect to which this form is furnished that are made after December 31, 2011, the entity identified in Part I:
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>b </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" checked name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    I certify that the entity identified in Part I is a U.S. branch of a foreign bank or insurance company described in Regulations section 
+                    1.1441-1(b)(2)(iv)(A) that is using this form as evidence of its agreement with the withholding agent to be treated as a U.S. person with 
+                    respect to any reportable amounts or withholdable payments associated with this withholding certificate.
+                  </td>
+                </tr>
+    
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>c </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    c Is currently bound by a distribution agreement that contains a prohibition on the sale of debt or securities to any specified U.S. person, 
+                    passive NFFE with one or more substantial U.S. owners, or nonparticipating FFI and, for all sales made prior to the time that such a 
+                    restriction was included in its distribution agreement, has reviewed all accounts related to such sales in accordance with the procedures 
+                    identified in Regulations section 1.1471-4(c) applicable to preexisting accounts and has redeemed or retired any securities which were sold 
+                    to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs, or will transfer the securities 
+                    to a distributor that is a participating FFI, reporting Model 1 FFI, or reporting Model 2 FFI.
+                  </td>
+                </tr>          
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XVII end   ----------------------- */}
+
+
+
+
+          {/* ---------------------Part  XVIII  ----------------------- */}
+
+          <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XVIII</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Foreign Central Bank of Issue</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>     
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>31 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                   <p style={{marginBottom:"0px"}}>
+                   I certify that the entity identified in Part I is treated as the beneficial owner of the payment solely for purposes of chapter 4 under Regulations section 1.1471-6(d)(4).
+                   </p>
+                  </td>
+                </tr>               
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XVIII end   ----------------------- */}
+
+
+          {/* ---------------------Part  XIX  ----------------------- */}
+
+          <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "10px auto" }} cellPadding={0}>
+              <thead>
+                <tr style={{ borderTop: "1px solid #000", borderBottom: "1px solid #000", }}>
+                  <td style={{verticalAlign:"top",width:"120px"}}> <div style={{ background: "black", color: "#fff", fontWeight: "bold", width: "120px", padding: "0px 10px", height:"35px" , display:"flex" }}><p style={{margin:"auto"}}>Part  XIX</p></div> </td>
+                  <td style={{ padding: "0px 10px", fontWeight:"900"}}> <strong>Nonreporting IGA FFI</strong></td>
+                </tr>
+              </thead>
+            </table>
+            <table style={{ width: "100%", maxWidth: "920px", borderCollapse: "collapse", margin: "0px auto 10px" }} cellPadding={0}>
+              <tbody>     
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>32 </strong></label></td>
+                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
+                    <p style={{marginBottom:"0px"}}>
+                      <p style={{marginBottom:"0px"}}>
+                      I certify that the entity identified in Part I:
+                      <ul style={{marginBottom:"0px"}}>
+                          <li>
+                          Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and
+                          </li>
+                      </ul>
+                      </p>
+                          <span style={{width:"50%", borderBottom:"1px solid #000000"}}></span>
+                      <p style={{marginBottom:"0px"}}>
+                      <ul style={{marginBottom:"0px"}}>
+                          <li>
+                          Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and
+                          </li>
+                      </ul>
+                      </p>
+                    </p>
+                  </td>
+                </tr>  
+                <tr>
+                <td>
+                    
+                </td>
+                  <td  style={{ padding: "10px 0" ,display:"flex"}}>
+                    <div style={{width:"100"}}>
+
+                    </div>
+                    <div style={{display:"flex",width:"50%"}}>
+                      <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",opacity:"0" }} /> 
+                      The applicable IGA is a
+                        <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
+                        The applicable IGA is a
+                        <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
+                        Model 2 IGA; and
+                    </div>
+                  </td>
+                  <td>
+
+                  </td>
+                </tr>             
+              </tbody>
+            </table>
+
+
+            {/* ---------------------Part  XIX end   ----------------------- */}
 
             {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
