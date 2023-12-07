@@ -26,9 +26,16 @@ interface FormData {
 interface InputProps {
   formList: any;
   setFormList: any;
+  allocation: any;
+  setAllocation: any;
 }
 
-const DynamicForm: React.FC<InputProps> = ({ formList, setFormList }) => {
+const DynamicForm: React.FC<InputProps> = ({
+  formList,
+  setFormList,
+  allocation,
+  setAllocation,
+}) => {
   const dispatch = useDispatch();
   //   const [formList, setFormList] = useState<FormData[]>([]);
   const initialFormData: FormData = {
@@ -37,14 +44,18 @@ const DynamicForm: React.FC<InputProps> = ({ formList, setFormList }) => {
     text: "",
     number: 0,
   };
-  const [allocation, setAllocation] = useState(0); 
+//   const [allocation, setAllocation] = useState(0);
   const [toolInfo, setToolInfo] = useState("");
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     dispatch(getAllCountries());
-  },[]);
+  }, []);
+  useEffect(() => {
+    setAllocation(formList.reduce((sum: any, obj: any) => sum + obj.number, 0));
+  }, [formList]);
+  useEffect(() => {}, [allocation]);
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -55,7 +66,7 @@ const DynamicForm: React.FC<InputProps> = ({ formList, setFormList }) => {
   };
 
   const handleRemove = (index: any) => {
-    console.log(index,"INDDD")
+    console.log(index, "INDDD");
     let arr = formList;
     arr.splice(index, 1);
     setFormList(arr);
