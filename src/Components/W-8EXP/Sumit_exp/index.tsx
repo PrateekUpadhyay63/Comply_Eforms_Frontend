@@ -390,7 +390,9 @@ const Declaration = (props: any) => {
               marginBottom: "20px",
             }}
            
-          
+          onClick={()=>{
+            history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp")
+          }}
           >
             Back
           </Button>

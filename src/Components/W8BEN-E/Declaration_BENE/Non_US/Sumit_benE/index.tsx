@@ -389,7 +389,9 @@ const Declaration = (props: any) => {
               marginTop: "10px",
               marginBottom: "20px",
             }}
-           
+           onClick={()=>{
+            history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE")
+           }}
           
           >
             Back
