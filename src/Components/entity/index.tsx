@@ -1036,7 +1036,7 @@ export default function Entity() {
                           </Tooltip>
                         </div>
                         <p className="error mb-0">
-                          {errors?.usTinTypeId || errors?.usTin
+                          {errors?.usTinTypeId || errors?.usTin || errors?.vatId
                             ? "Mandatory Information Required!"
                             : ""}
                         </p>

@@ -189,6 +189,9 @@ export default function Term() {
               <Button
                 variant="contained"
                 size="large"
+                onClick={() => {
+                  history("/Certificates");
+                }}
                 style={{
                   color: "white",
                   backgroundColor: "black",
