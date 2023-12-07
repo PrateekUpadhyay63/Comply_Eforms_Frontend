@@ -61,10 +61,10 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state_ECI(values, () => {
-              history("/Submit");
+              history("/W-8ECI/Certification/Participation/Submit_Eci");
             })
           );
-          history("/Submit");
+          history("/W-8ECI/Certification/Participation/Submit_Eci");
         }}
       >
         {({
@@ -417,7 +417,7 @@ export default function Penalties() {
                       marginTop: "20px",
                     }}
                   >
-                    <div className="col-6 col-md-12 p-0">
+                    <div className="col-6 col-md-6 p-0">
                       <Typography align="left" style={{ padding: "0px" }}>
                         <Typography style={{ fontSize: "15px" }}>
                           Date

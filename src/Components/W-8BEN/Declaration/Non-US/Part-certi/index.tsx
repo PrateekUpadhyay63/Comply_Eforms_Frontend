@@ -66,7 +66,7 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
+              history("/W-8BEN/Declaration/US_Tin/Certificates/Submit_Ben");
             })
           );
         }}
@@ -600,10 +600,10 @@ export default function Penalties() {
                     </Button>
                     <Button
                       type="submit"
-                      onClick={() => {
-                        history("/Submit");
-                        //  setOpen2(true)
-                      }}
+                      // onClick={() => {
+                      //   history("/Submit");
+                      //   //  setOpen2(true)
+                      // }}
                       // onClick={() => {
                       //   setOpen2(true);
                       // }}

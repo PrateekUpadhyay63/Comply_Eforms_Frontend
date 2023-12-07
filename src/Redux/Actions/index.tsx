@@ -12,13 +12,14 @@ export const W9_state = (value: any, callback: any = false): any => {
 };
 
 export const W8_state = (value: any, callback: any = false): any => {
+  if (callback) {
+    callback();
+  }
   return {
     type: Utils.actionName.CREATE_W8,
     payload: value,
   };
-  if (callback) {
-    callback();
-  }
+  
 };
 
 export const W8_state_ECI = (value: any, callback: any = false): any => {

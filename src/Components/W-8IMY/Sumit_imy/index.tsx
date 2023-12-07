@@ -1,7 +1,7 @@
 import { Fragment,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { SubmitSchema } from "../../schemas/submit";
+import { SubmitSchema } from "../../../schemas/submit";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Button, Typography, Paper, Checkbox } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { Form, Formik } from "formik";
-import { W8_state_ECI } from "../../Redux/Actions";
+import { W8_state_ECI } from "../../../Redux/Actions";
 import { useDispatch } from "react-redux";
 
 const Declaration = (props: any) => {
@@ -52,10 +52,10 @@ const Declaration = (props: any) => {
                 setSubmitting(true);
                 dispatch(
                   W8_state_ECI(values, () => {
-                    history("/Complete");
+                    history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY/Submit_IMY/ThankYou_IMY");
                   })
                 );
-                history("/Complete");
+                history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY/Submit_IMY/ThankYou_IMY");
               }}
             >
               {({
