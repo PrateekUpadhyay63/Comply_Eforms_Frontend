@@ -6,6 +6,7 @@ import {
   Paper,
   Tooltip,
   Link,
+  TextField,
 } from "@mui/material";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -554,14 +555,15 @@ const DynamicForm: React.FC<InputProps> = ({
                     Please provide an explanation
                     <span style={{ color: "red", fontSize: "30px" }}>*</span>
                   </Typography>
-                  <FormControl className="w-100">
-                    <input
-                      className="col-md-12 col-12"
+                  <FormControl className="w-100 h-100 col-md-12 col-12">
+                    <TextField
+                      multiline
+                     
                       style={{
-                        padding: " 0 10px",
+                       backgroundColor:"#fff",
                         color: "#7e7e7e",
                         fontStyle: "italic",
-                        height: "7rem",
+                       
                       }}
                       type="text"
                       value={form.text}

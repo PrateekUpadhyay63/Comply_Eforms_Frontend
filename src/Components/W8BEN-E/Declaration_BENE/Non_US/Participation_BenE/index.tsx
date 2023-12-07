@@ -340,7 +340,7 @@ export default function Penalties() {
                             touched.confirmationCode && errors.confirmationCode
                           )}
                           type="password"
-                          required
+                          
                           style={{ width: "100%" }}
                         />
                         <span
