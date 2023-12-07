@@ -52,10 +52,10 @@ const Declaration = (props: any) => {
                 setSubmitting(true);
                 dispatch(
                   W8_state_ECI(values, () => {
-                    history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233/ThankYou_8233");
+                    history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp/Submit_Exp/ThankYou_Exp");
                   })
                 );
-                history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233/ThankYou_8233");
+                history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp/Submit_Exp/ThankYou_Exp");
               }}
             >
               {({

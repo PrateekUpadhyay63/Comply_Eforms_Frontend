@@ -65,7 +65,7 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
+              history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp/Submit_Exp");
             })
           );
         }}
