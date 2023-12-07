@@ -45,14 +45,14 @@ export default function Term() {
       <div className="row w-100 h-100">
         <div className="col-4">
           <div
-            style={{ padding: "20px 0px", height: "100%", marginTop: "20px" }}
+            style={{ padding: "20px 0px", height: "100%",  }}
           >
             <BreadCrumbComponent breadCrumbCode={1204} formName={2}/>
           </div>
         </div>
         <div className="col-8 mt-4">
-          <div style={{ padding: "30px 0px" }}>
-            <Paper elevation={6} style={{ padding: "17px", marginTop: "20px" }}>
+          <div style={{ padding: "10px 0px" }}>
+            <Paper elevation={6} style={{ padding: "17px",}}>
               <>
                 <Paper
                   elevation={6}

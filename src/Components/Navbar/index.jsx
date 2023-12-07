@@ -23,8 +23,8 @@ export default function Nav() {
             }
           >
             <Button
-              className="my-auto"
-              style={{ borderRadius: "30px", minWidth: "max-content" }}
+              className="my-auto mx-2"
+              style={{ borderRadius: "30px", minWidth: "max-content",boxShadow:"none" }}
               variant="contained"
             >
               Sign out
