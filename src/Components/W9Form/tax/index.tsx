@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import {
   FormControl,
   Typography,
@@ -20,10 +20,11 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { firstStepBusinessSchema, firstStepSchema ,tinSchema} from "../../../schemas";
 import { useNavigate } from "react-router-dom";
-
+import {getTinTypes} from "../../../Redux/Actions"
+import { useDispatch } from "react-redux";
 
 export default function Tin(props: any) {
-  
+  const dispatch = useDispatch();
   const {
     // handleTaxClassificationChange,
     // selectedTaxClassification,
@@ -32,24 +33,21 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
 
-  const arr = [
-    {
-      id: 1,
-      name: "SSN/TIN",
-    },
-    {
-      id: 2,
-      name: "Applied For",
-    },
-  ];
+  const onBoardingFormValues = JSON.parse(
+    localStorage.getItem("agentDetails") ?? "null"
+  );
   const initialValue = {
-    tiN_USTINId:0,
-    Tin :""
+    tiN_USTINId:onBoardingFormValues.usTinTypeId
+    ? onBoardingFormValues.usTinTypeId
+    : 0,
+    Tin :onBoardingFormValues.usTin ? onBoardingFormValues.usTin : "",
   };
   const [payload, setPayload] = useState({
     tiN_USTINId:0,
     Tin :""
   });
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
@@ -69,6 +67,18 @@ export default function Tin(props: any) {
   ) => {
     setSelectedTaxClassification(event.target.value);
   };
+  useEffect(() => {
+
+    dispatch(
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.usIndividual === true;
+        });
+        setUStinvalue(datas);
+      })
+    );
+  }, []);
   const history = useNavigate()
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChangestatus =
@@ -342,15 +352,28 @@ export default function Tin(props: any) {
                             }}
                           >
                             <MenuItem value={0}>--Select--</MenuItem>
-                            {arr.map((i, ind) => {
-                              return <MenuItem value={i.id}>{i.name}</MenuItem>;
-                            })}
+                            {ustinValue?.map((ele: any) => (
+                              // ele?.nonUSIndividual &&
+                              //   values?.isUSIndividual == "no" ||
+                              // ele?.usIndividual &&
+                              //   values?.isUSIndividual == "Yes" ?
+                              // (
+                              <MenuItem
+                                key={ele?.taxpayerIdTypeID}
+                                value={ele?.taxpayerIdTypeID}
+                              >
+                                {ele?.taxpayerIdTypeName}
+                              </MenuItem>
+                              // ) : (
+                              //   ""
+                              // );
+                            ))}
                           </Select>
                           {errors.tiN_USTINId &&
                           touched.tiN_USTINId ? (
                             <div>
                               <p className="error">
-                                {errors.tiN_USTINId}
+                                {/* {errors.tiN_USTINId} */}
                               </p>
                             </div>
                           ) : (
@@ -387,7 +410,7 @@ export default function Tin(props: any) {
           padding: " 0 10px ",
         }}
       />
-          <p className="error">{errors.Tin}</p>
+          {/* <p className="error">{errors.Tin}</p> */}
     </div>
 
   </div>
