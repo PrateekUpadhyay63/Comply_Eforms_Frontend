@@ -218,7 +218,7 @@ export default function Fedral_tax(props: any) {
                                       <Info
                                         style={{
                                           color: "#ffc107",
-                                          fontSize: "16px",
+                                          fontSize: "10px",
                                           cursor: "pointer",
                                           verticalAlign: "super",
                                         }}

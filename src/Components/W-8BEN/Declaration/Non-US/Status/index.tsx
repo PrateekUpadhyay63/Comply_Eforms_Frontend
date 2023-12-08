@@ -331,9 +331,9 @@ export default function Factors() {
                             label="No"
                           />
                         </RadioGroup>
-                        <p className="error">
+                        {/* <p className="error">
                           {errors.isHeldUSCitizenship}
-                        </p>
+                        </p> */}
                       </FormControl>
                       <Divider className="dividr" />
 
@@ -437,7 +437,7 @@ export default function Factors() {
                             name="isTaxationUSCitizenOrResident"
                           />
                         </RadioGroup>
-                        <p className="error">{errors.isTaxationUSCitizenOrResident}</p>
+                        {/* <p className="error">{errors.isTaxationUSCitizenOrResident}</p> */}
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
@@ -515,9 +515,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">
+                          {/* <p className="error">
                             {errors.isHoldDualCitizenshipStatus}
-                            </p>
+                            </p> */}
                       </FormControl>
                       <Divider className="dividr" />
                       {values.isHoldDualCitizenshipStatus === "Yes" ? (
@@ -946,7 +946,7 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">{errors.isTaxationUSCitizenOrResident}</p>
+                          {/* <p className="error">{errors.isTaxationUSCitizenOrResident}</p> */}
                         </FormControl>
                         <Divider className="dividr" />
 
@@ -986,9 +986,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">
+                          {/* <p className="error">
                             {errors.isPermamnentResidentCardHolder}
-                            </p>
+                            </p> */}
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography
@@ -1026,9 +1026,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">
+                          {/* <p className="error">
                             {errors.isHoldDualCitizenshipStatus}
-                            </p>
+                            </p> */}
                         </FormControl>
                         <Divider className="dividr"/>
                         {values.isHoldDualCitizenshipStatus == "Yes" ? (
@@ -1070,9 +1070,9 @@ export default function Factors() {
                                   label="No"
                                 />
                               </RadioGroup>
-                              <p className="error">
+                              {/* <p className="error">
                             {errors.isHoldDualCitizenshipIncludeUSCitizenship}
-                            </p>
+                            </p> */}
                             </FormControl>
                         <Divider className="dividr"/>
                           </>
@@ -1116,9 +1116,9 @@ export default function Factors() {
                                 label="No"
                               />
                             </RadioGroup>
-                            <p className="error">
+                            {/* <p className="error">
                             {errors.isRenouncedCitizenship}
-                            </p>
+                            </p> */}
                           </FormControl>
                           <Divider className = "dividr"/>
                         </>
@@ -1223,9 +1223,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">
+                          {/* <p className="error">
                             {errors.isTaxLiabilityJurisdictions}
-                            </p>
+                            </p> */}
                         </FormControl>
                         <Divider className="dividr" />
 
@@ -1399,9 +1399,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          <p className="error">
+                          {/* <p className="error">
                             {errors.isTaxLiabilityJurisdictions}
-                            </p>
+                            </p> */}
                         </FormControl>
 
                           </>

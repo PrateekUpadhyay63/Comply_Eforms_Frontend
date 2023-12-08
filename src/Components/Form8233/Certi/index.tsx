@@ -70,7 +70,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "27px",
                     fontWeight: "550",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   Certification   <span style={{ color: "red" }}>*</span>
@@ -155,7 +155,7 @@ export default function Certifications(props: any) {
                 </Typography>
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     padding: "10px",
                     border: "2px solid black",
                     fontSize: "19px",
@@ -175,7 +175,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "20px",
 
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   <span style={{ fontWeight: "550" }}>I certify that:</span>
@@ -185,7 +185,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "17px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     textAlign:"justify" 
                   }}
                 >
@@ -197,7 +197,7 @@ export default function Certifications(props: any) {
 
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
