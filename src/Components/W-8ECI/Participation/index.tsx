@@ -61,10 +61,10 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state_ECI(values, () => {
-              history("/Submit");
+              history("/W-8ECI/Certification/Participation/Submit_Eci");
             })
           );
-          history("/Submit");
+          history("/W-8ECI/Certification/Participation/Submit_Eci");
         }}
       >
         {({
@@ -94,7 +94,7 @@ export default function Penalties() {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <div style={{ padding: "20px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1300} formName={4}/>
       </div>
       </div>
@@ -417,7 +417,7 @@ export default function Penalties() {
                       marginTop: "20px",
                     }}
                   >
-                    <div className="col-6 col-md-12 p-0">
+                    <div className="col-6 col-md-6 p-0">
                       <Typography align="left" style={{ padding: "0px" }}>
                         <Typography style={{ fontSize: "15px" }}>
                           Date

@@ -66,7 +66,7 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
+              history("/W-8BEN/Declaration/US_Tin/Certificates/Submit_Ben");
             })
           );
         }}
@@ -98,12 +98,12 @@ export default function Penalties() {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "17px 0px",height:"100%"}}>
+          <div style={{ padding: "20px 0px",height:"100%"}}>
             <BreadCrumbComponent breadCrumbCode={1290} formName={2}/>
           
       </div>
       </div>
-      <div className="col-8 mt-5">
+      <div className="col-8 mt-3">
 
               <div style={{ padding: "10px" }}>
                 <Paper style={{ padding: "18px" }}>
@@ -111,7 +111,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -121,7 +121,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -129,7 +129,7 @@ export default function Penalties() {
                   </Typography>
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px", color: "grey" }}
+                    style={{ margin: "10px", fontSize: "18px", color: "grey" }}
                   >
                     The Internal Revenue Service does not require your consent
                     to any provisions of this document other than the
@@ -335,7 +335,7 @@ export default function Penalties() {
                             touched.confirmationCode && errors.confirmationCode
                           )}
                           type="password"
-                          required
+                          
                           style={{ width: "100%" }}
                         />
                         <span
@@ -363,10 +363,11 @@ export default function Penalties() {
 
   <div className="d-flex my-3 col-8">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
-    <TextField className=" col-4"
+    <Input className=" col-4 inputTextField"
+   
                         style={{
                          color:"black !important",
-                          height: "3.47rem",
+                         
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -382,10 +383,10 @@ export default function Penalties() {
   </div>
   <div className="d-flex my-3 col-8">
   <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
-    <TextField className=" col-4"
+  <Input className=" col-4 inputTextField"
                         style={{
-                         color:"black !important",
-                          height: "3.47rem",
+                         color:"black",
+                         fontSize:"13px",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -399,11 +400,11 @@ export default function Penalties() {
   </div>
   <div className="d-flex my-3 col-8 ">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
-    <TextField className="col-4"
+    <Input className=" col-4 inputTextField"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.5rem",
+                         
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -600,10 +601,10 @@ export default function Penalties() {
                     </Button>
                     <Button
                       type="submit"
-                      onClick={() => {
-                        history("/Submit");
-                        //  setOpen2(true)
-                      }}
+                      // onClick={() => {
+                      //   history("/Submit");
+                      //   //  setOpen2(true)
+                      // }}
                       // onClick={() => {
                       //   setOpen2(true);
                       // }}

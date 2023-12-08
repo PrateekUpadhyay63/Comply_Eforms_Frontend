@@ -75,9 +75,9 @@ export default function FCTA_Reporting(props: any) {
           
       </div>
           </div>
-          <div className="col-8 mt-5">
+          <div className="col-8 mt-3">
 
-      <div style={{ padding: "10px 0px" }}>
+      <div style={{ padding: "18px " }}>
         <Paper style={{ padding: "10px" }}>
           <Formik
           validateOnChange={false}
@@ -120,7 +120,7 @@ export default function FCTA_Reporting(props: any) {
                       align="left"
                       style={{
                         marginTop: "10px",
-                        fontSize: "32px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >

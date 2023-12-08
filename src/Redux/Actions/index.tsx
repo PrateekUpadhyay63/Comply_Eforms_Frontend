@@ -12,13 +12,14 @@ export const W9_state = (value: any, callback: any = false): any => {
 };
 
 export const W8_state = (value: any, callback: any = false): any => {
+  if (callback) {
+    callback();
+  }
   return {
     type: Utils.actionName.CREATE_W8,
     payload: value,
   };
-  if (callback) {
-    callback();
-  }
+  
 };
 
 export const W8_state_ECI = (value: any, callback: any = false): any => {
@@ -300,15 +301,16 @@ export const getAllCountriesIncomeCode = (): any => {
   };
 };
 
-export const getAllStateByCountryId = (): any => {
-  return (dispatch: any) => {
+export const getAllStateByCountryId = (id:any): any => {
+  return  (dispatch: any) => {
     Utils.api.getApiCall(
       Utils.EndPoint.GetStateByCountryId,
-      "",
-      (resData) => {
+      `?CountryId=${id}`,
+      async (resData) => {
         const { data } = resData;
         if (resData.status === 200) {
-          dispatch({
+          console.log(resData.data,"getAllStateByCountryId from action",id)
+         await  dispatch({
             type: Utils.actionName.GetStateByCountryId,
             payload: {
               allCountriesStateIdData: resData.data,

@@ -61,11 +61,11 @@ export default function Certifications(props: any) {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"10px" }}>
+          <div style={{ padding: "20px 0px",height:"100%" }}>
             <BreadCrumbComponent breadCrumbCode={1282} formName={3}/>
       </div>
       </div>
-      <div className="col-8 mt-5">
+      <div className="col-8 mt-3">
       <div style={{ padding: "16px" }}>
       <Formik
        validateOnChange={false}
@@ -99,7 +99,7 @@ export default function Certifications(props: any) {
             align="left"
             style={{
               margin: "10px",
-              fontSize: "30px",
+              fontSize: "27px",
               fontWeight: "550",
               marginLeft: "20px",
             }}

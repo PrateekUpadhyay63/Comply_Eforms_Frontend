@@ -9,6 +9,7 @@ import {
   Tooltip,
   Link,
   Select,
+  Input,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import { Formik, Form } from "formik";
@@ -46,13 +47,14 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
+          console.log(values,"valuess")
           setSubmitting(true);
           dispatch(
             CREATE_8233(values, () => {
-              history("/Complete");
+              history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
             })
           );
-          history("/Complete");
+          history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
         }}
       >
         {({
@@ -72,13 +74,14 @@ export default function Penalties() {
             >
               <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <div style={{ padding: "20px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1450} formName={2}/>
       </div>
       </div>
+      <>{console.log(errors,"errors!!!!!")}</>
       <div className="col-8 mt-3">
-              <div style={{ padding: "20px" }}>
-                <Paper style={{ padding: "18px" }}>
+              <div style={{ padding: "18px" }}>
+                <Paper style={{ padding: "10px" }}>
                   <Typography
                     align="left"
                     style={{
@@ -204,14 +207,11 @@ export default function Penalties() {
                         ""
                       )}
 
-<TextField
-                        style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
-                          width: "100%",
-                        }}
+<Input
+                       className="inputTextField"
+                        id="outlined"
                         fullWidth
+                      
                       
                         name="signaturedBy"
                         value={values.signaturedBy}
@@ -301,7 +301,10 @@ export default function Penalties() {
                         ""
                       )}
                       <div>
-                      <TextField
+                      <Input
+                       className="inputTextField"
+                        id="outlined"
+                        fullWidth
     name="confirmationCode"
     value={values.confirmationCode}
     onBlur={handleBlur}
@@ -402,8 +405,10 @@ export default function Penalties() {
                         <Typography style={{ fontSize: "15px" }}>
                           Date
                         </Typography>
-                        <TextField 
-                         className="date"
+                        <Input
+                       className="inputTextField"
+                        id="outlined"
+                        fullWidth
                           name="dob"
                           
                          
