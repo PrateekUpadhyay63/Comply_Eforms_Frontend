@@ -295,22 +295,21 @@ export default function Factors() {
                               </span>
                             </Typography>
                             <FormControl className="w-100">
-                              <TextField
+                            <textarea
                                 name="incomeDescription"
-                                type="text"
-                                multiline
                                 value={values.incomeDescription}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 className="col-md-12 col-12"
+                                rows={5}
+                                cols={50}
                                 style={{
-                                 
+                                  padding: "8px 10px 0px 15px",
                                   color: "#7e7e7e",
                                   fontStyle: "italic",
-                                  
-                                  backgroundColor:"#fff"
-                                }}
-                              />
+                                  marginBottom: "20px",
+                                }}>
+                              </textarea>
                               <p className="error">
                                 {errors.incomeDescription}
                               </p>
