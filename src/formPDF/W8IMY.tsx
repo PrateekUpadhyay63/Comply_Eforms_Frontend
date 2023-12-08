@@ -1567,7 +1567,7 @@ the required payee documentation to associate with an amount realized or an amou
               <tbody>     
                 <tr>
                   <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong>32 </strong></label></td>
-                  <td style={{ padding: "10px 0" ,display:"flex"}}>
+                  <td style={{ padding: "10px 0 0 0" ,display:"flex"}}>
                     <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px" }} /> 
                     <p style={{marginBottom:"0px"}}>
                       <p style={{marginBottom:"0px"}}>
@@ -1579,27 +1579,21 @@ the required payee documentation to associate with an amount realized or an amou
                       </ul>
                       </p>
                           <span style={{width:"50%", borderBottom:"1px solid #000000"}}></span>
-                      <p style={{marginBottom:"0px"}}>
-                      <ul style={{marginBottom:"0px"}}>
-                          <li>
-                          Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and
-                          </li>
-                      </ul>
-                      </p>
+
                     </p>
                   </td>
                 </tr>  
                 <tr>
-                <td>
-                    
-                </td>
-                  <td  style={{ padding: "10px 0" ,display:"flex"}}>
-                    <div style={{width:"100"}}>
+                  <td>
+                      
+                  </td>
+                  <td  style={{ padding: "0 0 10px 0" ,display:"flex"}}>
+                    <div style={{width:"48%", display:"flex",borderBottom:"1px solid black",marginLeft:"20px"}}>
 
                     </div>
-                    <div style={{display:"flex",width:"50%"}}>
-                      <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",opacity:"0" }} /> 
-                      The applicable IGA is a
+                    <div style={{display:"flex",width:"72%"}}>
+                     
+                      . The applicable IGA is a
                         <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
                         The applicable IGA is a
                         <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",marginLeft: "10px" }} /> 
@@ -1609,7 +1603,44 @@ the required payee documentation to associate with an amount realized or an amou
                   <td>
 
                   </td>
-                </tr>             
+                </tr>   
+                <tr>
+                  <td>
+                      
+                  </td>
+                  <td  style={{ padding: "0 0 10px 0" ,display:"flex"}}>
+                    <div style={{display:"flex",marginLeft:"20px", width:"115px"}}>
+                    is treated as a
+                    </div>
+                    <div style={{width:"48%", display:"flex",borderBottom:"1px solid black",marginLeft:"20px"}}>
+
+                    </div>
+                    <div style={{display:"flex",width:"72%"}}>
+                    under the provisions of the applicable IGA or Treasury regulations
+                    </div>
+                  </td>
+                  <td>
+
+                  </td>
+                </tr>      
+                <tr>
+                  <td style={{width:"30.72px",padding: "10px 0",verticalAlign:"top"}}> <label><strong> </strong></label></td>
+                  <td style={{ padding: "10px 0 0 0" ,display:"flex"}}>
+                    <input type="checkbox" name="" id="" style={{ background: "#fff", border: "1px solid #000", marginRight: "10px",marginBottom:"auto",marginTop:"6px",opacity:"0" }} /> 
+                    <p style={{marginBottom:"0px"}}>
+                      <p style={{marginBottom:"0px"}}>
+                      I certify that the entity identified in Part I:
+                      <ul style={{marginBottom:"0px"}}>
+                          <li>
+                          Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and
+                          </li>
+                      </ul>
+                      </p>
+                          <span style={{width:"50%", borderBottom:"1px solid #000000"}}></span>
+
+                    </p>
+                  </td>
+                </tr>       
               </tbody>
             </table>
 
