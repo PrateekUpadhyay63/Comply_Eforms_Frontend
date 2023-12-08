@@ -220,6 +220,7 @@ export default function Certifications(props: any) {
               fontSize: "15px",
               color: "grey",
               marginLeft: "20px",
+              textAlign:"justify" 
             }}
           >
             Under penalties of perjury, I declare that I have examined the
@@ -254,6 +255,7 @@ export default function Certifications(props: any) {
                     fontSize: "15px",
                     color: "black",
                     marginTop: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                   1. I am the individual that is the beneficial owner (or am
@@ -278,7 +280,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   2. The person named on line 1 of this form is not a U.S.
                   person,
@@ -299,13 +301,13 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                   3. The income to which this form relates is:
                 </Typography>
               </Typography>
 
-              <div style={{ marginLeft: "60px", fontSize: "15px" }}>
+              <div style={{ marginLeft: "60px", fontSize: "15px",textAlign:"justify"  }}>
                 <li>
                   (a) not effectively connected with the conduct of a trade or
                   business in the United States,
@@ -339,7 +341,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   4. The person named on line 1 of this form is a resident of
                   the treaty country listed on line 9 of the form (if any)
@@ -362,7 +364,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                   5. For broker transactions or barter exchanges, the beneficial
                   owner is an exempt foreign person as defined in the
@@ -384,7 +386,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   Furthermore, I authorize this form to be provided to any
                   withholding agent that has control, receipt, or custody of the
@@ -421,7 +423,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                   I have been notified by IRS that I am currently subject to
                   backup withholding.

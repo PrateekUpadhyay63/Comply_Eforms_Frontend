@@ -50,7 +50,7 @@ export default function Term() {
             <BreadCrumbComponent breadCrumbCode={1204} formName={2}/>
           </div>
         </div>
-        <div className="col-8 mt-4">
+        <div className="col-8 mt-3">
           <div style={{ padding: "10px 0px" }}>
             <Paper elevation={6} style={{ padding: "17px",}}>
               <>

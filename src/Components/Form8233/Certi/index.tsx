@@ -186,6 +186,7 @@ export default function Certifications(props: any) {
                     fontSize: "17px",
                     color: "grey",
                     marginLeft: "20px",
+                    textAlign:"justify" 
                   }}
                 >
                   Under penalties of perjury, I declare that I have examined the
@@ -226,6 +227,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "10px",
+                          textAlign:"justify" 
                         }}
                       >
                         1. I am the beneficial owner (or am authorized to sign
@@ -290,6 +292,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         3.The beneficial owner is a resident of the treaty
@@ -327,6 +330,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         4. Furthermore, I authorize this form to be provided to
