@@ -289,7 +289,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="usTinTypeId"
@@ -343,7 +343,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
 
                             }}
@@ -351,12 +351,12 @@ export default function Tin(props: any) {
                           {values.notAvailable ? (
                             ""
                           ) : 
-                            // <p className="error">{errors.usTin}</p>
+                      
                             " "
                           }
                         </div>
-                        <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
+                        <div className="col-lg-2 col-12 ">
+                          <div className="radio" style={{ marginTop: "17px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -588,7 +588,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="foreignTINCountry"
@@ -770,7 +770,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -796,7 +796,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -848,7 +848,7 @@ export default function Tin(props: any) {
                                   style={{
                                     color: "red",
                                     fontSize: "20px",
-                                    marginTop: "11px",
+                                    marginTop: "8px",
                                   
                                   }}
                                 />
