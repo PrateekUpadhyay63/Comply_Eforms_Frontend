@@ -42,6 +42,7 @@ import {
   getAllCountriesIncomeCode,
   GetAgentPaymentType,
   getAllStateByCountryId,
+  getTinTypes
 } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
@@ -62,7 +63,8 @@ export default function Entity() {
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
-
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   const [values, setValues] = useState({ vat: "", vatId: 0 });
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
@@ -245,7 +247,35 @@ export default function Entity() {
         console.log("Data");
       })
     );
+    dispatch(
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.usIndividual === true;
+        });
+        setUStinvalue(datas);
+      })
+    );
   }, []);
+
+
+  const onChangeUsInit = (values: any) => {
+    let data;
+    if (values.isUSIndividual == "no") {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is true
+        return ele?.usIndividual === false;
+      });
+      // Do something with the filtered data...
+    } else {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is false
+        return ele?.usIndividual === true;
+      });
+      // Do something with the filtered data...
+    }
+    setUStinvalue(data);
+  };
 
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
@@ -1221,13 +1251,22 @@ export default function Entity() {
                               }}
                               value={values.usTinTypeId}
                             >
-                              <option value="1">-Select-</option>
-                              <option value="2">EIN</option>
-                              <option value="3">QIEIN</option>
-                              <option value="4">WPEIN</option>
-                              <option value="5">WTEIN</option>
-                              <option value="6">U.S. TIN not applicable</option>
-                              <option value="7">U.S. TIN not available</option>
+                             {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                             </select>
                           </FormControl>
                           <p className="error">{errors.usTinTypeId}</p>
@@ -1561,7 +1600,22 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                               <option value="1">-Select-</option>
-                              <option value="2">EIN</option>
+                              {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                             </select>
                             <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>
