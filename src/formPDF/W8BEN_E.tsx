@@ -283,6 +283,7 @@ const W8Ben: React.FC = () => {
                                   width: "100%",
                                   padding: "0 0 0 16px",
                                   marginTop: "15px",
+                                  textAlign: "justify"
                                 }}
                               >
                                 <li style={{ marginBottom: "6px" }}>
@@ -427,13 +428,41 @@ const W8Ben: React.FC = () => {
                                         borderBottom: "1px solid #000",
                                         padding: "5px 10px",
                                       }}>
-                                      Chapter 3 Status (entity type) (Must check one box only):
-                                      <div style={{ display: "table", width: "100%" }}>
-                                        <div style={{ display: "table-row" }}>
-                                          <div style={{ display: "table-cell", width: "25%" }}><input type="checkbox" style={{ marginRight: "5px" }} />Corporation</div>
-                                          <div style={{ display: "table-cell", width: "25%" }}><input type="checkbox" style={{ marginRight: "5px" }} />Partnership</div>
-                                          <div style={{ display: "table-cell", width: "25%" }}><input type="checkbox" style={{ marginRight: "5px" }} />Simple trust</div>
-                                        </div>
+                                      <div style={{ width: "20px", marginRight: "10px", float: "left" }}>4.</div>
+                                      <div style={{ width: "calc(100% - 30px)", float: "left" }}>
+                                        Chapter 3 Status (entity type) (Must check one box only):
+                                        <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                                          <tbody>
+                                            <tr>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Corporation</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Partnership</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Simple trust</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Tax-exempt organization</td>
+                                            </tr>
+                                            <tr>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Complex trust</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Foreign Government - Controlled Entity</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Central Bank of Issue</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Private foundation</td>
+                                            </tr>
+                                            <tr>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Estate</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Foreign Government - Integral Part</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Grantor trust</td>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />Disregarded entity</td>
+                                            </tr>
+                                            <tr>
+                                              <td><input type="checkbox" style={{ marginRight: "5px" }} />International organization</td>
+                                            </tr>
+                                            <tr>
+                                              <td colSpan={4}>
+                                                If you entered disregarded entity, partnership, simple trust, or grantor trust above, is the entity a hybrid making a treaty claim? If “Yes,” complete Part III. &nbsp;
+                                                <input type="checkbox" name="YesCheck" id="YesCheck" /><label htmlFor="YesCheck" style={{ marginRight: "10px", marginLeft: "5px" }}>Yes</label>
+                                                <input type="checkbox" name="NoCheck" id="NoCheck" /><label htmlFor="NoCheck" style={{ marginLeft: "5px" }}>No</label>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
                                       </div>
                                     </td>
                                   </tr>
@@ -443,21 +472,164 @@ const W8Ben: React.FC = () => {
                                       style={{
                                         borderBottom: "1px solid #000",
                                         padding: "5px 10px",
+                                        verticalAlign: "top"
                                       }}
                                     >
-                                      5 Mailing address (if different from
-                                      above)
-                                      <p
-                                        style={{
-                                          color: "#82b1ff",
-                                          width: "100%",
-                                          margin: "6px 0 0",
-                                          lineHeight: "1.4",
-                                        }}
-                                      >
-                                        {" "}
-                                        United States
-                                      </p>
+                                      <div style={{ width: "20px", marginRight: "5px", float: "left" }}>5.</div>
+                                      <div style={{ width: "calc(100% - 25px)", float: "left" }}>
+                                        <p>Chapter 4 Status (FATCA status) (See instructions for details and complete the certification below for the entity's applicable status.)</p>
+                                        <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                                          <tr>
+                                            <td style={{ width: "50%", verticalAlign: "top" }}>
+                                              <div>
+                                                <input type="checkbox" name="" id="FFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="FFI" style={{ width: "calc(100% - 30px)" }}>Nonparticipating FFI (including an FFI related to a Reporting IGA FFI other than a deemed-com</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="parFFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="FFI" style={{ width: "calc(100% - 30px)" }}>Participating FFI</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="1FFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="1FFI" style={{ width: "calc(100% - 30px)" }}>Reporting Model 1 FFI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="2FFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="2FFI" style={{ width: "calc(100% - 30px)" }}>Reporting Model 2 FFI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="RdCFFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="RdCFFI" style={{ width: "calc(100% - 30px)" }}>Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII). See instructions.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="SprdFFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="SprdFFI" style={{ width: "calc(100% - 30px)" }}>Sponsored FFI. Complete Part IV</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Certified deemed-compliant nonregistering local bank. Complete Part V.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Certified deemed-compliant FFI with only low-value accounts. Complete Part VI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Certified deemed-compliant sponsored, closely held investment vehicle. Complete Part VII. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Certified deemed-compliant limited life debt investment entity. Complete Part VIII.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Certain investment entities that do not maintain financial accounts. Complete Part IX.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Owner-documented FFI. Complete Part X. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}>Restricted distributor. Complete Part XI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id="NIFFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="NIFFI" style={{ width: "calc(100% - 30px)" }}>Nonreporting IGA FFI. Complete Part XII.</label>
+                                              </div>
+
+
+                                            </td>
+                                            <td style={{ width: "50%" }}>
+                                              <div>
+                                                <input type="checkbox" name="" id="NIFFI" style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor="NIFFI" style={{ width: "calc(100% - 30px)" }}>Foreign government, government of a U.S. possession, or foreign central bank of issue. Complete Part XIII. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> International organization. Complete Part XIV </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Exempt retirement plans. Complete Part XV. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Entity wholly owned by exempt beneficial owners. Complete Part XVI. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Territory financial institution. Complete Part XVII. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Excepted nonfinancial group entity. Complete Part XVIII. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Excepted nonfinancial start-up company. Complete Part XIX. </label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Excepted nonfinancial entity in liquidation or bankruptcy. Complete Part XX.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> 501(c) organization. Complete Part XXI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Nonprofit organization. Complete Part XXII.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Publicly traded NFFE or NFFE affiliate of a publicly traded corporation. Complete Part XXIII.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Excepted territory NFFE. Complete Part XXIV.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Active NFFE. Complete Part XXV</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Passive NFFE. Complete Part XXVI.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Excepted inter-affiliate FFI. Complete Part XXVII.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Direct reporting NFFE</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Sponsored direct reporting NFFE. Complete Part XXVIII.</label>
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="" id=" " style={{ width: "20px", margin: "5px 5px 0 0", verticalAlign: "top" }} />
+                                                <label htmlFor=" " style={{ width: "calc(100% - 30px)" }}> Account that is not a financial account.</label>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000"
+                                    }}>
+                                      <div style={{ float: "left", width: "20px", marginRight: "10px" }}>6.</div>
+                                      <div style={{ float: "left", width: "calc(100% - 30px)" }}>
+                                        Permanent residence address (street, apt. or suite no., or rural route). Do not use a P.O. box or in-care-of address (other than a registered address).
+                                      </div>
+                                      <div>
+                                        <p style={{ color: "blue", marginBottom: "5px" }}>asd1, asd1</p>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
@@ -475,47 +647,32 @@ const W8Ben: React.FC = () => {
                                               style={{
                                                 borderBottom: "1px solid #000",
                                                 padding: "5px 10px",
-                                                width: "50%",
+                                                width: "70%",
                                                 borderRight: "1px solid #000",
                                               }}
                                             >
-                                              6a &nbsp; Foreign tax identifying
-                                              number (see instructions)
-                                              <p
-                                                style={{
-                                                  color: "#82b1ff",
-                                                  width: "100%",
-                                                  margin: "6px 0 0",
-                                                  lineHeight: "1.4",
-                                                }}
-                                              >
-                                                243543
-                                              </p>
+                                              <div style={{ float: "left", width: "20px", marginRight: "10px" }}> </div>
+                                              <div style={{ float: "left", width: "calc(100% - 30px)" }}>City or town, state or province. Include postal code where appropriate. </div>
+                                              <div>
+                                                <p style={{ color: "blue", marginBottom: "5px" }}>asd1, OH, asd1 </p>
+                                              </div>
                                             </td>
                                             <td
                                               style={{
                                                 borderBottom: "1px solid #000",
                                                 padding: "5px 10px",
-                                                width: "50%",
+                                                width: "30%",
                                               }}
                                             >
-                                              6b &nbsp; Check if FTIN not
-                                              legally required . . . . . . . . .
-                                              . .{" "}
-                                              <input
-                                                type="checkbox"
-                                                name=""
-                                                id=""
-                                              />
+                                              Country
                                               <p
                                                 style={{
-                                                  color: "#82b1ff",
-                                                  width: "100%",
-                                                  margin: "6px 0 0",
+                                                  color: "blue",
+                                                  marginBottom: "5px",
                                                   lineHeight: "1.4",
                                                 }}
                                               >
-                                                {" "}
+                                                United States
                                               </p>
                                             </td>
                                           </tr>
@@ -524,6 +681,19 @@ const W8Ben: React.FC = () => {
                                     </td>
                                   </tr>
                                   <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000"
+                                    }}>
+                                      <div style={{ float: "left", width: "20px", marginRight: "10px" }}>7.</div>
+                                      <div style={{ float: "left", width: "calc(100% - 30px)" }}>
+                                        Mailing address (if different from above)
+                                      </div>
+                                      <div>
+                                        <p style={{ color: "blue", marginBottom: "5px" }}>asd1, asd1</p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
                                     <td colSpan={2}>
                                       <table
                                         style={{
@@ -538,45 +708,25 @@ const W8Ben: React.FC = () => {
                                               style={{
                                                 borderBottom: "1px solid #000",
                                                 padding: "5px 10px",
-                                                width: "50%",
+                                                width: "70%",
                                                 borderRight: "1px solid #000",
                                               }}
                                             >
-                                              7 Reference number(s) (see
-                                              instructions)
-                                              <p
-                                                style={{
-                                                  color: "#82b1ff",
-                                                  width: "100%",
-                                                  margin: "6px 0 0",
-                                                  lineHeight: "1.4",
-                                                  textAlign: "center",
-                                                }}
-                                              >
-                                                VAT : 7678676{" "}
-                                              </p>
+                                              <div style={{ float: "left", width: "20px", marginRight: "10px" }}> </div>
+                                              <div style={{ float: "left", width: "calc(100% - 30px)" }}>City or town, state or province. Include postal code where appropriate.  </div>
+                                              <div>
+                                                <p style={{ color: "blue", marginBottom: "5px" }}>&nbsp;</p>
+                                              </div>
                                             </td>
                                             <td
                                               style={{
                                                 borderBottom: "1px solid #000",
                                                 padding: "5px 10px",
-                                                width: "50%",
+                                                width: "30%",
                                               }}
                                             >
-                                              Date of birth (MM-DD-YYYY) (see
-                                              instructions)
-                                              <p
-                                                style={{
-                                                  color: "#82b1ff",
-                                                  width: "100%",
-                                                  margin: "6px 0 0",
-                                                  lineHeight: "1.4",
-                                                  textAlign: "center",
-                                                }}
-                                              >
-                                                {" "}
-                                                10-10-2023{" "}
-                                              </p>
+                                              Country
+                                              <p style={{ color: "blue", marginBottom: "5px" }}>&nbsp;</p>
                                             </td>
                                           </tr>
                                         </tbody>
