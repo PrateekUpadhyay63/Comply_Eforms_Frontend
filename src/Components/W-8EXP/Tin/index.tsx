@@ -289,7 +289,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="usTinTypeId"
@@ -345,7 +345,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
 
                             }}
@@ -358,7 +358,7 @@ initialValues={initialValue}
                           }
                         </div>
                         <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
+                          <div className="radio" style={{ marginTop: "27px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -476,7 +476,7 @@ initialValues={initialValue}
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height: "40px",
                             width: "100%",
                           }}
                           name="usTinTypeId"
@@ -525,7 +525,7 @@ initialValues={initialValue}
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height: "40px",
                             width: "100%",
                           }}
                         />
@@ -537,7 +537,7 @@ initialValues={initialValue}
                         }
                       </div>
                       <div className="col-lg-2 col-12">
-                        <div style={{ marginTop: "27px" }}>
+                        <div className="radio" style={{ marginTop: "27px" }}>
                           <Checkbox
                             value={values.notAvailable}
                             checked={values.notAvailable}
@@ -588,7 +588,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="foreignTINCountry"
@@ -768,7 +768,7 @@ initialValues={initialValue}
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -794,7 +794,7 @@ initialValues={initialValue}
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -806,7 +806,7 @@ initialValues={initialValue}
                             " "
                           }
 
-                          <FormControl >
+                          <FormControl className="col-12 radio">
                             <RadioGroup
                               row
                               name="tinisFTINNotLegallyRequired"
