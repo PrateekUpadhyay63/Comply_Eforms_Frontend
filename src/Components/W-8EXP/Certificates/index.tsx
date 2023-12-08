@@ -99,7 +99,7 @@ export default function Certifications(props: any) {
             align="left"
             style={{
               margin: "10px",
-              fontSize: "30px",
+              fontSize: "27px",
               fontWeight: "550",
               marginLeft: "20px",
             }}

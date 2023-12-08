@@ -68,7 +68,7 @@ export default function Certifications(props: any) {
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "30px",
+                    fontSize: "27px",
                     fontWeight: "550",
                     marginLeft: "20px",
                   }}
@@ -158,7 +158,7 @@ export default function Certifications(props: any) {
                     marginLeft: "20px",
                     padding: "10px",
                     border: "2px solid black",
-                    fontSize: "20px",
+                    fontSize: "19px",
                   }}
                   className="my-3"
                 >

@@ -868,7 +868,7 @@ export default function Tin(props: any) {
                           provide an FTIN?
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
-                        <FormControl style={{ marginLeft: "20px" }}>
+                        <FormControl style={{ marginLeft: "17px" }}>
                           <RadioGroup
                             row
                             name="isNotLegallyFTIN"

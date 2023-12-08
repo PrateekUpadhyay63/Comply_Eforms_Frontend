@@ -171,7 +171,7 @@ export default function Fedral_tax(props: any) {
                                 align="left"
                                 style={{
                                   color: "black",
-                                  fontSize: "25px",
+                                  fontSize: "27px",
                                   fontWeight: "550",
                                 }}
                               >
@@ -313,7 +313,7 @@ export default function Fedral_tax(props: any) {
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
                                       fontStyle: "italic",
-                                      height: "36px",
+                                      height: "39px",
                                     }}
                                   >
                                     <option> -----select---</option>
@@ -784,7 +784,7 @@ export default function Fedral_tax(props: any) {
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
                                         fontStyle: "italic",
-                                        height: "36px",
+                                        height: "39px",
                                       }}
                                     >
                                       <option value="">-Select-</option>

@@ -185,7 +185,7 @@ initialValues={initialValue}
                       align="left"
                       style={{
                         margin: "10px",
-                        fontSize: "23px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >

@@ -909,7 +909,7 @@ export default function Tin(props: any) {
                     {values.isFTINNotLegallyRequired === true && (
                       <>
                         <Typography
-                          style={{ margin: "20px", fontSize: "20px" }}
+                          style={{ margin: "20px", fontSize: "17px" }}
                         >
                           Do you wish to provide a further (or other)
                           explanation why you are not legally required to

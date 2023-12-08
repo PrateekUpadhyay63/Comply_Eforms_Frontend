@@ -118,7 +118,7 @@ export default function Tin(props: any) {
                         align="left"
                         style={{
                           margin: "10px",
-                          fontSize: "28px",
+                          fontSize: "27px",
                           fontWeight: "550",
                         }}
                       >
@@ -126,15 +126,15 @@ export default function Tin(props: any) {
                       </Typography>
                       <Typography
                         align="left"
-                        style={{ margin: "10px", fontSize: "18px" }}
+                        style={{ margin: "13px", fontSize: "19px" }}
                       >
                         Please Provide your U.S. TIN
                       </Typography>
 
-                      <div>
+                      <div className="mt-3">
                         <div
                           style={{
-                            margin: "10px",
+                            margin: "7px",
                             display: "flex",
                             marginTop: "25px",
                             justifyContent: "space-between",
@@ -208,7 +208,7 @@ export default function Tin(props: any) {
                           align="left"
                           style={{
                             fontSize: "18px",
-                            marginLeft: "1.3rem",
+                            marginLeft:"18px",
                             marginTop: "2rem",
                           }}
                         >
@@ -217,7 +217,7 @@ export default function Tin(props: any) {
                         </Typography>
                         <div
                           style={{
-                            margin: "10px",
+                            margin: "7px",
                             display: "flex",
                             marginTop: "25px",
                             justifyContent: "space-between",
@@ -225,7 +225,7 @@ export default function Tin(props: any) {
                           className="row col-12"
                         >
                           <div className="col-4">
-                            <Typography>
+                            <Typography style={{fontSize:"17px"}}>
                               Street Number and Name:{" "}
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
