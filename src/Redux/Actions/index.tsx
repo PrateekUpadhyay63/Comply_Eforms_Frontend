@@ -301,15 +301,16 @@ export const getAllCountriesIncomeCode = (): any => {
   };
 };
 
-export const getAllStateByCountryId = (): any => {
-  return (dispatch: any) => {
+export const getAllStateByCountryId = (id:any): any => {
+  return  (dispatch: any) => {
     Utils.api.getApiCall(
       Utils.EndPoint.GetStateByCountryId,
-      "",
-      (resData) => {
+      `?CountryId=${id}`,
+      async (resData) => {
         const { data } = resData;
         if (resData.status === 200) {
-          dispatch({
+          console.log(resData.data,"getAllStateByCountryId from action",id)
+         await  dispatch({
             type: Utils.actionName.GetStateByCountryId,
             payload: {
               allCountriesStateIdData: resData.data,

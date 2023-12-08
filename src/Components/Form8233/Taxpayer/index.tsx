@@ -61,7 +61,7 @@ export default function Tin(props: any) {
     dispatch(getAllCountries())   
     dispatch(getAllCountriesCode())   
     dispatch(getAllCountriesIncomeCode())   
-    dispatch(getAllStateByCountryId())   
+    // dispatch(getAllStateByCountryId())   
     dispatch(
       getTinTypes(3, (data: any) => {
         setUStinArray(data);
