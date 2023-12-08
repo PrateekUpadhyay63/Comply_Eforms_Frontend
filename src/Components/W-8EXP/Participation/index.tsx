@@ -65,7 +65,7 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
+              history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp/Submit_Exp");
             })
           );
         }}
@@ -97,12 +97,12 @@ export default function Penalties() {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ height:"100%" }}>
+          <div style={{padding: "20px 0px", height:"100%" }}>
             <BreadCrumbComponent breadCrumbCode={1296} formName={6}/>
           
       </div>
       </div>
-      <div className="col-8 mt-4">
+      <div className="col-8 mt-3">
 
               <div style={{ padding: "10px" }}>
                 <Paper style={{ padding: "18px" }}>

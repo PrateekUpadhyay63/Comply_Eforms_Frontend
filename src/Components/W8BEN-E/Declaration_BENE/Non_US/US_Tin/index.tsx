@@ -107,15 +107,15 @@ export default function Tin(props: any) {
       <div className="row w-100 h-100">
         <div className="col-4">
           <div
-            style={{ padding: "0px 0px", height: "100%" }}
+            style={{ padding: "20px 0px", height: "100%" }}
           >
             <BreadCrumbComponent breadCrumbCode={1249} formName={3} />
           </div>
         </div>
 
         <div className="col-8 mt-3">
-          <div style={{ padding: "20px" }}>
-            <Paper style={{ padding: "13px" }}>
+          <div style={{ padding: "18px" }}>
+            <Paper style={{ padding: "10px" }}>
               <Formik
                 initialValues={initialValue}
                 enableReinitialize
@@ -170,16 +170,18 @@ export default function Tin(props: any) {
                     ""
                   )}
                     <>{console.log(errors, values)}</>
-                    <Typography
+                   <div style={{ margin: "10px" }}>
+                   <Typography
                       align="left"
                       style={{
-                        margin: "10px",
-                        fontSize: "23px",
+                        marginTop: "10px",
+                        fontSize: "27px",
                         fontWeight: "550",
                       }}
                     >
                       Taxpayer Identification Number
                     </Typography>
+                   </div>
 
                     <div>
                      {values.notAvailable === true ?( 
@@ -598,7 +600,7 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />

@@ -20,7 +20,7 @@ import {
   Delete,
   DisabledByDefault,
 } from "@mui/icons-material";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { individualSchema } from "../../schemas/individualindex";
@@ -40,7 +40,7 @@ import {
   GetAgentUSVisaTypeHiddenForEformAction,
   GetAgentIncomeTypeHiddenAllowAnoymo,
   getTinTypes,
-  GetAgentPaymentType
+  GetAgentPaymentType,
 } from "../../Redux/Actions";
 import moment from "moment";
 import { AppDispatch } from "../../Redux/store";
@@ -48,7 +48,7 @@ import { AppDispatch } from "../../Redux/store";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
-import "./index.scss"
+import "./index.scss";
 // import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
@@ -59,8 +59,8 @@ console.log(Date, "date");
 type Value2 = ValuePiece | [ValuePiece, ValuePiece];
 export default function IndividualUs() {
   //States
-  const [vatdata , setVatData] = useState("");
-  const [tinData , SetTinData] = useState()
+  const [vatdata, setVatData] = useState("");
+  const [tinData, SetTinData] = useState();
   const [incomeData, setIncomeData] = useState<any>([]);
   const [value, onChange] = useState<Value2>(null);
   const history = useNavigate();
@@ -75,8 +75,8 @@ export default function IndividualUs() {
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
   const [toolInfo, setToolInfo] = useState("");
-  const [ustinArray , setUStinArray] = useState([]);
-  const [ustinValue , setUStinvalue] = useState([]);
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -239,12 +239,14 @@ export default function IndividualUs() {
     dispatch(GetAgentIncomeTypeHiddenAllowAnoymo());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
-    dispatch(getAllStateByCountryId());
+    dispatch(getAllStateByCountryId(0));
     dispatch(
-      getTinTypes(3, (data:any) => {
-        setUStinArray(data)
-        let datas = data.filter((ele:any)=>{return ele.usIndividual===true})
-        setUStinvalue(datas)
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.usIndividual === true;
+        });
+        setUStinvalue(datas);
       })
     );
     dispatch(
@@ -252,30 +254,24 @@ export default function IndividualUs() {
         console.log("Data");
       })
     );
-
   }, []);
 
   const onChangeUsInit = (values: any) => {
-    let data 
-    console.log("here")
+    let data;
     if (values.isUSIndividual == "no") {
       data = ustinArray.filter((ele: any | undefined) => {
         // Filter out elements where usIndividual is true
         return ele?.usIndividual === false;
       });
-      console.log("yes",data)
       // Do something with the filtered data...
     } else {
-      
       data = ustinArray.filter((ele: any | undefined) => {
         // Filter out elements where usIndividual is false
         return ele?.usIndividual === true;
       });
-      console.log("no")
       // Do something with the filtered data...
     }
-    console.log(data,"data")
-    setUStinvalue(data)
+    setUStinvalue(data);
   };
   // useEffect(()=>{
   //   if(values.isUSIndividual==="yes"){
@@ -299,24 +295,23 @@ export default function IndividualUs() {
     (state: any) => state.getCountriesCodeReducer
   );
   const GetAllIncomeCodesReducer = useSelector(
-    
     (state: any) => state.GetAllIncomeCodesReducer
   );
   // console.log("GetAllIncomeCodesReducer" , GetAllIncomeCodesReducer)
 
-  
   const GetStateByCountryIdReducer = useSelector(
     (state: any) => state.GetStateByCountryIdReducer
   );
 
-  const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
-    state.GetAgentUSVisaTypeHiddenForEformReducer.GetAgentUSVisaTypeHiddenForEform
-
-  )
-// FOR ISSUE 108 UNCOMMENT bottom code and comment top code
-//   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
-//   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
-// )
+  const GetAgentUSVisaTypeHiddenForEform = useSelector(
+    (state: any) =>
+      state.GetAgentUSVisaTypeHiddenForEformReducer
+        .GetAgentUSVisaTypeHiddenForEform
+  );
+  // FOR ISSUE 108 UNCOMMENT bottom code and comment top code
+  //   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+  //   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
+  // )
 
   const redirectFunc = () => {
     history("/Term");
@@ -361,6 +356,7 @@ export default function IndividualUs() {
     if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
+
           <FormControl className="w-100">
             <Typography align="left">
               {/* {returnFieldName()} */}
@@ -535,13 +531,12 @@ export default function IndividualUs() {
         </option>
       ));
     }
-    return null; 
+    return null;
   }
-  
 
   const handleIcome = (e: any, i: number) => {
     const newValue = e.target.value;
-    const updatedIncomeArr = [...incomeArr , 6];
+    const updatedIncomeArr = [...incomeArr, 6];
     updatedIncomeArr[i] = newValue;
     setIncomeArr(updatedIncomeArr);
   };
@@ -561,7 +556,10 @@ export default function IndividualUs() {
   console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
 
   return (
-    <section className="inner_content backGround_Image" style={{ paddingTop:"25px" }}>
+    <section
+      className="inner_content backGround_Image"
+      style={{ paddingTop: "25px" }}
+    >
       <Typography
         align="center"
         style={{
@@ -574,7 +572,6 @@ export default function IndividualUs() {
       >
         Account Holder Details
       </Typography>
-
       <div className="container-fluid">
         <div className="row"></div>
 
@@ -583,7 +580,7 @@ export default function IndividualUs() {
             <div className="tabview">
               <ul>
                 <li>
-                  <button  className="active iconWhite">
+                  <button className="active iconWhite">
                     <div>
                       <div>
                         {" "}
@@ -597,7 +594,10 @@ export default function IndividualUs() {
                 </li>
                 <li style={{ fontSize: "14px", fontWeight: "400" }}>OR</li>
                 <li>
-                  <button className="iconWhite" onClick={() => history("/EntityUs")}>
+                  <button
+                    className="iconWhite"
+                    onClick={() => history("/EntityUs")}
+                  >
                     <div>
                       <div>
                         {" "}
@@ -623,18 +623,16 @@ export default function IndividualUs() {
             className="underline-none"
           >
             <Formik
-             
               initialValues={initialValues}
               enableReinitialize
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                console.log(values,)
                 const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
-                  selectedEntity:false,
+                  selectedEntity: false,
                   isUSEntity: values?.isUSEntity == "yes" ? true : false,
                   isUSIndividual:
                     values?.isUSIndividual == "yes" ? true : false,
@@ -741,58 +739,71 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                   {toolInfo === "ForeignTin" ? (
+                  {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
                       <Paper
-                      
-                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
                       >
-                       <div className="d-flex" style={{justifyContent:"space-between"}}>
-                       <Typography style={{color: "#0c5460"}}>
-                       United Kingdom TIN Format is 9999999999 false 9- Numeric value only A- Alphabetic character only *- Alphanumeric character only ?- Characters optional after this IF TIN format is not available, please check the below box and continue
-                        </Typography>
+                        <div
+                          className="d-flex"
+                          style={{ justifyContent: "space-between" }}
+                        >
+                          <Typography style={{ color: "#0c5460" }}>
+                            United Kingdom TIN Format is 9999999999 false 9-
+                            Numeric value only A- Alphabetic character only *-
+                            Alphanumeric character only ?- Characters optional
+                            after this IF TIN format is not available, please
+                            check the below box and continue
+                          </Typography>
 
-
-                        <Typography>
-                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
-                            setToolInfo("");
-                          }}/>
-                        </Typography>
-                       </div>
-                       
-                      
-                        
-                        
-                       
+                          <Typography>
+                            <CloseIcon
+                              style={{
+                                color: "#0c5460",
+                                cursor: "pointer",
+                                fontSize: "medium",
+                              }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            />
+                          </Typography>
+                        </div>
                       </Paper>
                     </div>
                   ) : (
                     ""
                   )}
 
-                   {toolInfo === "identity" ? (
+                  {toolInfo === "identity" ? (
                     <div className="mt-5">
                       <Paper
-                      
-                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
                       >
-                       <div className="d-flex" style={{justifyContent:"space-between"}}>
-                       <Typography style={{color: "#0c5460"}}>
-                        Instructor Identifier Format is ?********** 9- Numeric value only A- Alphabetic character only *- Alphanumeric character only ?- Characters optional after this
-                        </Typography>
+                        <div
+                          className="d-flex"
+                          style={{ justifyContent: "space-between" }}
+                        >
+                          <Typography style={{ color: "#0c5460" }}>
+                            Instructor Identifier Format is ?********** 9-
+                            Numeric value only A- Alphabetic character only *-
+                            Alphanumeric character only ?- Characters optional
+                            after this
+                          </Typography>
 
-
-                        <Typography>
-                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
-                            setToolInfo("");
-                          }}/>
-                        </Typography>
-                       </div>
-                       
-                      
-                        
-                        
-                       
+                          <Typography>
+                            <CloseIcon
+                              style={{
+                                color: "#0c5460",
+                                cursor: "pointer",
+                                fontSize: "medium",
+                              }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            />
+                          </Typography>
+                        </div>
                       </Paper>
                     </div>
                   ) : (
@@ -942,7 +953,10 @@ export default function IndividualUs() {
                                 row
                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                 value={values.isUSIndividual}
-                                onChange={(e)=>{handleChange(e);onChangeUsInit(values)}}
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  onChangeUsInit(values);
+                                }}
                               >
                                 <FormControlLabel
                                   control={<Radio />}
@@ -998,15 +1012,14 @@ export default function IndividualUs() {
                               }}
                               title={
                                 <>
-                                 
-                                  <a onClick={() => setToolInfo("identity")}>
-                                   
-                                  </a>
+                                  <a
+                                    onClick={() => setToolInfo("identity")}
+                                  ></a>
                                 </>
                               }
                             >
                               <Info
-                               onClick={() => setToolInfo("identity")}
+                                onClick={() => setToolInfo("identity")}
                                 style={{
                                   color: "#ffc107",
                                   fontSize: "15px",
@@ -1174,7 +1187,7 @@ export default function IndividualUs() {
                               }}
                             /> */}
                             <DatePicker
-                            className="dateclass"
+                              className="dateclass"
                               name="dob"
                               onChange={(date) => {
                                 onChange(date);
@@ -1345,8 +1358,7 @@ export default function IndividualUs() {
                             </Tooltip>
                           </div>
                           <p className="error mb-0">
-                            {errors?.usTinTypeId ||
-                            errors?.usTin 
+                            {errors?.usTinTypeId || errors?.usTin
                               ? "Mandatory Information Required"
                               : ""}
                           </p>
@@ -1503,11 +1515,18 @@ export default function IndividualUs() {
                       {values.isUSIndividual === "no" ? (
                         <div className="row d-flex mt-3">
                           <div className="col-lg-3 col-6 col-md-3 ">
-                          <FormControl className="w-100">
-                            <Typography align="left" className="d-flex w-100">
-                              U.S. TIN Type
-                              <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
-                            </Typography>
+                            <FormControl className="w-100">
+                              <Typography align="left" className="d-flex w-100">
+                                U.S. TIN Type
+                                <span
+                                  style={{
+                                    color: "red",
+                                    verticalAlign: "super",
+                                  }}
+                                >
+                                  *
+                                </span>
+                              </Typography>
                               <select
                                 style={{
                                   padding: " 0 10px",
@@ -1518,16 +1537,21 @@ export default function IndividualUs() {
                                 name="usTinTypeId"
                                 id="Income"
                                 defaultValue={"1"}
-                                onChange={(e:any) => {
+                                onChange={(e: any) => {
                                   handleChange(e);
 
-                                  if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
-                                  
+                                  if (
+                                    e.target.value == 0 ||
+                                    e.target.value == 1 ||
+                                    e.target.value == 3 ||
+                                    e.target.value == 4
+                                  )
+                                    setFieldValue("usTin", "");
                                 }}
                                 value={values.usTinTypeId}
                               >
                                 <option value={0}>-Select-</option>
-                                <>{console.log(ustinValue,"")}</>
+                                <>{console.log(ustinValue, "")}</>
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1544,7 +1568,6 @@ export default function IndividualUs() {
                                   //   ""
                                   // );
                                 ))}
-                                
                               </select>
                               <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
@@ -1554,8 +1577,14 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 U.S. TIN
-                                <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
-
+                                <span
+                                  style={{
+                                    color: "red",
+                                    verticalAlign: "super",
+                                  }}
+                                >
+                                  *
+                                </span>
                               </Typography>
                               <Input
                                 disabled={
@@ -1606,7 +1635,6 @@ export default function IndividualUs() {
                                 onChange={(e) => {
                                   handleChange(e);
                                 }}
-                                
                                 value={values.foreignTINCountryId}
                               >
                                 <option value={0}>-Select-</option>
@@ -1626,33 +1654,41 @@ export default function IndividualUs() {
                             <FormControl className="w-100">
                               <Typography align="left">
                                 Foreign TIN
-                               {values.foreignTINCountryId == 1 ?(  <span>  <Tooltip
-                              style={{
-                                backgroundColor: "black",
-                                color: "white",
-                  
-                              }}
-                              title={
-                                <>
-                                 
-                                  <a onClick={() => setToolInfo("ForeignTin")}>
-                                   
-                                  </a>
-                                </>
-                              }
-                            >
-                              <Info
-                               onClick={() => setToolInfo("ForeignTin")}
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  verticalAlign:"super",
-                                  marginLeft: "5px",
-                                  cursor: "pointer",
-                                }}
-                              />
-                            </Tooltip></span> ):""}
-                              
+                                {values.foreignTINCountryId == 1 ? (
+                                  <span>
+                                    {" "}
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <a
+                                            onClick={() =>
+                                              setToolInfo("ForeignTin")
+                                            }
+                                          ></a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        onClick={() =>
+                                          setToolInfo("ForeignTin")
+                                        }
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "15px",
+                                          verticalAlign: "super",
+                                          marginLeft: "5px",
+                                          cursor: "pointer",
+                                        }}
+                                      />
+                                    </Tooltip>
+                                  </span>
+                                ) : (
+                                  ""
+                                )}
                               </Typography>
 
                               <Input
@@ -1747,10 +1783,8 @@ export default function IndividualUs() {
                                   id="foreignTINNotAvailable"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   value={values.foreignTINNotAvailable}
-                                
                                   checked={values.foreignTINNotAvailable}
-                                 disabled={values.foreignTINCountryId == 0}
-                                  
+                                  disabled={values.foreignTINCountryId == 0}
                                   onChange={(e) => {
                                     handleChange(e);
                                     if (e.target.value)
@@ -1791,9 +1825,9 @@ export default function IndividualUs() {
                                   //   values.foreignTINCountryId == 0 ||
                                   //   values.foreignTINCountryId != 257
                                   // }
-                                 
+
                                   checked={values.alternativeTINFormat}
-                                 disabled={values.foreignTINCountryId == 0}
+                                  disabled={values.foreignTINCountryId == 0}
                                   onChange={(e) => {
                                     handleChange(e);
                                     if (e.target.value)
@@ -1839,12 +1873,16 @@ export default function IndividualUs() {
                                     }}
                                     name="vatId"
                                     defaultValue={0}
-                                    onChange={(e:any) => {
+                                    onChange={(e: any) => {
                                       handleChange(e);
 
-                                      if(e.target.value == 2 || e.target.value == 0) setFieldValue("vat" , "")
-                                      if(e.target.value == 1 )setFieldValue("vat" , vatdata )
-                                      
+                                      if (
+                                        e.target.value == 2 ||
+                                        e.target.value == 0
+                                      )
+                                        setFieldValue("vat", "");
+                                      if (e.target.value == 1)
+                                        setFieldValue("vat", vatdata);
                                     }}
                                     value={values.vatId}
                                   >
@@ -1883,11 +1921,9 @@ export default function IndividualUs() {
                                     name="vat"
                                     placeholder="Enter Value Added Tax Number"
                                     // onKeyDown={formatTin}
-                                    onChange={(e:any) => {
+                                    onChange={(e: any) => {
                                       handleChange(e);
-                                      setVatData(e.target.value)
-                                
-                                      
+                                      setVatData(e.target.value);
                                     }}
                                     // inputProps={{ maxLength: 9 }}
                                     // onBlur={handleBlur}
@@ -1904,7 +1940,11 @@ export default function IndividualUs() {
                           <div className="col-lg-3 col-6 col-md-3 ">
                             <Typography align="left" className="d-flex w-100">
                               U.S. TIN Type
-                              <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
+                              <span
+                                style={{ color: "red", verticalAlign: "super" }}
+                              >
+                                *
+                              </span>
                             </Typography>
 
                             <FormControl className="w-100">
@@ -1918,14 +1958,19 @@ export default function IndividualUs() {
                                 name="usTinTypeId"
                                 id="Income"
                                 defaultValue={3}
-                                onChange={(e:any) => {
+                                onChange={(e: any) => {
                                   handleChange(e);
 
-                                  if(e.target.value == 0 || e.target.value == 1 || e.target.value == 3 ||  e.target.value == 4) setFieldValue("usTin" , "")
-                                  
+                                  if (
+                                    e.target.value == 0 ||
+                                    e.target.value == 1 ||
+                                    e.target.value == 3 ||
+                                    e.target.value == 4
+                                  )
+                                    setFieldValue("usTin", "");
                                 }}
                                 value={values.usTinTypeId}
-                              >                               
+                              >
                                 {/* <option value="1">-Select-</option> */}
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
@@ -1944,18 +1989,21 @@ export default function IndividualUs() {
                                   // );
                                 ))}
                               </select>
-                               <p className="error">{errors.usTinTypeId}</p>
+                              <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
                           </div>
                           <div className="col-lg-3 col-6 col-md-3 mx-2">
+                            <Typography align="left" className="d-flex w-100">
+                              U.S. TIN{" "}
+                              <span
+                                style={{ color: "red", verticalAlign: "super" }}
+                              >
+                                *
+                              </span>
+                            </Typography>
                             <FormControl className="w-100">
-                              <Typography align="left">
-                                U.S. TIN
-                                <span style={{ color: 'red' , verticalAlign:"super"}}>*</span>
-
-                              </Typography>
                               <Input
-                                  disabled={
+                                disabled={
                                   // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
                                   values.usTinTypeId == 1
@@ -2142,12 +2190,15 @@ export default function IndividualUs() {
                             name="permanentResidentialCountryId"
                             id="Income"
                             defaultValue={1}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                              handleChange(e);
+                              dispatch(getAllStateByCountryId(e.target.value));
+                            }}
                             // onBlur={handleBlur}
                             value={values.permanentResidentialCountryId}
                           >
                             <option value={0}>-Select-</option>
-                           
+
                             <option value={257}>United Kingdom</option>
                             <option value={258}>United States</option>
                             <option value="">-----</option>
@@ -2261,7 +2312,7 @@ export default function IndividualUs() {
                             </p>
                           </FormControl>
                         </div>
-                        {values?.permanentResidentialCountryId == 258 ? (
+                        {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left" className="d-flex w-100 ">
                               State or Province:
@@ -2396,7 +2447,7 @@ export default function IndividualUs() {
                                   label="Yes"
                                   name="isAddressRuralRoute"
                                 />
-                                  <FormControlLabel
+                                <FormControlLabel
                                   value="no"
                                   control={<Radio />}
                                   label="No"
@@ -2583,71 +2634,92 @@ export default function IndividualUs() {
                                   >
                                     Is this address a PO Box?
                                     <span style={{ color: "red" }}>*</span>
-                                
-                                      <Tooltip
-                            style={{ backgroundColor: "black", color: "white" }}
-                            title={
-                              <>
-                                <Typography color="inherit">
-                                 PO BOX Address
-                                </Typography>
-                                <a onClick={() => setToolInfo("PO")}>
-                                  <Typography
-                                    style={{
-                                      cursor: "pointer",
-                                      textDecorationLine: "underline",
-                                    }}
-                                    align="center"
-                                  >
-                                    {" "}
-                                    View More...
-                                  </Typography>
-                                </a>
-                              </>
-                            }
-                          >
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginLeft: "5px",
-                                cursor: "pointer",
-                                verticalAlign:"super"
-                              }}
-                            />
-                          </Tooltip>
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <Typography color="inherit">
+                                            PO BOX Address
+                                          </Typography>
+                                          <a onClick={() => setToolInfo("PO")}>
+                                            <Typography
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecorationLine: "underline",
+                                              }}
+                                              align="center"
+                                            >
+                                              {" "}
+                                              View More...
+                                            </Typography>
+                                          </a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "15px",
+                                          marginLeft: "5px",
+                                          cursor: "pointer",
+                                          verticalAlign: "super",
+                                        }}
+                                      />
+                                    </Tooltip>
                                   </Typography>
                                   {toolInfo === "PO" ? (
-                    <div >
-                      <Paper
-                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
-                      >
-                        <Typography>
-                        A Post Office Box is a mail box located at a post office (versus at a permanent residence).
-                        </Typography>
-                        <Typography style={{ marginTop: "10px" }}>
-                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission.
-                        </Typography>
-                     
-                        <Typography style={{ marginTop: "10px" }}>
-                        If you reside in a country that does not use street addresses, you may enter a descriptive address.
-                        </Typography>
-                       
-                        <Link
-                          href="#"
-                          underline="none"
-                          style={{ marginTop: "10px", fontSize: "16px" }}
-                          onClick={() => {
-                            setToolInfo("");
-                          }}
-                        >
-                          --Show Less--
-                        </Link>
-                      </Paper>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                                    <div>
+                                      <Paper
+                                        style={{
+                                          backgroundColor: "#dedcb1",
+                                          padding: "10px",
+                                        }}
+                                      >
+                                        <Typography>
+                                          A Post Office Box is a mail box
+                                          located at a post office (versus at a
+                                          permanent residence).
+                                        </Typography>
+                                        <Typography
+                                          style={{ marginTop: "10px" }}
+                                        >
+                                          You should not use a P.O. Box or an
+                                          in-care-of-address (other than a
+                                          registered address). If you do, we may
+                                          need to contact you for further
+                                          information to help validate the
+                                          submission.
+                                        </Typography>
+
+                                        <Typography
+                                          style={{ marginTop: "10px" }}
+                                        >
+                                          If you reside in a country that does
+                                          not use street addresses, you may
+                                          enter a descriptive address.
+                                        </Typography>
+
+                                        <Link
+                                          href="#"
+                                          underline="none"
+                                          style={{
+                                            marginTop: "10px",
+                                            fontSize: "16px",
+                                          }}
+                                          onClick={() => {
+                                            setToolInfo("");
+                                          }}
+                                        >
+                                          --Show Less--
+                                        </Link>
+                                      </Paper>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
                                   <FormControl
                                     error={Boolean(
                                       touched.isAddressPostOfficeBox &&
@@ -2710,73 +2782,96 @@ export default function IndividualUs() {
                               </p> */}
                                 </div>
                               </>
-                       
+
                               <div className="col-4">
                                 <Typography style={{ marginTop: "20px" }}>
                                   Is this an In Care Of address?
                                   <span style={{ color: "red" }}>*</span>
                                   <Tooltip
-                            style={{ backgroundColor: "black", color: "white" }}
-                            title={
-                              <>
-                                <Typography color="inherit">
-                                 In Care Of Address
-                                </Typography>
-                                <a onClick={() => setToolInfo("CareOf")}>
-                                  <Typography
                                     style={{
-                                      cursor: "pointer",
-                                      textDecorationLine: "underline",
+                                      backgroundColor: "black",
+                                      color: "white",
                                     }}
-                                    align="center"
+                                    title={
+                                      <>
+                                        <Typography color="inherit">
+                                          In Care Of Address
+                                        </Typography>
+                                        <a
+                                          onClick={() => setToolInfo("CareOf")}
+                                        >
+                                          <Typography
+                                            style={{
+                                              cursor: "pointer",
+                                              textDecorationLine: "underline",
+                                            }}
+                                            align="center"
+                                          >
+                                            {" "}
+                                            View More...
+                                          </Typography>
+                                        </a>
+                                      </>
+                                    }
                                   >
-                                    {" "}
-                                    View More...
-                                  </Typography>
-                                </a>
-                              </>
-                            }
-                          >
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "15px",
-                                marginLeft: "5px",
-                                cursor: "pointer",
-                                verticalAlign:"super"
-                              }}
-                            />
-                          </Tooltip>
+                                    <Info
+                                      style={{
+                                        color: "#ffc107",
+                                        fontSize: "15px",
+                                        marginLeft: "5px",
+                                        cursor: "pointer",
+                                        verticalAlign: "super",
+                                      }}
+                                    />
+                                  </Tooltip>
                                 </Typography>
                                 {toolInfo === "CareOf" ? (
-                    <div >
-                      <Paper
-                        style={{ backgroundColor: "#dedcb1",padding:"10px"}}
-                      >
-                        <Typography>
-                        An In Care Of Address denotes that something is to be delivered to an address where the recipient does not normally receive mail.                        </Typography>
-                        <Typography style={{ marginTop: "10px" }}>
-                        You should not use a P.O. Box or an in-care-of-address (other than a registered address). If you do, we may need to contact you for further information to help validate the submission. 
-                        </Typography>
-                     
-                        <Typography style={{ marginTop: "10px" }}>
-                        If you reside in a country that does not use street addresses, you may enter a descriptive address.                        </Typography>
-                       
-                        <Link
-                          href="#"
-                          underline="none"
-                          style={{ marginTop: "10px", fontSize: "16px" }}
-                          onClick={() => {
-                            setToolInfo("");
-                          }}
-                        >
-                          --Show Less--
-                        </Link>
-                      </Paper>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                                  <div>
+                                    <Paper
+                                      style={{
+                                        backgroundColor: "#dedcb1",
+                                        padding: "10px",
+                                      }}
+                                    >
+                                      <Typography>
+                                        An In Care Of Address denotes that
+                                        something is to be delivered to an
+                                        address where the recipient does not
+                                        normally receive mail.{" "}
+                                      </Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        You should not use a P.O. Box or an
+                                        in-care-of-address (other than a
+                                        registered address). If you do, we may
+                                        need to contact you for further
+                                        information to help validate the
+                                        submission.
+                                      </Typography>
+
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        If you reside in a country that does not
+                                        use street addresses, you may enter a
+                                        descriptive address.{" "}
+                                      </Typography>
+
+                                      <Link
+                                        href="#"
+                                        underline="none"
+                                        style={{
+                                          marginTop: "10px",
+                                          fontSize: "16px",
+                                        }}
+                                        onClick={() => {
+                                          setToolInfo("");
+                                        }}
+                                      >
+                                        --Show Less--
+                                      </Link>
+                                    </Paper>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
 
                                 <div className="d-flex">
                                   <FormControl
@@ -2880,7 +2975,7 @@ export default function IndividualUs() {
                                           fontSize: "15px",
                                           marginLeft: "5px",
                                           cursor: "pointer",
-                                          verticalAlign:"super"
+                                          verticalAlign: "super",
                                         }}
                                         // onClick={clickInfo}
                                       />
@@ -3137,7 +3232,7 @@ export default function IndividualUs() {
                                 </p>
                               </FormControl>
                             </div>
-                            {values.permanentResidentialCountryId1 == 258 ? (
+                            {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length > 0 ? (
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography
                                   align="left"
@@ -3483,7 +3578,6 @@ export default function IndividualUs() {
                                   }}
                                   name="contactEmail"
                                   id="outlined"
-                                  
                                   placeholder="example@domain.com"
                                   onChange={handleChange}
                                   // onBlur={handleBlur}
@@ -3503,7 +3597,6 @@ export default function IndividualUs() {
                             <Typography align="left">
                               Primary Contact Number
                             </Typography>
-                            <div>
                             <select
                               style={{
                                 padding: " 0 10px",
@@ -3517,7 +3610,7 @@ export default function IndividualUs() {
                               value={values.primaryContactNumberId}
                             >
                               <option value={0}>-Select-</option>
-                              {/* <option value={1}>-Select1-</option> */}
+                              {/* <option value={1}>--Select1--</option> */}
                               {getCountriesCodeReducer.allCountriesCodeData?.map(
                                 (ele: any) => (
                                   <option key={ele?.id} value={ele?.id}>
@@ -3525,11 +3618,10 @@ export default function IndividualUs() {
                                   </option>
                                 )
                               )}
-                              {/* {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))} */}
+                              <option></option>
                             </select>
                             <Input
+                              className="mt-2"
                               disabled={values.primaryContactNumberId == 0}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -3548,7 +3640,6 @@ export default function IndividualUs() {
                               onChange={handleChange}
                               value={values.primaryContactNumber}
                             />
-                            </div>
                           </FormControl>
                         </div>
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
@@ -3569,7 +3660,7 @@ export default function IndividualUs() {
                               value={values.alternativeNumberId}
                             >
                               <option value={0}>-Select-</option>
-                              {/* <option value={1}>-Select1-</option> */}
+                              {/* <option value={1}>--Select1--</option> */}
                               {getCountriesCodeReducer.allCountriesCodeData?.map(
                                 (ele: any) => (
                                   <option key={ele?.id} value={ele?.id}>
@@ -3577,8 +3668,10 @@ export default function IndividualUs() {
                                   </option>
                                 )
                               )}
+                              <option></option>
                             </select>
                             <Input
+                              className="mt-2"
                               disabled={values.alternativeNumberId == 0}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
@@ -3600,8 +3693,11 @@ export default function IndividualUs() {
                           </FormControl>
                           <div>
                             {alternateNo ? (
-                              <div className="mt-3">
+                              <div className="mt-2">
                                 <FormControl className="w-100">
+                                  {/* <Typography align="left">
+                                Secondary Contact Number
+                              </Typography> */}
                                   <span className="w-100 d-flex">
                                     <select
                                       className="w-100"
@@ -3627,12 +3723,6 @@ export default function IndividualUs() {
                                       )}
                                     </select>
                                     <Delete
-                                      style={{
-                                        color: "red",
-                                        fontSize: "20px",
-                                        marginTop: "5px",
-                                        position: "absolute",
-                                      }}
                                       sx={{
                                         right: {
                                           xs: "-10%",
@@ -3641,12 +3731,19 @@ export default function IndividualUs() {
                                           xl: "-5%",
                                         },
                                       }}
+                                      style={{
+                                        color: "red",
+                                        fontSize: "20px",
+                                        marginTop: "5px",
+                                        position: "absolute",
+                                      }}
                                       onClick={() => {
                                         setAlternateNo(false);
                                       }}
                                     />
                                   </span>
                                   <Input
+                                    className="mt-2"
                                     disabled={values.alternativeNumberId1 == 0}
                                     style={{
                                       border: " 1px solid #d9d9d9 ",
@@ -3861,16 +3958,20 @@ export default function IndividualUs() {
                               );
                             })}
 
-                         {incomeArr.length<=4 ?( <Typography
-                            style={{
-                              color: "#007bff",
-                              cursor: "pointer",
-                              fontSize: "12px",
-                            }}
-                            onClick={addIncomeType}
-                          >
-                            <a>Add Income Type</a>
-                          </Typography>):""}
+                          {incomeArr.length <= 4 ? (
+                            <Typography
+                              style={{
+                                color: "#007bff",
+                                cursor: "pointer",
+                                fontSize: "12px",
+                              }}
+                              onClick={addIncomeType}
+                            >
+                              <a>Add Income Type</a>
+                            </Typography>
+                          ) : (
+                            ""
+                          )}
                         </Collapse>
                       </>
                     ) : (
@@ -4682,9 +4783,9 @@ export default function IndividualUs() {
                                       {errors.payResidentalCountryId}
                                     </p>
                                   </FormControl>
-                                </div> 
                                 </div>
-                                <div className="row">
+                              </div>
+                              <div className="row">
                                 <div className="col-lg-3 col-6 col-md-3 mt-2">
                                   <FormControl className="w-100">
                                     <Typography align="left">
@@ -5192,8 +5293,13 @@ export default function IndividualUs() {
                     ) : (
                       ""
                     )}
-                    <div className="row d-flex mx-1 mt-3 mx-3" >
-                      <div className="d-flex p-0 flex-column" onClick={()=>{setFieldValue("isConfirmed", !values.isConfirmed)}}>
+                    <div className="row d-flex mx-1 mt-3 mx-3">
+                      <div
+                        className="d-flex p-0 flex-column"
+                        onClick={() => {
+                          setFieldValue("isConfirmed", !values.isConfirmed);
+                        }}
+                      >
                         <div className="d-flex p-0">
                           <div className="w-auto px-2">
                             <Checkbox
@@ -5204,14 +5310,14 @@ export default function IndividualUs() {
                               value={values.isConfirmed}
                             />
                           </div>
-                          <div className="w-auto d-flex p-0" >
+                          <div className="w-auto d-flex p-0">
                             <Typography className="my-auto">
                               I confirm the information above is correct
                             </Typography>
                           </div>
                         </div>
                       </div>
-                      
+
                       <p className="error">{errors.isConfirmed}</p>
 
                       {values.isConfirmed ? (

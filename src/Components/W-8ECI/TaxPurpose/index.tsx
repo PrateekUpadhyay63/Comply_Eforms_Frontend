@@ -56,7 +56,7 @@ export default function Fedral_tax(props: any) {
     dispatch(getAllCountries())   
     dispatch(getAllCountriesCode())   
     dispatch(getAllCountriesIncomeCode())   
-    dispatch(getAllStateByCountryId())
+    // dispatch(getAllStateByCountryId())
     dispatch(GetChapter3Status());   
    }, []);
  
@@ -99,14 +99,14 @@ export default function Fedral_tax(props: any) {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          {/* <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
-       
-      </div> */}
-       <BreadCrumbComponent breadCrumbCode={1204} formName={4}/>
+          <div style={{ padding: "20px 0px",height:"100%"}}>
+          <BreadCrumbComponent breadCrumbCode={1204} formName={4}/>
+      </div>
+     
       </div> 
       <div className="col-8 mt-3">
-        <div style={{ padding: "20px" }}>
-          <Paper style={{ padding: "18px" }}>
+        <div style={{ padding: "18px" }}>
+          <Paper style={{ padding: "10px" }}>
             <Formik
             validateOnChange={false}
             validateOnBlur={false}
@@ -465,7 +465,7 @@ export default function Fedral_tax(props: any) {
                                   style={{ fontSize: "13px" }}
                                 >
                                   Last name:
-                                  <span style={{ color: "red" }}>*</span>
+                                  {/* <span style={{ color: "red" }}>*</span> */}
                                 </Typography>
 
                                 <FormControl className="w-100">

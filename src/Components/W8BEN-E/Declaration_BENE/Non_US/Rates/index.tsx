@@ -86,14 +86,14 @@ const GetAllIncomeCodesReducer = useSelector(
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "20px 0px",height:"100%",}}>
           <BreadCrumbComponent breadCrumbCode={1256} formName={3}/>
       </div>
       </div>
-      <div className="col-8 mt-5">
+      <div className="col-8 mt-3">
 
-      <div style={{ padding: "30px" }}>
-        <Paper style={{ padding: "18px" }}>
+      <div style={{ padding: "18px" }}>
+        <Paper style={{ padding: "10px" }}>
           <Formik
             initialValues={initialValue}
             enableReinitialize
@@ -121,8 +121,11 @@ const GetAllIncomeCodesReducer = useSelector(
                 <>{console.log(errors, values, "valeeeeeeeeeee")}</>
                 <div style={{ margin: "10px" }}>
                   <Typography
-                    align="left"
-                    style={{ marginTop: "10px", fontSize: "38px" }}
+                     align="left"
+                     style={{
+                       fontSize: "27px",
+                       fontWeight: "550",
+                     }}
                   >
                     Special Rates and Conditions
                     <span>
@@ -150,7 +153,7 @@ const GetAllIncomeCodesReducer = useSelector(
                         <Info
                           style={{
                             color: "#ffc107",
-                            fontSize: "26px",
+                            fontSize: "18px",
                             cursor: "pointer",
                             verticalAlign: "super",
                           }}
@@ -225,8 +228,8 @@ const GetAllIncomeCodesReducer = useSelector(
                   ) : (
                     ""
                   )}
-                  <div style={{ marginTop: "20px" }}>
-                    <Typography style={{ fontSize: "20px" }}>
+                  <div style={{ marginTop: "15px" }}>
+                    <Typography style={{ fontSize: "22px" }}>
                       Is the submission being made to claim treaty benefits on
                       items not covered by the representations made above and
                       where special withholding rates and conditions may apply?
@@ -714,7 +717,7 @@ const GetAllIncomeCodesReducer = useSelector(
                   >
                     <span style={{ marginRight: "5px" }}>
                       {" "}
-                      <ArrowBackIcon />
+                      {/* <ArrowBackIcon /> */}
                     </span>{" "}
                     Back
                   </Button>

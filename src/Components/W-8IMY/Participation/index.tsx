@@ -65,7 +65,7 @@ export default function Penalties() {
           setSubmitting(true);
           dispatch(
             W8_state(values, () => {
-              history("/W-8BEN/Declaration/US_Tin/Certification_Substitute");
+              history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY/Submit_IMY");
             })
           );
         }}
@@ -97,20 +97,20 @@ export default function Penalties() {
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ height:"100%" }}>
+          <div style={{ padding: "20px 0px", height:"100%" }}>
             <BreadCrumbComponent breadCrumbCode={1296} formName={6}/>
           
       </div>
       </div>
-      <div className="col-8 mt-4">
+      <div className="col-8 mt-3">
 
-              <div style={{ padding: "10px" }}>
-                <Paper style={{ padding: "18px" }}>
+              <div style={{ padding: "18px" }}>
+                <Paper style={{ padding: "10px" }}>
                   <Typography
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -120,7 +120,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -240,7 +240,7 @@ export default function Penalties() {
                         onChange={handleChange}
                         error={Boolean(touched.signedBy && errors.signedBy)}
                       />
-                      {/* <p className="error">{errors.signedBy}</p> */}
+                      <p className="error">{errors.signedBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -457,7 +457,7 @@ export default function Penalties() {
                     </div>
                   </div>
 
-                  <Typography style={{ display: "flex", marginLeft: "10px" }}>
+                  <Typography style={{ display: "flex"}}>
                     <Checkbox
                       name="isAgreeWithDeclaration"
                       value={values.isAgreeWithDeclaration}
@@ -473,16 +473,7 @@ export default function Penalties() {
                     >
                       Please "check" box to confirm your acceptance with the
                       above declarations{" "}
-                      {errors.isAgreeWithDeclaration &&
-                      touched.isAgreeWithDeclaration ? (
-                        <div>
-                          <Typography color="error">
-                            {errors.isAgreeWithDeclaration}
-                          </Typography>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                     
                       <span>
                         <Tooltip
                           style={{ backgroundColor: "black", color: "white" }}
@@ -517,7 +508,18 @@ export default function Penalties() {
                         </Tooltip>
                       </span>
                     </Typography>
+                    
                   </Typography>
+                  {errors.isAgreeWithDeclaration &&
+                      touched.isAgreeWithDeclaration ? (
+                        <div>
+                          <Typography color="error">
+                            {errors.isAgreeWithDeclaration}
+                          </Typography>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                   {toolInfo === "check" ? (
                     <div>
                       <Paper

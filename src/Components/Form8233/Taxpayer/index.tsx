@@ -61,7 +61,7 @@ export default function Tin(props: any) {
     dispatch(getAllCountries())   
     dispatch(getAllCountriesCode())   
     dispatch(getAllCountriesIncomeCode())   
-    dispatch(getAllStateByCountryId())   
+    // dispatch(getAllStateByCountryId())   
     dispatch(
       getTinTypes(3, (data: any) => {
         setUStinArray(data);
@@ -133,14 +133,14 @@ export default function Tin(props: any) {
         </div>
         <div className="row w-100 h-100">
        <div className="col-4">
-          <div style={{ padding: "0px 0px",height:"100%" }}>
+          <div style={{ padding: "20px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1360} formName={2}/>
       </div>
       </div>
       <div className="col-8 mt-3">
-              <div style={{ padding: "20px" }}>
+              <div style={{ padding: "18px" }}>
                 
-                <Paper style={{ padding: "18px" }}>
+                <Paper style={{ padding: "10px" }}>
                 {toolInfo === "ForeignTin" ? (
                     <div className="mt-1">
                       <Paper
@@ -597,7 +597,8 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={handleChange}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />

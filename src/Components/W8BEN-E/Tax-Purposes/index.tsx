@@ -62,7 +62,7 @@ export default function Fedral_tax(props: any) {
     dispatch(getAllCountries());
     dispatch(getAllCountriesCode());
     dispatch(getAllCountriesIncomeCode());
-    dispatch(getAllStateByCountryId());
+    // dispatch(getAllStateByCountryId(258));
     dispatch(GetChapter3Status());
   }, []);
 
@@ -126,14 +126,14 @@ export default function Fedral_tax(props: any) {
         </div>
         <div className="row w-100 h-100">
           <div className="col-4">
-            {/* <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
-       
-      </div> */}
+            <div style={{ padding: "20px 0px",height:"100%" }}>
             <BreadCrumbComponent breadCrumbCode={1203} formName={3} />
+      </div>
+            
           </div>
           <div className="col-8 mt-3">
-            <div style={{ padding: "20px" }}>
-              <Paper style={{ padding: "18px" }}>
+            <div style={{ padding: "18px" }}>
+              <Paper style={{ padding: "10px" }}>
                 <Formik
                 validateOnChange={false}
                 validateOnBlur={false}
@@ -169,7 +169,7 @@ export default function Fedral_tax(props: any) {
                                 align="left"
                                 style={{
                                   color: "black",
-                                  fontSize: "25px",
+                                  fontSize: "27px",
                                   fontWeight: "550",
                                 }}
                               >
@@ -310,7 +310,7 @@ export default function Fedral_tax(props: any) {
                                       padding: " 0 10px",
                                       color: "#7e7e7e",
                                       fontStyle: "italic",
-                                      height: "36px",
+                                      height: "39px",
                                     }}
                                   >
                                     <option value={0}> -----select---</option>
@@ -469,14 +469,12 @@ export default function Fedral_tax(props: any) {
                                     type="text"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    // helperText={
-                                    //   touched.firstName && errors.firstName
-                                    // }
+                                   
                                     error={Boolean(
                                       touched.firstName && errors.firstName
                                     )}
                                     name="firstName"
-                                    className="inputClassFull"
+                                    // className="inputClassFull"
                                     value={values.firstName}
                                   />
                                 </FormControl>
@@ -541,7 +539,7 @@ export default function Fedral_tax(props: any) {
                                         padding: " 0 10px",
                                         color: "#7e7e7e",
                                         fontStyle: "italic",
-                                        height: "36px",
+                                        height: "39px",
                                       }}
                                     >
                                       <option value="">-Select-</option>

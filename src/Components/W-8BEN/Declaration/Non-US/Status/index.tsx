@@ -139,13 +139,13 @@ export default function Factors() {
       </div>
       <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px", height: "100%", marginTop: "20px" }}>
+          <div style={{ padding: "20px 0px", height: "100%" }}>
             <BreadCrumbComponent breadCrumbCode={1207} formName={2} />
 
           </div>
         </div>
-        <div className="col-8 mt-5">
-          <div style={{ padding: "30px" }}>
+        <div className="col-8 mt-3">
+          <div style={{ padding: "10px" }}>
             <Paper style={{ padding: "18px" }}>
               <Formik
                 validateOnChange={false}
@@ -177,125 +177,131 @@ export default function Factors() {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
+
                     <div style={{ margin: "10px" }}>
-                      <Typography
-                        align="left"
-                        style={{ marginTop: "10px", fontSize: "38px" }}
+                    <Typography
+                    
+                    align="left"
+                    style={{fontSize: "27px" ,fontWeight:"550"}}
+                  >
+                    United States Citizenship Status
+                    <span>
+                      <Tooltip
+                        style={{ backgroundColor: "black", color: "white" }}
+                        title={
+                          <>
+                            <Typography color="inherit">
+                              United States citizenship status
+                            </Typography>
+                            <a onClick={() => setToolInfo("basic")}>
+                              <Typography
+                                style={{
+                                  cursor: "pointer",
+                                  textDecorationLine: "underline",
+                                }}
+                                align="center"
+                              >
+                                {" "}
+                                View More...
+                              </Typography>
+                            </a>
+                          </>
+                        }
                       >
-                        United States Citizenship Status
-                        <span>
-                          <Tooltip
-                            style={{ backgroundColor: "black", color: "white" }}
-                            title={
-                              <>
-                                <Typography color="inherit">
-                                  United States citizenship status
-                                </Typography>
-                                <a onClick={() => setToolInfo("basic")}>
-                                  <Typography
-                                    style={{
-                                      cursor: "pointer",
-                                      textDecorationLine: "underline",
-                                    }}
-                                    align="center"
-                                  >
-                                    {" "}
-                                    View More...
-                                  </Typography>
-                                </a>
-                              </>
-                            }
-                          >
-                            <Info
-                              style={{
-                                color: "#ffc107",
-                                fontSize: "16px",
-                                cursor: "pointer",
-                                verticalAlign: "super",
-                              }}
-                            />
-                          </Tooltip>
-                        </span>
-                      </Typography>
-                      {toolInfo === "basic" ? (
-                        <div>
-                          <Paper
-                            style={{
-                              backgroundColor: "#dedcb1",
-                              padding: "15px",
-                              marginBottom: "10px",
-                            }}
-                          >
-                            <Typography>
-                              If you are an alien (not a U.S. citizen), you are
-                              considered a non resident alien unless you meet one of
-                              two tests. You are a resident alien of the United
-                              States for tax purposes if you meet either the green
-                              card test or the substantial presence test for the
-                              calendar year (January 1-December 31).
-                            </Typography>
-                            <Typography style={{ marginTop: "10px" }}>
-                              Certain rules exist for determining the Residency
-                              Starting and Ending Dates for aliens.
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              In some cases aliens are allowed to make elections
-                              which override the green card test and the substantial
-                              presence test, as follows:
-                            </Typography>
+                        <Info
+                          style={{
+                            color: "#ffc107",
+                            fontSize: "16px",
+                            cursor: "pointer",
+                            verticalAlign: "super",
+                          }}
+                        />
+                      </Tooltip>
+                    </span>
+                  </Typography>
+                  {toolInfo === "basic" ? (
+                    <div>
+                      <Paper
+                        style={{
+                          backgroundColor: "#dedcb1",
+                          padding: "15px",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        <Typography>
+                          If you are an alien (not a U.S. citizen), you are
+                          considered a non resident alien unless you meet one of
+                          two tests. You are a resident alien of the United
+                          States for tax purposes if you meet either the green
+                          card test or the substantial presence test for the
+                          calendar year (January 1-December 31).
+                        </Typography>
+                        <Typography style={{ marginTop: "10px" }}>
+                          Certain rules exist for determining the Residency
+                          Starting and Ending Dates for aliens.
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          In some cases aliens are allowed to make elections
+                          which override the green card test and the substantial
+                          presence test, as follows:
+                        </Typography>
 
-                            <Typography style={{ marginTop: "20px" }}>
-                              - Non-resident Spouse Treated as a Resident
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              - Closer Connection to a Foreign Country
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              - Effect of Tax Treaties
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              You can be both a nonresident alien and a resident
-                              alien during the same tax year. This usually occurs in
-                              the year you arrive or depart from the United States.
-                              If so, you may elect to be treated as a Dual Status
-                              Alien for this taxable year and a Resident Alien for
-                              the next taxable year if you meet certain tests.
-                              (Refer to section 'Dual-Status Aliens' - 'First Year
-                              Choice' in Publication 519, U.S. Tax Guide for
-                              Aliens).
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              A resident alien who is required to establish their
-                              U.S. residency for the purposes of claiming a tax
-                              treaty benefit with a foreign country should refer to
-                              Certification of U.S. Residency for Tax Treaty
-                              Purposes.
-                            </Typography>
-                            <Typography style={{ marginTop: "20px" }}>
-                              Ref: EH162
-                            </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          - Non-resident Spouse Treated as a Resident
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          - Closer Connection to a Foreign Country
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          - Effect of Tax Treaties
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          You can be both a nonresident alien and a resident
+                          alien during the same tax year. This usually occurs in
+                          the year you arrive or depart from the United States.
+                          If so, you may elect to be treated as a Dual Status
+                          Alien for this taxable year and a Resident Alien for
+                          the next taxable year if you meet certain tests.
+                          (Refer to section 'Dual-Status Aliens' - 'First Year
+                          Choice' in Publication 519, U.S. Tax Guide for
+                          Aliens).
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          A resident alien who is required to establish their
+                          U.S. residency for the purposes of claiming a tax
+                          treaty benefit with a foreign country should refer to
+                          Certification of U.S. Residency for Tax Treaty
+                          Purposes.
+                        </Typography>
+                        <Typography style={{ marginTop: "20px" }}>
+                          Ref: EH162
+                        </Typography>
 
-                            <Link
-                              href="#"
-                              underline="none"
-                              style={{ marginTop: "10px", fontSize: "16px" }}
-                              onClick={() => {
-                                setToolInfo("");
-                              }}
-                            >
-                              --Show Less--
-                            </Link>
-                          </Paper>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                        <Link
+                          href="#"
+                          underline="none"
+                          style={{ marginTop: "10px", fontSize: "16px" }}
+                          onClick={() => {
+                            setToolInfo("");
+                          }}
+                        >
+                          --Show Less--
+                        </Link>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                    </div>
+                    <div className="mt-4" style={{ margin: "10px" }}>
+                     
 
                       <Typography
+                    
                         style={{
-                          fontSize: "19px",
+                          fontSize: "17px",
                           marginTop: "10px",
-                          marginBottom: "10px",
+                         
                         }}
                       >
                         Was the individual born in the United States and held U.S.
@@ -333,17 +339,23 @@ export default function Factors() {
 
                       {values.isHeldUSCitizenship == "No" ? (
                       <>
-                      <Typography>
+                      <Typography  style={{
+                          fontSize: "17px",
+                          marginTop: "10px",
+                         
+                        }}>
                         Country of citizenship of the individual?
                         <span style={{ color: "red" }}>*</span>
                       </Typography>
                       <FormControl className="form">
                         <select
+                        className="my-2"
                           style={{
+                            fontSize:"17px",
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "36px",
+                                height: "33px",
                               }}
                               name="countryOfCitizenship"
                               id="countryId"
@@ -371,21 +383,31 @@ export default function Factors() {
                       <Divider className="dividr" />
                       <Typography
                         style={{
-                          fontSize: "19px",
-                          marginTop: "10px",
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
                           marginBottom: "10px",
                         }}
                       >
                         Date of Birth (mm/dd/yyyy)
                       </Typography>
                       <FormControl className="form">
-                      <input className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
+                      <input className="input my-2"  type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
       disabled />
                       </FormControl>
 
                       <Divider className="dividr" />
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                          fontSize: "17px",
+                          // marginTop: "10px",
+                         
+                     
+                        // marginBottom: "10px",
+                      }}
                       >
                         Is the individual subject to taxation as a U.S. citizen
                         or resident alien?
@@ -419,7 +441,14 @@ export default function Factors() {
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                       >
                         Is the individual a Permanent Resident Card Holder
                         (Green Card)?<span style={{ color: "red" }}>*</span>
@@ -452,7 +481,14 @@ export default function Factors() {
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                       >
                         Does the individual hold dual citizenship status?
                        
@@ -487,7 +523,14 @@ export default function Factors() {
                       {values.isHoldDualCitizenshipStatus === "Yes" ? (
                         <>
                           <Typography
-                            style={{ fontSize: "19px", marginTop: "10px" }}
+                             style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                           >
                             Does or did the dual citizenship include U.S.
                             citizenship? <span style={{ color: "red" }}>*</span>
@@ -525,7 +568,14 @@ export default function Factors() {
 
                       {values.isHoldDualCitizenshipIncludeUSCitizenship == "Yes" ? (<>
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Has the individual formally renounced U.S. citizenship?{" "}
                           <span style={{ color: "red" }}>*</span>
@@ -559,7 +609,14 @@ export default function Factors() {
 
                       {values.isRenouncedCitizenship == "Yes" ? (<>
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Please enter the date U.S. citizenship was
                           renounced: <span style={{ color: "red" }}>*</span>
@@ -585,21 +642,57 @@ export default function Factors() {
                             value={values.dateRenouncedUSCitizenship}
                           /> */}
                           <FormControl className="form">
-                        <input name="renouncementProof" value={values.renouncementProof} className="input" type="date" />
-                   
+                          <input
+                              className="my-2"
+                               style={{fontSize:"15px",width:"100%"}}
+                                type="date"
+                               
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              
+                                name="dateRenouncedUSCitizenship"
+                               
+                                value={values.dateRenouncedUSCitizenship}
+                              />
                         </FormControl>
                         <Divider className="dividr" />
-                        <Typography style={{ fontSize: "19px", marginTop: "10px" }}>
+                        <Typography  style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}>
                           Please attach proof of formal renouncement:
                         </Typography>
                         <div style={{ marginTop: "10px" }}>
-                          <input name="renouncementProof" value={values.renouncementProof} style={{ fontSize: "22px" }} type="file" />
+                        <input
+                              className="my-2"
+                              style={{fontSize:"12px"}}
+                              
+                                type="file"
+                                placeholder="proof of formal renouncement"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                               
+                               
+                                name="renouncementProof"
+                                value={values.renouncementProof}
+                              />
                         </div>
                         <Divider className="dividr" />
                       </>) : ("")}
 
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                       >
                         Does the individual the submission represents have tax
                         liability in any other jurisdictions?
@@ -687,7 +780,14 @@ export default function Factors() {
 
                           <Divider className="dividr" />
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                       >
                         Does the individual the submission represents have
                         tax liability in any other jurisdictions?
@@ -758,7 +858,14 @@ export default function Factors() {
                       )}
 
                       <Typography
-                        style={{ fontSize: "19px", marginTop: "10px" }}
+                         style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                       >
                         Has the individual been physically present in the United
                         States on at least 31 days during the current calendar
@@ -791,7 +898,7 @@ export default function Factors() {
                         <>
                         <Typography
                           style={{
-                            fontSize: "19px",
+                            fontSize: "17px",
                             marginTop: "10px",
                             marginBottom: "10px",
                           }}
@@ -799,12 +906,19 @@ export default function Factors() {
                           Date of Birth (mm/dd/yyyy)
                         </Typography>
                         <FormControl className="form">
-                          <input  className="input" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
+                          <input  className="input my-2" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
       disabled />
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Is the individual subject to taxation as a U.S. citizen
                           or resident alien?
@@ -837,7 +951,14 @@ export default function Factors() {
                         <Divider className="dividr" />
 
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Is the individual a Permanent Resident Card Holder
                           (Green Card)?
@@ -871,7 +992,14 @@ export default function Factors() {
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Does the individual hold dual citizenship status?
                          
@@ -906,7 +1034,14 @@ export default function Factors() {
                         {values.isHoldDualCitizenshipStatus == "Yes" ? (
                           <>
                             <Typography
-                              style={{ fontSize: "19px", marginTop: "10px" }}
+                               style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                             >
                               Does or did the dual citizenship include U.S.
                               citizenship? <span style={{ color: "red" }}>*</span>
@@ -947,7 +1082,14 @@ export default function Factors() {
 
                         {values.isHoldDualCitizenshipIncludeUSCitizenship == "Yes" ? (<>
                           <Typography
-                            style={{ fontSize: "19px", marginTop: "10px" }}
+                             style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                           >
                             Has the individual formally renounced U.S. citizenship?{" "}
                             <span style={{ color: "red" }}>*</span>
@@ -985,27 +1127,27 @@ export default function Factors() {
                         {values.isRenouncedCitizenship === "Yes" ? (
                           <>
                             <Typography
-                              style={{ fontSize: "19px", marginTop: "10px" }}
+                               style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                             >
                               Please enter the date U.S. citizenship was
                               renounced: <span style={{ color: "red" }}>*</span>
                             </Typography>
                             <FormControl >
-                              <TextField
-                                autoComplete="dateRenouncedUSCitizenship"
+                              <input
+                              className="my-2"
+                               style={{fontSize:"15px",width:"100%"}}
                                 type="date"
-                                placeholder="date U.S. citizenship was
-                        renounced:"
+                               
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                helperText={
-                                  touched.dateRenouncedUSCitizenship &&
-                                  errors.dateRenouncedUSCitizenship
-                                }
-                                error={Boolean(
-                                  touched.dateRenouncedUSCitizenship &&
-                                  errors.dateRenouncedUSCitizenship
-                                )}
+                              
                                 name="dateRenouncedUSCitizenship"
                                
                                 value={values.dateRenouncedUSCitizenship}
@@ -1013,25 +1155,28 @@ export default function Factors() {
                             </FormControl>
                             <Divider className="dividr" />
                             <Typography
-                              style={{ fontSize: "19px", marginTop: "10px" }}
+                               style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                             >
                               Please attach proof of formal renouncement:
                             </Typography>
                             <div style={{ marginTop: "10px" }}>
-                              <TextField
-                                autoComplete="renouncementProof"
+                              <input
+                              className="my-2"
+                              style={{fontSize:"12px"}}
+                              
                                 type="file"
                                 placeholder="proof of formal renouncement"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                helperText={
-                                  touched.renouncementProof &&
-                                  errors.renouncementProof
-                                }
-                                error={Boolean(
-                                  touched.renouncementProof &&
-                                  errors.renouncementProof
-                                )}
+                               
+                               
                                 name="renouncementProof"
                                 value={values.renouncementProof}
                               />
@@ -1043,7 +1188,14 @@ export default function Factors() {
                         )}
 
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
@@ -1211,7 +1363,14 @@ export default function Factors() {
                               // </div>} */}
                             </div>
                             <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Does the individual the submission represents have tax
                           liability in any other jurisdictions?
@@ -1250,7 +1409,14 @@ export default function Factors() {
                           ""
                         )}
                         <Typography
-                          style={{ fontSize: "19px", marginTop: "10px" }}
+                           style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}
                         >
                           Has the individual been physically present in the United
                           States on at least 31 days during the current calendar
@@ -1283,7 +1449,14 @@ export default function Factors() {
                       </>
                       )}
 
-                      {/* <Typography style={{ fontSize: "19px", marginTop: "10px" }}>
+                      {/* <Typography  style={{
+                        
+                            fontSize: "17px",
+                            marginTop: "10px",
+                           
+                       
+                          marginBottom: "10px",
+                        }}>
               Is the individual subject to taxation as a U.S. citizen or resident alien?<span style={{ color: "red" }}>*</span>
             </Typography>
 
@@ -1496,10 +1669,7 @@ export default function Factors() {
                           marginBottom: "20px",
                         }}
                       >
-                        <span style={{ marginRight: "5px" }}>
-                          {" "}
-                          <ArrowBackIcon />
-                        </span>{" "}
+                       
                         Back
                       </Button>
                     </Typography>

@@ -86,13 +86,13 @@ const GetAllIncomeCodesReducer = useSelector(
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%",marginTop:"20px" }}>
+          <div style={{ padding: "20px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1256} formName={2}/>
       </div>
       </div>
-      <div className="col-8 mt-5">
+      <div className="col-8 mt-3">
 
-      <div style={{ padding: "30px" }}>
+      <div style={{ padding: "10px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
             validateOnChange={false}
@@ -125,7 +125,7 @@ const GetAllIncomeCodesReducer = useSelector(
                 <div style={{ margin: "10px" }}>
                   <Typography
                     align="left"
-                    style={{ marginTop: "10px", fontSize: "38px" }}
+                    style={{ marginTop: "10px", fontSize: "27px" ,fontWeight:"550"}}
                   >
                     Special Rates and Conditions
                     <span>
@@ -153,7 +153,7 @@ const GetAllIncomeCodesReducer = useSelector(
                         <Info
                           style={{
                             color: "#ffc107",
-                            fontSize: "26px",
+                            fontSize: "16px",
                             cursor: "pointer",
                             verticalAlign: "super",
                           }}
@@ -291,7 +291,7 @@ const GetAllIncomeCodesReducer = useSelector(
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "20px",
+                                fontSize: "18px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -386,11 +386,11 @@ const GetAllIncomeCodesReducer = useSelector(
                               />):""}
                             </Typography>
                             <div className="col-12 d-flex" style={{justifyContent:"space-between"}}>
-                              <div className="col-5">
+                              <div className="col-6 mx-1">
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "22px",
+                                    fontSize: "18px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -429,11 +429,11 @@ const GetAllIncomeCodesReducer = useSelector(
                                 </FormControl>
                                 <p className="error">{errors.articleBeneficalOwner}</p>
                               </div>
-                              <div className="col-5">
+                              <div className="col-6 mx-1">
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "22px",
+                                    fontSize: "18px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -476,10 +476,10 @@ const GetAllIncomeCodesReducer = useSelector(
                               </div>
                             </div>
 
-                            <div className="col-10">
+                            <div className="col-12">
                             <Typography
                               align="left"
-                              style={{ fontSize: "22px", marginTop: "10px" }}
+                              style={{ fontSize: "18px", marginTop: "10px" }}
                             >
                               Enter the Subparagraph of the Article being
                               claimed:{" "}
@@ -513,11 +513,11 @@ const GetAllIncomeCodesReducer = useSelector(
                             </div>
 
                             <div className="col-12 d-flex"style={{justifyContent:"space-between"}}>
-                              <div className="col-5">
+                              <div className="col-6 mx-1">
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "22px",
+                                    fontSize: "18px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -556,11 +556,11 @@ const GetAllIncomeCodesReducer = useSelector(
                                   </p>
                                 </FormControl>
                               </div>
-                              <div className="col-5">
+                              <div className="col-6 mx-1">
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "22px",
+                                    fontSize: "18px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -625,7 +625,7 @@ const GetAllIncomeCodesReducer = useSelector(
                       <div>
                         <Typography
                           align="left"
-                          style={{ fontSize: "22px", marginTop: "10px" }}
+                          style={{ fontSize: "18px", marginTop: "10px" }}
                         >
                           Please provide a brief explanation why the beneficial
                           owner meets the terms of the treaty article or
@@ -638,8 +638,8 @@ const GetAllIncomeCodesReducer = useSelector(
                         <FormControl className="w-100">
                           <TextField
                           
-                            className="col-md-10 col-12"
-                           
+                            className="col-md-12 col-12"
+                           multiline
                             name="articleExplanation"
                             value={values.articleExplanation}
                             onBlur={handleBlur}
@@ -715,10 +715,7 @@ const GetAllIncomeCodesReducer = useSelector(
                       marginBottom: "20px",
                     }}
                   >
-                    <span style={{ marginRight: "5px" }}>
-                      {" "}
-                      <ArrowBackIcon />
-                    </span>{" "}
+                   
                     Back
                   </Button>
                 </Typography>
