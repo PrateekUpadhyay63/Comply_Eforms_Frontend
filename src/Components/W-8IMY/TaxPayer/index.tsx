@@ -484,10 +484,16 @@ export default function Tin(props: any) {
                           value={values.usTinTypeId}
                           onChange={(e) => {
                             handleChange(e);
+                            
                           }}
                         >
-                          <option value="1">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
+                          <option value={1}>-Select-</option>
+                              <option value={2}>EIN</option>
+                              <option value={3}>QIEIN</option>
+                              <option value={4}>WPEIN</option>
+                            
+                          
+                              {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -502,7 +508,7 @@ export default function Tin(props: any) {
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>
@@ -510,7 +516,7 @@ export default function Tin(props: any) {
                       <div className="col-lg-5 col-12">
                         <Typography style={{fontSize:"14px"}}>U.S. TIN</Typography>
                         <Input
-                          disabled={values.notAvailable}
+                          disabled={(values.notAvailable)}
                           fullWidth
                           type="text"
                           name="usTin"
