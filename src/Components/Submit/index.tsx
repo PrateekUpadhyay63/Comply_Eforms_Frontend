@@ -73,15 +73,15 @@ const Declaration = (props: any) => {
                       <Typography
                         align="left"
                         style={{
-                          fontSize: "26px",
-                          color: "#04506e",
+                          fontSize: "27px",
+                          color: "black",
                           fontWeight: "bold",
                         }}
                       >
                         Electronic Signature Confirmation
                       </Typography>
                     }
-                    <Divider style={{ background: "black" }} />
+                    <Divider style={{ background: "black",marginTop:"10px" }} />
 
                     <div>
                       <Accordion
@@ -119,7 +119,7 @@ const Declaration = (props: any) => {
                               style={{
                                 color: "black",
                                 fontWeight: "bold",
-                                fontSize: "18px",
+                                fontSize: "20px",
                                 width: "100%",
                               }}
                             >
@@ -128,7 +128,7 @@ const Declaration = (props: any) => {
 
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               <span
                                 style={{
@@ -150,7 +150,7 @@ const Declaration = (props: any) => {
 
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               Furthermore you acknowledge that you understand
                               your rights and obligations under Title 28 U.S.C.
@@ -159,7 +159,7 @@ const Declaration = (props: any) => {
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               Additionally, you are certifying that you have
                               read and agreed the certification statement
@@ -168,7 +168,7 @@ const Declaration = (props: any) => {
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               1. You are the beneficial owner (or an authorized
                               to sign for the beneficial owner) of all the
@@ -176,13 +176,13 @@ const Declaration = (props: any) => {
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               2. The beneficial owner is not a U.S person.
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               3. You are a U.S. person submitting a Form type
                               W-9
@@ -200,20 +200,20 @@ const Declaration = (props: any) => {
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px" }}
+                              style={{ fontSize: "17px" }}
                             >
                               1. You have entered your name in the box provided
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px" }}
+                              style={{ fontSize: "17px" }}
                             >
                               2. Checked the{" "}
                               <span
                                 style={{
                                   color: "black",
                                   fontWeight: "bold",
-                                  fontSize: "15px",
+                                  fontSize: "17px",
                                 }}
                               >
                                 "I agree with the above declaration"
@@ -222,7 +222,7 @@ const Declaration = (props: any) => {
                             </Typography>
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px" }}
+                              style={{ fontSize: "17px" }}
                             >
                               3. By submitting this form you are providing
                               a legally binding self certified electronic
@@ -231,7 +231,7 @@ const Declaration = (props: any) => {
 
                             <Typography
                               align="left"
-                              style={{ fontSize: "15px", marginTop: "13px" }}
+                              style={{ fontSize: "17px", marginTop: "13px" }}
                             >
                               On submission your details will be transmitted to
                               your previously selected withholding agent previously selected, who
@@ -243,7 +243,7 @@ const Declaration = (props: any) => {
                           </Paper>
                           <div style={{ display: "flex", marginTop: "10px" }}>
                             <Checkbox name="declaration" value={values.declaration} onChange={handleChange} checked={values.declaration}/>
-                            <Typography style={{ marginTop: "9px" }}>
+                            <Typography style={{ marginTop: "9px",fontSize:"17px" }}>
                               I agree with the above Declarations
                             </Typography>
                           </div>
@@ -277,15 +277,14 @@ const Declaration = (props: any) => {
                               backgroundColor: "#d4d9d4",
                             }}
                           >
-                            <Divider
-                              style={{ marginTop: "10px", color: "black" }}
-                            />
+                           
                             <Typography
                               style={{
                                 color: "black",
-                                fontWeight: "bold",
-                                fontSize: "16px",
+                                fontWeight: "500",
+                                fontSize: "17px",
                                 marginTop: "10px",
+                                textAlign:"justify"
                               }}
                             >
                               We may be required to provide you with a Form
@@ -312,9 +311,9 @@ const Declaration = (props: any) => {
                             <Divider style={{ marginBottom: "10px" }} />
                           </Paper>
                           <div style={{ display: "flex", marginTop: "10px" }}>
-                            <Checkbox     name="IsSubmit" value={values.IsSubmit} onChange={handleChange} checked={values.IsSubmit}/>
+                            <Checkbox  name="IsSubmit" value={values.IsSubmit} onChange={handleChange} checked={values.IsSubmit}/>
                          
-                            <Typography style={{ marginTop: "9px" }}>
+                            <Typography style={{ marginTop: "9px" ,fontSize:"17px"}}>
                               I give consent to receiving a recipent statement
                               electronically.
                             </Typography>
@@ -323,7 +322,7 @@ const Declaration = (props: any) => {
                           <p className="error">{errors.IsSubmit}</p>
                           <div style={{ display: "flex", marginTop: "10px" }}>
                             <Checkbox  name="IsSubmit_not" value={values.IsSubmit_not} onChange={handleChange} checked={values.IsSubmit_not} />
-                            <Typography style={{ marginTop: "9px" }}>
+                            <Typography style={{ marginTop: "9px",fontSize:"17px" }}>
                               {" "}
                               I do not give consent to receiving a recipent
                               statement electronically.

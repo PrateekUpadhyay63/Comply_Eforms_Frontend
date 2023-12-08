@@ -131,7 +131,7 @@ export default function Tin(props: any) {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "28px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -205,7 +205,7 @@ export default function Tin(props: any) {
 
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px" }}
+                    style={{ margin: "10px", fontSize: "17px" }}
                   >
                     There are no mandatory documents required for this
                     submission
@@ -214,7 +214,7 @@ export default function Tin(props: any) {
                   <Typography
                     style={{
                       margin: "10px",
-                      fontSize: "21px",
+                      fontSize: "22px",
                       fontWeight: "550",
                     }}
                   >

@@ -113,8 +113,10 @@ export default function Penalties(props: any) {
       </div>
           </div>
           <div className="col-8 mt-3" > 
-      <div style={{ padding: "10px" }}>
-      <div style={{ width: "100%" ,backgroundColor:"#fff",marginBottom:"8rem"}}>
+      <div style={{ padding: "10px 0px" }}>
+        <Paper elevation={6} style={{ padding: "17px",}}>
+
+        <div style={{ width: "100%" ,backgroundColor:"#fff",marginBottom:"8rem"}}>
      <Typography
           align="left"
           style={{ margin: "10px", fontSize: "27px", fontWeight: "550" }}
@@ -590,6 +592,8 @@ export default function Penalties(props: any) {
                   )}
 
      </div>
+        </Paper>
+      
         <div
           style={{
             display: "flex",

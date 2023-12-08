@@ -33,7 +33,7 @@ export default function Term() {
           >
             Terms & Conditions
           </Typography>
-          <Paper elevation={6} style={{ padding: "17px" }}>
+          <Paper elevation={6} style={{ padding: "17px" ,textAlign:"justify"}}>
             <Typography
               style={{ fontWeight: "550", fontSize: "17px" }}
               align="left"
@@ -48,8 +48,8 @@ export default function Term() {
                   fontWeight: "500",
                 }}
               >
-                Generic Terms & Conditions (Client Specific T&C's to be added
-                here.)
+               Generic Terms & Conditions (Client Specific T&C's to be added
+                here)
               </span>
             </Typography>
             <Typography
@@ -59,7 +59,7 @@ export default function Term() {
             >
               Submissions
             </Typography>
-            <Typography align="left" style={{ fontSize: "15px" }}>
+            <Typography align="left" style={{ fontSize: "15px",textAlign:"justify" }}>
               By using this site, you may submit, or Comply Exchange may gather,
               certain limited information about you and your usage of the site.
               Subject to the terms of the Privacy Policy Comply Exchange is free
@@ -73,7 +73,7 @@ export default function Term() {
             >
               No Warranties and Limitation of Liability
             </Typography>
-            <Typography align="left" style={{ fontSize: "15px" }}>
+            <Typography align="left" style={{ fontSize: "15px" ,textAlign:"justify"}}>
               TO THE MAXIMUM EXTENT PERMISSIBLE BY APPLICABLE LAW, COMPLY
               EXCHANGE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
               BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND
@@ -90,7 +90,7 @@ export default function Term() {
             </Typography>
             <Typography
               align="left"
-              style={{ fontSize: "15px" }}
+              style={{ fontSize: "15px",textAlign:"justify" }}
               className="mt-3"
             >
               SO WHILE COMPLY EXCHANGE MAY USE REASONABLE EFFORTS TO INCLUDE
@@ -106,7 +106,7 @@ export default function Term() {
 
             <Typography
               align="left"
-              style={{ fontSize: "15px" }}
+              style={{ fontSize: "15px",textAlign:"justify" }}
               className="mt-3"
             >
               IN FACT, YOUR USE OF THE COMPLY EXCHANGE SITE IS AT YOUR OWN RISK.
@@ -133,7 +133,7 @@ export default function Term() {
             >
               Other Agreements
             </Typography>
-            <Typography align="left" style={{ fontSize: "15px" }}>
+            <Typography align="left" style={{ fontSize: "15px",textAlign:"justify" }}>
               Your use of the Comply Exchange site, or certain features or
               information provided through the Comply Exchange site, may be
               subject to additional agreements apart from the Rules.
@@ -146,7 +146,7 @@ export default function Term() {
             >
               Links
             </Typography>
-            <Typography align="left" style={{ fontSize: "15px" }}>
+            <Typography align="left" style={{ fontSize: "15px",textAlign:"justify" }}>
               Comply Exchange has not reviewed all of the sites which are linked
               to or from the Comply Exchange site, and the fact of such links
               does not indicate any approval or endorsement of any material
@@ -162,7 +162,7 @@ export default function Term() {
             >
               U.S. International Information
             </Typography>
-            <Typography align="left" style={{ fontSize: "15px" }}>
+            <Typography align="left" style={{ fontSize: "15px" ,textAlign:"justify"}}>
               Most of the information on the Comply Exchange site applies
               internationally, but a significant amount of information applies
               only to certain countries or regions. Although Comply Exchange

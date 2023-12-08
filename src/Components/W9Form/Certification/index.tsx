@@ -268,8 +268,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }} />
-            <Typography
-              style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{ fontSize: "17px", color: "black", marginTop: "15px" ,textAlign:"justify" }}
             >
               1. The number shown on this form is my correct taxpayer
               identification number (or I am waiting for a number to be issued
@@ -283,8 +283,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }}   />
-            <Typography
-              style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{ fontSize: "17px", color: "black", marginTop: "1px",textAlign:"justify"  }}
             >
               2. I am not subject to backup withholding because:(a) I am exempt
               from backup withholding, or (b) I have not been notified by the
@@ -301,8 +301,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }} />
-            <Typography
-              style={{ fontSize: "13px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{  fontSize: "17px", color: "black", marginTop: "9px" ,textAlign:"justify" }}
             >
               3. I am a U.S. citizen or other U.S. person (See Glossary of Terms
               for a definition of a U.S. person), and
@@ -315,8 +315,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }} />
-            <Typography
-              style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{ fontSize: "17px", color: "black", marginTop: "8px" ,textAlign:"justify" }}
             >
               4. The FATCA code(s) entered on this form (if any) indicate that I
               am exempt from FATCA reporting is correct.
@@ -325,7 +325,9 @@ const history = useNavigate()
           <p className="error">{errors.isBeneficialOwnerGrossIncome}</p>
           <Typography
             style={{
-              fontSize: "13px",
+              fontSize: "17px",
+              marginLeft:"13px",
+              textAlign:"justify" ,
               color: "black",
               marginTop: "10px",
               marginBottom: "20px",
@@ -351,8 +353,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }}  />
-            <Typography
-              style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{ fontSize: "17px", color: "black", marginTop: "11px",textAlign:"justify"  }}
             >
               I have been notified by IRS that I am currently subject to backup
               withholding.
@@ -365,8 +367,8 @@ const history = useNavigate()
                         onChange={handleChange}
                         size="medium"
                         style={{ fontSize: "2rem" }} />
-            <Typography
-              style={{ fontSize: "15px", color: "black", marginTop: "11px" }}
+            <Typography className="mx-2"
+              style={{ fontSize: "17px", color: "black", marginTop: "11px" ,textAlign:"justify" }}
             >
               Check to confirm you have reviewed the Electronic Form
               <span
