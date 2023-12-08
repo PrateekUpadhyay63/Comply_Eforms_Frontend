@@ -11,6 +11,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   Checkbox,
+  TextField,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -105,12 +106,12 @@ export default function Factors() {
       </div>
       </div>
       <div className="col-8 mt-3">
-              <div >
-                <Paper style={{ padding: "18px" }}>
+              <div style={{ margin: "10px" }}>
+                <Paper style={{ padding: "10px" }}>
                   <div style={{ margin: "10px" }}>
                     <Typography
                       align="left"
-                      style={{ marginTop: "10px", fontSize: "38px" }}
+                      style={{  fontSize: "27px",fontWeight:"550" }}
                     >
                       Income Report
                       <span>
@@ -138,7 +139,7 @@ export default function Factors() {
                           <Info
                             style={{
                               color: "#ffc107",
-                              fontSize: "26px",
+                              fontSize: "18px",
                               cursor: "pointer",
                               verticalAlign: "super",
                             }}
@@ -222,7 +223,7 @@ export default function Factors() {
                           elevation={3}
                           style={{
                             backgroundColor: "#e8e1e1",
-                            marginTop: "10px",
+                            marginTop: "15px",
                           }}
                         >
                           <div style={{ padding: "20px" }}>
@@ -245,7 +246,7 @@ export default function Factors() {
                                 >
                                   Select Item of Income:
                                   <span
-                                    style={{ color: "red", fontSize: "30px" }}
+                                    style={{ color: "red", fontSize: "22px" }}
                                   >
                                     *
                                   </span>
@@ -289,12 +290,12 @@ export default function Factors() {
                               style={{ fontSize: "22px", marginTop: "10px" }}
                             >
                               Description of Income:
-                              <span style={{ color: "red", fontSize: "30px" }}>
+                              <span style={{ color: "red", fontSize: "22px" }}>
                                 *
                               </span>
                             </Typography>
                             <FormControl className="w-100">
-                              <textarea
+                            <textarea
                                 name="incomeDescription"
                                 value={values.incomeDescription}
                                 onBlur={handleBlur}
@@ -335,7 +336,7 @@ export default function Factors() {
                           size="medium"
                           style={{ fontSize: "2rem" }}
                         />
-                        <Typography style={{ fontSize: "20px" }}>
+                        <Typography style={{ fontSize: "17px" }}>
                           If applicable check to certify that
                           <span>
                             <Tooltip
@@ -445,7 +446,7 @@ export default function Factors() {
                         />
                         <Typography
                           align="left"
-                          style={{ fontSize: "18px", marginLeft: "1rem" }}
+                          style={{ fontSize: "17px", marginLeft: "1rem" }}
                         >
                           You are a dealer in securities (as defined in section
                           475(c)(1));
@@ -459,7 +460,7 @@ export default function Factors() {
                         />
                         <Typography
                           align="left"
-                          style={{ fontSize: "18px", marginLeft: "1rem" }}
+                          style={{ fontSize: "17px", marginLeft: "1rem" }}
                         >
                           You are a transferor of an interest in a publicly
                           traded partnership (PTP) claiming an exception from
@@ -475,7 +476,7 @@ export default function Factors() {
                         />
                         <Typography
                           align="left"
-                          style={{ fontSize: "18px", marginLeft: "1rem" }}
+                          style={{ fontSize: "17px", marginLeft: "1rem" }}
                         >
                           Any gain from the transfer of the PTP interest
                           associated with this form is effectively connected
@@ -492,7 +493,7 @@ export default function Factors() {
                       </Paper>
                       <Typography
                         align="left"
-                        style={{ fontSize: "18px", fontWeight: "550" }}
+                        style={{ fontSize: "17px", fontWeight: "550" }}
                       >
                         This representation applies to each transfer of a PTP
                         interest associated with this form unless you specify
