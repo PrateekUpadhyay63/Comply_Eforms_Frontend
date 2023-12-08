@@ -192,7 +192,7 @@ export default function Tin(props: any) {
                         className="row"
                       >
                         <div className="col-lg-5 col-12">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             U.S. TIN Type<span style={{ color: "red" }}>*</span>
                             <span>
                               <Tooltip
@@ -312,7 +312,7 @@ export default function Tin(props: any) {
                         </div>
 
                         <div className="col-lg-5 col-12">
-                          <Typography>U.S. TIN</Typography>
+                          <Typography style={{fontSize:"14px"}}>U.S. TIN</Typography>
                           <Input
                             disabled
                             fullWidth
@@ -377,7 +377,7 @@ export default function Tin(props: any) {
                       className="row"
                     >
                       <div className="col-lg-5 col-12">
-                        <Typography>
+                        <Typography style={{fontSize:"14px"}}>
                           U.S. TIN Type<span style={{ color: "red" }}>*</span>
                           <span>
                             <Tooltip
@@ -496,7 +496,7 @@ export default function Tin(props: any) {
                       </div>
 
                       <div className="col-lg-5 col-12">
-                        <Typography>U.S. TIN</Typography>
+                        <Typography style={{fontSize:"14px"}}>U.S. TIN</Typography>
                         <Input
                           disabled={values.notAvailable}
                           fullWidth
@@ -559,7 +559,7 @@ export default function Tin(props: any) {
                         className="row"
                       >
                         <div className="col-lg-5">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             Foreign TIN Country
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
@@ -593,7 +593,7 @@ export default function Tin(props: any) {
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
-                          <div style={{ marginTop: "27px" }}>
+                          <div style={{ marginTop: "2px" }}>
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
@@ -696,7 +696,7 @@ export default function Tin(props: any) {
                           )}
                         </div>
                         <div className="col-lg-5 col-12">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             Foreign TIN{" "}
                             {values.foreignTINCountry == 257 ?(  <span>  <Tooltip
                               style={{
@@ -1060,7 +1060,7 @@ export default function Tin(props: any) {
 
 
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div style={{ marginLeft: "20px" }}className="my-3">
+                      <div style={{ marginLeft: "20px",marginRight:"20px" }}className="my-3">
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}
@@ -1073,7 +1073,7 @@ export default function Tin(props: any) {
                         </Typography>
                         <Typography
                           align="left"
-                          style={{ fontWeight: "bold", marginTop: "2rem" }}
+                          style={{ fontWeight: "bold", marginTop: "2rem" ,textAlign:"justify"}}
                         >
                           You have selected a FTIN country that is not on the
                           IRS exemption list, where, in most cases a FTIN should
