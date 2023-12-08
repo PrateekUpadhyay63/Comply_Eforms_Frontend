@@ -834,10 +834,7 @@ export default function Certificates(props: any) {
                 marginBottom: "20px",
               }}
             >
-              <span style={{ marginRight: "5px" }}>
-                {" "}
-                <ArrowBackIcon />
-              </span>{" "}
+              
               Back
             </Button>
           </Typography>
