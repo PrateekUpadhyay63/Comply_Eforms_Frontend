@@ -80,7 +80,7 @@ export default function Penalties() {
           <Form onSubmit={handleSubmit}>
             <section
               className="inner_content"
-              style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
+              style={{ backgroundColor: "#0c3d69",}}
             >
 <div className="overlay-div">
             <div className="overlay-div-group">
@@ -100,13 +100,13 @@ export default function Penalties() {
       </div>
       <div className="col-8 mt-3">
 
-              <div style={{ padding: "20px" }}>
+              <div style={{ padding: "16px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -116,7 +116,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >

@@ -156,16 +156,18 @@ export default function Tin(props: any) {
       </div>
           </div>
           <div className="col-8 mt-3" > 
-  <div style={{ margin: "10px", padding: "10px", backgroundColor: "#ffff", }}>
+          <div style={{ padding: "10px 0px" }}>
+            <Paper elevation={6} style={{ padding: "17px",}}>
+  <div style={{  backgroundColor: "#ffff", }}>
   <Typography
     align="left"
-    style={{ margin: "10px", fontSize: "24px" ,fontWeight:"550"}}
+    style={{ margin: "5px", fontSize: "27px" ,fontWeight:"550"}}
   >
-    Taxpayer Identification Number{" "}
+    Taxpayer Identification Number
    
   </Typography>
 
-  <div style={{ margin: "10px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
+  <div style={{ marginLeft:"4px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
     <div className="col-md-6 col-12">
       <Typography>
         U.S. TIN Type
@@ -288,6 +290,8 @@ export default function Tin(props: any) {
     </div>
 
   </div>
+  </div>
+  </Paper>
   </div>
   </div>
 </div>

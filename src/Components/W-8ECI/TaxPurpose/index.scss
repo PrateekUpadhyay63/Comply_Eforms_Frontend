@@ -4,7 +4,7 @@
 
 }
 .textfield1 input{
-    height: 3.45em !important;
+    height: 0.645em !important;
 }
 .react-date-picker__wrapper {
     height: 3rem !important;
@@ -20,4 +20,9 @@
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
     opacity: 1;
     -webkit-text-fill-color:rgb(12 12 12 / 96%);
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+
+
+    height: 0.645em !important;
 }

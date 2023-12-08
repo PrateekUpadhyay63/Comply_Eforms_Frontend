@@ -109,15 +109,17 @@ export default function FCTA_Reporting(props: any) {
           
       </div>
           </div>
-                <div className="col-8 mt-3" >          
-  <div style={{ margin: "12px", padding: "10px", backgroundColor: "#ffff" }}>
+                <div className="col-8 mt-3" > 
+                <div style={{ padding: "10px 0px" }}>
+                <Paper elevation={6} style={{ padding: "17px",}}>         
+  <div style={{backgroundColor: "#ffff" }}>
     <Typography
       align="left"
       style={{ margin: "10px", fontSize: "27px" }}
     >
       Exemption from FATCA reporting
       <span style={{ color: "red" }}>*</span>
-      <Info style={{ color: "#ffc107", fontSize: "13px" }} />{" "}
+      <Info style={{ color: "#ffc107", fontSize: "13px" ,verticalAlign:"super"}} />{" "}
     </Typography>
     <Typography
       align="left"
@@ -163,21 +165,21 @@ export default function FCTA_Reporting(props: any) {
       <>
         <Typography
           align="left"
-          style={{ fontSize: "12px", marginTop: "10px" }}
+          style={{ fontSize: "17px", marginTop: "10px" }}
         >
           Please select from the list provided to apply for exemption
           from FATCA Reporting or select confirm if no exemption
           applies<span style={{ color: "red" }}>*</span>
           <Info style={{ color: "#ffc107", fontSize: "13px" }} />
         </Typography>
-        <FormControl className="w-100">
+        <FormControl className="w-100 mt-2">
           <select
           className="col-md-6 col-12"
             style={{
               padding: " 0 10px",
               color: "#7e7e7e",
               fontStyle: "italic",
-              height: "30px",
+              height: "36px",
             }}
             name="ReportingId"
             id="Income"
@@ -198,6 +200,8 @@ export default function FCTA_Reporting(props: any) {
 
       </>
     ) : ""}
+  </div>
+  </Paper>
   </div>
   </div>
   </div>

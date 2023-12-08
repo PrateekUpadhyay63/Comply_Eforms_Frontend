@@ -97,7 +97,7 @@ export default function Certifications(props: any) {
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "30px",
+                    fontSize: "27px",
                     fontWeight: "550",
                     marginLeft: "20px",
                   }}
@@ -203,6 +203,7 @@ export default function Certifications(props: any) {
                     fontSize: "17px",
                     color: "grey",
                     marginLeft: "20px",
+                    textAlign:"justify" 
                   }}
                 >
                   Under penalties of perjury, I declare that I have examined the
@@ -239,6 +240,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "10px",
+                          textAlign:"justify" 
                         }}
                       >
                         I am the beneficial owner (or I am authorized to sign
@@ -267,6 +269,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The amounts for which this certification is provided are
@@ -295,6 +298,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The income for which this form was provided is
@@ -349,6 +353,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         Furthermore, I authorize this form to be provided to any
@@ -379,6 +384,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         <span style={{ fontWeight: "bold" }}>
