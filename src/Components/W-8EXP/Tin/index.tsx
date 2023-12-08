@@ -489,7 +489,10 @@ initialValues={initialValue}
                           }}
                         >
                           <option value="1">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
+                          <option value={2}>EIN</option>
+                              <option value={3}>QIEIN</option>
+                              <option value={4}>WPEIN</option>
+                              {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -504,7 +507,7 @@ initialValues={initialValue}
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>
