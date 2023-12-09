@@ -101,7 +101,7 @@ export default function Certifications(props: any) {
               margin: "10px",
               fontSize: "27px",
               fontWeight: "550",
-              marginLeft: "20px",
+              marginLeft: "10px",
             }}
           >
             Certification <span style={{ color: "red" }}>*</span>
@@ -205,7 +205,7 @@ export default function Certifications(props: any) {
               margin: "10px",
               fontSize: "17px",
               color: "grey",
-              marginLeft: "20px",
+              marginLeft: "10px",
             }}
           >
             I certify that (Check All).{" "}
@@ -219,7 +219,7 @@ export default function Certifications(props: any) {
               margin: "10px",
               fontSize: "15px",
               color: "grey",
-              marginLeft: "20px",
+              marginLeft: "10px",
               textAlign:"justify" 
             }}
           >
@@ -231,7 +231,7 @@ export default function Certifications(props: any) {
 
           <Paper
             style={{
-              marginLeft: "20px",
+              marginLeft: "10px",
               width: "97%",
               backgroundColor: "#d2d6d3",
             }}

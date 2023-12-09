@@ -520,7 +520,7 @@ export default function Certificates(props: any) {
           <Typography
             align="left"
             style={{
-              fontSize: "34px",
+              fontSize: "27px",
               fontWeight: "500",
               color: "white",
               marginLeft: "10px",
@@ -645,7 +645,7 @@ export default function Certificates(props: any) {
                 <div className="check-div">
                  {diableForm == card.enabled ?  (<img src={checksolid}/>) : ""}
                 </div>
-                <Typography align="center" variant="h5" component="div">
+                <Typography align="center" variant="h6" component="div">
                   {card?.title}
                 </Typography>
 
@@ -772,7 +772,7 @@ export default function Certificates(props: any) {
           {selectedCard ? (
             <div style={{ marginTop: "20px" }} className="text-center">
               <Button
-                style={{ fontSize: "25px", marginTop: "35px" }}
+                style={{ fontSize: "20px", marginTop: "35px" }}
                 size="medium"
                 type="submit"
                 onClick={() => redirectToComponent(selectedCard)}
