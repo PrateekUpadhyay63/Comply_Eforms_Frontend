@@ -130,7 +130,7 @@ const history = useNavigate()
           margin: "10px",
           fontSize: "27px",
           fontWeight: "550",
-          marginLeft: "20px",
+          marginLeft: "10px",
         }}
       >
         Certification <span style={{ color: "red" }}>*</span>
@@ -252,14 +252,14 @@ const history = useNavigate()
           margin: "10px",
           fontSize: "18px",
           color: "grey",
-          marginLeft: "20px",
+          marginLeft: "10px",
         }}
       >
         Under penalties of perjury, I certify that:
       </Typography>
 
       <Paper
-        style={{ marginLeft: "20px", width: "95%", backgroundColor: "#d2d6d3",marginBottom:"2rem" }}
+        style={{ marginLeft: "10px", width: "95%", backgroundColor: "#d2d6d3",marginBottom:"2rem" }}
       >
         <div style={{ margin: "10px" }}>
           <Typography style={{ display: "flex" }}>

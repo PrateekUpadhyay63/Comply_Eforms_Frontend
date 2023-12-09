@@ -134,7 +134,7 @@ export default function Fedral_tax(props: any) {
            
           </div>
           <div className="col-8 mt-3">
-            <div style={{ padding: "18px" }}>
+            <div style={{ padding: "15px" }}>
               <Paper style={{ padding: "10px" }}>
                 <Formik
                 validateOnChange={false}
@@ -195,6 +195,7 @@ export default function Fedral_tax(props: any) {
                                       style={{
                                         backgroundColor: "black",
                                         color: "white",
+                                       
                                       }}
                                       title={
                                         <>
@@ -221,9 +222,10 @@ export default function Fedral_tax(props: any) {
                                       <Info
                                         style={{
                                           color: "#ffc107",
-                                          fontSize: "16px",
+                                          fontSize:"12px",
+                                        verticalAlign:"super",
                                           cursor: "pointer",
-                                          verticalAlign: "super",
+                                         
                                         }}
                                       />
                                     </Tooltip>

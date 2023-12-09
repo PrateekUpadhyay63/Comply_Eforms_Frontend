@@ -99,7 +99,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "27px",
                     fontWeight: "550",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   Certification 
@@ -188,7 +188,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "17px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   I certify that (Check All).{" "}
@@ -202,7 +202,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "17px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     textAlign:"justify" 
                   }}
                 >
@@ -214,7 +214,7 @@ export default function Certifications(props: any) {
 
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}

@@ -162,7 +162,7 @@ export default function Tin(props: any) {
         </div>
 
         <div className="col-8 mt-3">
-          <div style={{ padding: "18px" }}>
+          <div style={{ padding: "15px" }}>
             <Paper style={{ padding: "10px" }}>
               <Formik
                 validateOnChange={false}
@@ -328,7 +328,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
                             }}
                             name="usTinTypeId"
@@ -382,7 +382,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
 
                             }}
@@ -394,8 +394,8 @@ export default function Tin(props: any) {
                             " "
                           }
                         </div>
-                        <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
+                        <div className="col-lg-2 ">
+                          <div className="radio" style={{ marginTop: "17px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -513,7 +513,7 @@ export default function Tin(props: any) {
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height:"40px",
                             width: "100%",
                           }}
                           name="usTinTypeId"
@@ -562,7 +562,7 @@ export default function Tin(props: any) {
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height:"40px",
                             width: "100%",
                           }}
                         />
@@ -573,8 +573,8 @@ export default function Tin(props: any) {
                           " "
                         }
                       </div>
-                      <div className="col-lg-2 col-12">
-                        <div style={{ marginTop: "27px" }}>
+                      <div className="col-lg-2 ">
+                        <div className="radio" style={{ marginTop: "17px" }}>
                           <Checkbox
                             value={values.notAvailable}
                             checked={values.notAvailable}
@@ -621,7 +621,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
                             }}
                             name="foreignTINCountry"
@@ -803,7 +803,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height:"40px",
                                 width: "100%",
                               }}
                             />
@@ -829,7 +829,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height:"40px",
                                 width: "100%",
                               }}
                             />
@@ -842,7 +842,7 @@ export default function Tin(props: any) {
                           }
 
                          <div  >
-                        <FormControl >
+                        <FormControl className="col-12 radio" >
                             <RadioGroup
                               row
                               
@@ -909,14 +909,15 @@ export default function Tin(props: any) {
                     {values.isFTINNotLegallyRequired === true && (
                       <>
                         <Typography
-                          style={{ margin: "20px", fontSize: "17px" }}
+                            className="mt-3"
+                            style={{ marginLeft: "20px", fontSize: "15px" }}
                         >
                           Do you wish to provide a further (or other)
                           explanation why you are not legally required to
                           provide an FTIN?
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
-                        <FormControl style={{ marginLeft: "20px" }}>
+                        <FormControl  className="col-12 radio" style={{ marginLeft: "20px" }}>
                           <RadioGroup
                             row
                             name="isNotLegallyFTIN"

@@ -357,8 +357,8 @@ initialValues={initialValue}
                             " "
                           }
                         </div>
-                        <div className="col-lg-2 col-12">
-                          <div className="radio" style={{ marginTop: "27px" }}>
+                        <div className="col-lg-2 ">
+                          <div className="radio" style={{ marginTop: "17px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -540,7 +540,7 @@ initialValues={initialValue}
                         }
                       </div>
                       <div className="col-lg-2 col-12">
-                        <div className="radio" style={{ marginTop: "27px" }}>
+                        <div className="radio" style={{ marginTop: "17px" }}>
                           <Checkbox
                             value={values.notAvailable}
                             checked={values.notAvailable}
@@ -874,7 +874,8 @@ initialValues={initialValue}
                     {values.isFTINNotLegallyRequired === true && (
                       <>
                         <Typography
-                          style={{ margin: "20px", fontSize: "20px" }}
+                        className="mt-3"
+                          style={{ marginLeft: "20px", fontSize: "15px" }}
                         >
                           Do you wish to provide a further (or other)
                           explanation why you are not legally required to
