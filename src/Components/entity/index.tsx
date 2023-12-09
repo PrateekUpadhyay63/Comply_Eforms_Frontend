@@ -150,7 +150,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -1251,7 +1251,7 @@ export default function Entity() {
                               }}
                               value={values.usTinTypeId}
                             >
-                            
+                             <option value={0}>--Select--</option>
                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||

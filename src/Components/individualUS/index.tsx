@@ -162,7 +162,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -1536,7 +1536,7 @@ export default function IndividualUs() {
                                 }}
                                 name="usTinTypeId"
                                 id="Income"
-                                defaultValue={"1"}
+                                defaultValue={0}
                                 onChange={(e: any) => {
                                   handleChange(e);
 
@@ -1550,8 +1550,9 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value={0}>-Select-</option>
+                               
                                 <>{console.log(ustinValue, "")}</>
+                                <option value={0}>--Select--</option>
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1559,6 +1560,7 @@ export default function IndividualUs() {
                                   //   values?.isUSIndividual == "Yes" ?
                                   // (
                                   <option
+
                                     key={ele?.taxpayerIdTypeID}
                                     value={ele?.taxpayerIdTypeID}
                                   >
@@ -1971,7 +1973,7 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                {/* <option value="1">-Select-</option> */}
+                                <option value="1">--Select--</option>
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
