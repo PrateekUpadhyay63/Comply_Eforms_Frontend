@@ -66,7 +66,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([6]);
+  const [incomeArr, setIncomeArr] = useState([5]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -327,7 +327,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, 6]);
+    setIncomeArr((incomeArr) => [...incomeArr, 5]);
   };
 
   const handleDelete = (i: any) => {
@@ -356,7 +356,6 @@ export default function IndividualUs() {
     if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
-
           <FormControl className="w-100">
             <Typography align="left">
               {/* {returnFieldName()} */}
@@ -535,10 +534,12 @@ export default function IndividualUs() {
   }
 
   const handleIcome = (e: any, i: number) => {
-    const newValue = e.target.value;
-    const updatedIncomeArr = [...incomeArr, 6];
-    updatedIncomeArr[i] = newValue;
-    setIncomeArr(updatedIncomeArr);
+    if (i < 5) {
+      const newValue = e.target.value;
+      const updatedIncomeArr = [...incomeArr, 5];
+      updatedIncomeArr[i] = newValue;
+      setIncomeArr(updatedIncomeArr);
+    }
   };
   let selectCitizenOptions: Array<string> = [];
   let selectUSCitizenOptions: Array<string> = [];
@@ -552,8 +553,6 @@ export default function IndividualUs() {
       selectUSCitizenOptions.push(ele);
     }
   });
-  console.log(selectNON_USCitizenOptions, "selectNON_USCitizenOptions");
-  console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
 
   return (
     <section
@@ -1948,7 +1947,7 @@ export default function IndividualUs() {
                                 *
                               </span>
                             </Typography>
-                          
+
                             <FormControl className="w-100">
                               <select
                                 style={{
@@ -2314,7 +2313,9 @@ export default function IndividualUs() {
                             </p>
                           </FormControl>
                         </div>
-                        {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
+                        {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                        GetStateByCountryIdReducer?.allCountriesStateIdData
+                          ?.length > 0 ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left" className="d-flex w-100 ">
                               State or Province:
@@ -3234,7 +3235,9 @@ export default function IndividualUs() {
                                 </p>
                               </FormControl>
                             </div>
-                            {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length > 0 ? (
+                            {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                            GetStateByCountryIdReducer?.allCountriesStateIdData
+                              ?.length > 0 ? (
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography
                                   align="left"
@@ -3960,7 +3963,7 @@ export default function IndividualUs() {
                               );
                             })}
 
-                          {incomeArr.length <= 4 ? (
+                          {incomeArr.length < 5 ? (
                             <Typography
                               style={{
                                 color: "#007bff",
@@ -4098,7 +4101,7 @@ export default function IndividualUs() {
                           <Typography className="d-flex w-100 pb-2">
                             Income Code
                           </Typography>
-                          {incomeArr.length &&
+                          {incomeArr.length && incomeArr.length <= 4 &&
                             incomeArr.map((ind, i) => {
                               // console.log(ind, i,"udvgjudgvfjdbgjfd")
                               return (
