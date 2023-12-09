@@ -9,10 +9,12 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
+  Tooltip,
   RadioGroup,
   Radio,
   FormControlLabel,
 } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ExpandMore, Info } from "@mui/icons-material";
@@ -118,8 +120,40 @@ export default function FCTA_Reporting(props: any) {
       style={{ margin: "10px", fontSize: "27px" }}
     >
       Exemption from FATCA reporting
-      <span style={{ color: "red" }}>*</span>
-      <Info style={{ color: "#ffc107", fontSize: "13px" ,verticalAlign:"super"}} />{" "}
+      <span style={{ color: "red" }}>*</span><span>
+          <Tooltip
+            style={{ backgroundColor: "black", color: "white" }}
+            title={
+              <>
+                <Typography color="inherit">
+                 TT-450 What is FATCA reporting?
+                </Typography>
+                <a >
+                  <Typography
+                    style={{
+                      cursor: "pointer",
+                      textDecorationLine: "underline",
+                    }}
+                    align="center"
+                  >
+                    {" "}
+                    View More...
+                  </Typography>
+                </a>
+              </>
+            }
+          >
+            <InfoIcon
+              style={{
+                color: "#ffc107",
+                fontSize: "16px",
+                cursor: "pointer",
+                verticalAlign: "super",
+              }}
+            />
+          </Tooltip>
+        </span>
+      
     </Typography>
     <Typography
       align="left"
@@ -129,7 +163,7 @@ export default function FCTA_Reporting(props: any) {
       States by a foreign institution?
     </Typography>
 
-    <div style={{margin: "10px", marginTop: "20px", justifyContent: "center" }}>
+    <div style={{marginLeft:"10px", marginTop: "20px", justifyContent: "center" }}>
       <RadioGroup
         id="isExemptionFATCAReportings"
         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -170,7 +204,39 @@ export default function FCTA_Reporting(props: any) {
           Please select from the list provided to apply for exemption
           from FATCA Reporting or select confirm if no exemption
           applies<span style={{ color: "red" }}>*</span>
-          <Info style={{ color: "#ffc107", fontSize: "13px" }} />
+          <span>
+          <Tooltip
+            style={{ backgroundColor: "black", color: "white" }}
+            title={
+              <>
+                <Typography color="inherit">
+                 TT-085 FATCA Exemption Classification
+                </Typography>
+                <a >
+                  <Typography
+                    style={{
+                      cursor: "pointer",
+                      textDecorationLine: "underline",
+                    }}
+                    align="center"
+                  >
+                    {" "}
+                    View More...
+                  </Typography>
+                </a>
+              </>
+            }
+          >
+            <InfoIcon
+              style={{
+                color: "#ffc107",
+                fontSize: "16px",
+                cursor: "pointer",
+                verticalAlign: "super",
+              }}
+            />
+          </Tooltip>
+        </span>
         </Typography>
         <FormControl className="w-100 mt-2">
           <select
