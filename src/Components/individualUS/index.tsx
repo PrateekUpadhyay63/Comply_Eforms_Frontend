@@ -1574,8 +1574,8 @@ export default function IndividualUs() {
                           </div>
 
                           <div className="col-lg-3 col-6 col-md-3">
-                            <FormControl className="w-100">
-                              <Typography align="left">
+                            <FormControl  className="w-100" >
+                              <Typography className="d-flex w-100" align="left">
                                 U.S. TIN
                                 <span
                                   style={{
