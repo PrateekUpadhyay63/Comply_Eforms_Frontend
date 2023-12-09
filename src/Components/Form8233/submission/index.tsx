@@ -150,7 +150,7 @@ export default function Penalties() {
                             <InfoIcon
                               style={{
                                 color: "#ffc107",
-                                fontSize: "20px",
+                               fontSize: "14px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -252,7 +252,7 @@ export default function Penalties() {
                             <InfoIcon
                               style={{
                                 color: "#ffc107",
-                                fontSize: "20px",
+                               fontSize: "14px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -473,7 +473,7 @@ export default function Penalties() {
                           <InfoIcon
                             style={{
                               color: "#ffc107",
-                              fontSize: "20px",
+                             fontSize: "14px",
                               cursor: "pointer",
                               verticalAlign: "super",
                             }}
