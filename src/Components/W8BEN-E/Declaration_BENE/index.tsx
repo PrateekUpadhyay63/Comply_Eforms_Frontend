@@ -51,14 +51,15 @@ export default function Term() {
           </div>
         </div>
         <div className="col-8 mt-4">
-        <div style={{ padding: "10px 0px" }}>
-            <Paper elevation={6} style={{ padding: "17px",}}>
+        <div >
+           <div style={{padding: "6px"}}>
+           <Paper elevation={6} style={{ padding: "13px"}}>
               <>
                 <Paper
                   elevation={6}
                   style={{
                     padding: "17px",
-                    marginTop: "20px",
+                    margin: "10px",
                     backgroundColor: "#e8e1e1",
                   }}
                 >
@@ -122,11 +123,13 @@ export default function Term() {
                     fontWeight: "550",
                     fontSize: "30px",
                     marginTop: "20px",
+                    margin:"10px"
                   }}
                 >
                   Declaration Statement - Declaration of No U.S. Source Income
                 </Typography>
-                <Typography  align="left" className="text mt-2">
+               <div style={{ margin:"10px"}}>
+               <Typography  align="left" className="text mt-2">
                   Under penalties of perjury I confirm that the goods or
                   materials provided or manufactured and any and all associated
                   services, including consultancy, implementation, training or
@@ -143,8 +146,10 @@ export default function Term() {
                   invoices submitted and submit an updated U.S. source income
                   statement.
                 </Typography>
+                </div>
               </>
             </Paper>
+           </div>
 
             <div
               style={{

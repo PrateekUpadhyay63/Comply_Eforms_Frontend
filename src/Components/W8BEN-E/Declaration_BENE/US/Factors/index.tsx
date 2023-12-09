@@ -81,7 +81,7 @@ const getCountriesReducer = useSelector(
       </div>
       </div>
         <div className="col-8 mt-3" >
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: "12px" }}>
       
         <Paper style={{ padding: "18px" }}>
           <div style={{ margin: "10px" }}>

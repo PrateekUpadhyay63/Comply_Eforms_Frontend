@@ -218,7 +218,7 @@ export default function Certifications(props: any) {
                     <Typography
                       style={{
                         margin: "10px",
-                       fontSize: "14px",
+                       fontSize: "17px",
                         color: "grey",
                         marginLeft: "10px",
                         textAlign:"justify" 

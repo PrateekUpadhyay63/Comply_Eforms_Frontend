@@ -100,7 +100,7 @@ export default function Penalties() {
       </div>
       <div className="col-8 mt-3">
 
-              <div style={{ padding: "16px" }}>
+              <div style={{ padding: "13px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
                     align="left"

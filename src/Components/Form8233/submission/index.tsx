@@ -78,9 +78,9 @@ export default function Penalties() {
           <BreadCrumbComponent breadCrumbCode={1450} formName={2}/>
       </div>
       </div>
-      <>{console.log(errors,"errors!!!!!")}</>
+      {/* <>{console.log(errors,"errors!!!!!")}</> */}
       <div className="col-8 mt-3">
-              <div style={{ padding: "18px" }}>
+              <div style={{ padding: "12px" }}>
                 <Paper style={{ padding: "10px" }}>
                   <Typography
                     align="left"

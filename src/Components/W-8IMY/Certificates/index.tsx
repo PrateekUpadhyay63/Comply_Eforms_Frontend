@@ -64,7 +64,7 @@ export default function Certifications(props: any) {
       </div>
       <div className="col-8 mt-3">
   
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: "13px" }}>
       <Formik
        validateOnChange={false}
        validateOnBlur={false}
@@ -96,10 +96,10 @@ export default function Certifications(props: any) {
           <Typography
             align="left"
             style={{
-              margin: "10px",
+              margin: "5px",
               fontSize: "27px",
               fontWeight: "550",
-              marginLeft: "10px",
+              marginLeft: "13px",
             }}
           >
             Certification <span style={{ color: "red" }}>*</span>
@@ -201,10 +201,10 @@ export default function Certifications(props: any) {
         
           <Typography
             style={{
-              margin: "10px",
-             fontSize: "14px",
+              marginLeft: "13px",
+             fontSize: "16px",
               color: "grey",
-              marginLeft: "10px",
+              
             }}
           >
             Under penalties of perjury, I declare that 
@@ -310,7 +310,7 @@ which I am providing this form or any withholding agent that can disburse or mak
                   <span
                     style={{
                       color: "blue",
-                      fontSize: "19px",
+                      fontSize: "15px",
                       marginLeft: "5px",
                     }}
                   >

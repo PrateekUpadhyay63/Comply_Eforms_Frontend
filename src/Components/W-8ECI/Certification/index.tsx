@@ -63,7 +63,7 @@ export default function Certifications(props: any) {
       </div>
       </div>
       <div className="col-8 mt-3">
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: "12px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
            validateOnChange={false}
@@ -429,7 +429,7 @@ export default function Certifications(props: any) {
                         <span
                           style={{
                             color: "blue",
-                            fontSize: "19px",
+                            fontSize: "16px",
                             marginLeft: "5px",
                           }}
                         >
