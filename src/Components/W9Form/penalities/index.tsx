@@ -108,7 +108,7 @@ export default function Penalties(props: any) {
      
      <div className="col-4">
           <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
+            <BreadCrumbComponent breadCrumbCode={1269} formName={1}/>
           
       </div>
           </div>
