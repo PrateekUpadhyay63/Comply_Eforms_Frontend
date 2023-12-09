@@ -57,7 +57,7 @@ export default function Factors() {
     countryTaxLiability: "",
     taxReferenceNumber: "",
     isTINFormatNotAvailable: false,
-    isPresentAtleast31Days: false,
+    isPresentAtleast31Days: "",
   };
 
   const dispatch = useDispatch();
@@ -178,7 +178,7 @@ export default function Factors() {
                 }) => (
                   <Form onSubmit={handleSubmit}>
 
-                    <div style={{ margin: "10px" }}>
+                    <div style={{ margin: "7px" }}>
                     <Typography
                     
                     align="left"
@@ -331,9 +331,9 @@ export default function Factors() {
                             label="No"
                           />
                         </RadioGroup>
-                        {/* <p className="error">
+                        <p className="error">
                           {errors.isHeldUSCitizenship}
-                        </p> */}
+                        </p>
                       </FormControl>
                       <Divider className="dividr" />
 
@@ -437,7 +437,7 @@ export default function Factors() {
                             name="isTaxationUSCitizenOrResident"
                           />
                         </RadioGroup>
-                        {/* <p className="error">{errors.isTaxationUSCitizenOrResident}</p> */}
+                        <p className="error">{errors.isTaxationUSCitizenOrResident}</p>
                       </FormControl>
                       <Divider className="dividr" />
                       <Typography
@@ -515,9 +515,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">
+                          <p className="error">
                             {errors.isHoldDualCitizenshipStatus}
-                            </p> */}
+                            </p>
                       </FormControl>
                       <Divider className="dividr" />
                       {values.isHoldDualCitizenshipStatus === "Yes" ? (
@@ -819,7 +819,7 @@ export default function Factors() {
                       </FormControl>
                           <Divider className="dividr" />
                           
-                      {tax1 === "Yes" ? (
+                      {values.isTaxLiabilityJurisdictions === "Yes" ? (
                         <>
                           <Typography>
                             Please select the country where the individual
@@ -827,8 +827,34 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <FormControl className="form">
-                            <select></select>
-                          </FormControl>
+                            <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            defaultValue={1}
+                            onChange={handleChange}
+                       
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {GetAgentCountriesImportantForEformData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
+                            </FormControl>
                           <Divider className="dividr" />
 
                           <Typography>
@@ -876,21 +902,27 @@ export default function Factors() {
                         <RadioGroup
                           row
                           aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
+                          name="isPresentAtleast31Days"
                         >
                           <FormControlLabel
-                            value="female"
+                            value={values.isPresentAtleast31Days}
                             control={<Radio />}
                             label="Yes"
+                            name="isPresentAtleast31Days"
                           />
                           <FormControlLabel
                             className="label"
-                            value="male"
+                            value={values.isPresentAtleast31Days}
                             control={<Radio />}
                             label="No"
+                            name="isPresentAtleast31Days"
                           />
                         </RadioGroup>
+                        <p className="error">
+                        {errors.isPresentAtleast31Days}
+                      </p>
                       </FormControl>
+                     
                       <Divider className="dividr" />
                     </>
                       ) :(
@@ -946,7 +978,7 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">{errors.isTaxationUSCitizenOrResident}</p> */}
+                          <p className="error">{errors.isTaxationUSCitizenOrResident}</p>
                         </FormControl>
                         <Divider className="dividr" />
 
@@ -986,9 +1018,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">
+                          <p className="error">
                             {errors.isPermamnentResidentCardHolder}
-                            </p> */}
+                            </p>
                         </FormControl>
                         <Divider className="dividr" />
                         <Typography
@@ -1026,9 +1058,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">
+                          <p className="error">
                             {errors.isHoldDualCitizenshipStatus}
-                            </p> */}
+                            </p>
                         </FormControl>
                         <Divider className="dividr"/>
                         {values.isHoldDualCitizenshipStatus == "Yes" ? (
@@ -1070,9 +1102,9 @@ export default function Factors() {
                                   label="No"
                                 />
                               </RadioGroup>
-                              {/* <p className="error">
+                              <p className="error">
                             {errors.isHoldDualCitizenshipIncludeUSCitizenship}
-                            </p> */}
+                            </p>
                             </FormControl>
                         <Divider className="dividr"/>
                           </>
@@ -1116,9 +1148,9 @@ export default function Factors() {
                                 label="No"
                               />
                             </RadioGroup>
-                            {/* <p className="error">
+                            <p className="error">
                             {errors.isRenouncedCitizenship}
-                            </p> */}
+                            </p>
                           </FormControl>
                           <Divider className = "dividr"/>
                         </>
@@ -1223,9 +1255,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">
+                          <p className="error">
                             {errors.isTaxLiabilityJurisdictions}
-                            </p> */}
+                            </p>
                         </FormControl>
                         <Divider className="dividr" />
 
@@ -1399,9 +1431,9 @@ export default function Factors() {
                               label="No"
                             />
                           </RadioGroup>
-                          {/* <p className="error">
+                          <p className="error">
                             {errors.isTaxLiabilityJurisdictions}
-                            </p> */}
+                            </p>
                         </FormControl>
 
                           </>
@@ -1425,25 +1457,29 @@ export default function Factors() {
                         </Typography>
 
                         <FormControl>
-                          <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                              label="Yes"
-                            />
-                            <FormControlLabel
-                              className="label"
-                              value="male"
-                              control={<Radio />}
-                              label="No"
-                            />
-                          </RadioGroup>
-                          
-                        </FormControl>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="isPresentAtleast31Days"
+                        >
+                          <FormControlLabel
+                            value={values.isPresentAtleast31Days}
+                            control={<Radio />}
+                            label="Yes"
+                            name="isPresentAtleast31Days"
+                          />
+                          <FormControlLabel
+                            className="label"
+                            value={values.isPresentAtleast31Days}
+                            control={<Radio />}
+                            label="No"
+                            name="isPresentAtleast31Days"
+                          />
+                        </RadioGroup>
+                        <p className="error">
+                        {errors.isPresentAtleast31Days}
+                      </p>
+                      </FormControl>
 
                         <Divider className="dividr" />
                       </>
