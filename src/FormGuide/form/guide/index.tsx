@@ -803,7 +803,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                           style={{ marginTop: "20px" }}
                                         >
                                           <Button
-                                            style={{ fontSize: "16px" }}
+                                            style={{ fontSize: "13px" }}
                                             size="small"
                                             type="submit"
                                             onClick={() => {
@@ -1119,7 +1119,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                   style={{ marginTop: "20px" }}
                                 >
                                   <Button
-                                    style={{ fontSize: "16px" }}
+                                    style={{ fontSize: "13px" }}
                                     size="small"
                                     type="submit"
                                     onClick={() => {
@@ -1340,7 +1340,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                           style={{ marginTop: "20px" }}
                                         >
                                           <Button
-                                            style={{ fontSize: "16px" }}
+                                            style={{ fontSize: "13px" }}
                                             size="small"
                                             type="submit"
                                             onClick={() => {
@@ -1434,7 +1434,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                           style={{ marginTop: "20px" }}
                                         >
                                           <Button
-                                            style={{ fontSize: "16px" }}
+                                          style={{ fontSize: "13px" }}
                                             size="small"
                                             type="submit"
                                             onClick={() => {
@@ -1529,7 +1529,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                               style={{ marginTop: "20px" }}
                             >
                               <Button
-                                style={{ fontSize: "16px" }}
+                                style={{ fontSize: "13px" }}
                                 size="small"
                                 type="submit"
                                 onClick={() => {
@@ -1772,7 +1772,7 @@ const handleForeignRESChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                                           style={{ marginTop: "20px" }}
                                         >
                                           <Button
-                                            style={{ fontSize: "16px" }}
+                                           style={{ fontSize: "13px" }}
                                             size="small"
                                             type="submit"
                                             onClick={() => {
@@ -1879,7 +1879,7 @@ You have stated that the Foreign Person you are making this submission on behalf
                   style={{ marginTop: "20px" }}
                 >
                   <Button
-                    style={{ fontSize: "16px" }}
+                   style={{ fontSize: "13px" }}
                     size="small"
                     type="submit"
                     onClick={() => {
@@ -1998,7 +1998,7 @@ You have stated that the Foreign Person you are making this submission on behalf
                    style={{ marginTop: "20px" }}
                  >
                    <Button
-                     style={{ fontSize: "16px" }}
+                     style={{ fontSize: "13px" }}
                      size="small"
                      type="submit"
                      onClick={() => {
@@ -2031,7 +2031,7 @@ You have stated that the Foreign Person you are making this submission on behalf
                     history("/form");
                   }}
                   variant="contained"
-                  size="large"
+                  size="small"
                   style={{
                     color: "white",
                     backgroundColor: "black",
@@ -2039,10 +2039,7 @@ You have stated that the Foreign Person you are making this submission on behalf
                     marginBottom: "20px",
                   }}
                 >
-                  <span style={{ marginRight: "5px" }}>
-                    {" "}
-                    <ArrowBackIcon />
-                  </span>{" "}
+                 
                   Back
                 </Button>
               </Typography>

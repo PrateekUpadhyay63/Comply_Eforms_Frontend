@@ -160,16 +160,16 @@ export default function Fedral_tax(props: any) {
           }) => (
             <Form onSubmit={handleSubmit}>
             <div className="row w-100 h-100">
-            <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
+            <div className="col-4" style={{backgroundColor: "#0c3d69"}}>
+          <div style={{ padding: "20px 0px",height:"100%" ,}}>
+            <BreadCrumbComponent breadCrumbCode={1203} formName={1}/>
           
       </div>
           </div>
-          <div className="col-8 mt-3">   
+          <div className="col-8 mt-3" style={{backgroundColor: "#0c3d69"}}>   
               <div  style={{ padding: "10px 0px" }}>
-               <Paper elevation={6} style={{ padding: "17px"}}>
-               <div style={{ width: "100%" ,backgroundColor:"#fff", }}>
+               <Paper elevation={6} style={{ padding: "12px",}}>
+               <div style={{ width: "100%" , }}>
                   <Typography align="left" style={{ }}>
                     <div
                       className="row"
@@ -179,7 +179,7 @@ export default function Fedral_tax(props: any) {
                       }}
                     >
                       <Typography
-                        className="col-md-12 col-12 mt-3"
+                        className="col-md-12 col-12 mt-1"
                         align="left"
                         style={{
                           color: "black",
@@ -456,7 +456,7 @@ export default function Fedral_tax(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "45px",
+                              height: "40px",
                               width: "70%",
                             }}
                           >

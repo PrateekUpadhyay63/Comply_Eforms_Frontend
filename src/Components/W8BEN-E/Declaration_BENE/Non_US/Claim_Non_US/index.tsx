@@ -70,14 +70,14 @@ export default function FCTA_Reporting(props: any) {
         
         <div className="row w-100 h-100">
           <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
+          <div style={{ padding: "20px 0px",height:"100%",backgroundColor: "#0c3d69" }}>
             <BreadCrumbComponent breadCrumbCode={1253} formName={3}/>
           
       </div>
           </div>
-          <div className="col-8 mt-3">
+          <div className="col-8 mt-3" style={{backgroundColor: "#0c3d69"}}>
 
-      <div style={{ padding: "18px " }}>
+      <div style={{ padding: "13px " ,backgroundColor: "#0c3d69"}}>
         <Paper style={{ padding: "10px" }}>
           <Formik
           validateOnChange={false}
