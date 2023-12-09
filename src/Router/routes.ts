@@ -198,6 +198,7 @@ const ROUTES: Array<RouteType> = [
     Component: Complete,
     isPrivate: true,
   },
+  
   {
     name: "form",
     path: "/form",

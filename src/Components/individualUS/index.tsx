@@ -1946,7 +1946,7 @@ export default function IndividualUs() {
                                 *
                               </span>
                             </Typography>
-
+                          
                             <FormControl className="w-100">
                               <select
                                 style={{

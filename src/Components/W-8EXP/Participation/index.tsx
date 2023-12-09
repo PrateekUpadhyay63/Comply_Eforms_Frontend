@@ -110,7 +110,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -120,7 +120,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "24px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -172,7 +172,7 @@ export default function Penalties() {
                             <InfoIcon
                               style={{
                                 color: "#ffc107",
-                                fontSize: "20px",
+                                fontSize: "12px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -272,7 +272,7 @@ export default function Penalties() {
                             <InfoIcon
                               style={{
                                 color: "#ffc107",
-                                fontSize: "20px",
+                                fontSize: "12px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -456,7 +456,7 @@ export default function Penalties() {
                     </div>
                   </div>
 
-                  <Typography style={{ display: "flex", marginLeft: "10px" }}>
+                  <Typography style={{ display: "flex" }}>
                     <Checkbox
                       name="isAgreeWithDeclaration"
                       value={values.isAgreeWithDeclaration}
@@ -508,7 +508,7 @@ export default function Penalties() {
                           <InfoIcon
                             style={{
                               color: "#ffc107",
-                              fontSize: "20px",
+                              fontSize: "12px",
                               cursor: "pointer",
                               verticalAlign: "super",
                             }}

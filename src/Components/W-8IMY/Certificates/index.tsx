@@ -99,7 +99,7 @@ export default function Certifications(props: any) {
               margin: "10px",
               fontSize: "27px",
               fontWeight: "550",
-              marginLeft: "20px",
+              marginLeft: "10px",
             }}
           >
             Certification <span style={{ color: "red" }}>*</span>
@@ -204,7 +204,7 @@ export default function Certifications(props: any) {
               margin: "10px",
               fontSize: "17px",
               color: "grey",
-              marginLeft: "20px",
+              marginLeft: "10px",
             }}
           >
             Under penalties of perjury, I declare that 
@@ -212,7 +212,7 @@ export default function Certifications(props: any) {
 
           <Paper
             style={{
-              marginLeft: "20px",
+              marginLeft: "10px",
               width: "97%",
               backgroundColor: "#d2d6d3",
             }}
@@ -236,6 +236,7 @@ export default function Certifications(props: any) {
                     fontSize: "17px",
                     color: "black",
                     marginTop: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                  I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete.
@@ -256,7 +257,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                  Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for 
 which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form
@@ -278,7 +279,7 @@ which I am providing this form or any withholding agent that can disburse or mak
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,fontWeight:"bold"}}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,fontWeight:"bold",textAlign:"justify" }}
                 >
                  I agree that I will submit a new form within 30 days if any certification on this form becomes incorrect.
                 </Typography>
@@ -303,7 +304,7 @@ which I am providing this form or any withholding agent that can disburse or mak
                         size="medium"
                         style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{ fontSize: "17px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   Check to confirm you have reviewed the Electronic Form
                   <span

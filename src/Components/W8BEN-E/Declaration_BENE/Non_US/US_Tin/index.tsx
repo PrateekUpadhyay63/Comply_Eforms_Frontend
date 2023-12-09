@@ -195,7 +195,7 @@ export default function Tin(props: any) {
                         className="row"
                       >
                         <div className="col-lg-5 col-12">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             U.S. TIN Type<span style={{ color: "red" }}>*</span>
                             <span>
                               <Tooltip
@@ -280,7 +280,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
                             }}
                             name="usTinTypeId"
@@ -315,7 +315,7 @@ export default function Tin(props: any) {
                         </div>
 
                         <div className="col-lg-5 col-12">
-                          <Typography>U.S. TIN</Typography>
+                          <Typography style={{fontSize:"14px"}}>U.S. TIN</Typography>
                           <Input
                             disabled
                             fullWidth
@@ -334,7 +334,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
 
                             }}
@@ -346,8 +346,8 @@ export default function Tin(props: any) {
                             " "
                           }
                         </div>
-                        <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
+                        <div className="col-lg-2 ">
+                          <div className="radio" style={{ marginTop: "17px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -380,7 +380,7 @@ export default function Tin(props: any) {
                       className="row"
                     >
                       <div className="col-lg-5 col-12">
-                        <Typography>
+                        <Typography style={{fontSize:"14px"}}>
                           U.S. TIN Type<span style={{ color: "red" }}>*</span>
                           <span>
                             <Tooltip
@@ -465,7 +465,7 @@ export default function Tin(props: any) {
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height:"40px",
                             width: "100%",
                           }}
                           name="usTinTypeId"
@@ -499,7 +499,7 @@ export default function Tin(props: any) {
                       </div>
 
                       <div className="col-lg-5 col-12">
-                        <Typography>U.S. TIN</Typography>
+                        <Typography style={{fontSize:"14px"}}>U.S. TIN</Typography>
                         <Input
                           disabled={values.notAvailable}
                           fullWidth
@@ -514,7 +514,7 @@ export default function Tin(props: any) {
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height:"40px",
                             width: "100%",
                           }}
                         />
@@ -525,8 +525,8 @@ export default function Tin(props: any) {
                           " "
                         }
                       </div>
-                      <div className="col-lg-2 col-12">
-                        <div style={{ marginTop: "27px" }}>
+                      <div className="col-lg-2 ">
+                        <div className="radio" style={{ marginTop: "17px" }}>
                           <Checkbox
                             value={values.notAvailable}
                             checked={values.notAvailable}
@@ -562,7 +562,7 @@ export default function Tin(props: any) {
                         className="row"
                       >
                         <div className="col-lg-5">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             Foreign TIN Country
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
@@ -573,7 +573,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height:"40px",
                               width: "100%",
                             }}
                             name="foreignTINCountry"
@@ -596,7 +596,7 @@ export default function Tin(props: any) {
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
-                          <div style={{ marginTop: "27px" }}>
+                          <div style={{ marginTop: "2px" }}>
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
@@ -698,7 +698,7 @@ export default function Tin(props: any) {
                           )}
                         </div>
                         <div className="col-lg-5 col-12">
-                          <Typography>
+                          <Typography style={{fontSize:"14px"}}>
                             Foreign TIN{" "}
                             {values.foreignTINCountry == 257 ?(  <span>  <Tooltip
                               style={{
@@ -755,7 +755,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height:"40px",
                                 width: "100%",
                               }}
                             />
@@ -781,7 +781,7 @@ export default function Tin(props: any) {
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height:"40px",
                                 width: "100%",
                               }}
                             />
@@ -794,7 +794,7 @@ export default function Tin(props: any) {
                           }
 
                          <div  >
-                        <FormControl >
+                        <FormControl className="col-12 radio" >
                             <RadioGroup
                               row
                               
@@ -861,14 +861,15 @@ export default function Tin(props: any) {
                     {values.isFTINNotLegallyRequired === true && (
                       <>
                         <Typography
-                          style={{ margin: "20px", fontSize: "20px" }}
+                            className="mt-3"
+                            style={{ marginLeft: "20px", fontSize: "15px" }}
                         >
                           Do you wish to provide a further (or other)
                           explanation why you are not legally required to
                           provide an FTIN?
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
-                        <FormControl style={{ marginLeft: "20px" }}>
+                        <FormControl className="col-12 radio" style={{ marginLeft: "17px" }}>
                           <RadioGroup
                             row
                             name="isNotLegallyFTIN"
@@ -1009,7 +1010,7 @@ export default function Tin(props: any) {
 
 
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
-                      <div style={{ marginLeft: "20px" }}className="my-3">
+                      <div style={{ marginLeft: "20px",marginRight:"20px" }}className="my-3">
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
                           Foreign TIN{" "}
@@ -1022,7 +1023,7 @@ export default function Tin(props: any) {
                         </Typography>
                         <Typography
                           align="left"
-                          style={{ fontWeight: "bold", marginTop: "2rem" }}
+                          style={{ fontWeight: "bold", marginTop: "2rem" ,textAlign:"justify"}}
                         >
                           You have selected a FTIN country that is not on the
                           IRS exemption list, where, in most cases a FTIN should

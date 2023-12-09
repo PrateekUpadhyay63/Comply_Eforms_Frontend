@@ -97,9 +97,9 @@ export default function Certifications(props: any) {
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "30px",
+                    fontSize: "27px",
                     fontWeight: "550",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   Certification 
@@ -188,7 +188,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "17px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   I certify that (Check All).{" "}
@@ -202,7 +202,8 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "17px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                   Under penalties of perjury, I declare that I have examined the
@@ -213,7 +214,7 @@ export default function Certifications(props: any) {
 
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
@@ -239,6 +240,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "10px",
+                          textAlign:"justify" 
                         }}
                       >
                         I am the beneficial owner (or I am authorized to sign
@@ -267,6 +269,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The amounts for which this certification is provided are
@@ -295,6 +298,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The income for which this form was provided is
@@ -349,6 +353,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         Furthermore, I authorize this form to be provided to any
@@ -379,6 +384,7 @@ export default function Certifications(props: any) {
                           fontSize: "17px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         <span style={{ fontWeight: "bold" }}>
