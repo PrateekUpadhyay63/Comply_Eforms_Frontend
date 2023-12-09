@@ -451,7 +451,7 @@ export default function Certifications(props: any) {
                             <span
                               style={{
                                 color: "blue",
-                                fontSize: "19px",
+                                fontSize: "14px",
                                 marginLeft: "5px",
                               }}
                             >
