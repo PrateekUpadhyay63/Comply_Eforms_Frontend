@@ -150,7 +150,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -1251,7 +1251,7 @@ export default function Entity() {
                               }}
                               value={values.usTinTypeId}
                             >
-                            
+                             <option value={0}>--Select--</option>
                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1629,7 +1629,7 @@ export default function Entity() {
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
-                            <Typography align="left">
+                            <Typography className="d-flex w-100 " align="left">
                               U.S. TIN
                               <span
                                 style={{ color: "red", verticalAlign: "super" }}
