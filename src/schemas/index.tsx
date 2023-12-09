@@ -13,13 +13,13 @@ export const firstStepSchema = () => {
       .required("This Field is Required.")
       .notOneOf([0], "Please select "),
     firstName: Yup.string()
-      .required("Please Enter First Name")
-      .min(3, "First Name should be minimum of 3 characters")
-      .max(50, "First Nameould be maximum of 250 characters"),
+      .required("Please Enter First Name"),
+      // .min(3, "First Name should be minimum of 3 characters")
+      // .max(50, "First Nameould be maximum of 250 characters"),
     lastName: Yup.string()
-      .required("Please Enter Last Name")
-      .min(3, "Last Name should be minimum of 3 characters")
-      .max(50, "Last Nameould be maximum of 250 characters"),
+      .required("Please Enter Last Name"),
+      // .min(3, "Last Name should be minimum of 3 characters")
+      // .max(50, "Last Nameould be maximum of 250 characters"),
     //     .matches(/^[0-9]+$/, 'Referrer Amount will always be a whole number')
     //     .required('Please Enter Referrer Amount'),
     //   refereeAmount: Yup.string()
@@ -38,18 +38,18 @@ export const firstStepBusinessSchema = () => {
       .required("This Field is Required.")
       .notOneOf([0], "Please select"),
     firstName: Yup.string()
-      .required("Please Enter First Name")
-      .min(3, "First Name should be minimum of 3 characters")
-      .max(50, "First Nameould be maximum of 250 characters"),
+      .required("Please Enter First Name"),
+      // .min(3, "First Name should be minimum of 3 characters")
+      // .max(50, "First Nameould be maximum of 250 characters"),
     lastName: Yup.string()
-      .required("Please Enter Last Name")
-      .min(3, "Last Name should be minimum of 3 characters")
-      .max(50, "Last Nameould be maximum of 250 characters"),
+      .required("Please Enter Last Name"),
+      // .min(3, "Last Name should be minimum of 3 characters")
+      // .max(50, "Last Nameould be maximum of 250 characters"),
 
-    businessName: Yup.string()
-      .required("Please Enter business Name")
-      .min(3, "business Name should be minimum of 3 characters")
-      .max(50, "business Name should be maximum of 250 characters"),
+    // businessName: Yup.string()
+    //   .required("Please Enter business Name"),
+      // .min(3, "business Name should be minimum of 3 characters")
+      // .max(50, "business Name should be maximum of 250 characters"),
   });
 };
 
