@@ -110,9 +110,7 @@ export default function Tin(props: any) {
     foreignTINCountry: onBoardingFormValues.foreignTINCountryId
       ? onBoardingFormValues.foreignTINCountryId
       : "",
-    foreignTIN: onBoardingFormValues.foreignTIN
-      ? onBoardingFormValues.foreignTIN
-      : "",
+    foreignTIN: "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
@@ -525,7 +523,7 @@ export default function Tin(props: any) {
                             handleChange(e);
                           }}
                         >
-                          <option value="1">-Select-</option>
+                          <option value="0">-Select-</option>
                               {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
@@ -643,12 +641,13 @@ export default function Tin(props: any) {
                                 )}
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
-
+ 
                           <div style={{ marginTop: "2px" }}>
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}setFieldValue("foreignTIN", "");
+                            }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />

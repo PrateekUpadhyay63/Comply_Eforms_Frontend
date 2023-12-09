@@ -46,9 +46,7 @@ export default function Tin(props: any) {
     foreignTINCountry: onBoardingFormValues.foreignTINCountryId
       ? onBoardingFormValues.foreignTINCountryId
       : "",
-    foreignTIN: onBoardingFormValues.foreignTIN
-      ? onBoardingFormValues.foreignTIN
-      : "",
+    foreignTIN: "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
@@ -597,7 +595,8 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}setFieldValue("foreignTIN", "");
+                            }}
 
                               size="medium"
                               name="isFTINNotLegallyRequired"
@@ -740,7 +739,12 @@ export default function Tin(props: any) {
                               name="foreignTIN"
                               value={values.foreignTIN}
                               onBlur={handleBlur}
-                              onChange={handleChange}
+                              onChange={(e)=>{
+                                const re = /^[0-9\b]+$/;
+                                if (e.target.value === '' || re.test(e.target.value)) {
+                                  handleChange(e)
+                              }}}
+                              
                               inputProps={{ maxLength: 10 }}
                               placeholder="ENTER FOREIGN TIN"
 
