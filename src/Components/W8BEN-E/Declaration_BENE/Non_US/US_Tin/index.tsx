@@ -76,7 +76,15 @@ export default function Tin(props: any) {
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
-
+  const [payload, setPayload] = useState({usTin:""})
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 2) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+  
+  };
   return (
     <section
       className="inner_content"
@@ -505,9 +513,11 @@ export default function Tin(props: any) {
                           fullWidth
                           type="text"
                           name="usTin"
+                          onKeyDown={(e) => formatTin(e, values)}
                           value={values.usTin}
                           onBlur={handleBlur}
                           onChange={handleChange}
+                          inputProps={{ maxLength: 10 }}
                           error={Boolean(touched.usTin && errors.usTin)}
                           style={{
                             border: " 1px solid #d9d9d9 ",

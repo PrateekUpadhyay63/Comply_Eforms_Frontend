@@ -311,14 +311,14 @@ export default function Entity() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
+    if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 6) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
+    // if (e.target.value.length === 6) {
+    //   setPayload({ ...payload, usTin: payload.usTin + "-" });
+    //   values.usTin = values.usTin + "-";
+    // }
   };
 
   const handleOpen = (val: any) => {
@@ -1252,7 +1252,8 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                              <option value={0}>--Select--</option>
-                             {ustinValue?.map((ele: any) => (
+                             <option value={2}>SSN/ITIN</option>
+                             {/* {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1267,7 +1268,7 @@ export default function Entity() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))}
+                                ))} */}
                             </select>
                           </FormControl>
                           <p className="error">{errors.usTinTypeId}</p>
@@ -1298,7 +1299,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e) => formatTin(e, values)}
                               onChange={handleChange}
-                              inputProps={{ maxLength: 11 }}
+                              inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>

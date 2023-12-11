@@ -51,15 +51,11 @@ export default function Tin(props: any) {
   const [ustinValue, setUStinvalue] = useState([]);
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
+    if (e.target.value.length === 2) {
       setPayload({ ...payload, Tin: payload.Tin + "-" });
       values.Tin = values.Tin + "-";
     }
-    if (e.target.value.length === 6) {
-      setPayload({ ...payload, Tin: payload.Tin + "-" });
-
-      values.Tin = values.Tin + "-";
-    }
+    
   };
   const [selectedTaxClassification, setSelectedTaxClassification] =
   useState(0);
@@ -269,7 +265,7 @@ export default function Tin(props: any) {
         handleChange
       }
       className="input-w9-cstm"
-      inputProps={{ maxLength: 11}}
+      inputProps={{ maxLength: 10}}
       onKeyDown={(e) => formatTin(e, values)}
       fullWidth
        
