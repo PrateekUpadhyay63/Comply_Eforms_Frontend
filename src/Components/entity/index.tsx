@@ -150,7 +150,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -311,11 +311,11 @@ export default function Entity() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 2) {
+    if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 12) {
+    if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
@@ -1251,7 +1251,7 @@ export default function Entity() {
                               }}
                               value={values.usTinTypeId}
                             >
-                            
+                             <option value={0}>--Select--</option>
                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1298,7 +1298,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e) => formatTin(e, values)}
                               onChange={handleChange}
-                              inputProps={{ maxLength: 10 }}
+                              inputProps={{ maxLength: 11 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1559,7 +1559,7 @@ export default function Entity() {
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
                                   onChange={handleChange}
-                                  inputProps={{ maxLength: 9 }}
+                                  inputProps={{ maxLength: 11 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
                                   value={values.vat}
@@ -1595,7 +1595,7 @@ export default function Entity() {
                               onChange={(e: any) => {
                                 handleChange(e);
 
-                                if (e.target.value == 0)
+                                if (e.target.value == 0 || e.target.value == 5 || e.target.value == 6)
                                   setFieldValue("usTin", "");
                               }}
                               value={values.usTinTypeId}
@@ -1629,7 +1629,7 @@ export default function Entity() {
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
-                            <Typography align="left">
+                            <Typography className="d-flex w-100 " align="left">
                               U.S. TIN
                               <span
                                 style={{ color: "red", verticalAlign: "super" }}
@@ -1655,7 +1655,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e) => formatTin(e, values)}
                               onChange={handleChange}
-                              inputProps={{ maxLength: 10 }}
+                              inputProps={{ maxLength: 11 }}
                               value={values.usTin}
                             />
                           </FormControl>

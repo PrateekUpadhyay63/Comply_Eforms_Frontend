@@ -66,7 +66,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([6]);
+  const [incomeArr, setIncomeArr] = useState([5]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -77,6 +77,7 @@ export default function IndividualUs() {
   const [toolInfo, setToolInfo] = useState("");
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -162,7 +163,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -327,7 +328,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, 6]);
+    setIncomeArr((incomeArr) => [...incomeArr, 5]);
   };
 
   const handleDelete = (i: any) => {
@@ -356,7 +357,6 @@ export default function IndividualUs() {
     if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
-
           <FormControl className="w-100">
             <Typography align="left">
               {/* {returnFieldName()} */}
@@ -491,11 +491,11 @@ export default function IndividualUs() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 2) {
+    if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 12) {
+    if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
@@ -535,10 +535,12 @@ export default function IndividualUs() {
   }
 
   const handleIcome = (e: any, i: number) => {
-    const newValue = e.target.value;
-    const updatedIncomeArr = [...incomeArr, 6];
-    updatedIncomeArr[i] = newValue;
-    setIncomeArr(updatedIncomeArr);
+    if (i < 5) {
+      const newValue = e.target.value;
+      const updatedIncomeArr = [...incomeArr, 5];
+      updatedIncomeArr[i] = newValue;
+      setIncomeArr(updatedIncomeArr);
+    }
   };
   let selectCitizenOptions: Array<string> = [];
   let selectUSCitizenOptions: Array<string> = [];
@@ -552,8 +554,6 @@ export default function IndividualUs() {
       selectUSCitizenOptions.push(ele);
     }
   });
-  console.log(selectNON_USCitizenOptions, "selectNON_USCitizenOptions");
-  console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
 
   return (
     <section
@@ -1536,7 +1536,7 @@ export default function IndividualUs() {
                                 }}
                                 name="usTinTypeId"
                                 id="Income"
-                                defaultValue={"1"}
+                                defaultValue={0}
                                 onChange={(e: any) => {
                                   handleChange(e);
 
@@ -1550,8 +1550,9 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value={0}>-Select-</option>
+                               
                                 <>{console.log(ustinValue, "")}</>
+                                <option value={0}>--Select--</option>
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1559,6 +1560,7 @@ export default function IndividualUs() {
                                   //   values?.isUSIndividual == "Yes" ?
                                   // (
                                   <option
+
                                     key={ele?.taxpayerIdTypeID}
                                     value={ele?.taxpayerIdTypeID}
                                   >
@@ -1574,8 +1576,8 @@ export default function IndividualUs() {
                           </div>
 
                           <div className="col-lg-3 col-6 col-md-3">
-                            <FormControl className="w-100">
-                              <Typography align="left">
+                            <FormControl  className="w-100" >
+                              <Typography className="d-flex w-100" align="left">
                                 U.S. TIN
                                 <span
                                   style={{
@@ -1608,7 +1610,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1713,7 +1715,7 @@ export default function IndividualUs() {
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
                                 onKeyDown={(e) => formatTin(e, values)}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 value={values.foreignTIN}
                               />
                             </FormControl>
@@ -1946,7 +1948,7 @@ export default function IndividualUs() {
                                 *
                               </span>
                             </Typography>
-                          
+
                             <FormControl className="w-100">
                               <select
                                 style={{
@@ -1971,7 +1973,7 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                {/* <option value="1">-Select-</option> */}
+                                <option value="1">--Select--</option>
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -2024,7 +2026,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -2312,7 +2314,9 @@ export default function IndividualUs() {
                             </p>
                           </FormControl>
                         </div>
-                        {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
+                        {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                        GetStateByCountryIdReducer?.allCountriesStateIdData
+                          ?.length > 0 ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left" className="d-flex w-100 ">
                               State or Province:
@@ -3232,7 +3236,9 @@ export default function IndividualUs() {
                                 </p>
                               </FormControl>
                             </div>
-                            {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length > 0 ? (
+                            {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                            GetStateByCountryIdReducer?.allCountriesStateIdData
+                              ?.length > 0 ? (
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography
                                   align="left"
@@ -3958,7 +3964,7 @@ export default function IndividualUs() {
                               );
                             })}
 
-                          {incomeArr.length <= 4 ? (
+                          {incomeArr.length < 5 ? (
                             <Typography
                               style={{
                                 color: "#007bff",
@@ -4096,7 +4102,7 @@ export default function IndividualUs() {
                           <Typography className="d-flex w-100 pb-2">
                             Income Code
                           </Typography>
-                          {incomeArr.length &&
+                          {incomeArr.length && incomeArr.length <= 4 &&
                             incomeArr.map((ind, i) => {
                               // console.log(ind, i,"udvgjudgvfjdbgjfd")
                               return (

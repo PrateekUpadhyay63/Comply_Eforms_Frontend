@@ -106,7 +106,7 @@ export default function Factors() {
       </div>
       </div>
       <div className="col-8 mt-3">
-              <div style={{ margin: "10px" }}>
+              <div style={{ margin: "12px" }}>
                 <Paper style={{ padding: "10px" }}>
                   <div style={{ margin: "10px" }}>
                     <Typography

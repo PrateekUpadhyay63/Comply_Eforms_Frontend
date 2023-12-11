@@ -131,7 +131,7 @@ export default function Certifications(props: any) {
                 <InfoIcon
                   style={{
                     color: "#ffc107",
-                    fontSize: "15px",
+                   fontSize: "14px",
                     cursor: "pointer",
                     verticalAlign: "super",
                   }}
@@ -217,7 +217,7 @@ export default function Certifications(props: any) {
           <Typography
             style={{
               margin: "10px",
-              fontSize: "15px",
+             fontSize: "14px",
               color: "grey",
               marginLeft: "10px",
               textAlign:"justify" 
@@ -252,7 +252,7 @@ export default function Certifications(props: any) {
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{
-                    fontSize: "15px",
+                   fontSize: "14px",
                     color: "black",
                     marginTop: "10px",
                     textAlign:"justify" 
@@ -280,7 +280,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   2. The person named on line 1 of this form is not a U.S.
                   person,
@@ -307,7 +307,7 @@ export default function Certifications(props: any) {
                 </Typography>
               </Typography>
 
-              <div style={{ marginLeft: "60px", fontSize: "15px",textAlign:"justify"  }}>
+              <div style={{ marginLeft: "60px",fontSize: "14px",textAlign:"justify"  }}>
                 <li>
                   (a) not effectively connected with the conduct of a trade or
                   business in the United States,
@@ -341,7 +341,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   4. The person named on line 1 of this form is a resident of
                   the treaty country listed on line 9 of the form (if any)
@@ -364,7 +364,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                   5. For broker transactions or barter exchanges, the beneficial
                   owner is an exempt foreign person as defined in the
@@ -386,7 +386,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px",textAlign:"justify"  }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   Furthermore, I authorize this form to be provided to any
                   withholding agent that has control, receipt, or custody of the
@@ -410,7 +410,7 @@ export default function Certifications(props: any) {
 
               <Typography
                 style={{
-                  fontSize: "15px",
+                 fontSize: "14px",
                   color: "black",
                   marginTop: "10px",
                   marginBottom: "20px",
@@ -423,7 +423,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                   I have been notified by IRS that I am currently subject to
                   backup withholding.
@@ -444,7 +444,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
-                  style={{ fontSize: "15px", color: "black", marginTop: "7px" }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px" }}
                 >
                   Check to confirm you have reviewed the Electronic Form
                   <span

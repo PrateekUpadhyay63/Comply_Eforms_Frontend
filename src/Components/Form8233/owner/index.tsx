@@ -16,7 +16,7 @@ import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { ownerSchema } from "../../../schemas/8233";
-import { CREATE_8233,getAllCountries } from "../../../Redux/Actions";
+import { CREATE_8233,getAllCountries,GetAgentUSVisaTypeHiddenForEformAction } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -24,7 +24,7 @@ import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Tin(props: any) {
   const initialValue = {
     exemptionApplicableForCompensationForCalnderYear: 0,
-    otherTaxBeginingYear: 0,
+    otherTaxBeginingYear: "",
     otherTaxEndYear: "",
     usVisaTypeID: "",
     countryIssuingPassportId: "",
@@ -41,7 +41,21 @@ export default function Tin(props: any) {
   const history = useNavigate();
   const [tax, setTax] = useState<string>("");
 
-  const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+
+const currentYear = (new Date()).getFullYear();
+const range = (start:number, stop:number, step:number) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
+
+ 
+const GetAgentUSVisaTypeHiddenForEform = useSelector(
+  (state: any) =>
+    state.GetAgentUSVisaTypeHiddenForEformReducer
+      .GetAgentUSVisaTypeHiddenForEform
+);
+
+
+
+const handleTaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTax(event.target.value);
   };
   const [expanded, setExpanded] = React.useState<string | false>("");
@@ -52,6 +66,7 @@ export default function Tin(props: any) {
     };
 useEffect(()=>{
   dispatch(getAllCountries())  
+  dispatch(GetAgentUSVisaTypeHiddenForEformAction())
 },[])
 const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer);
   const [toolInfo, setToolInfo] = useState("");
@@ -100,12 +115,12 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
         </div>
         <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
+          <div style={{ padding: "10px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1358} formName={2}/>
       </div>
       </div>
       <div className="col-8 mt-3">
-              <div style={{ padding: "10px" }}>
+              <div style={{ padding: "4px" }}>
                 <Paper style={{ padding: "18px" }}>
                   <Typography
                     align="left"
@@ -142,11 +157,8 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                           onChange={handleChange}
                         >
                          <option value="">-Select-</option>
-                              <option value={257}>United Kingdom</option>
-                              <option value={258}>United States</option>
-                              <option value="">---</option>
-                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
+                              {range(currentYear, 2000, -1)?.map((ele:any) => (
+                              <option key={ele} value={ele}>{ele}</option>
                                   ))}
                         </select>
                         <p className="error">
@@ -167,7 +179,8 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         , or other tax year beginning
                       </Typography>
                       <FormControl className="mx-2" style={{ width: "20%" }}>
-                        <select
+                        <input
+                        disabled
                           style={{
                             border: " 1px solid #d9d9d9 ",
                             padding: " 0 10px",
@@ -179,16 +192,9 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                           value={values.otherTaxBeginingYear}
                           onBlur={handleBlur}
                           onChange={handleChange}
-                        >
-                         <option value="">-Select-</option>
-                              <option value={257}>United Kingdom</option>
-                              <option value={258}>United States</option>
-                              <option value="">---</option>
-                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
-                        </select>
-                        <p className="error">{errors.otherTaxBeginingYear}</p>
+                        />
+                       
+                        {/* <p className="error">{errors.otherTaxBeginingYear}</p> */}
                       </FormControl>
 
                       <Typography
@@ -198,7 +204,8 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         and ending
                       </Typography>
                       <FormControl className="mx-2" style={{ width: "20%" }}>
-                        <select
+                        <input
+                        disabled
                           style={{
                             border: " 1px solid #d9d9d9 ",
                             padding: " 0 10px",
@@ -210,16 +217,9 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                           value={values.otherTaxEndYear}
                           onBlur={handleBlur}
                           onChange={handleChange}
-                        >
-                         <option value="">-Select-</option>
-                              <option value={257}>United Kingdom</option>
-                              <option value={258}>United States</option>
-                              <option value="">---</option>
-                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
-                        </select>
-                        <p className="error">{errors.otherTaxEndYear}</p>
+                        />
+                         
+                        {/* <p className="error">{errors.otherTaxEndYear}</p> */}
                       </FormControl>
                     </div>
                   </div>
@@ -238,7 +238,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                     </span>{" "}
                     Identification of Beneficial Owner (See instructions.)
                   </Paper>
-                  <Typography style={{ fontSize: "17px" }}>
+                  <Typography style={{ fontSize: "15px" }}>
                     <span style={{ fontWeight: "550" }}>Note:</span> Citizens of
                     Canada or Mexico are not required to complete lines 7a and
                     7b.
@@ -246,7 +246,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
 
                   <div className="col-12">
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "17px" }}>
+                      <Typography style={{ fontSize: "15px" }}>
                         <span style={{ fontWeight: "550" }}>6</span> U.S.visa
                         type<span style={{ color: "red" }}>*</span>
                         <span>
@@ -275,7 +275,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "17px",
+                                fontSize: "15px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -332,7 +332,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Link
                               href="#"
                               underline="none"
-                              style={{ marginTop: "10px", fontSize: "17px" }}
+                              style={{ marginTop: "10px", fontSize: "15px" }}
                               onClick={() => {
                                 setToolInfo("");
                               }}
@@ -359,17 +359,21 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         }}
                       >
                         <option value="">-Select-</option>
-                        <option value={257}>A-Visa (Employees of foreign governments)</option>
-                        <option value={258}>B1-Visa (Business visitors)</option>
-                        <option value={257}>B2-Visa (Tourist - combined B1 and B2)</option>
-                        <option value={258}>B1-Visa (Business visitors)</option>
-                        <option value={257}>C-Visa (Transit aliens)</option>
-                        <option value={258}>D-Visa (Crew members of ships and aircraft)</option>
+                        {GetAgentUSVisaTypeHiddenForEform?.map(
+                                          (ele: any) => (
+                                            <option
+                                              key={ele?.id}
+                                              value={ele?.id}
+                                            >
+                                              {ele?.name}
+                                            </option>
+                                          )
+                                        )}
                       </select>
                       <p className="error">{errors.usVisaTypeID}</p>
                     </div>
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "17px" }}>
+                      <Typography style={{ fontSize: "15px" }}>
                         <span style={{ fontWeight: "550" }}>7a</span> Country
                         issuing passport <span style={{ color: "red" }}>*</span>
                         <span>
@@ -398,7 +402,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "17px",
+                                fontSize: "13px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -430,7 +434,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Link
                               href="#"
                               underline="none"
-                              style={{ marginTop: "10px", fontSize: "17px" }}
+                              style={{ marginTop: "10px", fontSize: "15px" }}
                               onClick={() => {
                                 setToolInfo("");
                               }}
@@ -467,7 +471,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                       <p className="error">{errors.countryIssuingPassportId}</p>
                     </div>
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "17px" }}>
+                      <Typography style={{ fontSize: "15px" }}>
                         <span style={{ fontWeight: "550" }}>7b</span> Passport
                         number<span style={{ color: "red" }}>*</span>
                         <span>
@@ -496,7 +500,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "17px",
+                                fontSize: "13px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -528,7 +532,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Link
                               href="#"
                               underline="none"
-                              style={{ marginTop: "10px", fontSize: "17px" }}
+                              style={{ marginTop: "10px", fontSize: "15px" }}
                               onClick={() => {
                                 setToolInfo("");
                               }}
@@ -558,7 +562,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                       </p>
                     </div>
                     <div className="col-6 my-3">
-                      <Typography style={{ fontSize: "17px" }}>
+                      <Typography style={{ fontSize: "15px" }}>
                         <span style={{ fontWeight: "550" }}> 8</span> Date of
                         entry into the United States{" "}
                         <span style={{ color: "red" }}>*</span>
@@ -588,7 +592,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "17px",
+                                fontSize: "13px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -638,7 +642,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Link
                               href="#"
                               underline="none"
-                              style={{ marginTop: "10px", fontSize: "17px" }}
+                              style={{ marginTop: "10px", fontSize: "15px" }}
                               onClick={() => {
                                 setToolInfo("");
                               }}
@@ -676,7 +680,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
 
                     <div className="row col-12 mt-2">
                       <div className="col-6 ">
-                        <Typography style={{ fontSize: "17px" }}>
+                        <Typography style={{ fontSize: "15px" }}>
                           <span style={{ fontWeight: "550" }}>9a</span> Current
                           nonimmigrant status
                           <span style={{ color: "red" }}>*</span>
@@ -709,7 +713,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                               <Info
                                 style={{
                                   color: "#ffc107",
-                                  fontSize: "17px",
+                                  fontSize: "13px",
                                   cursor: "pointer",
                                   verticalAlign: "super",
                                 }}
@@ -742,7 +746,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                               <Link
                                 href="#"
                                 underline="none"
-                                style={{ marginTop: "10px", fontSize: "17px" }}
+                                style={{ marginTop: "10px", fontSize: "15px" }}
                                 onClick={() => {
                                   setToolInfo("");
                                 }}
@@ -754,7 +758,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         ) : (
                           ""
                         )}
-                        <select
+                        <Input
                           name="currentNonImmigrationStatus"
                           value={values.currentNonImmigrationStatus}
                           onBlur={handleBlur}
@@ -767,22 +771,16 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             height: "50px",
                             width: "100%",
                           }}
-                        >
-                         <option value="">-Select-</option>
-                              <option value={257}>United Kingdom</option>
-                              <option value={258}>United States</option>
-                              <option value="">---</option>
-                              {getCountriesReducer.allCountriesData?.map((ele:any) => (
-                              <option key={ele?.id} value={ele?.id}>{ele?.name}</option>
-                                  ))}
-                        </select>
+                        
+                        
+                        />
                         <p className="error">
                           {errors.currentNonImmigrationStatus}
                         </p>
                       </div>
 
                       <div className="col-6">
-                        <Typography style={{ fontSize: "17px" }}>
+                        <Typography style={{ fontSize: "15px" }}>
                           <span style={{ fontWeight: "550" }}>9b</span> Date
                           your current nonimmigrant status expires
                           <span>
@@ -815,7 +813,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                               <Info
                                 style={{
                                   color: "#ffc107",
-                                  fontSize: "17px",
+                                  fontSize: "13px",
                                   cursor: "pointer",
                                   verticalAlign: "super",
                                 }}
@@ -850,7 +848,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                               <Link
                                 href="#"
                                 underline="none"
-                                style={{ marginTop: "10px", fontSize: "17px" }}
+                                style={{ marginTop: "10px", fontSize: "15px" }}
                                 onClick={() => {
                                   setToolInfo("");
                                 }}
@@ -913,13 +911,13 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         name="foreignStudent_Teacher_Professor_ResearcherStatus"
                         size="medium"
                       />
-                      <span style={{ fontSize: "17px", marginTop: "13px" }}>
+                      <span style={{ fontSize: "15px", marginTop: "13px" }}>
                         <span style={{ fontWeight: "550" }}> 10</span> If you
                         are a foreign student, trainee, professor/teacher, or
                         researcher, check this box
                       </span>
                       <div
-                        style={{ fontSize: "17px", fontWeight: "550" }}
+                        style={{ fontSize: "15px", fontWeight: "550" }}
                         className="mx-2"
                       >
                         Caution: See the line 10 instructions for the required
@@ -950,7 +948,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Info
                               style={{
                                 color: "#ffc107",
-                                fontSize: "17px",
+                                fontSize: "13px",
                                 cursor: "pointer",
                                 verticalAlign: "super",
                               }}
@@ -962,7 +960,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                       {errors.foreignStudent_Teacher_Professor_ResearcherStatus}
                     </p>
                     <div
-                      style={{ fontSize: "17px" }}
+                      style={{ fontSize: "15px" }}
                       className="d-flex mt-5 col-12"
                     >
                       You have selected Line 10 Checkbox. Please provide
@@ -976,10 +974,11 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         type="file"
                         onChange={handleChange}
                       />
-                      <p className="error">
+                    
+                    </div>
+                    <p className="error">
                         {errors.statementToForm8233_FileUpoad}
                       </p>
-                    </div>
                       </div>
                       {toolInfo === "student" ? (
                         <div>
@@ -1005,7 +1004,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                             <Link
                               href="#"
                               underline="none"
-                              style={{ marginTop: "10px", fontSize: "17px" }}
+                              style={{ marginTop: "10px", fontSize: "15px" }}
                               onClick={() => {
                                 setToolInfo("");
                               }}

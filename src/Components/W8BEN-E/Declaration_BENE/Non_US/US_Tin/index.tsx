@@ -114,7 +114,7 @@ export default function Tin(props: any) {
         </div>
 
         <div className="col-8 mt-3">
-          <div style={{ padding: "18px" }}>
+          <div style={{ padding: "13px" }}>
             <Paper style={{ padding: "10px" }}>
               <Formik
                 initialValues={initialValue}
@@ -600,7 +600,8 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}setFieldValue("foreignTIN", "");
+                            }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />
