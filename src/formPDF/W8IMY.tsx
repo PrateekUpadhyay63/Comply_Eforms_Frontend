@@ -4776,8 +4776,389 @@ export default function FormW8IMY() {
 
             {/* ---------------------Part  XIX end   ----------------------- */}
 
-            {/* --------------------------------------------------------------------------------------------------------------------------------- */}
+         {/* ---------------------Part  XX  ----------------------- */}
 
+         <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XX</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Exempt Retirement Plans
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+              <tr>
+                  <td
+                    colSpan={2}
+                    style={{ fontSize: "18px", fontWeight: "600", padding: "" }}
+                  >
+                    Check the box on line 33a, b, c, d, e, or f, whichever applies.
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>33a </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        Is established in a country with which the United States has an income tax treaty in force;
+                        </li>
+                        <li> Is operated principally to administer or provide pension or retirement benefits; <strong>and</strong> </li>
+                        <li>
+                        Is entitled to treaty benefits on income that the fund derives from U.S. sources (or would be entitled to benefits if it derived any such income) as a resident of the other country which satisfies any applicable limitation on benefits requirement.
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>b </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        Is established in a country with which the United States has an income tax treaty in force;
+                        </li>
+                        <li> Is organized for the provision of retirement, disability, or death benefits (or any combination thereof) to beneficiaries that are former 
+                        employees of one or more employers in consideration for services rendered;</li>
+                        <li>
+                        No single beneficiary has a right to more than 5% of the FFI’s assets;
+                        </li>
+                        <li>
+                        Is subject to government regulation and provides annual information reporting about its beneficiaries to the relevant tax authorities in the 
+                        country in which the fund is established or operated; <strong>and</strong> 
+                        </li>
+                      </ul>
+                      <ul
+                      style={{
+                        listStyleType: "none",
+                        paddingLeft: "28px",
+                        marginBottom: "0px",
+                      }}
+                    >
+                   
+                      <li>
+                        <strong>(i)</strong> Is generally exempt from tax on investment income under the laws of the country in which it is established or operates due to its 
+                        status as a retirement or pension plan;
+                      </li>
+                      <li>
+                        <strong>(ii)</strong> Receives at least 50% of its total contributions from sponsoring employers (disregarding transfers of assets from other plans 
+                        described in this part, retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, other retirement funds 
+                        described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A));
+                      </li>
+                      <li>
+                        <strong>(iii)</strong> Either does not permit or penalizes distributions or withdrawals made before the occurrence of specified events related to 
+                        retirement, disability, or death (except rollover distributions to accounts described in Regulations section 1.1471-5(b)(2)(i)(A) 
+                        (referring to retirement and pension accounts), to retirement and pension accounts described in an applicable Model 1 or Model 2 
+                        IGA, or to other retirement funds described in this part or in an applicable Model 1 or Model 2 IGA); <strong>or</strong> 
+                      </li>
+                      <li>
+                      <strong>(iv)</strong> Limits contributions by employees to the fund by reference to earned income of the employee or may not exceed $50,000 annually.
+                      </li>
+                    </ul>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>c </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        Is organized for the provision of retirement, disability, or death benefits (or any combination thereof) to beneficiaries that are former 
+                        employees of one or more employers in consideration for services rendered;
+                        </li>
+                        <li>Has fewer than 50 participants;</li>
+                        <li>
+                        Is sponsored by one or more employers, each of which is not an investment entity or passive NFFE;
+                        </li>
+                        <li>
+                        Employee and employer contributions to the fund (disregarding transfers of assets from other plans described in this part, retirement and 
+                        pension accounts described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A)) are 
+                        limited by reference to earned income and compensation of the employee, respectively;
+                        </li>
+                        <li>
+                        Participants that are not residents of the country in which the fund is established or operated are not entitled to more than 20% of the fund’s assets;<strong>and</strong>
+                        </li>
+                        <li>
+                        Is subject to government regulation and provides annual information reporting about its beneficiaries to the relevant tax authorities in the 
+                        country in which the fund is established or operates.
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>d </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I is formed pursuant to a pension plan that would meet the requirements of section 401(a), other 
+                    than the requirement that the plan be funded by a trust created or organized in the United States.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>e </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I is established exclusively to earn income for the benefit of one or more retirement funds described 
+                    in this part or in an applicable Model 1 or Model 2 IGA, accounts described in Regulations section 1.1471-5(b)(2)(i)(A) (referring to 
+                    retirement and pension accounts), or retirement and pension accounts described in an applicable Model 1 or Model 2 IGA.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>f </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        Is established and sponsored by a foreign government, international organization, central bank of issue, or government of a U.S. 
+                        possession (each as defined in Regulations section 1.1471-6) or an exempt beneficial owner described in an applicable Model 1 or Model 
+                        2 IGA to provide retirement, disability, or death benefits to beneficiaries or participants that are current or former employees of the sponsor 
+                        (or persons designated by such employees);<strong>or</strong>
+                        </li>
+                        <li> Is established and sponsored by a foreign government, international organization, central bank of issue, or government of a U.S. 
+                        possession (each as defined in Regulations section 1.1471-6) or an exempt beneficial owner described in an applicable Model 1 or Model 
+                        2 IGA to provide retirement, disability, or death benefits to beneficiaries or participants that are not current or former employees of such 
+                        sponsor, but are in consideration of personal services performed for the sponsor.</li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XX end   ----------------------- */}
+
+
+           {/* ---------------------Part  XXI  ----------------------- */}
+
+           <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXI</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Excepted Nonfinancial Group Entity
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
             <table
               style={{
                 width: "100%",
@@ -4790,103 +5171,18 @@ export default function FormW8IMY() {
               <tbody>
                 <tr>
                   <td
-                    colSpan={2}
-                    style={{ fontSize: "18px", fontWeight: "600" }}
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
                   >
-                    Qualified Intermediaries When Not Acting As Qualified
-                    Derivatives Dealers (check all that apply)
+                    {" "}
+                    <label>
+                      <strong>34 </strong>
+                    </label>
                   </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} style={{ padding: "5px 0" }}>
-                    Under penalties of perjury, I declare that I have examined
-                    the information on this form and to the best of my knowledge
-                    and belief it is true, correct, and complete. I further
-                    certify under penalties of perjury that:
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} style={{ padding: "10px 0" }}>
-                    <ul style={{ listStyle: "disc", paddingLeft: "16px" }}>
-                      <li>
-                        I am the individual that is the beneficial owner (or am
-                        authorized to sign for the individual that is the
-                        beneficial owner) of all the income or proceeds to which
-                        this form relates or am using this form to document
-                        myself for chapter 4 purposes;
-                      </li>
-                      <li>
-                        The person named on line 1 of this form is not a U.S.
-                        person;
-                      </li>
-                      <li>
-                        This form relates to:
-                        <ol style={{ listStyle: "lower-alpha" }}>
-                          <li>
-                            income not effectively connected with the conduct of
-                            a trade or business in the United States;
-                          </li>
-                          <li>
-                            {" "}
-                            income effectively connected with the conduct of a
-                            trade or business in the United States but is not
-                            subject to tax under an applicable income tax
-                            treaty;
-                          </li>
-                          <li>
-                            the partner’s share of a partnership’s effectively
-                            connected taxable income; or
-                          </li>
-                          <li>
-                            {" "}
-                            the partner’s amount realized from the transfer of a
-                            partnership interest subject to withholding under
-                            section 1446(f);
-                          </li>
-                        </ol>
-                      </li>
-                      <li>
-                        The person named on line 1 of this form is a resident of
-                        the treaty country listed on line 9 of the form (if any)
-                        within the meaning of the income tax treaty between the
-                        United States and that country; and
-                      </li>
-                      <li>
-                        For broker transactions or barter exchanges, the
-                        beneficial owner is an exempt foreign person as defined
-                        in the instructions.Furthermore, I authorize this form
-                        to be provided to any withholding agent that has
-                        control, receipt, or custody of the income of which I am
-                        the beneficial owner or any withholding agent that can
-                        disburse or make payments of the income of which I am
-                        the beneficial owner.{" "}
-                        <strong>
-                          I agree that I will submit a new form within 30 days
-                          if any certification made on this form becomes
-                          incorrect.{" "}
-                        </strong>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2}>
-                    <p style={{ color: "blue" }}>
-                      W-8BEN – Electronic Substitute Form Statement
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2}>
-                    The Internal Revenue Service does not require your consent
-                    to any provisions of this document other than the
-                    certifications required to establish your status as a
-                    non-U.S. person and, if applicable, obtain a reduced rate of
-                    withholding.
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan={2} style={{ padding: "10px 0" }}>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
                     <input
                       type="checkbox"
                       name=""
@@ -4895,12 +5191,823 @@ export default function FormW8IMY() {
                         background: "#fff",
                         border: "1px solid #000",
                         marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
                       }}
-                    />{" "}
-                    I certify that I have the capacity to sign for the person
-                    identified on line 1 of this form.
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>Was in existence as of January 17, 2013;</li>
+                        <li>
+                        Is a holding company, treasury center, or captive finance company and substantially all of the entity’s activities are functions described in 
+                        Regulations section 1.1471-5(e)(5)(i)(C) through (E);
+                        </li>
+                        <li>
+                          Is certified deemed-compliant because it satisfies the
+                          requirements to be treated as a limited life debt
+                          investment entity (such as the restrictions with
+                          respect to its assets and other requirements under
+                          Regulations section 1.1471-5(f)(2)(iv)).
+                        </li>
+                      </ul>
+                    </p>
                   </td>
                 </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXI end   ----------------------- */}
+
+
+
+           {/* ---------------------Part  XXII  ----------------------- */}
+
+            {/* ---------------------Part  XXII end   ----------------------- */}
+
+           {/* ---------------------Part  XXIII  ----------------------- */}
+
+           <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXIII</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Excepted Nonfinancial Entity in Liquidation or Bankruptcy
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>36 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li >
+                          <div style={{display:"flex"}}>
+                          <p style={{marginBottom:"0px"}}>Filed a plan of liquidation, filed a plan for reorganization, or filed for bankruptcy on the following date:</p><div style={{width:"90px", borderBottom:"1px solid black"}}></div>
+                          </div>
+                        </li>
+                        <li>
+                        Has not been engaged during the past 5 years in business as a financial institution or acted as a passive NFFE;
+                        </li>
+                        <li>
+                        Is either liquidating or emerging from a reorganization or bankruptcy with the intent to continue or recommence operations as a 
+                        nonfinancial entity; <strong>and</strong> 
+                        </li>
+                        <li>
+                        Has provided, or will provide, documentary evidence such as a bankruptcy filing or other public documentation that supports its claim if 
+                        it remains in bankruptcy or liquidation for more than 3 years.
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>   
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXIII end   ----------------------- */}
+           {/* ---------------------Part  XXIV  ----------------------- */}
+
+           <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXIV</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Publicly Traded NFFE or NFFE Affiliate of a Publicly Traded Corporation
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+       
+                <tr>
+                  <td
+                    colSpan={2}
+                    style={{ fontSize: "18px", fontWeight: "600" }}
+                  >
+                    Check the box on line 37a or 37b, whichever applies.
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>37a </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li> The entity identified in Part I is a foreign corporation that is not a financial institution; <strong>and</strong></li>
+                        <li>
+                          <div style={{display:"flex"}}>
+                          <p style={{marginBottom:"0px"}}>The stock of such corporation is regularly traded on one or more established securities markets, including</p><div style={{width:"90px", borderBottom:"1px solid black"}}></div>
+                          </div>
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>b </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li> The entity identified in Part I is a foreign corporation that is not a financial institution;</li>
+                        <li>
+                        The entity identified in Part I is a member of the same expanded affiliated group as an entity the stock of which is regularly traded on an
+                        established securities market;
+                        </li>
+                        <li>
+                          <div style={{display:"flex"}}>
+                          <p style={{marginBottom:"0px"}}> The name of the entity, the stock of which is regularly traded on an established securities market, is</p><div style={{width:"100px", borderBottom:"1px solid black"}}></div><p style={{marginBottom:"0px"}}>: <strong>and</strong></p>
+                          </div>
+                        </li>
+                        <li>
+                          <div style={{display:"flex"}}>
+                          <p style={{marginBottom:"0px"}}> The name of the securities market on which the stock is regularly traded is &#9654;</p><div style={{width:"282px", borderBottom:"1px solid black"}}></div>
+                          </div>
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXIV end   ----------------------- */}
+
+     {/* ---------------------Part  XXV  ----------------------- */}
+
+     <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXV</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Excepted Territory NFFE
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>38 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        The entity identified in Part I is an entity that is organized in a possession of the United States;
+                        </li>
+                        <li> All of the owners of the entity identified in Part I are bona fide residents of the possession in which the NFFE is organized or incorporated;
+                         <strong>and</strong> </li>
+                        <li>
+                        The entity identified in Part I:
+                        </li>
+                      </ul>
+                      <ul
+                      style={{
+                        listStyleType: "none",
+                        paddingLeft: "28px",
+                        marginBottom: "0px",
+                      }}
+                    >
+                   
+                      <li>
+                        <strong>(i)</strong> Does not accept deposits in the ordinary course of a banking or similar business;
+                      </li>
+                      <li>
+                        <strong>(ii)</strong> Does not hold, as a substantial portion of its business, financial assets for the account of others;<strong>and</strong>
+                      </li>
+                      <li>
+                        <strong>(iii)</strong> Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account.
+                      </li>
+                    </ul>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXV end   ----------------------- */}
+
+
+ {/* ---------------------Part  XXVI  ----------------------- */}
+
+ <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXVI</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Active NFFE
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>39 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        The entity identified in Part I is a foreign entity that is not a financial institution;
+                        </li>
+                        <li>  Less than 50% of such entity’s gross income for the preceding calendar year is passive income;
+                         <strong>and</strong> </li>
+                        <li>
+                        Less than 50% of the assets held by such entity are assets that produce or are held for the production of passive income (calculated as a weighted average of the percentage of passive assets measured quarterly). See the instructions for the definition of passive income.
+                        </li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXVI end   ----------------------- */}
+
+
+
+ {/* ---------------------Part  XXVII  ----------------------- */}
+
+ <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXVII</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Passive NFFE
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>40 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I:
+                      <ul style={{ marginBottom: "0px" }}>
+                        <li>
+                        Is a foreign entity that is not a financial institution (this category includes an entity organized in a possession of the United States that
+                        engages (or holds itself out as being engaged) primarily in the business of investing, reinvesting, or trading in securities, partnership
+                        interests, commodities, notional principal contracts, insurance or annuity contracts, or any interest in such security, partnership interest,
+                        commodity, notional principal contract, insurance contract, or annuity contract); <strong>and</strong> 
+                        </li>
+                        <li>   Is using this form to transmit withholding certificates and/or other documentation and has provided or will provide a withholding statement, as required.</li>
+                      </ul>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXVII end   ----------------------- */}
+
+  {/* ---------------------Part  XXVIII  ----------------------- */}
+
+  <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXVIII</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Sponsored Direct Reporting NFFE
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>41 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                  <div style={{ marginBottom: "0px" }}>
+             
+        
+                      <div style={{display:"flex"}}>
+                      <p style={{marginBottom:"0px"}}> Name of sponsoring entity: &#9654;</p><div style={{width:"600px", borderBottom:"1px solid black", marginLeft:"15px"}}></div>
+                      </div>
+                    
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      width: "30.72px",
+                      padding: "10px 0",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {" "}
+                    <label>
+                      <strong>42 </strong>
+                    </label>
+                  </td>
+                  <td style={{ padding: "10px 0", display: "flex" }}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #000",
+                        marginRight: "10px",
+                        marginBottom: "auto",
+                        marginTop: "6px",
+                      }}
+                    />
+                    <p style={{ marginBottom: "0px" }}>
+                    I certify that the entity identified in Part I is a direct reporting NFFE that is sponsored by the entity identified on line 41.
+         
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ---------------------Part  XXVIII end   ----------------------- */}
+
+            {/* -------------------------------------------------- XXIX Certification--------------------------------------------------------------- */}
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "10px auto",
+              }}
+              cellPadding={0}
+            >
+              <thead>
+                <tr
+                  style={{
+                    borderTop: "1px solid #000",
+                    borderBottom: "1px solid #000",
+                  }}
+                >
+                  <td style={{ verticalAlign: "top", width: "120px" }}>
+                    {" "}
+                    <div
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        width: "120px",
+                        padding: "0px 10px",
+                        height: "35px",
+                        display: "flex",
+                      }}
+                    >
+                      <p style={{ margin: "auto" }}>Part XXIX</p>
+                    </div>{" "}
+                  </td>
+                  <td style={{ padding: "0px 10px", fontWeight: "900" }}>
+                    {" "}
+                    <strong>
+                    Certification
+                    </strong>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table
+              style={{
+                width: "100%",
+                maxWidth: "920px",
+                borderCollapse: "collapse",
+                margin: "0px auto 10px",
+              }}
+              cellPadding={0}
+            >
+              <tbody>
+              <tr>
+                  <td
+                    colSpan={2}
+                  
+                  >
+                    Under penalties of perjury, I declare that I have examined the information on this form, and to the best of my knowledge and belief, it is true, correct, and 
+                    complete. Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for 
+                    which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form.
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    colSpan={2}
+                    style={{ fontSize: "18px", fontWeight: "600" }}
+                  >
+                   I agree that I will submit a new form within 30 days if any certification made on this form becomes incorrect
+                  </td>
+                </tr>
+
+        
+                <tr>
+                  <td colSpan={2}>
+                    <p style={{ color: "blue",marginBottom:"0px" }}>
+                    W-8IMY – Electronic Substitute Form Statement:
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={2} style={{ color: "blue" }}>
+                  The Internal Revenue Service does not require your consent to any provisions of this document other than the certifications required to establish: (1) your status as a qualified
+                  intermediary, a nonqualified intermediary, a specific type of U.S. branch, a withholding foreign partnership, a withholding foreign trust, a nonwithholding foreign partnership, a
+                  nonwithholding foreign simple trust, or a nonwithholding foreign grantor trust; (2) your chapter 4 status; and/or (3) prior to January 1, 2020, your status as a qualified
+                  securities lender.
+                  </td>
+                </tr>
+
                 <tr>
                   <td colSpan={2}>
                     <table
@@ -4912,12 +6019,13 @@ export default function FormW8IMY() {
                             style={{
                               fontSize: "22px",
                               fontWeight: "bold",
-                              maxWidth: "20%",
+                              display:"flex",
                             }}
                           >
-                            Sign Here
+                           <div style={{minWidth:"maxcontent", marginTop:"auto",marginBottom:"auto"}}>Sign Here</div> 
+                            <div style={{height:"0px",width:"0px",borderTop:"25px solid transparent", borderLeft:"16px solid #000000",borderBottom:"25px solid transparent", marginLeft:"5px"}}></div>
                           </td>
-                          <td style={{ width: "80%" }}>
+                          <td style={{ width: "85%",fontSize:"11px" }}>
                             <table
                               style={{
                                 borderCollapse: "collapse",
@@ -4929,8 +6037,7 @@ export default function FormW8IMY() {
                                 <tr>
                                   <td
                                     style={{
-                                      width: "70%",
-                                      padding: "0 10px",
+                                      width: "55%",
                                       color: "blue",
                                       verticalAlign: "bottom",
                                     }}
@@ -4946,7 +6053,7 @@ export default function FormW8IMY() {
                                         style={{
                                           display: "table-cell",
                                           textAlign: "left",
-                                          width: "50%",
+                                          width: "60%",
                                         }}
                                       >
                                         Date : 10-17-2023 12:00:53 IST{" "}
@@ -4954,8 +6061,8 @@ export default function FormW8IMY() {
                                       <span
                                         style={{
                                           display: "table-cell",
-                                          textAlign: "right",
-                                          width: "50%",
+                                       
+                                          width: "30%",
                                         }}
                                       >
                                         {" "}
@@ -4963,11 +6070,40 @@ export default function FormW8IMY() {
                                       </span>
                                     </div>
                                   </td>
+                                  
                                   <td
                                     style={{
-                                      width: "30%",
+                                      
+                                      padding: "0 10px",
+                                      color: "blue",
+                                      verticalAlign: "bottom",
+                                    }}
+                                  >
+                                    <div
+                                      style={{
+                                        display: "table",
+                                        borderBottom: "1px solid #000",
+                                        width:"100%"
+                                        
+                                      }}
+                                    >
+                                      <span
+                                        style={{
+                                          display: "table-cell",
+                                          textAlign: "left",
+                                          width: "60%",
+                                        }}
+                                      >
+                                        asd1
+                                      </span>
+                  
+                                    </div>
+                                  </td>
+                                 
+                                  <td
+                                    style={{
+                                      width: "20%",
                                       borderBottom: "1px solid #000",
-                                      padding: "10px",
                                       color: "blue",
                                     }}
                                   >
@@ -4977,7 +6113,7 @@ export default function FormW8IMY() {
                                 <tr>
                                   <td
                                     style={{
-                                      width: "70%",
+                                      width: "50%",
                                       color: "#000",
                                       textAlign: "center",
                                     }}
@@ -4985,34 +6121,20 @@ export default function FormW8IMY() {
                                     Signature of beneficial owner (or individual
                                     authorized to sign for beneficial owner)
                                   </td>
+                                  <td  style={{
+                                      
+                                      padding: "0 10px",textAlign:"center"}}
+                                      >
+                                  Print Name
+                                  </td>
                                   <td
                                     style={{
-                                      width: "30%",
+                                      width: "20%",
                                       color: "#000",
                                       textAlign: "center",
                                     }}
                                   >
                                     Date (MM-DD-YYYY)
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td
-                                    colSpan={2}
-                                    style={{
-                                      fontSize: "16px",
-                                      color: "blue",
-                                      borderBottom: "1px solid #000",
-                                    }}
-                                  >
-                                    jghkdk10
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td
-                                    colSpan={2}
-                                    style={{ fontSize: "16px", color: "#000" }}
-                                  >
-                                    Print name of signer
                                   </td>
                                 </tr>
                               </tbody>
@@ -5046,29 +6168,32 @@ export default function FormW8IMY() {
                       style={{ width: "100%", borderCollapse: "collapse" }}
                     >
                       <tbody>
-                        <tr>
-                          <td style={{ width: "50%", fontSize: "15px" }}>
+                        <tr style={{fontSize:"13px"}}>
+                          <td style={{ width: "40%", fontSize: "15px" }}>
                             <strong>
-                              For Paperwork Reduction Act Notice, see separate
-                              instructions.
+                            
                             </strong>
                           </td>
+                          <td style={{ width: "10%", color: "blue" }}></td>
                           <td style={{ width: "20%", textAlign: "center" }}>
-                            Cat. No. 25047Z
+                           
                           </td>
-                          <td style={{ width: "30%", textAlign: "end" }}>
+                          <td style={{ width: "30%", textAlign: "center" }}>
                             Form{" "}
                             <span
-                              style={{ fontSize: "20px", fontWeight: "bold" }}
+                              style={{ fontSize: "17px", fontWeight: "bold" }}
                             >
                               W-8BEN
                             </span>{" "}
                             (Rev. 10-2021)
                           </td>
                         </tr>
-                        <tr>
-                          <td style={{ width: "50%", color: "blue" }}>
-                            Electronic Submission Confirmation: YVQ7NL
+                        <tr style={{fontSize:"13px",fontWeight:"500"}}>
+                          <td style={{ width: "40%", color: "blue" }}>
+                            Electronic Submission Confirmation: 
+                          </td>
+                          <td style={{ width: "10%", color: "blue" }}>
+                           YVQ7NL
                           </td>
                           <td
                             style={{
@@ -5079,7 +6204,7 @@ export default function FormW8IMY() {
                           >
                             Email Address :
                           </td>
-                          <td style={{ width: "30%", color: "blue" }}>
+                          <td style={{ width: "30%", color: "blue",textAlign:"center" }}>
                             <a href="mailto:abhay.singh2@mail.com">
                               abhay.singh2@mail.com
                             </a>
@@ -5092,8 +6217,9 @@ export default function FormW8IMY() {
               </tfoot>
             </table>
           </section>
+            {/* -------------------------------------------------- XXIX Certification end --------------------------------------------------------------- */}
 
-          <section style={{ breakAfter: "page", breakBefore: "page" }}>
+          {/* <section style={{ breakAfter: "page", breakBefore: "page" }}>
             <table
               style={{
                 borderCollapse: "collapse",
@@ -5192,8 +6318,8 @@ export default function FormW8IMY() {
                 </tr>
               </tbody>
             </table>
-          </section>
-          <section style={{ breakAfter: "page", breakBefore: "page" }}>
+          </section> */}
+          {/* <section style={{ breakAfter: "page", breakBefore: "page" }}>
             <table
               style={{
                 borderCollapse: "collapse",
@@ -5375,7 +6501,7 @@ export default function FormW8IMY() {
                 </tr>
               </tfoot>
             </table>
-          </section>
+          </section> */}
           <section style={{ breakAfter: "page", breakBefore: "page" }}>
             <table
               style={{
@@ -5471,10 +6597,10 @@ export default function FormW8IMY() {
                   <td style={{ width: "50%" }}>7678676</td>
                 </tr>
                 <tr>
-                  <td style={{ width: "50%", padding: "0px" }}>
+                  <td style={{ width: "50%"}}>
                     Forms Exchange Agent (Business Unit):
                   </td>
-                  <td style={{ width: "50%", padding: "0px" }}>ValueCoders</td>
+                  <td style={{ width: "50%"}}>ValueCoders</td>
                 </tr>
                 <tr>
                   <td style={{ width: "50%" }}>&nbsp;</td>
@@ -5508,7 +6634,7 @@ export default function FormW8IMY() {
                 </tr>
                 <tr>
                   <td style={{ width: "50%" }}>Entity type:</td>
-                  <td style={{ width: "50%" }}>&nbsp;</td>
+                  <td style={{ width: "50%" }}>U.S. Branch</td>
                 </tr>
               </tbody>
             </table>
@@ -5536,7 +6662,9 @@ export default function FormW8IMY() {
                       paddingLeft: "0",
                     }}
                   >
+                    <strong>
                     Further Information:
+                    </strong>
                   </th>
                 </tr>
               </thead>
@@ -5561,62 +6689,18 @@ export default function FormW8IMY() {
                         margin: "5px 0",
                       }}
                     >
-                      <h5>Form vs Country Conflict Additional Information:</h5>
+                      <h5><strong>Form vs Country Conflict Additional Information:</strong> </h5>
                       <p style={{ marginBottom: "0" }}>
-                        We have appointed a different country of residency based
-                        Power of Attorney who manages our tax related
-                        correspondence.
+                      I am the spouse or unmarried child (under age 21) of a foreign student, teacher, trainee, intern,
+                      exchange visitor, international organization employee, or foreign government-related individual,
+                      who lives at the same address.
                       </p>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table
-              style={{
-                borderCollapse: "collapse",
-                width: "100%",
-                maxWidth: "920px",
-                margin: "0px auto",
-                fontSize: "20px",
-                border: "2px solid #000",
-              }}
-              cellPadding={10}
-            >
-              <tbody>
-                <tr>
-                  <td
-                    style={{
-                      borderRight: "2px solid #000",
-                      borderBottom: "2px solid #000",
-                      fontSize: "20px",
-                      color: "#000",
-                    }}
-                  >
-                    Attachments
-                  </td>
-                  <td style={{ borderBottom: "2px solid #000" }}>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td
-                    style={{
-                      borderRight: "2px solid #000",
-                      padding: "10px",
-                      width: "50%",
-                    }}
-                  >
-                    <p>Type:</p>
-                    <p>File name:</p>
-                    <p>Size:</p>
-                  </td>
-                  <td style={{ padding: "10px" }}>
-                    <p>Power of Attorney statement</p>
-                    <p>we2.jpg</p>
-                    <p>2.7MB</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+
             <table
               style={{
                 borderCollapse: "collapse",
@@ -5639,31 +6723,12 @@ export default function FormW8IMY() {
                       width: "50%",
                     }}
                   >
+                    <strong>
+
                     No U.S. Source Income Declaration
+                    </strong>
                   </td>
-                  <td style={{ borderBottom: "2px solid #000" }}>Selected</td>
-                </tr>
-                <tr>
-                  <td colSpan={2}>
-                    Declaration Statement - Declaration of No U.S. Source Income
-                    Under penalties of perjury I confirm that the goods or
-                    materials provided or manufactured and any and all
-                    associated services, including consultancy, implementation,
-                    training or support are undertaken entirely from locations
-                    outside of the United States and United States territories.
-                    I also confirm that the invoices submitted will not include
-                    a request for payment of Dividends, Insurance Premiums or
-                    Interest payments. I further confirm that should this
-                    situation change I will provide adequate notification,
-                    clearly identify items that may be considered gained from
-                    U.S. sources, identify any Dividends, Insurance Premiums or
-                    Interest payments due on any invoices submitted and submit
-                    an updated U.S. source income statement.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Signed by: jghkdk</td>
-                  <td>Date: 10-17-2023</td>
+                  <td style={{ borderBottom: "2px solid #000" }}>Not Applicable</td>
                 </tr>
               </tbody>
             </table>
@@ -5691,19 +6756,10 @@ export default function FormW8IMY() {
                         Warning Notification Override issue Number and type:
                       </h5>
                       <ol start={1}>
-                        <li>Treaty107 - Tax Treaty Claim</li>
-                        <li>RES107 - Residency Test</li>
-                        <li>RES117 - Residency Test</li>
-                        <li>RES109 - Residency Test</li>
-                        <li>RES105 - Residency Test</li>
-                        <li>FTIN164 - TIN</li>
-                        <li>
-                          SRC101 - W-8 Part II Special Rates and Conditions
-                        </li>
+                        <li>FTIN100 - TIN</li>
                         <li>A113 - Address</li>
-                        <li>Treaty120 - Tax Treaty Claim</li>
-                        <li>RES106 - Residency Test</li>
-                        <li>SIG112 - SIGNATURE</li>
+                        <li>SIG101 - SIGNATURE</li>
+                        <li>IGA105 - IGA</li>
                       </ol>
                     </div>
                   </td>
