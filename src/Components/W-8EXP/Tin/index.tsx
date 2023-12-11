@@ -618,8 +618,8 @@ initialValues={initialValue}
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
-
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}setFieldValue("foreignTIN", "");
+                            }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />

@@ -67,6 +67,12 @@ export const US_TINSchema = () => {
         .required("Please enter US Tin"),
     }),
     notAvailable: Yup.boolean(),
+    FTINFeild:Yup.boolean().when("notAvailable", {
+      is: "true",
+      then: () =>
+        Yup.string()
+        .required("Please enter"),
+    }),
     foreignTINCountry: Yup.string().required(
       "Please select Foriegn Tin Country"
     ),

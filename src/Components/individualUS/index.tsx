@@ -77,6 +77,7 @@ export default function IndividualUs() {
   const [toolInfo, setToolInfo] = useState("");
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -490,11 +491,11 @@ export default function IndividualUs() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 2) {
+    if (e.target.value.length === 3) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 12) {
+    if (e.target.value.length === 6) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
@@ -1610,7 +1611,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1715,7 +1716,7 @@ export default function IndividualUs() {
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
                                 onKeyDown={(e) => formatTin(e, values)}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 value={values.foreignTIN}
                               />
                             </FormControl>
@@ -2026,7 +2027,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
