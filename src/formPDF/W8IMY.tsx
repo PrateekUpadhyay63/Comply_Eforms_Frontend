@@ -34,7 +34,7 @@ export default function FormW8IMY() {
 
   return (
     <>
-      <section ref={boxRef}>
+      <section ref={boxRef} style={{fontSize:"12px"}}>
         <div
           style={{
             padding: "0",
@@ -4654,16 +4654,16 @@ export default function FormW8IMY() {
                 </tr>
                 <tr>
                   <td></td>
-                  <td style={{ padding: "0 0 10px 0", display: "flex" }}>
+                  <td style={{ padding: "0", display: "flex" }}>
                     <div
                       style={{
-                        width: "48%",
+                        width: "69%",
                         display: "flex",
                         borderBottom: "1px solid black",
                         marginLeft: "20px",
                       }}
                     ></div>
-                    <div style={{ display: "flex", width: "72%" }}>
+                    <div style={{ display: "flex", width: "55%" }}>
                       . The applicable IGA is a
                       <input
                         type="checkbox"
@@ -4678,7 +4678,7 @@ export default function FormW8IMY() {
                           marginLeft: "10px",
                         }}
                       />
-                      The applicable IGA is a
+                      Model 1 IGA or a
                       <input
                         type="checkbox"
                         name=""
@@ -4699,7 +4699,7 @@ export default function FormW8IMY() {
                 </tr>
                 <tr>
                   <td></td>
-                  <td style={{ padding: "0 0 10px 0", display: "flex" }}>
+                  <td style={{ padding: "0", display: "flex" }}>
                     <div
                       style={{
                         display: "flex",
@@ -4711,13 +4711,13 @@ export default function FormW8IMY() {
                     </div>
                     <div
                       style={{
-                        width: "48%",
+                        width: "65%",
                         display: "flex",
                         borderBottom: "1px solid black",
-                        marginLeft: "20px",
+                        marginLeft: "5px",
                       }}
                     ></div>
-                    <div style={{ display: "flex", width: "72%" }}>
+                    <div style={{ display: "flex", width: "55%" }}>
                       under the provisions of the applicable IGA or Treasury
                       regulations
                     </div>
@@ -5309,7 +5309,7 @@ export default function FormW8IMY() {
                       <ul style={{ marginBottom: "0px" }}>
                         <li >
                           <div style={{display:"flex"}}>
-                          <p style={{marginBottom:"0px"}}>Filed a plan of liquidation, filed a plan for reorganization, or filed for bankruptcy on the following date:</p><div style={{width:"90px", borderBottom:"1px solid black"}}></div>
+                          <p style={{marginBottom:"0px"}}>Filed a plan of liquidation, filed a plan for reorganization, or filed for bankruptcy on the following date:</p><div style={{width:"288px", borderBottom:"1px solid black",marginLeft:"5px"}}></div>
                           </div>
                         </li>
                         <li>
@@ -5425,7 +5425,7 @@ export default function FormW8IMY() {
                         <li> The entity identified in Part I is a foreign corporation that is not a financial institution; <strong>and</strong></li>
                         <li>
                           <div style={{display:"flex"}}>
-                          <p style={{marginBottom:"0px"}}>The stock of such corporation is regularly traded on one or more established securities markets, including</p><div style={{width:"90px", borderBottom:"1px solid black"}}></div>
+                          <p style={{marginBottom:"0px"}}>The stock of such corporation is regularly traded on one or more established securities markets, including</p><div style={{width:"272px", borderBottom:"1px solid black",marginLeft:"5px"}}></div>
                           </div>
                         </li>
                       </ul>
@@ -5468,12 +5468,12 @@ export default function FormW8IMY() {
                         </li>
                         <li>
                           <div style={{display:"flex"}}>
-                          <p style={{marginBottom:"0px"}}> The name of the entity, the stock of which is regularly traded on an established securities market, is</p><div style={{width:"100px", borderBottom:"1px solid black"}}></div><p style={{marginBottom:"0px"}}>: <strong>and</strong></p>
+                          <p style={{marginBottom:"0px"}}> The name of the entity, the stock of which is regularly traded on an established securities market, is</p><div style={{width:"278px", borderBottom:"1px solid black",marginLeft:"5px"}}></div><p style={{marginBottom:"0px"}}>: <strong>and</strong></p>
                           </div>
                         </li>
                         <li>
                           <div style={{display:"flex"}}>
-                          <p style={{marginBottom:"0px"}}> The name of the securities market on which the stock is regularly traded is &#9654;</p><div style={{width:"282px", borderBottom:"1px solid black"}}></div>
+                          <p style={{marginBottom:"0px"}}> The name of the securities market on which the stock is regularly traded is &#9654;</p><div style={{width:"417px", borderBottom:"1px solid black",marginLeft:"5px"}}></div>
                           </div>
                         </li>
                       </ul>
@@ -6509,7 +6509,7 @@ export default function FormW8IMY() {
                 width: "100%",
                 maxWidth: "920px",
                 margin: "40px auto",
-                fontSize: "20px",
+                fontSize: "17px",
               }}
               cellPadding={10}
             >
@@ -6646,7 +6646,7 @@ export default function FormW8IMY() {
                 width: "100%",
                 maxWidth: "920px",
                 margin: "40px auto 0px",
-                fontSize: "20px",
+                fontSize: "17px",
               }}
               cellPadding={10}
             >
@@ -6675,7 +6675,7 @@ export default function FormW8IMY() {
                 width: "100%",
                 maxWidth: "920px",
                 margin: "20px auto",
-                fontSize: "20px",
+                fontSize: "17px",
               }}
               cellPadding={10}
             >
@@ -6707,7 +6707,7 @@ export default function FormW8IMY() {
                 width: "100%",
                 maxWidth: "920px",
                 margin: "20px auto 20px",
-                fontSize: "20px",
+                fontSize: "17px",
                 border: "2px solid #000",
               }}
               cellPadding={10}
@@ -6738,7 +6738,7 @@ export default function FormW8IMY() {
                 width: "100%",
                 maxWidth: "920px",
                 margin: "0px auto",
-                fontSize: "20px",
+                fontSize: "17px",
               }}
               cellPadding={10}
             >
