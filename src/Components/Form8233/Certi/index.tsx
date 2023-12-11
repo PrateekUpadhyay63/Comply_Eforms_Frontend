@@ -41,7 +41,6 @@ export default function Certifications(props: any) {
             validationSchema={certificateSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values);
               dispatch(
                 CREATE_8233(values, () => {
                   history(
@@ -194,7 +193,6 @@ export default function Certifications(props: any) {
                   belief it is true, correct, and complete. I further certify
                   under penalties of perjury that:
                 </Typography>
-
                 <Paper
                   style={{
                     marginLeft: "10px",
