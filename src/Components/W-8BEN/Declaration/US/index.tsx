@@ -39,12 +39,6 @@ export default function Factors() {
     }
   };
 
-  // useEffect(()=>{
-  //   dispatch(getAllCountries());
-  // })
-  // const getCountriesReducer = useSelector(
-  //   (state: any) => state.getCountriesReducer
-  // );
   const [toolInfo, setToolInfo] = useState("");
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Typography,
@@ -12,6 +12,7 @@ import {
   Input,
 } from "@mui/material";
 import "./index.scss"
+import { ContentCopy } from "@mui/icons-material";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
@@ -34,24 +35,38 @@ export default function Penalties() {
   const handleClose2 = () => setOpen2(false);
   const [expanded, setExpanded] = React.useState<string | false>("");
   const [showRecoverSection, setShowRecoverSection] = useState(false);
-
-    const toggleRecoverSection = () => {
-      setShowRecoverSection(true);
-    };
+  const [payload, setPayload] = useState({
+    confirmationCode: "",
+    
+  });
+    // const toggleRecoverSection = () => {
+    //   setShowRecoverSection(true);
+    // };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+    const toggleRecoverSection = () => {
+      setShowRecoverSection(true);
+     
+      setSecurityWordError("");
+    };
+    const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
+    const [securityWordError, setSecurityWordError] = useState("");
   const [toolInfo, setToolInfo] = useState("");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
+    EnterconfirmationCode:"",
     confirmationCode: "",
     date: "",
     isAgreeWithDeclaration: false,
     question:"",
     word :""
   };
+ 
+
   const dispatch = useDispatch();
   const history = useNavigate();
 
@@ -327,12 +342,12 @@ export default function Penalties() {
                         className="inputTextField"
                         id="outlined"
                         fullWidth
-                          name="confirmationCode"
-                          value={values.confirmationCode}
+                          name="EnterconfirmationCode"
+                          value={values.EnterconfirmationCode}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
+                            touched.EnterconfirmationCode && errors.EnterconfirmationCode
                           )}
                           type="password"
                           
@@ -349,7 +364,7 @@ export default function Penalties() {
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.confirmationCode}</p>
+                        <p className="error">{errors.EnterconfirmationCode}</p>
                       </div>
                     </div>
                   </div>
@@ -369,18 +384,21 @@ export default function Penalties() {
                          color:"black !important",
                          
                           width: "50%",
-                          backgroundColor:"#e3e6e4"
+                          backgroundColor:"#fff"
                         }}
                         fullWidth
                         type="text"
-                        disabled
+                        name="word"
+                        onChange={handleChange}
                         value={values.word}
                         
                         
                       />
+ 
 
 
   </div>
+  {securityWordError && <p className="error">{securityWordError}</p>}
   <div className="d-flex my-3 col-8">
   <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
   <Input className=" col-4 inputTextField"
@@ -400,22 +418,52 @@ export default function Penalties() {
   </div>
   <div className="d-flex my-3 col-8 ">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
-    <Input className=" col-4 inputTextField"
+    <Input className=" col-3 inputTextField blackText"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                         
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         disabled
+                        value={values.confirmationCode}
                         type="text"
                        
                         
                       />
+                       <Typography className="col-1 mx-2 my-1" >
+                      <ContentCopy
+                  
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            values.confirmationCode
+                          );
+                        }}
+                        style={{ fontSize: "18px", marginTop: "5px" }}
+                      />
+                    </Typography>
 
   </div>
+  <Typography className=" my-4 col-8 "align="center" >
+<Button onClick={() => {
+        if (!values.word) {
+          setSecurityWordError("Please enter the security word");
+        } else {
+          const storedSecurityWord = obValues.securityAnswer;
+          if (values.word !== storedSecurityWord) {
+            setSecurityWordError("Security word does not match");
+            setIsSecurityWordMatched(false);
+          } else {
+            setSecurityWordError(""); 
+            setIsSecurityWordMatched(true);
+            setFieldValue("confirmationCode", obValues.confirmationCode);
+          }
+        }
+      }}style={{justifyContent:"center"}}  variant="contained" size="small">
+  OK
+</Button>
+  </Typography>
 </div>)}
 
 
@@ -456,13 +504,12 @@ export default function Penalties() {
                         
                           </FormControl>
                          
-                        {/* /> */}
-                        {/* <p className="error">{errors.date}</p> */}
+                        
                       </Typography>
                     </div>
                   </div>
 
-                  <Typography style={{ display: "flex", marginLeft: "10px" }}>
+                  <Typography style={{ display: "flex" }}>
                     <Checkbox
                       name="isAgreeWithDeclaration"
                       value={values.isAgreeWithDeclaration}

@@ -901,18 +901,21 @@ export default function Factors() {
                       <FormControl>
                         <RadioGroup
                           row
+                          id="isPresentAtleast31Days"
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="isPresentAtleast31Days"
+                          value={values.isPresentAtleast31Days}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
-                            value={values.isPresentAtleast31Days}
+                           value="Yes"
                             control={<Radio />}
                             label="Yes"
                             name="isPresentAtleast31Days"
                           />
                           <FormControlLabel
                             className="label"
-                            value={values.isPresentAtleast31Days}
+                            value="No"
                             control={<Radio />}
                             label="No"
                             name="isPresentAtleast31Days"
@@ -1442,12 +1445,9 @@ export default function Factors() {
                         )}
                         <Typography
                            style={{
-                        
                             fontSize: "17px",
                             marginTop: "10px",
-                           
-                       
-                          marginBottom: "10px",
+                            marginBottom: "10px",
                         }}
                         >
                           Has the individual been physically present in the United
@@ -1459,18 +1459,21 @@ export default function Factors() {
                         <FormControl>
                         <RadioGroup
                           row
+                          id="isPresentAtleast31Days"
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="isPresentAtleast31Days"
+                           value={values.isPresentAtleast31Days}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
-                            value={values.isPresentAtleast31Days}
+                           value="Yes"
                             control={<Radio />}
                             label="Yes"
                             name="isPresentAtleast31Days"
                           />
                           <FormControlLabel
                             className="label"
-                            value={values.isPresentAtleast31Days}
+                            value="No"
                             control={<Radio />}
                             label="No"
                             name="isPresentAtleast31Days"
@@ -1697,7 +1700,7 @@ export default function Factors() {
                           history('/W-8BEN/Declaration')
                         }}
                         variant="contained"
-                        size="large"
+                        size="small"
                         style={{
                           color: "white",
                           backgroundColor: "black",
