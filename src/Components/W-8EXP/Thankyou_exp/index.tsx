@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormW8IMY from "../../../formPDF/W8IMY";
+import FormW8Exp from "../../../formPDF/W8EXP";
 // import Form1 from "../../formPDF/form1";
 // import Formw9 from "../../formPDF/formw9";
 // import FormEXP from "../../formPDF/formEXP";
@@ -43,7 +43,7 @@ export default function Term() {
     >
     
       <div style={{ paddingBlockStart: "30px" }}>
-        <FormW8IMY/>
+        <FormW8Exp/>
       </div>
      
       <div className="container-fluid">
