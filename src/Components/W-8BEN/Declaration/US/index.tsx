@@ -20,6 +20,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DynamicForm from "./text";
+import BreadCrumbComponent from "../../../reusables/breadCrumb";
 
 export default function Factors() {
   const history = useNavigate();
@@ -38,12 +39,6 @@ export default function Factors() {
     }
   };
 
-  // useEffect(()=>{
-  //   dispatch(getAllCountries());
-  // })
-  // const getCountriesReducer = useSelector(
-  //   (state: any) => state.getCountriesReducer
-  // );
   const [toolInfo, setToolInfo] = useState("");
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {
@@ -98,166 +93,10 @@ export default function Factors() {
       </div>
 
       <div className="row w-100 h-100">
-        <div className="col-4">
-          <div
-            style={{ padding: "25px 0px", height: "100%", marginTop: "10px" }}
-          >
-            <Paper
-              style={{ padding: "0px 0px 0px 18px", height: "100%" }}
-              className="bg-none"
-            >
-              <div style={{ background: "#ffffff33", height: "100%" }}>
-                <div className="stepper">
-                  <Accordion
-                    expanded={expanded === "panel1"}
-                    onChange={handleChangestatus("panel1")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1bh-content"
-                      id="panel1bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex active"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step I
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
+      <div className="col-4">
+          <div style={{ padding: "20px 0px", height: "100%" }}>
+            <BreadCrumbComponent breadCrumbCode={1207} formName={2} />
 
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li className="active">
-                            {" "}
-                            <label className="my-auto">Name and Address </label>
-                          </li>
-                          <li className="active">
-                            Account Indivation(Optional)
-                          </li>
-                          <li className="active">Tax Identification Number</li>
-                          <li className="active">Contact Details</li>
-                          <li className="active">Form Selection</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel2"}
-                    onChange={handleChangestatus("panel2")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2bh-content"
-                      id="panel2bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step II
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li className="active">
-                            {" "}
-                            <label className="my-auto">
-                              US Sourced Income Declaration (optional)
-                            </label>
-                          </li>
-                          <li>United States Citizenship Status</li>
-                          <li>Tax Identification Number</li>
-                          <li>Treaty Claim</li>
-                          <li>Special Rates and Conditions</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel3"}
-                    onChange={handleChangestatus("panel3")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2bh-content"
-                      id="panel2bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step III
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li>
-                            {" "}
-                            <label className="my-auto">
-                              Penalties of Perjury Certification
-                            </label>
-                          </li>
-                          <li>Electronic Signature</li>
-                          <li>Electronic Signature Confirmation</li>
-                          <li>U.S. Tax Certification Complete</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              </div>
-            </Paper>
           </div>
         </div>
         <div className="col-8 mt-4">

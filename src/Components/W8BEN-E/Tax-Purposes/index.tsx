@@ -132,7 +132,7 @@ export default function Fedral_tax(props: any) {
             
           </div>
           <div className="col-8 mt-3">
-            <div style={{ padding: "18px" }}>
+            <div style={{ padding: "12px" }}>
               <Paper style={{ padding: "10px" }}>
                 <Formik
                 validateOnChange={false}

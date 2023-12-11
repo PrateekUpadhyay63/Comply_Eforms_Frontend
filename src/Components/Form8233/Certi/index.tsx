@@ -31,7 +31,7 @@ export default function Certifications(props: any) {
   </div>
   </div>
   <div className="col-8 mt-3">
-      <div style={{ padding: "18px" }}>
+      <div style={{ padding: "13px" }}>
         <Paper style={{ padding: "10px" }}>
           <Formik
            validateOnChange={false}
@@ -182,7 +182,7 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "17px",
+                   fontSize: "14px",
                     color: "grey",
                     marginLeft: "10px",
                     textAlign:"justify" 
@@ -222,7 +222,7 @@ export default function Certifications(props: any) {
                      
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "10px",
                           textAlign:"justify" 
@@ -256,7 +256,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -287,7 +287,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                           textAlign:"justify" 
@@ -325,7 +325,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                           textAlign:"justify" 
@@ -352,7 +352,7 @@ export default function Certifications(props: any) {
 
                     <Typography
                       style={{
-                        fontSize: "17px",
+                       fontSize: "14px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
@@ -372,7 +372,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -381,7 +381,7 @@ export default function Certifications(props: any) {
                         <span
                           style={{
                             color: "blue",
-                            fontSize: "19px",
+                            fontSize: "14px",
                             marginLeft: "5px",
                           }}
                         >

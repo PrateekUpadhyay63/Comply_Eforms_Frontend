@@ -89,7 +89,7 @@ export default function Presence(props: any) {
       </div>
       </div>
       <div className="col-8 mt-3">
-            <div style={{ padding: "18px" }}>
+            <div style={{ padding: "13px" }}>
               <Paper style={{ padding: "10px" }}>
                 <Typography
                   align="left"

@@ -106,13 +106,12 @@ const history=useNavigate()
 </Paper>
               <Typography align="center" style={{ marginTop: '3rem' }}>
                 <Button
-                  style={{ fontSize: '16px' }}
+                  style={{ fontSize: '14px' }}
                   size="small"
                   type="submit"
                   onClick={()=>{
                     history("/Guide")
                   }}
-                //   onClick={handleClose}
                   variant="contained"
                 >
                   Confirm
@@ -132,8 +131,8 @@ const history=useNavigate()
         <Typography align="center">
         <Button onClick={()=>{
           history("/Certificates")
-        }}  variant="contained" size="large"  style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
-         <span style={{marginRight:"5px"}}> <ArrowBackIcon/></span> Back
+        }}  variant="contained" size="small" style={{ color: "white", backgroundColor: "black", marginTop: "10px" ,marginBottom:'20px'}}>
+         Back
         </Button>
         </Typography>
        

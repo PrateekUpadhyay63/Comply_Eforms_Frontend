@@ -11,6 +11,7 @@ import {
   Checkbox,
   RadioGroup,
   Radio,
+  TextField,
 } from "@mui/material";
 import { Info, Delete } from "@mui/icons-material";
 import { Formik, Form } from "formik";
@@ -98,6 +99,7 @@ export default function Tin(props: any) {
   // console.log("first",onBoardingFormValues );
 
   const initialValue = {
+    FTINFeild:"",
     usTinTypeId: onBoardingFormValues.usTinTypeId
       ? onBoardingFormValues.usTinTypeId
       : 0,
@@ -110,9 +112,7 @@ export default function Tin(props: any) {
     foreignTINCountry: onBoardingFormValues.foreignTINCountryId
       ? onBoardingFormValues.foreignTINCountryId
       : "",
-    foreignTIN: onBoardingFormValues.foreignTIN
-      ? onBoardingFormValues.foreignTIN
-      : "",
+    foreignTIN: "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "Yes",
     // tinAlternativeFormate: true,
@@ -525,7 +525,7 @@ export default function Tin(props: any) {
                             handleChange(e);
                           }}
                         >
-                          <option value="1">-Select-</option>
+                          <option value="0">-Select-</option>
                               {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
@@ -643,12 +643,13 @@ export default function Tin(props: any) {
                                 )}
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
-
+ 
                           <div style={{ marginTop: "2px" }}>
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}setFieldValue("foreignTIN", "");
+                            }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />
@@ -1056,14 +1057,18 @@ export default function Tin(props: any) {
                           providing we may not be able to apply treaty benefits
                           should they apply and may render the form invalid.
                         </Typography>
-                        <Input
-                          fullWidth
+                        <TextField
+                          
                           type="text"
                           onBlur={handleBlur}
                           onChange={handleChange}
+                          name="FTINFeild"
+                          value={values.FTINFeild}
+                          multiline
+                          rows={4}
                           style={{
-                            border: " 1px solid #d9d9d9 ",
-                            padding: " 0 10px",
+                            marginTop:"2rem",
+                            
                             color: "#7e7e7e",
                             fontStyle: "italic",
                             height: "7rem",

@@ -67,6 +67,12 @@ export const US_TINSchema = () => {
         .required("Please enter US Tin"),
     }),
     notAvailable: Yup.boolean(),
+    FTINFeild:Yup.boolean().when("notAvailable", {
+      is: "true",
+      then: () =>
+        Yup.string()
+        .required("Please enter"),
+    }),
     foreignTINCountry: Yup.string().required(
       "Please select Foriegn Tin Country"
     ),
@@ -166,6 +172,16 @@ export const certificateSchema = () => {
 export const partCertiSchema = () => {
   return Yup.object().shape({
     signedBy: Yup.string().required("Please enter "),
+    EnterconfirmationCode: Yup.string()
+    .required("Please enter code")
+    .test(
+      'match',
+      'Confirmation code does not match',
+      function (value) {
+        const storedConfirmationCode = obValues?.confirmationCode;
+        return !storedConfirmationCode || value === storedConfirmationCode;
+      }
+    ),
     confirmationCode: Yup.string()
     .required("Please enter code")
     .test(
@@ -176,6 +192,10 @@ export const partCertiSchema = () => {
         return !storedConfirmationCode || value === storedConfirmationCode;
       }
     ),
+    // word: Yup.boolean().when("EnterconfirmationCode", {
+    //   is: "no",
+    //   then: () => Yup.string().required("Please select owner"),
+    // }),
   date: Yup.date(),
   isAgreeWithDeclaration: Yup.boolean().oneOf(
     [true],

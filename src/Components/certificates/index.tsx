@@ -571,7 +571,7 @@ export default function Certificates(props: any) {
               style={{
                 backgroundColor: "#ffc107",
                 color: "black",
-                fontSize: "15px",
+                fontSize: "10px",
                 fontWeight: "550",
               }}
             >
@@ -772,8 +772,23 @@ export default function Certificates(props: any) {
           {selectedCard ? (
             <div style={{ marginTop: "20px" }} className="text-center">
               <Button
-                style={{ fontSize: "20px", marginTop: "35px" }}
-                size="medium"
+               style={{
+                marginTop: "35px",
+                border: "1px solid #0095dd",
+                // backgroundColor: "#D2D2D4",
+                // borderColor: "#d2d2d2",
+                color: "#ffff",
+                height: "35px",
+                lineHeight: "normal",
+                textAlign: "center",
+                fontSize: "15px",
+                textTransform: "uppercase",
+                borderRadius: "0px",
+
+                padding: "0 15px",
+                letterSpacing: "1px",
+              }}
+                size="small"
                 type="submit"
                 onClick={() => redirectToComponent(selectedCard)}
                 variant="contained"
@@ -788,20 +803,21 @@ export default function Certificates(props: any) {
             <div style={{ marginTop: "20px" }} className="text-center ">
               <Button
                 type="submit"
+                size="small"
                 style={{
                   marginTop: "35px",
                   border: "1px solid #0095dd",
                   backgroundColor: "#D2D2D4",
                   borderColor: "#d2d2d2",
                   color: "#4a4a4a",
-                  height: "45px",
+                  height: "35px",
                   lineHeight: "normal",
                   textAlign: "center",
-                  fontSize: "16px",
+                  fontSize: "13px",
                   textTransform: "uppercase",
                   borderRadius: "0px",
 
-                  padding: "0 35px",
+                  padding: "0 15px",
                   letterSpacing: "1px",
                 }}
               >
@@ -826,7 +842,7 @@ export default function Certificates(props: any) {
                 history("/");
               }}
               variant="contained"
-              size="large"
+              size="small"
               style={{
                 color: "white",
                 backgroundColor: "black",
