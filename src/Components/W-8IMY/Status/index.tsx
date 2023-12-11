@@ -218,7 +218,7 @@ export default function Fedral_tax(props: any) {
                                       <Info
                                         style={{
                                           color: "#ffc107",
-                                          fontSize: "16px",
+                                          fontSize: "10px",
                                           cursor: "pointer",
                                           verticalAlign: "super",
                                         }}
@@ -866,7 +866,7 @@ export default function Fedral_tax(props: any) {
                               </FormControl>
                               <div className="d-flex mt-3 ">
                                 <Typography
-                                  className="mx-2"
+                                 
                                   style={{
                                     fontSize: "15px",
                                   }}
@@ -874,6 +874,7 @@ export default function Fedral_tax(props: any) {
                                   Attach supporting documentation:
                                 </Typography>
                                 <input
+                                 className="mx-2"
                                   type="file"
                                   style={{ fontSize: "12px" }}
                                 />

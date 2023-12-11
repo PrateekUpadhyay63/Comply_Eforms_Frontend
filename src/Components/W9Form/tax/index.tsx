@@ -223,7 +223,7 @@ export default function Tin(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "45px",
+                              height: "40px",
                               width: "100%",
                             }}
                           >
@@ -276,7 +276,7 @@ export default function Tin(props: any) {
         style={{
           width: "100%",
           border: " 1px solid #d9d9d9 ",
-          height: " 45px",
+          height:"40px",
           lineHeight: "36px ",
           background: "#fff ",
           fontSize: "13px",

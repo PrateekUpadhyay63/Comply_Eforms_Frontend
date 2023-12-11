@@ -289,7 +289,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="usTinTypeId"
@@ -345,7 +345,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
 
                             }}
@@ -357,8 +357,8 @@ initialValues={initialValue}
                             " "
                           }
                         </div>
-                        <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
+                        <div className="col-lg-2 ">
+                          <div className="radio" style={{ marginTop: "17px" }}>
                             <Checkbox
                               value={values.notAvailable}
                               checked={values.notAvailable}
@@ -476,7 +476,7 @@ initialValues={initialValue}
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height: "40px",
                             width: "100%",
                           }}
                           name="usTinTypeId"
@@ -489,7 +489,10 @@ initialValues={initialValue}
                           }}
                         >
                           <option value="1">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
+                          <option value={2}>EIN</option>
+                              <option value={3}>QIEIN</option>
+                              <option value={4}>WPEIN</option>
+                              {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -504,7 +507,7 @@ initialValues={initialValue}
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>
@@ -525,7 +528,7 @@ initialValues={initialValue}
                             padding: " 0 10px",
                             color: "#7e7e7e",
                             fontStyle: "italic",
-                            height: "50px",
+                            height: "40px",
                             width: "100%",
                           }}
                         />
@@ -537,7 +540,7 @@ initialValues={initialValue}
                         }
                       </div>
                       <div className="col-lg-2 col-12">
-                        <div style={{ marginTop: "27px" }}>
+                        <div className="radio" style={{ marginTop: "17px" }}>
                           <Checkbox
                             value={values.notAvailable}
                             checked={values.notAvailable}
@@ -588,7 +591,7 @@ initialValues={initialValue}
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "50px",
+                              height: "40px",
                               width: "100%",
                             }}
                             name="foreignTINCountry"
@@ -768,7 +771,7 @@ initialValues={initialValue}
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -794,7 +797,7 @@ initialValues={initialValue}
                                 padding: " 0 10px",
                                 color: "#7e7e7e",
                                 fontStyle: "italic",
-                                height: "50px",
+                                height: "40px",
                                 width: "100%",
                               }}
                             />
@@ -806,7 +809,7 @@ initialValues={initialValue}
                             " "
                           }
 
-                          <FormControl >
+                          <FormControl className="col-12 radio">
                             <RadioGroup
                               row
                               name="tinisFTINNotLegallyRequired"
@@ -871,7 +874,8 @@ initialValues={initialValue}
                     {values.isFTINNotLegallyRequired === true && (
                       <>
                         <Typography
-                          style={{ margin: "20px", fontSize: "20px" }}
+                        className="mt-3"
+                          style={{ marginLeft: "20px", fontSize: "15px" }}
                         >
                           Do you wish to provide a further (or other)
                           explanation why you are not legally required to
