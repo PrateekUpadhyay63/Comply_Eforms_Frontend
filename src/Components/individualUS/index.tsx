@@ -1552,7 +1552,8 @@ export default function IndividualUs() {
                                
                                 <>{console.log(ustinValue, "")}</>
                                 <option value={0}>--Select--</option>
-                                {ustinValue?.map((ele: any) => (
+                                <option value={2}>SSN/ITIN</option>
+                                {/* {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1568,7 +1569,7 @@ export default function IndividualUs() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))}
+                                ))} */}
                               </select>
                               <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
