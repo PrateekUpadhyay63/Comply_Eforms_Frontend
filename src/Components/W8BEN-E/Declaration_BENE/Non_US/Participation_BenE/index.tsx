@@ -21,6 +21,7 @@ import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { W8_state } from "../../../../../Redux/Actions";
 import { useNavigate } from "react-router";
+import { ContentCopy } from "@mui/icons-material";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -39,9 +40,13 @@ export default function Penalties() {
   const handleClose2 = () => setOpen2(false);
   const [expanded, setExpanded] = React.useState<string | false>("");
   const [showRecoverSection, setShowRecoverSection] = useState(false);
+  const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
+  const [securityWordError, setSecurityWordError] = useState("");
   const [value, onChange] = useState<Value2>(null);
     const toggleRecoverSection = () => {
       setShowRecoverSection(true);
+     
+      setSecurityWordError("");
     };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -52,10 +57,12 @@ export default function Penalties() {
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
-    question:"",
+    EnterconfirmationCode:"",
     confirmationCode: "",
     date: "",
     isAgreeWithDeclaration: false,
+    question:"",
+    word :""
   };
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -235,7 +242,7 @@ export default function Penalties() {
                         ""
                       )}
 
-<Input
+                      <Input
                        className="inputTextField"
                         id="outlined"
                         fullWidth
@@ -329,15 +336,15 @@ export default function Penalties() {
                       )}
                       <div>
                       <Input
-                       className="inputTextField"
+                        className="inputTextField"
                         id="outlined"
                         fullWidth
-                          name="confirmationCode"
-                          value={values.confirmationCode}
+                          name="EnterconfirmationCode"
+                          value={values.EnterconfirmationCode}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
+                            touched.EnterconfirmationCode && errors.EnterconfirmationCode
                           )}
                           type="password"
                           
@@ -354,7 +361,7 @@ export default function Penalties() {
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.confirmationCode}</p>
+                        <p className="error">{errors.EnterconfirmationCode}</p>
                       </div>
                     </div>
                   </div>
@@ -368,26 +375,33 @@ export default function Penalties() {
 
   <div className="d-flex my-3 col-8">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
-    <TextField className="col-4"
+    <Input className=" col-4 inputTextField"
+   
                         style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
+                         color:"black !important",
+                         
                           width: "50%",
+                          backgroundColor:"#fff"
                         }}
                         fullWidth
                         type="text"
-                        name="signedBy"
+                        name="word"
+                        onChange={handleChange}
+                        value={values.word}
+                        
                         
                       />
+ 
+
 
   </div>
+  {securityWordError && <p className="error">{securityWordError}</p>}
   <div className="d-flex my-3 col-8">
   <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
-    <TextField className=" col-4"
+  <Input className=" col-4 inputTextField"
                         style={{
-                         
-                          height: "3.47rem",
+                         color:"black",
+                         fontSize:"13px",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -398,26 +412,55 @@ export default function Penalties() {
                         
                         
                       />
-
   </div>
   <div className="d-flex my-3 col-8 ">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
-    <TextField className="col-4"
+    <Input className=" col-3 inputTextField blackText"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         disabled
+                        value={values.confirmationCode}
                         type="text"
                        
-                        value={values.confirmationCode}
+                        
                       />
+                       <Typography className="col-1 mx-2 my-1" >
+                      <ContentCopy
+                  
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            values.confirmationCode
+                          );
+                        }}
+                        style={{ fontSize: "18px", marginTop: "5px" }}
+                      />
+                    </Typography>
 
   </div>
+  <Typography className=" my-4 col-8 "align="center" >
+<Button onClick={() => {
+        if (!values.word) {
+          setSecurityWordError("Please enter the security word");
+        } else {
+          const storedSecurityWord = obValues.securityAnswer;
+          if (values.word !== storedSecurityWord) {
+            setSecurityWordError("Security word does not match");
+            setIsSecurityWordMatched(false);
+          } else {
+            setSecurityWordError(""); 
+            setIsSecurityWordMatched(true);
+            setFieldValue("confirmationCode", obValues.confirmationCode);
+          }
+        }
+      }}style={{justifyContent:"center"}}  variant="contained" size="small">
+  OK
+</Button>
+  </Typography>
 </div>)}
 
 

@@ -23,7 +23,7 @@ import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 export default function Factors() {
   const history = useNavigate();
 
-  const [allocation, setAllocation] = useState(); // State to track allocation input
+  const [allocation, setAllocation] = useState(0); // State to track allocation input
   const [formList, setFormList] = useState<FormData[]>([]);
 
   const dispatch = useDispatch();
@@ -238,7 +238,7 @@ export default function Factors() {
               marginTop: "80px",
             }}
           >
-            <Button  disabled={allocation !== '100'} variant="contained" style={{ color: "white" }}>
+            <Button  disabled={allocation !== 100} variant="contained" style={{ color: "white" }}>
               SAVE & EXIT
             </Button>
             <Button
@@ -248,7 +248,7 @@ export default function Factors() {
               View form
             </Button>
             <Button
-             disabled={allocation !== '100'}
+             disabled={allocation !== 100}
              onClick={handleSubmit}
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}

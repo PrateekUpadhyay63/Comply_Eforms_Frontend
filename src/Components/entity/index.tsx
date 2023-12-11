@@ -1252,8 +1252,8 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                              <option value={0}>--Select--</option>
-                             <option value={2}>SSN/ITIN</option>
-                             {/* {ustinValue?.map((ele: any) => (
+                             {/* <option value={2}>SSN/ITIN</option> */}
+                             {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1268,7 +1268,7 @@ export default function Entity() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))} */}
+                                ))}
                             </select>
                           </FormControl>
                           <p className="error">{errors.usTinTypeId}</p>
@@ -1602,12 +1602,12 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                               <option value={1}>-Select-</option>
-                              <option value={2}>EIN</option>
+                              {/* <option value={2}>EIN</option>
                               <option value={3}>QIEIN</option>
                               <option value={4}>WPEIN</option>
                               <option value={5}>U.S TIN not applicable</option>
-                              <option value={6}>U.S TIN not available</option>
-                              {/* {ustinValue?.map((ele: any) => (
+                              <option value={6}>U.S TIN not available</option> */}
+                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1622,7 +1622,7 @@ export default function Entity() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))} */}
+                                ))}
                             </select>
                             <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>
