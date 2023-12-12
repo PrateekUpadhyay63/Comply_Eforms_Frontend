@@ -240,7 +240,7 @@ export default function Factors() {
           >
             <Button  disabled={allocation !== 100} variant="contained" style={{ color: "white" }}>
               SAVE & EXIT
-            </Button>
+            </Button> 
             <Button
               variant="contained"
               style={{ color: "white", marginLeft: "15px" }}
