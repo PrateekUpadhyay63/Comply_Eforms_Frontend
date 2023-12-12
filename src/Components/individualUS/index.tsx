@@ -221,6 +221,17 @@ export default function IndividualUs() {
     isCorrectPaymentPurposes: true,
     isConfirmed: false,
   };
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+  };
 
   const formatDate = (date: any) => {
     const dateObj = new Date(date);
@@ -489,17 +500,7 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any, values: any): any => {
-    if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-    if (e.target.value.length === 6) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-  };
+ 
   const setAccountHolder = (e: any, values: any): any => {
     if (values.accountHolderName === "") {
       values.accountHolderName = values.firstName + values.lastName;
@@ -1553,8 +1554,8 @@ export default function IndividualUs() {
                                
                                 <>{console.log(ustinValue, "")}</>
                                 <option value={0}>--Select--</option>
-                                <option value={2}>SSN/ITIN</option>
-                                {/* {ustinValue?.map((ele: any) => (
+                               
+                                {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1570,7 +1571,7 @@ export default function IndividualUs() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))} */}
+                                ))}
                               </select>
                               <p className="error">{errors.usTinTypeId}</p>
                             </FormControl>
@@ -1611,7 +1612,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 11}}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1715,7 +1716,7 @@ export default function IndividualUs() {
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
-                                onKeyDown={(e) => formatTin(e, values)}
+                                // onKeyDown={(e) => formatTin(e, values)}
                                 inputProps={{ maxLength: 11 }}
                                 value={values.foreignTIN}
                               />

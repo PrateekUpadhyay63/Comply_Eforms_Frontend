@@ -311,14 +311,14 @@ export default function Entity() {
 
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
+    if (e.target.value.length === 2) {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 6) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
+    // if (e.target.value.length === 6) {
+    //   setPayload({ ...payload, usTin: payload.usTin + "-" });
+    //   values.usTin = values.usTin + "-";
+    // }
   };
 
   const handleOpen = (val: any) => {
@@ -1252,6 +1252,7 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                              <option value={0}>--Select--</option>
+                             {/* <option value={2}>SSN/ITIN</option> */}
                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1298,7 +1299,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e) => formatTin(e, values)}
                               onChange={handleChange}
-                              inputProps={{ maxLength: 11 }}
+                              inputProps={{ maxLength: 10 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -1601,12 +1602,12 @@ export default function Entity() {
                               value={values.usTinTypeId}
                             >
                               <option value={1}>-Select-</option>
-                              <option value={2}>EIN</option>
+                              {/* <option value={2}>EIN</option>
                               <option value={3}>QIEIN</option>
                               <option value={4}>WPEIN</option>
                               <option value={5}>U.S TIN not applicable</option>
-                              <option value={6}>U.S TIN not available</option>
-                              {/* {ustinValue?.map((ele: any) => (
+                              <option value={6}>U.S TIN not available</option> */}
+                              {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1621,7 +1622,7 @@ export default function Entity() {
                                   // ) : (
                                   //   ""
                                   // );
-                                ))} */}
+                                ))}
                             </select>
                             <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>

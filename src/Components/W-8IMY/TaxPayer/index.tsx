@@ -74,6 +74,15 @@ export default function Tin(props: any) {
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
+  const [payload, setPayload] = useState({usTin:""})
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 2) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+    
+  };
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
@@ -521,6 +530,8 @@ export default function Tin(props: any) {
                           type="text"
                           name="usTin"
                           value={values.usTin}
+                          inputProps={{ maxLength: 10}}
+                          onKeyDown={(e) => formatTin(e, values)}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(touched.usTin && errors.usTin)}

@@ -29,6 +29,8 @@ export default function Penalties(props: any) {
 
     const toggleRecoverSection = () => {
       setShowRecoverSection(true);
+     
+     
     };
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);

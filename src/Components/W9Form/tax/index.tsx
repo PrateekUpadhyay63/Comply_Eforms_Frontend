@@ -57,7 +57,6 @@ export default function Tin(props: any) {
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, Tin: payload.Tin + "-" });
-
       values.Tin = values.Tin + "-";
     }
   };

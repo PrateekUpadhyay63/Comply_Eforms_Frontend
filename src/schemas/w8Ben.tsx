@@ -67,20 +67,38 @@ export const US_TINSchema = () => {
         .required("Please enter US Tin"),
     }),
     notAvailable: Yup.boolean(),
-    FTINFeild:Yup.boolean().when("notAvailable", {
-      is: "true",
+    FTINFeild:Yup.string().when("notAvailable", {
+      is: true,
       then: () =>
         Yup.string()
-        .required("Please enter"),
+        .required("Please Specify Reason"),
+    }),
+    FTINFeild1: Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: "Yes",
+      then: () =>
+        Yup.string()
+        .required("Please Specify Reason"),
     }),
     foreignTINCountry: Yup.string().required(
       "Please select Foriegn Tin Country"
     ),
-    // foreignTIN: Yup.string().required("Please enter Foriegn Tin "),
+    foreignTIN: Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: "No",
+      then: () =>
+        Yup.string()
+        .required("Please enter Foriegn Tin"),
+    }),
+  
+    // .required("Please enter Foriegn Tin "),
     isFTINNotLegallyRequired: Yup.boolean(),
     // tinisFTINNotLegallyRequired: true,
     // tinAlternativeFormate: true,
-    isNotLegallyFTIN: Yup.string(),
+    isNotLegallyFTIN: Yup.string().when("isFTINNotLegallyRequired", {
+      is: true,
+      then: () =>
+        Yup.string()
+        .required("Please Select"),
+    }),
   });
 };
 export const claimSchemaaa = () => {
