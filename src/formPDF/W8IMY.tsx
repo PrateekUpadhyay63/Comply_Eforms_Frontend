@@ -6126,7 +6126,7 @@ export default function FormW8IMY() {
                                   <td
                                     style={{
                                       width: "50%",
-                                      color: "#000",
+                                      color: "#1133a9",
                                       textAlign: "center",
                                     }}
                                   >
