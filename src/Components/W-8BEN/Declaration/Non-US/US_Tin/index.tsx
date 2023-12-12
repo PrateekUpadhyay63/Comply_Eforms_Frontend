@@ -100,21 +100,24 @@ export default function Tin(props: any) {
 
   const initialValue = {
     FTINFeild:"",
-    usTinTypeId: onBoardingFormValues.usTinTypeId
-      ? onBoardingFormValues.usTinTypeId
+    FTINFeild1:"",
+    usTinTypeId: onBoardingFormValues?.usTinTypeId
+      ? onBoardingFormValues?.usTinTypeId
       : 0,
 
-    usTin: onBoardingFormValues.usTin ? onBoardingFormValues.usTin : "",
+    usTin: onBoardingFormValues?.usTin ? onBoardingFormValues?.usTin : "",
     // usTinTypeId:0,
     // usTin:"",
     tinValue:"",
     notAvailable: false,
-    foreignTINCountry: onBoardingFormValues.foreignTINCountryId
-      ? onBoardingFormValues.foreignTINCountryId
+    foreignTINCountry: onBoardingFormValues?.foreignTINCountryId
+      ? onBoardingFormValues?.foreignTINCountryId
       : "",
-    foreignTIN: "",
+    foreignTIN: onBoardingFormValues?.foreignTIN
+    ? onBoardingFormValues?.foreignTIN
+    : "",
     isFTINNotLegallyRequired: false,
-    tinisFTINNotLegallyRequired: "Yes",
+    tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
@@ -183,7 +186,7 @@ export default function Tin(props: any) {
                 enableReinitialize
                 validationSchema={US_TINSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                  setSubmitting(true);
+                  // setSubmitting(true);
                   dispatch(
                     W8_state(values, () => {
                       history("/W-8BEN/Declaration/US_Tin/Claim");
@@ -204,6 +207,7 @@ export default function Tin(props: any) {
                   <Form onSubmit={handleSubmit}>
                       {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
+                      <>{console.log(errors,"errors!!!!!")}</>
                       <Paper
                       
                         style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
@@ -348,7 +352,7 @@ export default function Tin(props: any) {
                             
                             defaultValue={1}
                             onBlur={handleBlur}
-                            value={values.usTinTypeId}
+                            value={values?.usTinTypeId}
                             onChange={(e) => {
                               handleChange(e);
                             }}
@@ -532,7 +536,7 @@ export default function Tin(props: any) {
                           id="Income"
                           defaultValue={1}
                           onBlur={handleBlur}
-                          value={values.usTinTypeId}
+                          value={values?.usTinTypeId}
                           onChange={(e) => {
                             handleChange(e);
                           }}
@@ -630,7 +634,8 @@ export default function Tin(props: any) {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <select
-                          disabled
+                          disabled={values?.tinisFTINNotLegallyRequired == "yes" ? true : false}
+                            // fullWidth
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -657,7 +662,15 @@ export default function Tin(props: any) {
                                   )
                                 )}
                           </select>
-                          {/* <p className="error">{errors.foreignTINCountry}</p> */}
+                          {/* {errors.foreignTINCountry && touched.foreignTINCountry ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors?.foreignTINCountry}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )} */}
  
                           <div style={{ marginTop: "2px" }}>
                             <Checkbox
@@ -799,9 +812,6 @@ export default function Tin(props: any) {
                               disabled={
                                 values.isFTINNotLegallyRequired ||
                                 values.foreignTINCountry == "1" 
-                               
-                                
-                                
                               }
                               name="foreignTIN"
                               value={values.foreignTIN}
@@ -809,8 +819,6 @@ export default function Tin(props: any) {
                               onChange={handleChange}
                               inputProps={{ maxLength: 10 }}
                               placeholder="ENTER FOREIGN TIN"
-
-                             
                               error={Boolean(
                                 touched.foreignTIN && errors.foreignTIN
                               )}
@@ -856,18 +864,25 @@ export default function Tin(props: any) {
                             
                             " "
                           }
+                            {/* {errors.foreignTIN? (
+                                  <p className="error">
+                                    {errors?.foreignTIN}
+                                  </p>
+                              ) : (
+                                ""
+                              )} */}
 
                          <div  >
                         <FormControl className="col-12 radio" >
                             <RadioGroup
-                              row
-                              
+                              row                              
                               name="tinisFTINNotLegallyRequired"
                               aria-labelledby="demo-row-radio-buttons-group-label"
                               value={values.tinisFTINNotLegallyRequired}
                               onChange={(e) => {
                                 handleChange(e);
                                 setFieldValue("foreignTIN", "");
+                                setFieldValue("foreignTINCountry", "0");
                               }}
                             >
                               <FormControlLabel
@@ -1050,6 +1065,7 @@ export default function Tin(props: any) {
                     )}
 
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
+                      <>
                       <div className="my-3" style={{ marginLeft: "20px",marginRight:"20px" }}>
                         <Typography align="left" style={{ fontWeight: "bold" }}>
                           Please specify the reason for non-availability of
@@ -1073,7 +1089,40 @@ export default function Tin(props: any) {
                           should they apply and may render the form invalid.
                         </Typography>
                         <TextField
-                          
+                          type="text"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          name="FTINFeild1"
+                          value={values.FTINFeild1}
+                          multiline
+                          rows={4}
+                          style={{
+                            marginTop:"2rem",
+                            color: "#7e7e7e",
+                            fontStyle: "italic",
+                            height: "7rem",
+                            width: "100%",
+                          }}
+                        />
+                      </div>
+                      <div className="my-3" style={{ marginLeft: "20px",marginRight:"20px" }}>
+                      <p className="error">{errors.FTINFeild1}</p>
+                      </div>
+                      </>
+                    ) : (
+                      ""
+                      )}
+                     
+
+                    {values.notAvailable ? (
+                      <>
+                      <div style={{ marginLeft: "20px" }}>
+                        <Typography>
+                          Please specify the reason for non-availability of US
+                          TIN <span style={{ color: "red" }}>*</span>
+                        </Typography>
+
+                        <TextField
                           type="text"
                           onBlur={handleBlur}
                           onChange={handleChange}
@@ -1083,7 +1132,6 @@ export default function Tin(props: any) {
                           rows={4}
                           style={{
                             marginTop:"2rem",
-                            
                             color: "#7e7e7e",
                             fontStyle: "italic",
                             height: "7rem",
@@ -1091,35 +1139,14 @@ export default function Tin(props: any) {
                           }}
                         />
                       </div>
-                    ) : (
-                      ""
-                    )}
-
-                    {values.notAvailable ? (
-                      <div style={{ marginLeft: "20px" }}>
-                        <Typography>
-                          Please specify the reason for non-availability of US
-                          TIN <span style={{ color: "red" }}>*</span>
-                        </Typography>
-
-                        <Input
-                          fullWidth
-                          type="text"
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          style={{
-                            border: " 1px solid #d9d9d9 ",
-                            padding: " 0 10px",
-                            color: "#7e7e7e",
-                            fontStyle: "italic",
-                            height: "6rem",
-                            width: "100%",
-                          }}
-                        />
+                      <div className="my-3" style={{ marginLeft: "20px",marginRight:"20px" }}>
+                      <p className="error">{errors.FTINFeild}</p>
                       </div>
+                      </>
                     ) : (
                       ""
                     )}
+                     
                     <div
                       style={{
                         display: "flex",
