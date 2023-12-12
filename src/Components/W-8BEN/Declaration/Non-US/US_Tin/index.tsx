@@ -121,6 +121,18 @@ export default function Tin(props: any) {
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
+  const [payload, setPayload] = useState({usTin:""})
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+  };
   const isFieldDisabled = (values: any) => {
     if (values.isFTINNotLegallyRequired == "Yes") {
       return true;
@@ -558,6 +570,9 @@ export default function Tin(props: any) {
                           type="text"
                           name="usTin"
                           value={values.usTin}
+                          onKeyDown={(e) => formatTin(e, values)}
+                          inputProps={{ maxLength: 11 }}
+
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(touched.usTin && errors.usTin)}
