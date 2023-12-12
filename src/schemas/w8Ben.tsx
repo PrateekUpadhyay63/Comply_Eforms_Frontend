@@ -83,7 +83,7 @@ export const US_TINSchema = () => {
       "Please select Foriegn Tin Country"
     ),
     foreignTIN: Yup.string().when("tinisFTINNotLegallyRequired", {
-      is: "No",
+      is: "No" || "",
       then: () =>
         Yup.string()
         .required("Please enter Foriegn Tin"),
