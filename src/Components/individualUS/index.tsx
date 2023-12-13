@@ -221,6 +221,17 @@ export default function IndividualUs() {
     isCorrectPaymentPurposes: true,
     isConfirmed: false,
   };
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+  };
 
   const formatDate = (date: any) => {
     const dateObj = new Date(date);
@@ -489,17 +500,7 @@ export default function IndividualUs() {
     }
   };
 
-  const formatTin = (e: any, values: any): any => {
-    if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 3) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-    if (e.target.value.length === 6) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-  };
+ 
   const setAccountHolder = (e: any, values: any): any => {
     if (values.accountHolderName === "") {
       values.accountHolderName = values.firstName + values.lastName;
@@ -1358,7 +1359,7 @@ export default function IndividualUs() {
                             </Tooltip>
                           </div>
                           <p className="error mb-0">
-                            {errors?.usTinTypeId || errors?.usTin
+                            {errors?.usTinTypeId || errors?.usTin ||errors?.vatId
                               ? "Mandatory Information Required"
                               : ""}
                           </p>
@@ -1553,6 +1554,7 @@ export default function IndividualUs() {
                                
                                 <>{console.log(ustinValue, "")}</>
                                 <option value={0}>--Select--</option>
+                               
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -1610,7 +1612,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 11 }}
+                                inputProps={{ maxLength: 11}}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1714,7 +1716,7 @@ export default function IndividualUs() {
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
-                                onKeyDown={(e) => formatTin(e, values)}
+                                // onKeyDown={(e) => formatTin(e, values)}
                                 inputProps={{ maxLength: 11 }}
                                 value={values.foreignTIN}
                               />
@@ -2675,7 +2677,7 @@ export default function IndividualUs() {
                                     </Tooltip>
                                   </Typography>
                                   {toolInfo === "PO" ? (
-                                    <div>
+                                    <div className="post">
                                       <Paper
                                         style={{
                                           backgroundColor: "#dedcb1",
@@ -2830,7 +2832,7 @@ export default function IndividualUs() {
                                   </Tooltip>
                                 </Typography>
                                 {toolInfo === "CareOf" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -2987,7 +2989,7 @@ export default function IndividualUs() {
                                   </span>
                                 </Typography>
                                 {toolInfo === "mail" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -3564,9 +3566,9 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                         <FormControl className="w-100">
-                          <div className="row">
+                          <div className="row"style={{padding: "0 0 0 4px"}}>
                             <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2">
-                              <FormControl className="w-100">
+                              <FormControl className="w-98">
                                 <Typography align="left">
                                   Email<span style={{ color: "red" }}>*</span>
                                 </Typography>
@@ -3990,7 +3992,9 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
+                              onClick={() => handleOpen("it")}
                             >
                               Income Code
                               <span
@@ -3999,6 +4003,7 @@ export default function IndividualUs() {
                                   color: "grey",
                                   marginLeft: "4px",
                                   marginTop: "11px",
+                                
                                 }}
                               >
                                 (Optional)

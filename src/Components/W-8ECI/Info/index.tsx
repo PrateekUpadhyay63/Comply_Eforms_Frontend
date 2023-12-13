@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormControl,
   Typography,
@@ -24,6 +24,8 @@ import BreadCrumbComponent from "../../reusables/breadCrumb";
 import { useNavigate } from "react-router-dom";
 import { TinSchema } from "../../../schemas/w8ECI";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {  getTinTypes} from "../../../Redux/Actions"
+import { useDispatch, useSelector } from "react-redux";
 export default function Tin(props: any) {
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || "{}");
   const initialValue = {
@@ -37,13 +39,14 @@ export default function Tin(props: any) {
   };
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const dispatch = useDispatch();
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
   const [toolInfo, setToolInfo] = useState("");
-
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   const onChangeSingle = (e:any,setFieldValue:any) => {
     console.log(e.target.value)
     if(e.target.value==2){
@@ -53,7 +56,31 @@ export default function Tin(props: any) {
       setFieldValue('eciUsTin', "")
     }
   };
-
+  useEffect(() => {
+   
+    dispatch(
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.usIndividual === true;
+        });
+        setUStinvalue(datas);
+      })
+    );
+  
+  }, []);
+  const [payload, setPayload] = useState({eciUsTin:""})
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, eciUsTin: payload.eciUsTin + "-" });
+      values.eciUsTin = values.eciUsTin + "-";
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, eciUsTin: payload.eciUsTin + "-" });
+      values.eciUsTin = values.eciUsTin + "-";
+    }
+  };
   return (
     <>
       <Formik
@@ -163,10 +190,24 @@ export default function Tin(props: any) {
                               // onBlur={handleBlur}
                               value={values.eciUsTinTypeId}
                             >
-                              <option value={0}>-Select-</option>
-                              <option value={2}>SSN/ITIN</option>
-                              <option value={3}>U.S. TIN not applicable</option>
-                              <option value={4}>U.S. TIN not available</option>
+                             
+                              <option value="0">--Select--</option>
+                                {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                             </select>
                             <p className="error">
                               {errors.eciUsTinTypeId?.toString()}
@@ -193,7 +234,7 @@ export default function Tin(props: any) {
                               id="outlined"
                               name="eciUsTin"
                               placeholder="Enter U.S. TIN"
-                              // onKeyDown={(e)=>formatTin(e,values)}
+                              onKeyDown={(e)=>formatTin(e,values)}
                               onChange={handleChange}
                               inputProps={{ maxLength: 11 }}
                               // onBlur={handleBlur}

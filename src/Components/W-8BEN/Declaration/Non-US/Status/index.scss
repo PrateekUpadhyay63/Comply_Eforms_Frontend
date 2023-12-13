@@ -33,7 +33,12 @@ input[type="date" ]::placeholder {
 }
 
 input[type="date"] { 
+    padding-inline: 10px !important;
     border: thin solid gray !important;
     background: white !important;
     text-transform: uppercase !important;
+  }
+  .number input{
+    background-color: white !important;
+    border:0.5px solid black
   }
