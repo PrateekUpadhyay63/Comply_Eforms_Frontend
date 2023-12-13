@@ -66,6 +66,8 @@ export default function Entity() {
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
   const [nonUSEntity , setNonUSEntity] = useState([]);
+ 
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
   const [values, setValues] = useState({ vat: "", vatId: 0 });
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({

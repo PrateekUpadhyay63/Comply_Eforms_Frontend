@@ -1982,7 +1982,7 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value="1">--Select--</option>
+                                <option value="0">--Select--</option>
                                
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
@@ -2018,7 +2018,8 @@ export default function IndividualUs() {
                                 disabled={
                                   // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
-                                  values.usTinTypeId == 1
+                                  values.usTinTypeId == 1 ||
+                                  values.usTinTypeId == 0
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",

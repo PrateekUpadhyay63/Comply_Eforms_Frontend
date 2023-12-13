@@ -49,6 +49,8 @@ export default function Tin(props: any) {
   });
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
+  
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
@@ -76,6 +78,10 @@ export default function Tin(props: any) {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.usEntity === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
   }, []);
@@ -207,43 +213,83 @@ export default function Tin(props: any) {
 
                         </div>) : ""}
                         <FormControl className="w-100">
-                          <Select
+                        {onBoardingFormValues?.isUSIndividual == true?( 
+                          
+                          <select
                             onChange={
                               handleChange
                             }
                             onBlur={handleBlur}
-                            error={Boolean(
-                              touched.tiN_USTINId &&
-                                errors.tiN_USTINId
-                            )}
+                            // error={Boolean(
+                            //   touched.tiN_USTINId &&
+                            //     errors.tiN_USTINId
+                            // )}
                             name="tiN_USTINId"
                             value={values.tiN_USTINId}
                             style={{
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "40px",
-                              width: "100%",
+                              height: "36px",
                             }}
                           >
-                            <MenuItem value={0}>--Select--</MenuItem>
-                            {ustinValue?.map((ele: any) => (
-                              // ele?.nonUSIndividual &&
-                              //   values?.isUSIndividual == "no" ||
-                              // ele?.usIndividual &&
-                              //   values?.isUSIndividual == "Yes" ?
-                              // (
-                              <MenuItem
-                                key={ele?.taxpayerIdTypeID}
-                                value={ele?.taxpayerIdTypeID}
-                              >
-                                {ele?.taxpayerIdTypeName}
-                              </MenuItem>
-                              // ) : (
-                              //   ""
-                              // );
-                            ))}
-                          </Select>
+                           <option value="0">--Select--</option>
+                               
+                               {ustinValue?.map((ele: any) => (
+                                 // ele?.nonUSIndividual &&
+                                 //   values?.isUSIndividual == "no" ||
+                                 // ele?.usIndividual &&
+                                 //   values?.isUSIndividual == "Yes" ?
+                                 // (
+                                 <option
+                                   key={ele?.taxpayerIdTypeID}
+                                   value={ele?.taxpayerIdTypeID}
+                                 >
+                                   {ele?.taxpayerIdTypeName}
+                                 </option>
+                                 // ) : (
+                                 //   ""
+                                 // );
+                               ))}
+                          </select>): 
+                          
+                          <select
+                            onChange={
+                              handleChange
+                            }
+                            onBlur={handleBlur}
+                            // error={Boolean(
+                            //   touched.tiN_USTINId &&
+                            //     errors.tiN_USTINId
+                            // )}
+                            name="tiN_USTINId"
+                            value={values.tiN_USTINId}
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                          >
+                           <option value="0">--Select--</option>
+                               
+                               {notUsIndividual?.map((ele: any) => (
+                                 // ele?.nonUSIndividual &&
+                                 //   values?.isUSIndividual == "no" ||
+                                 // ele?.usIndividual &&
+                                 //   values?.isUSIndividual == "Yes" ?
+                                 // (
+                                 <option
+                                   key={ele?.taxpayerIdTypeID}
+                                   value={ele?.taxpayerIdTypeID}
+                                 >
+                                   {ele?.taxpayerIdTypeName}
+                                 </option>
+                                 // ) : (
+                                 //   ""
+                                 // );
+                               ))}
+                          </select>}
                           {errors.tiN_USTINId &&
                           touched.tiN_USTINId ? (
                             <div>
