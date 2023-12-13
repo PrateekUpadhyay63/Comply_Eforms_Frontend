@@ -79,14 +79,19 @@ export const US_TINSchema = () => {
         Yup.string()
         .required("Please Specify Reason"),
     }),
-    foreignTINCountry: Yup.string().required(
-      "Please select Foriegn Tin Country"
-    ),
+    foreignTINCountry:  Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: (value:any) => value === "No" || value === "",
+      then: () =>
+        Yup.string()
+        .required("Please select Foriegn Tin Country"),
+      
+    }),
     foreignTIN: Yup.string().when("tinisFTINNotLegallyRequired", {
-      is: "No" || "",
+      is: (value:any) => value === "No" || value === "",
       then: () =>
         Yup.string()
         .required("Please enter Foriegn Tin"),
+      
     }),
   
     // .required("Please enter Foriegn Tin "),
