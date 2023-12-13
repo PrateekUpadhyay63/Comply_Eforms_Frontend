@@ -113,9 +113,11 @@ export default function Tin(props: any) {
     foreignTINCountry: onBoardingFormValues?.foreignTINCountryId
       ? onBoardingFormValues?.foreignTINCountryId
       : "",
-    foreignTIN: onBoardingFormValues?.foreignTIN
-    ? onBoardingFormValues?.foreignTIN
-    : "",
+    foreignTIN: 
+    // onBoardingFormValues?.foreignTIN
+    // ? onBoardingFormValues?.foreignTIN
+    // : 
+    "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,

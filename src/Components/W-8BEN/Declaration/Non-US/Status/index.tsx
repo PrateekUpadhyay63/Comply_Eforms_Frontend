@@ -767,9 +767,9 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <div className="d-flex">
-                            <FormControl className="form">
-                              <input  name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} />
-                            </FormControl>
+                          <FormControl className="form">
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
+                              </FormControl>
                             <div className="d-flex">
                               <Checkbox  name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
@@ -862,9 +862,9 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <div className="d-flex">
-                            <FormControl className="form">
-                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
-                            </FormControl>
+                          <FormControl className="form">
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
+                              </FormControl>
                             <div className="d-flex">
                               <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
@@ -1381,7 +1381,7 @@ export default function Factors() {
                       )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled = {values.isTINFormatNotAvailable == false}  className="input"/>
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
                               </FormControl>
                              {/* {values.permanentResidentialCountryId == 257?( */}
                              <div className="d-flex">

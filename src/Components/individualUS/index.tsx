@@ -1359,7 +1359,7 @@ export default function IndividualUs() {
                             </Tooltip>
                           </div>
                           <p className="error mb-0">
-                            {errors?.usTinTypeId || errors?.usTin
+                            {errors?.usTinTypeId || errors?.usTin ||errors?.vatId
                               ? "Mandatory Information Required"
                               : ""}
                           </p>
@@ -2677,7 +2677,7 @@ export default function IndividualUs() {
                                     </Tooltip>
                                   </Typography>
                                   {toolInfo === "PO" ? (
-                                    <div>
+                                    <div className="post">
                                       <Paper
                                         style={{
                                           backgroundColor: "#dedcb1",
@@ -2832,7 +2832,7 @@ export default function IndividualUs() {
                                   </Tooltip>
                                 </Typography>
                                 {toolInfo === "CareOf" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -2989,7 +2989,7 @@ export default function IndividualUs() {
                                   </span>
                                 </Typography>
                                 {toolInfo === "mail" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -3566,9 +3566,9 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                         <FormControl className="w-100">
-                          <div className="row">
+                          <div className="row"style={{padding: "0 0 0 4px"}}>
                             <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2">
-                              <FormControl className="w-100">
+                              <FormControl className="w-98">
                                 <Typography align="left">
                                   Email<span style={{ color: "red" }}>*</span>
                                 </Typography>
@@ -3992,7 +3992,9 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
+                              onClick={() => handleOpen("it")}
                             >
                               Income Code
                               <span
@@ -4001,6 +4003,7 @@ export default function IndividualUs() {
                                   color: "grey",
                                   marginLeft: "4px",
                                   marginTop: "11px",
+                                
                                 }}
                               >
                                 (Optional)

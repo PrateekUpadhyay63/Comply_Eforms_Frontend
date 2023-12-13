@@ -433,7 +433,7 @@ export default function Penalties() {
                         
                       />
                        <Typography className="col-1 mx-2 my-1" >
-                      <ContentCopy
+                      {values.confirmationCode ?(<ContentCopy
                   
                         onClick={() => {
                           navigator.clipboard.writeText(
@@ -441,7 +441,7 @@ export default function Penalties() {
                           );
                         }}
                         style={{ fontSize: "18px", marginTop: "5px" }}
-                      />
+                      />):""}
                     </Typography>
 
   </div>
