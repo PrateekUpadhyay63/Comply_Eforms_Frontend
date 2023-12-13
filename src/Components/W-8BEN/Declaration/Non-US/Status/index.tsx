@@ -391,7 +391,7 @@ export default function Factors() {
                           marginBottom: "10px",
                         }}
                       >
-                        Date of Birth (mm/dd/yyyy)
+                        Date of Birth (mm/dd/yyyy).....
                       </Typography>
                       <FormControl className="form">
                       <input className="input my-2"  type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
@@ -938,7 +938,7 @@ export default function Factors() {
                             marginBottom: "10px",
                           }}
                         >
-                          Date of Birth (mm/dd/yyyy)
+                          Date of Birth (mm/dd/yyyy)...
                         </Typography>
                         <FormControl className="form">
                           <input  className="input my-2" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}

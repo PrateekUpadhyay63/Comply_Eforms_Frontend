@@ -10,6 +10,9 @@
     background-color: black !important;
   
 }
+input[type="date" ]::placeholder { 
+    word-spacing: 20px !important;
+  }
 .form input{
     height: 30px;
     font-size: 17px;
