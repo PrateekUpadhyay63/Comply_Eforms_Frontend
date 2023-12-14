@@ -3237,25 +3237,24 @@ export default function FormW8IMY() {
 
                       I certify that the entity identified in Part I:
                       </label>
-                    <p style={{ padding: "0px", margin: "0px" }}>
-                      <ul style={{        paddingTop: "0px",
-                            paddingBottom: "0px",
-                            paddingRight: "0px",
-                            margin: "0px",}}>
-                        <li>Is an investment entity;</li>
-                        <li>
-                          Is not a QI, WP (except to the extent permitted in the
-                          withholding foreign partnership agreement), or WT;{" "}
-                          <strong>and</strong>
-                        </li>
-                        <li>
-                          Has agreed with the entity identified above (that is
-                          not a nonparticipating FFI) to act as the sponsoring
-                          entity for this entity
-                        </li>
-                      </ul>
-                    </p>
-
+                      <p style={{ padding: "0px", margin: "0px" }}>
+                        <ul style={{        paddingTop: "0px",
+                              paddingBottom: "0px",
+                              paddingRight: "0px",
+                              margin: "0px",}}>
+                          <li>Is an investment entity;</li>
+                          <li>
+                            Is not a QI, WP (except to the extent permitted in the
+                            withholding foreign partnership agreement), or WT;{" "}
+                            <strong>and</strong>
+                          </li>
+                          <li>
+                            Has agreed with the entity identified above (that is
+                            not a nonparticipating FFI) to act as the sponsoring
+                            entity for this entity
+                          </li>
+                        </ul>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -3285,8 +3284,11 @@ export default function FormW8IMY() {
                         marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
-                      I certify that the entity identified in Part I:
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
+                        I certify that the entity identified in Part I:
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Is a controlled foreign corporation as defined in
@@ -3311,6 +3313,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -3416,8 +3419,14 @@ export default function FormW8IMY() {
                         marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+
+
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>Does not act as an intermediary;</li>
                         <li>
@@ -3450,6 +3459,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -3486,8 +3496,12 @@ export default function FormW8IMY() {
                         marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Has provided, or will provide, an FFI owner reporting
@@ -3527,6 +3541,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
 
@@ -3556,8 +3571,12 @@ export default function FormW8IMY() {
                         marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Has provided, or will provide, an auditor’s letter,
@@ -3576,6 +3595,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
