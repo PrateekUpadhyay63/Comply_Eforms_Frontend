@@ -78,7 +78,7 @@ export default function IndividualUs() {
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
   const [notUsIndividual , setNonUsIndividual] = useState([]);
-  
+  const [clickCount, setClickCount] = useState(0);
 
   console.log("hhh",ustinValue)
   const allCountriesData = useSelector(
@@ -359,12 +359,7 @@ export default function IndividualUs() {
     setIncomeData(incomeData);
   };
 
-  const handleSubmit = (e: any, values: any) => {
-    e.preventDefault();
-    dispatch(postOnboarding(values, redirectFunc));
-    redirectFunc();
-  };
-
+  
   const returnFieldName = (
     handleBlur: any,
     touched: any,
@@ -506,6 +501,7 @@ export default function IndividualUs() {
       );
     }
   };
+ 
 
  
   const setAccountHolder = (e: any, values: any): any => {
@@ -636,103 +632,111 @@ export default function IndividualUs() {
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
-                const payload = {
-                  agentId: values?.agentId,
-                  businessTypeId: values?.businessTypeId,
-                  selectedEntity: false,
-                  isUSEntity: values?.isUSEntity == "yes" ? true : false,
-                  isUSIndividual:
-                    values?.isUSIndividual == "yes" ? true : false,
-                  uniqueIdentifier: values?.uniqueIdentifier,
-                  firstName: values?.firstName,
-                  lastName: values?.lastName,
-                  countryOfCitizenshipId: values?.countryOfCitizenshipId,
-                  dob: values?.dob,
-                  nameOfDisregarded: values?.nameOfDisregarded,
-                  entityName: values?.entityName,
-                  usTinTypeId: +values?.usTinTypeId,
-                  usTin: values?.usTin,
-                  foreignTINCountryId: values?.foreignTINCountryId,
-                  foreignTIN: values?.foreignTIN,
-                  foreignTINNotAvailable: values?.foreignTINNotAvailable, //
-                  alternativeTINFormat: values?.alternativeTINFormat, //
-                  giin: values?.giin,
-                  permanentResidentialCountryId:
-                    values?.permanentResidentialCountryId,
-                  permanentResidentialStreetNumberandName:
-                    values?.permanentResidentialStreetNumberandName,
-                  permanentResidentialAptSuite:
-                    values?.permanentResidentialAptSuite,
-                  permanentResidentialCityorTown:
-                    values?.permanentResidentialCityorTown,
-                  permanentResidentialStateorProvince:
-                    values?.permanentResidentialStateorProvince,
-                  permanentResidentialZipPostalCode:
-                    values?.permanentResidentialZipPostalCode,
-                  isAddressRuralRoute:
-                    values?.isAddressRuralRoute == "yes" ? true : false,
-                  isAddressPostOfficeBox:
-                    values?.isAddressPostOfficeBox == "yes" ? true : false,
-                  isCareOfAddress:
-                    values?.isCareOfAddress == "yes" ? true : false,
-                  isalternativebusinessaddress:
-                    values?.isalternativebusinessaddress == "yes"
-                      ? true
-                      : false,
-                  permanentResidentialCountryId1:
-                    values?.permanentResidentialCountryId1,
-                  permanentResidentialStreetNumberandName1:
-                    values?.permanentResidentialStreetNumberandName1,
-                  permanentResidentialAptSuite1:
-                    values?.permanentResidentialAptSuite1,
-                  permanentResidentialCityorTown1:
-                    values?.permanentResidentialCityorTown1,
-                  permanentResidentialStateorProvince1:
-                    values?.permanentResidentialStateorProvince1,
-                  permanentResidentialZipPostalCode1:
-                    values?.permanentResidentialZipPostalCode1,
-                  contactFirstName: values?.contactFirstName,
-                  contactLastName: values?.contactLastName,
-                  contactEmail: values?.contactEmail,
-                  primaryContactNumberId: values?.primaryContactNumberId,
-                  primaryContactNumber: values?.primaryContactNumber,
-                  alternativeNumberId: values?.alternativeNumberId,
-                  alternativeNumber: values?.alternativeNumber,
-                  alternativeNumberId1: values?.alternativeNumberId1,
-                  alternativeNumber1: values?.alternativeNumber1,
-                  incomeTypeId: incomeArr,
-                  paymentTypeId: values?.paymentTypeId,
-                  accountHolderName:
-                    values?.accountHolderName === ""
-                      ? values?.firstName + " " + values?.lastName
-                      : values?.accountHolderName,
-                  accountBankName: values?.accountBankName,
-                  accountBankBranchLocationId:
-                    values?.accountBankBranchLocationId,
-                  accountNumber: values?.accountNumber,
-                  abaRouting: values?.abaRouting,
-                  iban: values?.iban,
-                  swiftCode: values?.swiftCode,
-                  bankCode: values?.bankCode,
-                  makePayable: values?.makePayable,
-                  payResidentalCountryId: values?.payResidentalCountryId,
-                  payStreetNumberAndName: values?.payStreetNumberAndName,
-                  payAptSuite: values?.payAptSuite,
-                  vatId: values?.vatId,
-                  vat: values?.vat,
-                  doingBusinessAsName: values?.doingBusinessAsName,
-                  payCityorTown: values?.payCityorTown,
-                  payStateOrProvince: values?.payStateOrProvince,
-                  payZipPostalCode: values?.payZipPostalCode,
-                  sortCode: values?.sortCode,
-                  bsb: values?.bsb,
-                  capacityId: values?.capacityId,
-                  isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
-                  isConfirmed: values?.isConfirmed,
-                };
-                dispatch(postOnboarding(payload, redirectFunc));
-                localStorage.setItem("agentDetails", JSON.stringify(payload));
+                if (clickCount === 0) {
+      
+                  setClickCount(clickCount+1);
+                } else {
+                 
+                
+                  const payload = {
+                    agentId: values?.agentId,
+                    businessTypeId: values?.businessTypeId,
+                    selectedEntity: false,
+                    isUSEntity: values?.isUSEntity == "yes" ? true : false,
+                    isUSIndividual:
+                      values?.isUSIndividual == "yes" ? true : false,
+                    uniqueIdentifier: values?.uniqueIdentifier,
+                    firstName: values?.firstName,
+                    lastName: values?.lastName,
+                    countryOfCitizenshipId: values?.countryOfCitizenshipId,
+                    dob: values?.dob,
+                    nameOfDisregarded: values?.nameOfDisregarded,
+                    entityName: values?.entityName,
+                    usTinTypeId: +values?.usTinTypeId,
+                    usTin: values?.usTin,
+                    foreignTINCountryId: values?.foreignTINCountryId,
+                    foreignTIN: values?.foreignTIN,
+                    foreignTINNotAvailable: values?.foreignTINNotAvailable, //
+                    alternativeTINFormat: values?.alternativeTINFormat, //
+                    giin: values?.giin,
+                    permanentResidentialCountryId:
+                      values?.permanentResidentialCountryId,
+                    permanentResidentialStreetNumberandName:
+                      values?.permanentResidentialStreetNumberandName,
+                    permanentResidentialAptSuite:
+                      values?.permanentResidentialAptSuite,
+                    permanentResidentialCityorTown:
+                      values?.permanentResidentialCityorTown,
+                    permanentResidentialStateorProvince:
+                      values?.permanentResidentialStateorProvince,
+                    permanentResidentialZipPostalCode:
+                      values?.permanentResidentialZipPostalCode,
+                    isAddressRuralRoute:
+                      values?.isAddressRuralRoute == "yes" ? true : false,
+                    isAddressPostOfficeBox:
+                      values?.isAddressPostOfficeBox == "yes" ? true : false,
+                    isCareOfAddress:
+                      values?.isCareOfAddress == "yes" ? true : false,
+                    isalternativebusinessaddress:
+                      values?.isalternativebusinessaddress == "yes"
+                        ? true
+                        : false,
+                    permanentResidentialCountryId1:
+                      values?.permanentResidentialCountryId1,
+                    permanentResidentialStreetNumberandName1:
+                      values?.permanentResidentialStreetNumberandName1,
+                    permanentResidentialAptSuite1:
+                      values?.permanentResidentialAptSuite1,
+                    permanentResidentialCityorTown1:
+                      values?.permanentResidentialCityorTown1,
+                    permanentResidentialStateorProvince1:
+                      values?.permanentResidentialStateorProvince1,
+                    permanentResidentialZipPostalCode1:
+                      values?.permanentResidentialZipPostalCode1,
+                    contactFirstName: values?.contactFirstName,
+                    contactLastName: values?.contactLastName,
+                    contactEmail: values?.contactEmail,
+                    primaryContactNumberId: values?.primaryContactNumberId,
+                    primaryContactNumber: values?.primaryContactNumber,
+                    alternativeNumberId: values?.alternativeNumberId,
+                    alternativeNumber: values?.alternativeNumber,
+                    alternativeNumberId1: values?.alternativeNumberId1,
+                    alternativeNumber1: values?.alternativeNumber1,
+                    incomeTypeId: incomeArr,
+                    paymentTypeId: values?.paymentTypeId,
+                    accountHolderName:
+                      values?.accountHolderName === ""
+                        ? values?.firstName + " " + values?.lastName
+                        : values?.accountHolderName,
+                    accountBankName: values?.accountBankName,
+                    accountBankBranchLocationId:
+                      values?.accountBankBranchLocationId,
+                    accountNumber: values?.accountNumber,
+                    abaRouting: values?.abaRouting,
+                    iban: values?.iban,
+                    swiftCode: values?.swiftCode,
+                    bankCode: values?.bankCode,
+                    makePayable: values?.makePayable,
+                    payResidentalCountryId: values?.payResidentalCountryId,
+                    payStreetNumberAndName: values?.payStreetNumberAndName,
+                    payAptSuite: values?.payAptSuite,
+                    vatId: values?.vatId,
+                    vat: values?.vat,
+                    doingBusinessAsName: values?.doingBusinessAsName,
+                    payCityorTown: values?.payCityorTown,
+                    payStateOrProvince: values?.payStateOrProvince,
+                    payZipPostalCode: values?.payZipPostalCode,
+                    sortCode: values?.sortCode,
+                    bsb: values?.bsb,
+                    capacityId: values?.capacityId,
+                    isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
+                    isConfirmed: values?.isConfirmed,
+                  };
+                  dispatch(postOnboarding(payload, redirectFunc));
+                  localStorage.setItem("agentDetails", JSON.stringify(payload));
+                  setSubmitting(false);
+                }
+               
               }}
               validationSchema={individualSchema}
             >
@@ -747,6 +751,86 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A101
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address is a PO Box. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+               
+                 
+                  
+                 
+                 
+
+  
+                </Paper>):""}
+
+
+                {values.isCareOfAddress === "yes" && clickCount === 1 ?(<Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A102
+
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address may be located at a Care of Address. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+               
+                 
+                  
+                 
+                 
+
+  
+                </Paper>):""}
+
+
+                {values.isUSIndividual === "yes" && values.permanentResidentialCountryId  != 258 && clickCount === 1 ?(<Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A103
+
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span style={{fontWeight:"Bold"}}>
+                  Potential Address Mismatch
+                  </span>
+                  </Typography>
+                  
+                  <Typography  className="mt-3">
+                  You have identified that you are submitting a form on behalf of a U.S. Individual or a US Entity and indicated that the Permanent Residential Address used for U.S tax purposes is not in the U.S.
+                  </Typography>
+                  <Typography  className="mt-2">
+                  You will be asked to supply additional information later in the process and your agent may need to contact you for further information.
+
+                  </Typography>
+                 
+                  
+                 
+                 
+
+  
+                </Paper>):""}
                   {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
                       <Paper
@@ -5345,7 +5429,7 @@ export default function IndividualUs() {
                         <div className="text-center">
                           <Button
                             type="submit"
-                            disabled={isSubmitting}
+                       
                             // onClick={() => history("/Term")}
                             style={{
                               border: "1px solid #0095dd",
