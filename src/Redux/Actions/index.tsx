@@ -70,6 +70,36 @@ export const loginAction = (value: any, callback: Function): any => {
 };
 
 
+export const SendOTPMail = (value:any,callback: Function): any => {
+  return (dispatch: any) => {
+    Utils.api.postApiCall(
+      Utils.EndPoint.SendOTPMail,
+      value,
+      (responseData) => {
+     
+        if (responseData) {
+
+          if (responseData.status === 200) {
+            dispatch({
+              type: Utils.actionName.SendOTPMail,
+              payload: {
+                SendOTPMailData: responseData.data,
+              },
+            });
+          } else if (responseData.status == 500) {
+            console.log("error");
+          } else {
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      },
+      (error) => {
+      }
+    );
+  };
+};
 
 export const postSecurityCode = (callback: Function): any => {
   return (dispatch: any) => {
@@ -97,7 +127,8 @@ export const postSecurityCode = (callback: Function): any => {
         }
       },
       (error) => {
-      }
+      },
+      "multi"
     );
   };
 };
@@ -781,6 +812,7 @@ export const GetAgentIncomeTypeHiddenAllowAnoymo = ():any =>{
       Utils.EndPoint.GetAgentIncomeTypeHiddenAllowAnoymo,
       "",
       (resData) => {
+        console.log(resData,"HIgkdgfhjyII")
         const { data } = resData;
         if (resData.status === 200) {
           dispatch({
