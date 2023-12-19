@@ -27,6 +27,9 @@ export default function Factors() {
 
   const [allocation, setAllocation] = useState(); // State to track allocation input
   const [formList, setFormList] = useState<FormData[]>([]);
+  const [clickCount, setClickCount] = useState(0);
+
+  
 
   const dispatch = useDispatch();
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +63,15 @@ export default function Factors() {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+
+    if (clickCount === 0) {
+      // First click shows the Paper component
+      setClickCount(1);
+    } else {
+      // Second click navigates to the next route
+      history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+    }
+
     console.log("Form List:", formList);
   };
 
@@ -212,6 +223,39 @@ export default function Factors() {
                 )}
 
                <div className="mt-2">
+               {clickCount === 1 && (
+                <Paper  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  1042S2
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  </Typography>
+                  <Typography align="center" style={{fontWeight:"Bold"}}>
+                  U.S. Source Income
+                  </Typography>
+                  <Typography className="mt-3">
+                  You have identified that your invoices or contracts may contain payments associated with U.S. Sourced income.
+                  </Typography>
+                  <Typography className="mt-2">
+                  U.S. tax rules require us to withhold a 30% income tax on US source payments unless you provide us with certain documentation.  The type of documentation we require depends on numerous facts such as whether you are relying on an income tax treaty and what type of entity you are for local tax purposes. In order to reduce or eliminate US tax withholding you will need to obtain a US taxpayer identification number.  This number needs to be included on the documentation you provide to us.
+                  </Typography>
+                  <Typography className="mt-2">
+                  To help determine the type of form you should furnish to us, please continue through the forms submission process or refer to the IRS website at <a href="http://www.irs.gov" target="_blank">www.irs.gov</a>.
+                  </Typography>
+                  <Typography className="mt-2">
+                  We also recommend that you consult with your tax advisor regarding any US tax forms you provide to us.
+                  </Typography>
+                 
+
+  
+                </Paper>
+                 )}
                <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
               </div>
               </div>
