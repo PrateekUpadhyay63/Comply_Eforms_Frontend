@@ -66,7 +66,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([5]);
+  const [incomeArr, setIncomeArr] = useState([0]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -77,7 +77,10 @@ export default function IndividualUs() {
   const [toolInfo, setToolInfo] = useState("");
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
   
+
+  console.log("hhh",ustinValue)
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -259,6 +262,10 @@ export default function IndividualUs() {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.nonUSIndividual === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
     dispatch(
@@ -268,23 +275,23 @@ export default function IndividualUs() {
     );
   }, []);
 
-  const onChangeUsInit = (values: any) => {
-    let data;
-    if (values.isUSIndividual == "no") {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is true
-        return ele?.usIndividual === false;
-      });
-      // Do something with the filtered data...
-    } else {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is false
-        return ele?.usIndividual === true;
-      });
-      // Do something with the filtered data...
-    }
-    setUStinvalue(data);
-  };
+  // const onChangeUsInit = (values: any) => {
+  //   let data;
+  //   if (values.isUSIndividual == "no") {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is true
+  //       return ele?.usIndividual === false;
+  //     });
+  //     // Do something with the filtered data...
+  //   } else {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is false
+  //       return ele?.usIndividual === true;
+  //     });
+  //     // Do something with the filtered data...
+  //   }
+  //   setUStinvalue(data);
+  // };
   // useEffect(()=>{
   //   if(values.isUSIndividual==="yes"){
   //   let data = ustinArray.filter((ele)=>{ele.usIndividual==true})}
@@ -315,15 +322,15 @@ export default function IndividualUs() {
     (state: any) => state.GetStateByCountryIdReducer
   );
 
-  const GetAgentUSVisaTypeHiddenForEform = useSelector(
-    (state: any) =>
-      state.GetAgentUSVisaTypeHiddenForEformReducer
-        .GetAgentUSVisaTypeHiddenForEform
-  );
+  // const GetAgentUSVisaTypeHiddenForEform = useSelector(
+  //   (state: any) =>
+  //     state.GetAgentUSVisaTypeHiddenForEformReducer
+  //       .GetAgentUSVisaTypeHiddenForEform
+  // );
   // FOR ISSUE 108 UNCOMMENT bottom code and comment top code
-  //   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
-  //   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
-  // )
+    const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+    state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymoData
+  )
 
   const redirectFunc = () => {
     history("/Term");
@@ -339,7 +346,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, 5]);
+    setIncomeArr((incomeArr) => [...incomeArr, 0]);
   };
 
   const handleDelete = (i: any) => {
@@ -538,7 +545,7 @@ export default function IndividualUs() {
   const handleIcome = (e: any, i: number) => {
     if (i < 5) {
       const newValue = e.target.value;
-      const updatedIncomeArr = [...incomeArr, 5];
+      const updatedIncomeArr = [...incomeArr, 0];
       updatedIncomeArr[i] = newValue;
       setIncomeArr(updatedIncomeArr);
     }
@@ -956,7 +963,7 @@ export default function IndividualUs() {
                                 value={values.isUSIndividual}
                                 onChange={(e) => {
                                   handleChange(e);
-                                  onChangeUsInit(values);
+                                  // onChangeUsInit(values);
                                 }}
                               >
                                 <FormControlLabel
@@ -1359,7 +1366,7 @@ export default function IndividualUs() {
                             </Tooltip>
                           </div>
                           <p className="error mb-0">
-                            {errors?.usTinTypeId || errors?.usTin
+                            {errors?.usTinTypeId || errors?.usTin ||errors?.vatId
                               ? "Mandatory Information Required"
                               : ""}
                           </p>
@@ -1555,7 +1562,7 @@ export default function IndividualUs() {
                                 <>{console.log(ustinValue, "")}</>
                                 <option value={0}>--Select--</option>
                                
-                                {ustinValue?.map((ele: any) => (
+                                {notUsIndividual?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1975,7 +1982,8 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value="1">--Select--</option>
+                                <option value="0">--Select--</option>
+                               
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -2010,7 +2018,8 @@ export default function IndividualUs() {
                                 disabled={
                                   // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
-                                  values.usTinTypeId == 1
+                                  values.usTinTypeId == 1 ||
+                                  values.usTinTypeId == 0
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -2677,7 +2686,7 @@ export default function IndividualUs() {
                                     </Tooltip>
                                   </Typography>
                                   {toolInfo === "PO" ? (
-                                    <div>
+                                    <div className="post">
                                       <Paper
                                         style={{
                                           backgroundColor: "#dedcb1",
@@ -2832,7 +2841,7 @@ export default function IndividualUs() {
                                   </Tooltip>
                                 </Typography>
                                 {toolInfo === "CareOf" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -2989,7 +2998,7 @@ export default function IndividualUs() {
                                   </span>
                                 </Typography>
                                 {toolInfo === "mail" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -3566,9 +3575,9 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                         <FormControl className="w-100">
-                          <div className="row">
+                          <div className="row"style={{padding: "0 0 0 4px"}}>
                             <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2">
-                              <FormControl className="w-100">
+                              <FormControl className="w-98">
                                 <Typography align="left">
                                   Email<span style={{ color: "red" }}>*</span>
                                 </Typography>
@@ -3938,11 +3947,12 @@ export default function IndividualUs() {
                                         value={incomeArr[i]}
                                       >
                                         <option value="0">-Select-</option>
+                                       
                                         {GetAgentUSVisaTypeHiddenForEform?.map(
                                           (ele: any) => (
                                             <option
-                                              key={ele?.id}
-                                              value={ele?.id}
+                                              key={ele?.incomeTypeId}
+                                              value={ele?.incomeTypeId}
                                             >
                                               {ele?.name}
                                             </option>
@@ -3992,7 +4002,9 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
+                              onClick={() => handleOpen("it")}
                             >
                               Income Code
                               <span
@@ -4001,6 +4013,7 @@ export default function IndividualUs() {
                                   color: "grey",
                                   marginLeft: "4px",
                                   marginTop: "11px",
+                                
                                 }}
                               >
                                 (Optional)

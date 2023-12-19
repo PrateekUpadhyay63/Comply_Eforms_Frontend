@@ -130,7 +130,7 @@ export default function FormW8IMY() {
                       style={{
                         fontSize: "14px",
                         textAlign: "right",
-                        color: "blue",
+                        color: "#1133a9",
                         fontWeight: "400",
                         marginBottom: "15px",
                       }}
@@ -1364,7 +1364,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />{" "}
                     I certify that the entity identified in Part I of this form
@@ -1398,7 +1398,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1434,7 +1434,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1469,7 +1469,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1505,7 +1505,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1539,7 +1539,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1577,7 +1577,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1611,7 +1611,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     (Complete only to the extent the entity identified in Part I
@@ -1649,7 +1649,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     (Complete only to the extent the entity identified in Part I
@@ -1698,7 +1698,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that each QDD identified in Part I of this form or
@@ -1733,7 +1733,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                         opacity: "0",
                       }}
                     />
@@ -1747,7 +1747,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                         marginLeft: "10px",
                       }}
                     />
@@ -1761,7 +1761,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                         marginLeft: "10px",
                       }}
                     />
@@ -1775,7 +1775,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                         marginLeft: "10px",
                       }}
                     />
@@ -1867,7 +1867,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     (All nonqualified intermediaries and QIs that are not acting
@@ -1900,7 +1900,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div>
@@ -1938,7 +1938,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -1973,7 +1973,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I of this form
@@ -2007,7 +2007,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     To the extent that the entity identified in Part I of this
@@ -2102,7 +2102,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a
@@ -2144,7 +2144,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I further certify that the entity identified in Part I is
@@ -2178,7 +2178,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div style={{ padding: "0px" }}>
@@ -2240,7 +2240,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I agrees to be
@@ -2272,7 +2272,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div>
@@ -2308,7 +2308,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div>
@@ -2402,7 +2402,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a U.S.
@@ -2445,7 +2445,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a U.S.
@@ -2470,7 +2470,7 @@ export default function FormW8IMY() {
                       <strong>c </strong>
                     </label>
                   </td>
-                  <td style={{ padding: "10px 0", display: "flex" }}>
+                  <td style={{ padding: "0 0", display: "flex" }}>
                     <input
                       type="checkbox"
                       name=""
@@ -2547,7 +2547,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a U.S.
@@ -2580,7 +2580,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a U.S.
@@ -2614,7 +2614,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div style={{ padding: "0px", margin: "0px" }}>
@@ -2713,7 +2713,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a
@@ -2812,7 +2812,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <div style={{ padding: "0px", margin: "0px" }}>
@@ -2873,7 +2873,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a foreign
@@ -2905,7 +2905,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a foreign
@@ -2937,7 +2937,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a foreign
@@ -2969,7 +2969,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a foreign
@@ -3003,7 +3003,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     To the extent the entity identified in Part I of this form
@@ -3110,7 +3110,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is using this
@@ -3229,25 +3229,33 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
+
                       I certify that the entity identified in Part I:
-                      <ul style={{ marginBottom: "0px" }}>
-                        <li>Is an investment entity;</li>
-                        <li>
-                          Is not a QI, WP (except to the extent permitted in the
-                          withholding foreign partnership agreement), or WT;{" "}
-                          <strong>and</strong>
-                        </li>
-                        <li>
-                          Has agreed with the entity identified above (that is
-                          not a nonparticipating FFI) to act as the sponsoring
-                          entity for this entity
-                        </li>
-                      </ul>
-                    </p>
+                      </label>
+                      <p style={{ padding: "0px", margin: "0px" }}>
+                        <ul style={{        paddingTop: "0px",
+                              paddingBottom: "0px",
+                              paddingRight: "0px",
+                              margin: "0px",}}>
+                          <li>Is an investment entity;</li>
+                          <li>
+                            Is not a QI, WP (except to the extent permitted in the
+                            withholding foreign partnership agreement), or WT;{" "}
+                            <strong>and</strong>
+                          </li>
+                          <li>
+                            Has agreed with the entity identified above (that is
+                            not a nonparticipating FFI) to act as the sponsoring
+                            entity for this entity
+                          </li>
+                        </ul>
+                      </p>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -3273,11 +3281,14 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
-                      I certify that the entity identified in Part I:
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
+                        I certify that the entity identified in Part I:
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Is a controlled foreign corporation as defined in
@@ -3302,6 +3313,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -3364,12 +3376,15 @@ export default function FormW8IMY() {
                   <td
                     colSpan={2}
                     style={{
-                      fontSize: "18px",
+                      
                       fontWeight: "",
                       padding: "10px 0px",
                     }}
                   >
-                    <strong>Note:</strong> This status only applies if the U.S.
+                    <strong    
+                    style={{
+                      fontSize: "18px",                      
+                    }}>Note:</strong> This status only applies if the U.S.
                     financial institution, participating FFI, reporting Model 1
                     FFI, or reporting Model 2 FFI to which this form is given
                     has agreed that it will treat the FFI as an owner-documented
@@ -3401,11 +3416,17 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+
+
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>Does not act as an intermediary;</li>
                         <li>
@@ -3438,6 +3459,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -3471,11 +3493,15 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Has provided, or will provide, an FFI owner reporting
@@ -3515,6 +3541,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
 
@@ -3541,11 +3568,15 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
-                    <p style={{ marginBottom: "0px" }}>
+                    <div style={{ padding: "0px", margin: "0px" }}>
+                      <label style={{ padding: "0px", margin: "0px" }}>
                       I certify that the FFI identified in Part I:
+
+                      </label>
+                    <p style={{ padding: "0px", margin: "0px" }}>
                       <ul style={{ marginBottom: "0px" }}>
                         <li>
                           Has provided, or will provide, an auditor’s letter,
@@ -3564,6 +3595,7 @@ export default function FormW8IMY() {
                         </li>
                       </ul>
                     </p>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -3647,7 +3679,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -3696,7 +3728,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -3808,7 +3840,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -3864,7 +3896,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -3996,7 +4028,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4109,7 +4141,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4215,7 +4247,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4310,7 +4342,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4406,7 +4438,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     I certify that the entity identified in Part I is a U.S.
@@ -4442,7 +4474,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     c Is currently bound by a distribution agreement that
@@ -4540,7 +4572,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4629,7 +4661,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4674,7 +4706,7 @@ export default function FormW8IMY() {
                           border: "1px solid #000",
                           marginRight: "10px",
                           marginBottom: "auto",
-                          marginTop: "6px",
+                          marginTop: "3px",
                           marginLeft: "10px",
                         }}
                       />
@@ -4688,7 +4720,7 @@ export default function FormW8IMY() {
                           border: "1px solid #000",
                           marginRight: "10px",
                           marginBottom: "auto",
-                          marginTop: "6px",
+                          marginTop: "3px",
                           marginLeft: "10px",
                         }}
                       />
@@ -4747,7 +4779,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                         opacity: "0",
                       }}
                     />
@@ -4860,7 +4892,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4900,7 +4932,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -4972,7 +5004,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5025,7 +5057,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5057,7 +5089,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5090,7 +5122,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5192,7 +5224,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5301,7 +5333,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5416,7 +5448,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5455,7 +5487,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5562,7 +5594,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5681,7 +5713,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5783,7 +5815,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5906,7 +5938,7 @@ export default function FormW8IMY() {
                         border: "1px solid #000",
                         marginRight: "10px",
                         marginBottom: "auto",
-                        marginTop: "6px",
+                        marginTop: "3px",
                       }}
                     />
                     <p style={{ marginBottom: "0px" }}>
@@ -5994,13 +6026,13 @@ export default function FormW8IMY() {
         
                 <tr>
                   <td colSpan={2}>
-                    <p style={{ color: "blue",marginBottom:"0px" }}>
+                    <p style={{ color: "#1133a9",marginBottom:"0px" }}>
                     W-8IMY – Electronic Substitute Form Statement:
                     </p>
                   </td>
                 </tr>
                 <tr>
-                  <td colSpan={2} style={{ color: "blue" }}>
+                  <td colSpan={2} style={{ color: "#1133a9" }}>
                   The Internal Revenue Service does not require your consent to any provisions of this document other than the certifications required to establish: (1) your status as a qualified
                   intermediary, a nonqualified intermediary, a specific type of U.S. branch, a withholding foreign partnership, a withholding foreign trust, a nonwithholding foreign partnership, a
                   nonwithholding foreign simple trust, or a nonwithholding foreign grantor trust; (2) your chapter 4 status; and/or (3) prior to January 1, 2020, your status as a qualified
@@ -6038,7 +6070,7 @@ export default function FormW8IMY() {
                                   <td
                                     style={{
                                       width: "55%",
-                                      color: "blue",
+                                      color: "#1133a9",
                                       verticalAlign: "bottom",
                                     }}
                                   >
@@ -6075,7 +6107,7 @@ export default function FormW8IMY() {
                                     style={{
                                       
                                       padding: "0 10px",
-                                      color: "blue",
+                                      color: "#1133a9",
                                       verticalAlign: "bottom",
                                     }}
                                   >
@@ -6104,7 +6136,7 @@ export default function FormW8IMY() {
                                     style={{
                                       width: "20%",
                                       borderBottom: "1px solid #000",
-                                      color: "blue",
+                                      color: "#1133a9",
                                     }}
                                   >
                                     17-10-2023
@@ -6114,7 +6146,7 @@ export default function FormW8IMY() {
                                   <td
                                     style={{
                                       width: "50%",
-                                      color: "#000",
+                                      color: "#1133a9",
                                       textAlign: "center",
                                     }}
                                   >
@@ -6174,7 +6206,7 @@ export default function FormW8IMY() {
                             
                             </strong>
                           </td>
-                          <td style={{ width: "10%", color: "blue" }}></td>
+                          <td style={{ width: "10%", color: "#1133a9" }}></td>
                           <td style={{ width: "20%", textAlign: "center" }}>
                            
                           </td>
@@ -6189,23 +6221,23 @@ export default function FormW8IMY() {
                           </td>
                         </tr>
                         <tr style={{fontSize:"13px",fontWeight:"500"}}>
-                          <td style={{ width: "40%", color: "blue" }}>
+                          <td style={{ width: "40%", color: "#1133a9" }}>
                             Electronic Submission Confirmation: 
                           </td>
-                          <td style={{ width: "10%", color: "blue" }}>
+                          <td style={{ width: "10%", color: "#1133a9" }}>
                            YVQ7NL
                           </td>
                           <td
                             style={{
                               width: "20%",
-                              color: "blue",
+                              color: "#1133a9",
                               textAlign: "center",
                             }}
                           >
                             Email Address :
                           </td>
-                          <td style={{ width: "30%", color: "blue",textAlign:"center" }}>
-                            <a href="mailto:abhay.singh2@mail.com">
+                          <td style={{ width: "30%", color: "#1133a9",textAlign:"center" }}>
+                            <a href="mailto:abhay.singh2@mail.com" style={{ color: "#1133a9",}}>
                               abhay.singh2@mail.com
                             </a>
                           </td>

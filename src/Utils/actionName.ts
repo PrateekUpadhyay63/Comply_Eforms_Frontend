@@ -41,6 +41,7 @@ const ActionName = {
     GetLimitationBenefits:"GetLimitationBenefits",
     GetIncomeTypes:"GetIncomeTypes",
     GetAgentIncomeTypeHiddenAllowAnoymo:"GetAgentIncomeTypeHiddenAllowAnoymo",
+    SendOTPMail:"SendOTPMail",
   };
 
   export default ActionName;
