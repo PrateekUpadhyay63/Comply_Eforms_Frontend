@@ -44,6 +44,7 @@ export default function Tin(props: any) {
   const [expanded, setExpanded] = React.useState<string | false>("");
     const [ustinArray, setUStinArray] = useState([]);
     const [ustinValue, setUStinvalue] = useState([]);
+    const [notUsIndividual , setNonUsIndividual] = useState([]);
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
@@ -53,6 +54,10 @@ export default function Tin(props: any) {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.nonUSIndividual === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
   }, []);
@@ -359,23 +364,25 @@ export default function Tin(props: any) {
                               handleChange(e);
                             }}
                           >
-                            <option value="1">U.S. TIN not available</option>
-                                {/* {ustinValue?.map((ele: any) => (
-                                  // ele?.nonUSIndividual &&
-                                  //   values?.isUSIndividual == "no" ||
-                                  // ele?.usIndividual &&
-                                  //   values?.isUSIndividual == "Yes" ?
-                                  // (
-                                  <option
-                                    key={ele?.taxpayerIdTypeID}
-                                    value={ele?.taxpayerIdTypeID}
-                                  >
-                                    {ele?.taxpayerIdTypeName}
-                                  </option>
-                                  // ) : (
-                                  //   ""
-                                  // );
-                                ))} */}
+                              <option value={0}>--Select--</option>
+                               
+                               {notUsIndividual?.map((ele: any) => (
+                                 // ele?.nonUSIndividual &&
+                                 //   values?.isUSIndividual == "no" ||
+                                 // ele?.usIndividual &&
+                                 //   values?.isUSIndividual == "Yes" ?
+                                 // (
+                                 <option
+
+                                   key={ele?.taxpayerIdTypeID}
+                                   value={ele?.taxpayerIdTypeID}
+                                 >
+                                   {ele?.taxpayerIdTypeName}
+                                 </option>
+                                 // ) : (
+                                 //   ""
+                                 // );
+                               ))}
                           </select>
                           {/* <p className="error">{errors.usTinTypeId}</p> */}
                         </div>
@@ -543,23 +550,25 @@ export default function Tin(props: any) {
                             handleChange(e);
                           }}
                         >
-                          <option value="0">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
-                                // ele?.nonUSIndividual &&
-                                //   values?.isUSIndividual == "no" ||
-                                // ele?.usIndividual &&
-                                //   values?.isUSIndividual == "Yes" ?
-                                // (
-                                <option
-                                  key={ele?.taxpayerIdTypeID}
-                                  value={ele?.taxpayerIdTypeID}
-                                >
-                                  {ele?.taxpayerIdTypeName}
-                                </option>
-                                // ) : (
-                                //   ""
-                                // );
-                              ))}
+                          <option value="1">--Select--</option>
+                               
+                          {notUsIndividual?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>

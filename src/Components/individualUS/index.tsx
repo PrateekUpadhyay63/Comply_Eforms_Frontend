@@ -77,7 +77,10 @@ export default function IndividualUs() {
   const [toolInfo, setToolInfo] = useState("");
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
   
+
+  console.log("hhh",ustinValue)
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -259,6 +262,10 @@ export default function IndividualUs() {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.nonUSIndividual === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
     dispatch(
@@ -268,23 +275,23 @@ export default function IndividualUs() {
     );
   }, []);
 
-  const onChangeUsInit = (values: any) => {
-    let data;
-    if (values.isUSIndividual == "no") {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is true
-        return ele?.usIndividual === false;
-      });
-      // Do something with the filtered data...
-    } else {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is false
-        return ele?.usIndividual === true;
-      });
-      // Do something with the filtered data...
-    }
-    setUStinvalue(data);
-  };
+  // const onChangeUsInit = (values: any) => {
+  //   let data;
+  //   if (values.isUSIndividual == "no") {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is true
+  //       return ele?.usIndividual === false;
+  //     });
+  //     // Do something with the filtered data...
+  //   } else {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is false
+  //       return ele?.usIndividual === true;
+  //     });
+  //     // Do something with the filtered data...
+  //   }
+  //   setUStinvalue(data);
+  // };
   // useEffect(()=>{
   //   if(values.isUSIndividual==="yes"){
   //   let data = ustinArray.filter((ele)=>{ele.usIndividual==true})}
@@ -956,7 +963,7 @@ export default function IndividualUs() {
                                 value={values.isUSIndividual}
                                 onChange={(e) => {
                                   handleChange(e);
-                                  onChangeUsInit(values);
+                                  // onChangeUsInit(values);
                                 }}
                               >
                                 <FormControlLabel
@@ -1555,7 +1562,7 @@ export default function IndividualUs() {
                                 <>{console.log(ustinValue, "")}</>
                                 <option value={0}>--Select--</option>
                                
-                                {ustinValue?.map((ele: any) => (
+                                {notUsIndividual?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -1975,7 +1982,8 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value="1">--Select--</option>
+                                <option value="0">--Select--</option>
+                               
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -2010,7 +2018,8 @@ export default function IndividualUs() {
                                 disabled={
                                   // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
-                                  values.usTinTypeId == 1
+                                  values.usTinTypeId == 1 ||
+                                  values.usTinTypeId == 0
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",

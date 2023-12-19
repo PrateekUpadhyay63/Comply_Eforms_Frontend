@@ -65,6 +65,9 @@ export default function Entity() {
   const [usStates, setUsStates] = useState([]);
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [nonUSEntity , setNonUSEntity] = useState([]);
+ 
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
   const [values, setValues] = useState({ vat: "", vatId: 0 });
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
@@ -251,9 +254,13 @@ export default function Entity() {
       getTinTypes(3, (data: any) => {
         setUStinArray(data);
         let datas = data.filter((ele: any) => {
-          return ele.usIndividual === true;
+          return ele.nonUSEntity === true;
         });
         setUStinvalue(datas);
+        let dataNonUSEntity = data.filter((ele: any) => {
+          return ele.usEntity === true;
+        });
+        setNonUSEntity(dataNonUSEntity);
       })
     );
   }, []);
@@ -1607,7 +1614,7 @@ export default function Entity() {
                               <option value={4}>WPEIN</option>
                               <option value={5}>U.S TIN not applicable</option>
                               <option value={6}>U.S TIN not available</option> */}
-                              {ustinValue?.map((ele: any) => (
+                              {nonUSEntity?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
