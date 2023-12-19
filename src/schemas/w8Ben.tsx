@@ -72,7 +72,7 @@ export const US_TINSchema = () => {
       then: () =>
         Yup.string()
         .required("Please Specify Reason"),
-    }),
+    }), 
     FTINFeild1: Yup.string().when("tinisFTINNotLegallyRequired", {
       is: "Yes",
       then: () =>

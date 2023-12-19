@@ -21,12 +21,20 @@ const { LOGIN, GetCountries, getBreadCrums, GetAgentPaymentType, GetTinTypes, Ge
   GetLimitationBenefits,
   GetIncomeTypes,
   GetAgentIncomeTypeHiddenAllowAnoymo,
+  SendOTPMail,
 } = Utils.actionName
 
 
 let initialState: any = [];
 
-
+export const SendOTPMailReducer = (state = initialState, action: any) => {
+  switch (action.type) {
+    case SendOTPMail:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+}
 
 export const loginReducer = (state = initialState, action: any) => {
   switch (action.type) {

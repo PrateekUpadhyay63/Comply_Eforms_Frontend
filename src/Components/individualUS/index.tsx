@@ -66,7 +66,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([5]);
+  const [incomeArr, setIncomeArr] = useState([0]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -322,15 +322,15 @@ export default function IndividualUs() {
     (state: any) => state.GetStateByCountryIdReducer
   );
 
-  const GetAgentUSVisaTypeHiddenForEform = useSelector(
-    (state: any) =>
-      state.GetAgentUSVisaTypeHiddenForEformReducer
-        .GetAgentUSVisaTypeHiddenForEform
-  );
+  // const GetAgentUSVisaTypeHiddenForEform = useSelector(
+  //   (state: any) =>
+  //     state.GetAgentUSVisaTypeHiddenForEformReducer
+  //       .GetAgentUSVisaTypeHiddenForEform
+  // );
   // FOR ISSUE 108 UNCOMMENT bottom code and comment top code
-  //   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
-  //   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
-  // )
+    const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+    state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymoData
+  )
 
   const redirectFunc = () => {
     history("/Term");
@@ -346,7 +346,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, 5]);
+    setIncomeArr((incomeArr) => [...incomeArr, 0]);
   };
 
   const handleDelete = (i: any) => {
@@ -545,7 +545,7 @@ export default function IndividualUs() {
   const handleIcome = (e: any, i: number) => {
     if (i < 5) {
       const newValue = e.target.value;
-      const updatedIncomeArr = [...incomeArr, 5];
+      const updatedIncomeArr = [...incomeArr, 0];
       updatedIncomeArr[i] = newValue;
       setIncomeArr(updatedIncomeArr);
     }
@@ -3947,11 +3947,12 @@ export default function IndividualUs() {
                                         value={incomeArr[i]}
                                       >
                                         <option value="0">-Select-</option>
+                                       
                                         {GetAgentUSVisaTypeHiddenForEform?.map(
                                           (ele: any) => (
                                             <option
-                                              key={ele?.id}
-                                              value={ele?.id}
+                                              key={ele?.incomeTypeId}
+                                              value={ele?.incomeTypeId}
                                             >
                                               {ele?.name}
                                             </option>
