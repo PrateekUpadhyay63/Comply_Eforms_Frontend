@@ -14,6 +14,7 @@ import { AppDispatch } from "../../Redux/store";
 import { postFormSelection } from "../../Redux/Actions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import checksolid from "../../assets/img/check-solid.png";
+import agreement from "../../assets/img/agreement.png";
 
 export default function Certificates(props: any) {
   const history = useNavigate();
@@ -648,7 +649,7 @@ export default function Certificates(props: any) {
                 <Typography align="center" variant="h6" component="div">
                   {card?.title}
                 </Typography>
-
+                
                 <Typography
                   align="center"
                   style={{ fontSize: "13px", marginTop: "14px" }}
