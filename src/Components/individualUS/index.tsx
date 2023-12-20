@@ -751,7 +751,7 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
                   <Typography>
                   A101
                   <span className="mx-1">
@@ -765,17 +765,10 @@ export default function IndividualUs() {
                   <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address is a PO Box. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
                   </Typography>
                  
-               
-                 
-                  
-                 
-                 
-
-  
-                </Paper>):""}
+                </div>):""}
 
 
-                {values.isCareOfAddress === "yes" && clickCount === 1 ?(<Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                {values.isCareOfAddress === "yes" && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
                   <Typography>
                   A102
 
@@ -797,10 +790,10 @@ export default function IndividualUs() {
                  
 
   
-                </Paper>):""}
+                </div>):""}
 
 
-                {values.isUSIndividual === "yes" && values.permanentResidentialCountryId  != 258 && clickCount === 1 ?(<Paper className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                {values.isUSIndividual === "yes" && values.permanentResidentialCountryId  != 258 && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
                   <Typography>
                   A103
 
@@ -830,7 +823,24 @@ export default function IndividualUs() {
                  
 
   
-                </Paper>):""}
+                </div>):""}
+
+                {values.isUSIndividual === "no" && values.permanentResidentialCountryId  == 258 && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You are submitting a form on behalf of a Non U.S Individual or a Non U.S Entity and indicated that the Permanent Residential Address used for U.S tax purposes is in the United States.</span>
+                  </Typography>
+                 
+                </div>):""}
+
                   {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
                       <Paper

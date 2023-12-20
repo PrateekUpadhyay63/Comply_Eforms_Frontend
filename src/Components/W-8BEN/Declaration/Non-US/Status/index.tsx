@@ -63,6 +63,7 @@ export default function Factors() {
   const dispatch = useDispatch();
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
+  const [clickCount, setClickCount] = useState(0);
   useEffect(() => {
     dispatch(getAllCountries());
     }, []);
@@ -119,7 +120,7 @@ export default function Factors() {
     const GetAgentCountriesImportantForEformData = useSelector(
       (state:any)=>state.GetAgentCountriesImportantForEformReducer.GetAgentCountriesImportantForEformData
     )
- 
+    
   return (
     <section
       className="inner_content"
@@ -154,16 +155,20 @@ export default function Factors() {
                 enableReinitialize
                 validationSchema={StatusSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                  setSubmitting(true);
-                  console.log(values, ":STEP1 VALUES");
-                  dispatch(
-                    W8_state(values, () => {
-                      console.log(W8Data, "Done");
-                      history("/W-8BEN/Declaration/US_Tin");
-                    })
-                  );
-                  history("/W-8BEN/Declaration/US_Tin");
-                  // uploadNews(dispatch, values, navigate);
+                  if (clickCount === 0) {
+        
+                    setClickCount(clickCount+1);
+                  }else{
+                    dispatch(
+                      W8_state(values, () => {
+                        console.log(W8Data, "Done");
+                        history("/W-8BEN/Declaration/US_Tin");
+                      })
+                    );
+                    history("/W-8BEN/Declaration/US_Tin");
+                    // uploadNews(dispatch, values, navigate);
+                  }
+                
                 }}
               >
                 {({
@@ -177,6 +182,194 @@ export default function Factors() {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
+                      {values.isHeldUSCitizenship === "Yes" && obValues?.isUSIndividual == false  && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES116
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You selected that you are making this submission on behalf of a Non-U.S. Individual but the selections made indicated that the individual may be considered a citizen of the United States. If this is correct you may be subject to taxation in the United States as a U.S. citizen or resident alien.
+
+                  </Typography>
+                  <Typography className="mt-2">
+                  
+                   We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+                  </Typography>
+                 
+               
+                  <Typography className="mt-2">
+                  
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you should not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                                    </Typography>
+
+  
+                </div>):""}
+
+              {values.isHoldDualCitizenshipStatus === "Yes" && obValues?.isUSIndividual == false  && clickCount === 1 ? (  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES120
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You have selected that the individual the submission represents was either born in the United States, Puerto Rico, Guam or the US Virgin Islands, or has a parent who is a US citizen. You have also selected that that the individual is not considered a US citizen (including those nationalised) or a US resident (including Green Card holders). Furthermore you have not selected that the individual has renounced their US citizenship.
+
+                  </Typography>
+                  <Typography className="mt-2">
+                  
+                  It is considered that any person born in the United States automatically adopts a US citizen status, please go back and review your selections. If a non US citizenship status is correct you must provide a written statement explaining why a non US citizenship status applies, this can be provided on the following page. In some circumstances your agent may need to contact you for further information to help confirm.
+
+                  </Typography>
+              
+  
+                </div>
+):""}         
+
+                        
+{values.isHeldUSCitizenship === "Yes"  && values.isRenouncedCitizenship === "Yes"  && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES105
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual was born in the United States, but has formally renounced their U.S. citizenship.
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  If this is correct please select continue where you will be asked to provide a statement confirming this status. Please include any dates that may apply.
+
+                  </Typography>
+                
+
+  
+                </div>):""}
+                         
+                {values.isHeldUSCitizenship === "Yes" && values.isTaxationUSCitizenOrResident === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES106
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual is presently subject to taxation in the United States as a U.S. citizen or resident alien.
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+
+
+                {values.isHeldUSCitizenship === "Yes" && values.isPermamnentResidentCardHolder === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES107
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual holds a U.S. Permanent Residency Card, often referred to as a Green Card. If this is correct you may be presently subject to taxation in the United States as a U.S. citizen or resident alien.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+               
+Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note  that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+
+
+                {values.isHeldUSCitizenship === "Yes" && values.isHoldDualCitizenshipIncludeUSCitizenship == "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES108
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual holds a Dual Citizenship, including citizenship of the United States. If this is correct you may be presently subject to taxation in the United States as a U.S. citizen or resident alien.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+               
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+
+
+
+
 
                     <div style={{ margin: "7px" }}>
                     <Typography
@@ -533,7 +726,7 @@ export default function Factors() {
                         }}
                           >
                             Does or did the dual citizenship include U.S.
-                            citizenship? <span style={{ color: "red" }}>*</span>
+                            citizenship?<span style={{ color: "red" }}>*</span>
                           </Typography>
 
                           <FormControl>
