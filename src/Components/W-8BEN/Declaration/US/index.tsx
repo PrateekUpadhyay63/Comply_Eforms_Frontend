@@ -224,7 +224,7 @@ export default function Factors() {
 
                <div className="mt-2">
                {clickCount === 1 && (
-                <Paper  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
                   <Typography>
                   1042S2
                   <span className="mx-1">
@@ -254,7 +254,7 @@ export default function Factors() {
                  
 
   
-                </Paper>
+                </div>
                  )}
                <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
               </div>

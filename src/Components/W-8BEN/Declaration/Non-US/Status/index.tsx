@@ -217,7 +217,7 @@ export default function Factors() {
   
                 </div>):""}
 
-              {values.isHoldDualCitizenshipStatus === "Yes" && obValues?.isUSIndividual == false  && clickCount === 1 ? (  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+              {values.isHoldDualCitizenshipStatus ==="Yes"   && clickCount === 1 ? (  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
                   <Typography>
                   RES120
                   <span className="mx-1">
@@ -335,7 +335,7 @@ Please go back and review your selections or if the circumstanced allow progress
 
 
 
-                {values.isHeldUSCitizenship === "Yes" && values.isHoldDualCitizenshipIncludeUSCitizenship == "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                {values.isHeldUSCitizenship === "Yes" && values.isHoldDualCitizenshipIncludeUSCitizenship === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
                   <Typography>
                   RES108
                   <span className="mx-1">
@@ -366,6 +366,31 @@ Please go back and review your selections or if the circumstanced allow progress
   
                 </div>):""}
 
+                {values.isPresentAtleast31Days === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES109
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+              You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and have indicated that the individual or Entity has been physically present in the U.S for 31 days or more in the current year.
+
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You will be presented with a U.S Substantial Presence Test to determine status for U.S tax purposes.
+
+
+                  </Typography>
+                
+                 
+                </div>):""}
 
 
 
