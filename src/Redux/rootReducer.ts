@@ -20,6 +20,7 @@ import {
   GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
   GetAgentDocumentationMandatoryForEformReducer,
   GetAgentIncomeTypeHiddenAllowAnoymoReducer,
+  SendOTPMailReducer,
 
 
 
@@ -51,6 +52,7 @@ let reducers = {
   GetAgentFATCAEntityGIINChallengeDisabledForEformReducer,
   GetAgentDocumentationMandatoryForEformReducer,
   GetAgentIncomeTypeHiddenAllowAnoymoReducer,
+  SendOTPMailReducer,
 
 
 };

@@ -14,6 +14,7 @@ import { AppDispatch } from "../../Redux/store";
 import { postFormSelection } from "../../Redux/Actions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import checksolid from "../../assets/img/check-solid.png";
+import agreement from "../../assets/img/agreement.png";
 
 export default function Certificates(props: any) {
   const history = useNavigate();
@@ -50,13 +51,13 @@ export default function Certificates(props: any) {
     }
     console.log("DATA",onboardingData)
     if (onboardingData !== "" && onboardingData !== null) {
-      if (onboardingData.isUSIndividual == true && onboardingData.selectedEntity ==false) {
+      if (onboardingData?.isUSIndividual == true && onboardingData.selectedEntity ==false) {
         isDisabledFormed="usIndividual"
-      } else if (onboardingData.isUSIndividual == false && onboardingData.selectedEntity ==false) {
+      } else if (onboardingData?.isUSIndividual == false && onboardingData.selectedEntity ==false) {
         isDisabledFormed="usNonIndividual"
-      } else if (onboardingData.isUSEntity == true && onboardingData.selectedEntity ==true) {
+      } else if (onboardingData?.isUSEntity == true && onboardingData.selectedEntity ==true) {
         isDisabledFormed="usEntity"
-      } else if (onboardingData.isUSEntity == false && onboardingData.selectedEntity ==true) {
+      } else if (onboardingData?.isUSEntity == false && onboardingData.selectedEntity ==true) {
         isDisabledFormed="usNonEntity"
       } else {
         isDisabledFormed="usIndividual"
@@ -520,7 +521,7 @@ export default function Certificates(props: any) {
           <Typography
             align="left"
             style={{
-              fontSize: "34px",
+              fontSize: "27px",
               fontWeight: "500",
               color: "white",
               marginLeft: "10px",
@@ -571,7 +572,7 @@ export default function Certificates(props: any) {
               style={{
                 backgroundColor: "#ffc107",
                 color: "black",
-                fontSize: "15px",
+                fontSize: "10px",
                 fontWeight: "550",
               }}
             >
@@ -645,10 +646,10 @@ export default function Certificates(props: any) {
                 <div className="check-div">
                  {diableForm == card.enabled ?  (<img src={checksolid}/>) : ""}
                 </div>
-                <Typography align="center" variant="h5" component="div">
+                <Typography align="center" variant="h6" component="div">
                   {card?.title}
                 </Typography>
-
+                
                 <Typography
                   align="center"
                   style={{ fontSize: "13px", marginTop: "14px" }}
@@ -772,8 +773,23 @@ export default function Certificates(props: any) {
           {selectedCard ? (
             <div style={{ marginTop: "20px" }} className="text-center">
               <Button
-                style={{ fontSize: "25px", marginTop: "35px" }}
-                size="medium"
+               style={{
+                marginTop: "35px",
+                border: "1px solid #0095dd",
+                // backgroundColor: "#D2D2D4",
+                // borderColor: "#d2d2d2",
+                color: "#ffff",
+                height: "35px",
+                lineHeight: "normal",
+                textAlign: "center",
+                fontSize: "15px",
+                textTransform: "uppercase",
+                borderRadius: "0px",
+
+                padding: "0 15px",
+                letterSpacing: "1px",
+              }}
+                size="small"
                 type="submit"
                 onClick={() => redirectToComponent(selectedCard)}
                 variant="contained"
@@ -788,20 +804,21 @@ export default function Certificates(props: any) {
             <div style={{ marginTop: "20px" }} className="text-center ">
               <Button
                 type="submit"
+                size="small"
                 style={{
                   marginTop: "35px",
                   border: "1px solid #0095dd",
                   backgroundColor: "#D2D2D4",
                   borderColor: "#d2d2d2",
                   color: "#4a4a4a",
-                  height: "45px",
+                  height: "35px",
                   lineHeight: "normal",
                   textAlign: "center",
-                  fontSize: "16px",
+                  fontSize: "13px",
                   textTransform: "uppercase",
                   borderRadius: "0px",
 
-                  padding: "0 35px",
+                  padding: "0 15px",
                   letterSpacing: "1px",
                 }}
               >
@@ -826,7 +843,7 @@ export default function Certificates(props: any) {
                 history("/");
               }}
               variant="contained"
-              size="large"
+              size="small"
               style={{
                 color: "white",
                 backgroundColor: "black",
@@ -834,10 +851,7 @@ export default function Certificates(props: any) {
                 marginBottom: "20px",
               }}
             >
-              <span style={{ marginRight: "5px" }}>
-                {" "}
-                <ArrowBackIcon />
-              </span>{" "}
+              
               Back
             </Button>
           </Typography>

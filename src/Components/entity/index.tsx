@@ -42,6 +42,7 @@ import {
   getAllCountriesIncomeCode,
   GetAgentPaymentType,
   getAllStateByCountryId,
+  getTinTypes
 } from "../../Redux/Actions";
 import { AppDispatch } from "../../Redux/store";
 
@@ -62,7 +63,11 @@ export default function Entity() {
   const [countriesCode, setCountriesCode] = useState([]);
   const [incomeCodes, setIncomeCodes] = useState([]);
   const [usStates, setUsStates] = useState([]);
-
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
+  const [nonUSEntity , setNonUSEntity] = useState([]);
+ 
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
   const [values, setValues] = useState({ vat: "", vatId: 0 });
   const [toolInfo, setToolInfo] = useState("");
   const [payload, setPayload] = useState({
@@ -148,7 +153,7 @@ export default function Entity() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -245,7 +250,39 @@ export default function Entity() {
         console.log("Data");
       })
     );
+    dispatch(
+      getTinTypes(3, (data: any) => {
+        setUStinArray(data);
+        let datas = data.filter((ele: any) => {
+          return ele.nonUSEntity === true;
+        });
+        setUStinvalue(datas);
+        let dataNonUSEntity = data.filter((ele: any) => {
+          return ele.usEntity === true;
+        });
+        setNonUSEntity(dataNonUSEntity);
+      })
+    );
   }, []);
+
+
+  const onChangeUsInit = (values: any) => {
+    let data;
+    if (values.isUSIndividual == "no") {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is true
+        return ele?.usIndividual === false;
+      });
+      // Do something with the filtered data...
+    } else {
+      data = ustinArray.filter((ele: any | undefined) => {
+        // Filter out elements where usIndividual is false
+        return ele?.usIndividual === true;
+      });
+      // Do something with the filtered data...
+    }
+    setUStinvalue(data);
+  };
 
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
@@ -285,10 +322,10 @@ export default function Entity() {
       setPayload({ ...payload, usTin: payload.usTin + "-" });
       values.usTin = values.usTin + "-";
     }
-    if (e.target.value.length === 12) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
+    // if (e.target.value.length === 6) {
+    //   setPayload({ ...payload, usTin: payload.usTin + "-" });
+    //   values.usTin = values.usTin + "-";
+    // }
   };
 
   const handleOpen = (val: any) => {
@@ -1221,13 +1258,24 @@ export default function Entity() {
                               }}
                               value={values.usTinTypeId}
                             >
-                              <option value="1">-Select-</option>
-                              <option value="2">EIN</option>
-                              <option value="3">QIEIN</option>
-                              <option value="4">WPEIN</option>
-                              <option value="5">WTEIN</option>
-                              <option value="6">U.S. TIN not applicable</option>
-                              <option value="7">U.S. TIN not available</option>
+                             <option value={0}>--Select--</option>
+                             {/* <option value={2}>SSN/ITIN</option> */}
+                             {ustinValue?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                             </select>
                           </FormControl>
                           <p className="error">{errors.usTinTypeId}</p>
@@ -1519,7 +1567,7 @@ export default function Entity() {
                                   placeholder="Enter Value Added Tax Number"
                                   // onKeyDown={formatTin}
                                   onChange={handleChange}
-                                  inputProps={{ maxLength: 9 }}
+                                  inputProps={{ maxLength: 11 }}
                                   // onBlur={handleBlur}
                                   //   error={Boolean(touched.usTin && errors.vat)}
                                   value={values.vat}
@@ -1555,13 +1603,33 @@ export default function Entity() {
                               onChange={(e: any) => {
                                 handleChange(e);
 
-                                if (e.target.value == 0)
+                                if (e.target.value == 0 || e.target.value == 5 || e.target.value == 6)
                                   setFieldValue("usTin", "");
                               }}
                               value={values.usTinTypeId}
                             >
-                              <option value="1">-Select-</option>
-                              <option value="2">EIN</option>
+                              <option value={0}>-Select-</option>
+                              {/* <option value={2}>EIN</option>
+                              <option value={3}>QIEIN</option>
+                              <option value={4}>WPEIN</option>
+                              <option value={5}>U.S TIN not applicable</option>
+                              <option value={6}>U.S TIN not available</option> */}
+                              {nonUSEntity?.map((ele: any) => (
+                                  // ele?.nonUSIndividual &&
+                                  //   values?.isUSIndividual == "no" ||
+                                  // ele?.usIndividual &&
+                                  //   values?.isUSIndividual == "Yes" ?
+                                  // (
+                                  <option
+                                    key={ele?.taxpayerIdTypeID}
+                                    value={ele?.taxpayerIdTypeID}
+                                  >
+                                    {ele?.taxpayerIdTypeName}
+                                  </option>
+                                  // ) : (
+                                  //   ""
+                                  // );
+                                ))}
                             </select>
                             <p className="error">{errors.usTinTypeId}</p>
                           </FormControl>
@@ -1569,7 +1637,7 @@ export default function Entity() {
 
                         <div className="col-lg-3 col-6 col-md-3 mx-2">
                           <FormControl className="w-100">
-                            <Typography align="left">
+                            <Typography className="d-flex w-100 " align="left">
                               U.S. TIN
                               <span
                                 style={{ color: "red", verticalAlign: "super" }}
@@ -1578,7 +1646,7 @@ export default function Entity() {
                               </span>
                             </Typography>
                             <Input
-                              disabled={values.usTinTypeId == 1}
+                              disabled={(values.usTinTypeId == 0 )}
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 height: " 36px",
@@ -1595,7 +1663,7 @@ export default function Entity() {
                               placeholder="Enter U.S. TIN"
                               onKeyDown={(e) => formatTin(e, values)}
                               onChange={handleChange}
-                              inputProps={{ maxLength: 10 }}
+                              inputProps={{ maxLength: 11 }}
                               value={values.usTin}
                             />
                           </FormControl>
@@ -2189,171 +2257,171 @@ export default function Entity() {
                         </div>
                       ) : (
                         <div className="col-12">
-                          <div
-                            className=" d-lg-flex justify-content-between"
-                            style={{ justifyContent: "between" }}
-                          >
-                            <>
-                              <div>
-                                <Typography
-                                  align="left"
-                                  style={{ marginTop: "20px" }}
-                                >
-                                  Is this address a PO Box?
-                                  <span style={{ color: "red" }}>*</span>
-                                  <Info
-                                    style={{
-                                      color: "#ffc107",
-                                      fontSize: "15px",
-                                      marginBottom: "12px",
-                                    }}
-                                  />
-                                </Typography>
-                                <FormControl
-                                  error={Boolean(
-                                    touched.isAddressPostOfficeBox &&
-                                      errors.isAddressPostOfficeBox
-                                  )}
-                                >
-                                  <RadioGroup
-                                    id="isAddressPostOfficeBox"
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    value={values.isAddressPostOfficeBox}
-                                    onChange={handleChange}
-                                  >
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="yes"
-                                      name="isAddressPostOfficeBox"
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="no"
-                                      name="isAddressPostOfficeBox"
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                  {errors.isAddressPostOfficeBox &&
-                                  touched.isAddressPostOfficeBox ? (
-                                    <div>
-                                      <Typography color="error">
-                                        {errors.isAddressPostOfficeBox}
-                                      </Typography>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </FormControl>
-                                {/* <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value={false}
-                              control={<Radio />}
-                              label="No"
-                              checked={!values.isAddressPostOfficeBox}
-                              onChange={handleChange}
-                            />
-                            <FormControlLabel
-                              value={true}
-                              control={<Radio />}
-                              label="Yes"
-                              checked={values.isAddressPostOfficeBox}
-                              onChange={handleChange}
-                            />
-                          </RadioGroup>
-                          <p className="error">
-                            {errors.isAddressPostOfficeBox}
-                          </p> */}
-                              </div>
-                            </>
-                            {/* </div> */}
-                            <div className="">
-                              <Typography style={{ marginTop: "20px" }}>
-                                Is this an In Care Of address?
-                                <span style={{ color: "red" }}>*</span>
-                                <Info
-                                  style={{
-                                    color: "#ffc107",
-                                    fontSize: "15px",
-                                    marginBottom: "12px",
-                                  }}
-                                />
-                              </Typography>
-
-                              <div className="d-flex">
-                                <FormControl
-                                  error={Boolean(
-                                    touched.isCareOfAddress &&
-                                      errors.isCareOfAddress
-                                  )}
-                                >
-                                  <RadioGroup
-                                    id="isCareOfAddress"
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    value={values.isCareOfAddress}
-                                    onChange={handleChange}
-                                  >
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="yes"
-                                      name="isCareOfAddress"
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="no"
-                                      name="isCareOfAddress"
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                  {errors.isCareOfAddress &&
-                                  touched.isCareOfAddress ? (
-                                    <div>
-                                      <Typography color="error">
-                                        {errors.isCareOfAddress}
-                                      </Typography>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </FormControl>
-                                {/* <RadioGroup
-                              row
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                              name="row-radio-buttons-group"
+                            <div
+                              className=" d-lg-flex justify-content-between"
+                              style={{ justifyContent: "between" }}
                             >
-                              <FormControlLabel
-                                value={false}
-                                control={<Radio />}
-                                label="No"
-                                checked={!values.isCareOfAddress}
-                                onChange={handleChange}
-                              />foreignTINNotAvailable
-                              <FormControlLabel
-                                value={true}
-                                control={<Radio />}
-                                label="Yes"
-                                checked={values.isCareOfAddress}
-                                onChange={handleChange}
-                              />
-                            </RadioGroup>
-                            <p className="error">
-                              {errors.isCareOfAddress}
-                            </p> */}
-                              </div>
-                            </div>
-                            <div>
-                              <Typography style={{ marginTop: "20px" }}>
-                                Is there an alternative mailing or business
-                                address in the U.S.?
-                                <span style={{ color: "red" }}>*</span>
-                                <span>
+                              <>
+                                <div className="col-4">
+                                  <Typography
+                                    align="left"
+                                    style={{ marginTop: "20px" }}
+                                  >
+                                    Is this address a PO Box?
+                                    <span style={{ color: "red" }}>*</span>
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <Typography color="inherit">
+                                            PO BOX Address
+                                          </Typography>
+                                          <a onClick={() => setToolInfo("PO")}>
+                                            <Typography
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecorationLine: "underline",
+                                              }}
+                                              align="center"
+                                            >
+                                              {" "}
+                                              View More...
+                                            </Typography>
+                                          </a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "15px",
+                                          marginLeft: "5px",
+                                          cursor: "pointer",
+                                          verticalAlign: "super",
+                                        }}
+                                      />
+                                    </Tooltip>
+                                  </Typography>
+                                  {toolInfo === "PO" ? (
+                                    <div className="post">
+                                      <Paper
+                                        style={{
+                                          backgroundColor: "#dedcb1",
+                                          padding: "10px",
+                                        }}
+                                      >
+                                        <Typography>
+                                          A Post Office Box is a mail box
+                                          located at a post office (versus at a
+                                          permanent residence).
+                                        </Typography>
+                                        <Typography
+                                          style={{ marginTop: "10px" }}
+                                        >
+                                          You should not use a P.O. Box or an
+                                          in-care-of-address (other than a
+                                          registered address). If you do, we may
+                                          need to contact you for further
+                                          information to help validate the
+                                          submission.
+                                        </Typography>
+
+                                        <Typography
+                                          style={{ marginTop: "10px" }}
+                                        >
+                                          If you reside in a country that does
+                                          not use street addresses, you may
+                                          enter a descriptive address.
+                                        </Typography>
+
+                                        <Link
+                                          href="#"
+                                          underline="none"
+                                          style={{
+                                            marginTop: "10px",
+                                            fontSize: "16px",
+                                          }}
+                                          onClick={() => {
+                                            setToolInfo("");
+                                          }}
+                                        >
+                                          --Show Less--
+                                        </Link>
+                                      </Paper>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isAddressPostOfficeBox &&
+                                        errors.isAddressPostOfficeBox
+                                    )}
+                                  >
+                                    <RadioGroup
+                                      id="isAddressPostOfficeBox"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={values.isAddressPostOfficeBox}
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isAddressPostOfficeBox"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isAddressPostOfficeBox"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isAddressPostOfficeBox &&
+                                    touched.isAddressPostOfficeBox ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isAddressPostOfficeBox}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                              >
+                                <FormControlLabel
+                                  value={false}
+                                  control={<Radio />}
+                                  label="No"
+                                  checked={!values.isAddressPostOfficeBox}
+                                  onChange={handleChange}
+                                />
+                                <FormControlLabel
+                                  value={true}
+                                  control={<Radio />}
+                                  label="Yes"
+                                  checked={values.isAddressPostOfficeBox}
+                                  onChange={handleChange}
+                                />
+                              </RadioGroup>
+                              <p className="error">
+                                {errors.isAddressPostOfficeBox}
+                              </p> */}
+                                </div>
+                              </>
+
+                              <div className="col-4">
+                                <Typography style={{ marginTop: "20px" }}>
+                                  Is this an In Care Of address?
+                                  <span style={{ color: "red" }}>*</span>
                                   <Tooltip
                                     style={{
                                       backgroundColor: "black",
@@ -2362,9 +2430,11 @@ export default function Entity() {
                                     title={
                                       <>
                                         <Typography color="inherit">
-                                          Alternate Mailing Address
+                                          In Care Of Address
                                         </Typography>
-                                        <a onClick={() => setToolInfo("mail")}>
+                                        <a
+                                          onClick={() => setToolInfo("CareOf")}
+                                        >
                                           <Typography
                                             style={{
                                               cursor: "pointer",
@@ -2385,123 +2455,281 @@ export default function Entity() {
                                         fontSize: "15px",
                                         marginLeft: "5px",
                                         cursor: "pointer",
+                                        verticalAlign: "super",
                                       }}
-                                      // onClick={clickInfo}
                                     />
                                   </Tooltip>
-                                </span>
-                              </Typography>
-                              {toolInfo === "mail" ? (
-                                <div>
-                                  <Paper
-                                    style={{
-                                      backgroundColor: "#dedcb1",
-                                      padding: "15px",
-                                    }}
-                                  >
-                                    <Typography>
-                                      Please check this box if you have an
-                                      alternative mailing address away from the
-                                      permanent residential address entered
-                                      here.
-                                    </Typography>
-                                    <Typography style={{ marginTop: "10px" }}>
-                                      You will be asked to enter the alternative
-                                      address later in the process and in some
-                                      circumstances you may need to provide
-                                      additional information.
-                                    </Typography>
-
-                                    <Link
-                                      href="#"
-                                      underline="none"
+                                </Typography>
+                                {toolInfo === "CareOf" ? (
+                                  <div className="post">
+                                    <Paper
                                       style={{
-                                        marginTop: "10px",
-                                        fontSize: "16px",
-                                      }}
-                                      onClick={() => {
-                                        setToolInfo("");
+                                        backgroundColor: "#dedcb1",
+                                        padding: "10px",
                                       }}
                                     >
-                                      --Show Less--
-                                    </Link>
-                                  </Paper>
-                                </div>
-                              ) : (
-                                ""
-                              )}
-
-                              <div className="d-flex">
-                                <FormControl
-                                  error={Boolean(
-                                    touched.isalternativebusinessaddress &&
-                                      errors.isalternativebusinessaddress
-                                  )}
-                                >
-                                  <RadioGroup
-                                    id="isalternativebusinessaddress"
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    value={values.isalternativebusinessaddress}
-                                    onChange={handleChange}
-                                  >
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="yes"
-                                      name="isalternativebusinessaddress"
-                                      label="Yes"
-                                    />
-                                    <FormControlLabel
-                                      control={<Radio />}
-                                      value="no"
-                                      name="isalternativebusinessaddress"
-                                      label="No"
-                                    />
-                                  </RadioGroup>
-                                  {errors.isalternativebusinessaddress &&
-                                  touched.isalternativebusinessaddress ? (
-                                    <div>
-                                      <Typography color="error">
-                                        {errors.isalternativebusinessaddress}
+                                      <Typography>
+                                        An In Care Of Address denotes that
+                                        something is to be delivered to an
+                                        address where the recipient does not
+                                        normally receive mail.{" "}
                                       </Typography>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </FormControl>
-                                {/* <Typography className="my-auto">Yes</Typography>
-                            <Radio
-                              checked={values.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: true,
-                                })
-                              }
-                              value={values.isalternativebusinessaddress}
-                              name="radio-buttons"
-                              inputProps={{ "aria-label": "A" }}
-                            />
-                            <Typography className="my-auto">No</Typography>
-                            <Radio
-                              checked={!values.isalternativebusinessaddress}
-                              onChange={() =>
-                                setPayload({
-                                  ...payload,
-                                  isalternativebusinessaddress: false,
-                                })
-                              }
-                              value={!values.isalternativebusinessaddress}
-                              name="radio-buttons"
-                              inputProps={{ "aria-label": "B" }}
-                            />
-                            <p className="error">
-                              {errors.isalternativebusinessaddress}
-                            </p> */}
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        You should not use a P.O. Box or an
+                                        in-care-of-address (other than a
+                                        registered address). If you do, we may
+                                        need to contact you for further
+                                        information to help validate the
+                                        submission.
+                                      </Typography>
+
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        If you reside in a country that does not
+                                        use street addresses, you may enter a
+                                        descriptive address.{" "}
+                                      </Typography>
+
+                                      <Link
+                                        href="#"
+                                        underline="none"
+                                        style={{
+                                          marginTop: "10px",
+                                          fontSize: "16px",
+                                        }}
+                                        onClick={() => {
+                                          setToolInfo("");
+                                        }}
+                                      >
+                                        --Show Less--
+                                      </Link>
+                                    </Paper>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+
+                                <div className="d-flex">
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isCareOfAddress &&
+                                        errors.isCareOfAddress
+                                    )}
+                                  >
+                                    <RadioGroup
+                                      id="isCareOfAddress"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={values.isCareOfAddress}
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isCareOfAddress"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isCareOfAddress"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isCareOfAddress &&
+                                    touched.isCareOfAddress ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isCareOfAddress}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <RadioGroup
+                                  row
+                                  aria-labelledby="demo-row-radio-buttons-group-label"
+                                  name="row-radio-buttons-group"
+                                >
+                                  <FormControlLabel
+                                    value={false}
+                                    control={<Radio />}
+                                    label="No"
+                                    checked={!values.isCareOfAddress}
+                                    onChange={handleChange}
+                                  />foreignTINNotAvailable
+                                  <FormControlLabel
+                                    value={true}
+                                    control={<Radio />}
+                                    label="Yes"
+                                    checked={values.isCareOfAddress}
+                                    onChange={handleChange}
+                                  />
+                                </RadioGroup>
+                                <p className="error">
+                                  {errors.isCareOfAddress}
+                                </p> */}
+                                </div>
+                              </div>
+                              <div className="col-4">
+                                <Typography style={{ marginTop: "20px" }}>
+                                  Is there an alternative mailing or business
+                                  address in the U.S.?
+                                  <span style={{ color: "red" }}>*</span>
+                                  <span>
+                                    <Tooltip
+                                      style={{
+                                        backgroundColor: "black",
+                                        color: "white",
+                                      }}
+                                      title={
+                                        <>
+                                          <Typography color="inherit">
+                                            Alternate Mailing Address
+                                          </Typography>
+                                          <a
+                                            onClick={() => setToolInfo("mail")}
+                                          >
+                                            <Typography
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecorationLine: "underline",
+                                              }}
+                                              align="center"
+                                            >
+                                              {" "}
+                                              View More...
+                                            </Typography>
+                                          </a>
+                                        </>
+                                      }
+                                    >
+                                      <Info
+                                        style={{
+                                          color: "#ffc107",
+                                          fontSize: "15px",
+                                          marginLeft: "5px",
+                                          cursor: "pointer",
+                                          verticalAlign: "super",
+                                        }}
+                                        // onClick={clickInfo}
+                                      />
+                                    </Tooltip>
+                                  </span>
+                                </Typography>
+                                {toolInfo === "mail" ? (
+                                  <div className="post">
+                                    <Paper
+                                      style={{
+                                        backgroundColor: "#dedcb1",
+                                        padding: "15px",
+                                      }}
+                                    >
+                                      <Typography>
+                                        Please check this box if you have an
+                                        alternative mailing address away from
+                                        the permanent residential address
+                                        entered here.
+                                      </Typography>
+                                      <Typography style={{ marginTop: "10px" }}>
+                                        You will be asked to enter the
+                                        alternative address later in the process
+                                        and in some circumstances you may need
+                                        to provide additional information.
+                                      </Typography>
+
+                                      <Link
+                                        href="#"
+                                        underline="none"
+                                        style={{
+                                          marginTop: "10px",
+                                          fontSize: "16px",
+                                        }}
+                                        onClick={() => {
+                                          setToolInfo("");
+                                        }}
+                                      >
+                                        --Show Less--
+                                      </Link>
+                                    </Paper>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+
+                                <div className="d-flex">
+                                  <FormControl
+                                    error={Boolean(
+                                      touched.isalternativebusinessaddress &&
+                                        errors.isalternativebusinessaddress
+                                    )}
+                                  >
+                                    <RadioGroup
+                                      id="isalternativebusinessaddress"
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      value={
+                                        values.isalternativebusinessaddress
+                                      }
+                                      onChange={handleChange}
+                                    >
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="yes"
+                                        name="isalternativebusinessaddress"
+                                        label="Yes"
+                                      />
+                                      <FormControlLabel
+                                        control={<Radio />}
+                                        value="no"
+                                        name="isalternativebusinessaddress"
+                                        label="No"
+                                      />
+                                    </RadioGroup>
+                                    {errors.isalternativebusinessaddress &&
+                                    touched.isalternativebusinessaddress ? (
+                                      <div>
+                                        <Typography color="error">
+                                          {errors.isalternativebusinessaddress}
+                                        </Typography>
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </FormControl>
+                                  {/* <Typography className="my-auto">Yes</Typography>
+                                <Radio
+                                  checked={values.isalternativebusinessaddress}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isalternativebusinessaddress: true,
+                                    })
+                                  }
+                                  value={values.isalternativebusinessaddress}
+                                  name="radio-buttons"
+                                  inputProps={{ "aria-label": "A" }}
+                                />
+                                <Typography className="my-auto">No</Typography>
+                                <Radio
+                                  checked={!values.isalternativebusinessaddress}
+                                  onChange={() =>
+                                    setPayload({
+                                      ...payload,
+                                      isalternativebusinessaddress: false,
+                                    })
+                                  }
+                                  value={!values.isalternativebusinessaddress}
+                                  name="radio-buttons"
+                                  inputProps={{ "aria-label": "B" }}
+                                />
+                                <p className="error">
+                                  {errors.isalternativebusinessaddress}
+                                </p> */}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
                       )}
                     </div>
 

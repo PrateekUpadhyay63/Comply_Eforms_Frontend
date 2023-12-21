@@ -119,19 +119,19 @@ export default function Tin(props: any) {
             >
 <div className="row w-100 h-100">
         <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
+          <div style={{ padding: "15px 0px",height:"100%" }}>
           <BreadCrumbComponent breadCrumbCode={1362} formName={2}/>
       </div>
       </div>
       <div className="col-8 mt-3">
 
-              <div style={{ padding: "18px" }}>
+              <div style={{ padding: "9px" }}>
                 <Paper style={{ padding: "10px" }}>
                   <Typography
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "28px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -205,7 +205,7 @@ export default function Tin(props: any) {
 
                   <Typography
                     align="left"
-                    style={{ margin: "10px", fontSize: "15px" }}
+                    style={{ margin: "10px", fontSize: "17px" }}
                   >
                     There are no mandatory documents required for this
                     submission
@@ -214,7 +214,7 @@ export default function Tin(props: any) {
                   <Typography
                     style={{
                       margin: "10px",
-                      fontSize: "21px",
+                      fontSize: "22px",
                       fontWeight: "550",
                     }}
                   >

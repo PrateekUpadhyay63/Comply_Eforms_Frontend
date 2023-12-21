@@ -23,6 +23,7 @@ import Declaration from "../../reusables/Declaration";
 import { useNavigate } from "react-router-dom";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ContentCopy } from "@mui/icons-material";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties(props: any) {
   const history = useNavigate()
@@ -35,7 +36,11 @@ export default function Penalties(props: any) {
 
     const toggleRecoverSection = () => {
       setShowRecoverSection(true);
+     
+      setSecurityWordError("");
     };
+    const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
+    const [securityWordError, setSecurityWordError] = useState("");
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
@@ -45,10 +50,12 @@ export default function Penalties(props: any) {
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
-    question:"",
+    EnterconfirmationCode:"",
     confirmationCode: "",
-    date: obValues.date,
+    date: "",
     isAgreeWithDeclaration: false,
+    question:"",
+    word :""
   };
   const [toolInfo, setToolInfo] = useState("");
 
@@ -108,13 +115,15 @@ export default function Penalties(props: any) {
      
      <div className="col-4">
           <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
+            <BreadCrumbComponent breadCrumbCode={1269} formName={1}/>
           
       </div>
           </div>
           <div className="col-8 mt-3" > 
-      <div style={{ padding: "10px" }}>
-      <div style={{ width: "100%" ,backgroundColor:"#fff",marginBottom:"8rem"}}>
+      <div style={{ padding: "10px 0px" }}>
+        <Paper elevation={6} style={{ padding: "17px",}}>
+
+        <div style={{ width: "100%" ,backgroundColor:"#fff",marginBottom:"8rem"}}>
      <Typography
           align="left"
           style={{ margin: "10px", fontSize: "27px", fontWeight: "550" }}
@@ -143,7 +152,7 @@ export default function Penalties(props: any) {
                       marginTop: "20px",
                     }}
                   >
-                    <div className="col-md-6 col-12 p-0">
+                      <div className="col-md-6 col-12 p-0">
                       <Typography style={{ fontSize: "15px" }}>
                         Signed by<span style={{ color: "red" }}>*</span>
                         <span>
@@ -205,7 +214,6 @@ export default function Penalties(props: any) {
                               submission you will be able to save and print a
                               copy for your own records.
                             </Typography>
-                            <>{console.log(errors,"4454545")}</>
                             <Typography style={{ marginTop: "10px" }}>
                               We will confirm receipt of the electronic form.
                               Please note that acceptance of the confirmation
@@ -323,20 +331,20 @@ export default function Penalties(props: any) {
                         ""
                       )}
                       <div>
-                        <Input
+                      <Input
                         className="inputTextField"
                         id="outlined"
                         fullWidth
-                          name="confirmationCode"
-                          value={values.confirmationCode}
+                          name="EnterconfirmationCode"
+                          value={values.EnterconfirmationCode}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           error={Boolean(
-                            touched.confirmationCode && errors.confirmationCode
+                            touched.EnterconfirmationCode && errors.EnterconfirmationCode
                           )}
                           type="password"
                           
-                         
+                          style={{ width: "100%" }}
                         />
                         <span
                         onClick={toggleRecoverSection}
@@ -349,7 +357,7 @@ export default function Penalties(props: any) {
                         >
                           Recover Password
                         </span>
-                        <p className="error">{errors.confirmationCode}</p>
+                        <p className="error">{errors.EnterconfirmationCode}</p>
                       </div>
                     </div>
                   </div>
@@ -363,26 +371,33 @@ export default function Penalties(props: any) {
 
   <div className="d-flex my-3 col-8">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
-    <TextField className="col-4"
+    <Input className=" col-4 inputTextField"
+   
                         style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
+                         color:"black !important",
+                         
                           width: "50%",
+                          backgroundColor:"#fff"
                         }}
                         fullWidth
                         type="text"
-                        name="signedBy"
+                        name="word"
+                        onChange={handleChange}
+                        value={values.word}
+                        
                         
                       />
+ 
+
 
   </div>
+  {securityWordError && <p className="error">{securityWordError}</p>}
   <div className="d-flex my-3 col-8">
-    <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
-    <TextField className=" col-4"
+  <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
+  <Input className=" col-4 inputTextField"
                         style={{
-                         color:"black !important",
-                          height: "3.47rem",
+                         color:"black",
+                         fontSize:"13px",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -393,44 +408,56 @@ export default function Penalties(props: any) {
                         
                         
                       />
-
   </div>
   <div className="d-flex my-3 col-8 ">
-    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Your Confirmation Code</Typography>
-    <TextField className="col-4"
+    <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
+    <Input className=" col-3 inputTextField blackText"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         disabled
+                        value={values.confirmationCode}
                         type="text"
                        
-                        value={values.confirmationCode}
+                        
                       />
+                       <Typography className="col-1 mx-2 my-1" >
+                      <ContentCopy
+                  
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            values.confirmationCode
+                          );
+                        }}
+                        style={{ fontSize: "18px", marginTop: "5px" }}
+                      />
+                    </Typography>
 
   </div>
-  <div className="d-flex my-3 col-12 " style={{ justifyContent: 'center' }}>
-  <Typography align="center" style={{ marginTop: '20px' }}>
-                <Button
-                  style={{ fontSize: '12px' }}
-                  size="small"
-                  type="submit"
-                  // onClick={()=>(
-                    // history("/Certificates")
-                  // )}
-                  variant="contained"
-                >
-                  OK
-                </Button>
-              </Typography>
-
-  </div>
+  <Typography className=" my-4 col-8 "align="center" >
+<Button onClick={() => {
+        if (!values.word) {
+          setSecurityWordError("Please enter the security word");
+        } else {
+          const storedSecurityWord = obValues.securityAnswer;
+          if (values.word !== storedSecurityWord) {
+            setSecurityWordError("Security word does not match");
+            setIsSecurityWordMatched(false);
+          } else {
+            setSecurityWordError(""); 
+            setIsSecurityWordMatched(true);
+            setFieldValue("confirmationCode", obValues.confirmationCode);
+          }
+        }
+      }}style={{justifyContent:"center"}}  variant="contained" size="small">
+  OK
+</Button>
+  </Typography>
 </div>)}
-
 
                   <div
                     className="row"
@@ -590,6 +617,8 @@ export default function Penalties(props: any) {
                   )}
 
      </div>
+        </Paper>
+      
         <div
           style={{
             display: "flex",

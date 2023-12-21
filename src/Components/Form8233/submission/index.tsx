@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { CREATE_8233 } from "../../../Redux/Actions";
 import { partCertiSchema } from "../../../schemas/8233";
+import { ContentCopy } from "@mui/icons-material";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
@@ -25,19 +26,24 @@ export default function Penalties() {
   const [toolInfo, setToolInfo] = useState("");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
-    signaturedBy: "" ,
-    question:"",
+    signedBy: "",
+    EnterconfirmationCode:"",
     confirmationCode: "",
-    date: obValues.date,
+    date: "",
     isAgreeWithDeclaration: false,
+    question:"",
+    word :""
   };
   
   const dispatch = useDispatch();
   const history = useNavigate();
   const [showRecoverSection, setShowRecoverSection] = useState(false);
-
+  const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
+  const [securityWordError, setSecurityWordError] = useState("");
   const toggleRecoverSection = () => {
     setShowRecoverSection(true);
+   
+    setSecurityWordError("");
   };
   return (
     <>
@@ -78,15 +84,15 @@ export default function Penalties() {
           <BreadCrumbComponent breadCrumbCode={1450} formName={2}/>
       </div>
       </div>
-      <>{console.log(errors,"errors!!!!!")}</>
+      {/* <>{console.log(errors,"errors!!!!!")}</> */}
       <div className="col-8 mt-3">
-              <div style={{ padding: "18px" }}>
+              <div style={{ padding: "12px" }}>
                 <Paper style={{ padding: "10px" }}>
                   <Typography
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "22px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -96,7 +102,7 @@ export default function Penalties() {
                     align="left"
                     style={{
                       margin: "10px",
-                      fontSize: "30px",
+                      fontSize: "27px",
                       fontWeight: "550",
                     }}
                   >
@@ -121,7 +127,7 @@ export default function Penalties() {
                       marginTop: "20px",
                     }}
                   >
-                    <div className="col-md-6 col-12 p-0">
+                            <div className="col-md-6 col-12 p-0">
                       <Typography style={{ fontSize: "15px" }}>
                         Signed by<span style={{ color: "red" }}>*</span>
                         <span>
@@ -207,19 +213,18 @@ export default function Penalties() {
                         ""
                       )}
 
-<Input
+                      <Input
                        className="inputTextField"
                         id="outlined"
                         fullWidth
-                      
-                      
-                        name="signaturedBy"
-                        value={values.signaturedBy}
+                        type="text"
+                        name="signedBy"
+                        value={values.signedBy}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        error={Boolean(touched.signaturedBy && errors.signaturedBy)}
+                        error={Boolean(touched.signedBy && errors.signedBy)}
                       />
-                      <p className="error">{errors.signaturedBy}</p>
+                      <p className="error">{errors.signedBy}</p>
                     </div>
 
                     <div className="col-md-6 col-12">
@@ -302,22 +307,22 @@ export default function Penalties() {
                       )}
                       <div>
                       <Input
-                       className="inputTextField"
+                        className="inputTextField"
                         id="outlined"
                         fullWidth
-    name="confirmationCode"
-    value={values.confirmationCode}
-    onBlur={handleBlur}
-    onChange={handleChange}
-    error={Boolean(touched.confirmationCode && errors.confirmationCode)}
-    type="password"
-    style={{ width: "100%" }}
-  />
-  {touched.confirmationCode && typeof errors.confirmationCode === 'string' && (
-    <p className="error">{errors.confirmationCode}</p>
-  )}
+                          name="EnterconfirmationCode"
+                          value={values.EnterconfirmationCode}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          error={Boolean(
+                            touched.EnterconfirmationCode && errors.EnterconfirmationCode
+                          )}
+                          type="password"
+                          
+                          style={{ width: "100%" }}
+                        />
                         <span
-                         onClick={toggleRecoverSection}
+                        onClick={toggleRecoverSection}
                           style={{
                             fontSize: "16px",
                             color: "blue",
@@ -327,7 +332,7 @@ export default function Penalties() {
                         >
                           Recover Password
                         </span>
-                        {/* <p className="error">{errors.confirmationCode}</p> */}
+                        <p className="error">{errors.EnterconfirmationCode}</p>
                       </div>
                     </div>
                   </div>
@@ -341,26 +346,33 @@ export default function Penalties() {
 
   <div className="d-flex my-3 col-8">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Security Word</Typography>
-    <TextField className="col-4"
+    <Input className=" col-4 inputTextField"
+   
                         style={{
-                          color: "#7e7e7e",
-                          fontStyle: "italic",
-                          height: "3.5rem",
+                         color:"black !important",
+                         
                           width: "50%",
+                          backgroundColor:"#fff"
                         }}
                         fullWidth
                         type="text"
-                        name="signaturedBy"
+                        name="word"
+                        onChange={handleChange}
+                        value={values.word}
+                        
                         
                       />
+ 
+
 
   </div>
+  {securityWordError && <p className="error">{securityWordError}</p>}
   <div className="d-flex my-3 col-8">
   <Link className="my-2 col-4" onClick={()=>{setFieldValue("question", obValues.securityQuestion.question)}}>Hint?</Link>
-    <TextField className=" col-4"
+  <Input className=" col-4 inputTextField"
                         style={{
-                         
-                          height: "3.47rem",
+                         color:"black",
+                         fontSize:"13px",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
@@ -371,26 +383,55 @@ export default function Penalties() {
                         
                         
                       />
-
   </div>
   <div className="d-flex my-3 col-8 ">
     <Typography className="my-2 col-4" style={{fontWeight:"bold"}}>Confirmation Code</Typography>
-    <TextField className="col-4"
+    <Input className=" col-3 inputTextField blackText"
                         style={{
                           color: "#7e7e7e",
                           fontStyle: "italic",
-                          height: "3.47rem",
                           width: "50%",
                           backgroundColor:"#e3e6e4"
                         }}
                         fullWidth
                         disabled
+                        value={values.confirmationCode}
                         type="text"
                        
-                        value={values.confirmationCode}
+                        
                       />
+                       <Typography className="col-1 mx-2 my-1" >
+                      <ContentCopy
+                  
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            values.confirmationCode
+                          );
+                        }}
+                        style={{ fontSize: "18px", marginTop: "5px" }}
+                      />
+                    </Typography>
 
   </div>
+  <Typography className=" my-4 col-8 "align="center" >
+<Button onClick={() => {
+        if (!values.word) {
+          setSecurityWordError("Please enter the security word");
+        } else {
+          const storedSecurityWord = obValues.securityAnswer;
+          if (values.word !== storedSecurityWord) {
+            setSecurityWordError("Security word does not match");
+            setIsSecurityWordMatched(false);
+          } else {
+            setSecurityWordError(""); 
+            setIsSecurityWordMatched(true);
+            setFieldValue("confirmationCode", obValues.confirmationCode);
+          }
+        }
+      }}style={{justifyContent:"center"}}  variant="contained" size="small">
+  OK
+</Button>
+  </Typography>
 </div>)}
                   <div
                     className="row"
@@ -430,7 +471,7 @@ export default function Penalties() {
                     </div>
                   </div>
 
-                  <Typography style={{ display: "flex", marginLeft: "10px" }}>
+                  <Typography style={{ display: "flex" }}>
                     <Checkbox
                       name="isAgreeWithDeclaration"
                       value={values.isAgreeWithDeclaration}
@@ -473,7 +514,7 @@ export default function Penalties() {
                           <InfoIcon
                             style={{
                               color: "#ffc107",
-                              fontSize: "20px",
+                             fontSize: "14px",
                               cursor: "pointer",
                               verticalAlign: "super",
                             }}

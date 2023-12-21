@@ -92,7 +92,7 @@ const GetAllIncomeCodesReducer = useSelector(
       </div>
       <div className="col-8 mt-3">
 
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: "12px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
             validateOnChange={false}

@@ -63,7 +63,7 @@ export default function Certifications(props: any) {
       </div>
       </div>
       <div className="col-8 mt-3">
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: "12px" }}>
         <Paper style={{ padding: "18px" }}>
           <Formik
            validateOnChange={false}
@@ -97,9 +97,9 @@ export default function Certifications(props: any) {
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "30px",
+                    fontSize: "27px",
                     fontWeight: "550",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   Certification 
@@ -186,9 +186,9 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "17px",
+                   fontSize: "14px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   I certify that (Check All).{" "}
@@ -200,9 +200,10 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "17px",
+                   fontSize: "14px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                   Under penalties of perjury, I declare that I have examined the
@@ -213,7 +214,7 @@ export default function Certifications(props: any) {
 
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
@@ -236,9 +237,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "10px",
+                          textAlign:"justify" 
                         }}
                       >
                         I am the beneficial owner (or I am authorized to sign
@@ -264,9 +266,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The amounts for which this certification is provided are
@@ -292,9 +295,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         The income for which this form was provided is
@@ -320,7 +324,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -346,9 +350,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         Furthermore, I authorize this form to be provided to any
@@ -376,9 +381,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         <span style={{ fontWeight: "bold" }}>
@@ -397,7 +403,7 @@ export default function Certifications(props: any) {
                     />
                     <Typography
                       style={{
-                        fontSize: "17px",
+                       fontSize: "14px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
@@ -414,7 +420,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -423,7 +429,7 @@ export default function Certifications(props: any) {
                         <span
                           style={{
                             color: "blue",
-                            fontSize: "19px",
+                            fontSize: "16px",
                             marginLeft: "5px",
                           }}
                         >

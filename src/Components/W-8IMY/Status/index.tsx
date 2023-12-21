@@ -126,12 +126,12 @@ export default function Fedral_tax(props: any) {
         <div className="row w-100 h-100">
           <div className="col-4">
             <div style={{ padding: "20px 0px",height:"100%"}}>
-            <BreadCrumbComponent breadCrumbCode={1203} formName={6} />
+            <BreadCrumbComponent breadCrumbCode={1203} formName={7} />
       </div>
            
           </div>
           <div className="col-8 mt-3">
-            <div style={{ padding: "18px" }}>
+            <div style={{ padding: "13px" }}>
               <Paper style={{ padding: "10px" }}>
                 <Formik
                 validateOnChange={false}
@@ -218,7 +218,7 @@ export default function Fedral_tax(props: any) {
                                       <Info
                                         style={{
                                           color: "#ffc107",
-                                          fontSize: "16px",
+                                          fontSize: "10px",
                                           cursor: "pointer",
                                           verticalAlign: "super",
                                         }}
@@ -866,7 +866,7 @@ export default function Fedral_tax(props: any) {
                               </FormControl>
                               <div className="d-flex mt-3 ">
                                 <Typography
-                                  className="mx-2"
+                                 
                                   style={{
                                     fontSize: "15px",
                                   }}
@@ -874,6 +874,7 @@ export default function Fedral_tax(props: any) {
                                   Attach supporting documentation:
                                 </Typography>
                                 <input
+                                 className="mx-2"
                                   type="file"
                                   style={{ fontSize: "12px" }}
                                 />

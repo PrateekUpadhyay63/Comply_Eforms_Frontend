@@ -49,6 +49,8 @@ export default function Tin(props: any) {
   });
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
+  
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
@@ -57,7 +59,6 @@ export default function Tin(props: any) {
     }
     if (e.target.value.length === 6) {
       setPayload({ ...payload, Tin: payload.Tin + "-" });
-
       values.Tin = values.Tin + "-";
     }
   };
@@ -77,6 +78,10 @@ export default function Tin(props: any) {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.usEntity === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
   }, []);
@@ -151,21 +156,23 @@ export default function Tin(props: any) {
               <div className="row w-100 h-100">
               <div className="col-4">
           <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
+            <BreadCrumbComponent breadCrumbCode={1249} formName={1}/>
           
       </div>
           </div>
           <div className="col-8 mt-3" > 
-  <div style={{ margin: "10px", padding: "10px", backgroundColor: "#ffff", }}>
+          <div style={{ padding: "10px 0px" }}>
+            <Paper elevation={6} style={{ padding: "17px",}}>
+  <div style={{  backgroundColor: "#ffff", }}>
   <Typography
     align="left"
-    style={{ margin: "10px", fontSize: "24px" ,fontWeight:"550"}}
+    style={{ margin: "5px", fontSize: "27px" ,fontWeight:"550"}}
   >
-    Taxpayer Identification Number{" "}
+    Taxpayer Identification Number
    
   </Typography>
 
-  <div style={{ margin: "10px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
+  <div style={{ marginLeft:"4px", display: "flex", marginTop: "25px",justifyContent:"space-between"}} className="row">
     <div className="col-md-6 col-12">
       <Typography>
         U.S. TIN Type
@@ -206,43 +213,83 @@ export default function Tin(props: any) {
 
                         </div>) : ""}
                         <FormControl className="w-100">
-                          <Select
+                        {onBoardingFormValues?.isUSIndividual == true?( 
+                          
+                          <select
                             onChange={
                               handleChange
                             }
                             onBlur={handleBlur}
-                            error={Boolean(
-                              touched.tiN_USTINId &&
-                                errors.tiN_USTINId
-                            )}
+                            // error={Boolean(
+                            //   touched.tiN_USTINId &&
+                            //     errors.tiN_USTINId
+                            // )}
                             name="tiN_USTINId"
                             value={values.tiN_USTINId}
                             style={{
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "45px",
-                              width: "100%",
+                              height: "36px",
                             }}
                           >
-                            <MenuItem value={0}>--Select--</MenuItem>
-                            {ustinValue?.map((ele: any) => (
-                              // ele?.nonUSIndividual &&
-                              //   values?.isUSIndividual == "no" ||
-                              // ele?.usIndividual &&
-                              //   values?.isUSIndividual == "Yes" ?
-                              // (
-                              <MenuItem
-                                key={ele?.taxpayerIdTypeID}
-                                value={ele?.taxpayerIdTypeID}
-                              >
-                                {ele?.taxpayerIdTypeName}
-                              </MenuItem>
-                              // ) : (
-                              //   ""
-                              // );
-                            ))}
-                          </Select>
+                           <option value="0">--Select--</option>
+                               
+                               {ustinValue?.map((ele: any) => (
+                                 // ele?.nonUSIndividual &&
+                                 //   values?.isUSIndividual == "no" ||
+                                 // ele?.usIndividual &&
+                                 //   values?.isUSIndividual == "Yes" ?
+                                 // (
+                                 <option
+                                   key={ele?.taxpayerIdTypeID}
+                                   value={ele?.taxpayerIdTypeID}
+                                 >
+                                   {ele?.taxpayerIdTypeName}
+                                 </option>
+                                 // ) : (
+                                 //   ""
+                                 // );
+                               ))}
+                          </select>): 
+                          
+                          <select
+                            onChange={
+                              handleChange
+                            }
+                            onBlur={handleBlur}
+                            // error={Boolean(
+                            //   touched.tiN_USTINId &&
+                            //     errors.tiN_USTINId
+                            // )}
+                            name="tiN_USTINId"
+                            value={values.tiN_USTINId}
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                          >
+                           <option value="0">--Select--</option>
+                               
+                               {notUsIndividual?.map((ele: any) => (
+                                 // ele?.nonUSIndividual &&
+                                 //   values?.isUSIndividual == "no" ||
+                                 // ele?.usIndividual &&
+                                 //   values?.isUSIndividual == "Yes" ?
+                                 // (
+                                 <option
+                                   key={ele?.taxpayerIdTypeID}
+                                   value={ele?.taxpayerIdTypeID}
+                                 >
+                                   {ele?.taxpayerIdTypeName}
+                                 </option>
+                                 // ) : (
+                                 //   ""
+                                 // );
+                               ))}
+                          </select>}
                           {errors.tiN_USTINId &&
                           touched.tiN_USTINId ? (
                             <div>
@@ -274,7 +321,7 @@ export default function Tin(props: any) {
         style={{
           width: "100%",
           border: " 1px solid #d9d9d9 ",
-          height: " 45px",
+          height:"40px",
           lineHeight: "36px ",
           background: "#fff ",
           fontSize: "13px",
@@ -288,6 +335,8 @@ export default function Tin(props: any) {
     </div>
 
   </div>
+  </div>
+  </Paper>
   </div>
   </div>
 </div>

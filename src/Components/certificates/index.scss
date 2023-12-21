@@ -10,3 +10,15 @@
     width: 310px;
     border: 2px solid transparent;
 }
+.forms-card-data .MuiCard-root:hover{
+    transform: scale(1.05);
+}
+.forms-card-data .MuiCard-root{
+    transition: 0.4s;
+
+}
+
+.forms-card-data .MuiCard-root.disabled:hover{
+    transform: scale(1) !important;
+
+}

@@ -66,7 +66,7 @@ export default function IndividualUs() {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState("");
-  const [incomeArr, setIncomeArr] = useState([6]);
+  const [incomeArr, setIncomeArr] = useState([0]);
   const [bankLocation, setBankLocation] = useState("");
   const [alternateNo, setAlternateNo] = useState(false);
   const [alternateIncome, setAlternateIncome] = useState(false);
@@ -77,6 +77,10 @@ export default function IndividualUs() {
   const [toolInfo, setToolInfo] = useState("");
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
+  const [notUsIndividual , setNonUsIndividual] = useState([]);
+  const [clickCount, setClickCount] = useState(0);
+
+  console.log("hhh",ustinValue)
   const allCountriesData = useSelector(
     (state: any) => state.getCountriesReducer
   );
@@ -162,7 +166,7 @@ export default function IndividualUs() {
     dob: "",
     nameOfDisregarded: "",
     entityName: "",
-    usTinTypeId: 1,
+    usTinTypeId: 0,
     usTin: "",
     foreignTINCountryId: 0,
     foreignTIN: "",
@@ -220,6 +224,17 @@ export default function IndividualUs() {
     isCorrectPaymentPurposes: true,
     isConfirmed: false,
   };
+  const formatTin = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 3) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+    if (e.target.value.length === 6) {
+      setPayload({ ...payload, usTin: payload.usTin + "-" });
+      values.usTin = values.usTin + "-";
+    }
+  };
 
   const formatDate = (date: any) => {
     const dateObj = new Date(date);
@@ -247,6 +262,10 @@ export default function IndividualUs() {
           return ele.usIndividual === true;
         });
         setUStinvalue(datas);
+        let nonData = data.filter((ele: any) => {
+          return ele.nonUSIndividual === true;
+        });
+        setNonUsIndividual(nonData)
       })
     );
     dispatch(
@@ -256,23 +275,23 @@ export default function IndividualUs() {
     );
   }, []);
 
-  const onChangeUsInit = (values: any) => {
-    let data;
-    if (values.isUSIndividual == "no") {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is true
-        return ele?.usIndividual === false;
-      });
-      // Do something with the filtered data...
-    } else {
-      data = ustinArray.filter((ele: any | undefined) => {
-        // Filter out elements where usIndividual is false
-        return ele?.usIndividual === true;
-      });
-      // Do something with the filtered data...
-    }
-    setUStinvalue(data);
-  };
+  // const onChangeUsInit = (values: any) => {
+  //   let data;
+  //   if (values.isUSIndividual == "no") {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is true
+  //       return ele?.usIndividual === false;
+  //     });
+  //     // Do something with the filtered data...
+  //   } else {
+  //     data = ustinArray.filter((ele: any | undefined) => {
+  //       // Filter out elements where usIndividual is false
+  //       return ele?.usIndividual === true;
+  //     });
+  //     // Do something with the filtered data...
+  //   }
+  //   setUStinvalue(data);
+  // };
   // useEffect(()=>{
   //   if(values.isUSIndividual==="yes"){
   //   let data = ustinArray.filter((ele)=>{ele.usIndividual==true})}
@@ -303,15 +322,15 @@ export default function IndividualUs() {
     (state: any) => state.GetStateByCountryIdReducer
   );
 
-  const GetAgentUSVisaTypeHiddenForEform = useSelector(
-    (state: any) =>
-      state.GetAgentUSVisaTypeHiddenForEformReducer
-        .GetAgentUSVisaTypeHiddenForEform
-  );
+  // const GetAgentUSVisaTypeHiddenForEform = useSelector(
+  //   (state: any) =>
+  //     state.GetAgentUSVisaTypeHiddenForEformReducer
+  //       .GetAgentUSVisaTypeHiddenForEform
+  // );
   // FOR ISSUE 108 UNCOMMENT bottom code and comment top code
-  //   const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
-  //   state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymo
-  // )
+    const GetAgentUSVisaTypeHiddenForEform = useSelector((state :any)=>
+    state.GetAgentIncomeTypeHiddenAllowAnoymoReducer.GetAgentIncomeTypeHiddenAllowAnoymoData
+  )
 
   const redirectFunc = () => {
     history("/Term");
@@ -327,7 +346,7 @@ export default function IndividualUs() {
 
   const addIncomeType = () => {
     console.log("==", incomeArr);
-    setIncomeArr((incomeArr) => [...incomeArr, 6]);
+    setIncomeArr((incomeArr) => [...incomeArr, 0]);
   };
 
   const handleDelete = (i: any) => {
@@ -340,12 +359,7 @@ export default function IndividualUs() {
     setIncomeData(incomeData);
   };
 
-  const handleSubmit = (e: any, values: any) => {
-    e.preventDefault();
-    dispatch(postOnboarding(values, redirectFunc));
-    redirectFunc();
-  };
-
+  
   const returnFieldName = (
     handleBlur: any,
     touched: any,
@@ -356,7 +370,6 @@ export default function IndividualUs() {
     if (values.accountBankBranchLocationId == 258) {
       return (
         <div className="col-lg-3 col-6 col-md-3 mt-2">
-
           <FormControl className="w-100">
             <Typography align="left">
               {/* {returnFieldName()} */}
@@ -488,18 +501,9 @@ export default function IndividualUs() {
       );
     }
   };
+ 
 
-  const formatTin = (e: any, values: any): any => {
-    if (e.key === "Backspace" || e.key === "Delete") return;
-    if (e.target.value.length === 2) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-    if (e.target.value.length === 12) {
-      setPayload({ ...payload, usTin: payload.usTin + "-" });
-      values.usTin = values.usTin + "-";
-    }
-  };
+ 
   const setAccountHolder = (e: any, values: any): any => {
     if (values.accountHolderName === "") {
       values.accountHolderName = values.firstName + values.lastName;
@@ -535,10 +539,12 @@ export default function IndividualUs() {
   }
 
   const handleIcome = (e: any, i: number) => {
-    const newValue = e.target.value;
-    const updatedIncomeArr = [...incomeArr, 6];
-    updatedIncomeArr[i] = newValue;
-    setIncomeArr(updatedIncomeArr);
+    if (i < 5) {
+      const newValue = e.target.value;
+      const updatedIncomeArr = [...incomeArr, 0];
+      updatedIncomeArr[i] = newValue;
+      setIncomeArr(updatedIncomeArr);
+    }
   };
   let selectCitizenOptions: Array<string> = [];
   let selectUSCitizenOptions: Array<string> = [];
@@ -552,8 +558,6 @@ export default function IndividualUs() {
       selectUSCitizenOptions.push(ele);
     }
   });
-  console.log(selectNON_USCitizenOptions, "selectNON_USCitizenOptions");
-  console.log(selectUSCitizenOptions, "selectUSCitizenOptions");
 
   return (
     <section
@@ -628,103 +632,111 @@ export default function IndividualUs() {
               validateOnChange={false}
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
-                const payload = {
-                  agentId: values?.agentId,
-                  businessTypeId: values?.businessTypeId,
-                  selectedEntity: false,
-                  isUSEntity: values?.isUSEntity == "yes" ? true : false,
-                  isUSIndividual:
-                    values?.isUSIndividual == "yes" ? true : false,
-                  uniqueIdentifier: values?.uniqueIdentifier,
-                  firstName: values?.firstName,
-                  lastName: values?.lastName,
-                  countryOfCitizenshipId: values?.countryOfCitizenshipId,
-                  dob: values?.dob,
-                  nameOfDisregarded: values?.nameOfDisregarded,
-                  entityName: values?.entityName,
-                  usTinTypeId: +values?.usTinTypeId,
-                  usTin: values?.usTin,
-                  foreignTINCountryId: values?.foreignTINCountryId,
-                  foreignTIN: values?.foreignTIN,
-                  foreignTINNotAvailable: values?.foreignTINNotAvailable, //
-                  alternativeTINFormat: values?.alternativeTINFormat, //
-                  giin: values?.giin,
-                  permanentResidentialCountryId:
-                    values?.permanentResidentialCountryId,
-                  permanentResidentialStreetNumberandName:
-                    values?.permanentResidentialStreetNumberandName,
-                  permanentResidentialAptSuite:
-                    values?.permanentResidentialAptSuite,
-                  permanentResidentialCityorTown:
-                    values?.permanentResidentialCityorTown,
-                  permanentResidentialStateorProvince:
-                    values?.permanentResidentialStateorProvince,
-                  permanentResidentialZipPostalCode:
-                    values?.permanentResidentialZipPostalCode,
-                  isAddressRuralRoute:
-                    values?.isAddressRuralRoute == "yes" ? true : false,
-                  isAddressPostOfficeBox:
-                    values?.isAddressPostOfficeBox == "yes" ? true : false,
-                  isCareOfAddress:
-                    values?.isCareOfAddress == "yes" ? true : false,
-                  isalternativebusinessaddress:
-                    values?.isalternativebusinessaddress == "yes"
-                      ? true
-                      : false,
-                  permanentResidentialCountryId1:
-                    values?.permanentResidentialCountryId1,
-                  permanentResidentialStreetNumberandName1:
-                    values?.permanentResidentialStreetNumberandName1,
-                  permanentResidentialAptSuite1:
-                    values?.permanentResidentialAptSuite1,
-                  permanentResidentialCityorTown1:
-                    values?.permanentResidentialCityorTown1,
-                  permanentResidentialStateorProvince1:
-                    values?.permanentResidentialStateorProvince1,
-                  permanentResidentialZipPostalCode1:
-                    values?.permanentResidentialZipPostalCode1,
-                  contactFirstName: values?.contactFirstName,
-                  contactLastName: values?.contactLastName,
-                  contactEmail: values?.contactEmail,
-                  primaryContactNumberId: values?.primaryContactNumberId,
-                  primaryContactNumber: values?.primaryContactNumber,
-                  alternativeNumberId: values?.alternativeNumberId,
-                  alternativeNumber: values?.alternativeNumber,
-                  alternativeNumberId1: values?.alternativeNumberId1,
-                  alternativeNumber1: values?.alternativeNumber1,
-                  incomeTypeId: incomeArr,
-                  paymentTypeId: values?.paymentTypeId,
-                  accountHolderName:
-                    values?.accountHolderName === ""
-                      ? values?.firstName + " " + values?.lastName
-                      : values?.accountHolderName,
-                  accountBankName: values?.accountBankName,
-                  accountBankBranchLocationId:
-                    values?.accountBankBranchLocationId,
-                  accountNumber: values?.accountNumber,
-                  abaRouting: values?.abaRouting,
-                  iban: values?.iban,
-                  swiftCode: values?.swiftCode,
-                  bankCode: values?.bankCode,
-                  makePayable: values?.makePayable,
-                  payResidentalCountryId: values?.payResidentalCountryId,
-                  payStreetNumberAndName: values?.payStreetNumberAndName,
-                  payAptSuite: values?.payAptSuite,
-                  vatId: values?.vatId,
-                  vat: values?.vat,
-                  doingBusinessAsName: values?.doingBusinessAsName,
-                  payCityorTown: values?.payCityorTown,
-                  payStateOrProvince: values?.payStateOrProvince,
-                  payZipPostalCode: values?.payZipPostalCode,
-                  sortCode: values?.sortCode,
-                  bsb: values?.bsb,
-                  capacityId: values?.capacityId,
-                  isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
-                  isConfirmed: values?.isConfirmed,
-                };
-                dispatch(postOnboarding(payload, redirectFunc));
-                localStorage.setItem("agentDetails", JSON.stringify(payload));
+                if (clickCount === 0) {
+      
+                  setClickCount(clickCount+1);
+                } else {
+                 
+                
+                  const payload = {
+                    agentId: values?.agentId,
+                    businessTypeId: values?.businessTypeId,
+                    selectedEntity: false,
+                    isUSEntity: values?.isUSEntity == "yes" ? true : false,
+                    isUSIndividual:
+                      values?.isUSIndividual == "yes" ? true : false,
+                    uniqueIdentifier: values?.uniqueIdentifier,
+                    firstName: values?.firstName,
+                    lastName: values?.lastName,
+                    countryOfCitizenshipId: values?.countryOfCitizenshipId,
+                    dob: values?.dob,
+                    nameOfDisregarded: values?.nameOfDisregarded,
+                    entityName: values?.entityName,
+                    usTinTypeId: +values?.usTinTypeId,
+                    usTin: values?.usTin,
+                    foreignTINCountryId: values?.foreignTINCountryId,
+                    foreignTIN: values?.foreignTIN,
+                    foreignTINNotAvailable: values?.foreignTINNotAvailable, //
+                    alternativeTINFormat: values?.alternativeTINFormat, //
+                    giin: values?.giin,
+                    permanentResidentialCountryId:
+                      values?.permanentResidentialCountryId,
+                    permanentResidentialStreetNumberandName:
+                      values?.permanentResidentialStreetNumberandName,
+                    permanentResidentialAptSuite:
+                      values?.permanentResidentialAptSuite,
+                    permanentResidentialCityorTown:
+                      values?.permanentResidentialCityorTown,
+                    permanentResidentialStateorProvince:
+                      values?.permanentResidentialStateorProvince,
+                    permanentResidentialZipPostalCode:
+                      values?.permanentResidentialZipPostalCode,
+                    isAddressRuralRoute:
+                      values?.isAddressRuralRoute == "yes" ? true : false,
+                    isAddressPostOfficeBox:
+                      values?.isAddressPostOfficeBox == "yes" ? true : false,
+                    isCareOfAddress:
+                      values?.isCareOfAddress == "yes" ? true : false,
+                    isalternativebusinessaddress:
+                      values?.isalternativebusinessaddress == "yes"
+                        ? true
+                        : false,
+                    permanentResidentialCountryId1:
+                      values?.permanentResidentialCountryId1,
+                    permanentResidentialStreetNumberandName1:
+                      values?.permanentResidentialStreetNumberandName1,
+                    permanentResidentialAptSuite1:
+                      values?.permanentResidentialAptSuite1,
+                    permanentResidentialCityorTown1:
+                      values?.permanentResidentialCityorTown1,
+                    permanentResidentialStateorProvince1:
+                      values?.permanentResidentialStateorProvince1,
+                    permanentResidentialZipPostalCode1:
+                      values?.permanentResidentialZipPostalCode1,
+                    contactFirstName: values?.contactFirstName,
+                    contactLastName: values?.contactLastName,
+                    contactEmail: values?.contactEmail,
+                    primaryContactNumberId: values?.primaryContactNumberId,
+                    primaryContactNumber: values?.primaryContactNumber,
+                    alternativeNumberId: values?.alternativeNumberId,
+                    alternativeNumber: values?.alternativeNumber,
+                    alternativeNumberId1: values?.alternativeNumberId1,
+                    alternativeNumber1: values?.alternativeNumber1,
+                    incomeTypeId: incomeArr,
+                    paymentTypeId: values?.paymentTypeId,
+                    accountHolderName:
+                      values?.accountHolderName === ""
+                        ? values?.firstName + " " + values?.lastName
+                        : values?.accountHolderName,
+                    accountBankName: values?.accountBankName,
+                    accountBankBranchLocationId:
+                      values?.accountBankBranchLocationId,
+                    accountNumber: values?.accountNumber,
+                    abaRouting: values?.abaRouting,
+                    iban: values?.iban,
+                    swiftCode: values?.swiftCode,
+                    bankCode: values?.bankCode,
+                    makePayable: values?.makePayable,
+                    payResidentalCountryId: values?.payResidentalCountryId,
+                    payStreetNumberAndName: values?.payStreetNumberAndName,
+                    payAptSuite: values?.payAptSuite,
+                    vatId: values?.vatId,
+                    vat: values?.vat,
+                    doingBusinessAsName: values?.doingBusinessAsName,
+                    payCityorTown: values?.payCityorTown,
+                    payStateOrProvince: values?.payStateOrProvince,
+                    payZipPostalCode: values?.payZipPostalCode,
+                    sortCode: values?.sortCode,
+                    bsb: values?.bsb,
+                    capacityId: values?.capacityId,
+                    isCorrectPaymentPurposes: values?.isCorrectPaymentPurposes,
+                    isConfirmed: values?.isConfirmed,
+                  };
+                  dispatch(postOnboarding(payload, redirectFunc));
+                  localStorage.setItem("agentDetails", JSON.stringify(payload));
+                  setSubmitting(false);
+                }
+               
               }}
               validationSchema={individualSchema}
             >
@@ -739,6 +751,96 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A101
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address is a PO Box. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>):""}
+
+
+                {values.isCareOfAddress === "yes" && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A102
+
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address may be located at a Care of Address. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+               
+                 
+                  
+                 
+                 
+
+  
+                </div>):""}
+
+
+                {values.isUSIndividual === "yes" && values.permanentResidentialCountryId  != 258 && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A103
+
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span style={{fontWeight:"Bold"}}>
+                  Potential Address Mismatch
+                  </span>
+                  </Typography>
+                  
+                  <Typography  className="mt-3">
+                  You have identified that you are submitting a form on behalf of a U.S. Individual or a US Entity and indicated that the Permanent Residential Address used for U.S tax purposes is not in the U.S.
+                  </Typography>
+                  <Typography  className="mt-2">
+                  You will be asked to supply additional information later in the process and your agent may need to contact you for further information.
+
+                  </Typography>
+                 
+                  
+                 
+                 
+
+  
+                </div>):""}
+
+                {values.isUSIndividual === "no" && values.permanentResidentialCountryId  == 258 && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You are submitting a form on behalf of a Non U.S Individual or a Non U.S Entity and indicated that the Permanent Residential Address used for U.S tax purposes is in the United States.</span>
+                  </Typography>
+                 
+                </div>):""}
+
                   {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
                       <Paper
@@ -955,7 +1057,7 @@ export default function IndividualUs() {
                                 value={values.isUSIndividual}
                                 onChange={(e) => {
                                   handleChange(e);
-                                  onChangeUsInit(values);
+                                  // onChangeUsInit(values);
                                 }}
                               >
                                 <FormControlLabel
@@ -1358,7 +1460,7 @@ export default function IndividualUs() {
                             </Tooltip>
                           </div>
                           <p className="error mb-0">
-                            {errors?.usTinTypeId || errors?.usTin
+                            {errors?.usTinTypeId || errors?.usTin ||errors?.vatId
                               ? "Mandatory Information Required"
                               : ""}
                           </p>
@@ -1536,7 +1638,7 @@ export default function IndividualUs() {
                                 }}
                                 name="usTinTypeId"
                                 id="Income"
-                                defaultValue={"1"}
+                                defaultValue={0}
                                 onChange={(e: any) => {
                                   handleChange(e);
 
@@ -1550,15 +1652,18 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                <option value={0}>-Select-</option>
+                               
                                 <>{console.log(ustinValue, "")}</>
-                                {ustinValue?.map((ele: any) => (
+                                <option value={0}>--Select--</option>
+                               
+                                {notUsIndividual?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
                                   //   values?.isUSIndividual == "Yes" ?
                                   // (
                                   <option
+
                                     key={ele?.taxpayerIdTypeID}
                                     value={ele?.taxpayerIdTypeID}
                                   >
@@ -1574,8 +1679,8 @@ export default function IndividualUs() {
                           </div>
 
                           <div className="col-lg-3 col-6 col-md-3">
-                            <FormControl className="w-100">
-                              <Typography align="left">
+                            <FormControl  className="w-100" >
+                              <Typography className="d-flex w-100" align="left">
                                 U.S. TIN
                                 <span
                                   style={{
@@ -1608,7 +1713,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11}}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -1712,8 +1817,8 @@ export default function IndividualUs() {
                                 name="foreignTIN"
                                 placeholder="Enter foreign TIN"
                                 onChange={handleChange}
-                                onKeyDown={(e) => formatTin(e, values)}
-                                inputProps={{ maxLength: 10 }}
+                                // onKeyDown={(e) => formatTin(e, values)}
+                                inputProps={{ maxLength: 11 }}
                                 value={values.foreignTIN}
                               />
                             </FormControl>
@@ -1971,7 +2076,8 @@ export default function IndividualUs() {
                                 }}
                                 value={values.usTinTypeId}
                               >
-                                {/* <option value="1">-Select-</option> */}
+                                <option value="0">--Select--</option>
+                               
                                 {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
@@ -2006,7 +2112,8 @@ export default function IndividualUs() {
                                 disabled={
                                   // values.usTinTypeId == 3 ||
                                   values.usTinTypeId == 4 ||
-                                  values.usTinTypeId == 1
+                                  values.usTinTypeId == 1 ||
+                                  values.usTinTypeId == 0
                                 }
                                 style={{
                                   border: " 1px solid #d9d9d9 ",
@@ -2024,7 +2131,7 @@ export default function IndividualUs() {
                                 placeholder="Enter U.S. TIN"
                                 onKeyDown={(e) => formatTin(e, values)}
                                 onChange={handleChange}
-                                inputProps={{ maxLength: 10 }}
+                                inputProps={{ maxLength: 11 }}
                                 // onBlur={handleBlur}
                                 //   error={Boolean(touched.usTin && errors.usTin)}
                                 value={values.usTin}
@@ -2312,7 +2419,9 @@ export default function IndividualUs() {
                             </p>
                           </FormControl>
                         </div>
-                        {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length >0 ? (
+                        {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                        GetStateByCountryIdReducer?.allCountriesStateIdData
+                          ?.length > 0 ? (
                           <div className="col-lg-3 col-6 col-md-3 mt-2">
                             <Typography align="left" className="d-flex w-100 ">
                               State or Province:
@@ -2671,7 +2780,7 @@ export default function IndividualUs() {
                                     </Tooltip>
                                   </Typography>
                                   {toolInfo === "PO" ? (
-                                    <div>
+                                    <div className="post">
                                       <Paper
                                         style={{
                                           backgroundColor: "#dedcb1",
@@ -2826,7 +2935,7 @@ export default function IndividualUs() {
                                   </Tooltip>
                                 </Typography>
                                 {toolInfo === "CareOf" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -2983,7 +3092,7 @@ export default function IndividualUs() {
                                   </span>
                                 </Typography>
                                 {toolInfo === "mail" ? (
-                                  <div>
+                                  <div className="post">
                                     <Paper
                                       style={{
                                         backgroundColor: "#dedcb1",
@@ -3232,7 +3341,9 @@ export default function IndividualUs() {
                                 </p>
                               </FormControl>
                             </div>
-                            {GetStateByCountryIdReducer?.allCountriesStateIdData && GetStateByCountryIdReducer?.allCountriesStateIdData?.length > 0 ? (
+                            {GetStateByCountryIdReducer?.allCountriesStateIdData &&
+                            GetStateByCountryIdReducer?.allCountriesStateIdData
+                              ?.length > 0 ? (
                               <div className="col-lg-3 col-6 col-md-3 mt-2">
                                 <Typography
                                   align="left"
@@ -3558,9 +3669,9 @@ export default function IndividualUs() {
                           </FormControl>
                         </div>
                         <FormControl className="w-100">
-                          <div className="row">
+                          <div className="row"style={{padding: "0 0 0 4px"}}>
                             <div className="col-lg-3 col-6 col-md-3 mt-2 mx-2">
-                              <FormControl className="w-100">
+                              <FormControl className="w-98">
                                 <Typography align="left">
                                   Email<span style={{ color: "red" }}>*</span>
                                 </Typography>
@@ -3930,11 +4041,12 @@ export default function IndividualUs() {
                                         value={incomeArr[i]}
                                       >
                                         <option value="0">-Select-</option>
+                                       
                                         {GetAgentUSVisaTypeHiddenForEform?.map(
                                           (ele: any) => (
                                             <option
-                                              key={ele?.id}
-                                              value={ele?.id}
+                                              key={ele?.incomeTypeId}
+                                              value={ele?.incomeTypeId}
                                             >
                                               {ele?.name}
                                             </option>
@@ -3958,7 +4070,7 @@ export default function IndividualUs() {
                               );
                             })}
 
-                          {incomeArr.length <= 4 ? (
+                          {incomeArr.length < 5 ? (
                             <Typography
                               style={{
                                 color: "#007bff",
@@ -3984,7 +4096,9 @@ export default function IndividualUs() {
                                 display: "flex",
                                 alignItems: "left",
                                 marginLeft: "13px",
+                                cursor:"pointer"
                               }}
+                              onClick={() => handleOpen("it")}
                             >
                               Income Code
                               <span
@@ -3993,6 +4107,7 @@ export default function IndividualUs() {
                                   color: "grey",
                                   marginLeft: "4px",
                                   marginTop: "11px",
+                                
                                 }}
                               >
                                 (Optional)
@@ -4096,7 +4211,7 @@ export default function IndividualUs() {
                           <Typography className="d-flex w-100 pb-2">
                             Income Code
                           </Typography>
-                          {incomeArr.length &&
+                          {incomeArr.length && incomeArr.length <= 4 &&
                             incomeArr.map((ind, i) => {
                               // console.log(ind, i,"udvgjudgvfjdbgjfd")
                               return (
@@ -5324,7 +5439,7 @@ export default function IndividualUs() {
                         <div className="text-center">
                           <Button
                             type="submit"
-                            disabled={isSubmitting}
+                       
                             // onClick={() => history("/Term")}
                             style={{
                               border: "1px solid #0095dd",

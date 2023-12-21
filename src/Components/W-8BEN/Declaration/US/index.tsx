@@ -20,12 +20,16 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DynamicForm from "./text";
+import BreadCrumbComponent from "../../../reusables/breadCrumb";
 
 export default function Factors() {
   const history = useNavigate();
 
   const [allocation, setAllocation] = useState(); // State to track allocation input
   const [formList, setFormList] = useState<FormData[]>([]);
+  const [clickCount, setClickCount] = useState(0);
+
+  
 
   const dispatch = useDispatch();
   const handleAllocationChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,12 +42,6 @@ export default function Factors() {
     }
   };
 
-  // useEffect(()=>{
-  //   dispatch(getAllCountries());
-  // })
-  // const getCountriesReducer = useSelector(
-  //   (state: any) => state.getCountriesReducer
-  // );
   const [toolInfo, setToolInfo] = useState("");
   const [numPapers, setNumPapers] = useState(1);
   const addIncomeTypePaper = () => {
@@ -65,7 +63,15 @@ export default function Factors() {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+
+    if (clickCount === 0) {
+      // First click shows the Paper component
+      setClickCount(1);
+    } else {
+      // Second click navigates to the next route
+      history("/W-8BEN/Declaration/Non_US_Sorced/Status");
+    }
+
     console.log("Form List:", formList);
   };
 
@@ -98,166 +104,10 @@ export default function Factors() {
       </div>
 
       <div className="row w-100 h-100">
-        <div className="col-4">
-          <div
-            style={{ padding: "25px 0px", height: "100%", marginTop: "10px" }}
-          >
-            <Paper
-              style={{ padding: "0px 0px 0px 18px", height: "100%" }}
-              className="bg-none"
-            >
-              <div style={{ background: "#ffffff33", height: "100%" }}>
-                <div className="stepper">
-                  <Accordion
-                    expanded={expanded === "panel1"}
-                    onChange={handleChangestatus("panel1")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1bh-content"
-                      id="panel1bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex active"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step I
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
+      <div className="col-4">
+          <div style={{ padding: "20px 0px", height: "100%" }}>
+            <BreadCrumbComponent breadCrumbCode={1207} formName={2} />
 
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li className="active">
-                            {" "}
-                            <label className="my-auto">Name and Address </label>
-                          </li>
-                          <li className="active">
-                            Account Indivation(Optional)
-                          </li>
-                          <li className="active">Tax Identification Number</li>
-                          <li className="active">Contact Details</li>
-                          <li className="active">Form Selection</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel2"}
-                    onChange={handleChangestatus("panel2")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2bh-content"
-                      id="panel2bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step II
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li className="active">
-                            {" "}
-                            <label className="my-auto">
-                              US Sourced Income Declaration (optional)
-                            </label>
-                          </li>
-                          <li>United States Citizenship Status</li>
-                          <li>Tax Identification Number</li>
-                          <li>Treaty Claim</li>
-                          <li>Special Rates and Conditions</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                  <Accordion
-                    expanded={expanded === "panel3"}
-                    onChange={handleChangestatus("panel3")}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel2bh-content"
-                      id="panel2bh-header"
-                      className="accordian-header"
-                    >
-                      <Typography
-                        className="text-uppercase d-flex"
-                        sx={{
-                          width: "100%",
-                          flexShrink: 0,
-                          fontSize: "20px",
-                        }}
-                      >
-                        Step III
-                        <img
-                          className="steper-check-icon-solid my-auto mx-2"
-                          src={checksolid}
-                        />
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Paper
-                        elevation={3}
-                        style={{
-                          padding: "20px",
-                          backgroundColor: "#f0f0f0",
-                          overflow: "auto",
-                        }}
-                      >
-                        <ul>
-                          <li>
-                            {" "}
-                            <label className="my-auto">
-                              Penalties of Perjury Certification
-                            </label>
-                          </li>
-                          <li>Electronic Signature</li>
-                          <li>Electronic Signature Confirmation</li>
-                          <li>U.S. Tax Certification Complete</li>
-                        </ul>
-                      </Paper>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              </div>
-            </Paper>
           </div>
         </div>
         <div className="col-8 mt-4">
@@ -373,6 +223,39 @@ export default function Factors() {
                 )}
 
                <div className="mt-2">
+               {clickCount === 1 && (
+                <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  1042S2
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                  </Typography>
+                  <Typography align="center" style={{fontWeight:"Bold"}}>
+                  U.S. Source Income
+                  </Typography>
+                  <Typography className="mt-3">
+                  You have identified that your invoices or contracts may contain payments associated with U.S. Sourced income.
+                  </Typography>
+                  <Typography className="mt-2">
+                  U.S. tax rules require us to withhold a 30% income tax on US source payments unless you provide us with certain documentation.  The type of documentation we require depends on numerous facts such as whether you are relying on an income tax treaty and what type of entity you are for local tax purposes. In order to reduce or eliminate US tax withholding you will need to obtain a US taxpayer identification number.  This number needs to be included on the documentation you provide to us.
+                  </Typography>
+                  <Typography className="mt-2">
+                  To help determine the type of form you should furnish to us, please continue through the forms submission process or refer to the IRS website at <a href="http://www.irs.gov" target="_blank">www.irs.gov</a>.
+                  </Typography>
+                  <Typography className="mt-2">
+                  We also recommend that you consult with your tax advisor regarding any US tax forms you provide to us.
+                  </Typography>
+                 
+
+  
+                </div>
+                 )}
                <DynamicForm formList={formList} setFormList={setFormList} allocation={allocation} setAllocation={setAllocation}/>
               </div>
               </div>

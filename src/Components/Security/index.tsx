@@ -8,7 +8,7 @@ import { AppDispatch } from "../../Redux/store";
 import DialogContentText from "@mui/material/DialogContentText";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Select, Button, Typography, Paper } from "@mui/material";
+import { TextField, Select, Button, Typography, Paper,Tooltip } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,6 +20,7 @@ import { Formik, Form } from "formik";
 import { securitySchema } from "../../schemas";
 
 const DialogEdit = (props: any) => {
+  const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const history = useNavigate();
   const { open, setOpen } = props;
@@ -61,6 +62,23 @@ const DialogEdit = (props: any) => {
     // })
     
   };
+
+  const [showPaper, setShowPaper] = useState(false);
+
+  useEffect(() => {
+    if (toolInfo === "basic") {
+      setShowPaper(true);
+
+    
+      const timeoutId = setTimeout(() => {
+        setShowPaper(false);
+        setToolInfo(""); 
+      }, 1000);
+
+     
+      return () => clearTimeout(timeoutId);
+    }
+  }, [toolInfo]);
   useEffect(() => {
     setPayload({ ...payload, confirmationCode: postSecurityCodeData });
   }, [postSecurityCodeData]);
@@ -136,6 +154,38 @@ const DialogEdit = (props: any) => {
                     electronic form submission.
                   </Typography>
                   <div className="row col-10 d-flex mt-3">
+                  {toolInfo === "basic" ? (
+                        <div>
+                          <div
+                            style={{
+                              backgroundColor: "#d1ecf1",
+                              padding: "10px",
+                              marginBottom: "10px",
+                              width: "100%",
+                            }}
+                          >
+                            <Typography>
+                              Confirmation Code has been Copied
+                            </Typography>
+
+                          
+
+                            {/* <Link
+                              href="#"
+                              underline="none"
+                              style={{ marginTop: "10px", fontSize: "16px" }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            >
+                              --Show Less--
+                            </Link> */}
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )} 
+                  
                     <Typography className="col-3">
                       <Typography
                         style={{
@@ -160,15 +210,24 @@ const DialogEdit = (props: any) => {
                       />
                     </Typography>
                     <Typography className="col-1">
-                      <ContentCopy
-                       onClick={(e)=>{handleCopyClick(e)}}
-                        // onClick={() => {
-                        //   navigator.clipboard.writeText(
-                        //     payload.confirmationCode
-                        //   );
-                        // }}
-                        style={{ fontSize: "18px", marginTop: "5px" }}
-                      />
+                    <Tooltip
+                   
+                  
+  style={{ backgroundColor: "black", color: "white" }}
+  title="Copy To Clipboard"
+>
+  <ContentCopy
+    onClick={(e) => {
+      handleCopyClick(e);
+      setToolInfo("basic")
+    }}
+    style={{ fontSize: "18px", marginTop: "5px", cursor: "pointer" }}
+  />
+</Tooltip>
+                     
+                   
+                  
+                 
                     </Typography>
                     <ToastContainer />
                   </div>

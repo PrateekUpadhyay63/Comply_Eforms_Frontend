@@ -67,14 +67,43 @@ export const US_TINSchema = () => {
         .required("Please enter US Tin"),
     }),
     notAvailable: Yup.boolean(),
-    foreignTINCountry: Yup.string().required(
-      "Please select Foriegn Tin Country"
-    ),
-    // foreignTIN: Yup.string().required("Please enter Foriegn Tin "),
+    FTINFeild:Yup.string().when("notAvailable", {
+      is: true,
+      then: () =>
+        Yup.string()
+        .required("Please Specify Reason"),
+    }), 
+    FTINFeild1: Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: "Yes",
+      then: () =>
+        Yup.string()
+        .required("Please Specify Reason"),
+    }),
+    foreignTINCountry:  Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: (value:any) => value === "No" || value === "",
+      then: () =>
+        Yup.string()
+        .required("Please select Foriegn Tin Country"),
+      
+    }),
+    foreignTIN: Yup.string().when("tinisFTINNotLegallyRequired", {
+      is: (value:any) => value === "No" || value === "",
+      then: () =>
+        Yup.string()
+        .required("Please enter Foriegn Tin"),
+      
+    }),
+  
+    // .required("Please enter Foriegn Tin "),
     isFTINNotLegallyRequired: Yup.boolean(),
     // tinisFTINNotLegallyRequired: true,
     // tinAlternativeFormate: true,
-    isNotLegallyFTIN: Yup.string(),
+    isNotLegallyFTIN: Yup.string().when("isFTINNotLegallyRequired", {
+      is: true,
+      then: () =>
+        Yup.string()
+        .required("Please Select"),
+    }),
   });
 };
 export const claimSchemaaa = () => {
@@ -166,6 +195,16 @@ export const certificateSchema = () => {
 export const partCertiSchema = () => {
   return Yup.object().shape({
     signedBy: Yup.string().required("Please enter "),
+    EnterconfirmationCode: Yup.string()
+    .required("Please enter code")
+    .test(
+      'match',
+      'Confirmation code does not match',
+      function (value) {
+        const storedConfirmationCode = obValues?.confirmationCode;
+        return !storedConfirmationCode || value === storedConfirmationCode;
+      }
+    ),
     confirmationCode: Yup.string()
     .required("Please enter code")
     .test(
@@ -176,6 +215,10 @@ export const partCertiSchema = () => {
         return !storedConfirmationCode || value === storedConfirmationCode;
       }
     ),
+    // word: Yup.boolean().when("EnterconfirmationCode", {
+    //   is: "no",
+    //   then: () => Yup.string().required("Please select owner"),
+    // }),
   date: Yup.date(),
   isAgreeWithDeclaration: Yup.boolean().oneOf(
     [true],

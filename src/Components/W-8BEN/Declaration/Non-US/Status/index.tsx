@@ -57,12 +57,13 @@ export default function Factors() {
     countryTaxLiability: "",
     taxReferenceNumber: "",
     isTINFormatNotAvailable: false,
-    isPresentAtleast31Days: false,
+    isPresentAtleast31Days: "",
   };
 
   const dispatch = useDispatch();
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
+  const [clickCount, setClickCount] = useState(0);
   useEffect(() => {
     dispatch(getAllCountries());
     }, []);
@@ -119,7 +120,7 @@ export default function Factors() {
     const GetAgentCountriesImportantForEformData = useSelector(
       (state:any)=>state.GetAgentCountriesImportantForEformReducer.GetAgentCountriesImportantForEformData
     )
- 
+    
   return (
     <section
       className="inner_content"
@@ -154,16 +155,20 @@ export default function Factors() {
                 enableReinitialize
                 validationSchema={StatusSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                  setSubmitting(true);
-                  console.log(values, ":STEP1 VALUES");
-                  dispatch(
-                    W8_state(values, () => {
-                      console.log(W8Data, "Done");
-                      history("/W-8BEN/Declaration/US_Tin");
-                    })
-                  );
-                  history("/W-8BEN/Declaration/US_Tin");
-                  // uploadNews(dispatch, values, navigate);
+                  if (clickCount === 0) {
+        
+                    setClickCount(clickCount+1);
+                  }else{
+                    dispatch(
+                      W8_state(values, () => {
+                        console.log(W8Data, "Done");
+                        history("/W-8BEN/Declaration/US_Tin");
+                      })
+                    );
+                    history("/W-8BEN/Declaration/US_Tin");
+                    // uploadNews(dispatch, values, navigate);
+                  }
+                
                 }}
               >
                 {({
@@ -177,8 +182,221 @@ export default function Factors() {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
+                      {values.isHeldUSCitizenship === "Yes" && obValues?.isUSIndividual == false  && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES116
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You selected that you are making this submission on behalf of a Non-U.S. Individual but the selections made indicated that the individual may be considered a citizen of the United States. If this is correct you may be subject to taxation in the United States as a U.S. citizen or resident alien.
 
-                    <div style={{ margin: "10px" }}>
+                  </Typography>
+                  <Typography className="mt-2">
+                  
+                   We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+                  </Typography>
+                 
+               
+                  <Typography className="mt-2">
+                  
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you should not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                                    </Typography>
+
+  
+                </div>):""}
+
+              {values.isHoldDualCitizenshipStatus ==="Yes"   && clickCount === 1 ? (  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES120
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You have selected that the individual the submission represents was either born in the United States, Puerto Rico, Guam or the US Virgin Islands, or has a parent who is a US citizen. You have also selected that that the individual is not considered a US citizen (including those nationalised) or a US resident (including Green Card holders). Furthermore you have not selected that the individual has renounced their US citizenship.
+
+                  </Typography>
+                  <Typography className="mt-2">
+                  
+                  It is considered that any person born in the United States automatically adopts a US citizen status, please go back and review your selections. If a non US citizenship status is correct you must provide a written statement explaining why a non US citizenship status applies, this can be provided on the following page. In some circumstances your agent may need to contact you for further information to help confirm.
+
+                  </Typography>
+              
+  
+                </div>
+):""}         
+
+                        
+{values.isHeldUSCitizenship === "Yes"  && values.isRenouncedCitizenship === "Yes"  && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES105
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual was born in the United States, but has formally renounced their U.S. citizenship.
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  If this is correct please select continue where you will be asked to provide a statement confirming this status. Please include any dates that may apply.
+
+                  </Typography>
+                
+
+  
+                </div>):""}
+                         
+                {values.isHeldUSCitizenship === "Yes" && values.isTaxationUSCitizenOrResident === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES106
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual is presently subject to taxation in the United States as a U.S. citizen or resident alien.
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+
+
+                {values.isHeldUSCitizenship === "Yes" && values.isPermamnentResidentCardHolder === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES107
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual holds a U.S. Permanent Residency Card, often referred to as a Green Card. If this is correct you may be presently subject to taxation in the United States as a U.S. citizen or resident alien.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+               
+Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note  that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+
+
+                {values.isHeldUSCitizenship === "Yes" && values.isHoldDualCitizenshipIncludeUSCitizenship === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES108
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual holds a Dual Citizenship, including citizenship of the United States. If this is correct you may be presently subject to taxation in the United States as a U.S. citizen or resident alien.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".
+
+
+                  </Typography>
+                
+                  <Typography className="mt-2">
+               
+                  Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you are not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.
+
+                  </Typography>
+  
+                </div>):""}
+
+                {values.isPresentAtleast31Days === "Yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  RES109
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+              You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and have indicated that the individual or Entity has been physically present in the U.S for 31 days or more in the current year.
+
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography className="mt-2">
+                  You will be presented with a U.S Substantial Presence Test to determine status for U.S tax purposes.
+
+
+                  </Typography>
+                
+                 
+                </div>):""}
+
+
+
+
+
+                    <div style={{ margin: "7px" }}>
                     <Typography
                     
                     align="left"
@@ -391,7 +609,7 @@ export default function Factors() {
                           marginBottom: "10px",
                         }}
                       >
-                        Date of Birth (mm/dd/yyyy)
+                        Date of Birth (mm/dd/yyyy).....
                       </Typography>
                       <FormControl className="form">
                       <input className="input my-2"  type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
@@ -533,7 +751,7 @@ export default function Factors() {
                         }}
                           >
                             Does or did the dual citizenship include U.S.
-                            citizenship? <span style={{ color: "red" }}>*</span>
+                            citizenship?<span style={{ color: "red" }}>*</span>
                           </Typography>
 
                           <FormControl>
@@ -767,9 +985,9 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <div className="d-flex">
-                            <FormControl className="form">
-                              <input  name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} />
-                            </FormControl>
+                          <FormControl className="form">
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
+                              </FormControl>
                             <div className="d-flex">
                               <Checkbox  name="isTINFormatNotAvailable" onChange={handleChange} value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
@@ -819,7 +1037,7 @@ export default function Factors() {
                       </FormControl>
                           <Divider className="dividr" />
                           
-                      {tax1 === "Yes" ? (
+                      {values.isTaxLiabilityJurisdictions === "Yes" ? (
                         <>
                           <Typography>
                             Please select the country where the individual
@@ -827,8 +1045,34 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <FormControl className="form">
-                            <select></select>
-                          </FormControl>
+                            <select
+                            style={{
+                              padding: " 0 10px",
+                              color: "#7e7e7e",
+                              fontStyle: "italic",
+                              height: "36px",
+                            }}
+                            name="permanentResidentialCountryId"
+                            id="Income"
+                            defaultValue={1}
+                            onChange={handleChange}
+                       
+                            value={values.permanentResidentialCountryId}
+                          >
+                            <option value={0}>-Select-</option>
+                            <option value={45}>-canada-</option>
+                            <option value={257}>United Kingdom</option>
+                            <option value={258}>United States</option>
+                            <option value="">-----</option>
+                            {GetAgentCountriesImportantForEformData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
+                          </select>
+                            </FormControl>
                           <Divider className="dividr" />
 
                           <Typography>
@@ -836,9 +1080,9 @@ export default function Factors() {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <div className="d-flex">
-                            <FormControl className="form">
-                              <input  name="taxReferenceNumber" value={values.taxReferenceNumber} className="input" />
-                            </FormControl>
+                          <FormControl className="form">
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
+                              </FormControl>
                             <div className="d-flex">
                               <Checkbox  name="isTINFormatNotAvailable" value={values.isTINFormatNotAvailable}  />
                               <div className="mt-2">
@@ -875,22 +1119,31 @@ export default function Factors() {
                       <FormControl>
                         <RadioGroup
                           row
+                          id="isPresentAtleast31Days"
                           aria-labelledby="demo-row-radio-buttons-group-label"
-                          name="row-radio-buttons-group"
+                          name="isPresentAtleast31Days"
+                          value={values.isPresentAtleast31Days}
+                          onChange={handleChange}
                         >
                           <FormControlLabel
-                            value="female"
+                           value="Yes"
                             control={<Radio />}
                             label="Yes"
+                            name="isPresentAtleast31Days"
                           />
                           <FormControlLabel
                             className="label"
-                            value="male"
+                            value="No"
                             control={<Radio />}
                             label="No"
+                            name="isPresentAtleast31Days"
                           />
                         </RadioGroup>
+                        <p className="error">
+                        {errors.isPresentAtleast31Days}
+                      </p>
                       </FormControl>
+                     
                       <Divider className="dividr" />
                     </>
                       ) :(
@@ -903,7 +1156,7 @@ export default function Factors() {
                             marginBottom: "10px",
                           }}
                         >
-                          Date of Birth (mm/dd/yyyy)
+                          Date of Birth (mm/dd/yyyy)...
                         </Typography>
                         <FormControl className="form">
                           <input  className="input my-2" type="date"  value={obValues.dob ? convertToStandardFormat(obValues.dob ) : ''}
@@ -1346,7 +1599,7 @@ export default function Factors() {
                       )}
                             <div className="d-flex">
                               <FormControl className="form">
-                                <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled = {values.isTINFormatNotAvailable == false}  className="input"/>
+                               {values.isTINFormatNotAvailable == false ?( <Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} disabled  className="input"/>):<Input name="taxReferenceNumber" onChange={handleChange} value={values.taxReferenceNumber} className="number"/>}
                               </FormControl>
                              {/* {values.permanentResidentialCountryId == 257?( */}
                              <div className="d-flex">
@@ -1410,12 +1663,9 @@ export default function Factors() {
                         )}
                         <Typography
                            style={{
-                        
                             fontSize: "17px",
                             marginTop: "10px",
-                           
-                       
-                          marginBottom: "10px",
+                            marginBottom: "10px",
                         }}
                         >
                           Has the individual been physically present in the United
@@ -1425,25 +1675,32 @@ export default function Factors() {
                         </Typography>
 
                         <FormControl>
-                          <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="female"
-                              control={<Radio />}
-                              label="Yes"
-                            />
-                            <FormControlLabel
-                              className="label"
-                              value="male"
-                              control={<Radio />}
-                              label="No"
-                            />
-                          </RadioGroup>
-                          
-                        </FormControl>
+                        <RadioGroup
+                          row
+                          id="isPresentAtleast31Days"
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="isPresentAtleast31Days"
+                           value={values.isPresentAtleast31Days}
+                          onChange={handleChange}
+                        >
+                          <FormControlLabel
+                           value="Yes"
+                            control={<Radio />}
+                            label="Yes"
+                            name="isPresentAtleast31Days"
+                          />
+                          <FormControlLabel
+                            className="label"
+                            value="No"
+                            control={<Radio />}
+                            label="No"
+                            name="isPresentAtleast31Days"
+                          />
+                        </RadioGroup>
+                        <p className="error">
+                        {errors.isPresentAtleast31Days}
+                      </p>
+                      </FormControl>
 
                         <Divider className="dividr" />
                       </>
@@ -1661,7 +1918,7 @@ export default function Factors() {
                           history('/W-8BEN/Declaration')
                         }}
                         variant="contained"
-                        size="large"
+                        size="small"
                         style={{
                           color: "white",
                           backgroundColor: "black",

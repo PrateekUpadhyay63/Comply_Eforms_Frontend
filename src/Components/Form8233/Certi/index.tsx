@@ -31,7 +31,7 @@ export default function Certifications(props: any) {
   </div>
   </div>
   <div className="col-8 mt-3">
-      <div style={{ padding: "18px" }}>
+      <div style={{ padding: "13px" }}>
         <Paper style={{ padding: "10px" }}>
           <Formik
            validateOnChange={false}
@@ -41,7 +41,6 @@ export default function Certifications(props: any) {
             validationSchema={certificateSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values);
               dispatch(
                 CREATE_8233(values, () => {
                   history(
@@ -68,9 +67,9 @@ export default function Certifications(props: any) {
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "30px",
+                    fontSize: "27px",
                     fontWeight: "550",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   Certification   <span style={{ color: "red" }}>*</span>
@@ -155,10 +154,10 @@ export default function Certifications(props: any) {
                 </Typography>
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     padding: "10px",
                     border: "2px solid black",
-                    fontSize: "20px",
+                    fontSize: "19px",
                   }}
                   className="my-3"
                 >
@@ -175,7 +174,7 @@ export default function Certifications(props: any) {
                     margin: "10px",
                     fontSize: "20px",
 
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                   }}
                 >
                   <span style={{ fontWeight: "550" }}>I certify that:</span>
@@ -183,9 +182,10 @@ export default function Certifications(props: any) {
                 <Typography
                   style={{
                     margin: "10px",
-                    fontSize: "17px",
+                   fontSize: "14px",
                     color: "grey",
-                    marginLeft: "20px",
+                    marginLeft: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                   Under penalties of perjury, I declare that I have examined the
@@ -193,10 +193,9 @@ export default function Certifications(props: any) {
                   belief it is true, correct, and complete. I further certify
                   under penalties of perjury that:
                 </Typography>
-
                 <Paper
                   style={{
-                    marginLeft: "20px",
+                    marginLeft: "10px",
                     width: "96%",
                     backgroundColor: "#d2d6d3",
                   }}
@@ -223,9 +222,10 @@ export default function Certifications(props: any) {
                      
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "10px",
+                          textAlign:"justify" 
                         }}
                       >
                         1. I am the beneficial owner (or am authorized to sign
@@ -256,7 +256,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -287,9 +287,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         3.The beneficial owner is a resident of the treaty
@@ -324,9 +325,10 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
+                          textAlign:"justify" 
                         }}
                       >
                         4. Furthermore, I authorize this form to be provided to
@@ -350,7 +352,7 @@ export default function Certifications(props: any) {
 
                     <Typography
                       style={{
-                        fontSize: "17px",
+                       fontSize: "14px",
                         color: "black",
                         marginTop: "10px",
                         marginBottom: "20px",
@@ -370,7 +372,7 @@ export default function Certifications(props: any) {
                       />
                       <Typography
                         style={{
-                          fontSize: "17px",
+                         fontSize: "14px",
                           color: "black",
                           marginTop: "7px",
                         }}
@@ -379,7 +381,7 @@ export default function Certifications(props: any) {
                         <span
                           style={{
                             color: "blue",
-                            fontSize: "19px",
+                            fontSize: "14px",
                             marginLeft: "5px",
                           }}
                         >

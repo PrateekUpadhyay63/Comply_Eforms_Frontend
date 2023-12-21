@@ -33,6 +33,7 @@ const EndPoint = {
   GetAgentCountriesImportantForEform:"/WebAppBasic/GetAgentCountriesImportantForEform",
   GetChapter3Status:"/W9Common/GetChapter3Status",
   GetChapter4Statuses:"/W9Common/GetChapter4Statuses",
-  GetAgentIncomeTypeHiddenAllowAnoymo:"AgentUSSourceIncome/GetAgentIncomeTypeHiddenAllowAnoymo",
+  GetAgentIncomeTypeHiddenAllowAnoymo:"/AgentUSSourceIncome/GetAgentIncomeTypeHiddenAllowAnoym",
+  SendOTPMail:"/Mail/SendOTPMail",
 };
 export default EndPoint;

@@ -28,7 +28,7 @@ import {
   firstSchema,
 } from "../../../schemas";
 import checksolid from "../../../assets/img/check-solid.png";
-// import "./index.scss";
+import "./index.scss";
 import { W9_state } from "../../../Redux/Actions";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
@@ -160,16 +160,17 @@ export default function Fedral_tax(props: any) {
           }) => (
             <Form onSubmit={handleSubmit}>
             <div className="row w-100 h-100">
-            <div className="col-4">
-          <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1253} formName={2}/>
+            <div className="col-4" style={{backgroundColor: "#0c3d69"}}>
+          <div style={{ padding: "20px 0px",height:"100%" ,}}>
+            <BreadCrumbComponent breadCrumbCode={1203} formName={1}/>
           
       </div>
           </div>
-          <div className="col-8 mt-3">   
-              <div style={{ width: "100%" ,backgroundColor:"#fff",}}>
-                <div >
-                  <Typography align="left" style={{ margin: "15px" }}>
+          <div className="col-8 mt-3" style={{backgroundColor: "#0c3d69"}}>   
+              <div  style={{ padding: "10px 0px" }}>
+               <Paper elevation={6} style={{ padding: "12px",}}>
+               <div style={{ width: "100%" , }}>
+                  <Typography align="left" style={{ }}>
                     <div
                       className="row"
                       style={{
@@ -178,11 +179,11 @@ export default function Fedral_tax(props: any) {
                       }}
                     >
                       <Typography
-                        className="col-md-6 col-12 mt-3"
+                        className="col-md-12 col-12 mt-1"
                         align="left"
                         style={{
                           color: "black",
-                          fontSize: "20px",
+                          fontSize: "27px",
                           fontWeight: "550",
                         }}
                       >
@@ -455,7 +456,7 @@ export default function Fedral_tax(props: any) {
                               padding: " 0 10px",
                               color: "#7e7e7e",
                               fontStyle: "italic",
-                              height: "45px",
+                              height: "40px",
                               width: "70%",
                             }}
                           >
@@ -688,9 +689,9 @@ export default function Fedral_tax(props: any) {
                       </>
                     ) : null}
                   </Typography>
-                </div>
+               
 
-                <div style={{ padding: "10px", width: "90%" ,paddingRight:"0px"}}>
+                <div style={{ marginTop: "20px", width: "90%" ,paddingRight:"0px"}}>
                   <Accordion
                     expanded={expanded === "groupPanel"}
                     onChange={handleChangeAccodion("groupPanel")}
@@ -1065,6 +1066,8 @@ export default function Fedral_tax(props: any) {
                     Back
                   </Button>
                 </Typography>
+              </div>
+               </Paper>
               </div>
               </div>
               </div>

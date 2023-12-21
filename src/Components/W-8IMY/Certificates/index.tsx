@@ -59,12 +59,12 @@ export default function Certifications(props: any) {
         <div className="row w-100 h-100">
         <div className="col-4">
           <div style={{ padding: "20px 0px",height:"100%" }}>
-            <BreadCrumbComponent breadCrumbCode={1298} formName={6}/>
+            <BreadCrumbComponent breadCrumbCode={1500} formName={7}/>
       </div>
       </div>
       <div className="col-8 mt-3">
   
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: "13px" }}>
       <Formik
        validateOnChange={false}
        validateOnBlur={false}
@@ -96,10 +96,10 @@ export default function Certifications(props: any) {
           <Typography
             align="left"
             style={{
-              margin: "10px",
+              margin: "5px",
               fontSize: "27px",
               fontWeight: "550",
-              marginLeft: "20px",
+              marginLeft: "13px",
             }}
           >
             Certification <span style={{ color: "red" }}>*</span>
@@ -201,10 +201,10 @@ export default function Certifications(props: any) {
         
           <Typography
             style={{
-              margin: "10px",
-              fontSize: "17px",
+              marginLeft: "13px",
+             fontSize: "16px",
               color: "grey",
-              marginLeft: "20px",
+              
             }}
           >
             Under penalties of perjury, I declare that 
@@ -212,7 +212,7 @@ export default function Certifications(props: any) {
 
           <Paper
             style={{
-              marginLeft: "20px",
+              marginLeft: "10px",
               width: "97%",
               backgroundColor: "#d2d6d3",
             }}
@@ -233,9 +233,10 @@ export default function Certifications(props: any) {
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
                   style={{
-                    fontSize: "17px",
+                   fontSize: "14px",
                     color: "black",
                     marginTop: "10px",
+                    textAlign:"justify" 
                   }}
                 >
                  I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete.
@@ -256,7 +257,7 @@ export default function Certifications(props: any) {
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px" ,textAlign:"justify" }}
                 >
                  Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for 
 which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form
@@ -278,7 +279,7 @@ which I am providing this form or any withholding agent that can disburse or mak
                         size="medium"
                         style={{ fontSize: "2rem" }} className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" ,fontWeight:"bold"}}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px" ,fontWeight:"bold",textAlign:"justify" }}
                 >
                  I agree that I will submit a new form within 30 days if any certification on this form becomes incorrect.
                 </Typography>
@@ -303,13 +304,13 @@ which I am providing this form or any withholding agent that can disburse or mak
                         size="medium"
                         style={{ fontSize: "2rem" }}className="mx-2" />
                 <Typography
-                  style={{ fontSize: "17px", color: "black", marginTop: "7px" }}
+                  style={{fontSize: "14px", color: "black", marginTop: "7px",textAlign:"justify"  }}
                 >
                   Check to confirm you have reviewed the Electronic Form
                   <span
                     style={{
                       color: "blue",
-                      fontSize: "19px",
+                      fontSize: "15px",
                       marginLeft: "5px",
                     }}
                   >

@@ -36,7 +36,7 @@ export default function FCTA_Reporting(props: any) {
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [clickCount, setClickCount] = useState(0);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -72,7 +72,7 @@ export default function FCTA_Reporting(props: any) {
           </div>
           <div className="col-8 mt-3">
 
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: "12px" }}>
         <Paper style={{ padding: "16px" }}>
           <Formik
             validateOnChange={false}
@@ -85,13 +85,19 @@ export default function FCTA_Reporting(props: any) {
             enableReinitialize
             validationSchema={claimSchemaaa}
             onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(true);
-              dispatch(
-                W8_state(values, () => {
-                  history("/W-8BEN/Declaration/US_Tin/Rates");
-                })
-              );
-              history("/W-8BEN/Declaration/US_Tin/Rates");
+              if (clickCount === 0) {
+      
+                setClickCount(clickCount+1);
+              } else{
+                setSubmitting(true);
+                dispatch(
+                  W8_state(values, () => {
+                    history("/W-8BEN/Declaration/US_Tin/Rates");
+                  })
+                );
+                history("/W-8BEN/Declaration/US_Tin/Rates");
+              }
+            
             }}
           >
             {({
@@ -104,6 +110,63 @@ export default function FCTA_Reporting(props: any) {
               setFieldValue,
             }) => (
               <Form onSubmit={handleSubmit}>
+                   {values.isSubmissionClaimTreaty === "yes" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  Treaty107
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+              The country selected does not match the resident country selected earlier in the process. Your agent may contact you for further information.
+
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                  <Typography>
+                  Treaty120
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+The treaty country chosen does not match the country selected earlier as the primary residence address country. Please review the selections for accuracy. Generally the primary residence address country will be the same country applicable for treaty claim purposes. The withholding agent may need to request further information depending on answers given elsewhere and attachments supplied.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                
+                
+                 
+                </div>):""}
+                {values.isSubmissionClaimTreaty === "No" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  Treaty119
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+ You have made a selection that indicates you do not wish to claim treaty benefits that may be available. If this is correct please continue to the next stage. Your agent may contact you for further information.
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                
+                
+                 
+                </div>):""}
+
                 <>{console.log(errors, values, "valeeeeeeeeeee")}</>
                 <div>
                   <div style={{ margin: "10px" }}>

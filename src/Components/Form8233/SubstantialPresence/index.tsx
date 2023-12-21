@@ -89,13 +89,13 @@ export default function Presence(props: any) {
       </div>
       </div>
       <div className="col-8 mt-3">
-            <div style={{ padding: "18px" }}>
+            <div style={{ padding: "13px" }}>
               <Paper style={{ padding: "10px" }}>
                 <Typography
                   align="left"
                   style={{
                     margin: "10px",
-                    fontSize: "33px",
+                    fontSize: "27px",
                     fontWeight: "550",
                     marginLeft: "16px",
                   }}
@@ -265,11 +265,11 @@ export default function Presence(props: any) {
                 ) : (
                   ""
                 )}
-                <div style={{ margin: "20px" }}>
+                <div  style={{ margin: "20px" }}>
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography style={{ fontSize: "18px" }}>
+                    <Typography style={{ fontSize: "17px",marginTop:"10px" }}>
                       How many days has the Individual been in the U.S. in the
                       current year ? <span style={{ color: "red" }}>*</span>
                     </Typography>
@@ -302,7 +302,7 @@ export default function Presence(props: any) {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography style={{ fontSize: "18px" }}>
+                    <Typography style={{ fontSize: "17px" ,marginTop:"10px"}}>
                       How many days has the Individual been in the first year
                       before the current year ?
                       <span style={{ color: "red" }}>*</span>
@@ -337,7 +337,7 @@ export default function Presence(props: any) {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography style={{ fontSize: "18px" }}>
+                    <Typography style={{ fontSize: "17px" ,marginTop:"10px"}}>
                       How many days has the Individual been in the second year
                       before the current year ?{" "}
                       <span style={{ color: "red" }}>*</span>
@@ -372,7 +372,7 @@ export default function Presence(props: any) {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography style={{ fontSize: "18px" }}>
+                    <Typography style={{ fontSize: "17px" ,marginTop:"10px"}}>
                       Substantial Presence Test for U.S. tax purposes total
                       qualifying days:
                     </Typography>
@@ -407,7 +407,7 @@ export default function Presence(props: any) {
                     style={{
                       padding: "18px",
                       backgroundColor: "#d6d6d6",
-                      fontSize: "18px",
+                      fontSize: "17px",
                     }}
                   >
                     Since the total number of qualifying days does not exceed
