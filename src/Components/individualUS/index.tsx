@@ -1693,7 +1693,7 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 7 ||
                                   values.usTinTypeId == 4 ||
                                   values.usTinTypeId == 0
                                 }
