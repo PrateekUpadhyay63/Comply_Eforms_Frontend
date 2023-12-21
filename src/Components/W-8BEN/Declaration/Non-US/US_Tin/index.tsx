@@ -41,8 +41,8 @@ export default function Tin(props: any) {
     setselectedContinue,
   } = props;
   const [expanded, setExpanded] = React.useState<string | false>("");
-    const [ustinArray, setUStinArray] = useState([]);
-    const [ustinValue, setUStinvalue] = useState([]);
+  const [ustinArray, setUStinArray] = useState([]);
+  const [ustinValue, setUStinvalue] = useState([]);
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
@@ -105,7 +105,7 @@ export default function Tin(props: any) {
     usTin: onBoardingFormValues.usTin ? onBoardingFormValues.usTin : "",
     // usTinTypeId:0,
     // usTin:"",
-    tinValue:"",
+    tinValue: "",
     notAvailable: false,
     foreignTINCountry: onBoardingFormValues.foreignTINCountryId
       ? onBoardingFormValues.foreignTINCountryId
@@ -190,34 +190,34 @@ export default function Tin(props: any) {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                      {toolInfo === "ForeignTin" ? (
-                    <div className="mt-5">
-                      <Paper
-                      
-                        style={{ backgroundColor: "#d1ecf1", padding: "15px"}}
-                      >
-                       <div className="d-flex" style={{justifyContent:"space-between"}}>
-                       <Typography style={{color: "#0c5460"}}>
-                       United Kingdom TIN Format is 9999999999 false <br/> 9- Numeric value only <br/> A- Alphabetic character only <br/> *- Alphanumeric character only <br/> ?- Characters optional after this <br/> IF TIN format is not available, please check the below box and continue
-                        </Typography>
+                    {toolInfo === "ForeignTin" ? (
+                      <div className="mt-5">
+                        <Paper
+
+                          style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
+                        >
+                          <div className="d-flex" style={{ justifyContent: "space-between" }}>
+                            <Typography style={{ color: "#0c5460" }}>
+                              United Kingdom TIN Format is 9999999999 false <br /> 9- Numeric value only <br /> A- Alphabetic character only <br /> *- Alphanumeric character only <br /> ?- Characters optional after this <br /> IF TIN format is not available, please check the below box and continue
+                            </Typography>
 
 
-                        <Typography>
-                          <CloseIcon  style={{color:"#0c5460",cursor:"pointer",fontSize:"medium"}} onClick={() => {
-                            setToolInfo("");
-                          }}/>
-                        </Typography>
-                       </div>
-                       
-                      
-                        
-                        
-                       
-                      </Paper>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                            <Typography>
+                              <CloseIcon style={{ color: "#0c5460", cursor: "pointer", fontSize: "medium" }} onClick={() => {
+                                setToolInfo("");
+                              }} />
+                            </Typography>
+                          </div>
+
+
+
+
+
+                        </Paper>
+                      </div>
+                    ) : (
+                      ""
+                    )}
 
                     <>{console.log(errors, values)}</>
                     <Typography
@@ -232,117 +232,117 @@ export default function Tin(props: any) {
                     </Typography>
 
                     <div>
-                     {values.notAvailable === true ?( 
-                     
-                     <div
-                        style={{
-                          margin: "10px",
-                          display: "flex",
-                          marginTop: "25px",
-                        }}
-                        className="row"
-                      >
-                        <div className="col-lg-5 col-12">
-                          <Typography>
-                            U.S. TIN Type<span style={{ color: "red" }}>*</span>
-                            <span>
-                              <Tooltip
-                                style={{
-                                  backgroundColor: "black",
-                                  color: "white",
-                                }}
-                                title={
-                                  <>
-                                    <Typography color="inherit">
-                                      U.S. TIN Type Info
-                                    </Typography>
-                                    <a onClick={() => setToolInfo("basic")}>
-                                      <Typography
-                                        style={{
-                                          cursor: "pointer",
-                                          textDecorationLine: "underline",
-                                        }}
-                                        align="center"
-                                      >
-                                        View More...
+                      {values.notAvailable === true ? (
+
+                        <div
+                          style={{
+                            margin: "10px",
+                            display: "flex",
+                            marginTop: "25px",
+                          }}
+                          className="row"
+                        >
+                          <div className="col-lg-5 col-12">
+                            <Typography>
+                              U.S. TIN Type<span style={{ color: "red" }}>*</span>
+                              <span>
+                                <Tooltip
+                                  style={{
+                                    backgroundColor: "black",
+                                    color: "white",
+                                  }}
+                                  title={
+                                    <>
+                                      <Typography color="inherit">
+                                        U.S. TIN Type Info
                                       </Typography>
-                                    </a>
-                                  </>
-                                }
-                              >
-                                <Info
+                                      <a onClick={() => setToolInfo("basic")}>
+                                        <Typography
+                                          style={{
+                                            cursor: "pointer",
+                                            textDecorationLine: "underline",
+                                          }}
+                                          align="center"
+                                        >
+                                          View More...
+                                        </Typography>
+                                      </a>
+                                    </>
+                                  }
+                                >
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "12px",
+                                      cursor: "pointer",
+                                      verticalAlign: "super",
+                                    }}
+                                  />
+                                </Tooltip>
+                              </span>
+                            </Typography>
+                            {toolInfo === "basic" ? (
+                              <div>
+                                <Paper
                                   style={{
-                                    color: "#ffc107",
-                                    fontSize: "12px",
-                                    cursor: "pointer",
-                                    verticalAlign: "super",
-                                  }}
-                                />
-                              </Tooltip>
-                            </span>
-                          </Typography>
-                          {toolInfo === "basic" ? (
-                            <div>
-                              <Paper
-                                style={{
-                                  backgroundColor: "#dedcb1",
-                                  padding: "15px",
-                                  marginBottom: "10px",
-                                }}
-                              >
-                                <Typography>
-                                  Please select a U.S. TIN type status from the
-                                  dropdown.
-                                </Typography>
-
-                                <Typography style={{ marginTop: "10px" }}>
-                                  If a TIN type is not available, ensure you
-                                  select the checkbox to the right of the field
-                                  and provide an explanation as to why it is not
-                                  available in the corresponding boxes at the
-                                  bottom of the screen.
-                                </Typography>
-
-                                <Link
-                                  href="#"
-                                  underline="none"
-                                  style={{
-                                    marginTop: "10px",
-                                    fontSize: "16px",
-                                  }}
-                                  onClick={() => {
-                                    setToolInfo("");
+                                    backgroundColor: "#dedcb1",
+                                    padding: "15px",
+                                    marginBottom: "10px",
                                   }}
                                 >
-                                  --Show Less--
-                                </Link>
-                              </Paper>
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                          <select
-                            disabled
-                            style={{
-                              border: " 1px solid #d9d9d9 ",
-                              padding: " 0 10px",
-                              color: "#7e7e7e",
-                              fontStyle: "italic",
-                              height: "50px",
-                              width: "100%",
-                            }}
-                            name="usTinTypeId"
-                            id="Income"
-                            
-                            defaultValue={1}
-                            onBlur={handleBlur}
-                            value={values.usTinTypeId}
-                            onChange={(e) => {
-                              handleChange(e);
-                            }}
-                          >
-                            <option value="1">U.S. TIN not available</option>
-                                {/* {ustinValue?.map((ele: any) => (
+                                  <Typography>
+                                    Please select a U.S. TIN type status from the
+                                    dropdown.
+                                  </Typography>
+
+                                  <Typography style={{ marginTop: "10px" }}>
+                                    If a TIN type is not available, ensure you
+                                    select the checkbox to the right of the field
+                                    and provide an explanation as to why it is not
+                                    available in the corresponding boxes at the
+                                    bottom of the screen.
+                                  </Typography>
+
+                                  <Link
+                                    href="#"
+                                    underline="none"
+                                    style={{
+                                      marginTop: "10px",
+                                      fontSize: "16px",
+                                    }}
+                                    onClick={() => {
+                                      setToolInfo("");
+                                    }}
+                                  >
+                                    --Show Less--
+                                  </Link>
+                                </Paper>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                            <select
+                              disabled
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "50px",
+                                width: "100%",
+                              }}
+                              name="usTinTypeId"
+                              id="Income"
+
+                              defaultValue={1}
+                              onBlur={handleBlur}
+                              value={values.usTinTypeId}
+                              onChange={(e) => {
+                                handleChange(e);
+                              }}
+                            >
+                              <option value="1">U.S. TIN not available</option>
+                              {/* {ustinValue?.map((ele: any) => (
                                   // ele?.nonUSIndividual &&
                                   //   values?.isUSIndividual == "no" ||
                                   // ele?.usIndividual &&
@@ -358,174 +358,174 @@ export default function Tin(props: any) {
                                   //   ""
                                   // );
                                 ))} */}
-                          </select>
-                          {/* <p className="error">{errors.usTinTypeId}</p> */}
-                        </div>
+                            </select>
+                            {/* <p className="error">{errors.usTinTypeId}</p> */}
+                          </div>
 
-                        <div className="col-lg-5 col-12">
-                          <Typography>U.S. TIN</Typography>
-                          <Input
-                            disabled
-                            fullWidth
-                            
-                            placeholder="ENTER US TIN"
-                         defaultValue="ENTER US TIN"
-                            value={values.tinValue}
-                            // onBlur={handleBlur}
-                            onChange={(e: any) => {
-                              handleChange(e);
-                                setFieldValue("","");
-                            }}
-                           
-                            style={{
-                              border: " 1px solid #d9d9d9 ",
-                              padding: " 0 10px",
-                              color: "#7e7e7e",
-                              fontStyle: "italic",
-                              height: "50px",
-                              width: "100%",
+                          <div className="col-lg-5 col-12">
+                            <Typography>U.S. TIN</Typography>
+                            <Input
+                              disabled
+                              fullWidth
 
-                            }}
-                          />
-                          {values.notAvailable ? (
-                            ""
-                          ) : 
-                            // <p className="error">{errors.usTin}</p>
-                            " "
-                          }
-                        </div>
-                        <div className="col-lg-2 col-12">
-                          <div style={{ marginTop: "27px" }}>
-                            <Checkbox
-                              value={values.notAvailable}
-                              checked={values.notAvailable}
-                              onChange={handleChange}
-                              size="medium"
-                              name="notAvailable"
+                              placeholder="ENTER US TIN"
+                              defaultValue="ENTER US TIN"
+                              value={values.tinValue}
+                              // onBlur={handleBlur}
+                              onChange={(e: any) => {
+                                handleChange(e);
+                                setFieldValue("", "");
+                              }}
+
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "50px",
+                                width: "100%",
+
+                              }}
                             />
-                            <span style={{ fontSize: "12px" }}>
-                              Not Available
-                              {errors.notAvailable && touched.notAvailable ? (
-                                <div>
-                                  <Typography color="error">
-                                    {errors.notAvailable}
-                                  </Typography>
-                                </div>
-                              ) : (
-                                ""
-                              )}
-                            </span>
+                            {values.notAvailable ? (
+                              ""
+                            ) :
+                              // <p className="error">{errors.usTin}</p>
+                              " "
+                            }
                           </div>
-                        </div>
-                      </div>):
-                      
-                      <div
-                      style={{
-                        margin: "10px",
-                        display: "flex",
-                        marginTop: "25px",
-                      }}
-                      className="row"
-                    >
-                      <div className="col-lg-5 col-12">
-                        <Typography>
-                          U.S. TIN Type<span style={{ color: "red" }}>*</span>
-                          <span>
-                            <Tooltip
-                              style={{
-                                backgroundColor: "black",
-                                color: "white",
-                              }}
-                              title={
-                                <>
-                                  <Typography color="inherit">
-                                    U.S. TIN Type Info
-                                  </Typography>
-                                  <a onClick={() => setToolInfo("basic")}>
-                                    <Typography
-                                      style={{
-                                        cursor: "pointer",
-                                        textDecorationLine: "underline",
-                                      }}
-                                      align="center"
-                                    >
-                                      View More...
-                                    </Typography>
-                                  </a>
-                                </>
-                              }
-                            >
-                              <Info
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "12px",
-                                  cursor: "pointer",
-                                  verticalAlign: "super",
-                                }}
+                          <div className="col-lg-2 col-12">
+                            <div style={{ marginTop: "27px" }}>
+                              <Checkbox
+                                value={values.notAvailable}
+                                checked={values.notAvailable}
+                                onChange={handleChange}
+                                size="medium"
+                                name="notAvailable"
                               />
-                            </Tooltip>
-                          </span>
-                        </Typography>
-                        {toolInfo === "basic" ? (
-                          <div>
-                            <Paper
+                              <span style={{ fontSize: "12px" }}>
+                                Not Available
+                                {errors.notAvailable && touched.notAvailable ? (
+                                  <div>
+                                    <Typography color="error">
+                                      {errors.notAvailable}
+                                    </Typography>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        </div>) :
+
+                        <div
+                          style={{
+                            margin: "10px",
+                            display: "flex",
+                            marginTop: "25px",
+                          }}
+                          className="row"
+                        >
+                          <div className="col-lg-5 col-12">
+                            <Typography>
+                              U.S. TIN Type<span style={{ color: "red" }}>*</span>
+                              <span>
+                                <Tooltip
+                                  style={{
+                                    backgroundColor: "black",
+                                    color: "white",
+                                  }}
+                                  title={
+                                    <>
+                                      <Typography color="inherit">
+                                        U.S. TIN Type Info
+                                      </Typography>
+                                      <a onClick={() => setToolInfo("basic")}>
+                                        <Typography
+                                          style={{
+                                            cursor: "pointer",
+                                            textDecorationLine: "underline",
+                                          }}
+                                          align="center"
+                                        >
+                                          View More...
+                                        </Typography>
+                                      </a>
+                                    </>
+                                  }
+                                >
+                                  <Info
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "12px",
+                                      cursor: "pointer",
+                                      verticalAlign: "super",
+                                    }}
+                                  />
+                                </Tooltip>
+                              </span>
+                            </Typography>
+                            {toolInfo === "basic" ? (
+                              <div>
+                                <Paper
+                                  style={{
+                                    backgroundColor: "#dedcb1",
+                                    padding: "15px",
+                                    marginBottom: "10px",
+                                  }}
+                                >
+                                  <Typography>
+                                    Please select a U.S. TIN type status from the
+                                    dropdown.
+                                  </Typography>
+
+                                  <Typography style={{ marginTop: "10px" }}>
+                                    If a TIN type is not available, ensure you
+                                    select the checkbox to the right of the field
+                                    and provide an explanation as to why it is not
+                                    available in the corresponding boxes at the
+                                    bottom of the screen.
+                                  </Typography>
+
+                                  <Link
+                                    href="#"
+                                    underline="none"
+                                    style={{
+                                      marginTop: "10px",
+                                      fontSize: "16px",
+                                    }}
+                                    onClick={() => {
+                                      setToolInfo("");
+                                    }}
+                                  >
+                                    --Show Less--
+                                  </Link>
+                                </Paper>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                            <select
+                              disabled={values.notAvailable}
                               style={{
-                                backgroundColor: "#dedcb1",
-                                padding: "15px",
-                                marginBottom: "10px",
+                                border: " 1px solid #d9d9d9 ",
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "50px",
+                                width: "100%",
+                              }}
+                              name="usTinTypeId"
+                              id="Income"
+                              defaultValue={1}
+                              onBlur={handleBlur}
+                              value={values.usTinTypeId}
+                              onChange={(e) => {
+                                handleChange(e);
                               }}
                             >
-                              <Typography>
-                                Please select a U.S. TIN type status from the
-                                dropdown.
-                              </Typography>
-
-                              <Typography style={{ marginTop: "10px" }}>
-                                If a TIN type is not available, ensure you
-                                select the checkbox to the right of the field
-                                and provide an explanation as to why it is not
-                                available in the corresponding boxes at the
-                                bottom of the screen.
-                              </Typography>
-
-                              <Link
-                                href="#"
-                                underline="none"
-                                style={{
-                                  marginTop: "10px",
-                                  fontSize: "16px",
-                                }}
-                                onClick={() => {
-                                  setToolInfo("");
-                                }}
-                              >
-                                --Show Less--
-                              </Link>
-                            </Paper>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                        <select
-                          disabled={values.notAvailable}
-                          style={{
-                            border: " 1px solid #d9d9d9 ",
-                            padding: " 0 10px",
-                            color: "#7e7e7e",
-                            fontStyle: "italic",
-                            height: "50px",
-                            width: "100%",
-                          }}
-                          name="usTinTypeId"
-                          id="Income"
-                          defaultValue={1}
-                          onBlur={handleBlur}
-                          value={values.usTinTypeId}
-                          onChange={(e) => {
-                            handleChange(e);
-                          }}
-                        >
-                          <option value="1">-Select-</option>
+                              <option value="1">-Select-</option>
                               {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
@@ -542,61 +542,61 @@ export default function Tin(props: any) {
                                 //   ""
                                 // );
                               ))}
-                        </select>
-                        {/* <p className="error">{errors.usTinTypeId}</p> */}
-                      </div>
+                            </select>
+                            {/* <p className="error">{errors.usTinTypeId}</p> */}
+                          </div>
 
-                      <div className="col-lg-5 col-12">
-                        <Typography>U.S. TIN</Typography>
-                        <Input
-                          disabled={values.notAvailable}
-                          fullWidth
-                          type="text"
-                          name="usTin"
-                          value={values.usTin}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          error={Boolean(touched.usTin && errors.usTin)}
-                          style={{
-                            border: " 1px solid #d9d9d9 ",
-                            padding: " 0 10px",
-                            color: "#7e7e7e",
-                            fontStyle: "italic",
-                            height: "50px",
-                            width: "100%",
-                          }}
-                        />
-                        {values.notAvailable ? (
-                          ""
-                        ) : 
-                          // <p className="error">{errors.usTin}</p>
-                          " "
-                        }
-                      </div>
-                      <div className="col-lg-2 col-12">
-                        <div style={{ marginTop: "27px" }}>
-                          <Checkbox
-                            value={values.notAvailable}
-                            checked={values.notAvailable}
-                            onChange={handleChange}
-                            size="medium"
-                            name="notAvailable"
-                          />
-                          <span style={{ fontSize: "12px" }}>
-                            Not Available
-                            {errors.notAvailable && touched.notAvailable ? (
-                              <div>
-                                <Typography color="error">
-                                  {errors.notAvailable}
-                                </Typography>
-                              </div>
-                            ) : (
+                          <div className="col-lg-5 col-12">
+                            <Typography>U.S. TIN</Typography>
+                            <Input
+                              disabled={values.notAvailable}
+                              fullWidth
+                              type="text"
+                              name="usTin"
+                              value={values.usTin}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                              error={Boolean(touched.usTin && errors.usTin)}
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                padding: " 0 10px",
+                                color: "#7e7e7e",
+                                fontStyle: "italic",
+                                height: "50px",
+                                width: "100%",
+                              }}
+                            />
+                            {values.notAvailable ? (
                               ""
-                            )}
-                          </span>
+                            ) :
+                              // <p className="error">{errors.usTin}</p>
+                              " "
+                            }
+                          </div>
+                          <div className="col-lg-2 col-12">
+                            <div style={{ marginTop: "27px" }}>
+                              <Checkbox
+                                value={values.notAvailable}
+                                checked={values.notAvailable}
+                                onChange={handleChange}
+                                size="medium"
+                                name="notAvailable"
+                              />
+                              <span style={{ fontSize: "12px" }}>
+                                Not Available
+                                {errors.notAvailable && touched.notAvailable ? (
+                                  <div>
+                                    <Typography color="error">
+                                      {errors.notAvailable}
+                                    </Typography>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
                       }
 
 
@@ -615,7 +615,7 @@ export default function Tin(props: any) {
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <select
-                          disabled
+                            disabled
                             style={{
                               border: " 1px solid #d9d9d9 ",
                               padding: " 0 10px",
@@ -633,14 +633,14 @@ export default function Tin(props: any) {
                             }}
                           >
                             <option value={0}>-Select-</option>
-                                <option value={257}>-United Kingdom-</option>
-                                {getCountriesReducer.allCountriesData?.map(
-                                  (ele: any) => (
-                                    <option key={ele?.id} value={ele?.id}>
-                                      {ele?.name}
-                                    </option>
-                                  )
-                                )}
+                            <option value={257}>-United Kingdom-</option>
+                            {getCountriesReducer.allCountriesData?.map(
+                              (ele: any) => (
+                                <option key={ele?.id} value={ele?.id}>
+                                  {ele?.name}
+                                </option>
+                              )
+                            )}
                           </select>
                           {/* <p className="error">{errors.foreignTINCountry}</p> */}
 
@@ -648,14 +648,14 @@ export default function Tin(props: any) {
                             <Checkbox
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
-                              onChange={(e)=>{handleChange(e);{setFieldValue("tinisFTINNotLegallyRequired", "")}}}
+                              onChange={(e) => { handleChange(e); { setFieldValue("tinisFTINNotLegallyRequired", "") } }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
                             />
                             <span style={{ fontSize: "15px" }}>
                               Check if FTIN not legally required
                               {errors.isFTINNotLegallyRequired &&
-                              touched.isFTINNotLegallyRequired ? (
+                                touched.isFTINNotLegallyRequired ? (
                                 <div>
                                   <Typography color="error">
                                     {errors.isFTINNotLegallyRequired}
@@ -748,32 +748,32 @@ export default function Tin(props: any) {
                         <div className="col-lg-5 col-12">
                           <Typography>
                             Foreign TIN{" "}
-                            {values.foreignTINCountry == 257 ?(  <span>  <Tooltip
+                            {values.foreignTINCountry == 257 ? (<span>  <Tooltip
                               style={{
                                 backgroundColor: "black",
                                 color: "white",
-                  
+
                               }}
                               title={
                                 <>
-                                 
+
                                   <a onClick={() => setToolInfo("ForeignTin")}>
-                                   
+
                                   </a>
                                 </>
                               }
                             >
                               <Info
-                               onClick={() => setToolInfo("ForeignTin")}
+                                onClick={() => setToolInfo("ForeignTin")}
                                 style={{
                                   color: "#ffc107",
                                   fontSize: "15px",
-                                  verticalAlign:"super",
+                                  verticalAlign: "super",
                                   marginLeft: "5px",
                                   cursor: "pointer",
                                 }}
                               />
-                            </Tooltip></span> ):""}
+                            </Tooltip></span>) : ""}
                           </Typography>
 
                           {values.tinisFTINNotLegallyRequired === "No" ? (
@@ -782,10 +782,10 @@ export default function Tin(props: any) {
                               type="text"
                               disabled={
                                 values.isFTINNotLegallyRequired ||
-                                values.foreignTINCountry == "1" 
-                               
-                                
-                                
+                                values.foreignTINCountry == "1"
+
+
+
                               }
                               name="foreignTIN"
                               value={values.foreignTIN}
@@ -794,7 +794,7 @@ export default function Tin(props: any) {
                               inputProps={{ maxLength: 10 }}
                               placeholder="ENTER FOREIGN TIN"
 
-                             
+
                               error={Boolean(
                                 touched.foreignTIN && errors.foreignTIN
                               )}
@@ -814,7 +814,7 @@ export default function Tin(props: any) {
                               disabled={
                                 values.isFTINNotLegallyRequired ||
                                 values.foreignTINCountry == "1" ||
-                                values.tinisFTINNotLegallyRequired ==="Yes"
+                                values.tinisFTINNotLegallyRequired === "Yes"
                               }
                               placeholder="ENTER FOREIGN TIN"
                               name="foreignTIN"
@@ -836,74 +836,74 @@ export default function Tin(props: any) {
                           )}
                           {values.isFTINNotLegallyRequired ? (
                             ""
-                          ) : 
-                            
+                          ) :
+
                             " "
                           }
 
-                         <div  >
-                        <FormControl >
-                            <RadioGroup
-                              row
-                              
-                              name="tinisFTINNotLegallyRequired"
-                              aria-labelledby="demo-row-radio-buttons-group-label"
-                              value={values.tinisFTINNotLegallyRequired}
-                              onChange={(e) => {
-                                handleChange(e);
-                                setFieldValue("foreignTIN", "");
-                              }}
-                            >
-                              <FormControlLabel
-                                value="Yes"
-                                disabled={values.isFTINNotLegallyRequired}
-                                control={<Radio />}
-                                label="Not Available"
-                                name="tinisFTINNotLegallyRequired"
-                              />
-                              <FormControlLabel
-                                className="label"
-                                value="No"
-                                control={<Radio />}
-                                label="Alternative Tin Format"
-                                disabled={values.isFTINNotLegallyRequired}
-                                name="tinisFTINNotLegallyRequired"
-                              />
+                          <div  >
+                            <FormControl >
+                              <RadioGroup
+                                row
 
-                              {values.tinisFTINNotLegallyRequired === "Yes" ||
-                              values.tinisFTINNotLegallyRequired === "No" ? (
-                                <Delete
-                                  onClick={() => {
-                                    handleChange("tinisFTINNotLegallyRequired")(
-                                      ""
-                                    );
-                                  }}
-                                  style={{
-                                    color: "red",
-                                    fontSize: "20px",
-                                    marginTop: "11px",
-                                  
-                                  }}
+                                name="tinisFTINNotLegallyRequired"
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                value={values.tinisFTINNotLegallyRequired}
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  setFieldValue("foreignTIN", "");
+                                }}
+                              >
+                                <FormControlLabel
+                                  value="Yes"
+                                  disabled={values.isFTINNotLegallyRequired}
+                                  control={<Radio />}
+                                  label="Not Available"
+                                  name="tinisFTINNotLegallyRequired"
                                 />
+                                <FormControlLabel
+                                  className="label"
+                                  value="No"
+                                  control={<Radio />}
+                                  label="Alternative Tin Format"
+                                  disabled={values.isFTINNotLegallyRequired}
+                                  name="tinisFTINNotLegallyRequired"
+                                />
+
+                                {values.tinisFTINNotLegallyRequired === "Yes" ||
+                                  values.tinisFTINNotLegallyRequired === "No" ? (
+                                  <Delete
+                                    onClick={() => {
+                                      handleChange("tinisFTINNotLegallyRequired")(
+                                        ""
+                                      );
+                                    }}
+                                    style={{
+                                      color: "red",
+                                      fontSize: "20px",
+                                      marginTop: "11px",
+
+                                    }}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </RadioGroup>
+
+                              {errors.tinisFTINNotLegallyRequired &&
+                                touched.tinisFTINNotLegallyRequired ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.tinisFTINNotLegallyRequired}
+                                  </Typography>
+                                </div>
                               ) : (
                                 ""
                               )}
-                            </RadioGroup>
+                            </FormControl>
+                          </div>
+                        </div>
 
-                            {errors.tinisFTINNotLegallyRequired &&
-                            touched.tinisFTINNotLegallyRequired ? (
-                              <div>
-                                <Typography color="error">
-                                  {errors.tinisFTINNotLegallyRequired}
-                                </Typography>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                          </FormControl>
-                        </div>
-                        </div>
-                       
                       </div>
                     </div>
                     {values.isFTINNotLegallyRequired === true && (
@@ -935,11 +935,11 @@ export default function Tin(props: any) {
                               value="No"
                               control={<Radio />}
                               label="No"
-                              // name="isNotLegallyFTIN"
+                            // name="isNotLegallyFTIN"
                             />
                           </RadioGroup>
                           {errors.isNotLegallyFTIN &&
-                          touched.isNotLegallyFTIN ? (
+                            touched.isNotLegallyFTIN ? (
                             <div>
                               <Typography color="error">
                                 {errors.isNotLegallyFTIN}
@@ -1080,7 +1080,6 @@ export default function Tin(props: any) {
                           Please specify the reason for non-availability of US
                           TIN <span style={{ color: "red" }}>*</span>
                         </Typography>
-
                         <Input
                           fullWidth
                           type="text"

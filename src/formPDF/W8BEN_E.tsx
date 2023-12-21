@@ -134,7 +134,7 @@ const W8Ben: React.FC = () => {
               boxSizing: "border-box",
             }}
           >
-            <div style={{ margin: "10px auto" }}>
+            <div style={{ margin: "10px auto", fontSize: "12px" }}>
               <table
                 style={{
                   width: "100%",
@@ -149,7 +149,7 @@ const W8Ben: React.FC = () => {
                       style={{
                         width: "24%",
                         boxSizing: "border-box",
-                        fontSize: "14px",
+                        fontSize: "10px",
                         lineHeight: "1.3",
                         borderRight: "2px solid #000",
                         borderBottom: "2px solid #000",
@@ -157,7 +157,7 @@ const W8Ben: React.FC = () => {
                     >
                       <p>
                         Form{" "}
-                        <strong style={{ fontSize: "30px", fontWeight: "700" }}>
+                        <strong style={{ fontSize: "14px", fontWeight: "700" }}>
                           W-8BEN-E
                         </strong>
                       </p>
@@ -170,20 +170,20 @@ const W8Ben: React.FC = () => {
                         boxSizing: "border-box",
                         textAlign: "center",
                         width: "52%",
-                        fontSize: "14px",
+                        fontSize: "10px",
                         lineHeight: "1.3",
                         borderRight: "2px solid #000",
                         borderBottom: "2px solid #000",
                       }}
                     >
-                      <h1 style={{ fontSize: "16px", fontWeight: "bolder" }}>
+                      <h1 style={{ fontSize: "12px", fontWeight: "bolder" }}>
                         Certificate of Status of Beneficial Owner for
                         United States Tax Withholding and Reporting (Entities)
                       </h1>
                       <ul
                         style={{
                           listStyle: "none",
-                          fontSize: "12px",
+                          fontSize: "10px",
                           lineHeight: "1.5",
                         }}
                       >
@@ -205,7 +205,7 @@ const W8Ben: React.FC = () => {
                       style={{
                         width: "24%",
                         boxSizing: "border-box",
-                        fontSize: "18px",
+                        fontSize: "13px",
                         fontWeight: "bolder",
                         lineHeight: "1.3",
                         borderBottom: "2px solid #000",
@@ -214,7 +214,7 @@ const W8Ben: React.FC = () => {
                     >
                       <p
                         style={{
-                          fontSize: "14px",
+                          fontSize: "10px",
                           textAlign: "right",
                           color: "blue",
                           fontWeight: "400",
@@ -225,7 +225,7 @@ const W8Ben: React.FC = () => {
                       </p>
                       <h3
                         style={{
-                          fontSize: "20px",
+                          fontSize: "12px",
                           fontWeight: "bolder",
                           lineHeight: "1",
                         }}
@@ -234,14 +234,14 @@ const W8Ben: React.FC = () => {
                       </h3>
                       <h3
                         style={{
-                          fontSize: "20px",
+                          fontSize: "12px",
                           fontWeight: "bolder",
                           lineHeight: "1",
                         }}
                       >
                         Substitute{" "}
                       </h3>
-                      <h5>Form W-8BEN-E</h5>
+                      <h6>Form W-8BEN-E</h6>
                     </th>
                   </tr>
                 </thead>
@@ -733,6 +733,91 @@ const W8Ben: React.FC = () => {
                                       </table>
                                     </td>
                                   </tr>
+                                  <tr>
+                                    <td colSpan={2}>
+                                      <table
+                                        style={{
+                                          borderCollapse: "collapse",
+                                          width: "100%",
+                                        }}
+                                        cellPadding={0}
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td
+                                              style={{
+                                                borderBottom: "1px solid #000",
+                                                padding: "5px 10px",
+                                                width: "70%",
+                                              }}
+                                            >
+                                              <div style={{ float: "left", width: "auto" }}>For Paperwork Reduction Act Notice, see separate instructions </div>
+                                              <div style={{ float: "right", width: "auto", marginLeft: "10px" }}> Cat. No. 59689N</div>
+                                            </td>
+                                            <td
+                                              style={{
+                                                borderBottom: "1px solid #000",
+                                                padding: "5px 10px",
+                                                width: "30%",
+                                                textAlign: "end"
+                                              }}
+                                            >
+                                              Form <strong>W-8BEN-E</strong> (Rev. 10-2021)
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000"
+                                    }}>
+                                      <div style={{ float: "left", width: "20px", marginRight: "10px" }}>8.</div>
+                                      <div style={{ float: "left", width: "calc(100% - 30px)" }}>
+                                        U.S. taxpayer identification number (TIN), if required
+                                      </div>
+                                      <div>
+                                        <p style={{ color: "blue", marginBottom: "5px" }}>EIN: 12-3456789</p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000"
+                                    }}>
+                                      <div style={{ float: "left", width: "33.33%", borderRight: "1px solid #000", padding: "10px" }}>
+                                        9a. &nbsp; GIIN
+                                      </div>
+                                      <div style={{ float: "left", width: "33.33%", borderRight: "1px solid #000", padding: "10px" }}>
+                                        b &nbsp; Foreign TIN
+                                      </div>
+                                      <div style={{ float: "left", width: "33.33%", borderRight: "1px solid #000", padding: "10px" }}>
+                                        Check if FTIN not legally required...... ▶ <input type="checkbox" name="" id="" style={{ float: "right" }} />
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000"
+                                    }}>
+                                      <div style={{ float: "left", width: "20px", marginRight: "10px" }}>10.</div>
+                                      <div style={{ float: "left", width: "calc(100% - 30px)" }}>
+                                        Reference number(s) (see instructions)
+                                      </div>
+                                      <div>
+                                        <p style={{ color: "blue", marginBottom: "5px" }}>A/C #: asd1, VAT : 123456789</p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colSpan={2} style={{
+                                      borderBottom: "1px solid #000",
+                                      padding: "10px"
+                                    }}>
+                                      <strong>Note:</strong> Please complete remainder of the form including signing the form in Part XXX.
+                                    </td>
+                                  </tr>
                                 </tbody>
                               </table>
                             </td>
@@ -769,111 +854,117 @@ const W8Ben: React.FC = () => {
                                 padding: "5px 10px",
                               }}
                             >
-                              <strong>Claim of Tax Treaty Benefits</strong> (for
-                              chapter 3 purposes only) (see instructions){" "}
+                              <strong>Disregarded Entity or Branch Receiving Payment.</strong> (Complete only if a disregarded entity with a GIIN or a
+                              branch of an FFI in a country other than the FFI’s country of residence. See instructions.)
                             </td>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td colSpan={2} style={{ padding: "5px 10px" }}>
-                              9 I certify that the beneficial owner is a
-                              resident of within the meaning of{" "}
-                              <input
-                                type="text"
-                                name=""
-                                id=""
-                                value="Armenia"
-                                style={{
-                                  minWidth: "100px",
-                                  maxWidth: "200px",
-                                  width: "100%",
-                                  borderWidth: "0 0 1px 0",
-                                  borderStyle: "solid",
-                                  borderColor: "#000",
-                                  textAlign: "center",
-                                  color: "blue",
-                                }}
-                              />{" "}
-                              the income tax treaty between the United States
-                              and that country.
+                              <div style={{ width: "20px", float: "left" }}> <strong>11.</strong> </div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                <p>Chapter 4 Status (FATCA status) of disregarded entity or branch receiving payment</p>
+                                <table cellPadding={0} cellSpacing={0} style={{ borderCollapse: "collapse", width: "100%" }}>
+                                  <tbody>
+                                    <tr>
+                                      <td style={{ width: "33.33%", marginBottom: "10px" }}>
+                                        <div>
+                                          <input
+                                            type="checkbox"
+                                            name=""
+                                            id="FFI"
+                                            style={{ width: "20px", margin: "0px 5px 0 0", verticalAlign: "middle" }}
+                                          />
+                                          <label htmlFor="FFI" style={{ width: " calc(100% - 30px)" }}>Branch treated as nonparticipating FFI.</label>
+                                        </div>
+                                      </td>
+                                      <td style={{ width: "33.33%", marginBottom: "10px" }}>
+                                        <div>
+                                          <input
+                                            type="checkbox"
+                                            name=""
+                                            id="FFI"
+                                            style={{ width: "20px", margin: "0px 5px 0 0", verticalAlign: "middle" }}
+                                          />
+                                          <label htmlFor="FFI" style={{ width: " calc(100% - 30px)" }}>Reporting Model 1 FFI.</label>
+                                        </div>
+                                      </td>
+                                      <td style={{ width: "33.33%" }}>
+                                        <div>
+                                          <input
+                                            type="checkbox"
+                                            name=""
+                                            id="FFI"
+                                            style={{ width: "20px", margin: "0px 5px 0 0", verticalAlign: "middle" }}
+                                          />
+                                          <label htmlFor="FFI" style={{ width: " calc(100% - 30px)" }}>U.S. Branch.
+                                          </label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td style={{ width: "33.33%" }}>
+                                        <div>
+                                          <input
+                                            type="checkbox"
+                                            name=""
+                                            id="FFI"
+                                            style={{ width: "20px", margin: "0px 5px 0 0", verticalAlign: "middle" }}
+                                          />
+                                          <label htmlFor="FFI" style={{ width: " calc(100% - 30px)" }}>Participating FFI.
+                                          </label>
+                                        </div>
+                                      </td>
+                                      <td style={{ width: "33.33%" }}>
+                                        <div>
+                                          <input
+                                            type="checkbox"
+                                            name=""
+                                            id="FFI"
+                                            style={{ width: "20px", margin: "0px 5px 0 0", verticalAlign: "middle" }}
+                                          />
+                                          <label htmlFor="FFI" style={{ width: " calc(100% - 30px)" }}>Reporting Model 2 FFI.
+                                          </label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </td>
                           </tr>
                           <tr>
                             <td colSpan={2} style={{ padding: "5px 10px" }}>
-                              10 Special rates and conditions (if applicable—see
-                              instructions): The beneficial owner is claiming
-                              the provisions of Article and paragraph{" "}
-                              <input
-                                type="text"
-                                name=""
-                                id=""
-                                value="IV (2) 34343"
-                                style={{
-                                  minWidth: "100px",
-                                  maxWidth: "200px",
-                                  width: "100%",
-                                  borderWidth: "0 0 1px 0",
-                                  borderStyle: "solid",
-                                  borderColor: "#000",
-                                  textAlign: "center",
-                                  color: "blue",
-                                }}
-                              />{" "}
-                              of the treaty identified on line 9 above to claim
-                              a{" "}
-                              <input
-                                type="text"
-                                name=""
-                                id=""
-                                value="0"
-                                style={{
-                                  minWidth: "50px",
-                                  maxWidth: "100px",
-                                  width: "100%",
-                                  borderWidth: "0 0 1px 0",
-                                  borderStyle: "solid",
-                                  borderColor: "#000",
-                                  textAlign: "center",
-                                  color: "blue",
-                                }}
-                              />
-                              % rate of withholding on (specify type of income):
-                              <input
-                                type="text"
-                                name=""
-                                id=""
-                                value="Income of Representation "
-                                style={{
-                                  minWidth: "100px",
-                                  maxWidth: "200px",
-                                  width: "100%",
-                                  borderWidth: "0 0 1px 0",
-                                  borderStyle: "solid",
-                                  borderColor: "#000",
-                                  textAlign: "center",
-                                  color: "blue",
-                                }}
-                              />
-                              Explain the additional conditions in the Article
-                              and paragraph the beneficial owner meets to be
-                              eligible for the rate of withholding:
-                              <input
-                                type="text"
-                                name=""
-                                id=""
-                                value="4343"
-                                style={{
-                                  minWidth: "50px",
-                                  maxWidth: "100px",
-                                  width: "100%",
-                                  borderWidth: "0 0 1px 0",
-                                  borderStyle: "solid",
-                                  borderColor: "#000",
-                                  textAlign: "center",
-                                  color: "blue",
-                                }}
-                              />
+                              <div style={{ width: "20px", float: "left" }}> <strong>12.</strong> </div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                Address of disregarded entity or branch (street, apt. or suite no., or rural route). <strong> Do not use a P.O. box or in-care-of address</strong> (other than a
+                                registered address).
+
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2} style={{ padding: "5px 10px", borderTop: "1px solid #000" }}>
+                              <div style={{ width: "20px", float: "left" }}>&nbsp;</div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                City or town, state or province. Include postal code where appropriate.
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2} style={{ padding: "5px 10px", borderTop: "1px solid #000" }}>
+                              <div style={{ width: "20px", float: "left" }}>&nbsp;</div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>Country
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2} style={{ padding: "5px 10px", borderTop: "1px solid #000" }}>
+                              <div style={{ width: "20px", float: "left" }}>13.</div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                GIIN (if any) ___________________________________________________________________
+                              </div>
                             </td>
                           </tr>
                         </tbody>
@@ -908,92 +999,172 @@ const W8Ben: React.FC = () => {
                                 padding: "5px 10px",
                               }}
                             >
-                              <strong>Certification</strong>{" "}
+                              <strong>Claim of Tax Treaty Benefits</strong> (if applicable). (For chapter 3 purposes only.)
                             </td>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td colSpan={2} style={{ padding: "5px 0" }}>
-                              Under penalties of perjury, I declare that I have
-                              examined the information on this form and to the
-                              best of my knowledge and belief it is true,
-                              correct, and complete. I further certify under
-                              penalties of perjury that:
+                            <td colSpan={2} style={{ padding: "5px 10px", borderTop: "1px solid #000" }}>
+                              <div style={{ width: "20px", float: "left" }}> <b>14.</b> </div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                I certify that (check all that apply):
+                                <div style={{ width: "100%", marginTop: "10px" }}>
+                                  <div style={{ width: "20px", float: "left" }}>a.</div>
+                                  <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "20px", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /></div>
+                                      <div style={{ width: "calc(100% - 20px)", float: "left" }}>The beneficial owner is a resident of within the meaning of the income tax  <input type="text" name="" id="" value={"Australia"} style={{ width: "200px", borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", margin: "0 5px", padding: "0px 10px" }} />
+                                        treaty between the United States and that country.</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div style={{ width: "100%", marginTop: "10px" }}>
+                                  <div style={{ width: "20px", float: "left" }}>b.</div>
+                                  <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "20px", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /></div>
+                                      <div style={{ width: "calc(100% - 20px)", float: "left" }}>The beneficial owner derives the item (or items) of income for which the treaty benefits are claimed, and, if applicable, meets the
+                                        requirements of the treaty provision dealing with limitation on benefits. The following are types of limitation on benefits provisions that may
+                                        be included in an applicable tax treaty (check only one; see instructions):</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Government</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Company that meets the ownership and base erosion test</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Tax-exempt pension trust or pension fund</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Company that meets the derivative benefits test</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Other tax-exempt organization</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Company with an item of income that meets active trade or business test</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Publicly traded corporation</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Favorable discretionary determination by the U.S. competent authority received</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Publicly traded corporation</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Favorable discretionary determination by the U.S. competent authority received</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Subsidiary of a publicly traded corporation</div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> No LOB article in treaty</div>
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "30%", float: "left" }}>  &nbsp; </div>
+                                      <div style={{ width: "70%", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /> Other (specify Article and paragraph): <input type="text" name="" id="" style={{ width: "200px", borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", margin: "0 5px", padding: "0px 10px" }} /></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div style={{ width: "100%", marginTop: "15px" }}>
+                                  <div style={{ width: "20px", float: "left" }}>c.</div>
+                                  <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                    <div style={{ width: "100%" }}>
+                                      <div style={{ width: "20px", float: "left" }}><input type="checkbox" style={{ verticalAlign: "middle" }} /></div>
+                                      <div style={{ width: "calc(100% - 20px)", float: "left" }}>The beneficial owner is a resident of within the meaning of the income tax  <input type="text" name="" id="" value={"Australia"} style={{ width: "200px", borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", margin: "0 5px", padding: "0px 10px" }} />The beneficial owner is claiming treaty benefits for U.S. source dividends received from a foreign corporation or interest from a U.S. trade
+                                        or business of a foreign corporation and meets qualified resident status (see instructions). </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </td>
                           </tr>
                           <tr>
-                            <td colSpan={2} style={{ padding: "10px 0" }}>
-                              <ul
-                                style={{
-                                  listStyle: "disc",
-                                  paddingLeft: "16px",
-                                }}
-                              >
-                                <li>
-                                  I am the individual that is the beneficial
-                                  owner (or am authorized to sign for the
-                                  individual that is the beneficial owner) of
-                                  all the income or proceeds to which this form
-                                  relates or am using this form to document
-                                  myself for chapter 4 purposes;
-                                </li>
-                                <li>
-                                  The person named on line 1 of this form is not
-                                  a U.S. person;
-                                </li>
-                                <li>
-                                  This form relates to:
-                                  <ol style={{ listStyle: "lower-alpha" }}>
+                            <td colSpan={2} style={{ padding: "5px 10px" }}>
+                              <div style={{ width: "20px", float: "left" }}> <b>15.</b></div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                <strong>Special rates and conditions</strong> (if applicable—see instructions):
+                                <div style={{ width: "100%", marginBottom: "10px" }}>
+                                  The beneficial owner is claiming the provisions of Article and paragraph <input type="text" name="" id="" value="12 (13)" style={{ borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", padding: "0 10px" }} />
+                                  of the treaty identified on line 14a above to claim a % rate of withholding on (specify type of income):
+                                  Explain the additional conditions in the Article the beneficial owner meets to be eligible for the rate of withholding: <input type="text" name="" id="" value="complysandbox.com/(S(ilregg5rdlxww1v1oauzcam1))/Pages/SRCPrepopulator_OBFX." style={{ borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", padding: "0 10px 0 0", width: "100%" }} />
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td
+                              style={{
+                                background: "#000",
+                                color: "#fff",
+                                fontWeight: "bold",
+                                width: "120px",
+                                border: "1px solid #000",
+                                padding: "5px 10px",
+                                textAlign: "center",
+                              }}
+                            >
+                              Part IV
+                            </td>
+                            <td
+                              style={{
+                                borderTop: "1px solid #000",
+                                borderBottom: "1px solid #000",
+                                padding: "5px 10px",
+                              }}
+                            >
+                              <strong>Sponsored FFI</strong>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2} style={{ padding: "5px 10px" }}>
+                              <div style={{ width: "20px", float: "left" }}> <b>16.</b></div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                Special rates and conditions :
+                                <input type="text" name="" id="" value="12 (13)" style={{ borderWidth: "0 0 1px 0", borderBottom: "1px solid #000", padding: "0 10px" }} />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2} style={{ padding: "5px 10px" }}>
+                              <div style={{ width: "20px", float: "left" }}> <b>17.</b></div>
+                              <div style={{ width: "calc(100% - 20px)", float: "left" }}>
+                                Check whichever box applies.
+                                <div style={{ width: "100%", padding: "10px 0" }}>
+                                  <div style={{ width: "100%" }}>
+                                    <input type="checkbox" name="" id="" style={{ verticalAlign: "middle", marginRight: "5px" }} />
+                                    I certify that the entity identified in Part I:</div>
+                                  <ul
+                                    style={{
+                                      listStyle: "disc",
+                                      marginBottom: "5px"
+                                    }}
+                                  >
                                     <li>
-                                      income not effectively connected with the
-                                      conduct of a trade or business in the
-                                      United States;
+                                      Is an investment entity;
                                     </li>
                                     <li>
-                                      {" "}
-                                      income effectively connected with the
-                                      conduct of a trade or business in the
-                                      United States but is not subject to tax
-                                      under an applicable income tax treaty;
+                                      Is not a QI, WP (except to the extent permitted in the withholding foreign partnership agreement), or WT; and
                                     </li>
                                     <li>
-                                      the partner’s share of a partnership’s
-                                      effectively connected taxable income; or
+                                      Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity.
+                                    </li>
+                                  </ul>
+                                  <div style={{ width: "100%" }}>
+                                    <input type="checkbox" name="" id="" style={{ verticalAlign: "middle", marginRight: "5px" }} />
+                                    I certify that the entity identified in Part I:</div>
+                                  <ul
+                                    style={{
+                                      listStyle: "disc",
+                                    }}
+                                  >
+                                    <li>
+                                      Is a controlled foreign corporation as defined in section 957(a);
                                     </li>
                                     <li>
-                                      {" "}
-                                      the partner’s amount realized from the
-                                      transfer of a partnership interest subject
-                                      to withholding under section 1446(f);
+                                      Is not a QI, WP, or WT;
                                     </li>
-                                  </ol>
-                                </li>
-                                <li>
-                                  The person named on line 1 of this form is a
-                                  resident of the treaty country listed on line
-                                  9 of the form (if any) within the meaning of
-                                  the income tax treaty between the United
-                                  States and that country; and
-                                </li>
-                                <li>
-                                  For broker transactions or barter exchanges,
-                                  the beneficial owner is an exempt foreign
-                                  person as defined in the
-                                  instructions.Furthermore, I authorize this
-                                  form to be provided to any withholding agent
-                                  that has control, receipt, or custody of the
-                                  income of which I am the beneficial owner or
-                                  any withholding agent that can disburse or
-                                  make payments of the income of which I am the
-                                  beneficial owner.{" "}
-                                  <strong>
-                                    I agree that I will submit a new form within
-                                    30 days if any certification made on this
-                                    form becomes incorrect.{" "}
-                                  </strong>
-                                </li>
-                              </ul>
+                                    <li>
+                                      Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity; and
+                                    </li>
+                                    <li>Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all
+                                      account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited
+                                      to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.</li>
+                                  </ul>
+                                </div>
+                              </div>
                             </td>
                           </tr>
                           <tr>
@@ -1040,7 +1211,7 @@ const W8Ben: React.FC = () => {
                                   <tr>
                                     <td
                                       style={{
-                                        fontSize: "22px",
+                                        fontSize: "12px",
                                         fontWeight: "bold",
                                         maxWidth: "20%",
                                       }}
@@ -1131,7 +1302,7 @@ const W8Ben: React.FC = () => {
                                             <td
                                               colSpan={2}
                                               style={{
-                                                fontSize: "16px",
+                                                fontSize: "12px",
                                                 color: "blue",
                                                 borderBottom: "1px solid #000",
                                               }}
@@ -1143,7 +1314,7 @@ const W8Ben: React.FC = () => {
                                             <td
                                               colSpan={2}
                                               style={{
-                                                fontSize: "16px",
+                                                fontSize: "12px",
                                                 color: "#000",
                                               }}
                                             >
@@ -1174,7 +1345,7 @@ const W8Ben: React.FC = () => {
                       >
                         <tbody>
                           <tr>
-                            <td style={{ width: "50%", fontSize: "15px" }}>
+                            <td style={{ width: "50%", fontSize: "12px" }}>
                               <strong>
                                 For Paperwork Reduction Act Notice, see separate
                                 instructions.
@@ -1186,7 +1357,7 @@ const W8Ben: React.FC = () => {
                             <td style={{ width: "30%", textAlign: "end" }}>
                               Form{" "}
                               <span
-                                style={{ fontSize: "20px", fontWeight: "bold" }}
+                                style={{ fontSize: "12px", fontWeight: "bold" }}
                               >
                                 W-8BEN
                               </span>{" "}
@@ -1231,7 +1402,7 @@ const W8Ben: React.FC = () => {
                     <td
                       colSpan={4}
                       style={{
-                        fontSize: "32px",
+                        fontSize: "13.2px",
                         fontWeight: "bold",
                         color: "#000",
                         paddingBottom: "20px",
@@ -1249,7 +1420,7 @@ const W8Ben: React.FC = () => {
                         style={{
                           borderCollapse: "collapse",
                           width: "100%",
-                          fontSize: "18px",
+                          fontSize: "12px",
                         }}
                         cellPadding={10}
                       >
@@ -1328,7 +1499,7 @@ const W8Ben: React.FC = () => {
                   borderCollapse: "collapse",
                   width: "100%",
                   margin: "40px auto",
-                  fontSize: "20px",
+                  fontSize: "12px",
                 }}
                 cellPadding={10}
               >
@@ -1337,7 +1508,7 @@ const W8Ben: React.FC = () => {
                     <td
                       colSpan={2}
                       style={{
-                        fontSize: "38px",
+                        fontSize: "16px",
                         fontWeight: "500",
                         color: "#000",
                         paddingBottom: "0px",
