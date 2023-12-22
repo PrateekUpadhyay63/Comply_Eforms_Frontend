@@ -35,6 +35,7 @@ import "./index.scss";
 import { W9_state } from "../../../Redux/Actions";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
 export default function Fedral_tax(props: any) {
   const dispatch = useDispatch();
   const history = useNavigate()
@@ -57,6 +58,14 @@ export default function Fedral_tax(props: any) {
     isPartnership:true,
   };
   const [toolInfo, setToolInfo] = useState("");
+
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
   
   
   const handleChangestatus =
@@ -107,9 +116,58 @@ export default function Fedral_tax(props: any) {
       className="inner_content"
       style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
     >
+      {/* {/ sidebar design /} */}
+        {/* <div
+          className={`offcanvas offcanvas-end ${canvaBx ? "show" : " "}`}
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+          style={{ background: "#d8dce6" }}
+        >
+          <div className="offcanvas-header flex-column">
+            <button
+              type="button"
+              className="btn-close align-self-end"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+              onClick={() => { handleCanvaClose() }}
+            ></button>
+
+          </div>
+          <div className="offcanvas-body pt-0">
+            <div className="card mb-3 rounded-0">
+              <div className="card-header p-0">
+                <h6 className="offcanvas-title w-100 text-center py-2 px-3" id="offcanvasNavbarLabel" style={{ background: "#e7e7e7" }}>IRS Form Instructions</h6>
+              </div>
+              <div className="card-body">
+
+              </div>
+            </div>
+            <div className="card mb-3 rounded-0">
+              <div className="card-header  p-0">
+                <h6 className="offcanvas-title w-100 text-center py-2 px-3" id="offcanvasNavbarLabel" style={{ background: "#e7e7e7" }}>IRS Form Instructions</h6>
+              </div>
+              <div className="card-body">
+                <ul className="navbar-nav justify-content-center text-center w-100 ">
+                  <li className="nav-item">
+                    <Link className="nav-link text-decoration-none" aria-current="page" href="/">W-8BEN - Foreign Status Individuals</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link  text-decoration-none" href="/">W-8BEN-E - Foreign Status Entities</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link  text-decoration-none" href="/">W-8IMY - Intermediaries</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> */}
+        <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+        {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+        {/* {/ sidebar design end /} */}
        <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions"  onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a
@@ -693,7 +751,56 @@ export default function Fedral_tax(props: any) {
                       </>
                     ) : null}
                   </Typography>
+                  {obValues.isUSEntity == true && values.federalTaxClassificationId ==4 ? (
+                        <div>
+                          <Typography style={{ marginTop: "20px" }}>
+                           ​Are you providing this form to a partnership, trust or estate, and if so, do you have any foreign partners, owners, or beneficiaries? 
+                            <span style={{ color: "red" }}>*</span>
+                          </Typography>
 
+                          <div className="d-flex">
+                            <FormControl
+                              error={Boolean(
+                                touched.isPartnership &&
+                                  errors.isPartnership
+                              )}
+                            >
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                                value={values.isPartnership}
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  value="yes"
+                                  control={<Radio />}
+                                  label="Yes"
+                                  name="isPartnership"
+                                />
+                                <FormControlLabel
+                                  value="no"
+                                  control={<Radio />}
+                                  label="No"
+                                  name="isPartnership"
+                                />
+                              </RadioGroup>
+                              {errors.isPartnership &&
+                              touched.isPartnership ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isPartnership}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                
                
 

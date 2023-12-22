@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import {getTinTypes} from "../../../Redux/Actions"
 import { useDispatch } from "react-redux";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
 
 export default function Tin(props: any) {
   const dispatch = useDispatch();
@@ -50,6 +51,14 @@ export default function Tin(props: any) {
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
   const [notUsIndividual , setNonUsIndividual] = useState([]);
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
+
   
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
@@ -98,9 +107,12 @@ export default function Tin(props: any) {
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
   >
+      <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+        {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
     <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions"  onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a

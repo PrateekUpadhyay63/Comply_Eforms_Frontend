@@ -21,6 +21,8 @@ import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
+
 export default function Certifications(props: any) {
   const initialValue = {
     isBeneficialOwnerIncome: false,
@@ -36,6 +38,15 @@ export default function Certifications(props: any) {
   const [checkbox2, setCheckbox2] = useState(false);
   const [checkbox5, setCheckbox5] = useState(false);
   const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false);
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
+
+
 const history = useNavigate()
   // const handleCheckbox2Change = () => {
   //   setCheckbox2(!checkbox2);
@@ -63,9 +74,12 @@ const history = useNavigate()
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
   >
+      <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+        {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
      <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions" onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a
