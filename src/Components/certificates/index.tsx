@@ -15,7 +15,7 @@ import { postFormSelection } from "../../Redux/Actions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import checksolid from "../../assets/img/check-solid.png";
 import agreement from "../../assets/img/agreement.png";
-
+import docIcon from "../../assets/img/docIcon.png";
 export default function Certificates(props: any) {
   const history = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -161,8 +161,8 @@ export default function Certificates(props: any) {
 
   return (
     <section
-      className="inner_content"
-      style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
+      className="inner_content backGround_Image py-4"
+      style={{ marginBottom: "10px" }}
     >
       <div style={{ padding: "17px" }}>
         {InfoMore == "W-9" ? (
@@ -643,6 +643,9 @@ export default function Certificates(props: any) {
             onClick={() => handleCardSelect(card)}
             >
               <CardContent>
+                <div className="iconBox text-center">
+                  <img src={docIcon} alt="" className="img-fluid mb-2" />
+                </div>
                 <div className="check-div">
                  {diableForm == card.enabled ?  (<img src={checksolid}/>) : ""}
                 </div>
