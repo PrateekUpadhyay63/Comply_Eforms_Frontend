@@ -236,6 +236,18 @@ export default function IndividualUs() {
     }
   };
 
+  const formatSortCode = (e: any, values: any): any => {
+    if (e.key === "Backspace" || e.key === "Delete") return;
+    if (e.target.value.length === 2) {
+      setPayload({ ...payload, sortCode: payload.sortCode + "-" });
+      values.sortCode = values.sortCode + "-";
+    }
+    if (e.target.value.length === 5) {
+      setPayload({ ...payload, sortCode: payload.sortCode + "-" });
+      values.sortCode = values.sortCode + "-";
+    }
+  };
+
   const formatDate = (date: any) => {
     const dateObj = new Date(date);
     const month = dateObj.getMonth() + 1; // Months are 0-indexed
@@ -425,6 +437,8 @@ export default function IndividualUs() {
               name="sortCode"
               placeholder="Sort Code"
               onChange={handleChange}
+              onKeyDown={(e) => formatSortCode(e, values)}
+              inputProps={{ maxLength: 8}}
               // onBlur={handleBlur}
               error={Boolean(touched.sortCode && errors.sortCode)}
               value={values.sortCode}

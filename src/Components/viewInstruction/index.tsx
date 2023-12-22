@@ -41,7 +41,7 @@ export default function View_Insructions(props: any) {
               </div>
               <div className="card-body">
                 <ul className="navbar-nav justify-content-center text-center w-100 ">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link className="nav-link text-decoration-none" aria-current="page" href="/">W-8BEN - Foreign Status Individuals</Link>
                   </li>
                   <li className="nav-item">
@@ -49,7 +49,44 @@ export default function View_Insructions(props: any) {
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link  text-decoration-none" href="/">W-8IMY - Intermediaries</Link>
-                  </li>
+                  </li> */}
+
+                  
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8ben.pdf" target="_blank">W-8BEN - Foreign Status Individuals</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8bene.pdf" target="_blank">W-8BEN-E - Foreign Status Entities</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8imy.pdf" target="_blank">W-8IMY - Intermediaries</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8exp.pdf" target="_blank">W-8EXP - Exempt Organizations</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8eci.pdf" target="_blank">W-8ECI - U.S. Place of Business</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw9.pdf" target="_blank">W-9 - U.S. Persons</a>
+            
+          </li>
+        
+          <li className="nav-item">
+            <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/i8233.pdf" target="_blank">8233 - Personal Services</a>
+            
+          </li>
+
                 </ul>
               </div>
             </div>
