@@ -11,6 +11,9 @@ import {
   TextField,
   Select,
   MenuItem,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
@@ -51,6 +54,7 @@ export default function Fedral_tax(props: any) {
     lastName: obValues.lastName,
     businessName: "",
     federalTaxClassificationId: 0,
+    isPartnership:true,
   };
   const [toolInfo, setToolInfo] = useState("");
   
@@ -689,6 +693,57 @@ export default function Fedral_tax(props: any) {
                       </>
                     ) : null}
                   </Typography>
+
+                  {obValues.isUSEntity == true && values.federalTaxClassificationId ==4 ? (
+                        <div>
+                          <Typography style={{ marginTop: "20px" }}>
+                           ​Are you providing this form to a partnership, trust or estate, and if so, do you have any foreign partners, owners, or beneficiaries? 
+                            <span style={{ color: "red" }}>*</span>
+                          </Typography>
+
+                          <div className="d-flex">
+                            <FormControl
+                              error={Boolean(
+                                touched.isPartnership &&
+                                  errors.isPartnership
+                              )}
+                            >
+                              <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                                value={values.isPartnership}
+                                onChange={handleChange}
+                              >
+                                <FormControlLabel
+                                  value="yes"
+                                  control={<Radio />}
+                                  label="Yes"
+                                  name="isPartnership"
+                                />
+                                <FormControlLabel
+                                  value="no"
+                                  control={<Radio />}
+                                  label="No"
+                                  name="isPartnership"
+                                />
+                              </RadioGroup>
+                              {errors.isPartnership &&
+                              touched.isPartnership ? (
+                                <div>
+                                  <Typography color="error">
+                                    {errors.isPartnership}
+                                  </Typography>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </FormControl>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                
 
                 <div style={{ marginTop: "20px", width: "90%" ,paddingRight:"0px"}}>
