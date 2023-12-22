@@ -25,6 +25,8 @@ import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ContentCopy } from "@mui/icons-material";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
+
 export default function Penalties(props: any) {
   const history = useNavigate()
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -39,6 +41,14 @@ export default function Penalties(props: any) {
      
       setSecurityWordError("");
     };
+    const [canvaBx, setCanvaBx] = useState(false);
+    const handleCanvaOpen = () => {
+      setCanvaBx(true);
+    }
+    const handleCanvaClose = () => {
+      setCanvaBx(false);
+    }
+  
     const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
     const [securityWordError, setSecurityWordError] = useState("");
   const [open2, setOpen2] = useState(false);
@@ -89,10 +99,12 @@ export default function Penalties(props: any) {
        <section
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
-  >
+  >  <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+  {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
      <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions" onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a

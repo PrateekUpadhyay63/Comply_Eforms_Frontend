@@ -24,6 +24,7 @@ import { W9_state , GetAgentFATCAEntityGIINChallengeDisabledForEformAction } fro
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
 
 export default function FCTA_Reporting(props: any) {
   const dispatch = useDispatch();
@@ -33,6 +34,14 @@ export default function FCTA_Reporting(props: any) {
       setExpanded(isExpanded ? panel : false);
     };
   const history = useNavigate()
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
+
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -56,10 +65,12 @@ export default function FCTA_Reporting(props: any) {
     <section
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px", height: "100%" }}
-  >
+  >  <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+  {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
      <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions"  onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a
