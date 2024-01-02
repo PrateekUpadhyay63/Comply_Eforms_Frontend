@@ -62,6 +62,10 @@ export default function Tin(props: any) {
     const getCountriesReducer = useSelector(
       (state: any) => state.getCountriesReducer
     );
+
+    const onBoardingFormValues = JSON.parse(
+      localStorage.getItem("agentDetails") ?? "null"
+    );
     useEffect(() => {
       dispatch(getAllCountries());
       dispatch(
@@ -74,6 +78,16 @@ export default function Tin(props: any) {
       
   
     }, []);
+    
+  function getUStinValue() {
+    let val:string=""
+   ustinValue.filter((item: any) => {
+    if(item?.taxpayerIdTypeID ==
+      onBoardingFormValues?.usTinTypeId){
+         val= item.taxpayerIdTypeName 
+      }
+  })
+  return val;}
   const [toolInfo, setToolInfo] = useState("");
   return (
     <>
@@ -478,7 +492,7 @@ export default function Tin(props: any) {
                           }}
                         >
                           <option value="1">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
+                              {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -493,7 +507,8 @@ export default function Tin(props: any) {
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
+                              {getUStinValue()}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>

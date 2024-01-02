@@ -44,6 +44,20 @@ export default function Tin(props: any) {
   const getCountriesReducer = useSelector(
     (state: any) => state.getCountriesReducer
   );
+  const onBoardingFormValues = JSON.parse(
+    localStorage.getItem("agentDetails") ?? "null"
+  );
+
+
+  function getUStinValue() {
+    let val:string=""
+   ustinValue.filter((item: any) => {
+    if(item?.taxpayerIdTypeID ==
+      onBoardingFormValues?.usTinTypeId){
+         val= item.taxpayerIdTypeName 
+      }
+  })
+  return val;}
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -486,7 +500,7 @@ export default function Tin(props: any) {
                           }}
                         >
                           <option value="1">-Select-</option>
-                              {ustinValue?.map((ele: any) => (
+                              {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -501,7 +515,8 @@ export default function Tin(props: any) {
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
+                              {getUStinValue()}
                         </select>
                         {/* <p className="error">{errors.usTinTypeId}</p> */}
                       </div>

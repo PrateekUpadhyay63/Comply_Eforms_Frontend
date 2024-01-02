@@ -83,6 +83,21 @@ export default function Tin(props: any) {
     }
   
   };
+  const onBoardingFormValues = JSON.parse(
+    localStorage.getItem("agentDetails") ?? "null"
+  );
+
+
+  function getUStinValue() {
+    let val:string=""
+   ustinValue.filter((item: any) => {
+    if(item?.taxpayerIdTypeID ==
+      onBoardingFormValues?.usTinTypeId){
+         val= item.taxpayerIdTypeName 
+      }
+  })
+  return val;}
+
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(
@@ -498,9 +513,10 @@ initialValues={initialValue}
                           }}
                         >
                           <option value="1">-Select-</option>
-                          <option value={2}>EIN</option>
+                          {getUStinValue()}
+                          {/* <option value={2}>EIN</option>
                               <option value={3}>QIEIN</option>
-                              <option value={4}>WPEIN</option>
+                              <option value={4}>WPEIN</option> */}
                               {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||

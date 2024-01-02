@@ -50,8 +50,6 @@ export default function View_Insructions(props: any) {
                   <li className="nav-item">
                     <Link className="nav-link  text-decoration-none" href="/">W-8IMY - Intermediaries</Link>
                   </li> */}
-
-                  
           <li className="nav-item">
             <a className="nav-link text-decoration-none"  href="http://www.irs.gov/pub/irs-pdf/iw8ben.pdf" target="_blank">W-8BEN - Foreign Status Individuals</a>
             
