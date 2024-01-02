@@ -108,7 +108,7 @@ export default function Fedral_tax(props: any) {
   const [expandedState, setExpandedState] = React.useState<string | false>(
     "panel1"
   );
-
+  const [clickCount, setClickCount] = useState(0);
   const handleChangeAccodionState =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpandedState(newExpanded ? panel : false);
@@ -157,11 +157,16 @@ export default function Fedral_tax(props: any) {
                   initialValues={initialValue}
                   validationSchema={TaxPurposeSchema}
                   onSubmit={(values, { setSubmitting }) => {
+                    if (clickCount === 0) {
+        
+                      setClickCount(clickCount+1);
+                    }
+                    else{
                     setSubmitting(true);
                     history(
                       "/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp"
                     );
-                  }}
+                  }}}
                 >
                   {({
                     errors,
@@ -174,6 +179,57 @@ export default function Fedral_tax(props: any) {
                   }) => (
                     <Form onSubmit={handleSubmit}>
                       <div style={{ width: "100%" }}>
+
+                      {values.federalTaxClassificationId == 3 && clickCount === 1 ?(
+
+<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                 <Typography>
+                 IGA104
+                 <span className="mx-1">
+                   <Info style={{color: "#ffc107",
+                         fontSize: "22px",
+                         cursor: "pointer",
+                         marginBottom:"3px"
+                        
+                       }}/>
+                   
+               
+                 </span>
+  
+                 
+                 </Typography>
+                 <p>You have selected a FATCA Status of "Reporting Model I" but the Country of Incorporation is not in an IGA Reporting Model I country. Please go back and check the information entered. You may be required to provide additional information to confirm validation.</p>
+ 
+               </div>
+                      
+
+
+):""}
+                      {values.federalTaxClassificationId == 4 && clickCount === 1 ?(
+
+ <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  IGA105
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <p>You have selected a FATCA Status of "Reporting Model II" but the Country of Incorporation is not in an IGA Reporting Model II country. Please go back and check the information entered. You may be required to provide additional information to confirm validation.</p>
+  
+                </div>
+                       
+
+
+):""}
                         <div>
                           <Typography  style={{ margin: "10px" }}>
                             <div

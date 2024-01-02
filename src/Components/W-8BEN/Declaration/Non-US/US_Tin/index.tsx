@@ -207,7 +207,7 @@ export default function Tin(props: any) {
                     history("/W-8BEN/Declaration/US_Tin/Claim");
 
                   }
-                  // setSubmitting(true);
+              
                  
                 }}
               >
