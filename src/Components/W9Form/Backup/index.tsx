@@ -25,6 +25,8 @@ import { W9_state } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
+
 export default function Backup_witholding(props: any) {
   const dispatch = useDispatch();
   const history = useNavigate()
@@ -48,6 +50,14 @@ export default function Backup_witholding(props: any) {
     }
   };
   const isRadioSelected = selectedValue !== "";
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
+
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -60,9 +70,12 @@ export default function Backup_witholding(props: any) {
         className="inner_content"
         style={{ backgroundColor: "#0c3d69", marginBottom: "10px" }}
       >
+          <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+        {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
          <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions"  onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a

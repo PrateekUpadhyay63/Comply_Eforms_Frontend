@@ -12,6 +12,8 @@ import {
   Input,
 } from "@mui/material";
 import "./index.scss"
+import Infoicon from "../../../../../assets/img/info.png";
+import { Info } from "@mui/icons-material";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
@@ -66,6 +68,7 @@ export default function Penalties() {
   };
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [clickCount, setClickCount] = useState(0);
 
   return (
     <>
@@ -75,12 +78,19 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
+          if (clickCount === 0) {
+        
+            setClickCount(clickCount+1);
+          }else{
+         
           dispatch(
             W8_state(values, () => {
+             
               history("/BenE/Tax_Purpose_BenE/Declaration_BenE/Non_US/Claim_Ben_E/Rates_BenE/Certi_BenE/Participation_BenE/Submit_BenE");
+              setSubmitting(true);
             })
           );
+          }
         }}
       >
         {({
@@ -119,6 +129,32 @@ export default function Penalties() {
 
               <div style={{ padding: "14px" }}>
                 <Paper style={{ padding: "10px" }}>
+
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
                   <Typography
                     align="left"
                     style={{

@@ -14,18 +14,21 @@ import {
   MenuItem,
   Select
 } from "@mui/material";
+import Infoicon from "../../../assets/img/info.png";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ExpandMore, Info } from "@mui/icons-material";
+import { ExpandMore ,Info} from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { firstStepBusinessSchema, firstStepSchema ,tinSchema} from "../../../schemas";
 import { useNavigate } from "react-router-dom";
 import {getTinTypes} from "../../../Redux/Actions"
 import { useDispatch } from "react-redux";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
+import View_Insructions from "../../viewInstruction";
 
 export default function Tin(props: any) {
   const dispatch = useDispatch();
+  const [clickCount, setClickCount] = useState(0);
   const {
     // handleTaxClassificationChange,
     // selectedTaxClassification,
@@ -38,10 +41,10 @@ export default function Tin(props: any) {
     localStorage.getItem("agentDetails") ?? "null"
   );
   const initialValue = {
-    tiN_USTINId:onBoardingFormValues.usTinTypeId
-    ? onBoardingFormValues.usTinTypeId
+    tiN_USTINId:onBoardingFormValues?.usTinTypeId
+    ? onBoardingFormValues?.usTinTypeId
     : 0,
-    Tin :onBoardingFormValues.usTin ? onBoardingFormValues.usTin : "",
+    Tin :onBoardingFormValues?.usTin ? onBoardingFormValues?.usTin : "",
   };
   const [payload, setPayload] = useState({
     tiN_USTINId:0,
@@ -50,6 +53,14 @@ export default function Tin(props: any) {
   const [ustinArray, setUStinArray] = useState([]);
   const [ustinValue, setUStinvalue] = useState([]);
   const [notUsIndividual , setNonUsIndividual] = useState([]);
+  const [canvaBx, setCanvaBx] = useState(false);
+  const handleCanvaOpen = () => {
+    setCanvaBx(true);
+  }
+  const handleCanvaClose = () => {
+    setCanvaBx(false);
+  }
+
   
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
@@ -98,9 +109,12 @@ export default function Tin(props: any) {
     className="inner_content"
     style={{ backgroundColor: "#0c3d69", marginBottom: "10px" ,height:"100%"}}
   >
+      <View_Insructions canvaBx={canvaBx} handleCanvaClose={handleCanvaClose}/>
+        {canvaBx === true ? (<div className="offcanvas-backdrop fade show" onClick={() => { handleCanvaClose() }}></div>) : null}
+
     <div className="overlay-div">
         <div className="overlay-div-group">
-          <div className="viewInstructions">View Instructions</div>
+          <div className="viewInstructions"  onClick={() => { handleCanvaOpen(); }}>View Instructions</div>
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             <a
@@ -132,6 +146,10 @@ export default function Tin(props: any) {
               : firstStepBusinessSchema
           } // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
+            if (clickCount === 0) {
+        
+              setClickCount(clickCount+1);
+            }else{
             setSubmitting(true);
             console.log(values, ":STEP1 VALUES");
             history("/US_Purposes/Back/Exemption/Tax/Certificates")
@@ -142,6 +160,7 @@ export default function Tin(props: any) {
             // );
             // uploadNews(dispatch, values, navigate);
           }}
+        }
         >
           {({
             errors,
@@ -163,7 +182,53 @@ export default function Tin(props: any) {
           <div className="col-8 mt-3" > 
           <div style={{ padding: "10px 0px" }}>
             <Paper elevation={6} style={{ padding: "17px",}}>
+
+
   <div style={{  backgroundColor: "#ffff", }}>
+  {values.Tin && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+              TIN
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                
+                  </span>
+                  You have selected an entity type that would normally expect to supply an EIN
+                  
+                  </Typography>
+                 
+
+  
+                </div>):""}
+
+                {values.Tin == "" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+              TIN
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",
+                          fontSize: "2px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                
+                  </span>
+                  You have not provided a Tax-payer Identification Number
+                  </Typography>
+                 
+
+  
+                </div>):""}
+
   <Typography
     align="left"
     style={{ margin: "5px", fontSize: "27px" ,fontWeight:"550"}}
@@ -294,7 +359,7 @@ export default function Tin(props: any) {
                           touched.tiN_USTINId ? (
                             <div>
                               <p className="error">
-                                {/* {errors.tiN_USTINId} */}
+                                {errors.tiN_USTINId.toString()}
                               </p>
                             </div>
                           ) : (
@@ -303,7 +368,7 @@ export default function Tin(props: any) {
                         </FormControl>
     </div>
 
-    <div className="col-md-6  col-12">
+    <div className="col-md-6 col-12">
       
       <Typography>U.S. TIN</Typography>
       <Input
@@ -331,7 +396,7 @@ export default function Tin(props: any) {
           padding: " 0 10px ",
         }}
       />
-          {/* <p className="error">{errors.Tin}</p> */}
+          <p className="error">{errors.Tin?.toString()}</p>
     </div>
 
   </div>

@@ -75,6 +75,20 @@ export default function Tin(props: any) {
     isNotLegallyFTIN: "",
   };
   const [payload, setPayload] = useState({usTin:""})
+  const onBoardingFormValues = JSON.parse(
+    localStorage.getItem("agentDetails") ?? "null"
+  );
+
+
+  function getUStinValue() {
+    let val:string=""
+   ustinValue.filter((item: any) => {
+    if(item?.taxpayerIdTypeID ==
+      onBoardingFormValues?.usTinTypeId){
+         val= item.taxpayerIdTypeName 
+      }
+  })
+  return val;}
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 2) {
@@ -497,11 +511,11 @@ export default function Tin(props: any) {
                           }}
                         >
                           <option value={1}>-Select-</option>
-                              <option value={2}>EIN</option>
+                              {/* <option value={2}>EIN</option>
                               <option value={3}>QIEIN</option>
-                              <option value={4}>WPEIN</option>
+                              <option value={4}>WPEIN</option> */}
                             
-                          
+                            {getUStinValue()}
                               {/* {ustinValue?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||

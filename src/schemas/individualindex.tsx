@@ -38,6 +38,12 @@ export const individualSchema = () => {
     permanentResidentialCountryId: Yup.number()
       .required("Please select country")
       .notOneOf([0], "Please select a valid country"),
+
+      otherCountry: Yup.string().when("permanentResidentialCountryId",{
+        is : (permanentResidentialCountryId:any) => permanentResidentialCountryId == 186,
+        then:() => 
+        Yup.string().required("Please Enter"),
+      }),
     permanentResidentialStreetNumberandName: Yup.string().trim().required(
       "Please enter Street number and name"
     ),

@@ -11,6 +11,7 @@ import {
   FormControl,
   Input,
 } from "@mui/material";
+import Infoicon from "../../../assets/img/info.png";
 import { Info } from "@mui/icons-material";
 import "./index.scss"
 import DatePicker from "react-date-picker";
@@ -133,6 +134,33 @@ export default function Penalties() {
 
               <div style={{ padding: "10px" }}>
                 <Paper style={{ padding: "18px" }}>
+
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
+                
                   <Typography
                     align="left"
                     style={{
@@ -588,8 +616,12 @@ export default function Penalties() {
                   <Typography>
                   SIG112
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          

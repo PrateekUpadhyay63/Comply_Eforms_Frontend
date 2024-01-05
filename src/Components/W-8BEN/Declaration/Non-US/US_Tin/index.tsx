@@ -13,6 +13,8 @@ import {
   Radio,
   TextField,
 } from "@mui/material";
+// import Infoicon from "../../../assets/img/info.png";
+
 import { Info, Delete } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
@@ -24,8 +26,9 @@ import {
   getTinTypes,
   getAllCountries,
 } from "../../../../../Redux/Actions";
+ import Infoicon from "../../../../../assets/img/info.png";
 import { useDispatch, useSelector } from "react-redux";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -57,7 +60,7 @@ export default function Tin(props: any) {
         let nonData = data.filter((ele: any) => {
           return ele.nonUSIndividual === true;
         });
-        setNonUsIndividual(nonData)
+        setNonUsIndividual(nonData);
       })
     );
   }, []);
@@ -141,6 +144,15 @@ export default function Tin(props: any) {
       values.usTin = values.usTin + "-";
     }
   };
+  function getUStinValue() {
+    let val:string=""
+    notUsIndividual.filter((item: any) => {
+    if(item?.taxpayerIdTypeID ==
+      onBoardingFormValues?.usTinTypeId){
+         val= item.taxpayerIdTypeName 
+      }
+  })
+  return val;}
   const isFieldDisabled = (values: any) => {
     if (values.isFTINNotLegallyRequired == "Yes") {
       return true;
@@ -156,6 +168,7 @@ export default function Tin(props: any) {
       <div className="overlay-div">
         <div className="overlay-div-group">
           <div className="viewInstructions">View Instructions</div>
+
           <div className="viewform">View Form</div>
           <div className="helpvideo">
             {/* <a target="_blank" href="https://youtu.be/SqcY0GlETPk?si=KOwsaYzweOessHw-">Help Video</a> */}
@@ -177,9 +190,7 @@ export default function Tin(props: any) {
       </div>
       <div className="row w-100 h-100">
         <div className="col-4">
-          <div
-            style={{ padding: "20px 0px", height: "100%" }}
-          >
+          <div style={{ padding: "20px 0px", height: "100%" }}>
             <BreadCrumbComponent breadCrumbCode={1249} formName={2} />
           </div>
         </div>
@@ -222,137 +233,77 @@ export default function Tin(props: any) {
                 }) => (
                   <Form onSubmit={handleSubmit}>
 
+{values.isFTINNotLegallyRequired && clickCount === 1 ? (
+ <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+ <Typography>
+ FTIN165
+ <span className="mx-1">
+ <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+ width:"20px",
+ boxShadow:"inherit",
 
-              
+
+        
+         cursor: "pointer",
+         marginBottom:"3px"
+        
+       }}/>
+   
+  
+ </span>
+
+ <strong>Foreign Taxpayer Identification Number.</strong> <p>You have selected a country in the IRS TIN exemption list. If you are not legally required to obtain an FTIN from your jurisdiction of residence (including if the jurisdiction does not issue TINs). You may check the box "TIN Not Legally Required". By checking this box, you will be treated as having provided an explanation for not providing an FTIN. If you wish to provide a further (or other) explanation why you are not required to provide an FTIN you will be provided with the option to do so.</p>
+ </Typography>
 
 
-{values.usTinTypeId == 7  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
-                  <Typography>
-                  TIN147
-                  <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
-                          cursor: "pointer",
-                          marginBottom:"3px"
-                         
-                        }}/>
-                  </span>
-                  <span className="mx-1" style={{marginTop:"1px",fontWeight:"550"}}>Taxpayer Identification Number</span>
-                 <Typography className="mt-1">
-                 For certain payment types you are required to provide a valid Tax Identification Number (TIN) and your submission may not be considered valid for treaty claim purposes without a valid TIN.
-                 </Typography>
-               
-                 <Typography className="mt-2">
-                 If you do not have one please continue with the submission, a Form W-8BEN can still be used to claim treaty benefits, reduce or eliminate U.S. withholding tax against payments made where a TIN is not required.
-                 </Typography>
-                 <Typography className="mt-2">
-                 <span style={{color:"red"}}>Please Note:</span> U.S. tax withholding is NOT applied when declaring under penalties of perjury, that the goods or services provided are not considered as U.S. Source Income.
-                 </Typography>
-                 <Typography className="mt-2">
-                   
-A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
-                 </Typography>
-                  </Typography>
-                  
-                 
-                </div>):""}
 
-                {values.isFTINNotLegallyRequired == true && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
-                  <Typography>
-                  FTIN164
-                  <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
-                          cursor: "pointer",
-                          marginBottom:"3px"
-                         
-                        }}/>
-                  </span>
-                  <span className="mx-1" style={{marginTop:"1px",fontWeight:"550"}}>Please specify the reason for non-availability of Foreign TIN.</span>
-                 <Typography className="mt-1">
-                 You have selected a FTIN country that is not on the IRS exemption list, where, in most cases a FTIN should be provided. You must provide a written explanation here explaining why you are not providing. By not providing we may not be able to apply treaty benefits should they apply and may render the form invalid.
-                 </Typography>
-               
-                
-                  </Typography>
-                  
-                 
-                </div>):""}   
-
-                   {values.tinisFTINNotLegallyRequired=== "Yes" && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
-                  <Typography>
-                  FTIN100
-                  <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
-                          cursor: "pointer",
-                          marginBottom:"3px"
-                         
-                        }}/>
-                  </span>
-                  <span className="mx-1" style={{marginTop:"1px",fontWeight:"550"}}>FTIN Check:</span>
-                 <Typography className="mt-1">
-                  You have indicated a foreign TIN is not available. If you are a tax resident in a jurisdiction which issues foreign TINs and you do not provide or do not meet an exception for not providing, this may result in your form being invalid and/or result in a higher rate of withholding.<br/>     Possibly include this language in the easy help: If you had trouble inputting your Foreign TIN due to the formatting requirements, you can select 'Alternative TIN Format'. Selecting this option will allow you to enter your Foreign TIN in the box provided with the automated formatting removed.
-                 </Typography>
-               
-                
-                  </Typography>
-                  
-                 
-                </div>):""}      
-
-                {values.tinisFTINNotLegallyRequired=== "No" && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
-                  <Typography>
-                  FTIN101
-                  <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
-                          cursor: "pointer",
-                          marginBottom:"3px"
-                         
-                        }}/>
-                  </span>
-                  <span className="mx-1" style={{marginTop:"1px",fontWeight:"550"}}>FTIN Check:</span>
-                 <Typography className="mt-1">
-                 You have entered a Foreign TIN that possibly does not follow the standard OECD format for the jurisdiction selected.<br/>    Please select continue if the Foreign TIN entered is correct or go back and make amendments.<br/>    If you select continue, you may be contacted to provide additional information.
-                 </Typography>
-               
-                
-                  </Typography>
-                  
-                 
-                </div>):""}              
+</div>
+):""}
                     {toolInfo === "ForeignTin" ? (
                       <div className="mt-5">
                         <>{console.log(errors, "errors!!!!!")}</>
+
+
+
                         <Paper
-
-                          style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
+                          style={{
+                            backgroundColor: "#d1ecf1",
+                            padding: "15px",
+                          }}
                         >
-                          <div className="d-flex" style={{ justifyContent: "space-between" }}>
+                          <div
+                            className="d-flex"
+                            style={{ justifyContent: "space-between" }}
+                          >
                             <Typography style={{ color: "#0c5460" }}>
-                              United Kingdom TIN Format is 9999999999 false <br /> 9- Numeric value only <br /> A- Alphabetic character only <br /> *- Alphanumeric character only <br /> ?- Characters optional after this <br /> IF TIN format is not available, please check the below box and continue
+                              United Kingdom TIN Format is 9999999999 false{" "}
+                              <br /> 9- Numeric value only <br /> A- Alphabetic
+                              character only <br /> *- Alphanumeric character
+                              only <br /> ?- Characters optional after this{" "}
+                              <br /> IF TIN format is not available, please
+                              check the below box and continue
                             </Typography>
-
 
                             <Typography>
-                              <CloseIcon style={{ color: "#0c5460", cursor: "pointer", fontSize: "medium" }} onClick={() => {
-                                setToolInfo("");
-                              }} />
+                              <CloseIcon
+                                style={{
+                                  color: "#0c5460",
+                                  cursor: "pointer",
+                                  fontSize: "medium",
+                                }}
+                                onClick={() => {
+                                  setToolInfo("");
+                                }}
+                              />
                             </Typography>
                           </div>
-
-
-
-
-
                         </Paper>
                       </div>
                     ) : (
                       ""
                     )}
 
-                    <>{console.log(errors, values)}</>
+                    {/* <>{console.log(errors, values)}</> */}
                     <Typography
                       align="left"
                       style={{
@@ -366,7 +317,6 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
 
                     <div>
                       {values.notAvailable === true ? (
-
                         <div
                           style={{
                             margin: "10px",
@@ -377,7 +327,8 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                         >
                           <div className="col-lg-5 col-12">
                             <Typography style={{ fontSize: "14px" }}>
-                              U.S. TIN Type<span style={{ color: "red" }}>*</span>
+                              U.S. TIN Type
+                              <span style={{ color: "red" }}>*</span>
                               <span>
                                 <Tooltip
                                   style={{
@@ -424,16 +375,16 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                   }}
                                 >
                                   <Typography>
-                                    Please select a U.S. TIN type status from the
-                                    dropdown.
+                                    Please select a U.S. TIN type status from
+                                    the dropdown.
                                   </Typography>
 
                                   <Typography style={{ marginTop: "10px" }}>
                                     If a TIN type is not available, ensure you
-                                    select the checkbox to the right of the field
-                                    and provide an explanation as to why it is not
-                                    available in the corresponding boxes at the
-                                    bottom of the screen.
+                                    select the checkbox to the right of the
+                                    field and provide an explanation as to why
+                                    it is not available in the corresponding
+                                    boxes at the bottom of the screen.
                                   </Typography>
 
                                   <Link
@@ -466,7 +417,6 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               }}
                               name="usTinTypeId"
                               id="Income"
-
                               defaultValue={1}
                               onBlur={handleBlur}
                               value={values?.usTinTypeId}
@@ -475,8 +425,17 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               }}
                             >
                               <option value={0}>--Select--</option>
+                              <option
+                                key={onBoardingFormValues?.usTinTypeId}
+                                value={onBoardingFormValues?.usTinTypeId}
+                              >
+                                {notUsIndividual.filter((item: any) => {
+                                  item?.taxpayerIdTypeID ==
+                                    onBoardingFormValues?.usTinTypeId;
+                                })}
+                              </option>
 
-                              {notUsIndividual?.map((ele: any) => (
+                              {/* {notUsIndividual?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
@@ -492,17 +451,18 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
                             </select>
-                           
+                            {/* <p className="error">{errors.usTinTypeId}</p> */}
                           </div>
 
                           <div className="col-lg-5 col-12">
-                            <Typography style={{ fontSize: "14px" }}>U.S. TIN</Typography>
+                            <Typography style={{ fontSize: "14px" }}>
+                              U.S. TIN
+                            </Typography>
                             <Input
                               disabled
                               fullWidth
-
                               placeholder="ENTER US TIN"
                               defaultValue="ENTER US TIN"
                               value={values.tinValue}
@@ -511,7 +471,6 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 handleChange(e);
                                 setFieldValue("", "");
                               }}
-
                               style={{
                                 border: " 1px solid #d9d9d9 ",
                                 padding: " 0 10px",
@@ -519,18 +478,18 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 fontStyle: "italic",
                                 height: "40px",
                                 width: "100%",
-
                               }}
                             />
-                            {values.notAvailable ? (
-                              ""
-                            ) :
-                              // <p className="error">{errors.usTin}</p>
-                              " "
-                            }
+                            {values.notAvailable
+                              ? ""
+                              : // <p className="error">{errors.usTin}</p>
+                                " "}
                           </div>
                           <div className="col-lg-2 ">
-                            <div className="radio" style={{ marginTop: "17px" }}>
+                            <div
+                              className="radio"
+                              style={{ marginTop: "17px" }}
+                            >
                               <Checkbox
                                 value={values.notAvailable}
                                 checked={values.notAvailable}
@@ -552,8 +511,8 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               </span>
                             </div>
                           </div>
-                        </div>) :
-
+                        </div>
+                      ) : (
                         <div
                           style={{
                             margin: "10px",
@@ -564,7 +523,8 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                         >
                           <div className="col-lg-5 col-12">
                             <Typography style={{ fontSize: "14px" }}>
-                              U.S. TIN Type<span style={{ color: "red" }}>*</span>
+                              U.S. TIN Type
+                              <span style={{ color: "red" }}>*</span>
                               <span>
                                 <Tooltip
                                   style={{
@@ -611,16 +571,16 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                   }}
                                 >
                                   <Typography>
-                                    Please select a U.S. TIN type status from the
-                                    dropdown.
+                                    Please select a U.S. TIN type status from
+                                    the dropdown.
                                   </Typography>
 
                                   <Typography style={{ marginTop: "10px" }}>
                                     If a TIN type is not available, ensure you
-                                    select the checkbox to the right of the field
-                                    and provide an explanation as to why it is not
-                                    available in the corresponding boxes at the
-                                    bottom of the screen.
+                                    select the checkbox to the right of the
+                                    field and provide an explanation as to why
+                                    it is not available in the corresponding
+                                    boxes at the bottom of the screen.
                                   </Typography>
 
                                   <Link
@@ -662,14 +622,13 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             >
                               <option value="1">--Select--</option>
 
-                              {notUsIndividual?.map((ele: any) => (
+                              {/* {notUsIndividual?.map((ele: any) => (
                                 // ele?.nonUSIndividual &&
                                 //   values?.isUSIndividual == "no" ||
                                 // ele?.usIndividual &&
                                 //   values?.isUSIndividual == "Yes" ?
                                 // (
                                 <option
-
                                   key={ele?.taxpayerIdTypeID}
                                   value={ele?.taxpayerIdTypeID}
                                 >
@@ -678,13 +637,23 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 // ) : (
                                 //   ""
                                 // );
-                              ))}
+                              ))} */}
+                                <option
+                                key={onBoardingFormValues?.usTinTypeId}
+                                value={onBoardingFormValues?.usTinTypeId}
+                              >
+                               {getUStinValue()}
+                              
+                              </option>
+
                             </select>
                             {/* <p className="error">{errors.usTinTypeId}</p> */}
                           </div>
 
                           <div className="col-lg-5 col-12">
-                            <Typography style={{ fontSize: "14px" }}>U.S. TINcscas</Typography>
+                            <Typography style={{ fontSize: "14px" }}>
+                              U.S. TIN
+                            </Typography>
                             <Input
                               disabled={values.notAvailable}
                               fullWidth
@@ -693,7 +662,6 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               value={values.usTin}
                               onKeyDown={(e) => formatTin(e, values)}
                               inputProps={{ maxLength: 11 }}
-
                               onBlur={handleBlur}
                               onChange={handleChange}
                               error={Boolean(touched.usTin && errors.usTin)}
@@ -706,15 +674,16 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 width: "100%",
                               }}
                             />
-                            {values.notAvailable ? (
-                              ""
-                            ) :
-                              // <p className="error">{errors.usTin}</p>
-                              " "
-                            }
+                            {values.notAvailable
+                              ? ""
+                              : // <p className="error">{errors.usTin}</p>
+                                " "}
                           </div>
                           <div className="col-lg-2 ">
-                            <div className="radio" style={{ marginTop: "17px" }}>
+                            <div
+                              className="radio"
+                              style={{ marginTop: "17px" }}
+                            >
                               <Checkbox
                                 value={values.notAvailable}
                                 checked={values.notAvailable}
@@ -737,9 +706,7 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             </div>
                           </div>
                         </div>
-                      }
-
-
+                      )}
 
                       <div
                         style={{
@@ -755,7 +722,11 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             <span style={{ color: "red" }}>*</span>
                           </Typography>
                           <select
-                            disabled={values?.tinisFTINNotLegallyRequired == "yes" ? true : false}
+                            disabled={
+                              values?.tinisFTINNotLegallyRequired == "yes"
+                                ? true
+                                : false
+                            }
                             // fullWidth
                             style={{
                               border: " 1px solid #d9d9d9 ",
@@ -798,7 +769,14 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               value={values.isFTINNotLegallyRequired}
                               checked={values.isFTINNotLegallyRequired}
                               onChange={(e) => {
-                                handleChange(e); { setFieldValue("tinisFTINNotLegallyRequired", "") } setFieldValue("foreignTIN", "");
+                                handleChange(e);
+                                {
+                                  setFieldValue(
+                                    "tinisFTINNotLegallyRequired",
+                                    ""
+                                  );
+                                }
+                                setFieldValue("foreignTIN", "");
                               }}
                               size="medium"
                               name="isFTINNotLegallyRequired"
@@ -899,32 +877,39 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                         <div className="col-lg-5 col-12">
                           <Typography style={{ fontSize: "14px" }}>
                             Foreign TIN{" "}
-                            {values.foreignTINCountry == 257 ? (<span>  <Tooltip
-                              style={{
-                                backgroundColor: "black",
-                                color: "white",
-
-                              }}
-                              title={
-                                <>
-
-                                  <a onClick={() => setToolInfo("ForeignTin")}>
-
-                                  </a>
-                                </>
-                              }
-                            >
-                              <Info
-                                onClick={() => setToolInfo("ForeignTin")}
-                                style={{
-                                  color: "#ffc107",
-                                  fontSize: "15px",
-                                  verticalAlign: "super",
-                                  marginLeft: "5px",
-                                  cursor: "pointer",
-                                }}
-                              />
-                            </Tooltip></span>) : ""}
+                            {values.foreignTINCountry == 257 ? (
+                              <span>
+                                {" "}
+                                <Tooltip
+                                  style={{
+                                    backgroundColor: "black",
+                                    color: "white",
+                                  }}
+                                  title={
+                                    <>
+                                      <a
+                                        onClick={() =>
+                                          setToolInfo("ForeignTin")
+                                        }
+                                      ></a>
+                                    </>
+                                  }
+                                >
+                                  <Info
+                                    onClick={() => setToolInfo("ForeignTin")}
+                                    style={{
+                                      color: "#ffc107",
+                                      fontSize: "15px",
+                                      verticalAlign: "super",
+                                      marginLeft: "5px",
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                </Tooltip>
+                              </span>
+                            ) : (
+                              ""
+                            )}
                           </Typography>
 
                           {values.tinisFTINNotLegallyRequired === "No" ? (
@@ -980,12 +965,7 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               }}
                             />
                           )}
-                          {values.isFTINNotLegallyRequired ? (
-                            ""
-                          ) :
-
-                            " "
-                          }
+                          {values.isFTINNotLegallyRequired ? "" : " "}
                           {/* {errors.foreignTIN? (
                                   <p className="error">
                                     {errors?.foreignTIN}
@@ -994,8 +974,8 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 ""
                               )} */}
 
-                          <div  >
-                            <FormControl className="col-12 radio" >
+                          <div>
+                            <FormControl className="col-12 radio">
                               <RadioGroup
                                 row
                                 name="tinisFTINNotLegallyRequired"
@@ -1024,18 +1004,17 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                                 />
 
                                 {values.tinisFTINNotLegallyRequired === "Yes" ||
-                                  values.tinisFTINNotLegallyRequired === "No" ? (
+                                values.tinisFTINNotLegallyRequired === "No" ? (
                                   <Delete
                                     onClick={() => {
-                                      handleChange("tinisFTINNotLegallyRequired")(
-                                        ""
-                                      );
+                                      handleChange(
+                                        "tinisFTINNotLegallyRequired"
+                                      )("");
                                     }}
                                     style={{
                                       color: "red",
                                       fontSize: "20px",
                                       marginTop: "11px",
-
                                     }}
                                   />
                                 ) : (
@@ -1044,7 +1023,7 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                               </RadioGroup>
 
                               {errors.tinisFTINNotLegallyRequired &&
-                                touched.tinisFTINNotLegallyRequired ? (
+                              touched.tinisFTINNotLegallyRequired ? (
                                 <div>
                                   <Typography color="error">
                                     {errors.tinisFTINNotLegallyRequired}
@@ -1056,7 +1035,6 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             </FormControl>
                           </div>
                         </div>
-
                       </div>
                     </div>
                     {values.isFTINNotLegallyRequired === true && (
@@ -1070,7 +1048,10 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                           provide an FTIN?
                           <span style={{ color: "red" }}>*</span>
                         </Typography>
-                        <FormControl className="col-12 radio" style={{ marginLeft: "20px" }}>
+                        <FormControl
+                          className="col-12 radio"
+                          style={{ marginLeft: "20px" }}
+                        >
                           <RadioGroup
                             row
                             name="isNotLegallyFTIN"
@@ -1188,8 +1169,14 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
 
                     {values.tinisFTINNotLegallyRequired === "Yes" ? (
                       <>
-                        <div className="my-3" style={{ marginLeft: "20px", marginRight: "20px" }}>
-                          <Typography align="left" style={{ fontWeight: "bold" }}>
+                        <div
+                          className="my-3"
+                          style={{ marginLeft: "20px", marginRight: "20px" }}
+                        >
+                          <Typography
+                            align="left"
+                            style={{ fontWeight: "bold" }}
+                          >
                             Please specify the reason for non-availability of
                             Foreign TIN{" "}
                             <span
@@ -1201,14 +1188,19 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                           </Typography>
                           <Typography
                             align="left"
-                            style={{ fontWeight: "bold", marginTop: "2rem", textAlign: "justify" }}
+                            style={{
+                              fontWeight: "bold",
+                              marginTop: "2rem",
+                              textAlign: "justify",
+                            }}
                           >
                             You have selected a FTIN country that is not on the
-                            IRS exemption list, where, in most cases a FTIN should
-                            be provided. You must provide a written explanation
-                            here explaining why you are not providing. By not
-                            providing we may not be able to apply treaty benefits
-                            should they apply and may render the form invalid.
+                            IRS exemption list, where, in most cases a FTIN
+                            should be provided. You must provide a written
+                            explanation here explaining why you are not
+                            providing. By not providing we may not be able to
+                            apply treaty benefits should they apply and may
+                            render the form invalid.
                           </Typography>
                           <TextField
                             type="text"
@@ -1227,14 +1219,16 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             }}
                           />
                         </div>
-                        <div className="my-3" style={{ marginLeft: "20px", marginRight: "20px" }}>
+                        <div
+                          className="my-3"
+                          style={{ marginLeft: "20px", marginRight: "20px" }}
+                        >
                           <p className="error">{errors.FTINFeild1}</p>
                         </div>
                       </>
                     ) : (
                       ""
                     )}
-
 
                     {values.notAvailable ? (
                       <>
@@ -1261,7 +1255,10 @@ A Form W-8BEN may also be used to simply confirm foreign (non-U.S.) status.
                             }}
                           />
                         </div>
-                        <div className="my-3" style={{ marginLeft: "20px", marginRight: "20px" }}>
+                        <div
+                          className="my-3"
+                          style={{ marginLeft: "20px", marginRight: "20px" }}
+                        >
                           <p className="error">{errors.FTINFeild}</p>
                         </div>
                       </>

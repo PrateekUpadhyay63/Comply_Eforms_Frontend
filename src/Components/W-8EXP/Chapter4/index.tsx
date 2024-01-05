@@ -36,6 +36,7 @@ import {
   getAllStateByCountryId,
   GetChapter4Statuses,
 } from "../../../Redux/Actions";
+import Infoicon from "../../../assets/img/info.png";
 import { TaxPurposeSchema } from "../../../schemas/w8Exp";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Fedral_tax(props: any) {
@@ -186,12 +187,16 @@ export default function Fedral_tax(props: any) {
                  <Typography>
                  IGA104
                  <span className="mx-1">
-                   <Info style={{color: "#ffc107",
-                         fontSize: "22px",
-                         cursor: "pointer",
-                         marginBottom:"3px"
-                        
-                       }}/>
+                 <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
                    
                
                  </span>
@@ -211,8 +216,12 @@ export default function Fedral_tax(props: any) {
                   <Typography>
                   IGA105
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          

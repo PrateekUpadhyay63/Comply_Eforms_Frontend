@@ -11,6 +11,8 @@ import {
   Select,
   Input,
 } from "@mui/material";
+// import { Info } from "@mui/icons-material";
+import Infoicon from "../../../assets/img/info.png";
 import InfoIcon from "@mui/icons-material/Info";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
@@ -22,7 +24,7 @@ import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
-
+  const [clickCount, setClickCount] = useState(0);
   const [toolInfo, setToolInfo] = useState("");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
@@ -53,6 +55,11 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
+
+          if (clickCount === 0) {
+        
+            setClickCount(clickCount+1);
+          }else{
           console.log(values,"valuess")
           setSubmitting(true);
           dispatch(
@@ -60,6 +67,7 @@ export default function Penalties() {
               history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
             })
           );
+          }
           history("/Form8233/TaxPayer_Identification/Owner/Documentaion/certification/Submission/Submit_8233");
         }}
       >
@@ -88,6 +96,32 @@ export default function Penalties() {
       <div className="col-8 mt-3">
               <div style={{ padding: "12px" }}>
                 <Paper style={{ padding: "10px" }}>
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
                   <Typography
                     align="left"
                     style={{

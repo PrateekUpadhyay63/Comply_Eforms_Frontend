@@ -31,6 +31,7 @@ import {
   getAllStateByCountryId,
   GetChapter3Status,
 } from "../../../Redux/Actions";
+import Infoicon from "../../../assets/img/info.png";
 import { TaxPurposeSchema } from "../../../schemas/w8BenE";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Fedral_tax(props: any) {
@@ -46,14 +47,16 @@ export default function Fedral_tax(props: any) {
   const initialValue = {
     firstName: obValues.entityName,
     lastName: "",
+    other:"",
     businessName: obValues.entityName,
     federalTaxClassificationId: 0,
-    federal:""
+    federal:"",
+
   };
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
-
+  const [clickCount, setClickCount] = useState(0);
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -140,9 +143,14 @@ export default function Fedral_tax(props: any) {
                   initialValues={initialValue}
                   validationSchema={TaxPurposeSchema}
                   onSubmit={(values, { setSubmitting }) => {
+                    if (clickCount === 0) {
+        
+                      setClickCount(clickCount + 1);
+                    }else{
                     setSubmitting(true);
                     history("/BenE/Tax_Purpose_BenE/Declaration_BenE");
                   }}
+                }
                 >
                   {({
                     errors,
@@ -155,6 +163,94 @@ export default function Fedral_tax(props: any) {
                   }) => (
                     <Form onSubmit={handleSubmit}>
                       <div style={{ width: "100%" }}>
+                      {values.businessName !== obValues?.permanentResidentialCountryId && values.businessName !== 186 && clickCount === 1 ? (
+  <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+    <Typography>
+      ICOR114
+      <span className="mx-2">
+      <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+        Country of incorporation is different from the PRA country.
+      </span>
+    </Typography>
+  </div>
+) : (
+  values.businessName === 186 && clickCount === 1 ? (
+    <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+      <Typography>
+        ICOR104
+        <span className="mx-2">
+        <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+          You have selected 'other' for Country of incorporation or organization. Your agent may need to contact you for further information.
+        </span>
+      </Typography>
+    </div>
+  ) : (
+    values.businessName === 186 && values.other === "" ? (
+      <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+        <Typography>
+          ICOR105
+          <span className="mx-2">
+          <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+            You have selected "other" for Country of incorporation or organization, but have not entered the country.
+          </span>
+        </Typography>
+      </div>
+    ) : (
+      obValues.isUSEntity === false && obValues.isUSIndividual === false && values.businessName != 258 ? (
+        <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+        <Typography>
+          ICOR110
+          <span className="mx-2">
+          <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+            You have identified that you are submitting a form on behalf of a NON U.S. Entity and indicated that the Country of Incorporation was in the United States. The Entity may be classed as a U.S person for U.S tax purposes. Your agent may need to contact you for further information
+          </span>
+        </Typography>
+      </div>
+      ) : null
+    )
+  )
+)}
+
+
+
+
+               
                         <div>
                           <Typography align="left" style={{ margin: "10px" }}>
                             <div
@@ -181,7 +277,7 @@ export default function Fedral_tax(props: any) {
                                 className="col-12 col-md-12 mt-3"
                                 style={{ marginTop: "20px" }}
                               >
-                                <Typography
+                              <Typography
                                   align="left"
                                   className="d-flex w-100 "
                                   style={{ fontSize: "13px" }}
@@ -558,6 +654,36 @@ export default function Fedral_tax(props: any) {
                                     </select>
                                   </FormControl>
                                 </div>
+
+                               {values.businessName == 186 ?( <div className=" col-12">
+                                  <Typography
+                                    align="left"
+                                    className="d-flex w-60 "
+                                    style={{
+                                      fontSize: "13px",
+                                      marginTop: "15px",
+                                    }}
+                                  >
+                                   Other Country of incorporation / organization:
+                                    <span style={{ color: "red" }}>*</span>
+                                  </Typography>
+
+                                  <FormControl className="w-50">
+                                    <TextField
+                                      name="other"
+                                      value={values.other}
+                                      onChange={handleChange}
+                                     
+                                      style={{
+                                        
+                                        color: "#7e7e7e",
+                                        fontStyle: "italic",
+                                        height: "39px",
+                                      }}
+                                   />
+                                     
+                                  </FormControl>
+                                </div>):""}
                               </div>
                             </>
 </>):""}

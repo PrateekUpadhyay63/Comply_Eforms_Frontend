@@ -11,6 +11,7 @@ import {
   FormControl,
   Input,
 } from "@mui/material";
+import { Info } from "@mui/icons-material";
 import "./index.scss"
 import { ContentCopy } from "@mui/icons-material";
 import DatePicker from "react-date-picker";
@@ -24,6 +25,7 @@ import { W8_state } from "../../../../../Redux/Actions";
 import { useNavigate } from "react-router";
 import checksolid from "../../../../../assets/img/check-solid.png";
 import Accordion from "@mui/material/Accordion";
+import Infoicon from "../../../../../assets/img/info.png";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -52,6 +54,7 @@ export default function Penalties() {
      
       setSecurityWordError("");
     };
+    const [clickCount, setClickCount] = useState(0);
     const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
     const [securityWordError, setSecurityWordError] = useState("");
   const [toolInfo, setToolInfo] = useState("");
@@ -78,12 +81,18 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
+          if (clickCount === 0) {
+        
+            setClickCount(clickCount+1);
+          }else{
+       
           dispatch(
             W8_state(values, () => {
               history("/W-8BEN/Declaration/US_Tin/Certificates/Submit_Ben");
+             setSubmitting(true);
             })
           );
+          }
         }}
       >
         {({
@@ -121,7 +130,35 @@ export default function Penalties() {
       <div className="col-8 mt-3">
 
               <div style={{ padding: "10px" }}>
+
+               
                 <Paper style={{ padding: "18px" }}>
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
                   <Typography
                     align="left"
                     style={{

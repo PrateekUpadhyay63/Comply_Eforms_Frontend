@@ -3,6 +3,8 @@ import FormW8IMY from "../../formPDF/W8IMY";
 // import Form1 from "../../formPDF/form1";
 import Formw9 from "../../formPDF/formw9";
 import FormEXP from "../../formPDF/formEXP";
+import Form8BEN from "../../formPDF/W8BEN";
+import Form8BENE from "../../formPDF/W8BEN_E";
 
 import { Typography, Button } from "@mui/material";
 
@@ -84,7 +86,7 @@ export default function Term() {
       {/* <iframe src={form1}></iframe> */}
       {/* {notView ? (<div ref={pdfRef} dangerouslySetInnerHTML={{__html: form1}} />):""} */}
       <div style={{ paddingBlockStart: "30px" }}>
-        <FormW8IMY/>
+        <Form8BENE />
       </div>
       {/* Pass setPdfUrl to Form2 */}
       {/* <button onClick={handleDownload}>Download PDF</button> */}
