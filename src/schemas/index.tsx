@@ -65,12 +65,15 @@ export const secondStepSchema = () => {
 
 export const fctaSchema = () => {
   return Yup.object().shape({
-    isExemptionFATCAReportings: Yup.string().required(
+     isExemptionFATCAReportings: Yup.string().required(
       "Please select one of the options"
     ),
-    ReportingId: Yup.string().required(
-      "Please select options"
-    ),
+    ReportingId: Yup.string().when('isExemptionFATCAReportings', {
+      is: (value:any) => value === 'Yes',
+      then: () =>
+      Yup.string()
+      .required("Please select options"),
+    }),
   });
 };
 export const tinSchema = () => {

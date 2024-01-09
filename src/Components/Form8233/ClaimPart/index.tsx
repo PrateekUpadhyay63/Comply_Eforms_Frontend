@@ -15,16 +15,16 @@ import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
-
+import Infoicon from "../../../assets/img/info.png";
 export default function Tin(props: any) {
   const initialValue = {
     taxTreaty_DescriptionOfPersonalServiceYouProvide: "",
     taxTreaty_TotalCompensationYouExpectForThisCalenderYear: "",
-    taxTreaty_TreatyId: "",
-    taxTreaty_TreatyArticleId: "",
+    taxTreaty_TreatyId: 0,
+    taxTreaty_TreatyArticleId: 0,
     taxTreaty_TotalCompensationListedon11bExemptFromTax: "",
     taxTreaty_CheckAll: true,
-    taxTreaty_CountryOfResidenceId: "",
+    taxTreaty_CountryOfResidenceId: 0,
     taxTreaty_NoncompensatoryScholarshiporFellowshipIncome: "",
     taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingTreatyID: "",
     taxTreatyAndTreatyArticleOnWhich_BasingExemptionFromWithholdingArticleID:
@@ -38,6 +38,7 @@ export default function Tin(props: any) {
 
     dispatch(GetIncomeTypes())
     },[])
+    const [clickCount, setClickCount] = useState(0);
   const [tax, setTax] = useState<string>("");
   const GetIncomeTypesData = useSelector(
     (state:any)=>state.GetIncomeTypesReducer.GetIncomeTypesData
@@ -59,6 +60,11 @@ export default function Tin(props: any) {
         enableReinitialize
         validationSchema={amountSchema}
         onSubmit={(values, { setSubmitting }) => {
+          if (clickCount === 0) {
+        
+            setClickCount(clickCount+1);
+          }else{
+          
           setSubmitting(true);
           dispatch(
             CREATE_8233(values, () => {
@@ -67,6 +73,7 @@ export default function Tin(props: any) {
           );
           history("/Form8233/TaxPayer_Identification/Owner/Documentaion");
         }}
+      }
       >
         {({
           errors,
@@ -91,6 +98,72 @@ export default function Tin(props: any) {
       <div className="col-8 mt-3">
               <div style={{ padding: "13px" }}>
                 <Paper style={{ padding: "10px" }}>
+
+                  {values.taxTreaty_DescriptionOfPersonalServiceYouProvide === "" && values.taxTreaty_TotalCompensationYouExpectForThisCalenderYear ==="" && values.taxTreaty_TreatyId === 0 && values.taxTreaty_TreatyArticleId === 0 && values.taxTreaty_TotalCompensationListedon11bExemptFromTax === "" && values.taxTreaty_CountryOfResidenceId === 0 && clickCount === 1 ?
+                    (
+                      <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                      <Typography>
+                      8233100
+                      <span className="mx-1">
+                      <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                      width:"20px",
+                      boxShadow:"inherit",
+                     
+    
+                             
+                              cursor: "pointer",
+                              marginBottom:"3px"
+                             
+                            }}/>
+                        
+                        
+                    
+                      </span>
+       
+                      
+                      </Typography>
+                      <div>You have not provided all the detail required in question 11 and 12 that may entitle you to claim tax treaty benefits.  You should not submit Form 8233 if you cannot provide information about the personal services provided or identify the compensation amount tax treaty benefits may apply to. Please review and amend the information or if applicable continue to submit a Form W-8BEN, a Certificate of Foreign Status of Beneficial Owner for United States Tax Withholding.</div>
+                     
+    
+      
+                    </div>
+                    ):""
+                  }
+
+
+
+                  {values.taxTreaty_TreatyId !== values.taxTreaty_CountryOfResidenceId && clickCount === 1 ?(
+                    <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  8233100
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    
+                
+                  </span>
+   
+                  
+                  </Typography>
+                  <div>The Tax Treat selected in question 12a does not match the country of permanent residence, selected at question 12c.</div><div>&nbsp;</div><div>Please review the help provided should you need further assistance. There may be special circumstances where this may be appropriate and your agent may need to contact you for further information.</div>
+                 
+
+  
+                </div>
+                  ):""}
+
+
+
+
                   <Typography
                     align="left"
                     style={{

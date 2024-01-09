@@ -35,16 +35,16 @@ export default function Tin(props: any) {
   );
  
   const initialValue = {
-    usTinTypeId: onBoardingFormValues.usTinTypeId
-      ? onBoardingFormValues.usTinTypeId
+    usTinTypeId: onBoardingFormValues?.usTinTypeId
+      ? onBoardingFormValues?.usTinTypeId
       : 0,
 
-    usTin: onBoardingFormValues.usTin ? onBoardingFormValues.usTin : "",
+    usTin: onBoardingFormValues?.usTin ? onBoardingFormValues?.usTin : "",
     // usTinTypeId:0,
     // usTin:"",
     notAvailable: false,
-    foreignTINCountry: onBoardingFormValues.foreignTINCountryId
-      ? onBoardingFormValues.foreignTINCountryId
+    foreignTINCountry: onBoardingFormValues?.foreignTINCountryId
+      ? onBoardingFormValues?.foreignTINCountryId
       : "",
     foreignTIN: "",
     isFTINNotLegallyRequired: false,
@@ -288,7 +288,7 @@ export default function Tin(props: any) {
                             
                             defaultValue={1}
                             onBlur={handleBlur}
-                            value={values.usTinTypeId}
+                            value={values?.usTinTypeId}
                             onChange={(e) => {
                               handleChange(e);
                             }}
@@ -474,7 +474,7 @@ export default function Tin(props: any) {
                           id="Income"
                           defaultValue={1}
                           onBlur={handleBlur}
-                          value={values.usTinTypeId}
+                          value={values?.usTinTypeId}
                           onChange={(e) => {
                             handleChange(e);
                           }}

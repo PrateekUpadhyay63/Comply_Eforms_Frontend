@@ -2244,7 +2244,7 @@ export default function IndividualUs() {
                                     </Typography>
                                   </a>
                                 </>
-                              }
+                              }                                                                              
                             >
                               <Info
                                 style={{

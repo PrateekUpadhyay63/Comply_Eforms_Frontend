@@ -719,7 +719,52 @@ export default function Entity() {
                  
                 </div>):""}
 
+{values.permanentResidentialCountryId === values.permanentResidentialCountryId1 && clickCount === 1 ?
+  (
+<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A111
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
 
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>The country selected for your permanent residence address does not match the country selected for your mailing address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>
+  ):""
+}
+{values.permanentResidentialCountryId1 == 258 && clickCount === 1 ?(
+  <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A111
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You have provided an alternative mailing address that is in the United States. Your agent may need to obtain further information from you. </span>
+                  </Typography>
+                 
+                </div>
+):""}
 
                  {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
                   <Typography>
@@ -2990,7 +3035,7 @@ export default function Entity() {
                         <div className="row">
                           <div className="col-lg-3 col-6 col-md-3">
                             <Typography className="d-flex w-100 ">
-                              Country:3453
+                              Country:
                               <span style={{ color: "red" }}>*</span>
                             </Typography>
 

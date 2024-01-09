@@ -14,6 +14,7 @@ import {
   Radio,
   FormControlLabel,
 } from "@mui/material";
+import Infoicon from "../../../assets/img/info.png";
 import InfoIcon from "@mui/icons-material/Info";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -41,7 +42,7 @@ export default function FCTA_Reporting(props: any) {
   const handleCanvaClose = () => {
     setCanvaBx(false);
   }
-
+  const [clickCount, setClickCount] = useState(0);
   const [report, setReport] = useState<string>("");
   const handleReportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReport((event.target as HTMLInputElement).value);
@@ -96,13 +97,19 @@ export default function FCTA_Reporting(props: any) {
           enableReinitialize
           validationSchema={fctaSchema} // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
-            setSubmitting(true);
+            if (clickCount === 0) {
+        
+              setClickCount(clickCount+1);
+            }else{
+            
             history("/US_Purposes/Back/Exemption/Tax")
             dispatch(
               W9_state(values, () => {
                 console.log( "Done");
               })
             );
+            setSubmitting(true);
+            }
           }}
         >
           {({
@@ -126,6 +133,31 @@ export default function FCTA_Reporting(props: any) {
                 <div style={{ padding: "10px 0px" }}>
                 <Paper elevation={6} style={{ padding: "17px",}}>         
   <div style={{backgroundColor: "#ffff" }}>
+  {values.isExemptionFATCAReportings == "No" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  FATCA100
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    
+                
+                  </span>
+                  You have not made a selection to state that you are exempt from FATCA reporting.<div>&nbsp;</div><div>You do not need to make a selection if you are only making this submission for an account held in the United States. The exemption codes available only apply to certain types of U.S. persons submitting this form for accounts maintained outside of the United States by foreign (non U.S.) Financial Organizations.</div>
+                  
+                  </Typography>
+                 
+  
+                </div>):""}
+                
     <Typography
       align="left"
       style={{ margin: "10px", fontSize: "27px" }}
@@ -292,19 +324,13 @@ export default function FCTA_Reporting(props: any) {
     <Button variant="contained" style={{ color: "white" }}>
       SAVE & EXIT
     </Button>
-   {values?.isExemptionFATCAReportings === "Yes" ?( <Button
+   <Button
      type="submit"
       variant="contained"
       style={{ color: "white", marginLeft: "15px" }}
     >
       Continue
-    </Button>):<Button
-     onClick={()=>{history("/US_Purposes/Back/Exemption/Tax")}}
-      variant="contained"
-      style={{ color: "white", marginLeft: "15px" }}
-    >
-      Continue
-    </Button>}
+    </Button>
 
   </div>
   <Typography
