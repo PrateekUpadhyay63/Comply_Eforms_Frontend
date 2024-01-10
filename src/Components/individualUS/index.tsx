@@ -901,6 +901,28 @@ export default function IndividualUs() {
                   </Typography>
                  
                 </div>):""}
+                {values.isUSIndividual ==="no" && values.permanentResidentialCountryId === 256 && clickCount === 1 ? (
+                  <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and selected a form type W-8. You have indicated that the Permanent Residential Address for U.S tax purposes IS IN the United States. You will be asked to supply additional information later in the process and your agent may need to contact you for further information.</span>
+                  </Typography>
+                 
+                </div>
+                ):""}
 
                   {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">

@@ -17,6 +17,9 @@ import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 import Infoicon from "../../../assets/img/info.png";
 export default function Tin(props: any) {
+
+
+  const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
   const initialValue = {
     taxTreaty_DescriptionOfPersonalServiceYouProvide: "",
     taxTreaty_TotalCompensationYouExpectForThisCalenderYear: "",
@@ -98,6 +101,26 @@ export default function Tin(props: any) {
       <div className="col-8 mt-3">
               <div style={{ padding: "13px" }}>
                 <Paper style={{ padding: "10px" }}>
+
+                {values.taxTreaty_CountryOfResidenceId !== obValues?.permanentResidentialCountryId && clickCount === 1 ? (
+  <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+    <Typography>
+    8233101
+      <span >
+      <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+        <div>The permanent address country entered at question 4 does not match the permanent address country claimed for treaty purposes entered at question 12c.</div><div>&nbsp;</div><div>Please review the help provided should you need further assistance. There may be special circumstances where this may be appropriate and your agent may need to contact you for further information.</div>
+      </span>
+    </Typography>
+  </div>):""}
 
                   {values.taxTreaty_DescriptionOfPersonalServiceYouProvide === "" && values.taxTreaty_TotalCompensationYouExpectForThisCalenderYear ==="" && values.taxTreaty_TreatyId === 0 && values.taxTreaty_TreatyArticleId === 0 && values.taxTreaty_TotalCompensationListedon11bExemptFromTax === "" && values.taxTreaty_CountryOfResidenceId === 0 && clickCount === 1 ?
                     (
