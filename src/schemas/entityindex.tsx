@@ -10,7 +10,7 @@ export const EntitySchema = () => {
     entityName: Yup.string().trim().required("Please Enter Entity name"),
     usTin : Yup.string().when("usTinTypeId", {
       is: (usTinTypeId: any) =>
-      usTinTypeId == 6 || usTinTypeId == 7||usTinTypeId == 1,
+      usTinTypeId == 6|| usTinTypeId == 7||usTinTypeId == 1,
       then: () => Yup.string()
     .required("Please Enter TIN name") }),
     usTinTypeId: Yup.number().notOneOf([1], "Please select a valid option"),
@@ -45,6 +45,14 @@ export const EntitySchema = () => {
     permanentResidentialCountryId: Yup.number()
       .required("Please select a country")
       .notOneOf([0], "Please select a valid country"),
+      otherCountry: Yup.string().when("permanentResidentialCountryId",{
+        is : (permanentResidentialCountryId:any) => permanentResidentialCountryId == 186,
+        then:() => 
+        Yup.string().required("Please Enter"),
+      }),
+
+
+      
     isAddressPostOfficeBox: Yup.string().when("isUSEntity", {
       is: "no",
       then: () => Yup.string().required("Please select an option"),

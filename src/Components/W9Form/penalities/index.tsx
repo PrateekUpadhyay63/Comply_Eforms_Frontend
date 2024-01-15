@@ -26,7 +26,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ContentCopy } from "@mui/icons-material";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 import View_Insructions from "../../viewInstruction";
-
+import { Info } from "@mui/icons-material";
 export default function Penalties(props: any) {
   const history = useNavigate()
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -48,7 +48,7 @@ export default function Penalties(props: any) {
     const handleCanvaClose = () => {
       setCanvaBx(false);
     }
-  
+    const [clickCount, setClickCount] = useState(0);
     const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
     const [securityWordError, setSecurityWordError] = useState("");
   const [open2, setOpen2] = useState(false);
@@ -78,14 +78,20 @@ export default function Penalties(props: any) {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
+          if (clickCount === 0) {
+            setClickCount(clickCount+1);
+          }else{
+            setSubmitting(true);
+            setSubmitting(true);
           const result = { ...PrevStepData, ...values };
           dispatch(
             postW9Form(result, () => {
               localStorage.setItem("PrevStepData",JSON.stringify(values))
                history("/Submit")
             })
+            
           );
+          }
         }}
       >
         {({

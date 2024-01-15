@@ -13,6 +13,8 @@ import {
   Radio,
   TextField,
 } from "@mui/material";
+// import Infoicon from "../../../assets/img/info.png";
+
 import { Info, Delete } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
@@ -24,6 +26,7 @@ import {
   getTinTypes,
   getAllCountries,
 } from "../../../../../Redux/Actions";
+ import Infoicon from "../../../../../assets/img/info.png";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
 import Accordion from "@mui/material/Accordion";
@@ -121,14 +124,15 @@ export default function Tin(props: any) {
     foreignTIN:
       // onBoardingFormValues?.foreignTIN
       // ? onBoardingFormValues?.foreignTIN
-      // :
+      // : 
       "",
     isFTINNotLegallyRequired: false,
     tinisFTINNotLegallyRequired: "",
     // tinAlternativeFormate: true,
     isNotLegallyFTIN: "",
   };
-  const [payload, setPayload] = useState({ usTin: "" });
+  const [clickCount, setClickCount] = useState(0);
+  const [payload, setPayload] = useState({ usTin: "" })
   const formatTin = (e: any, values: any): any => {
     if (e.key === "Backspace" || e.key === "Delete") return;
     if (e.target.value.length === 3) {
@@ -201,13 +205,21 @@ export default function Tin(props: any) {
                 enableReinitialize
                 validationSchema={US_TINSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                  // setSubmitting(true);
-                  dispatch(
-                    W8_state(values, () => {
-                      history("/W-8BEN/Declaration/US_Tin/Claim");
-                    })
-                  );
-                  history("/W-8BEN/Declaration/US_Tin/Claim");
+                  if (clickCount === 0) {
+      
+                    setClickCount(clickCount+1);
+                  } else{
+                    setSubmitting(true);
+                    dispatch(
+                      W8_state(values, () => {
+                        history("/W-8BEN/Declaration/US_Tin/Claim");
+                      })
+                    );
+                    history("/W-8BEN/Declaration/US_Tin/Claim");
+
+                  }
+              
+                 
                 }}
               >
                 {({
@@ -220,9 +232,39 @@ export default function Tin(props: any) {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
+
+{values.isFTINNotLegallyRequired && clickCount === 1 ? (
+ <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+ <Typography>
+ FTIN165
+ <span className="mx-1">
+ <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+ width:"20px",
+ boxShadow:"inherit",
+
+
+        
+         cursor: "pointer",
+         marginBottom:"3px"
+        
+       }}/>
+   
+  
+ </span>
+
+ <strong>Foreign Taxpayer Identification Number.</strong> <p>You have selected a country in the IRS TIN exemption list. If you are not legally required to obtain an FTIN from your jurisdiction of residence (including if the jurisdiction does not issue TINs). You may check the box "TIN Not Legally Required". By checking this box, you will be treated as having provided an explanation for not providing an FTIN. If you wish to provide a further (or other) explanation why you are not required to provide an FTIN you will be provided with the option to do so.</p>
+ </Typography>
+
+
+
+</div>
+):""}
                     {toolInfo === "ForeignTin" ? (
                       <div className="mt-5">
                         <>{console.log(errors, "errors!!!!!")}</>
+
+
+
                         <Paper
                           style={{
                             backgroundColor: "#d1ecf1",
@@ -742,7 +784,7 @@ export default function Tin(props: any) {
                             <span style={{ fontSize: "15px" }}>
                               Check if FTIN not legally required
                               {errors.isFTINNotLegallyRequired &&
-                              touched.isFTINNotLegallyRequired ? (
+                                touched.isFTINNotLegallyRequired ? (
                                 <div>
                                   <Typography color="error">
                                     {errors.isFTINNotLegallyRequired}
@@ -1028,11 +1070,11 @@ export default function Tin(props: any) {
                               value="No"
                               control={<Radio />}
                               label="No"
-                              // name="isNotLegallyFTIN"
+                            // name="isNotLegallyFTIN"
                             />
                           </RadioGroup>
                           {errors.isNotLegallyFTIN &&
-                          touched.isNotLegallyFTIN ? (
+                            touched.isNotLegallyFTIN ? (
                             <div>
                               <Typography color="error">
                                 {errors.isNotLegallyFTIN}

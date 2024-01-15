@@ -13,15 +13,14 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
-
   Select,
   MenuItem,
   Divider,
 } from "@mui/material";
+import Infoicon from "../../../assets/img/info.png";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
-
 import Tooltip from "@mui/material/Tooltip";
 import { CheckBox, ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
@@ -49,7 +48,11 @@ export default function Fedral_tax(props: any) {
   } = props;
   const initialValue = {
     federalTaxClassificationId: 0,
-    foreginTIN_CountryId:0
+    foreginTIN_CountryId:0,
+    Wholly:false,
+
+
+    
   };
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
@@ -99,7 +102,7 @@ export default function Fedral_tax(props: any) {
   const GetChapter4StatusesReducer = useSelector(
     (state: any) => state.GetChapter4StatusesReducer
   );
-
+  const [clickCount, setClickCount] = useState(0);
   const handleChangeAccodion =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
@@ -108,6 +111,7 @@ export default function Fedral_tax(props: any) {
   const [expandedState, setExpandedState] = React.useState<string | false>(
     "panel1"
   );
+
 
   const handleChangeAccodionState =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -157,10 +161,15 @@ export default function Fedral_tax(props: any) {
                   initialValues={initialValue}
                   validationSchema={TaxPurposeSchema}
                   onSubmit={(values, { setSubmitting }) => {
+                    if (clickCount === 0) {
+        
+                      setClickCount(clickCount+1);
+                    }else{
                     setSubmitting(true);
                     history(
                       "/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY"
                     );
+                    }
                   }}
                 >
                   {({
@@ -175,6 +184,32 @@ export default function Fedral_tax(props: any) {
                     <Form onSubmit={handleSubmit}>
                       <div style={{ width: "100%" }}>
                         <div>
+                        {values.Wholly === true && clickCount === 1  ?
+  (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+  <Typography>
+  FATCA100
+  <span className="mx-1">
+  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+  width:"20px",
+  boxShadow:"inherit",
+ 
+
+         
+          cursor: "pointer",
+          marginBottom:"3px"
+         
+        }}/>
+    
+    
+
+  </span>
+  <p>You have certified that the Chapter 4 status is an Exempt Retirement Plan, but the country of residence is not a country that has a treaty with the United States. Please review your response and go back and amend if required. If you continue your agent may require additional information to confirm the status.</p>
+  </Typography>
+ 
+
+</div>
+    ):""
+}
                           <Typography  style={{ margin: "10px" }}>
                             <div
                             //   className="row"
@@ -315,7 +350,10 @@ export default function Fedral_tax(props: any) {
                                 ""
                               )}
                             </div>
+
+                           
                             <div className="row d-flex">
+                              
                               <div
                                 className="col-12 col-md-12 mt-3"
                                 style={{ marginTop: "20px" }}
@@ -1038,7 +1076,7 @@ and</span>
                       30
                         </Typography>
                         <Typography>
-                       <Checkbox />
+                       <Checkbox  name="wholly" value={values.Wholly}  onChange={handleChange} />
                         </Typography>
                         <Typography className="mt-2">
                         I certify that the entity identified in Part I:

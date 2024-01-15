@@ -49,6 +49,7 @@ import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "./index.scss";
+import Infoicon from "../../assets/img/info.png";
 // import "react-datepicker/dist/react-datepicker.css";
 import { apiGetUrl, apiPostUrl } from "../../api/apiUtils";
 import { Value } from "sass";
@@ -104,6 +105,7 @@ export default function IndividualUs() {
     alternativeTINFormat: false,
     giin: "",
     permanentResidentialCountryId: 0,
+    otherCountry:"",
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
     permanentResidentialCityorTown: "",
@@ -174,6 +176,7 @@ export default function IndividualUs() {
     alternativeTINFormat: false, //
     giin: "",
     permanentResidentialCountryId: 0,
+    otherCountry:"",
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
     permanentResidentialCityorTown: "",
@@ -765,16 +768,45 @@ export default function IndividualUs() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+
+{values.permanentResidentialCountryId == 186 && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
                   <Typography>
-                  A101
+                  A111
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have selected "other" and entered a country for your permanent residency address not recognised by the system. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>):""}
+
+
+
+                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
                   </span>
                   <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address is a PO Box. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
                   </Typography>
@@ -787,12 +819,17 @@ export default function IndividualUs() {
                   A102
 
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                   </span>
                   <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address may be located at a Care of Address. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
                   </Typography>
@@ -812,12 +849,17 @@ export default function IndividualUs() {
                   A103
 
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                   </span>
                   <span style={{fontWeight:"Bold"}}>
                   Potential Address Mismatch
@@ -843,17 +885,44 @@ export default function IndividualUs() {
                   <Typography>
                   A113
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                   </span>
                   <span className="mx-1" style={{marginTop:"1px"}}>You are submitting a form on behalf of a Non U.S Individual or a Non U.S Entity and indicated that the Permanent Residential Address used for U.S tax purposes is in the United States.</span>
                   </Typography>
                  
                 </div>):""}
+                {values.isUSIndividual ==="no" && values.permanentResidentialCountryId === 256 && clickCount === 1 ? (
+                  <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and selected a form type W-8. You have indicated that the Permanent Residential Address for U.S tax purposes IS IN the United States. You will be asked to supply additional information later in the process and your agent may need to contact you for further information.</span>
+                  </Typography>
+                 
+                </div>
+                ):""}
 
                   {toolInfo === "ForeignTin" ? (
                     <div className="mt-5">
@@ -1707,7 +1776,7 @@ export default function IndividualUs() {
                               </Typography>
                               <Input
                                 disabled={
-                                  values.usTinTypeId == 3 ||
+                                  values.usTinTypeId == 7 ||
                                   values.usTinTypeId == 4 ||
                                   values.usTinTypeId == 0
                                 }
@@ -2197,7 +2266,7 @@ export default function IndividualUs() {
                                     </Typography>
                                   </a>
                                 </>
-                              }
+                              }                                                                              
                             >
                               <Info
                                 style={{
@@ -2294,7 +2363,8 @@ export default function IndividualUs() {
                       timeout="auto"
                       unmountOnExit
                     >
-                      <div className="col-lg-3 col-6 col-md-3">
+                    <div className="d-flex">
+                    <div className="col-lg-3 col-6 col-md-3">
                         <Typography align="left" className="d-flex w-100 ">
                           Country:
                           <span style={{ color: "red" }}>*</span>
@@ -2336,6 +2406,46 @@ export default function IndividualUs() {
                           </p>
                         </FormControl>
                       </div>
+                     {values.permanentResidentialCountryId == 186 ?( <div className="col-lg-3 col-6 col-md-3 mx-3">
+                          <FormControl className="w-100">
+                            <Typography align="left">
+                              Other:
+                              <span style={{ color: "red" }}>*</span>
+                            </Typography>
+                            <Input
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                height: " 36px",
+                                lineHeight: "36px ",
+                                background: "#fff ",
+                                fontSize: "13px",
+                                color: " #000 ",
+                                fontStyle: "normal",
+                                borderRadius: "1px",
+                                padding: " 0 10px ",
+                              }}
+                              id="outlined"
+                              name="otherCountry"
+                              placeholder="Enter Other Country Name"
+                              onChange={handleChange}
+                              // onBlur={handleBlur}
+                              error={Boolean(
+                                touched.otherCountry &&
+                                  errors.otherCountry
+                              )}
+                              value={
+                                values.otherCountry
+                              }
+                            />
+                            <p className="error">
+                              {errors.permanentResidentialStreetNumberandName}
+                            </p>
+                          </FormControl>
+                        </div>):""}
+
+
+                    </div>
+
                       <div className="row">
                         <div className="col-lg-3 col-6 col-md-3 mt-2">
                           <FormControl className="w-100">

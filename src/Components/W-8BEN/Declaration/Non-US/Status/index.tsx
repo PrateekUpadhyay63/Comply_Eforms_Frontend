@@ -14,6 +14,7 @@ import {
   Input,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 import { Divider } from "@mui/material";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -30,6 +31,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BreadCrumbComponent from "../../../../reusables/breadCrumb";
 import {GetAgentCountriesImportantForEform} from "../../../../../Redux/Actions"
 import moment from "moment";
+import Infoicon from "../../../../../assets/img/info.png";
 
 export default function Factors() {
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || '{}')
@@ -186,12 +188,17 @@ export default function Factors() {
                   <Typography>
                   RES116
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                     
                 
                   </span>
@@ -221,12 +228,17 @@ export default function Factors() {
                   <Typography>
                   RES120
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                     
                 
                   </span>
@@ -252,12 +264,17 @@ export default function Factors() {
                   <Typography>
                   RES105
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                     
                     You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual was born in the United States, but has formally renounced their U.S. citizenship.
                   </span>
@@ -277,12 +294,17 @@ export default function Factors() {
                   <Typography>
                   RES106
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                     
                     You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual is presently subject to taxation in the United States as a U.S. citizen or resident alien.
                   </span>
@@ -307,12 +329,17 @@ export default function Factors() {
                   <Typography>
                   RES107
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                     
                     You selected that you are making this submission on behalf of a Non-U.S. Individual and indicated that the individual holds a U.S. Permanent Residency Card, often referred to as a Green Card. If this is correct you may be presently subject to taxation in the United States as a U.S. citizen or resident alien.
  
@@ -339,8 +366,12 @@ Please go back and review your selections or if the circumstanced allow progress
                   <Typography>
                   RES108
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
@@ -370,12 +401,17 @@ Please go back and review your selections or if the circumstanced allow progress
                   <Typography>
                   RES109
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
               You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and have indicated that the individual or Entity has been physically present in the U.S for 31 days or more in the current year.
 
  
@@ -391,7 +427,34 @@ Please go back and review your selections or if the circumstanced allow progress
                 
                  
                 </div>):""}
+{values.countryOfCitizenship == 258 ?(
+  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+  <Typography>
+  RES117
+  <span className="mx-1">
+  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+  width:"20px",
+  boxShadow:"inherit",
+ 
 
+         
+          cursor: "pointer",
+          marginBottom:"3px"
+         
+        }}/>
+    
+    You selected that you are making this submission on behalf of a Non-U.S. Individual but have selected the United States as your country of citizenship. If this is correct you may be subject to taxation in the United States as a U.S. citizen or resident alien.<div>&nbsp;</div><div>We are not authorized to provide tax advice through this process, but the answers provided suggest that you may be considered as a U.S. person for U.S. tax purposes and that you may need to provide a Form W-9 "Request for Taxpayer Identification Number and Certification".</div><div>&nbsp;</div><div>Please go back and review your selections or if the circumstanced allow progress to submit a certificate stating that you should not to be considered a U.S. person for U.S. tax purposes in this case. In these circumstances you must provide additional information stating why this claim is being made. Please note that any statements you make through this process are given under the Penalties of Perjury.</div>
+
+
+  </span>
+
+  
+  </Typography>
+ 
+
+ 
+</div>
+):""}
 
 
 

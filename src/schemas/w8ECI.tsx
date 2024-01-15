@@ -102,8 +102,10 @@ export const partCertiSchema = () => {
         return !storedConfirmationCode || value === storedConfirmationCode;
       }
     ),
-    confirmationCode: Yup.string()
-    .required("Please enter code")
+    confirmationCode: Yup.string().when("showRecoverSection", {
+      is: true,
+      then: () =>
+      Yup.string() .required("Please enter code")
     .test(
       'match',
       'Confirmation code does not match',
@@ -112,6 +114,7 @@ export const partCertiSchema = () => {
         return !storedConfirmationCode || value === storedConfirmationCode;
       }
     ),
+  }),
     // word: Yup.boolean().when("EnterconfirmationCode", {
     //   is: "no",
     //   then: () => Yup.string().required("Please select owner"),

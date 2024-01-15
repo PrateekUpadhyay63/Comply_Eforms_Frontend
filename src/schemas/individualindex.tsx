@@ -6,6 +6,11 @@ export const individualSchema = () => {
     isUSIndividual: Yup.string(),
     firstName: Yup.string().trim()
       .required("Please Enter First Name"),
+      usTin : Yup.string().when("usTinTypeId", {
+        is: (usTinTypeId: any) =>
+        usTinTypeId == 6|| usTinTypeId == 7||usTinTypeId == 1,
+        then: () => Yup.string()
+      .required("Please Enter TIN name") }),
       // .min(3, "First Name should be minimum of 3 characters")
       // .max(50, "First Name should be maximum of 50 characters"),
     lastName: Yup.string().trim()
@@ -38,6 +43,12 @@ export const individualSchema = () => {
     permanentResidentialCountryId: Yup.number()
       .required("Please select country")
       .notOneOf([0], "Please select a valid country"),
+
+      otherCountry: Yup.string().when("permanentResidentialCountryId",{
+        is : (permanentResidentialCountryId:any) => permanentResidentialCountryId == 186,
+        then:() => 
+        Yup.string().required("Please Enter"),
+      }),
     permanentResidentialStreetNumberandName: Yup.string().trim().required(
       "Please enter Street number and name"
     ),

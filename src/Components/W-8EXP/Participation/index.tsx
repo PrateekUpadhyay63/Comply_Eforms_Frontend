@@ -11,6 +11,8 @@ import {
   FormControl,
   Input,
 } from "@mui/material";
+import Infoicon from "../../../assets/img/info.png";
+import { Info } from "@mui/icons-material";
 import "./index.scss"
 import DatePicker from "react-date-picker";
 import { ContentCopy } from "@mui/icons-material";
@@ -33,6 +35,7 @@ export default function Penalties() {
   const [open2, setOpen2] = useState(false);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
+  const [isSignatureMatched, setIsSignatureMatched] = useState(true); 
   const [expanded, setExpanded] = React.useState<string | false>("");
   const [showRecoverSection, setShowRecoverSection] = useState(false);
   const [isSecurityWordMatched, setIsSecurityWordMatched] = useState(false);
@@ -42,6 +45,18 @@ export default function Penalties() {
      
       setSecurityWordError("");
     };
+
+    // const handleChange = (event:any) => {
+    //   const { name, value } = event.target;
+    
+     
+    //   const storedSignature = localStorage.getItem('signature'); 
+    //   const isMatched = value === storedSignature;
+    
+    //   // Update the state based on the match result
+    //   setIsSignatureMatched(isMatched);
+   
+    // };
   const handleChangestatus =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -59,7 +74,7 @@ export default function Penalties() {
   };
   const dispatch = useDispatch();
   const history = useNavigate();
-
+  const [clickCount, setClickCount] = useState(0);
   return (
     <>
       <Formik
@@ -68,13 +83,20 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
+          
+          if (clickCount === 0 ) {
+           
+            setClickCount(clickCount+1);
+          } else {
           dispatch(
             W8_state(values, () => {
               history("/Exp/Tax_Purpose_Exp/Chapter4_Exp/Tin_Exp/Certificate_Exp/Participation_Exp/Submit_Exp");
+              setSubmitting(false);
             })
+         
           );
         }}
+      }
       >
         {({
           errors,
@@ -112,6 +134,33 @@ export default function Penalties() {
 
               <div style={{ padding: "10px" }}>
                 <Paper style={{ padding: "18px" }}>
+
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
+                
                   <Typography
                     align="left"
                     style={{
@@ -508,6 +557,7 @@ export default function Penalties() {
                     />
                     <Typography
                       style={{
+                        marginTop:"10px",
                         fontSize: "15px",
                         color: "black",
                         
@@ -560,6 +610,39 @@ export default function Penalties() {
                       </span>
                     </Typography>
                   </Typography>
+
+                  {clickCount === 1 && (
+                <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  SIG112
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                  </span>
+                 
+                   You have entered an electronic signature name that is different to the one expected. By checking the box below, you are certifying under penalties of perjury that you have the capacity to sign this form on behalf of the person identified on Line 1 of this form.
+                
+                  </Typography>
+                
+                   <br/>
+                   <Typography>
+                   If you are an agent acting upon a duly authorized power of attorney for the beneficial owner or account holder, this form must be accompanied by the power of attorney in proper form or a copy thereof. View form instructions for full details.
+
+                   </Typography>
+         
+                 
+
+  
+                </div>
+                 )}
                   {toolInfo === "check" ? (
                     <div>
                       <Paper

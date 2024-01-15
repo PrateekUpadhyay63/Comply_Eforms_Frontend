@@ -18,6 +18,7 @@ import "react-calendar/dist/Calendar.css";
 import InfoIcon from "@mui/icons-material/Info";
 import Declaration from "../../reusables/Declaration";
 import { Formik, Form } from "formik";
+import { Info } from "@mui/icons-material";
 import { ContentCopy } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { W8_state } from "../../../Redux/Actions";
@@ -31,6 +32,7 @@ import { partCertiSchema } from "../../../schemas/w8Ben";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 export default function Penalties() {
   const [open2, setOpen2] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
   const handleClickOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
   const [expanded, setExpanded] = React.useState<string | false>("");
@@ -69,12 +71,19 @@ export default function Penalties() {
         initialValues={initialValue}
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
+          if (clickCount === 0) {
+        
+            setClickCount(clickCount+1);
+          }else{
+         
           dispatch(
             W8_state(values, () => {
               history("/IMY/Tax_Purpose_Exp/Chapter4_IMY/TaxPayer_IMY/Certificates_IMY/Participation_IMY/Submit_IMY");
+              setSubmitting(true);
+           
             })
           );
+          }
         }}
       >
         {({
@@ -113,6 +122,27 @@ export default function Penalties() {
 
               <div style={{ padding: "13px" }}>
                 <Paper style={{ padding: "10px" }}>
+                {obValues.uniqueIdentifier !== values.signedBy && clickCount === 1 ?(
+                  <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                SIG101
+                  <span className="mx-1">
+                    <Info style={{color: "#ffc107",
+                          fontSize: "22px",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                    You have entered an electronic signature name that is different to the one expected
+                  </span>
+   
+                  
+                  </Typography>
+                 
+                </div>
+
+                ):""}
                   <Typography
                     align="left"
                     style={{

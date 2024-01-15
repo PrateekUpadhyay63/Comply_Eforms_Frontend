@@ -7,6 +7,7 @@ import {
   Tooltip,
   Link,
 } from "@mui/material";
+import Infoicon from "../../../../assets/img/info.png";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
@@ -228,12 +229,17 @@ export default function Factors() {
                   <Typography>
                   1042S2
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
                   </span>
                   </Typography>
                   <Typography align="center" style={{fontWeight:"Bold"}}>

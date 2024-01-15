@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
+import Infoicon from "../../../../../assets/img/info.png";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import { claimSchemaaa } from "../../../../../schemas/w8Ben";
@@ -114,12 +115,17 @@ export default function FCTA_Reporting(props: any) {
                   <Typography>
                   Treaty107
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
               The country selected does not match the resident country selected earlier in the process. Your agent may contact you for further information.
 
  
@@ -130,12 +136,17 @@ export default function FCTA_Reporting(props: any) {
                   <Typography>
                   Treaty120
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
 The treaty country chosen does not match the country selected earlier as the primary residence address country. Please review the selections for accuracy. Generally the primary residence address country will be the same country applicable for treaty claim purposes. The withholding agent may need to request further information depending on answers given elsewhere and attachments supplied.
  
                   </span>
@@ -146,16 +157,23 @@ The treaty country chosen does not match the country selected earlier as the pri
                 
                  
                 </div>):""}
-                {values.isSubmissionClaimTreaty === "No" && clickCount === 1 ? (<div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                {values.isSubmissionClaimTreaty === "No" && clickCount === 1 ? (
+                
+                <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
                   <Typography>
                   Treaty119
                   <span className="mx-1">
-                    <Info style={{color: "#ffc107",
-                          fontSize: "22px",
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
                           cursor: "pointer",
                           marginBottom:"3px"
                          
                         }}/>
+                    
  You have made a selection that indicates you do not wish to claim treaty benefits that may be available. If this is correct please continue to the next stage. Your agent may contact you for further information.
  
                   </span>

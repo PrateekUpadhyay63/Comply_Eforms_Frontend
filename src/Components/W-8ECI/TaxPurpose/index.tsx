@@ -20,6 +20,8 @@ import Tooltip from "@mui/material/Tooltip";
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import "./index.scss";
+import Infoicon from "../../../assets/img/info.png";
+// import { Info } from "@mui/icons-material";
 import checksolid from "../../../assets/img/check-solid.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
@@ -42,8 +44,11 @@ export default function Fedral_tax(props: any) {
     lastName: obValues.lastName,
     businessName: obValues.foreignTINCountryId,
     federalTaxClassificationId: 0,
-    federal:""
+    federal:"",
+    isHeldUSCitizenship:""
+
   };
+  const [clickCount, setClickCount] = useState(0);
   const [toolInfo, setToolInfo] = useState("");
   const history = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>("");
@@ -113,9 +118,14 @@ export default function Fedral_tax(props: any) {
               initialValues={initialValue}
               validationSchema={TaxPurposeSchema}
               onSubmit={(values, { setSubmitting }) => {
+                if (clickCount === 0) {
+        
+                  setClickCount(clickCount+1);
+                }else{
                 setSubmitting(true);
                 history("/W-8ECI/Tax_Payer");
               }}
+            }
             >
               {({
                 errors,
@@ -130,6 +140,50 @@ export default function Fedral_tax(props: any) {
                       <div style={{ width: "100%" }}>
                         <div>
                           <Typography align="left" style={{ margin: "10px" }}>
+
+                          {values.federalTaxClassificationId !== obValues?.permanentResidentialCountryId && clickCount === 1 ? (
+  <div style={{ backgroundColor: "#e8e1e1", padding: "10px" }}>
+    <Typography>
+      ICOR114
+      <span >
+      <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+        Country of incorporation is different from the PRA country.
+      </span>
+    </Typography>
+  </div>):""}
+                           {values.isHeldUSCitizenship =="Not" && clickCount === 1  ?(
+                           <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                           <Typography>
+                           HYB109
+                           <span className="mx-1">
+                           <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                             
+                             You have selected the type of beneficial owner is a Partnership,  but have not selected "Hybrid Status". The beneficial owner may qualify for a reduced rate of withholding under an income tax treaty when it has Hybrid entity status.
+                           </span>
+            
+                           
+                           </Typography>
+                          
+                         </div>
+                           ):""}
                             <div
                               className="row"
                               style={{
@@ -788,8 +842,8 @@ export default function Fedral_tax(props: any) {
                                   row
                                   defaultValue="Not"
                                   aria-labelledby="demo-row-radio-buttons-group-label"
-                                  name="row-radio-buttons-group"
-                                  //   value={values.isHeldUSCitizenship}
+                                  name="isHeldUSCitizenship"
+                                  value={values.isHeldUSCitizenship}
                                   onChange={handleChange}
                                   id="isHeldUSCitizenship"
                                 >

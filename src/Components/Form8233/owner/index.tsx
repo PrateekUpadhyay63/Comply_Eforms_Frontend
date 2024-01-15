@@ -13,6 +13,7 @@ import {
   Checkbox,
 } from "@mui/material";
 import { Info } from "@mui/icons-material";
+import Infoicon from "../../../assets/img/info.png";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { ownerSchema } from "../../../schemas/8233";
@@ -30,15 +31,16 @@ export default function Tin(props: any) {
     countryIssuingPassportId: "",
     countryIssuingPassportNumber: "",
     dateOfEntryIntoUS: "",
-    nonImmigrationStatus: true,
+    nonImmigrationStatus: false,
     currentNonImmigrationStatus: "",
     dateNonImmigrationStatusExpire: "",
-    declarationOfDurationStayStatus: true,
-    foreignStudent_Teacher_Professor_ResearcherStatus: true,
+    declarationOfDurationStayStatus: false,
+    foreignStudent_Teacher_Professor_ResearcherStatus: false,
     statementToForm8233_FileUpoad: "",
   };
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [clickCount, setClickCount] = useState(0);
   const [tax, setTax] = useState<string>("");
 
 
@@ -79,6 +81,10 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
         enableReinitialize
         validationSchema={ownerSchema}
         onSubmit={(values, { setSubmitting }) => {
+          if (clickCount === 0) {
+      
+            setClickCount(clickCount+1);
+          } else{
           setSubmitting(true);
           console.log(values);
           dispatch(
@@ -86,6 +92,7 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
               history("/Form8233/TaxPayer_Identification/Owner/Claim_part");
             })
           );
+          }
           history("/Form8233/TaxPayer_Identification/Owner/Claim_part");
         }}
       >
@@ -122,6 +129,34 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
       <div className="col-8 mt-3">
               <div style={{ padding: "4px" }}>
                 <Paper style={{ padding: "18px" }}>
+
+                  {values.declarationOfDurationStayStatus && clickCount === 1 ?(<div>
+                    <div  style={{backgroundColor: "#e8e1e1" , padding:"10px"}}>
+                  <Typography>
+                  8233104
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                   <span> Duration of Stay Identified on form 8233</span>
+ 
+                  </span>
+   
+                  
+                  </Typography>
+                
+                
+                 
+                </div>
+                  </div>
+
+                  ):""}
                   <Typography
                     align="left"
                     style={{
@@ -672,7 +707,11 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                       <p className="error">{errors.dateOfEntryIntoUS}</p>
                     </div>
                     <div>
-                      <Checkbox name="nonImmigrationStatus" size="medium" />
+                      <Checkbox name="nonImmigrationStatus" size="medium" onChange={handleChange}
+                            id="nonImmigrationStatus"
+                           
+                            value={values.nonImmigrationStatus}
+                            checked={values.nonImmigrationStatus} />
                       <span style={{ fontSize: "12px", marginTop: "5px" }}>
                         Check if Nonimmigrant status Not Applicable:
                       </span>
@@ -887,7 +926,11 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                         <div className="mt-2">
                           <Checkbox
                             size="small"
+                            onChange={handleChange}
+                            id="declarationOfDurationStayStatus"
                             name="declarationOfDurationStayStatus"
+                            value={values.declarationOfDurationStayStatus}
+                            checked={values.declarationOfDurationStayStatus}
                           />
                           <span
                             style={{
@@ -910,6 +953,12 @@ const getCountriesReducer = useSelector((state:any) => state.getCountriesReducer
                       <Checkbox
                         name="foreignStudent_Teacher_Professor_ResearcherStatus"
                         size="medium"
+                        onChange={handleChange}
+                        id="foreignStudent_Teacher_Professor_ResearcherStatus"
+                      
+                        value={values.foreignStudent_Teacher_Professor_ResearcherStatus}
+                        checked={values.foreignStudent_Teacher_Professor_ResearcherStatus}
+                        
                       />
                       <span style={{ fontSize: "15px", marginTop: "13px" }}>
                         <span style={{ fontWeight: "550" }}> 10</span> If you

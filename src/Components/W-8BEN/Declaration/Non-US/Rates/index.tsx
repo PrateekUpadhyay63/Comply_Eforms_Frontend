@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./index.scss";
+import Infoicon from "../../../assets/img/info.png";
 import { Info } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +44,9 @@ export default function Factors() {
   const deleteIncomeTypePaper = () => {
     setNumPapers(numPapers - 1);
   };
+  const [clickCount, setClickCount] = useState(0);
   const [toolInfo, setToolInfo] = useState("");
+
   const [status, setStatus] = useState("");
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStatus(event.target.value);
@@ -102,6 +105,10 @@ const GetAllIncomeCodesReducer = useSelector(
             validationSchema={rateSchema}
             onSubmit={(values, { setSubmitting }) => {
               console.log("hhh",values)
+              if (clickCount === 0) {
+      
+                setClickCount(clickCount+1);
+              } else{
               setSubmitting(true);
                 dispatch(
                   W8_state(values, () => {
@@ -109,7 +116,7 @@ const GetAllIncomeCodesReducer = useSelector(
                   })
                 );
               history("/W-8BEN/Declaration/US_Tin/Certificates");
-            }}
+            }}}
           >
             {({
               errors,
@@ -122,6 +129,13 @@ const GetAllIncomeCodesReducer = useSelector(
             }) => (
               <Form onSubmit={handleSubmit}>
                 <>{console.log(errors, values, "valeeeeeeeeeee")}</>
+
+
+                {values.isSubmissionSpecialRates === "Yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                <div style={{fontWeight:"550"}}>SRC101<br />Special Conditions</div><div>&nbsp;</div><p>You have answered YES to the Special Conditions question. You would normally only select YES if you are claiming treaty benefits that require you meet conditions NOT covered in the representation you made above.</p><div>&nbsp;</div><p>However, the Special Conditions section should always be completed by non-U.S. students and non-U.S. researchers claiming treaty benefits.</p><div>&nbsp;</div><p>Additional examples of persons who should select YES and complete the Special Conditions requirements include:</p><ul><li>Exempt organizations claiming treaty benefits under the exempt organization articles of the treaties with Canada, Mexico, Germany and the Netherlands.</li><li>Non-U.S. corporations that are claiming a preferential rate applicable to dividends based on ownership of a specific percentage of stock.</li><li>Persons claiming treaty benefits on ROYALTIES if the treaty contains different withholding rates for different types of royalties.<br /></li></ul><div>&nbsp;</div><p>The Special Conditions question is generally not applicable to claiming treaty benefits under an interest or dividends (other than dividends subject to preferential rate based on ownership) article of a treaty.</p><ul></ul>
+                  
+                 
+                </div>):""}
                 <div style={{ margin: "10px" }}>
                   <Typography
                     align="left"
@@ -390,7 +404,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "18px",
+                                    fontSize: "17px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -433,7 +447,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "18px",
+                                    fontSize: "17px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -479,7 +493,7 @@ const GetAllIncomeCodesReducer = useSelector(
                             <div className="col-12">
                             <Typography
                               align="left"
-                              style={{ fontSize: "18px", marginTop: "10px" }}
+                              style={{ fontSize: "17px", marginTop: "10px" }}
                             >
                               Enter the Subparagraph of the Article being
                               claimed:{" "}
@@ -517,7 +531,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "18px",
+                                    fontSize: "17px",
                                     marginTop: "10px",
                                   }}
                                 >
@@ -560,7 +574,7 @@ const GetAllIncomeCodesReducer = useSelector(
                                 <Typography
                                   align="left"
                                   style={{
-                                    fontSize: "18px",
+                                    fontSize: "17px",
                                     marginTop: "10px",
                                   }}
                                 >

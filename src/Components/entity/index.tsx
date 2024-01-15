@@ -12,7 +12,7 @@ import {
   Tooltip,
   Link,
 } from "@mui/material";
-
+import Infoicon from "../../assets/img/info.png";
 // import { useDispatch } from "react-redux";
 import {
   RemoveCircleOutlineOutlined,
@@ -20,6 +20,7 @@ import {
   Delete,
   Info,
 } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 import Paper from "@mui/material/Paper";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -51,6 +52,7 @@ export default function Entity() {
   const dispatch = useDispatch<AppDispatch>();
   //   //States
   const [incomeData, setIncomeData] = useState<any>([]);
+  const [clickCount, setClickCount] = useState(0);
   // const [value, onChange] = useState<Value2>(null);
   const [open, setOpen] = useState("");
   const [incomeArr, setIncomeArr] = useState(["intrest"]);
@@ -91,6 +93,7 @@ export default function Entity() {
     giin: "",
     bsb: "",
     permanentResidentialCountryId: 0,
+    otherCountry:"",
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
     permanentResidentialCityorTown: "",
@@ -161,6 +164,7 @@ export default function Entity() {
     alternativeTINFormat: false, //
     giin: "",
     permanentResidentialCountryId: 0,
+    otherCountry:"",
     permanentResidentialStreetNumberandName: "",
     permanentResidentialAptSuite: "",
     permanentResidentialCityorTown: "",
@@ -578,7 +582,10 @@ export default function Entity() {
               validateOnBlur={false}
               onSubmit={(values, { setSubmitting }) => {
                 console.log("e", values?.usTinTypeId);
-                setSubmitting(true);
+                if (clickCount === 0) {
+      
+                  setClickCount(clickCount+1);
+                } else {
                 const payload = {
                   agentId: values?.agentId,
                   businessTypeId: values?.businessTypeId,
@@ -672,7 +679,11 @@ export default function Entity() {
                 };
                 localStorage.setItem("agentDetails", JSON.stringify(payload));
                 dispatch(postOnboarding(payload, redirectFunc));
+                setSubmitting(false);
+              }
               }}
+
+
               validationSchema={EntitySchema}
             >
               {({
@@ -686,6 +697,275 @@ export default function Entity() {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
+
+{values.permanentResidentialCountryId == 186 && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A111
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have selected "other" and entered a country for your permanent residency address not recognised by the system. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>):""}
+                {values.isUSIndividual ==="no" && values.permanentResidentialCountryId === 256 && clickCount === 1 ? (
+                  <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You have identified that you are submitting a form on behalf of a NON U.S. Individual or a NON US Entity and selected a form type W-8. You have indicated that the Permanent Residential Address for U.S tax purposes IS IN the United States. You will be asked to supply additional information later in the process and your agent may need to contact you for further information.</span>
+                  </Typography>
+                 
+                </div>
+                ):""}
+
+{values.permanentResidentialCountryId === values.permanentResidentialCountryId1 && clickCount === 1 ?
+  (
+<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A111
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>The country selected for your permanent residence address does not match the country selected for your mailing address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>
+  ):""
+}
+{values.permanentResidentialCountryId1 == 258 && clickCount === 1 ?(
+  <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A111
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You have provided an alternative mailing address that is in the United States. Your agent may need to obtain further information from you. </span>
+                  </Typography>
+                 
+                </div>
+):""}
+
+                 {values.isAddressPostOfficeBox === "yes"  && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A101
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address is a PO Box. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+                </div>):""}
+
+
+                {values.isCareOfAddress === "yes" && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A102
+
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}> You have indicated that your permanent residency address may be located at a Care of Address. This may not be accepted as a valid address. Your agent may need to obtain further information from you.</span>
+                  </Typography>
+                 
+               
+                 
+                  
+                 
+                 
+
+  
+                </div>):""}
+
+
+                {values.isUSIndividual === "yes" && values.permanentResidentialCountryId  != 258 && clickCount === 1 ?(<div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A103
+
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span style={{fontWeight:"Bold"}}>
+                  Potential Address Mismatch
+                  </span>
+                  </Typography>
+                  
+                  <Typography  className="mt-3">
+                  You have identified that you are submitting a form on behalf of a U.S. Individual or a US Entity and indicated that the Permanent Residential Address used for U.S tax purposes is not in the U.S.
+                  </Typography>
+                  <Typography  className="mt-2">
+                  You will be asked to supply additional information later in the process and your agent may need to contact you for further information.
+
+                  </Typography>
+                 
+                  
+                 
+                 
+
+  
+                </div>):""}
+
+                {values.isUSIndividual === "no" && values.permanentResidentialCountryId  == 258 && clickCount === 1 ?( <div className ="my-4 mx-3" style={{backgroundColor: "#e8e1e1" , padding:"10px" }}>
+                  <Typography>
+                  A113
+                  <span className="mx-1">
+                  <img src={Infoicon} style={{color: "#ffc107",height:"22px",
+                  width:"20px",
+                  boxShadow:"inherit",
+                 
+
+                         
+                          cursor: "pointer",
+                          marginBottom:"3px"
+                         
+                        }}/>
+                    
+                  </span>
+                  <span className="mx-1" style={{marginTop:"1px"}}>You are submitting a form on behalf of a Non U.S Individual or a Non U.S Entity and indicated that the Permanent Residential Address used for U.S tax purposes is in the United States.</span>
+                  </Typography>
+                 
+                </div>):""}
+
+                  {toolInfo === "ForeignTin" ? (
+                    <div className="mt-5">
+                      <Paper
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
+                      >
+                        <div
+                          className="d-flex"
+                          style={{ justifyContent: "space-between" }}
+                        >
+                          <Typography style={{ color: "#0c5460" }}>
+                            United Kingdom TIN Format is 9999999999 false 9-
+                            Numeric value only A- Alphabetic character only *-
+                            Alphanumeric character only ?- Characters optional
+                            after this IF TIN format is not available, please
+                            check the below box and continue
+                          </Typography>
+
+                          <Typography>
+                            <CloseIcon
+                              style={{
+                                color: "#0c5460",
+                                cursor: "pointer",
+                                fontSize: "medium",
+                              }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            />
+                          </Typography>
+                        </div>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
+                  {toolInfo === "identity" ? (
+                    <div className="mt-5">
+                      <Paper
+                        style={{ backgroundColor: "#d1ecf1", padding: "15px" }}
+                      >
+                        <div
+                          className="d-flex"
+                          style={{ justifyContent: "space-between" }}
+                        >
+                          <Typography style={{ color: "#0c5460" }}>
+                            Instructor Identifier Format is ?********** 9-
+                            Numeric value only A- Alphabetic character only *-
+                            Alphanumeric character only ?- Characters optional
+                            after this
+                          </Typography>
+
+                          <Typography>
+                            <CloseIcon
+                              style={{
+                                color: "#0c5460",
+                                cursor: "pointer",
+                                fontSize: "medium",
+                              }}
+                              onClick={() => {
+                                setToolInfo("");
+                              }}
+                            />
+                          </Typography>
+                        </div>
+                      </Paper>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
                   <>{console.log(values, "entity", errors)}</>
                   <CardHeader
                     style={{ textAlign: "left" }}
@@ -1806,7 +2086,7 @@ export default function Entity() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <div className="row">
+                    <div className="row d-flex">
                       <div className="col-lg-3 col-6 col-md-3">
                         <Typography className="d-flex w-100 ">
                           Country:
@@ -1848,6 +2128,42 @@ export default function Entity() {
                           </p>
                         </FormControl>
                       </div>
+                      {values.permanentResidentialCountryId == 186 ?( <div className="col-lg-3 col-6 col-md-3 mx-3">
+                          <FormControl className="w-100">
+                            <Typography align="left">
+                              Other:
+                              <span style={{ color: "red" }}>*</span>
+                            </Typography>
+                            <Input
+                              style={{
+                                border: " 1px solid #d9d9d9 ",
+                                height: " 36px",
+                                lineHeight: "36px ",
+                                background: "#fff ",
+                                fontSize: "13px",
+                                color: " #000 ",
+                                fontStyle: "normal",
+                                borderRadius: "1px",
+                                padding: " 0 10px ",
+                              }}
+                              id="outlined"
+                              name="otherCountry"
+                              placeholder="Enter Other Country Name"
+                              onChange={handleChange}
+                              // onBlur={handleBlur}
+                              error={Boolean(
+                                touched.otherCountry &&
+                                  errors.otherCountry
+                              )}
+                              value={
+                                values.otherCountry
+                              }
+                            />
+                            <p className="error">
+                              {errors.permanentResidentialStreetNumberandName}
+                            </p>
+                          </FormControl>
+                        </div>):""}
                     </div>
                     <div className="row">
                       <div className="col-lg-3 col-6 col-md-3 mt-2">
