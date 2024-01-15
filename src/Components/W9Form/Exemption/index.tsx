@@ -20,7 +20,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { fctaSchema } from "../../../schemas";
-import { W9_state , GetAgentFATCAEntityGIINChallengeDisabledForEformAction } from "../../../Redux/Actions";
+import { W9_state , GetAgentFATCAEntityGIINChallengeDisabledForEformAction, postW9Form } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
@@ -49,7 +49,7 @@ export default function FCTA_Reporting(props: any) {
   const GetAgentFATCAEntityGIINChallengeDisabledForEformReducer = useSelector(
     (state: any) => state.GetAgentFATCAEntityGIINChallengeDisabledForEformReducer
   );
- 
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
     isExemptionFATCAReportings: "No",
     ReportingId:""
@@ -97,10 +97,16 @@ export default function FCTA_Reporting(props: any) {
           validationSchema={fctaSchema} // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            history("/US_Purposes/Back/Exemption/Tax")
+            const result = { ...PrevStepData, ...values };
+            // dispatch(
+            //   W9_state(values, () => {
+            //     console.log( "Done");
+            //   })
+            // );
             dispatch(
-              W9_state(values, () => {
-                console.log( "Done");
+              postW9Form(result, () => {
+                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                history("/US_Purposes/Back/Exemption/Tax")
               })
             );
           }}

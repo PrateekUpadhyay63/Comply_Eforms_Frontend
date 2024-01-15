@@ -42,6 +42,17 @@ const ActionName = {
     GetIncomeTypes:"GetIncomeTypes",
     GetAgentIncomeTypeHiddenAllowAnoymo:"GetAgentIncomeTypeHiddenAllowAnoymo",
     SendOTPMail:"SendOTPMail",
+    
+    InsertW9IndividualEntityUSForm:"InsertW9IndividualEntityUSForm",
+    InsertW8BENEEntityNonUSForm:"InsertW8BENEEntityNonUSForm",
+    InsertW8BENIndividualNonUS:"InsertW8BENIndividualNonUS",
+    InsertW8ECIIndividualEntityNonUSForm:"InsertW8ECIIndividualEntityNonUSForm",
+    InsertW8EXPFormEntityNonUs:"InsertW8EXPFormEntityNonUs",
+    InsertW8IMYEntityNonForm:"InsertW8IMYEntityNonForm",
+    InsertForm8233IndividualNonUSForm:"InsertForm8233IndividualNonUSForm",
+
+    GetByW9IndividualEntityUSFormId:"GetByW9IndividualEntityUSFormId",
+    
   };
 
   export default ActionName;

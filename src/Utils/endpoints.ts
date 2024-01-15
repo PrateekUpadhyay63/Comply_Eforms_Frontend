@@ -35,5 +35,19 @@ const EndPoint = {
   GetChapter4Statuses:"/W9Common/GetChapter4Statuses",
   GetAgentIncomeTypeHiddenAllowAnoymo:"/AgentUSSourceIncome/GetAgentIncomeTypeHiddenAllowAnoym",
   SendOTPMail:"/Mail/SendOTPMail",
+
+
+  //Form PostAPI's
+ InsertW9IndividualEntityUSForm:"/W9IndividualEntity/InsertW9IndividualEntityUSForm",
+ InsertW8BENEEntityNonUSForm:"/W8BENEEntity/InsertW8BENEEntityNonUSForm",
+ InsertW8BENIndividualNonUS:"/W8BENIndividual/InsertW8BENIndividualNonUS",
+ InsertW8ECIIndividualEntityNonUSForm:"/W8ECIIndividualEntity/InsertW8ECIIndividualEntityNonUSForm",
+ InsertW8EXPFormEntityNonUs:"/W8EXPEntity/InsertW8EXPFormEntityNonUs",
+ InsertW8IMYEntityNonForm:"/W8IMYEntity/InsertW8IMYEntityNonForm",
+ InsertForm8233IndividualNonUSForm:"/Form8233Individual/InsertForm8233IndividualNonUSForm",
+
+
+ //Form GetAPI's
+ GetByW9IndividualEntityUSFormId:"/W9IndividualEntity/GetByW9IndividualEntityUSFormId",
 };
 export default EndPoint;

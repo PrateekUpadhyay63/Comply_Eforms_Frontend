@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { getToken } from '.';
 
-const API_URL = 'http://122.176.101.76:8088/api/';
+// const API_URL = 'http://122.176.101.76:8088/api/';
+const API_URL = 'http://192.168.3.53:8088/api';
 
 export const apiErrorCode = {
   unauthorized: 401,
@@ -49,7 +50,8 @@ $axios.interceptors.request.use(
 const constants = {
   apiErrorCode,
   // API_URL: process.env.REACT_APP_API_URL,
-  API_URL:"http://122.176.101.76:8088/api",
+  // API_URL:"http://122.176.101.76:8088/api",
+  API_URL:'http://192.168.3.53:8088/api',
   apiSuccessCode,
   axios: $axios,
 };

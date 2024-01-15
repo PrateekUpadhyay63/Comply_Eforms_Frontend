@@ -11,6 +11,8 @@ export const W9_state = (value: any, callback: any = false): any => {
   }
 };
 
+
+
 export const W8_state = (value: any, callback: any = false): any => {
   if (callback) {
     callback();
@@ -812,7 +814,6 @@ export const GetAgentIncomeTypeHiddenAllowAnoymo = ():any =>{
       Utils.EndPoint.GetAgentIncomeTypeHiddenAllowAnoymo,
       "",
       (resData) => {
-        console.log(resData,"HIgkdgfhjyII")
         const { data } = resData;
         if (resData.status === 200) {
           dispatch({
@@ -874,4 +875,30 @@ export const GetIncomeTypes = ():any =>{
     );
   };
 }
-//
+
+
+export const postW9Form = (value: any, callback: Function): any => {
+  return (dispatch: any) => {
+    Utils.api.postApiCall(
+      Utils.EndPoint.InsertW9IndividualEntityUSForm,
+      value,
+      (responseData) => {
+        let { data } = responseData;
+        dispatch({
+          type: Utils.actionName.InsertW9IndividualEntityUSForm,
+          payload: { data: data.data },
+        });
+        if (responseData) {
+          if (responseData.status == 500) {
+          } else {
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      },
+      (error) => {
+      }
+    );
+  };
+};

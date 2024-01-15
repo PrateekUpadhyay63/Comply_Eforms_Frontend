@@ -21,7 +21,7 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import checksolid from "../../../assets/img/check-solid.png";
 import { secondStepSchema } from "../../../schemas";
-import { W9_state } from "../../../Redux/Actions";
+import { W9_state, postW9Form } from "../../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
@@ -37,6 +37,7 @@ export default function Backup_witholding(props: any) {
     handleChange,
     setselectedContinue,
   } = props;
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
     isExemptionfromBackup: "",
   };
@@ -102,11 +103,12 @@ export default function Backup_witholding(props: any) {
           validationSchema={secondStepSchema} // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log(values, ":STEP2 VALUES");
+            const result = { ...PrevStepData, ...values };
             history("/US_Purposes/Back/Exemption")
             dispatch(
-              W9_state(values, () => {
-                console.log("Done");
+              postW9Form(result, () => {
+                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                 history("/US_Purposes/Back/Exemption")
               })
             );
           }}

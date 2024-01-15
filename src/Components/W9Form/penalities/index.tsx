@@ -17,7 +17,7 @@ import { Formik, Form } from "formik";
 // import { useDispatch } from "react-redux";
 import { partCertiSchema } from "../../../schemas/w8Ben";
 import { useDispatch } from "react-redux";
-import { W8_state } from "../../../Redux/Actions";
+import { W8_state, postW9Form } from "../../../Redux/Actions";
 import InfoIcon from "@mui/icons-material/Info";
 import Declaration from "../../reusables/Declaration";
 import { useNavigate } from "react-router-dom";
@@ -57,6 +57,7 @@ export default function Penalties(props: any) {
   
    
   const dispatch = useDispatch();
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const obValues = JSON.parse(localStorage.getItem("formSelection") || '{}')
   const initialValue = {
     signedBy: "",
@@ -78,9 +79,11 @@ export default function Penalties(props: any) {
         validationSchema={partCertiSchema}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
+          const result = { ...PrevStepData, ...values };
           dispatch(
-            W8_state(values, () => {
-              history("/Submit")
+            postW9Form(result, () => {
+              localStorage.setItem("PrevStepData",JSON.stringify(values))
+               history("/Submit")
             })
           );
         }}

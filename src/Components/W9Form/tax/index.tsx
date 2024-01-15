@@ -20,7 +20,7 @@ import { ExpandMore, Info } from "@mui/icons-material";
 import { Formik, Form } from "formik";
 import { firstStepBusinessSchema, firstStepSchema ,tinSchema} from "../../../schemas";
 import { useNavigate } from "react-router-dom";
-import {getTinTypes} from "../../../Redux/Actions"
+import {getTinTypes, postW9Form} from "../../../Redux/Actions"
 import { useDispatch } from "react-redux";
 import BreadCrumbComponent from "../../reusables/breadCrumb";
 import View_Insructions from "../../viewInstruction";
@@ -38,6 +38,7 @@ export default function Tin(props: any) {
   const onBoardingFormValues = JSON.parse(
     localStorage.getItem("agentDetails") ?? "null"
   );
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
     tiN_USTINId:onBoardingFormValues.usTinTypeId
     ? onBoardingFormValues.usTinTypeId
@@ -145,8 +146,13 @@ export default function Tin(props: any) {
           } // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            console.log(values, ":STEP1 VALUES");
-            history("/US_Purposes/Back/Exemption/Tax/Certificates")
+            const result = { ...PrevStepData, ...values };
+            dispatch(
+              postW9Form(result, () => {
+                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                 history("/US_Purposes/Back/Exemption/Tax/Certificates")
+              })
+            );
             // dispatch(
             //   W9_state(values, () => {
             //     console.log(W9Data, "Done");

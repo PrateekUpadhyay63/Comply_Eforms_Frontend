@@ -96,7 +96,7 @@ export default function Tin(props: any) {
   const onBoardingFormValues = JSON.parse(
     localStorage.getItem("agentDetails") ?? "null"
   );
-  console.log("first", onBoardingFormValues);
+  // console.log("first", onBoardingFormValues);
   const [toolInfo, setToolInfo] = useState("");
   const dispatch = useDispatch();
 

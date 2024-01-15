@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Form, Formik } from "formik";
-import { W8_state_ECI } from "../../../Redux/Actions";
+import { W8_state_ECI, postW9Form } from "../../../Redux/Actions";
 import { certificateSchema_w9 } from "../../../schemas/w8Exp";
 import InfoIcon from "@mui/icons-material/Info";
 import checksolid from "../../../assets/img/check-solid.png";
@@ -24,6 +24,7 @@ import BreadCrumbComponent from "../../reusables/breadCrumb";
 import View_Insructions from "../../viewInstruction";
 
 export default function Certifications(props: any) {
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
     isBeneficialOwnerIncome: false,
     isAmountCertificationUS: false,
@@ -117,13 +118,13 @@ const history = useNavigate()
             validationSchema={certificateSchema_w9}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              console.log(values, "vallllll");
+              const result = { ...PrevStepData, ...values };
               dispatch(
-                W8_state_ECI(values, () => {
-                  history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
+                postW9Form(result, () => {
+                  localStorage.setItem("PrevStepData",JSON.stringify(values))
+                   history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
                 })
               );
-              history("/US_Purposes/Back/Exemption/Tax/Certificates/Penlities_W9")
             }}
           >
             {({
