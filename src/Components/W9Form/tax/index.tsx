@@ -155,7 +155,7 @@ export default function Tin(props: any) {
             const result = { ...PrevStepData, ...values };
             dispatch(
               postW9Form(result, () => {
-                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                localStorage.setItem("PrevStepData",JSON.stringify(result))
                  history("/US_Purposes/Back/Exemption/Tax/Certificates")
               })
             );

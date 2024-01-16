@@ -63,7 +63,11 @@ export default function Penalties(props: any) {
     signedBy: "",
     EnterconfirmationCode:"",
     confirmationCode: "",
-    date: "",
+    date:   new Date().toLocaleDateString('en-US', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    })  ,
     isAgreeWithDeclaration: false,
     question:"",
     word :""
@@ -83,10 +87,11 @@ export default function Penalties(props: any) {
           }else{
             setSubmitting(true);
             setSubmitting(true);
-          const result = { ...PrevStepData, ...values };
+            const new_obj = { ...PrevStepData, statusId: 2 }
+          const result = { ...new_obj, ...values };
           dispatch(
             postW9Form(result, () => {
-              localStorage.setItem("PrevStepData",JSON.stringify(values))
+              localStorage.setItem("PrevStepData",JSON.stringify(result))
                history("/Submit")
             })
             

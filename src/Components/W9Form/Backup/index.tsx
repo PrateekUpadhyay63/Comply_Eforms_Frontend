@@ -39,7 +39,7 @@ export default function Backup_witholding(props: any) {
   } = props;
   const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
-    isExemptionfromBackup: "",
+    isExemptionfromBackup: 0,
   };
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -104,10 +104,10 @@ export default function Backup_witholding(props: any) {
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
             const result = { ...PrevStepData, ...values };
-            history("/US_Purposes/Back/Exemption")
+            // history("/US_Purposes/Back/Exemption")
             dispatch(
               postW9Form(result, () => {
-                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                localStorage.setItem("PrevStepData",JSON.stringify(result))
                  history("/US_Purposes/Back/Exemption")
               })
             );
@@ -446,20 +446,20 @@ export default function Backup_witholding(props: any) {
                         >
                           <FormControlLabel
                             control={<Radio />}
-                            value="Yes"
+                            value={1}
                             name="isExemptionfromBackup"
                             label="Yes"
                           />
                           <FormControlLabel
                             control={<Radio />}
-                            value="No"
+                            value={2}
                             name="isExemptionfromBackup"
                             label="No"
                           />
                           <FormControlLabel
                             control={<Radio />}
                             label="Don't know"
-                            value="Don't"
+                            value={3}
                             name="isExemptionfromBackup"
                           />
                         </RadioGroup>
@@ -475,7 +475,7 @@ export default function Backup_witholding(props: any) {
                       </FormControl>
                     </div>
 
-                    {values.isExemptionfromBackup == "Yes" || values.isExemptionfromBackup == "Don't" ? (<form className="mt-3">
+                    {values.isExemptionfromBackup == 1 || values.isExemptionfromBackup == 3 ? (<form className="mt-3">
                       {
                         <Typography
                           align="left"
@@ -909,7 +909,7 @@ export default function Backup_witholding(props: any) {
                 >
                   View Form
                 </Button>
-                {values.isExemptionfromBackup === "No" ? (<Button
+                {values.isExemptionfromBackup == 2 ? (<Button
 
                   type="submit"
                   variant="contained"

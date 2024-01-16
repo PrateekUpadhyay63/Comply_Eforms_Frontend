@@ -57,6 +57,7 @@ export default function Fedral_tax(props: any) {
 
   const obValues = JSON.parse(localStorage.getItem("agentDetails") || "{}");
   const agentDefaultDetails = JSON.parse(localStorage.getItem("agentDefaultDetails") || "{}");
+  const PrevStepData = JSON.parse(localStorage.getItem("PrevStepData") || "{}");
   const initialValue = {
     AgentId: agentDefaultDetails.AgentId,
     FormTypeSelectionId : 1,
@@ -233,11 +234,12 @@ export default function Fedral_tax(props: any) {
           } // Uncomment after testing ,this is validation Schema
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
+            const result = { ...PrevStepData, ...values };
             // console.log(values, ":STEP1 VALUES");
             dispatch(
               postW9Form(values, () => {
                 history("/US_Purposes/Back");
-                localStorage.setItem("PrevStepData",JSON.stringify(values))
+                localStorage.setItem("PrevStepData",JSON.stringify(result))
               })
             );
             // dispatch(
